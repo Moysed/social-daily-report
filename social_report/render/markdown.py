@@ -1,0 +1,116 @@
+"""Render analysis + posts into bilingual per-topic Markdown (see arch doc §6)."""
+
+from __future__ import annotations
+
+from datetime import datetime, timezone
+
+import yaml
+
+from ..models import Post
+
+GENERATOR = "social-daily-report v0.1"
+
+
+def build_body(analysis: dict, posts: list[Post], date_label: str, topic_title: str) -> str:
+    out: list[str] = [f"# {topic_title} — {date_label}\n"]
+
+    out.append("## TL;DR")
+    out += [f"- {b}" for b in analysis.get("tldr", [])] or ["- (none)"]
+
+    for heading, key in (
+        ("What happened", "what_happened"),
+        ("Why it matters (reasoning)", "why_it_matters"),
+        ("Possibility", "possibility"),
+        ("Org applicability — NDF DEV", "org_applicability"),
+    ):
+        value = (analysis.get(key) or "").strip()
+        if value:
+            out += [f"\n## {heading}", value]
+
+    signals = analysis.get("signals", [])
+    if signals:
+        out.append("\n## Signals to Watch")
+        out += [f"- {s}" for s in signals]
+
+    out.append("\n## Raw Sources")
+    out += ["| platform | author | engagement | url |", "|---|---|---|---|"]
+    for p in posts[:30]:
+        title = p.text.split("\n", 1)[0][:80].replace("|", "/")
+        eng = f"^{p.engagement.likes} c{p.engagement.comments}"
+        out.append(f"| {p.platform} | {p.author} | {eng} | [{title}]({p.url}) |")
+
+    return "\n".join(out) + "\n"
+
+
+def _front_matter(
+    date_label: str,
+    topic_key: str,
+    lang: str,
+    posts: list[Post],
+    analysis: dict,
+    tags: list[str],
+    model: str,
+    translated_by: str | None,
+) -> dict:
+    other = "th" if lang == "en" else "en"
+    fm = {
+        "type": "social-topic-report",
+        "date": date_label,
+        "topic": topic_key,
+        "lang": lang,
+        "pair": f"{topic_key}.{other}.md",
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generator": GENERATOR,
+        "model": model,
+        "platforms": sorted({p.platform for p in posts}),
+        "regions": ["global"],
+        "post_count": len(posts),
+        "salience": analysis.get("salience"),
+        "sentiment": analysis.get("sentiment"),
+        "confidence": analysis.get("confidence"),
+        "tags": analysis.get("tags") or tags,
+    }
+    if lang == "th" and translated_by:
+        fm["translated_by"] = translated_by
+    return fm
+
+
+def render_file(front_matter: dict, body: str) -> str:
+    fm = yaml.safe_dump(front_matter, sort_keys=False, allow_unicode=True)
+    return f"---\n{fm}---\n\n{body}"
+
+
+def render_report(
+    date_label: str,
+    topic_key: str,
+    topic_cfg: dict,
+    analysis: dict,
+    posts: list[Post],
+    lang: str,
+    body: str,
+    model: str,
+    translated_by: str | None = None,
+) -> str:
+    fm = _front_matter(
+        date_label, topic_key, lang, posts, analysis,
+        topic_cfg.get("tags", []), model, translated_by,
+    )
+    return render_file(fm, body)
+
+
+def render_index(date_label: str, lang: str, entries: list[dict]) -> str:
+    fm = {
+        "type": "social-daily-index",
+        "date": date_label,
+        "lang": lang,
+        "generator": GENERATOR,
+        "topics": [
+            {"topic": e["topic"], "salience": e["salience"], "file": f"{e['topic']}.{lang}.md"}
+            for e in entries
+        ],
+    }
+    heading = "Daily Social Report" if lang == "en" else "รายงานโซเชียลรายวัน"
+    out = [f"# {heading} — {date_label}\n", "| topic | salience | report |", "|---|---|---|"]
+    for e in entries:
+        out.append(f"| {e['title']} | {e['salience']} | [{e['topic']}.{lang}.md]({e['topic']}.{lang}.md) |")
+    return render_file(fm, "\n".join(out) + "\n")

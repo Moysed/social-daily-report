@@ -1,0 +1,342 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../../../layouts/Base.astro";
+import { prettyDate, prettyTopic } from "../../../../lib/format";
+import { UI, type Lang } from "../../../../lib/i18n";
+
+export async function getStaticPaths() {
+  const all = await getCollection("reports");
+  return all.map((entry) => ({
+    params: { date: entry.data.date, topic: entry.data.topic, lang: entry.data.lang },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const lang = d.lang as Lang;
+const otherLang: Lang = lang === "th" ? "en" : "th";
+const t = UI[lang];
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const reportHref = (targetLang: Lang) => `${base}/report/${d.date}/${d.topic}/${targetLang}`;
+const homeHref = lang === "th" ? `${base}/th/` : `${base}/`;
+const title = `${prettyTopic(d.topic)} - ${d.date}`;
+const pct = (value?: number | null) => (value == null ? null : Math.round(value * 100));
+const meta = [
+  t.posts(d.post_count),
+  t.salience(pct(d.salience)),
+  t.confidence(pct(d.confidence)),
+  d.model ? `${t.model} ${d.model}` : null,
+  d.translated_by ? `${t.translatedBy} ${d.translated_by}` : null,
+].filter(Boolean);
+---
+
+<Base title={title} lang={lang} alternateHref={reportHref(otherLang)}>
+  <div class="report-shell">
+    <header class="report-chrome">
+      <nav class="report-nav ui-text" aria-label="Report navigation">
+        <a href={homeHref}>{t.backHome}</a>
+        <a class="language-toggle" href={reportHref(otherLang)} aria-label={t.switchReport} hreflang={otherLang}>
+          <span class={lang === "en" ? "active" : ""}>EN</span>
+          <span aria-hidden="true">/</span>
+          <span class={lang === "th" ? "active" : ""}>TH</span>
+        </a>
+      </nav>
+      <p class="report-label ui-text">{prettyTopic(d.topic)}</p>
+      <h1>{prettyTopic(d.topic)}</h1>
+      <p class="report-date ui-text">{prettyDate(d.date)}</p>
+      <p class="report-meta ui-text" aria-label={t.reportMeta}>{meta.join(" / ")}</p>
+      {d.platforms.length > 0 && (
+        <p class="report-platforms ui-text">
+          <strong>{t.platforms}</strong>
+          {d.platforms.map((platform) => <span>{platform}</span>)}
+        </p>
+      )}
+    </header>
+
+    <article class="prose" lang={lang}>
+      <Content />
+    </article>
+  </div>
+
+  <style>
+    .report-shell {
+      max-width: 68rem;
+      margin: 0 auto;
+    }
+
+    .report-chrome {
+      max-width: 68ch;
+      margin: 0 0 var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .report-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-bottom: var(--space-lg);
+      color: var(--soft-ink);
+      font-size: var(--step--1);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .report-nav a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .language-toggle {
+      gap: 0.42rem;
+      color: var(--ink);
+    }
+
+    .language-toggle .active {
+      color: var(--accent-ink);
+      font-weight: 800;
+    }
+
+    .report-label {
+      margin: 0 0 var(--space-xs);
+      color: var(--accent-ink);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .report-chrome h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--step-3);
+      font-weight: 650;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    .report-date,
+    .report-meta,
+    .report-platforms {
+      margin: var(--space-xs) 0 0;
+      color: var(--soft-ink);
+      font-size: var(--step--1);
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
+    .report-date {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .report-platforms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.8rem;
+    }
+
+    .report-platforms strong {
+      color: var(--ink);
+    }
+
+    .prose {
+      min-width: 0;
+      max-width: 68ch;
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      line-height: 1.78;
+      animation: report-in 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .prose[lang="th"] {
+      font-family: "Noto Serif Thai", var(--font-body);
+      line-height: 1.88;
+    }
+
+    .prose :global(h1),
+    .prose :global(h2),
+    .prose :global(h3) {
+      font-family: var(--font-display);
+      letter-spacing: 0;
+      color: var(--ink);
+    }
+
+    .prose[lang="th"] :global(h1),
+    .prose[lang="th"] :global(h2),
+    .prose[lang="th"] :global(h3) {
+      font-family: "Noto Serif Thai", var(--font-display);
+    }
+
+    .prose :global(h1) {
+      margin: 0 0 var(--space-lg);
+      font-size: var(--step-3);
+      font-weight: 650;
+      line-height: 1.04;
+    }
+
+    .prose :global(h2) {
+      margin: var(--space-xl) 0 var(--space-sm);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--line);
+      font-size: var(--step-2);
+      font-weight: 600;
+      line-height: 1.14;
+    }
+
+    .prose :global(h3) {
+      margin: var(--space-lg) 0 var(--space-xs);
+      font-size: var(--step-1);
+      line-height: 1.2;
+    }
+
+    .prose :global(p),
+    .prose :global(ul),
+    .prose :global(ol),
+    .prose :global(blockquote),
+    .prose :global(pre),
+    .prose :global(table) {
+      margin-top: 0;
+      margin-bottom: var(--space-md);
+    }
+
+    .prose :global(p),
+    .prose :global(li),
+    .prose :global(blockquote) {
+      overflow-wrap: break-word;
+    }
+
+    .prose :global(ul),
+    .prose :global(ol) {
+      padding-left: 1.25em;
+    }
+
+    .prose :global(li) {
+      padding-left: 0.25em;
+      margin: 0.35rem 0;
+    }
+
+    .prose :global(li::marker) {
+      color: var(--accent-ink);
+    }
+
+    .prose :global(a) {
+      color: var(--accent-ink);
+      text-decoration-line: underline;
+      text-decoration-color: color-mix(in oklch, var(--accent), transparent 25%);
+      text-underline-offset: 0.22em;
+    }
+
+    .prose :global(strong) {
+      font-weight: 650;
+      color: var(--ink);
+    }
+
+    .prose :global(blockquote) {
+      margin-left: 0;
+      padding: var(--space-sm) var(--space-md);
+      border-left: 3px solid var(--accent);
+      background: color-mix(in oklch, var(--surface), transparent 38%);
+      color: var(--soft-ink);
+    }
+
+    .prose :global(table) {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      border-collapse: collapse;
+      font-family: var(--font-ui);
+      font-size: var(--step--1);
+      line-height: 1.45;
+    }
+
+    .prose :global(th),
+    .prose :global(td) {
+      padding: 0.62rem 0.7rem;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .prose :global(th) {
+      color: var(--soft-ink);
+      font-weight: 700;
+      background: color-mix(in oklch, var(--surface), transparent 35%);
+    }
+
+    .prose :global(pre) {
+      max-width: 100%;
+      overflow-x: auto;
+      padding: var(--space-sm);
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    .prose :global(pre code) {
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .prose :global(hr) {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: var(--space-xl) 0;
+    }
+
+    @keyframes report-in {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .report-nav > a:first-child {
+        flex: 1 1 100%;
+      }
+
+      .language-toggle {
+        width: 100%;
+        justify-content: center;
+        gap: 0.7rem;
+      }
+
+      .prose {
+        line-height: 1.72;
+      }
+
+      .prose[lang="th"] {
+        line-height: 1.84;
+      }
+
+      .prose :global(ul),
+      .prose :global(ol) {
+        padding-left: 1.05em;
+      }
+
+      .prose :global(blockquote) {
+        padding-inline: var(--space-sm);
+      }
+
+      .prose :global(th),
+      .prose :global(td) {
+        padding: 0.55rem 0.62rem;
+      }
+    }
+  </style>
+</Base>

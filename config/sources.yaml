@@ -1,0 +1,117 @@
+# Social Daily Report — source config.
+# Every source is KEYLESS (free, no API key): HackerNews API, Bluesky public
+# AppView, Reddit public .json, YouTube channel RSS, and arbitrary RSS/Atom feeds.
+#
+# connector params:
+#   hackernews            limit
+#   bluesky    query      [sort: top|latest]
+#   reddit     subreddit  [query] [sort: top|hot|new] [time: hour|day|week|...]
+#   youtube    channel_id | playlist_id | user
+#   rss        feed_url | feeds: [..]
+
+lookback_hours: 48
+
+topics:
+  ai-devtools:
+    title: "AI Devtools"
+    tags: [ai, devtools, agents]
+    focus: >
+      AI developer tools, coding agents, LLM APIs and models, IDE/editor AI,
+      agent frameworks, eval/observability tooling — anything a software /
+      game / XR / edutech studio could realistically adopt.
+    sources:
+      - connector: hackernews
+        limit: 40
+      - connector: reddit
+        subreddit: LocalLLaMA
+        sort: top
+        time: day
+        limit: 25
+      - connector: reddit
+        subreddit: MachineLearning
+        sort: top
+        time: day
+        limit: 15
+      - connector: bluesky
+        query: "ai coding agents"
+        sort: top
+        limit: 25
+      - connector: rss
+        feed_url: "https://huggingface.co/blog/feed.xml"
+        limit: 15
+
+  game-dev:
+    title: "Game Dev"
+    tags: [gamedev, engines, tools]
+    focus: >
+      Game development — engines (Unreal, Unity, Godot), tooling, graphics,
+      production workflows, releases, and AI used in game pipelines.
+    sources:
+      - connector: reddit
+        subreddit: gamedev
+        sort: top
+        time: day
+        limit: 30
+      - connector: bluesky
+        query: "gamedev unreal unity godot"
+        sort: top
+        limit: 25
+      - connector: rss
+        feed_url: "https://www.gamedeveloper.com/rss.xml"
+        limit: 15
+
+  xr:
+    title: "XR / VR / AR"
+    tags: [xr, vr, ar, spatial]
+    focus: >
+      Extended reality — VR/AR/MR headsets, spatial computing, WebXR,
+      immersive content tools, and platform/SDK news relevant to an XR studio.
+    sources:
+      - connector: reddit
+        subreddit: virtualreality
+        sort: top
+        time: day
+        limit: 25
+      - connector: bluesky
+        query: "vr ar xr spatial computing"
+        sort: top
+        limit: 25
+
+  web-frontend:
+    title: "Web & Frontend"
+    tags: [web, frontend, framework]
+    focus: >
+      Web platform and frontend — frameworks (React, Astro, Svelte, Vue),
+      browser APIs, build tooling, performance, and shipping web products.
+    sources:
+      - connector: hackernews
+        limit: 30
+      - connector: reddit
+        subreddit: webdev
+        sort: top
+        time: day
+        limit: 25
+      - connector: bluesky
+        query: "frontend web dev react astro"
+        sort: top
+        limit: 20
+      - connector: youtube
+        channel_id: "UCsBjURrPoezykLs9EqgamOA"  # Fireship
+        limit: 10
+
+  edtech:
+    title: "EdTech"
+    tags: [edtech, learning, education]
+    focus: >
+      Education technology — learning platforms, AI tutoring, language
+      learning, classroom tools, and edtech business/product moves.
+    sources:
+      - connector: reddit
+        subreddit: edtech
+        sort: top
+        time: week
+        limit: 25
+      - connector: bluesky
+        query: "edtech education AI tutor"
+        sort: top
+        limit: 20

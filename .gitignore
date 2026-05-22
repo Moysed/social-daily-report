@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Env / secrets
+.env
+
+# Local data / scratch
+data/
+.tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Astro / Node
+web/node_modules/
+web/dist/
+web/.astro/
+web/.codex-handoff/
+web/.codex-redesign.log
+web/.tmp_*
+
+# Editor / config
+.impeccable.md

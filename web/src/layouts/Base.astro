@@ -1,0 +1,263 @@
+---
+import { homePath, UI, type Lang } from "../lib/i18n";
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: Lang;
+  alternateHref?: string;
+}
+
+const { title, description, lang = "en", alternateHref } = Astro.props;
+const t = UI[lang];
+const other: Lang = lang === "en" ? "th" : "en";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const local = (path: string) => `${base}${path}`;
+const home = local(homePath[lang]);
+const switchHref = alternateHref ?? local(homePath[other]);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content={description ?? t.description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,750&family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,650&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-bar" aria-label="Site">
+      <a class="brand" href={home}>Social Daily Report</a>
+      <span class="site-note">{t.siteNote}</span>
+      <a class="locale-switch" href={switchHref} hreflang={other} lang={other}>{t.switchLabel}</a>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">{t.footer}</footer>
+
+    <style is:global>
+      :root {
+        color-scheme: light dark;
+        --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
+        --font-body: "Newsreader", "Noto Serif Thai", Georgia, serif;
+        --font-ui: "Hanken Grotesk", "Noto Sans Thai", system-ui, sans-serif;
+
+        --bg: light-dark(oklch(0.965 0.015 76), oklch(0.17 0.018 54));
+        --paper: light-dark(oklch(0.99 0.008 80), oklch(0.205 0.018 54));
+        --surface: light-dark(oklch(0.935 0.018 76), oklch(0.275 0.02 54));
+        --surface-strong: light-dark(oklch(0.875 0.034 77), oklch(0.345 0.027 54));
+        --ink: light-dark(oklch(0.22 0.018 61), oklch(0.92 0.014 81));
+        --soft-ink: light-dark(oklch(0.44 0.026 60), oklch(0.75 0.018 80));
+        --faint-ink: light-dark(oklch(0.57 0.022 60), oklch(0.62 0.016 80));
+        --line: light-dark(oklch(0.82 0.026 75), oklch(0.39 0.024 54));
+        --hairline: light-dark(oklch(0.88 0.018 76), oklch(0.31 0.019 54));
+        --accent: light-dark(oklch(0.5 0.115 33), oklch(0.74 0.105 72));
+        --accent-ink: light-dark(oklch(0.4 0.118 31), oklch(0.82 0.098 74));
+
+        --step--1: clamp(0.82rem, 0.79rem + 0.15vw, 0.92rem);
+        --step-0: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
+        --step-1: clamp(1.28rem, 1.17rem + 0.55vw, 1.62rem);
+        --step-2: clamp(1.65rem, 1.42rem + 1.15vw, 2.35rem);
+        --step-3: clamp(2.25rem, 1.83rem + 2.1vw, 3.75rem);
+        --step-4: clamp(3.1rem, 2.32rem + 3.9vw, 5.7rem);
+
+        --space-xs: clamp(0.55rem, 0.5rem + 0.25vw, 0.75rem);
+        --space-sm: clamp(0.85rem, 0.74rem + 0.55vw, 1.2rem);
+        --space-md: clamp(1.35rem, 1.14rem + 1.05vw, 2rem);
+        --space-lg: clamp(2.1rem, 1.66rem + 2.2vw, 3.6rem);
+        --space-xl: clamp(3.2rem, 2.35rem + 4.25vw, 6rem);
+
+        --max: 76rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background:
+          linear-gradient(180deg, color-mix(in oklch, var(--surface-strong), transparent 42%) 0 13rem, transparent 13rem),
+          var(--bg);
+        color: var(--ink);
+        font-family: var(--font-body);
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-body);
+        font-size: var(--step-0);
+        line-height: 1.75;
+      }
+
+      body:lang(th) {
+        font-family: "Noto Serif Thai", var(--font-body);
+        line-height: 1.86;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: color-mix(in oklch, var(--accent), transparent 35%);
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.18em;
+        overflow-wrap: anywhere;
+      }
+
+      a:hover {
+        color: var(--accent-ink);
+        text-decoration-color: var(--accent);
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid color-mix(in oklch, var(--accent), transparent 12%);
+        outline-offset: 4px;
+        border-radius: 2px;
+      }
+
+      main,
+      .site-bar,
+      .site-footer {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding-inline: clamp(1rem, 4vw, 3rem);
+      }
+
+      main {
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-xl);
+      }
+
+      .site-bar {
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        border-bottom: 1px solid color-mix(in oklch, var(--line), transparent 18%);
+        font-family: var(--font-ui);
+      }
+
+      .brand {
+        color: var(--ink);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-size: var(--step--1);
+        text-decoration: none;
+        line-height: 1.3;
+      }
+
+      .brand::before {
+        content: "";
+        display: inline-block;
+        width: 0.48rem;
+        height: 0.48rem;
+        margin-right: 0.48rem;
+        background: var(--accent);
+        transform: translateY(-0.03rem);
+      }
+
+      .site-note,
+      .site-footer,
+      .locale-switch {
+        color: var(--soft-ink);
+        font-family: var(--font-ui);
+        font-size: var(--step--1);
+        line-height: 1.5;
+      }
+
+      .site-note {
+        flex: 1;
+      }
+
+      .locale-switch {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        font-weight: 700;
+        text-decoration: none;
+        border-bottom: 1px solid var(--line);
+        white-space: nowrap;
+      }
+
+      .site-footer {
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-lg);
+        border-top: 1px solid var(--line);
+      }
+
+      .kicker {
+        margin: 0 0 var(--space-xs);
+        color: var(--accent-ink);
+        font-family: var(--font-ui);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        line-height: 1.4;
+        text-transform: uppercase;
+      }
+
+      .ui-text {
+        font-family: var(--font-ui);
+      }
+
+      code {
+        font-family: var(--font-ui);
+        font-size: 0.88em;
+        background: var(--surface);
+        border: 1px solid color-mix(in oklch, var(--line), transparent 18%);
+        padding: 0.08rem 0.32rem;
+      }
+
+      @media (max-width: 640px) {
+        :root {
+          --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+          --step-1: clamp(1.18rem, 1.07rem + 0.55vw, 1.38rem);
+          --step-2: clamp(1.48rem, 1.24rem + 1.2vw, 1.9rem);
+          --step-3: clamp(1.95rem, 1.57rem + 1.9vw, 2.55rem);
+          --step-4: clamp(2.52rem, 1.92rem + 3vw, 3.25rem);
+        }
+
+        main {
+          padding-top: var(--space-md);
+        }
+
+        .site-bar {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 0.35rem;
+        }
+
+        .brand,
+        .locale-switch {
+          min-height: 44px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </body>
+</html>

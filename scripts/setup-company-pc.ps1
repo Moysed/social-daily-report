@@ -110,6 +110,19 @@ if (-not $SkipTaskRegister) {
     schtasks.exe /Create /TN $TaskName /XML $xmlFilled /F | Out-Null
     Ok "task '$TaskName' registered (daily 07:00 local)"
     Remove-Item $xmlFilled
+
+    # Optional: also register hourly Discord monitor if webhook is set.
+    if ($envText -match 'MONITOR_DISCORD_WEBHOOK\s*=\s*https://') {
+        $monXml      = Join-Path $RepoRoot "scripts\social-daily-report-monitor.xml"
+        $monFilled   = Join-Path $env:TEMP "social-daily-report-monitor-task.xml"
+        (Get-Content $monXml -Raw) -replace '\{\{REPO_ROOT\}\}', $RepoRoot |
+            Set-Content -Path $monFilled -Encoding Unicode
+        schtasks.exe /Create /TN "${TaskName}Monitor" /XML $monFilled /F | Out-Null
+        Ok "task '${TaskName}Monitor' registered (hourly 09:00-00:00)"
+        Remove-Item $monFilled
+    } else {
+        Warn "MONITOR_DISCORD_WEBHOOK not set in .env -- skipping hourly monitor task"
+    }
 } else {
     Warn "skipping task register (-SkipTaskRegister)"
 }

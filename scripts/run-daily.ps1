@@ -74,6 +74,27 @@ try {
     $ExitCode = 1
 }
 
+# Auto-commit + push today's reports so Vercel redeploys without manual work.
+# Only runs on a clean pipeline (exit 0); skips silently if there's nothing to
+# commit or `git` is unavailable. Failure here doesn't fail the whole task —
+# the reports are already on disk; deploy is a nice-to-have.
+if ($ExitCode -eq 0 -and (Get-Command git -ErrorAction SilentlyContinue)) {
+    try {
+        $Changed = git -C $RepoRoot status --porcelain "content/reports/$Today" 2>$null
+        if ($Changed) {
+            git -C $RepoRoot add "content/reports/$Today" 2>&1 | Out-Null
+            $Commit = "Daily reports $Today (auto)"
+            git -C $RepoRoot commit -m $Commit 2>&1 | Tee-Object -FilePath $LogFile -Append
+            git -C $RepoRoot push origin main 2>&1 | Tee-Object -FilePath $LogFile -Append
+            Add-Content -Path $LogFile -Value "deploy: pushed to origin/main" -Encoding UTF8
+        } else {
+            Add-Content -Path $LogFile -Value "deploy: no report changes to commit" -Encoding UTF8
+        }
+    } catch {
+        Add-Content -Path $LogFile -Value "deploy: git push skipped ($_)" -Encoding UTF8
+    }
+}
+
 $Footer = "===== exit $ExitCode @ $(Get-Date -Format o) =====`n"
 Add-Content -Path $LogFile -Value $Footer -Encoding UTF8
 exit $ExitCode

@@ -32,6 +32,13 @@ def build_body(analysis: dict, posts: list[Post], date_label: str, topic_title: 
         out.append("\n## Signals to Watch")
         out += [f"- {s}" for s in signals]
 
+    repos = _github_repos(posts)
+    if repos:
+        out.append("\n## Repos & Tools to Try")
+        out += ["| repo | source | url |", "|---|---|---|"]
+        for slug, source, url, title in repos[:12]:
+            out.append(f"| **{slug}** — {title} | {source} | <{url}> |")
+
     out.append("\n## Raw Sources")
     out += ["| platform | author | engagement | url |", "|---|---|---|---|"]
     for p in posts[:30]:
@@ -40,6 +47,47 @@ def build_body(analysis: dict, posts: list[Post], date_label: str, topic_title: 
         out.append(f"| {p.platform} | {p.author} | {eng} | [{title}]({p.url}) |")
 
     return "\n".join(out) + "\n"
+
+
+_GITHUB_REPO_PATTERN = __import__("re").compile(
+    r"https?://github\.com/([\w.-]+)/([\w.-]+?)(?:/(?:tree|blob|releases|issues|pull|actions|wiki)/|\?|#|/?$)",
+)
+# Subpaths to skip (we want the repo root, not an issue/PR view).
+_GITHUB_SKIP_PARTS = {"issues", "pull", "actions", "blob", "tree", "releases", "wiki", "discussions"}
+
+
+def _github_repos(posts: list[Post]) -> list[tuple[str, str, str, str]]:
+    """Extract (owner/repo, source, root_url, title) for posts that point at
+    GitHub repos. De-dups by owner/repo, keeps first-seen ordering (which is
+    salience/engagement order after dedup)."""
+    out: list[tuple[str, str, str, str]] = []
+    seen: set[str] = set()
+    for p in posts:
+        url = p.url or ""
+        if "github.com/" not in url:
+            continue
+        m = _GITHUB_REPO_PATTERN.search(url)
+        if not m:
+            continue
+        owner, repo = m.group(1), m.group(2)
+        if owner in _GITHUB_SKIP_PARTS or repo in _GITHUB_SKIP_PARTS:
+            continue
+        slug = f"{owner}/{repo}"
+        if slug in seen:
+            continue
+        seen.add(slug)
+        root = f"https://github.com/{owner}/{repo}"
+        # The GitHub Trending RSS title is literally "owner/repo" — strip that
+        # leading echo so the table reads "**slug** — description" without
+        # printing the slug twice.
+        first_line = p.text.split("\n", 1)[0].strip()
+        body = p.text.split("\n", 2)[1].strip() if "\n" in p.text else ""
+        title = (body or first_line).replace("|", "/").strip()
+        if title.lower().startswith(slug.lower()):
+            title = title[len(slug):].lstrip(" -:—").strip()
+        title = title[:100]
+        out.append((slug, p.platform, root, title))
+    return out
 
 
 def _front_matter(

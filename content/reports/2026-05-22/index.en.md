@@ -5,7 +5,7 @@ lang: en
 generator: social-daily-report v0.1
 topics:
 - topic: edtech
-  salience: 0.55
+  salience: 0.45
   file: edtech.en.md
 ---
 
@@ -13,4 +13,4 @@ topics:
 
 | topic | salience | report |
 |---|---|---|
-| EdTech | 0.55 | [edtech.en.md](edtech.en.md) |
+| EdTech | 0.45 | [edtech.en.md](edtech.en.md) |

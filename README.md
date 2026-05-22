@@ -131,15 +131,101 @@ Add a topic, point it at connectors, done.
 | `content/reports/YYYY-MM-DD/` | Rendered `.en.md` + `.th.md` | git-tracked, also served via Astro |
 | `web/` | Astro blog reading `content/reports/` | dev: `cd web && npm run dev` |
 
+## Daily scheduling (Windows Task Scheduler)
+
+The pipeline is meant to run unattended at 07:00 local on a host that stays
+on 24/7 (e.g. a company PC). All artifacts live in `scripts/`.
+
+### One-shot setup
+
+On the host that will run the pipeline:
+
+```powershell
+cd D:\Folder Project\social-daily-report
+.\scripts\setup-company-pc.ps1
+```
+
+The setup script does the following, idempotently:
+
+1. Verifies Python 3.11+
+2. Creates `.venv`, installs `-e .[mcp]`
+3. Verifies `claude` CLI and offers to `claude login` if needed
+4. Confirms `.env` has `LLM_BACKEND` + the right key(s)
+5. Sanity-tests the chosen backend (`claude -p "OK"` for `cli`, or the SDK for `api`)
+6. Registers a `SocialDailyReport` Task Scheduler entry from `scripts/social-daily-report.xml`
+   (daily 07:00, retry 3× / 15min, wake-to-run, network required, 1h time limit)
+7. Optionally test-triggers the pipeline once and logs the run
+
+After setup:
+
+```powershell
+# Inspect the task
+schtasks /Query /TN SocialDailyReport /V /FO LIST
+
+# Run on demand
+schtasks /Run /TN SocialDailyReport
+
+# Disable temporarily
+schtasks /Change /TN SocialDailyReport /Disable
+
+# Logs (gitignored)
+type logs\2026-05-22.log
+```
+
+### Daily wrapper
+
+`scripts/run-daily.ps1` is what the task runs. Resolves the repo from its own
+path, activates `.venv`, runs the pipeline for all topics, and tees the output
+to `logs/YYYY-MM-DD.log`. The exit code propagates so Task Scheduler flags
+failures in its UI.
+
+Can also be invoked manually:
+
+```powershell
+.\scripts\run-daily.ps1                          # all topics, today
+.\scripts\run-daily.ps1 -Topic ai-devtools       # single topic
+.\scripts\run-daily.ps1 -Date 2026-05-21         # backfill a date label
+```
+
+### Choosing a backend on the company PC
+
+- **`LLM_BACKEND=cli` (subscription via Claude Code)** — free if Mond's Pro/Max
+  is logged in via `claude login`. Best for "Mond's company PC" personal-use
+  scenario. The Task Scheduler entry uses `InteractiveToken` so the OAuth
+  keychain is reachable; the user must be logged on.
+- **`LLM_BACKEND=api` (per-token API key)** — sanctioned for unattended
+  automation. Use this when the report becomes a company product.
+
+The CLI backend is great for the POC. For long-term production, switch to API
+to dodge the TOS gray area around subscription + automation.
+
+### Monitoring + recovering from expired login
+
+A subscription session token can expire (~30 days). When it does, `claude -p`
+starts failing silently and the daily run records a status='error' row in
+`runs`. Check periodically:
+
+```bash
+# from the host
+python -m social_report.cli  # then in another shell:
+sqlite3 data/reports.db "SELECT id, started_at, status, error FROM runs ORDER BY id DESC LIMIT 5;"
+```
+
+If you see `status='error'` with a CLI auth message, re-`claude login` and the
+next scheduled run will pick up the new token. (Future: a tiny monitor that
+emails/pings on N consecutive errors — see roadmap.)
+
 ## Roadmap
 
 - [x] Phase 1 slice: 5 connectors × 5 topics, bilingual render
 - [x] SQLite store + run log + FTS5 (cross-day salience as SQL)
 - [x] MCP server (list/get/search/salience/runs)
+- [x] X via paid provider (Xquik connector, Phase 2)
+- [x] Scheduler (Windows Task Scheduler, 07:00 local)
+- [ ] Monitor: email/Discord ping when N consecutive runs fail
 - [ ] Astro blog polish (`web/`)
 - [ ] Cost: Batch API + prompt caching + model routing
-- [ ] Scheduler (Windows Task Scheduler, 07:00 ICT)
-- [ ] X via paid provider (Phase 2); IG/FB deferred
+- [ ] IG/FB deferred (no legal public access)
 
 ## Notes
 

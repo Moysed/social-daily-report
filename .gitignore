@@ -11,6 +11,7 @@ venv/
 # Local data / scratch
 data/
 .tmp/
+logs/
 
 # OS
 .DS_Store

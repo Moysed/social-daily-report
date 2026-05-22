@@ -4,13 +4,13 @@ date: '2026-05-22'
 lang: th
 generator: social-daily-report v0.1
 topics:
-- topic: ai-devtools
-  salience: 0.5
-  file: ai-devtools.th.md
+- topic: edtech
+  salience: 0.7
+  file: edtech.th.md
 ---
 
 # รายงานโซเชียลรายวัน — 2026-05-22
 
 | topic | salience | report |
 |---|---|---|
-| AI Devtools | 0.5 | [ai-devtools.th.md](ai-devtools.th.md) |
+| EdTech | 0.7 | [edtech.th.md](edtech.th.md) |

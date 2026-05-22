@@ -39,6 +39,12 @@ topics:
       - connector: rss
         feed_url: "https://huggingface.co/blog/feed.xml"
         limit: 15
+      # X (Twitter) via Xquik — paid, costs 1 credit per tweet returned.
+      # Uncomment to enable; requires XQUIK_API_KEY in .env.
+      # - connector: x
+      #   query: "AI coding agents min_faves:50 lang:en"
+      #   query_type: Latest
+      #   limit: 20
 
   game-dev:
     title: "Game Dev"

@@ -64,6 +64,10 @@ topics:
       - connector: rss
         feed_url: "https://www.gamedeveloper.com/rss.xml"
         limit: 15
+      - connector: x
+        query: "unreal OR unity OR godot OR gamedev min_faves:30 lang:en"
+        query_type: Latest
+        limit: 20
 
   xr:
     title: "XR / VR / AR"
@@ -81,6 +85,10 @@ topics:
         query: "vr ar xr spatial computing"
         sort: top
         limit: 25
+      - connector: x
+        query: "vr OR ar OR xr OR \"spatial computing\" min_faves:30 lang:en"
+        query_type: Latest
+        limit: 20
 
   web-frontend:
     title: "Web & Frontend"
@@ -103,6 +111,10 @@ topics:
       - connector: youtube
         channel_id: "UCsBjURrPoezykLs9EqgamOA"  # Fireship
         limit: 10
+      - connector: x
+        query: "react OR astro OR svelte OR nextjs min_faves:50 lang:en"
+        query_type: Latest
+        limit: 20
 
   edtech:
     title: "EdTech"
@@ -119,4 +131,8 @@ topics:
       - connector: bluesky
         query: "edtech education AI tutor"
         sort: top
+        limit: 20
+      - connector: x
+        query: "edtech OR \"ai tutor\" OR \"language learning\" min_faves:20 lang:en"
+        query_type: Latest
         limit: 20

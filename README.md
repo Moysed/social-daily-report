@@ -215,6 +215,30 @@ If you see `status='error'` with a CLI auth message, re-`claude login` and the
 next scheduled run will pick up the new token. (Future: a tiny monitor that
 emails/pings on N consecutive errors — see roadmap.)
 
+## Deploy (Vercel)
+
+The web blog is a static Astro site that reads `../content/reports/`. Deploy
+it via Vercel against the GitHub repo:
+
+1. Vercel dashboard → **Add New Project** → import the GitHub repo.
+2. **Root Directory**: `web/` (Astro lives in a subdir; the pipeline lives
+   at the repo root).
+3. Framework Preset auto-detects as **Astro**. Build command `npm run build`,
+   output `dist` (already declared in `web/vercel.json`).
+4. Set the `SITE` env var to the production URL once Vercel assigns one
+   (e.g. `https://social-daily-report.vercel.app`). This drives the
+   absolute URLs in `/rss.xml` and `/th/rss.xml`.
+5. Every push to `main` redeploys. The daily pipeline (Windows Task
+   Scheduler on the host PC) commits new reports → the cron-less deploy
+   picks them up automatically.
+
+To trigger a redeploy without a code change, push an empty commit:
+
+```bash
+git commit --allow-empty -m "redeploy"
+git push
+```
+
 ## Roadmap
 
 - [x] Phase 1 slice: 5 connectors × 5 topics, bilingual render

@@ -1,13 +1,17 @@
 # Social Daily Report — source config.
-# Every source is KEYLESS (free, no API key): HackerNews API, Bluesky public
-# AppView, Reddit public .json, YouTube channel RSS, and arbitrary RSS/Atom feeds.
+# Every source is KEYLESS (free, no API key) EXCEPT X (Xquik, paid).
 #
 # connector params:
 #   hackernews            limit
 #   bluesky    query      [sort: top|latest]
-#   reddit     subreddit  [query] [sort: top|hot|new] [time: hour|day|week|...]
+#   reddit     subreddit  [query] [sort: top|hot|new] [time: ...] [min_score]
+#   lobsters   [tag]      [min_score]
 #   youtube    channel_id | playlist_id | user
 #   rss        feed_url | feeds: [..]
+#   x          query      [query_type: Latest|Top]
+#
+# min_score (reddit): 30 on large subs to drop meme/low-effort posts. Niche
+# subs (Quest3, HoloLens, WebXR, godot, edtech) use 5 so they're not silenced.
 
 lookback_hours: 48
 
@@ -27,11 +31,13 @@ topics:
         sort: top
         time: day
         limit: 25
+        min_score: 30
       - connector: reddit
         subreddit: MachineLearning
         sort: top
         time: day
         limit: 15
+        min_score: 10
       - connector: bluesky
         query: "AI agents OR coding agents lang:en"
         sort: latest
@@ -39,11 +45,65 @@ topics:
       - connector: rss
         feed_url: "https://huggingface.co/blog/feed.xml"
         limit: 15
-      # X (Twitter) via Xquik — paid, ~1 credit/tweet (~$0.00015). Needs XQUIK_API_KEY.
+      - connector: lobsters
+        tag: ai
+        limit: 20
       - connector: x
         query: "AI coding agents min_faves:50 lang:en"
         query_type: Latest
         limit: 20
+
+  ai-news:
+    title: "AI News & New Skills"
+    tags: [ai-news, tools, skills, repos, papers]
+    focus: >
+      Newly-released AI tools, agent frameworks, prompt patterns, open-source
+      repos, Claude/Cursor/Continue/etc. plugins or skills, and notable AI
+      research drops — anything we could plug into our own AI workflow
+      (Claude Code, Almondo, social-daily-report) to extend its abilities.
+      Prefer concrete artifacts (repos, releases, plugins) over commentary.
+    sources:
+      - connector: reddit
+        subreddit: singularity
+        sort: top
+        time: day
+        limit: 15
+        min_score: 30
+      - connector: reddit
+        subreddit: ArtificialIntelligence
+        sort: top
+        time: day
+        limit: 15
+        min_score: 30
+      - connector: reddit
+        subreddit: ClaudeAI
+        sort: top
+        time: week
+        limit: 15
+        min_score: 10
+      - connector: reddit
+        subreddit: cursor
+        sort: top
+        time: week
+        limit: 15
+        min_score: 10
+      - connector: lobsters
+        tag: ai
+        limit: 20
+      # Community-maintained GitHub Trending RSS — daily snapshots, no
+      # per-item pubDate (RSS connector falls back to the channel timestamp).
+      # HuggingFace papers + Anthropic news feeds dropped: hf wants auth (401),
+      # anthropic.com/news has no public RSS (404).
+      - connector: rss
+        feed_url: "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml"
+        limit: 15
+      - connector: rss
+        feed_url: "https://mshibanami.github.io/GitHubTrendingRSS/daily/python.xml"
+        limit: 10
+      - connector: x
+        query: "(claude code OR cursor OR mcp OR \"agent skills\") min_faves:30 lang:en"
+        query_type: Latest
+        limit: 25
 
   game-dev:
     title: "Game Dev"
@@ -57,21 +117,25 @@ topics:
         sort: top
         time: day
         limit: 30
+        min_score: 30
       - connector: reddit
         subreddit: Unity3D
         sort: top
         time: day
         limit: 15
+        min_score: 10
       - connector: reddit
         subreddit: unrealengine
         sort: top
         time: day
         limit: 15
+        min_score: 10
       - connector: reddit
         subreddit: godot
         sort: top
         time: day
         limit: 15
+        min_score: 5
       - connector: bluesky
         query: "gamedev OR indiedev"
         sort: latest
@@ -96,26 +160,31 @@ topics:
         sort: top
         time: day
         limit: 25
+        min_score: 30
       - connector: reddit
         subreddit: oculus
         sort: top
         time: day
         limit: 20
+        min_score: 10
       - connector: reddit
         subreddit: Quest3
         sort: top
         time: week
         limit: 15
+        min_score: 5
       - connector: reddit
         subreddit: HoloLens
         sort: top
         time: week
         limit: 10
+        min_score: 5
       - connector: reddit
         subreddit: WebXR
         sort: top
         time: week
         limit: 10
+        min_score: 5
       - connector: x
         query: "vr OR ar OR xr OR \"spatial computing\" min_faves:30 lang:en"
         query_type: Latest
@@ -135,25 +204,32 @@ topics:
         sort: top
         time: day
         limit: 25
+        min_score: 30
       - connector: reddit
         subreddit: reactjs
         sort: top
         time: day
         limit: 15
+        min_score: 10
       - connector: reddit
         subreddit: nextjs
         sort: top
         time: day
         limit: 15
+        min_score: 10
       - connector: reddit
         subreddit: javascript
         sort: top
         time: day
         limit: 15
+        min_score: 30
       - connector: bluesky
         query: "#webdev OR #frontend OR React OR Astro"
         sort: latest
         limit: 25
+      - connector: lobsters
+        tag: web
+        limit: 15
       # NOTE: YouTube feed endpoint 404s from this network (geo/IP block) —
       # connector kept available in code but removed from this topic.
       - connector: x
@@ -173,21 +249,25 @@ topics:
         sort: top
         time: week
         limit: 25
+        min_score: 5
       - connector: reddit
         subreddit: teachers
         sort: top
         time: week
         limit: 15
+        min_score: 30
       - connector: reddit
         subreddit: learnprogramming
         sort: top
         time: day
         limit: 15
+        min_score: 30
       - connector: reddit
         subreddit: languagelearning
         sort: top
         time: week
         limit: 15
+        min_score: 10
       - connector: bluesky
         query: "edtech OR \"AI tutor\" OR \"language learning\""
         sort: latest

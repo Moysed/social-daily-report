@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-16"?>
 <Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
   <RegistrationInfo>
-    <Description>Daily social-daily-report pipeline. Runs at 10:00 local time, generates per-topic Markdown reports + SQLite archive.</Description>
+    <Description>social-daily-report pipeline. Fires at 10:00 and 22:00 local (every 12h), regenerates per-topic Markdown reports + SQLite archive, then auto-commits + pushes.</Description>
     <URI>\SocialDailyReport</URI>
   </RegistrationInfo>
   <Triggers>
     <CalendarTrigger>
       <StartBoundary>2026-05-23T10:00:00</StartBoundary>
       <Enabled>true</Enabled>
+      <Repetition>
+        <Interval>PT12H</Interval>
+        <Duration>PT23H</Duration>
+        <StopAtDurationEnd>true</StopAtDurationEnd>
+      </Repetition>
       <ScheduleByDay>
         <DaysInterval>1</DaysInterval>
       </ScheduleByDay>

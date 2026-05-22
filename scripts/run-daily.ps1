@@ -83,7 +83,7 @@ if ($ExitCode -eq 0 -and (Get-Command git -ErrorAction SilentlyContinue)) {
         $Changed = git -C $RepoRoot status --porcelain "content/reports/$Today" 2>$null
         if ($Changed) {
             git -C $RepoRoot add "content/reports/$Today" 2>&1 | Out-Null
-            $Commit = "Daily reports $Today (auto)"
+            $Commit = "Daily reports $Today $((Get-Date).ToString('HHmm')) (auto)"
             git -C $RepoRoot commit -m $Commit 2>&1 | Tee-Object -FilePath $LogFile -Append
             git -C $RepoRoot push origin main 2>&1 | Tee-Object -FilePath $LogFile -Append
             Add-Content -Path $LogFile -Value "deploy: pushed to origin/main" -Encoding UTF8

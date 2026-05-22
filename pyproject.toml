@@ -10,8 +10,12 @@ dependencies = [
     "pyyaml>=6.0",
 ]
 
+[project.optional-dependencies]
+mcp = ["mcp>=1.2"]
+
 [project.scripts]
-social-report = "social_report.cli:main"
+social-report     = "social_report.cli:main"
+social-report-mcp = "social_report.mcp_server:main"
 
 [build-system]
 requires = ["setuptools>=68"]

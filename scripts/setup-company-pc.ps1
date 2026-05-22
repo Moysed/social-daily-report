@@ -36,17 +36,45 @@ function Warn($msg)     { Write-Host "  warn: $msg" -ForegroundColor Yellow }
 function Fail($msg)     { Write-Host "  fail: $msg" -ForegroundColor Red; exit 1 }
 
 # ---- 1. Python ----
+# Find a real Python 3.11+, skipping Windows' Microsoft Store stub
+# (which lives under %LOCALAPPDATA%\Microsoft\WindowsApps\python.exe and
+# launches the Store instead of running). Order: py launcher (`py -3`),
+# python3.exe, python.exe — first one that reports Python 3.11+ wins.
 Step 1 "Verifying Python"
-$py = (Get-Command python -ErrorAction Stop).Source
-$pyver = & $py --version 2>&1
-if ($pyver -notmatch "Python 3\.(1[1-9]|[2-9]\d)") { Fail "Need Python >= 3.11, got: $pyver" }
-Ok "$pyver at $py"
+function Find-RealPython {
+    $candidates = @()
+    # `py -3` is the official launcher on Windows, never the Store stub.
+    if (Get-Command py -ErrorAction SilentlyContinue) {
+        $candidates += @{ Cmd = "py"; Args = @("-3") }
+    }
+    foreach ($name in @("python3", "python")) {
+        $cmds = Get-Command -Name $name -All -ErrorAction SilentlyContinue
+        foreach ($c in $cmds) {
+            if ($c.Source -like "*WindowsApps\python*.exe") { continue } # store stub
+            $candidates += @{ Cmd = $c.Source; Args = @() }
+        }
+    }
+    foreach ($cand in $candidates) {
+        $ver = & $cand.Cmd @($cand.Args + @("--version")) 2>&1
+        if ($ver -match "Python 3\.(1[1-9]|[2-9]\d)") {
+            return @{ Source = $cand.Cmd; Args = $cand.Args; Version = $ver }
+        }
+    }
+    return $null
+}
+$pyInfo = Find-RealPython
+if (-not $pyInfo) {
+    Fail "Need Python 3.11+ on PATH. If `python.exe` opens the Microsoft Store: install Python from https://www.python.org/downloads/ (check 'Add to PATH'), then re-run. Or disable the Store stub in Settings -> Apps -> Advanced app settings -> App execution aliases."
+}
+$py = $pyInfo.Source
+$pyArgs = $pyInfo.Args
+Ok "$($pyInfo.Version) at $py $($pyArgs -join ' ')"
 
 # ---- 2. venv + install ----
 Step 2 "Creating venv + installing"
 $VenvPython = Join-Path $RepoRoot ".venv\Scripts\python.exe"
 if (-not (Test-Path $VenvPython)) {
-    & $py -m venv .venv
+    & $py @($pyArgs + @("-m", "venv", ".venv"))
     Ok ".venv created"
 } else {
     Ok ".venv exists"

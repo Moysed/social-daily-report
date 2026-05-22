@@ -43,7 +43,7 @@ const meta = [
           <span class={lang === "th" ? "active" : ""}>TH</span>
         </a>
       </nav>
-      <p class="report-label ui-text">{prettyTopic(d.topic)}</p>
+      <p class="report-label ui-text">{t.dailyBrief}</p>
       <h1>{prettyTopic(d.topic)}</h1>
       <p class="report-date ui-text">{prettyDate(d.date)}</p>
       <p class="report-meta ui-text" aria-label={t.reportMeta}>{meta.join(" / ")}</p>

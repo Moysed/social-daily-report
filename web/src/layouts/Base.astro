@@ -25,6 +25,19 @@ const switchHref = alternateHref ?? local(homePath[other]);
     <meta name="color-scheme" content="light dark" />
     <meta name="description" content={description ?? t.description} />
     <title>{title}</title>
+    <link rel="alternate" type="application/rss+xml" title={UI.en.htmlTitle} href={`${base}/rss.xml`} hreflang="en" />
+    <link rel="alternate" type="application/rss+xml" title={`${UI.th.htmlTitle} (ไทย)`} href={`${base}/th/rss.xml`} hreflang="th" />
+    {/* Apply saved theme BEFORE first paint so light-dark() resolves correctly. */}
+    <script is:inline>
+      (() => {
+        try {
+          const saved = localStorage.getItem("theme"); // 'light' | 'dark' | null
+          if (saved === "light" || saved === "dark") {
+            document.documentElement.dataset.theme = saved;
+          }
+        } catch (_) { /* localStorage may be blocked; system pref still wins */ }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,14 +49,57 @@ const switchHref = alternateHref ?? local(homePath[other]);
     <header class="site-bar" aria-label="Site">
       <a class="brand" href={home}>Social Daily Report</a>
       <span class="site-note">{t.siteNote}</span>
-      <a class="locale-switch" href={switchHref} hreflang={other} lang={other}>{t.switchLabel}</a>
+      <div class="site-bar-actions">
+        <button
+          type="button"
+          class="theme-toggle ui-text"
+          aria-label={t.themeLabel}
+          data-theme-toggle
+        >
+          <span class="theme-toggle-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" class="theme-icon-sun" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6" />
+              <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                <line x1="12" y1="2.5" x2="12" y2="5" />
+                <line x1="12" y1="19" x2="12" y2="21.5" />
+                <line x1="2.5" y1="12" x2="5" y2="12" />
+                <line x1="19" y1="12" x2="21.5" y2="12" />
+                <line x1="5.2" y1="5.2" x2="6.95" y2="6.95" />
+                <line x1="17.05" y1="17.05" x2="18.8" y2="18.8" />
+                <line x1="5.2" y1="18.8" x2="6.95" y2="17.05" />
+                <line x1="17.05" y1="6.95" x2="18.8" y2="5.2" />
+              </g>
+            </svg>
+            <svg viewBox="0 0 24 24" width="16" height="16" class="theme-icon-moon" aria-hidden="true">
+              <path
+                d="M20.5 14.4A8 8 0 0 1 9.6 3.5a8 8 0 1 0 10.9 10.9Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="theme-toggle-label" data-theme-label>{t.themeAuto}</span>
+        </button>
+        <a class="locale-switch" href={switchHref} hreflang={other} lang={other}>{t.switchLabel}</a>
+      </div>
     </header>
     <main>
       <slot />
     </main>
-    <footer class="site-footer">{t.footer}</footer>
+    <footer class="site-footer">
+      <span>{t.footer}</span>
+      <a class="footer-rss" href={`${base}${lang === "th" ? "/th" : ""}/rss.xml`} hreflang={lang}>RSS</a>
+    </footer>
 
     <style is:global>
+      /* Manual theme overrides (set by the inline pre-paint script + toggle).
+         When data-theme is absent we fall through to the system preference via
+         color-scheme: light dark, which is what light-dark() reads. */
+      html[data-theme="light"] { color-scheme: light; }
+      html[data-theme="dark"]  { color-scheme: dark; }
+
       :root {
         color-scheme: light dark;
         --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
@@ -194,11 +250,82 @@ const switchHref = alternateHref ?? local(homePath[other]);
         white-space: nowrap;
       }
 
+      .site-bar-actions {
+        display: inline-flex;
+        align-items: center;
+        gap: clamp(0.55rem, 0.42rem + 0.5vw, 1rem);
+      }
+
+      .theme-toggle {
+        appearance: none;
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--soft-ink);
+        font-family: var(--font-ui);
+        font-size: var(--step--1);
+        font-weight: 600;
+        padding: 0.32rem 0.7rem;
+        min-height: 36px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        line-height: 1;
+        transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      }
+
+      .theme-toggle:hover {
+        color: var(--accent-ink);
+        border-color: var(--accent);
+      }
+
+      .theme-toggle-icon {
+        display: inline-grid;
+        place-items: center;
+        width: 16px;
+        height: 16px;
+      }
+
+      .theme-toggle-icon > svg {
+        grid-area: 1 / 1;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      html:not([data-theme="dark"]) .theme-icon-moon { opacity: 0; transform: scale(0.8); }
+      html:not([data-theme="light"]) .theme-icon-sun { opacity: 0; transform: scale(0.8); }
+      html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
+      html[data-theme="light"] .theme-icon-sun { opacity: 1; transform: scale(1); }
+      /* Auto (no data-theme) falls back to system pref glyph */
+      @media (prefers-color-scheme: dark) {
+        html:not([data-theme]) .theme-icon-moon { opacity: 1; transform: scale(1); }
+        html:not([data-theme]) .theme-icon-sun  { opacity: 0; transform: scale(0.8); }
+      }
+      @media (prefers-color-scheme: light) {
+        html:not([data-theme]) .theme-icon-sun  { opacity: 1; transform: scale(1); }
+        html:not([data-theme]) .theme-icon-moon { opacity: 0; transform: scale(0.8); }
+      }
+
       .site-footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.2rem;
+        align-items: baseline;
+        justify-content: space-between;
         padding-top: var(--space-lg);
         padding-bottom: var(--space-lg);
         border-top: 1px solid var(--line);
       }
+
+      .footer-rss {
+        font-family: var(--font-ui);
+        font-size: var(--step--1);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--accent-ink);
+        text-decoration: none;
+        border-bottom: 1px solid color-mix(in oklch, var(--accent), transparent 50%);
+      }
+      .footer-rss:hover { border-color: var(--accent); }
 
       .kicker {
         margin: 0 0 var(--space-xs);
@@ -248,6 +375,12 @@ const switchHref = alternateHref ?? local(homePath[other]);
         }
       }
 
+      @media (max-width: 640px) {
+        .theme-toggle-label {
+          display: none;
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -259,5 +392,43 @@ const switchHref = alternateHref ?? local(homePath[other]);
         }
       }
     </style>
+
+    {/* Toggle script: cycles light -> dark -> auto, with label updated for the current lang. */}
+    <script is:inline define:vars={{ labels: { auto: t.themeAuto, light: t.themeLight, dark: t.themeDark } }}>
+      (() => {
+        const html = document.documentElement;
+        const labelEls = document.querySelectorAll("[data-theme-label]");
+        const order = ["light", "dark", "auto"];
+
+        function paintLabel(state) {
+          for (const el of labelEls) el.textContent = labels[state] || labels.auto;
+        }
+
+        function currentState() {
+          const t = html.dataset.theme;
+          return (t === "light" || t === "dark") ? t : "auto";
+        }
+
+        function apply(next) {
+          if (next === "auto") {
+            delete html.dataset.theme;
+            try { localStorage.removeItem("theme"); } catch (_) {}
+          } else {
+            html.dataset.theme = next;
+            try { localStorage.setItem("theme", next); } catch (_) {}
+          }
+          paintLabel(next);
+        }
+
+        paintLabel(currentState());
+
+        for (const btn of document.querySelectorAll("[data-theme-toggle]")) {
+          btn.addEventListener("click", () => {
+            const i = order.indexOf(currentState());
+            apply(order[(i + 1) % order.length]);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

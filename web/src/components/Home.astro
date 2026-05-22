@@ -32,6 +32,38 @@ const href = (entry: Entry) => local(`/report/${entry.data.date}/${entry.data.to
 const pct = (value?: number | null) => (value == null ? null : Math.round(value * 100));
 const entryFor = (pair: Pair) => pair[lang] ?? pair[other];
 
+// Pull the first TL;DR bullet (or first paragraph) from a report body for the
+// lead-story deck. Strips inline `[refs]`, link syntax, and bullet marker so
+// the masthead reads as prose, not source.
+function leadDeck(body: string | undefined): string | null {
+  if (!body) return null;
+  const lines = body.split(/\r?\n/);
+  let inTldr = false;
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (/^##\s+(TL;DR|TL;?DR|สรุป)/i.test(line)) { inTldr = true; continue; }
+    if (inTldr && /^##\s/.test(line)) break;
+    if (inTldr && /^[-*]\s+/.test(line)) {
+      return cleanInline(line.replace(/^[-*]\s+/, ""));
+    }
+  }
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line || line.startsWith("#") || line.startsWith("|") || /^[-*]\s/.test(line)) continue;
+    return cleanInline(line);
+  }
+  return null;
+}
+
+function cleanInline(s: string): string {
+  return s
+    .replace(/\[(\d+(?:,\s*\d+)*)\]/g, "") // [9] [9,15]
+    .replace(/!?\[([^\]]+)\]\([^)]+\)/g, "$1") // [text](url) / ![alt](src)
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 const dates = [...byDate.keys()].sort().reverse();
 const latest = dates[0];
 const rowsForDate = (date: string) =>
@@ -76,7 +108,7 @@ const archiveGroups = archiveDates.map((date) => ({ date, rows: rowsForDate(date
             <h2 id="lead-title">
               <a href={href(lead.entry)}>{prettyTopic(lead.topic)}</a>
             </h2>
-            <p>{t.leadDeck}</p>
+            <p>{leadDeck(lead.entry.body) ?? t.leadDeck}</p>
             <div class="lead-actions ui-text">
               <a href={href(lead.entry)}>{t.readReport}</a>
               {lead.pair.en && <a href={href(lead.pair.en)} hreflang="en">EN</a>}

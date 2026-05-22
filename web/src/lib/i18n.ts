@@ -37,6 +37,18 @@ type Dict = {
   model: string;
   translatedBy: string;
   switchReport: string;
+  themeLabel: string;
+  themeAuto: string;
+  themeLight: string;
+  themeDark: string;
+  search: string;
+  searchPlaceholder: string;
+  searchEmpty: string;
+  searchHint: string;
+  filterTopic: string;
+  filterDate: string;
+  filterAll: string;
+  filterClear: string;
 };
 
 export const UI: Record<Lang, Dict> = {
@@ -70,6 +82,18 @@ export const UI: Record<Lang, Dict> = {
     model: "model",
     translatedBy: "translated by",
     switchReport: "Switch report language",
+    themeLabel: "Theme",
+    themeAuto: "Auto",
+    themeLight: "Light",
+    themeDark: "Dark",
+    search: "Search",
+    searchPlaceholder: "Search reports",
+    searchEmpty: "No matches",
+    searchHint: "Press Esc to close, ↑↓ to navigate, ↵ to open",
+    filterTopic: "Topic",
+    filterDate: "Date",
+    filterAll: "All",
+    filterClear: "Clear filters",
   },
   th: {
     htmlTitle: "Social Daily Report",
@@ -101,5 +125,17 @@ export const UI: Record<Lang, Dict> = {
     model: "โมเดล",
     translatedBy: "แปลโดย",
     switchReport: "เปลี่ยนภาษารายงาน",
+    themeLabel: "ธีม",
+    themeAuto: "อัตโนมัติ",
+    themeLight: "สว่าง",
+    themeDark: "มืด",
+    search: "ค้นหา",
+    searchPlaceholder: "ค้นหารายงาน",
+    searchEmpty: "ไม่พบผลลัพธ์",
+    searchHint: "Esc ปิด · ↑↓ เลื่อน · ↵ เปิด",
+    filterTopic: "หัวข้อ",
+    filterDate: "วันที่",
+    filterAll: "ทั้งหมด",
+    filterClear: "ล้างตัวกรอง",
   },
 };

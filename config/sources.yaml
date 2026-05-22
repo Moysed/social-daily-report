@@ -33,8 +33,8 @@ topics:
         time: day
         limit: 15
       - connector: bluesky
-        query: "ai coding agents"
-        sort: top
+        query: "AI agents OR coding agents lang:en"
+        sort: latest
         limit: 25
       - connector: rss
         feed_url: "https://huggingface.co/blog/feed.xml"
@@ -57,9 +57,24 @@ topics:
         sort: top
         time: day
         limit: 30
-      - connector: bluesky
-        query: "gamedev unreal unity godot"
+      - connector: reddit
+        subreddit: Unity3D
         sort: top
+        time: day
+        limit: 15
+      - connector: reddit
+        subreddit: unrealengine
+        sort: top
+        time: day
+        limit: 15
+      - connector: reddit
+        subreddit: godot
+        sort: top
+        time: day
+        limit: 15
+      - connector: bluesky
+        query: "gamedev OR indiedev"
+        sort: latest
         limit: 25
       - connector: rss
         feed_url: "https://www.gamedeveloper.com/rss.xml"
@@ -81,10 +96,26 @@ topics:
         sort: top
         time: day
         limit: 25
-      - connector: bluesky
-        query: "vr ar xr spatial computing"
+      - connector: reddit
+        subreddit: oculus
         sort: top
-        limit: 25
+        time: day
+        limit: 20
+      - connector: reddit
+        subreddit: Quest3
+        sort: top
+        time: week
+        limit: 15
+      - connector: reddit
+        subreddit: HoloLens
+        sort: top
+        time: week
+        limit: 10
+      - connector: reddit
+        subreddit: WebXR
+        sort: top
+        time: week
+        limit: 10
       - connector: x
         query: "vr OR ar OR xr OR \"spatial computing\" min_faves:30 lang:en"
         query_type: Latest
@@ -104,13 +135,27 @@ topics:
         sort: top
         time: day
         limit: 25
-      - connector: bluesky
-        query: "frontend web dev react astro"
+      - connector: reddit
+        subreddit: reactjs
         sort: top
-        limit: 20
-      - connector: youtube
-        channel_id: "UCsBjURrPoezykLs9EqgamOA"  # Fireship
-        limit: 10
+        time: day
+        limit: 15
+      - connector: reddit
+        subreddit: nextjs
+        sort: top
+        time: day
+        limit: 15
+      - connector: reddit
+        subreddit: javascript
+        sort: top
+        time: day
+        limit: 15
+      - connector: bluesky
+        query: "#webdev OR #frontend OR React OR Astro"
+        sort: latest
+        limit: 25
+      # NOTE: YouTube feed endpoint 404s from this network (geo/IP block) —
+      # connector kept available in code but removed from this topic.
       - connector: x
         query: "react OR astro OR svelte OR nextjs min_faves:50 lang:en"
         query_type: Latest
@@ -128,9 +173,24 @@ topics:
         sort: top
         time: week
         limit: 25
-      - connector: bluesky
-        query: "edtech education AI tutor"
+      - connector: reddit
+        subreddit: teachers
         sort: top
+        time: week
+        limit: 15
+      - connector: reddit
+        subreddit: learnprogramming
+        sort: top
+        time: day
+        limit: 15
+      - connector: reddit
+        subreddit: languagelearning
+        sort: top
+        time: week
+        limit: 15
+      - connector: bluesky
+        query: "edtech OR \"AI tutor\" OR \"language learning\""
+        sort: latest
         limit: 20
       - connector: x
         query: "edtech OR \"ai tutor\" OR \"language learning\" min_faves:20 lang:en"

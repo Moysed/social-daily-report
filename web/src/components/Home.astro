@@ -32,9 +32,8 @@ const href = (entry: Entry) => local(`/report/${entry.data.date}/${entry.data.to
 const pct = (value?: number | null) => (value == null ? null : Math.round(value * 100));
 const entryFor = (pair: Pair) => pair[lang] ?? pair[other];
 
-// Pull the first TL;DR bullet (or first paragraph) from a report body for the
-// lead-story deck. Strips inline `[refs]`, link syntax, and bullet marker so
-// the masthead reads as prose, not source.
+// Pull the first TL;DR bullet (or first paragraph) from a report body. Strips
+// inline `[refs]`, link/code syntax so the deck reads as prose.
 function leadDeck(body: string | undefined): string | null {
   if (!body) return null;
   const lines = body.split(/\r?\n/);
@@ -57,8 +56,8 @@ function leadDeck(body: string | undefined): string | null {
 
 function cleanInline(s: string): string {
   return s
-    .replace(/\[(\d+(?:,\s*\d+)*)\]/g, "") // [9] [9,15]
-    .replace(/!?\[([^\]]+)\]\([^)]+\)/g, "$1") // [text](url) / ![alt](src)
+    .replace(/\[(\d+(?:,\s*\d+)*)\]/g, "")
+    .replace(/!?\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/`([^`]+)`/g, "$1")
     .replace(/\s{2,}/g, " ")
     .trim();
@@ -72,8 +71,69 @@ const rowsForDate = (date: string) =>
       .sort((a, b) => (b.entry.data.salience ?? 0) - (a.entry.data.salience ?? 0));
 const latestPairs = latest ? rowsForDate(latest) : [];
 const lead = latestPairs[0];
+const others = latestPairs.slice(1);
 const archiveDates = dates.slice(1);
 const archiveGroups = archiveDates.map((date) => ({ date, rows: rowsForDate(date) }));
+
+const allTopics: string[] = [];
+{
+  const seen = new Set<string>();
+  for (const date of dates) {
+    for (const topic of byDate.get(date)!.keys()) {
+      if (!seen.has(topic)) { seen.add(topic); allTopics.push(topic); }
+    }
+  }
+}
+
+function haystackFor(topic: string, entry: Entry): string {
+  const d = entry.data;
+  return [
+    prettyTopic(topic),
+    topic,
+    ...(d.platforms ?? []),
+    ...(d.tags ?? []),
+    leadDeck(entry.body) ?? "",
+  ].join(" ").toLowerCase();
+}
+
+// Activity bucket from salience (0..1). Friendly labels replace "salience %".
+type Activity = "high" | "medium" | "low";
+function activityOf(salience: number | null | undefined): Activity {
+  if (salience == null) return "low";
+  if (salience >= 0.65) return "high";
+  if (salience >= 0.40) return "medium";
+  return "low";
+}
+function activityLabel(a: Activity): string {
+  return a === "high" ? t.activityHigh : a === "medium" ? t.activityMedium : t.activityLow;
+}
+
+// Trend vs the previous run of the same topic (older date). Returns the
+// direction + a short label. If no prior run exists, returns "new".
+type Trend = "rising" | "easing" | "steady" | "new";
+function trendOf(topic: string, currentSalience: number | null | undefined): Trend {
+  for (const date of dates) {
+    if (date === latest) continue;
+    const pair = byDate.get(date)?.get(topic);
+    const prev = pair && entryFor(pair);
+    if (!prev) continue;
+    const ps = prev.data.salience;
+    if (ps == null || currentSalience == null) return "steady";
+    const delta = currentSalience - ps;
+    if (delta > 0.10) return "rising";
+    if (delta < -0.10) return "easing";
+    return "steady";
+  }
+  return "new";
+}
+function trendLabel(tr: Trend): string {
+  return tr === "rising" ? t.trendRising :
+         tr === "easing" ? t.trendEasing :
+         tr === "steady" ? t.trendSteady : t.trendNew;
+}
+function trendGlyph(tr: Trend): string {
+  return tr === "rising" ? "↑" : tr === "easing" ? "↓" : tr === "steady" ? "→" : "●";
+}
 ---
 
 <Base title={t.htmlTitle} lang={lang} alternateHref={local(homePath[other])}>
@@ -86,328 +146,388 @@ const archiveGroups = archiveDates.map((date) => ({ date, rows: rowsForDate(date
     </section>
   ) : (
     <>
-      <section class="masthead">
-        <div>
-          <p class="kicker">{t.dailyBrief}</p>
-          <h1>Social Daily Report</h1>
+      <section class="brief-masthead">
+        <p class="kicker">{t.morningBrief}</p>
+        <div class="brief-line">
+          <h1>{t.todayOverview}</h1>
+          <p class="brief-meta ui-text">
+            <strong>{prettyDate(latest)}</strong>
+            <span aria-hidden="true">·</span>
+            <span>{t.todayHeading(latestPairs.length)}</span>
+          </p>
         </div>
-        <p class="edition ui-text">
-          <span>{t.latestRun}</span>
-          <strong>{prettyDate(latest)}</strong>
-          <span>{t.topics(latestPairs.length)}</span>
-        </p>
       </section>
 
-      {lead && (
-        <section class="lead-story" aria-labelledby="lead-title">
-          <div class="lead-rule ui-text">{t.leadSignal}</div>
-          <article>
-            <p class="lead-meta ui-text">
-              {t.salience(pct(lead.entry.data.salience))} / {t.confidence(pct(lead.entry.data.confidence))}
-            </p>
-            <h2 id="lead-title">
-              <a href={href(lead.entry)}>{prettyTopic(lead.topic)}</a>
-            </h2>
-            <p>{leadDeck(lead.entry.body) ?? t.leadDeck}</p>
-            <div class="lead-actions ui-text">
-              <a href={href(lead.entry)}>{t.readReport}</a>
-              {lead.pair.en && <a href={href(lead.pair.en)} hreflang="en">EN</a>}
-              {lead.pair.th && <a href={href(lead.pair.th)} hreflang="th" lang="th">ไทย</a>}
+      {lead && (() => {
+        const d = lead.entry.data;
+        const act = activityOf(d.salience);
+        const tr = trendOf(lead.topic, d.salience);
+        const deck = leadDeck(lead.entry.body);
+        return (
+          <article class="lead-tile" data-row data-topic={lead.topic} data-date={d.date} data-haystack={haystackFor(lead.topic, lead.entry)}>
+            <p class="kicker accent">{t.leadSignal}</p>
+            <h2 class="tile-title"><a href={href(lead.entry)}>{prettyTopic(lead.topic)}</a></h2>
+            <div class="tile-signals ui-text">
+              <span class={`pill activity activity-${act}`} title={`${t.activityLabel}: ${activityLabel(act)}`}>
+                <span class="dot" aria-hidden="true"></span>
+                {activityLabel(act)}
+              </span>
+              <span class={`pill trend trend-${tr}`} title={`${t.activityLabel}: ${trendLabel(tr)}`}>
+                <span aria-hidden="true">{trendGlyph(tr)}</span>
+                {trendLabel(tr)}
+              </span>
+              <span class="pill sentiment" title={`Sentiment: ${d.sentiment ?? "neutral"}`}>
+                <span aria-hidden="true">{sentimentEmoji(d.sentiment)}</span>
+                {d.sentiment ?? "neutral"}
+              </span>
+              <span class="pill quiet">{t.posts(d.post_count)}</span>
+            </div>
+            {deck && <p class="tile-deck">{deck}</p>}
+            <div class="tile-cta ui-text">
+              <a class="cta-primary" href={href(lead.entry)}>{t.readReport} →</a>
+              <span class="cta-langs">
+                {lead.pair.en && <a class={lang === "en" ? "active" : ""} href={href(lead.pair.en)} hreflang="en">EN</a>}
+                {lead.pair.th && <a class={lang === "th" ? "active" : ""} href={href(lead.pair.th)} hreflang="th" lang="th">ไทย</a>}
+              </span>
             </div>
           </article>
-        </section>
-      )}
+        );
+      })()}
 
-      <section class="daily-index" aria-labelledby="topics-title">
-        <div class="index-head">
-          <p class="kicker">{t.allSignals}</p>
-          <h2 id="topics-title">{prettyDate(latest)}</h2>
-        </div>
-        <ol class="topic-list">
-          {latestPairs.map(({ topic, pair, entry }, index) => {
-            const data = entry.data;
-            const salience = pct(data.salience);
-            const confidence = pct(data.confidence);
+      <nav class="controls ui-text" aria-label={t.filterTopic} data-filter-controls>
+        <button type="button" class="chip active" data-filter-chip data-kind="topic" data-value="">{t.filterAll}</button>
+        {allTopics.map((topic) => (
+          <button type="button" class="chip" data-filter-chip data-kind="topic" data-value={topic}>{prettyTopic(topic)}</button>
+        ))}
+        <p class="control-empty" data-filter-empty hidden>{t.searchEmpty}</p>
+      </nav>
+
+      {others.length > 0 && (
+        <section class="tile-grid" aria-label={t.alsoToday}>
+          {others.map(({ topic, pair, entry }) => {
+            const d = entry.data;
+            const act = activityOf(d.salience);
+            const tr = trendOf(topic, d.salience);
+            const deck = leadDeck(entry.body);
             return (
-              <li class="topic-row" style={`--delay: ${index * 55}ms`}>
-                <span class="topic-number ui-text">{String(index + 1).padStart(2, "0")}</span>
-                <div class="topic-main">
-                  <h3><a href={href(entry)}>{prettyTopic(topic)}</a></h3>
-                  <p class="topic-meta ui-text">
-                    <span>{sentimentEmoji(data.sentiment)} {data.sentiment ?? "neutral"}</span>
-                    <span>{t.posts(data.post_count)}</span>
-                    <span>{t.salience(salience)}</span>
-                    <span>{t.confidence(confidence)}</span>
+              <article class="tile" data-row data-topic={topic} data-date={d.date} data-haystack={haystackFor(topic, entry)}>
+                <header class="tile-head">
+                  <h3 class="tile-title"><a href={href(entry)}>{prettyTopic(topic)}</a></h3>
+                  <span class="tile-sentiment" aria-label={d.sentiment ?? "neutral"}>{sentimentEmoji(d.sentiment)}</span>
+                </header>
+                <div class="tile-signals ui-text">
+                  <span class={`pill activity activity-${act}`}>
+                    <span class="dot" aria-hidden="true"></span>
+                    {activityLabel(act)}
+                  </span>
+                  <span class={`pill trend trend-${tr}`}>
+                    <span aria-hidden="true">{trendGlyph(tr)}</span>
+                    {trendLabel(tr)}
+                  </span>
+                </div>
+                {deck && <p class="tile-deck">{deck}</p>}
+                {d.tags?.length > 0 && (
+                  <p class="tile-tags ui-text">
+                    {d.tags.slice(0, 3).map((tag) => <span class="tag">#{tag}</span>)}
                   </p>
-                  {data.platforms.length > 0 && (
-                    <p class="platforms ui-text">
-                      <strong>{t.platforms}</strong>
-                      {data.platforms.slice(0, 5).map((platform) => <span>{platform}</span>)}
-                    </p>
-                  )}
+                )}
+                <div class="tile-cta ui-text">
+                  <a class="cta-primary" href={href(entry)}>{t.readReport} →</a>
+                  <span class="cta-quiet">{t.posts(d.post_count)}</span>
+                  <span class="cta-langs">
+                    {pair.en && <a class={lang === "en" ? "active" : ""} href={href(pair.en)} hreflang="en">EN</a>}
+                    {pair.th && <a class={lang === "th" ? "active" : ""} href={href(pair.th)} hreflang="th" lang="th">TH</a>}
+                  </span>
                 </div>
-                <div class="topic-langs ui-text" aria-label={t.availableLanguages}>
-                  {pair.en && <a class={lang === "en" ? "active" : ""} href={href(pair.en)} hreflang="en">EN</a>}
-                  {pair.th && <a class={lang === "th" ? "active" : ""} href={href(pair.th)} hreflang="th" lang="th">TH</a>}
-                </div>
-              </li>
+              </article>
             );
           })}
-        </ol>
-      </section>
+        </section>
+      )}
 
       <aside class="metric-guide ui-text" aria-label={t.metricGuideTitle}>
         <p class="guide-title">{t.metricGuideTitle}</p>
-        <p><strong>{t.legendSalience[0]}</strong> {t.legendSalience[1]}</p>
-        <p><strong>{t.legendConfidence[0]}</strong> {t.legendConfidence[1]}</p>
+        <p><strong>{t.activityLabel}</strong> — {t.legendSalience[1]}</p>
+        <p><strong>{t.evidenceLabel}</strong> — {t.legendConfidence[1]}</p>
       </aside>
 
-      {archiveDates.length > 0 && (
-        <section class="archive" aria-labelledby="archive-title">
-          <p class="kicker">{t.archive}</p>
-          <h2 id="archive-title">{t.archive}</h2>
-          <ul class="ui-text">
-            {archiveDates.map((date) => <li><a href={`#${date}`}>{prettyDate(date)}</a></li>)}
-          </ul>
-        </section>
-      )}
-
-      {archiveGroups.map(({ date, rows }) => (
-        <section class="daily-index archive-day" id={date} aria-labelledby={`archive-${date}`}>
-          <div class="index-head">
-            <p class="kicker">{t.archive}</p>
-            <h2 id={`archive-${date}`}>{prettyDate(date)}</h2>
+      {archiveGroups.length > 0 && (
+        <details class="archive-disclosure">
+          <summary class="ui-text">
+            <span class="archive-show">{t.archiveToggleShow(archiveGroups.length)}</span>
+            <span class="archive-hide">{t.archiveToggleHide}</span>
+          </summary>
+          <div class="archive-body">
+            {archiveGroups.map(({ date, rows }) => (
+              <section class="archive-day" id={date}>
+                <header class="archive-day-head">
+                  <h3>{prettyDate(date)}</h3>
+                  <span class="ui-text quiet">{t.topics(rows.length)}</span>
+                </header>
+                <ul class="archive-list">
+                  {rows.map(({ topic, pair, entry }) => {
+                    const d = entry.data;
+                    const act = activityOf(d.salience);
+                    return (
+                      <li class="archive-row" data-row data-topic={topic} data-date={d.date} data-haystack={haystackFor(topic, entry)}>
+                        <a class="archive-link" href={href(entry)}>
+                          <span class="archive-topic">{prettyTopic(topic)}</span>
+                          <span class={`pill activity activity-${act} ui-text`}>
+                            <span class="dot" aria-hidden="true"></span>
+                            {activityLabel(act)}
+                          </span>
+                          <span class="ui-text quiet">{t.posts(d.post_count)}</span>
+                        </a>
+                        <span class="archive-langs ui-text">
+                          {pair.en && <a href={href(pair.en)} hreflang="en">EN</a>}
+                          {pair.th && <a href={href(pair.th)} hreflang="th" lang="th">TH</a>}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            ))}
           </div>
-          <ol class="topic-list">
-            {rows.map(({ topic, pair, entry }, index) => {
-              const data = entry.data;
-              return (
-                <li class="topic-row">
-                  <span class="topic-number ui-text">{String(index + 1).padStart(2, "0")}</span>
-                  <div class="topic-main">
-                    <h3><a href={href(entry)}>{prettyTopic(topic)}</a></h3>
-                    <p class="topic-meta ui-text">
-                      <span>{t.posts(data.post_count)}</span>
-                      <span>{t.salience(pct(data.salience))}</span>
-                      <span>{t.confidence(pct(data.confidence))}</span>
-                    </p>
-                  </div>
-                  <div class="topic-langs ui-text" aria-label={t.availableLanguages}>
-                    {pair.en && <a href={href(pair.en)} hreflang="en">EN</a>}
-                    {pair.th && <a href={href(pair.th)} hreflang="th" lang="th">TH</a>}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </section>
-      ))}
+        </details>
+      )}
     </>
   )}
 
   <style>
-    .masthead {
-      max-width: 68rem;
-      margin: 0 auto var(--space-lg);
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) max-content;
-      gap: var(--space-md);
-      align-items: end;
-    }
-
-    h1 {
-      max-width: 10ch;
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--step-4);
-      font-weight: 650;
-      letter-spacing: 0;
-      line-height: 0.96;
-    }
-
-    .edition {
-      margin: 0;
-      display: grid;
-      gap: 0.12rem;
-      color: var(--soft-ink);
-      font-size: var(--step--1);
-      line-height: 1.45;
-      text-align: right;
-    }
-
-    .edition strong {
-      color: var(--ink);
-      font-size: var(--step-1);
-      font-weight: 700;
-    }
-
-    .lead-story {
-      max-width: 68rem;
-      margin: 0 auto var(--space-xl);
-      display: grid;
-      grid-template-columns: minmax(6rem, 0.28fr) minmax(0, 1fr);
-      gap: var(--space-lg);
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--line);
-    }
-
-    .lead-rule {
-      color: var(--accent-ink);
-      font-size: var(--step--1);
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      line-height: 1.4;
-      text-transform: uppercase;
-    }
-
-    .lead-story article {
-      max-width: 62ch;
-    }
-
-    .lead-meta {
-      margin: 0 0 var(--space-xs);
-      color: var(--soft-ink);
-      font-size: var(--step--1);
-      font-weight: 650;
-      line-height: 1.45;
-    }
-
-    .lead-story h2 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--step-3);
-      font-weight: 650;
-      line-height: 1.05;
-    }
-
-    .lead-story h2 a {
-      text-decoration: none;
-    }
-
-    .lead-story p:not(.lead-meta) {
-      margin: var(--space-sm) 0 0;
-      color: var(--soft-ink);
-      font-size: var(--step-1);
-      line-height: 1.55;
-    }
-
-    .lead-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1rem;
-      margin-top: var(--space-md);
-      font-size: var(--step--1);
-      font-weight: 700;
-    }
-
-    .lead-actions a {
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .daily-index,
+    /* ---- Layout primitives ---- */
+    .brief-masthead,
+    .lead-tile,
+    .controls,
+    .tile-grid,
     .metric-guide,
-    .archive,
+    .archive-disclosure,
     .empty-state {
       max-width: 68rem;
       margin-inline: auto;
     }
 
-    .index-head {
+    /* ---- Brief masthead (replaces dual-column header) ---- */
+    .brief-masthead {
+      margin-bottom: var(--space-md);
+    }
+    .brief-line {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      gap: var(--space-md);
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-md);
       padding-bottom: var(--space-sm);
       border-bottom: 1px solid var(--line);
     }
+    .brief-masthead h1 {
+      margin: 0;
+      max-width: 22ch;
+      font-family: var(--font-display);
+      font-size: var(--step-3);
+      font-weight: 650;
+      line-height: 1.04;
+    }
+    .brief-meta {
+      margin: 0;
+      color: var(--soft-ink);
+      font-size: var(--step--1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+    .brief-meta strong { color: var(--ink); font-weight: 700; }
 
-    .index-head h2 {
+    /* ---- Lead tile ---- */
+    .lead-tile {
+      display: grid;
+      gap: 0.6rem;
+      padding: var(--space-md) var(--space-md);
+      margin-bottom: var(--space-lg);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      background: color-mix(in oklch, var(--surface), transparent 40%);
+      animation: tile-in 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .lead-tile .tile-title {
       margin: 0;
       font-family: var(--font-display);
-      font-size: var(--step-2);
-      font-weight: 600;
-      line-height: 1.1;
-      text-align: right;
+      font-size: var(--step-3);
+      font-weight: 650;
+      line-height: 1.04;
     }
-
-    .topic-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+    .lead-tile .tile-deck {
+      margin: 0.2rem 0 0;
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: var(--soft-ink);
+      max-width: 64ch;
     }
+    .kicker.accent { color: var(--accent-ink); }
 
-    .topic-row {
-      display: grid;
-      grid-template-columns: 3.5rem minmax(0, 1fr) auto;
-      gap: var(--space-md);
-      padding: var(--space-md) 0;
+    /* ---- Filter chip bar ---- */
+    .controls {
+      margin-bottom: var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.4rem;
+      align-items: center;
+      padding-bottom: var(--space-sm);
       border-bottom: 1px solid var(--hairline);
-      animation: topic-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
-      animation-delay: var(--delay);
     }
-
-    .topic-number {
-      color: var(--faint-ink);
+    .chip {
+      appearance: none;
+      background: transparent;
+      color: var(--soft-ink);
+      font-family: var(--font-ui);
       font-size: var(--step--1);
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      padding: 0.32rem 0.75rem;
+      min-height: 30px;
+      cursor: pointer;
+      line-height: 1.2;
+      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+    .chip:hover { color: var(--accent-ink); border-color: var(--accent); }
+    .chip.active {
+      color: var(--bg);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .control-empty {
+      flex-basis: 100%;
+      margin: 0.35rem 0 0;
+      color: var(--soft-ink);
+      font-style: italic;
+      font-size: var(--step--1);
     }
 
-    .topic-main h3 {
+    /* ---- Tile grid (other topics) ---- */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .tile {
+      display: grid;
+      gap: 0.55rem;
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--hairline);
+      background: color-mix(in oklch, var(--surface), transparent 55%);
+      transition: border-color 0.18s ease, transform 0.18s ease;
+      animation: tile-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .tile:hover { border-color: var(--line); transform: translateY(-1px); }
+    .tile-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .tile-title {
       margin: 0;
       font-family: var(--font-display);
       font-size: var(--step-1);
       font-weight: 650;
-      line-height: 1.16;
+      line-height: 1.14;
     }
-
-    .topic-main h3 a {
-      text-decoration: none;
+    .tile-title a { text-decoration: none; }
+    .tile-sentiment {
+      font-size: 1.1rem;
+      line-height: 1;
     }
-
-    .topic-meta,
-    .platforms {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem 0.8rem;
-      margin: 0.55rem 0 0;
+    .tile-deck {
+      margin: 0;
       color: var(--soft-ink);
       font-size: var(--step--1);
-      line-height: 1.45;
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
     }
-
-    .platforms strong {
-      color: var(--ink);
-      font-weight: 700;
-    }
-
-    .topic-langs {
+    .tile-tags {
       display: flex;
-      gap: 0.35rem;
-      align-items: start;
-      font-size: var(--step--1);
-      font-weight: 800;
+      flex-wrap: wrap;
+      gap: 0.3rem 0.5rem;
+      margin: 0;
     }
-
-    .topic-langs a {
-      min-width: 2.6rem;
-      min-height: 44px;
+    .tag {
+      color: var(--soft-ink);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+    }
+    .tile-signals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.5rem;
+      margin: 0;
+    }
+    .tile-cta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.9rem;
+      margin-top: 0.2rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--hairline);
+      font-size: var(--step--1);
+    }
+    .cta-primary {
+      font-weight: 700;
+      color: var(--accent-ink);
+      text-decoration: none;
+      border-bottom: 1px solid color-mix(in oklch, var(--accent), transparent 50%);
+    }
+    .cta-primary:hover { border-color: var(--accent); }
+    .cta-quiet { color: var(--soft-ink); }
+    .cta-langs { margin-left: auto; display: inline-flex; gap: 0.3rem; }
+    .cta-langs a {
+      min-width: 2.2rem;
+      min-height: 28px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-bottom: 1px solid var(--line);
       text-decoration: none;
+      font-weight: 700;
+      border-bottom: 1px solid var(--line);
+      color: var(--soft-ink);
     }
+    .cta-langs a.active { color: var(--accent-ink); border-color: var(--accent); }
 
-    .topic-langs a.active {
-      color: var(--accent-ink);
-      border-color: var(--accent);
+    /* ---- Activity / trend / sentiment pills ---- */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.32rem;
+      padding: 0.18rem 0.55rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border: 1px solid var(--hairline);
+      color: var(--soft-ink);
+      line-height: 1.4;
     }
+    .pill .dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999rem;
+      background: currentColor;
+      opacity: 0.85;
+    }
+    .pill.activity-high { color: var(--accent-ink); border-color: color-mix(in oklch, var(--accent), transparent 55%); }
+    .pill.activity-medium { color: var(--ink); }
+    .pill.activity-low { color: var(--faint-ink); }
+    .pill.trend-rising { color: var(--accent-ink); }
+    .pill.trend-easing { color: var(--faint-ink); }
+    .pill.trend-steady { color: var(--soft-ink); }
+    .pill.trend-new { color: var(--accent-ink); border-color: color-mix(in oklch, var(--accent), transparent 50%); }
+    .pill.sentiment, .pill.quiet { color: var(--soft-ink); }
 
+    /* ---- Metric guide (now teaches Activity + Evidence) ---- */
     .metric-guide {
       margin-top: var(--space-lg);
       padding-top: var(--space-md);
@@ -418,12 +538,10 @@ const archiveGroups = archiveDates.map((date) => ({ date, rows: rowsForDate(date
       column-width: 20rem;
       column-gap: var(--space-lg);
     }
-
     .metric-guide p {
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.4rem;
       break-inside: avoid;
     }
-
     .guide-title {
       color: var(--ink);
       font-weight: 800;
@@ -431,106 +549,174 @@ const archiveGroups = archiveDates.map((date) => ({ date, rows: rowsForDate(date
       text-transform: uppercase;
     }
 
-    .archive {
+    /* ---- Archive disclosure ---- */
+    .archive-disclosure {
       margin-top: var(--space-xl);
-      padding-top: var(--space-md);
       border-top: 1px solid var(--line);
+      padding-top: var(--space-md);
     }
-
-    .archive-day {
-      margin-top: var(--space-lg);
+    .archive-disclosure[data-empty="true"] { display: none; }
+    .archive-disclosure summary {
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--soft-ink);
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 0.4rem 0;
     }
-
-    .archive-day .topic-row {
-      animation: none;
+    .archive-disclosure summary::-webkit-details-marker { display: none; }
+    .archive-disclosure summary::before {
+      content: "+";
+      width: 1.1rem;
+      text-align: center;
+      color: var(--accent-ink);
     }
-
-    .archive h2 {
-      margin: 0 0 var(--space-sm);
-      font-family: var(--font-display);
-      font-size: var(--step-2);
-      line-height: 1.1;
+    .archive-disclosure[open] summary::before { content: "–"; }
+    .archive-disclosure .archive-hide { display: none; }
+    .archive-disclosure[open] .archive-hide { display: inline; }
+    .archive-disclosure[open] .archive-show { display: none; }
+    .archive-body {
+      margin-top: var(--space-sm);
+      display: grid;
+      gap: var(--space-md);
     }
-
-    .archive ul {
+    .archive-day-head {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.2rem 1rem;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.6rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .archive-day-head h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--step-1);
+      font-weight: 600;
+    }
+    .archive-list {
       margin: 0;
       padding: 0;
       list-style: none;
-      font-size: var(--step--1);
+      display: grid;
+      gap: 0.05rem;
     }
-
-    .archive a {
-      min-height: 44px;
+    .archive-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed var(--hairline);
+    }
+    .archive-link {
       display: inline-flex;
       align-items: center;
+      gap: 0.55rem 0.9rem;
+      flex-wrap: wrap;
+      flex: 1 1 auto;
+      text-decoration: none;
+      color: inherit;
     }
+    .archive-topic {
+      font-family: var(--font-display);
+      font-size: var(--step-0);
+      font-weight: 600;
+    }
+    .archive-link:hover .archive-topic { color: var(--accent-ink); }
+    .archive-langs { display: inline-flex; gap: 0.3rem; }
+    .archive-langs a {
+      min-width: 2.2rem;
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--soft-ink);
+      border-bottom: 1px solid var(--line);
+    }
+    .quiet { color: var(--faint-ink); }
 
+    /* Empty state */
     .empty-state {
       max-width: 42rem;
       padding-top: var(--space-lg);
     }
-
     .empty-state h1 {
       max-width: none;
       font-size: var(--step-3);
       line-height: 1.04;
+      font-family: var(--font-display);
     }
+    .empty-state p { color: var(--soft-ink); }
 
-    .empty-state p {
-      color: var(--soft-ink);
-    }
+    /* Hide filtered rows + collapsed sections */
+    .tile[hidden],
+    .lead-tile[hidden],
+    .archive-row[hidden] { display: none; }
+    .tile-grid[data-empty="true"],
+    .archive-day[data-empty="true"] { display: none; }
 
-    @keyframes topic-in {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes tile-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 760px) {
-      .masthead,
-      .lead-story {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        max-width: 9ch;
-      }
-
-      .edition,
-      .index-head h2 {
-        text-align: left;
-      }
-
-      .topic-row {
-        grid-template-columns: 2.6rem minmax(0, 1fr);
-      }
-
-      .topic-langs {
-        grid-column: 2;
-      }
-    }
-
-    @media (max-width: 460px) {
-      .index-head {
-        display: block;
-      }
-
-      .topic-row {
-        grid-template-columns: 1fr;
-        gap: var(--space-xs);
-      }
-
-      .topic-langs {
-        grid-column: auto;
-      }
+      .brief-line h1 { font-size: var(--step-2); }
+      .lead-tile .tile-title { font-size: var(--step-2); }
     }
   </style>
+
+  {/* Topic chip filter: single-select, click "All" or any topic chip.
+      Hides .tile / .archive-row / .lead-tile that don't match. */}
+  <script is:inline>
+    (() => {
+      const controls = document.querySelector("[data-filter-controls]");
+      if (!controls) return;
+      const chips = Array.from(controls.querySelectorAll("[data-filter-chip]"));
+      const emptyMsg = controls.querySelector("[data-filter-empty]");
+
+      const rows = Array.from(document.querySelectorAll("[data-row]"));
+      const grid = document.querySelector(".tile-grid");
+      const archiveDays = Array.from(document.querySelectorAll(".archive-day"));
+      const archiveDisclosure = document.querySelector(".archive-disclosure");
+
+      let activeTopic = "";
+
+      function apply() {
+        let anyVisible = false;
+        for (const row of rows) {
+          const visible = !activeTopic || row.dataset.topic === activeTopic;
+          row.hidden = !visible;
+          if (visible) anyVisible = true;
+        }
+        if (grid) {
+          const visibleTiles = grid.querySelectorAll(".tile:not([hidden])").length;
+          grid.toggleAttribute("data-empty", visibleTiles === 0);
+        }
+        for (const day of archiveDays) {
+          const visibleRows = day.querySelectorAll(".archive-row:not([hidden])").length;
+          day.toggleAttribute("data-empty", visibleRows === 0);
+        }
+        if (archiveDisclosure) {
+          const anyArchiveVisible = archiveDays.some((d) => !d.hasAttribute("data-empty"));
+          archiveDisclosure.toggleAttribute("data-empty", !anyArchiveVisible);
+        }
+        emptyMsg.hidden = anyVisible;
+      }
+
+      for (const chip of chips) {
+        chip.addEventListener("click", () => {
+          for (const c of chips) c.classList.toggle("active", c === chip);
+          activeTopic = chip.dataset.value || "";
+          apply();
+        });
+      }
+    })();
+  </script>
 </Base>

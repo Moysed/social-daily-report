@@ -49,6 +49,28 @@ type Dict = {
   filterDate: string;
   filterAll: string;
   filterClear: string;
+  // Friendly metric labels (replace jargon)
+  activityLabel: string;
+  evidenceLabel: string;
+  activityHigh: string;
+  activityMedium: string;
+  activityLow: string;
+  // Trend vs previous run of the same topic
+  trendRising: string;
+  trendEasing: string;
+  trendSteady: string;
+  trendNew: string;
+  // Home dashboard chrome
+  morningBrief: string;
+  todayOverview: string;
+  todayHeading: (n: number) => string;
+  archiveToggleShow: (n: number) => string;
+  archiveToggleHide: string;
+  // Report page nav
+  prevReport: string;
+  nextReport: string;
+  alsoToday: string;
+  onThisPage: string;
 };
 
 export const UI: Record<Lang, Dict> = {
@@ -94,6 +116,24 @@ export const UI: Record<Lang, Dict> = {
     filterDate: "Date",
     filterAll: "All",
     filterClear: "Clear filters",
+    activityLabel: "Activity",
+    evidenceLabel: "Evidence",
+    activityHigh: "High activity",
+    activityMedium: "Steady",
+    activityLow: "Quiet",
+    trendRising: "Rising",
+    trendEasing: "Easing",
+    trendSteady: "Holding",
+    trendNew: "New today",
+    morningBrief: "Morning brief",
+    todayOverview: "What's worth knowing today",
+    todayHeading: (n) => (n === 1 ? "1 topic today" : `${n} topics today`),
+    archiveToggleShow: (n) => (n === 1 ? "Show 1 earlier day" : `Show ${n} earlier days`),
+    archiveToggleHide: "Hide earlier days",
+    prevReport: "Older in this topic",
+    nextReport: "Newer in this topic",
+    alsoToday: "Also today",
+    onThisPage: "On this page",
   },
   th: {
     htmlTitle: "Social Daily Report",
@@ -137,5 +177,23 @@ export const UI: Record<Lang, Dict> = {
     filterDate: "วันที่",
     filterAll: "ทั้งหมด",
     filterClear: "ล้างตัวกรอง",
+    activityLabel: "ความเคลื่อนไหว",
+    evidenceLabel: "หลักฐาน",
+    activityHigh: "คุยกันหนาแน่น",
+    activityMedium: "พอเหมาะ",
+    activityLow: "เงียบ",
+    trendRising: "กำลังมา",
+    trendEasing: "ค่อย ๆ ซา",
+    trendSteady: "ทรงตัว",
+    trendNew: "เพิ่งเริ่มวันนี้",
+    morningBrief: "บรีฟเช้า",
+    todayOverview: "วันนี้ควรรู้อะไร",
+    todayHeading: (n) => `${n} หัวข้อวันนี้`,
+    archiveToggleShow: (n) => `ดูย้อนหลังอีก ${n} วัน`,
+    archiveToggleHide: "ซ่อนย้อนหลัง",
+    prevReport: "เก่ากว่าในหัวข้อนี้",
+    nextReport: "ใหม่กว่าในหัวข้อนี้",
+    alsoToday: "วันนี้ยังมี",
+    onThisPage: "หัวข้อในหน้านี้",
   },
 };

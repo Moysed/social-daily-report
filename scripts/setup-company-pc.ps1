@@ -136,7 +136,7 @@ if (-not $SkipTaskRegister) {
         Set-Content -Path $xmlFilled -Encoding Unicode
 
     schtasks.exe /Create /TN $TaskName /XML $xmlFilled /F | Out-Null
-    Ok "task '$TaskName' registered (10:00 + 22:00 local (every 12h))"
+    Ok "task '$TaskName' registered (08:00 + 20:00 local (every 12h))"
     Remove-Item $xmlFilled
 
     # Optional: also register hourly Discord monitor if webhook is set.
@@ -164,4 +164,4 @@ if ($ans -ne "n") {
 }
 
 Write-Host "`nSetup complete." -ForegroundColor Green
-Write-Host "Pipeline fires at 10:00 and 22:00 local (every 12h). Inspect with: schtasks /Query /TN $TaskName /V /FO LIST"
+Write-Host "Pipeline fires at 08:00 and 20:00 local (every 12h). Inspect with: schtasks /Query /TN $TaskName /V /FO LIST"

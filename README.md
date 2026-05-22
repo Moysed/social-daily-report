@@ -27,7 +27,33 @@ NDF DEV team member's AI can consume, plus a blog to read it.
 - Every run is recorded in `data/reports.db` so cross-day salience ("this story carried
   for 3 days") is a SQL query, not a re-fetch.
 
-## Setup
+## Quickstart on a fresh PC
+
+Clone-and-go: the repo bundles everything except keys + the Claude Code
+subscription login. On a new Windows machine:
+
+```powershell
+# 1. Prereqs (one time): Python 3.11+, Git, Claude Code, GitHub CLI
+#    https://www.python.org   https://claude.com/claude-code   https://cli.github.com
+
+# 2. Clone
+gh repo clone Moysed/social-daily-report
+cd social-daily-report
+
+# 3. Fill in keys (Xquik + Discord webhook + Anthropic if api backend)
+copy .env.example .env
+notepad .env
+
+# 4. One-shot bootstrap: venv, install, claude login check, Task Scheduler,
+#    optional Discord monitor, optional test run
+.\scripts\setup-company-pc.ps1
+```
+
+After this the pipeline fires daily at 10:00 local, auto-commits the
+generated reports, and pushes to `origin/main` — Vercel picks the push
+up and redeploys https://social-daily-report.vercel.app automatically.
+
+## Manual setup (if you don't want Task Scheduler)
 
 ```bash
 python -m venv .venv
@@ -133,7 +159,7 @@ Add a topic, point it at connectors, done.
 
 ## Daily scheduling (Windows Task Scheduler)
 
-The pipeline is meant to run unattended at 07:00 local on a host that stays
+The pipeline is meant to run unattended at 10:00 local on a host that stays
 on 24/7 (e.g. a company PC). All artifacts live in `scripts/`.
 
 ### One-shot setup
@@ -153,7 +179,7 @@ The setup script does the following, idempotently:
 4. Confirms `.env` has `LLM_BACKEND` + the right key(s)
 5. Sanity-tests the chosen backend (`claude -p "OK"` for `cli`, or the SDK for `api`)
 6. Registers a `SocialDailyReport` Task Scheduler entry from `scripts/social-daily-report.xml`
-   (daily 07:00, retry 3× / 15min, wake-to-run, network required, 1h time limit)
+   (daily 10:00, retry 3× / 15min, wake-to-run, network required, 1h time limit)
 7. Optionally test-triggers the pipeline once and logs the run
 
 After setup:
@@ -245,7 +271,7 @@ git push
 - [x] SQLite store + run log + FTS5 (cross-day salience as SQL)
 - [x] MCP server (list/get/search/salience/runs)
 - [x] X via paid provider (Xquik connector, Phase 2)
-- [x] Scheduler (Windows Task Scheduler, 07:00 local)
+- [x] Scheduler (Windows Task Scheduler, 10:00 local)
 - [ ] Monitor: email/Discord ping when N consecutive runs fail
 - [ ] Astro blog polish (`web/`)
 - [ ] Cost: Batch API + prompt caching + model routing

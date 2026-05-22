@@ -10,7 +10,7 @@
       3. Verify `claude` is on PATH; offer to install/login.
       4. Verify .env has LLM_BACKEND + (XQUIK_API_KEY or ANTHROPIC_API_KEY).
       5. Sanity test the chosen backend.
-      6. Register the daily Task Scheduler task at 07:00 local time.
+      6. Register the daily Task Scheduler task at 10:00 local time.
       7. Test-trigger the task once and tail the log.
 
     Re-runnable: idempotent on steps that have already completed.
@@ -108,7 +108,7 @@ if (-not $SkipTaskRegister) {
         Set-Content -Path $xmlFilled -Encoding Unicode
 
     schtasks.exe /Create /TN $TaskName /XML $xmlFilled /F | Out-Null
-    Ok "task '$TaskName' registered (daily 07:00 local)"
+    Ok "task '$TaskName' registered (daily 10:00 local)"
     Remove-Item $xmlFilled
 
     # Optional: also register hourly Discord monitor if webhook is set.
@@ -136,4 +136,4 @@ if ($ans -ne "n") {
 }
 
 Write-Host "`nSetup complete." -ForegroundColor Green
-Write-Host "Daily run will fire at 07:00 local. Inspect with: schtasks /Query /TN $TaskName /V /FO LIST"
+Write-Host "Daily run will fire at 10:00 local. Inspect with: schtasks /Query /TN $TaskName /V /FO LIST"

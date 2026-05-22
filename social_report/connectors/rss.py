@@ -63,6 +63,16 @@ def parse_feed(xml: str, platform: str, since: datetime) -> list[Post]:
     now = datetime.now(timezone.utc)
     posts: list[Post] = []
 
+    # Channel-level pubDate (RSS) / updated (Atom) as a fallback for items
+    # that don't carry their own — e.g. GitHub Trending RSS where every entry
+    # shares the same daily snapshot timestamp.
+    channel = root.find("channel")
+    channel_date = None
+    if channel is not None:
+        channel_date = _parse_date(_text(channel, "pubDate") or _text(channel, "lastBuildDate"))
+    if channel_date is None:
+        channel_date = _parse_date(_text(root, f"{ATOM}updated"))
+
     # Atom: <feed><entry>... ; RSS: <rss><channel><item>...
     entries = root.findall(f".//{ATOM}entry") or root.findall(".//item")
     for e in entries:
@@ -81,6 +91,8 @@ def parse_feed(xml: str, platform: str, since: datetime) -> list[Post]:
             summary = _text(e, "description")
             native_id = _text(e, "guid") or link
 
+        if created is None:
+            created = channel_date
         if created is None or created < since:
             continue
 

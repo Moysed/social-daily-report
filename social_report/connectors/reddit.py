@@ -6,6 +6,7 @@ config (sources.yaml):
     query: "agents"              # optional — search within subreddit
     sort: top                    # top | hot | new (default: top)
     time: day                    # hour|day|week|month|year|all (default: day)
+    min_score: 30                # optional — drop posts with score below this
 
 Reddit rate-limits anonymous reads; a descriptive User-Agent is required.
 """
@@ -41,6 +42,7 @@ class RedditConnector(Connector):
         sort = self.cfg.get("sort", "top")
         time = self.cfg.get("time", "day")
         query = self.cfg.get("query")
+        min_score = int(self.cfg.get("min_score", 0))
 
         if query:
             url = f"{BASE}/r/{sub}/search.json"
@@ -56,6 +58,9 @@ class RedditConnector(Connector):
         for child in data.get("data", {}).get("children", []):
             d = child.get("data", {})
             if d.get("stickied"):
+                continue
+            score = int(d.get("score", 0))
+            if min_score and score < min_score:
                 continue
             created = datetime.fromtimestamp(d.get("created_utc", 0), tz=timezone.utc)
             if created < since:

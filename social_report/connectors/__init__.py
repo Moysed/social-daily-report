@@ -1,6 +1,7 @@
 from .base import Connector
 from .bluesky import BlueskyConnector
 from .hackernews import HackerNewsConnector
+from .lobsters import LobstersConnector
 from .reddit import RedditConnector
 from .rss import RSSConnector
 from .x import XConnector
@@ -11,6 +12,7 @@ REGISTRY: dict[str, type[Connector]] = {
     "hackernews": HackerNewsConnector,
     "bluesky": BlueskyConnector,
     "reddit": RedditConnector,
+    "lobsters": LobstersConnector,
     "youtube": YouTubeConnector,
     "rss": RSSConnector,
     "x": XConnector,

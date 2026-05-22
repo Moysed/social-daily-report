@@ -4,7 +4,7 @@ date: '2026-05-22'
 topic: edtech
 lang: th
 pair: edtech.en.md
-generated_at: '2026-05-22T06:25:27+00:00'
+generated_at: '2026-05-22T06:59:35+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,74 +12,79 @@ platforms:
 - x
 regions:
 - global
-post_count: 25
-salience: 0.7
+post_count: 48
+salience: 0.55
 sentiment: mixed
 confidence: 0.6
 tags:
 - edtech
 - ai-tutoring
-- learning-loss
+- learning-science
 - lms-security
+- language-learning
 - evidence-based
-- e-learning
 translated_by: claude-sonnet-4-6
 ---
 
 # EdTech — 2026-05-22
 
 ## TL;DR
-- งานวิจัยใหม่: การใช้ AI ในห้องเรียนช่วยให้เกรดดีขึ้น แต่ลดการเรียนรู้ที่แท้จริง [1][5]
-- รายงานล่าสุดระบุว่า ed-tech tools ยอดนิยมส่วนใหญ่ขาดหลักฐานรองรับประสิทธิผล [2]
-- การละเมิดข้อมูล Canvas LMS / Instructure โดย ShinyHunters ตั้งคำถามต่อความน่าเชื่อถือของ school SaaS [10]
-- ระบบหลักที่เก่าแก่ (ระบบงบประมาณโรงเรียน WA อายุ 17 ปี) ส่งสัญญาณความต้องการด้าน modernization [3]
-- รูปแบบ AI hints ที่ออกแบบโดยครู (แทนการให้คำตอบตรงๆ) ถูกยกให้เป็นแนวทางแก้ปัญหาที่ทำได้จริง [5]
+- สองงานวิจัยเป็นสัญญาณหลักของวันนี้: AI tutor ช่วยให้เกรดดีขึ้นแต่กลับลดการเรียนรู้ที่แท้จริง [7][12] และเครื่องมือ ed-tech ส่วนใหญ่ขาดหลักฐานรองรับ [12]
+- โพสต์จาก teacher-subreddit ครองด้าน engagement [1][3][4][5] — สะท้อนความจริงในห้องเรียน (โทรศัพท์, ผู้ปกครองที่ทวงสิทธิ์, สมาธิพังทลาย) ที่ผลิตภัณฑ์ edtech ทุกชิ้นต้องเผชิญ
+- รูปแบบการแก้ปัญหาเริ่มปรากฏ: AI tutor ที่ให้ hint ออกแบบโดยครู (ไม่ใช่คำตอบ) ช่วยรักษาการเรียนรู้ [29] — นี่คือ design constraint ที่จับต้องได้
+- การละเมิดข้อมูลของ Canvas LMS / Instructure โดย ShinyHunters ก่อให้เกิดคำถามด้านความปลอดภัยสด ๆ สำหรับทุก LMS integration [33]
+- กระทู้ผู้เรียนภาษา [6][9][10] แสดงให้เห็นว่า comprehensible-input + การปรับ tutor ให้เหมาะสมคือสิ่งที่ให้ผลยั่งยืน — เกี่ยวข้องกับแนวทาง edutech/language ของ NDF
 
-## What happened
-สัญญาณหลักวันนี้คืองานวิจัยที่แสดงว่านักเรียนที่ใช้ AI tools ได้คะแนนสูงขึ้นแต่เรียนรู้ได้น้อยลง โดยมาตรการป้องกันที่ออกแบบอย่างรอบคอบ — โดยเฉพาะ AI tutors ที่ให้ hints ตามแบบที่ครูออกแบบแทนการให้คำตอบ — ช่วยลดผลเสียได้ [1][5] ควบคู่กันนั้น มีบทความจาก govtech.com รายงานว่า ed-tech tools ที่นิยมใช้กันทั่วไปส่วนใหญ่ไม่มีหลักฐานรองรับ [2] ปัญหาด้านความปลอดภัยและโครงสร้างพื้นฐานก็ปรากฏชัดเช่นกัน: การละเมิดข้อมูลโดย ShinyHunters ที่กระทบ Canvas/Instructure ทำให้นักการศึกษาตั้งคำถามต่อความปลอดภัยของ LMS [10] และโรงเรียนในรัฐ Washington ยังคงใช้ระบบอายุ 17 ปีในการบริหารงบประมาณมูลค่า $30B [3]
+## สิ่งที่เกิดขึ้น
+สัญญาณเฉพาะด้าน edtech ที่แข็งแกร่งที่สุดของวันนี้คืองานวิจัยที่รายงานว่านักเรียนที่ใช้ AI ได้คะแนนสูงขึ้นแต่เรียนรู้น้อยลง [7] สอดคล้องกับกระทู้ r/edtech ที่อ้างบทความ GovTech เดือนมีนาคม 2026 ว่าเครื่องมือ ed-tech ที่นิยมใช้ส่วนใหญ่ไม่มีหลักฐานรองรับ [12] กระทู้โต้แย้งชี้ถึงทางออก: AI tutor ที่ตั้งค่าให้ให้ hint ที่ครูออกแบบแทนการให้คำตอบตรง ๆ ช่วยลดผลกระทบด้านการสูญเสียการเรียนรู้ [29] แยกออกไป Canvas/Instructure อยู่ภายใต้การตรวจสอบหลังการละเมิดข้อมูลของ ShinyHunters [33] และกระทู้ที่ Forbes จุดประกายยังคงถกเถียงกันว่า AI สามารถปิดช่องว่างด้าน mentorship ได้หรือไม่ [32]
 
-บทสนทนารองประกอบด้วยการนำเสนอผลิตภัณฑ์ AI-tutor (SparkEd, AyahMind, Mirai) [8][19][23][16], เครื่องมือ payroll K12 แบบ open-source (GegoK12) [4], และบันทึกจากผู้พัฒนาคนหนึ่งว่า model cards มีความเกี่ยวข้องเป็นพิเศษสำหรับ edtech [24] วาทกรรมสไตล์ Forbes ว่า 'AI ปิดช่องว่างด้าน mentorship' ยังคงดำเนินต่อไปแต่มีความสงสัยในคอมเมนต์ [9]
+นอกเหนือจาก edtech ในระบบ การสนทนาที่มีปริมาณสูงสุดคือโพสต์ teacher-subreddit เรื่องการติดโทรศัพท์, executive function ที่ขาดหาย, และความทวงสิทธิ์ของผู้ปกครอง [1][3][4][5] — บริบทผู้ใช้ที่ผลิตภัณฑ์ในห้องเรียนทุกชิ้นต้องถูกส่งไปใช้งาน กระทู้การเรียนภาษา [6][9][10] แสดงให้เห็นว่าผู้เรียนให้คุณค่ากับการบริโภค native content ที่ระดับ B1+ และมีความไวสูงต่อการปรับระดับของ tutor การเคลื่อนไหว B2B/product เล็ก ๆ น้อย ๆ: เครื่องมือ payroll โรงเรียน open-source [28], แพลตฟอร์ม eye-tracking สำหรับ autism [37], และกระแสข่าวการควบรวม Coursera/Udemy ที่ถูกล้อเลียนเรื่อง marketing-speak [38]
 
-## Why it matters (reasoning)
-ช่องว่างระหว่างการเรียนรู้กับเกรด [1][5] คือเรื่องราวเชิงโครงสร้าง: มันปรับกรอบการออกแบบผลิตภัณฑ์ 'AI tutor' จาก answer-engines ไปสู่ระบบ hint แบบ scaffolded และผลักดันเกณฑ์การประเมินไปสู่การวัดผลการเรียนรู้ที่จับต้องได้ ไม่ใช่แค่ engagement หรืออัตราการสำเร็จ เมื่อรวมกับ [2] ผู้ซื้อ (โรงเรียน, ผู้ปกครอง) จะเรียกร้องหลักฐานมากขึ้น — การศึกษาประสิทธิผล, กลุ่มควบคุม, ข้อมูล retention — ก่อนการจัดซื้อ ผลกระทบลำดับสอง: vendors ที่ห่อ LLMs ด้วย chat UI บางๆ จะเผชิญ commoditization; ส่วนผู้ที่ฝัง pedagogy (hint trees ที่ครูเขียน, spaced retrieval, formative assessment) จะมีความได้เปรียบที่ป้องกันได้ การละเมิดข้อมูล Canvas [10] ยกระดับมาตรฐานความปลอดภัยสำหรับ edtech ทุกรายที่สัมผัสข้อมูลนักเรียน — ซึ่งเป็นต้นทุน compliance ที่ไม่อาจมองข้ามได้ ความเมื่อยล้าจากระบบเก่า [3] ส่งสัญญาณว่ามีงบประมาณ modernization จริง แต่วงจรการจัดซื้อยังช้า
+## เหตุใดจึงสำคัญ (เหตุผล)
+ผลการค้นพบ 'เกรดสูงขึ้น เรียนรู้น้อยลง' [7][12] คือความตึงเครียดหลักของ edtech ปี 2026: ตัวชี้วัดผลลัพธ์ (เกรด, อัตราจบ) กำลังแยกห่างจากตัวชี้วัดการเรียนรู้ (การจำ, การถ่ายโอนความรู้) ผู้ซื้อ (โรงเรียน, ผู้ปกครอง) เพิ่มประสิทธิภาพตัวแรก; คุณค่าระยะยาวขึ้นอยู่กับตัวหลัง สิ่งนี้สร้าง quality moat ให้กับผลิตภัณฑ์ที่พิสูจน์ได้ว่ารักษาการเรียนรู้ไว้ได้ — และสร้าง reputational cliff ให้กับผลิตภัณฑ์ที่เพียงแค่ automate คำตอบ ผลการค้นพบเรื่อง hint-scaffolding [29] คือคันโยกที่จับต้องได้: การออกแบบ prompt ที่ตระหนักถึงหลักการสอนคือ product feature แล้ว ไม่ใช่แค่ wrapper ผลทางอ้อม: ผู้กำกับดูแลและเจ้าหน้าที่จัดซื้อจะเริ่มเรียกร้องหลักฐาน (งานวิจัย GovTech [12] คือตัวอย่างการอ้างอิงที่ RFP จะนำไปใช้) ซึ่งจะบีบ vendor AI tutor ที่ไม่มีข้อมูลประสิทธิผล ผลกระทบจาก Canvas breach [33] เพิ่มแรงกดดันขนาน — ความไว้วางใจใน LMS คือประตูกั้นการจัดซื้อจริง โดยเฉพาะสำหรับลูกค้า K-12 และภาครัฐในไทย/SEA
 
-## Possibility
-น่าจะเกิดขึ้น (60-70%): หน่วยงานกำกับดูแลและเขตการศึกษาเริ่มกำหนดให้ต้องมีหลักฐานประสิทธิผลและการเปิดเผยมาตรการป้องกัน AI ภายใน 12-18 เดือน; 'teacher-in-the-loop' AI tutoring กลายเป็นรูปแบบผลิตภัณฑ์มาตรฐาน เป็นไปได้ (35-45%): เกิดคลื่น consolidation เมื่อ AI-tutor startups ที่ไม่มีความแตกต่างล้มเหลวในการแสดงผลการเรียนรู้ โอกาสน้อย (15-25%): การแบนระบาดวงกว้างต่อ generative AI สำหรับนักเรียนใน K-12 เมื่อเรื่องราว 'เรียนรู้น้อยลง' แพร่กระจาย; น่าจะเป็นการจำกัดบางส่วนพร้อม audit trails มากกว่า
+## ความเป็นไปได้
+น่าจะเกิด (60%): 'evidence-backed' กลายเป็น marketing wedge ถัดไป — vendor เผยแพร่งานวิจัยประสิทธิผล และการให้คำปรึกษาด้าน pedagogy กลายเป็นส่วนหนึ่งของทีม edtech product น่าจะเกิดได้ (30%): กรอบ hint ที่ออกแบบโดยครู [29] ได้รับการทำให้เป็นมาตรฐานใน open prompt library / curriculum-aligned API คล้ายกับที่แนวทาง A11y กลายเป็นข้อกำหนดพื้นฐาน โอกาสน้อย (10%): เขตการศึกษา/กระทรวงรายใหญ่บังคับใช้โหมด AI tutoring แบบ 'ไม่ให้คำตอบ' บังคับให้ vendor ปรับแก้ย้อนหลัง ในส่วนของ LMS layer, breach fatigue [33] ผลักผู้ซื้อบางรายไปสู่ทางเลือก self-hosted หรือ regional — เกี่ยวข้องกับตลาดไทย/SEA
 
-## Org applicability — NDF DEV
-เกี่ยวข้องโดยตรงกับสาย edutech/e-learning ของ NDF DEV การดำเนินการที่เป็นรูปธรรม: (1) ในฟีเจอร์ AI-tutor หรือ e-learning ใดๆ ให้ใช้ hint แบบ scaffolded ที่ครูเขียนเป็นค่าตั้งต้น — ห้ามสร้างคำตอบตรงๆ [5] (2) วัด metrics ด้านผลการเรียนรู้ (pre/post quizzes, delayed retention checks) ไม่ใช่แค่ engagement — นี่จะกลายเป็นจุดขายเหนือ [1][2] (3) สำหรับผลิตภัณฑ์ที่รันบน Supabase สำหรับโรงเรียน ให้เสริมความแข็งแกร่งด้าน auth, RLS, และ audit logs ทันที; ใช้เหตุการณ์ Canvas [10] เป็น sales objection ที่ต้องตอบโต้ล่วงหน้า (4) Model cards / การเปิดเผย 'what this AI is bad at' [24] เป็น trust signals ราคาถูก — เพิ่มในหน้าผลิตภัณฑ์ (5) มุม Unity/XR: การฝึกปฏิบัติแบบ embodied (lab sims, language role-play ใน VR) โกงด้วย AI ได้ยากกว่าและสอดคล้องกับ narrative ด้านผลการเรียนรู้ — เป็น niche ที่ป้องกันได้ คุ้มค่า: ใช่, การปรับ positioning ผลิตภัณฑ์ต้นทุนต่ำ; ต้นทุนสูง (การศึกษาประสิทธิผลเต็มรูปแบบ) เฉพาะสำหรับ flagship clients
+## การนำไปใช้กับองค์กร — NDF DEV
+ใช้ได้โดยตรงกับสาย edutech/e-learning ของ NDF DEV การดำเนินการที่เป็นรูปธรรม: (1) ฝัง 'hint mode' / Socratic scaffold ไว้ในฟีเจอร์ AI tutor ทุกตัว — ห้ามให้คำตอบตรง ๆ; เปิดให้ครูตั้งค่า hint policy ได้ [29] คุ้มค่า: ต้นทุน build ต่ำ, สร้างความแตกต่างสูง, ป้องกันคำวิจารณ์ [7] ได้ (2) วัด learning metric (retention quiz 7/30 วัน, transfer task) ไม่ใช่แค่ completion rate — ขายสิ่งนี้เป็น evidence layer ที่โรงเรียนจะต้องการ [12] คุ้มค่า: build ระดับกลาง, คุณค่าด้านการขาย B2B สูง (3) สำหรับแง่มุม language-learning (ความทับซ้อนของ Unity/XR + edutech) เน้น comprehensible-input + native-content scaffolding ที่ B1 [6][9] แทนการฝึกแบบ gamified drill (4) หากต้องการ integrate กับ Canvas หรือ LMS ใดก็ตาม เพิ่มหน้า security/breach posture [33] ข้าม: การไล่ตาม content aggregation แบบ Coursera/Udemy [38] — ตลาดอิ่มตัวและกำลังถูก commoditize ข้าม: เครื่องมือ payroll [28] — นอกขอบเขต
 
-## Signals to Watch
-- จับตา RFPs ของเขตการศึกษาที่กำหนดให้ต้องมีการเปิดเผย AI-safeguard / ประสิทธิผล
-- ติดตามผลกระทบจากการละเมิดข้อมูล Instructure/Canvas — อาจเปลี่ยนส่วนแบ่งตลาด LMS
-- รอบการระดมทุนของ 'teacher-in-the-loop' AI tutor startups เทียบกับ pure answer-bots
-- เครื่องมือ school-ops แบบ open-source (GegoK12 [4]) ที่ได้รับความนิยมในตลาดเกิดใหม่
+## สัญญาณที่ต้องติดตาม
+- ติดตามงานวิจัยซ้ำ / งานวิจัยโต้แย้งผลการค้นพบ 'AI = เกรดสูง เรียนรู้น้อย' [7]
+- ติดตามภาษาจัดซื้อใน RFP ของ MOE ไทย / โรงเรียน SEA สำหรับข้อกำหนด 'evidence-backed'
+- ติดตามผลกระทบจาก Canvas/Instructure breach ต่อการเปลี่ยนแปลงความไว้วางใจใน LMS [33]
+- ติดตาม open-source pedagogy prompt library / spec 'teacher-designed hint' ที่กำลังเกิดขึ้น
 
-## Raw Sources
+## แหล่งข้อมูลดิบ
 | platform | author | engagement | url |
 |---|---|---|---|
-| reddit | BendicantMias | ^111 c51 | [Students Are Learning Less and Getting Higher Grades Because of AI, Study Finds](https://www.reddit.com/r/edtech/comments/1tielqh/students_are_learning_less_and_getting_higher/) |
-| reddit | RudyChinchilla1 | ^29 c27 | [What is going in EdTech rn? 5.21.26 On March 10 2026, govtech.com released an ar](https://www.reddit.com/r/edtech/comments/1tjms9y/what_is_going_in_edtech_rn/) |
-| reddit | Classic_Day5736 | ^10 c3 | [Running on Fumes: The 17-Year-Old Computer System Holding Washington Schools' $3](https://www.reddit.com/r/edtech/comments/1tj3z7x/running_on_fumes_the_17yearold_computer_system/) |
+| reddit | Difficult-Ad4364 | ^8604 c250 | [The Strict Teacher Got All The Roses At our K-8 school during graduation the 8th](https://www.reddit.com/r/Teachers/comments/1tji68k/the_strict_teacher_got_all_the_roses/) |
+| reddit | South-Lab-3991 | ^5785 c247 | [Senior upset his picture isn't in the yearbook his parents paid for I'll preface](https://www.reddit.com/r/Teachers/comments/1timmm4/senior_upset_his_picture_isnt_in_the_yearbook_his/) |
+| reddit | Emergency-Pepper3537 | ^3267 c210 | [Hey parents: field trips are a PRIVILEGE, not a right :) Every single year aroun](https://www.reddit.com/r/Teachers/comments/1tjq275/hey_parents_field_trips_are_a_privilege_not_a/) |
+| reddit | DrakeSavory | ^2983 c200 | [Student cried in class today The entire semester I'm telling this student to get](https://www.reddit.com/r/Teachers/comments/1tiri6s/student_cried_in_class_today/) |
+| reddit | Known_Negotiation_86 | ^1636 c150 | [An example of what we teachers mean, the kids are different I asked a child to s](https://www.reddit.com/r/Teachers/comments/1tioo4f/an_example_of_what_we_teachers_mean_the_kids_are/) |
+| reddit | tarleb_ukr | ^364 c36 | [Reaching B1 and being able to consume native content is such a high This is just](https://www.reddit.com/r/languagelearning/comments/1timth6/reaching_b1_and_being_able_to_consume_native/) |
+| reddit | BendicantMias | ^109 c51 | [Students Are Learning Less and Getting Higher Grades Because of AI, Study Finds](https://www.reddit.com/r/edtech/comments/1tielqh/students_are_learning_less_and_getting_higher/) |
+| reddit | everydayreligion1090 | ^79 c31 | [Why is the output of this C code so unpredictable? #include &lt;stdio.h&gt; int ](https://www.reddit.com/r/learnprogramming/comments/1tjmqud/why_is_the_output_of_this_c_code_so_unpredictable/) |
+| reddit | SilkyGator | ^40 c18 | [What does B1 to B2 really look like? For context, I live in Germany, but my work](https://www.reddit.com/r/languagelearning/comments/1tif49p/what_does_b1_to_b2_really_look_like/) |
+| reddit | ursulaleloon | ^30 c17 | [New tutor and now thinking I was delusional about making progress update: thanks](https://www.reddit.com/r/languagelearning/comments/1tikp3u/new_tutor_and_now_thinking_i_was_delusional_about/) |
+| reddit | yaoyanone | ^27 c25 | [Too tired after work I clock off at 6pm and genuinely want to spend my evenings ](https://www.reddit.com/r/learnprogramming/comments/1tk3hr8/too_tired_after_work/) |
+| reddit | RudyChinchilla1 | ^26 c27 | [What is going in EdTech rn? 5.21.26 On March 10 2026, govtech.com released an ar](https://www.reddit.com/r/edtech/comments/1tjms9y/what_is_going_in_edtech_rn/) |
+| reddit | PdPunto | ^23 c37 | [How do you keep context between coding sessions? Serious question. Every time I ](https://www.reddit.com/r/learnprogramming/comments/1tjowr1/how_do_you_keep_context_between_coding_sessions/) |
+| reddit | Fearless_South_2624 | ^12 c32 | [How do I practice coding without just copying tutorials? I've been learning Pyth](https://www.reddit.com/r/learnprogramming/comments/1tjpslj/how_do_i_practice_coding_without_just_copying/) |
+| reddit | Classic_Day5736 | ^9 c3 | [Running on Fumes: The 17-Year-Old Computer System Holding Washington Schools' $3](https://www.reddit.com/r/edtech/comments/1tj3z7x/running_on_fumes_the_17yearold_computer_system/) |
+| reddit | sidhu_uparwala | ^8 c6 | [115 LeetCode problems in, but I feel completely stuck on Arrays/Linked Lists and](https://www.reddit.com/r/learnprogramming/comments/1tjsvba/115_leetcode_problems_in_but_i_feel_completely/) |
+| reddit | ki4jgt | ^6 c21 | [Has anyone experimented with creating their own File System? Think it would be c](https://www.reddit.com/r/learnprogramming/comments/1tjmcm9/has_anyone_experimented_with_creating_their_own/) |
+| reddit | ErrisHumen | ^6 c12 | [I'm lost and tired of hitting the wall Good evening everyone, this is my first t](https://www.reddit.com/r/learnprogramming/comments/1tjspvl/im_lost_and_tired_of_hitting_the_wall/) |
+| reddit | willbennnn | ^6 c14 | [How Bad of an Idea is C++ Backend - Learning Full Stack Web Design Let me prefac](https://www.reddit.com/r/learnprogramming/comments/1tjpt3y/how_bad_of_an_idea_is_c_backend_learning_full/) |
+| reddit | Fabulous_Variety_256 | ^5 c1 | [Looking for a good YouTube video for Promises Hey, I study with Claude, but some](https://www.reddit.com/r/learnprogramming/comments/1tka8v0/looking_for_a_good_youtube_video_for_promises/) |
+| reddit | kinyua_14 | ^5 c14 | [How do you transition from just writing code to actually thinking like a softwar](https://www.reddit.com/r/learnprogramming/comments/1tjg16c/how_do_you_transition_from_just_writing_code_to/) |
+| reddit | Motor-Wonder-5960 | ^5 c11 | [I've been working with full-stack development for almost 4 years. Is it worth in](https://www.reddit.com/r/learnprogramming/comments/1tjmglj/ive_been_working_with_fullstack_development_for/) |
+| reddit | Open_Career_625 | ^5 c16 | [I.. uhm.. some symbols are weird in C/C++. So, I have decided that I genuinely h](https://www.reddit.com/r/learnprogramming/comments/1tk5ghg/i_uhm_some_symbols_are_weird_in_cc/) |
+| reddit | Glittering_Advance56 | ^3 c11 | [Advice Hi All, Hoping for some advice. My son loves his Roblox/gaming and is int](https://www.reddit.com/r/learnprogramming/comments/1tje0d0/advice/) |
+| reddit | Weekly-Fun-605 | ^3 c2 | [Changing license of github repository after removing licensed code. I've been us](https://www.reddit.com/r/learnprogramming/comments/1tk5yoo/changing_license_of_github_repository_after/) |
+| reddit | Herbert_Tarlek | ^3 c9 | [Understanding "tr" Caesar Cipher components I'm just beginning to learn IT/codin](https://www.reddit.com/r/learnprogramming/comments/1tjvqtx/understanding_tr_caesar_cipher_components/) |
+| x | shahrukhghazaan | ^2 c1 | [@joni_vrbt I have been building EdTech Web apps. Let's connect](https://x.com/shahrukhghazaan/status/2057698141181530560) |
 | x | GegoSoftTech | ^1 c0 | [Your school's payroll spreadsheet has an error right now — PF miscalculated, lea](https://x.com/GegoSoftTech/status/2057707027103973671) |
 | x | sri_srikrishna | ^1 c0 | [@saraakkineni "However, we also find that carefully designed safeguards, especia](https://x.com/sri_srikrishna/status/2057700957816070364) |
 | x | joni_vrbt | ^1 c0 | [@shahrukhghazaan Absolutely. I just followed you. Great to be connected. My firs](https://x.com/joni_vrbt/status/2057700678886154658) |
-| x | shahrukhghazaan | ^1 c1 | [@joni_vrbt I have been building EdTech Web apps. Let's connect](https://x.com/shahrukhghazaan/status/2057698141181530560) |
-| x | daytonmills | ^1 c3 | [whats the best way for a kid to learn math these days? surely theres some advanc](https://x.com/daytonmills/status/2057677394614620623) |
-| reddit | Early-Application672 | ^0 c7 | [Forbes: Can AI Help Close The Mentorship Gap In Education? Thoughts on this arti](https://www.reddit.com/r/edtech/comments/1tio8nk/forbes_can_ai_help_close_the_mentorship_gap_in/) |
-| reddit | Ad33lRaza | ^0 c22 | [Is Canvas LMS actually safe to use right now after the ShinyHunters breach? With](https://www.reddit.com/r/edtech/comments/1tiherb/is_canvas_lms_actually_safe_to_use_right_now/) |
-| x | TheDailyPioneer | ^0 c0 | [OPINION Why quality teachers are hard to find? By Sakshi Sethi Click - https://t](https://x.com/TheDailyPioneer/status/2057704258854936663) |
-| x | MediaLearning | ^0 c0 | [Suann Yi asks, "Do we need a screen to learn about screens?" Rethink media liter](https://x.com/MediaLearning/status/2057703092343218446) |
-| x | CeoMhmh | ^0 c0 | [Education is evolving beyond borders. From AI to digital universities, the futur](https://x.com/CeoMhmh/status/2057703048487530785) |
-| x | bestnamebrokers | ^0 c0 | [Ultra-short and premium — the perfect domain for education, e-learning, or EdTec](https://x.com/bestnamebrokers/status/2057698973876465672) |
-| x | GANADA_Token | ^0 c0 | [No hype, just actual products and real users. GANADA Token rewards proven improv](https://x.com/GANADA_Token/status/2057697811052032084) |
-| x | JAPAN_Forward_ | ^0 c0 | [Team Mirai leader says he is ready to serve as Takaichi's 'AI tutor' https://t.c](https://x.com/JAPAN_Forward_/status/2057696725523939339) |
-| x | CloudDesignBox | ^0 c0 | [92% of users at @HarrisFed rate Cloud Design Box as good or excellent. Read the ](https://x.com/CloudDesignBox/status/2057696044301910387) |
-| x | IcfaiOnline | ^0 c0 | [Online MBA in India: Why Digital Degrees Are the New Career Currency Know more: ](https://x.com/IcfaiOnline/status/2057694645153587261) |
-| x | polsia | ^0 c0 | [AyahMind. AI-powered Islamic learning — Quran, Hadith, AI tutor, story adventure](https://x.com/polsia/status/2057693745475407934) |
-| x | smartinmot2014 | ^0 c0 | [#edtech How learners actively engage with YouTube content specifically for pronu](https://x.com/smartinmot2014/status/2057692627789652254) |
-| x | NextEducationIn | ^0 c0 | [When the absent notification reaches home before the child does. 👀😄 #NextOS #Att](https://x.com/NextEducationIn/status/2057690851107844528) |
-| x | qijja | ^0 c0 | [@damnedcat132002 The edtech ppl about to discover peak](https://x.com/qijja/status/2057689416077021212) |
-| x | SparkedMaths | ^0 c0 | [Try this before reading the answer. Ask Coach (AI Tutor) on SparkEd — Chat with ](https://x.com/SparkedMaths/status/2057689316860862781) |
-| x | Giulianno_V | ^0 c0 | [Working on Metis has made me appreciate model cards more than I expected. A good](https://x.com/Giulianno_V/status/2057689245368869143) |
-| x | itvoice | ^0 c0 | [Smart. Reliable. Made for India. 🚀 Wishtel's IRA tablet series powers education,](https://x.com/itvoice/status/2057680381088874719) |

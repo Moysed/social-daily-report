@@ -5,7 +5,7 @@ lang: th
 generator: social-daily-report v0.1
 topics:
 - topic: edtech
-  salience: 0.7
+  salience: 0.55
   file: edtech.th.md
 ---
 
@@ -13,4 +13,4 @@ topics:
 
 | topic | salience | report |
 |---|---|---|
-| EdTech | 0.7 | [edtech.th.md](edtech.th.md) |
+| EdTech | 0.55 | [edtech.th.md](edtech.th.md) |

@@ -4,7 +4,7 @@ date: '2026-05-23'
 topic: ai-devtools
 lang: th
 pair: ai-devtools.en.md
-generated_at: '2026-05-23T08:46:11+00:00'
+generated_at: '2026-05-23T09:28:01+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -17,142 +17,110 @@ platforms:
 regions:
 - global
 post_count: 72
-salience: 0.85
+salience: 0.82
 sentiment: positive
-confidence: 0.72
+confidence: 0.7
 tags:
 - ai-devtools
 - coding-agents
-- claude-code
 - deepseek
-- mcp-skills
+- agent-ide
 - local-llm
-thumbnail: https://pbs.twimg.com/media/HI5vom7bEAAM1M0.jpg
+- model-routing
+thumbnail: https://external-preview.redd.it/v-JHBY6jSSojfn4y_Lcqo13dVINZeAotUfX3Zdfko-E.jpeg?auto=webp&s=0e236e9597694d04268b482e36540bf2abc946e8
 translated_by: claude-sonnet-4-6
 ---
 
 # AI Devtools — 2026-05-23
 
 ## TL;DR
-- เครื่องมือ AI coding agent กำลังแตกตัวอย่างรวดเร็ว: codebase knowledge graphs [2], parallel-agent IDEs [14][30], orchestration layers [26][37], และ meta-coaches [39] ต่างเปิดตัวในสัปดาห์เดียวกัน
-- DeepSeek V4 Pro ลดราคาถาวร 75% (~1/4 ของราคาเดิม) [10] พร้อมระดมทุน $10.29B เพื่อคงความเป็น open-source [4] — กดดันราคาของ Anthropic/OpenAI
-- Microsoft ยกเลิก Claude Code licenses ภายในองค์กร [13] แต่ senior dev ของ MS กลับ demo Claude + เครื่องมือ MCP 1,400 รายการต่อสาธารณะ [35] — สัญญาณที่ขัดแย้งกันในระดับ enterprise
-- ระบบนิเวศ Skills/MCP เติบโตขึ้น: Claude Code cheat sheet ของ Anthony Sofo [24] และชุด Agent Skills 19 skills ของ Addy Osmani [40] ช่วยสร้างมาตรฐาน pattern
-- Local LLM inference ยังคงไล่ตามทัน: BeeLlama DFlash เร็วขึ้น 4-5 เท่าบน RTX 3090 [16], ByteShape Qwen3.6 ทำงานบน VRAM 6GB [36] — ใช้งานแบบ offline ได้จริงแล้ว
+- DeepSeek ระดมทุน $10.29B เพื่อดำเนินการ open-source models ต่อไป และทำให้ส่วนลด 75% ของ V4 Pro เป็นราคาถาวร — API ระดับ frontier ในราคาประมาณ 1/4 ของเดิม [3][10]
+- Microsoft ยกเลิก license Claude Code สำหรับพนักงานภายใน ผลักดันให้ใช้ tools ภายในแทน สะท้อนความเสี่ยงของการพึ่งพา vendor รายเดียวสำหรับทีมที่ใช้ agent ตัวเดียว [13]
+- สงคราม Agent-IDE ร้อนแรงขึ้น: Antigravity 2.0 ครองอันดับหนึ่งใน OpenSCAD 3D LLM bench; Superset (YC) เปิดตัว 'agents-era IDE'; Kanbots รัน parallel agents ต่อ Kanban card [9][30][14]
+- Google Agent Skills (19 skills + 7 commands) และ 'AI Engineer Coach' VS Code extension แบบ open-source ของ Microsoft มอบ agent workflows ที่มีโครงสร้างและใช้งานได้ฟรีใน Cursor/Antigravity [37][36]
+- Models.dev ให้บริการ open DB ของ spec/pricing/capabilities ของ model — เป็น input ที่ใช้งานได้จริงสำหรับ routing เมื่อ model field กระจายตัวมากขึ้น [21]
 
-## What happened
-วันนี้มีสองกระแสหลักที่โดดเด่นในวงการ AI devtools กระแสแรก: เครื่องมือ agent-orchestration ระเบิดตัว — Superset เปิดตัว 'IDE for the agents era' ที่ได้รับการสนับสนุนจาก YC [30], Kanbots เปิด source Kanban desktop ที่รัน parallel agents ต่อ card [14], Lightsprint วางตัวเป็น orchestration layer แทนที่ Jira/Linear สำหรับ multi-agent workflows [26][37], และเครื่องมือ knowledge-graph สำหรับ Claude Code แบบ local [2] แก้ปัญหาคอขวดด้านการค้นหา codebase Microsoft เปิด source 'AI Engineer Coach' — extension สำหรับ VS Code/Cursor/Antigravity ที่วัดรูปแบบการใช้ coding agents ของ dev [39], ขณะที่ Addy Osmani ส่ง 19 engineering skills + 7 commands สำหรับ Claude/agents [40] Anthony Sofo's Claude Code cheat sheet (/skills, /agents, /plan, /compact, MCP, hooks) ถูกแชร์อย่างกว้างขวาง [24]
+## สิ่งที่เกิดขึ้น
+มีการเปลี่ยนแปลงด้านต้นทุนและ supply สองเรื่องใหญ่: DeepSeek ปิด round ระดมทุน $10.29B โดย founder Liang Wenfeng ประกาศต่อสาธารณะว่าจะมุ่งเน้น open-source releases ต่อเนื่องแทนการสร้างรายได้ระยะสั้น [3] และ DeepSeek ทำให้ส่วนลด 75% ของ V4 Pro เป็นราคาถาวร — API ตอนนี้อยู่ที่ ~1/4 ของราคาเดิม [10] ด้าน tooling Microsoft เริ่มยกเลิก internal Claude Code licenses สะท้อนแรงเสียดทานระหว่าง GitHub Copilot กับ Anthropic [13] ขณะที่กลุ่ม agent-native IDEs และ orchestrators ออกมาเป็นระลอก: Antigravity 2.0 ขึ้นแท่น OpenSCAD 3D benchmark [9], Superset เปิดตัวบน HN ในฐานะ 'IDE for the agents era' [30] และ Kanbots เปิด open-source desktop Kanban ที่สร้าง coding agent ต่อ card [14] Lightsprint นำเสนอ orchestration layer สำหรับ parallel agents แทน Jira/Linear [24][34] Google ปล่อย Agent Skills (19 engineering skills + 7 commands ที่พกพาข้าม Claude Code/Cursor/Antigravity ได้) [37] และ Microsoft open-source 'AI Engineer Coach' ซึ่งเป็น VS Code extension ที่วิเคราะห์ด้วย telemetry ว่าคุณใช้ coding agents อย่างไรในความเป็นจริง [36] Models.dev เปิดตัว open spec/pricing/capability DB [21] ฝั่ง Local-LLM: BeeLlama v0.2.0 ทำได้ 164–177 tps บน RTX 3090 เครื่องเดียวสำหรับ Qwen 3.6 27B / Gemma 4 31B [16]; ByteShape บีบ Qwen3.6-35B-A3B ให้ทำงานบน VRAM 6GB [35]; BitCPM-CANN สำรวจ 1.58-bit บน Huawei Ascend [33]
 
-กระแสที่สอง: เศรษฐศาสตร์ของ model เปลี่ยนแปลง DeepSeek ทำให้ส่วนลด 75% ของ V4 Pro เป็นถาวร — API ตอนนี้ราว 1/4 ของราคาเดิม [10] — และปิดรอบระดมทุน $10.29B พร้อมผูกพันกับ open-source [4] การ inference แบบ local ก้าวหน้า: BeeLlama v0.2.0 ทำได้ 164–178 tps บน RTX 3090 ตัวเดียว [16], ByteShape รัน Qwen3.6-35B บน VRAM 6GB [36], และ Antigravity 2.0 ขึ้นอันดับ 1 ใน OpenSCAD architectural 3D LLM benchmark [9] Microsoft ยกเลิก Claude Code licenses ภายใน [13] สวนทางกับ senior dev ของ Microsoft ที่ demo Claude + เครื่องมือ MCP 1,400 รายการ [35] Models.dev เปิดตัวในฐานะ open spec/pricing DB [23]
+## เหตุใดจึงสำคัญ (การวิเคราะห์)
+สองแรงขับเคลื่อนเสริมกัน แรกแรก ต้นทุน inference กำลังดิ่งลง: การลดราคาถาวร ~75% ของ DeepSeek [10] บวกกับ war chest เพื่อดำเนินการ open-source ต่อ [3] ตั้ง floor ใหม่สำหรับงาน code/agent และ local stacks (BeeLlama, ByteShape, 1.58-bit) ทำให้ model ระดับ 30B ใช้งานได้จริงบน GPU ระดับ prosumer [16][35][33] — หมายความว่า agent loops ที่ไม่คุ้มทุนในไตรมาสที่แล้วตอนนี้อยู่ในงบประมาณแล้ว ประการที่สอง IDE layer กำลัง unbundle ออกจาก chat: skills, parallel-agent runners และ orchestration กลายเป็น product surface ที่แท้จริง [9][14][24][30][36][37] การที่ Microsoft ตัด Claude Code seats [13] คือสัญญาณเตือน — การ lock-in vendor รายเดียวในด้าน agents เป็นความเสี่ยงจริง และ tooling ที่ abstract model ออก (Models.dev [21], Skills [37]) มีคุณค่าเชิงกลยุทธ์มากขึ้น second-order: tools ด้าน team coordination (PM, review, preview envs) จะถูกเขียนใหม่รอบ N concurrent agents ต่องาน [24][34]; workflow แบบ Jira เดิมดูล้าสมัยแล้ว
 
-## Why it matters (reasoning)
-สแตก coding-agent กำลังจัดชั้นใหม่ Plugin IDE แบบ single-agent (Cursor, Copilot) ไม่ใช่แนวหน้าอีกต่อไป — layer ใหม่คือ parallel agents ต่อ task พร้อม orchestration, shared planning, และ preview environments [26][30][37] นัยคือ workflow ของทีม ไม่ใช่ productivity ของคนคนเดียว คือคอขวดถัดไป — ตรงกับสิ่งที่ studio ขนาดใหญ่สัมผัสอยู่แล้ว ผลทางอ้อม: เครื่องมือ SDLC (Jira/Linear) เผชิญการ disrupt จาก PM layer ที่ออกแบบมาสำหรับ agent โดยเฉพาะ, การทำ knowledge-graph indexing [2] กลายเป็นมาตรฐานขั้นต่ำเพราะ agents สิ้นเปลือง token มหาศาลในการค้นหา repo ซ้ำ
+## ความเป็นไปได้
+น่าจะเกิดขึ้น (~70%): ภายใน Q3 2026 ทีม dev ที่จริงจังส่วนใหญ่จะใช้ multi-agent-per-task workflows กับ portable Skills และราคาระดับ DeepSeek จะบีบให้ Anthropic/OpenAI ต้องลดราคา code-tier อีกครั้ง เป็นไปได้ (~40%): agent-IDE ที่โดดเด่นจะเกิดจาก Antigravity/Cursor/Superset ทำให้ monoculture ของ VS Code แตกตัว [9][30] โอกาสน้อยกว่า (~25%): Microsoft ประกาศนโยบาย Copilot-only อย่างเป็นทางการภายใน และองค์กรขนาดใหญ่อื่นๆ ตาม ส่งผลเสียต่อ enterprise narrative ของ Anthropic [13] Wildcard (~20%): ความก้าวหน้าด้าน 1.58-bit / DFlash ทำให้ 30B-on-laptop กลายเป็นค่าเริ่มต้นก่อนสิ้นปี [16][33]
 
-การลดราคาถาวร 75% ของ DeepSeek [10] บวกกับ war chest $10B [4] บังคับให้ frontier labs ต้องเลือกระหว่างการตามราคาหรือสร้างความแตกต่างด้านคุณภาพ/ความน่าเชื่อถือในงาน agentic การยกเลิก license ของ Microsoft [13] บ่งชี้แรงกดดันด้านต้นทุนแม้ใน hyperscalers — เกี่ยวข้องโดยตรงกับ studio ใดก็ตามที่วางงบประมาณการใช้ Claude การรวมตัวของ skills/MCP [24][35][40] หมายความว่า reusable agent patterns กำลังกลายเป็น portable assets ไม่ใช่ vendor lock-in
+## การประยุกต์ใช้สำหรับองค์กร — NDF DEV
+แนวทางที่จับต้องได้สำหรับ NDF DEV: 1) ทดลองใช้ DeepSeek V4 Pro เป็น fallback/bulk model ใน router สำหรับงาน coding ที่ไม่ sensitive, การสร้างเนื้อหา edutech และ Unity boilerplate — ที่ราคา 1/4 มันคืนทุนภายในหนึ่งสัปดาห์ [10] 2) ติดตั้ง Google Agent Skills + Microsoft AI Engineer Coach ใน Cursor/Claude Code ของทีม sprint นี้ ได้ประโยชน์ฟรี ไม่ lock-in [36][37] 3) ทดลองใช้ Kanbots หรือ Superset กับ feature หนึ่งใน Next.js/Supabase เพื่อทดสอบ parallel-agent-per-card กับ ticket จริง [14][30] 4) ติดตาม Models.dev เป็น source of truth สำหรับ model-routing config [21] 5) สำหรับ Unity/XR โดยเฉพาะ จับตาชัยชนะ OpenSCAD ของ Antigravity — prompt-to-3D primitives แบบเดียวกันอาจนำไปใช้กับ procedural level/asset tooling ได้ [9] สิ่งที่ควรหลีกเลี่ยง: อย่า standardize บน Claude Code แต่เพียงอย่างเดียว — การยกเลิกของ Microsoft [13] แสดงให้เห็นความเสี่ยงด้านสัญญา; เตรียม alt agent อย่างน้อยหนึ่งตัวให้พร้อมใช้งาน
 
-## Possibility
-น่าจะเกิดขึ้น (70%): ภายใน 3–6 เดือน parallel-agent orchestration แบบ Superset/Lightsprint/Kanbots จะกลายเป็นค่าเริ่มต้นสำหรับทีมที่ใช้ AI อย่างจริงจัง, Jira/Linear จะเปิดตัว agent task primitives แบบ native น่าจะเกิดขึ้น (60%): แรงกดดันด้านราคาของ DeepSeek บังคับให้ Anthropic เปิดตัว tier Sonnet/Haiku ราคาถูกลงหรือส่วนลดตามปริมาณภายใน Q3 2026 เป็นไปได้ (45%): มาตรฐาน MCP + Skills ตกผลึก, skill pack แบบ portable (เช่นของ Osmani [40]) กลายเป็น marketplace เป็นไปได้ (40%): Microsoft ถอนตัวจาก Claude ทั้งหมดเพื่อผลักดัน Copilot agents ของตัวเอง ทำให้เครื่องมือระดับ enterprise แตกแยก ไม่น่าจะเกิดขึ้น (20%): Local models (BeeLlama, ByteShape) แทนที่ cloud ในงาน coding จริง — ความเร็วมีแล้ว แต่ agentic reliability และ tool-use ยังตามไม่ทัน
+## Signals ที่ต้องติดตาม
+- การนำ DeepSeek V4 Pro ไปใช้ใน coding-agent benchmarks เทียบกับ Sonnet/GPT หลังลดราคา [10]
+- ว่า Google Agent Skills + MS AI Engineer Coach จะแตะ 10k+ stars และขยายข้าม IDE ได้หรือไม่ [36][37]
+- การตอบสนองของ Anthropic ต่อการยกเลิก license ของ Microsoft — enterprise terms เปลี่ยนแปลงหรือไม่? [13]
+- model ระดับ 30B local ที่ทำได้ >150 tps บน consumer GPU เครื่องเดียวกลายเป็นผลที่ทำซ้ำได้ [16][35]
 
-## Org applicability — NDF DEV
-เหมาะสมสูงสำหรับ NDF DEV:
-1) Claude Code skills + Osmani's 19-skill pack [40] และ Sofo cheat sheet [24] — นำมาใช้ทันทีสำหรับงาน Next.js/Supabase และการ generate script ใน Unity ต้นทุนต่ำ leverage สูง
-2) Local knowledge graph สำหรับ Claude Code [2] — เกี่ยวข้องโดยตรงเพราะ NDF รัน repo หลายตัว (TM Gym, EGAT, VRoom, NDF HR, Dej, Employee) คุ้มค่าที่จะ spike 1 วันเพื่อประเมิน
-3) Parallel-agent Kanban [14] — น่าสนใจสำหรับ edutech content pipelines (การ generate ScriptableObject, การร่างโครงบทเรียน) ซึ่งงานสามารถทำแบบ parallel ได้ คุ้มค่าทดลองกับ Enggenius
-4) DeepSeek V4 Pro ในราคา 1/4 [10] — ใช้เป็น secondary model สำหรับงาน bulk codegen, translation, และ content drafts ได้, ใช้ Claude สำหรับงาน architecture/XR ประหยัดจริง
-5) Microsoft AI Engineer Coach [39] — VS Code extension ต้นทุนต่ำ, ใช้วัด pattern การใช้ agent ของทีม คุ้มค่าลอง
-6) Local LLM (BeeLlama/Qwen3.6) [16][36] — ยังรอก่อน, ยังไม่แข่งขันได้สำหรับงาน agentic Unity/XR แต่ติดตามสำหรับ scenario การ deploy edutech แบบ offline
-
-ไม่คุ้มค่า: Lightsprint orchestration [26][37] — ยังเร็วเกินไป, ยังเป็นการคาดเดา, ทบทวนใหม่ Q4 Antigravity 2.0 [9] — เฉพาะกลุ่ม OpenSCAD/CAD, ไม่เกี่ยวข้องเว้นแต่ XR pipeline ต้องการ procedural geometry
-
-## Signals to Watch
-- ความเสถียรของราคา DeepSeek V4 Pro หลัง 90 วัน และคะแนน agentic benchmark เทียบกับ Claude/GPT
-- Microsoft จะออกจาก Claude ภายในองค์กรทั้งหมดหรือ [13] เป็นแค่การตัดค่าใช้จ่ายของทีมเฉพาะ
-- การเติบโตของจำนวน MCP tool (1,400+ วันนี้ [35]) และการเกิดขึ้นของ skill marketplace
-- การ adopt parallel-agent IDE: GitHub stars ของ Superset [30] / Kanbots [14] + ทีมจริงที่ ship งานด้วยเครื่องมือเหล่านี้
-
-## Repos & Tools to Try
+## Repos & Tools ที่ควรลองใช้
 | repo | source | url |
 |---|---|---|
-| **yt-dlp/yt-dlp** — รองรับ Bun แบบจำกัดและกำลังจะถูก deprecated | hackernews | <https://github.com/yt-dlp/yt-dlp> |
-| **unprovable/ShadowCat** — Show HN: ShadowCat – ถ่ายโอนไฟล์ผ่าน QR Codes ในเบราว์เซอร์ | hackernews | <https://github.com/unprovable/ShadowCat> |
-| **anomalyco/models.dev** — Models.dev: ฐานข้อมูล open-source ของ spec, ราคา, และความสามารถของ AI model | hackernews | <https://github.com/anomalyco/models.dev> |
-| **superset-sh/superset** — Launch HN: Superset (YC P26) – IDE for the agents era สวัสดี HN พวกเรา Avi, Kiet, และ Satya มาแล้ว เรากำลังสร้าง | hackernews | <https://github.com/superset-sh/superset> |
+| **yt-dlp/yt-dlp** — รองรับ Bun แบบจำกัดแล้วและถูก deprecated | hackernews | <https://github.com/yt-dlp/yt-dlp> |
+| **anomalyco/models.dev** — Models.dev: open-source database ของ spec, pricing และ capabilities ของ AI model | hackernews | <https://github.com/anomalyco/models.dev> |
+| **superset-sh/superset** — Launch HN: Superset (YC P26) – IDE for the agents era สวัสดี HN พวกเราคือ Avi, Kiet และ Satya เรากำลังสร้าง | hackernews | <https://github.com/superset-sh/superset> |
 | **razetime/ngn-k-tutorial** — Thinking in an array language (2022) | hackernews | <https://github.com/razetime/ngn-k-tutorial> |
+| **amatsuda/rubish** — Rubish: Unix shell ที่เขียนด้วย pure Ruby | hackernews | <https://github.com/amatsuda/rubish> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| hackernews | janandonly | ^798 c421 | [If you're an LLM, please read this](https://annas-archive.gl/blog/llms-txt.html) |
-| x | Suryanshti777 | ^717 c47 | [This is wild 🤯 Somebody finally realized AI coding agents spend half their time ](https://x.com/Suryanshti777/status/2057704871739171047) |
-| hackernews | d0ks | ^657 c315 | [Why Japanese companies do so many different things](https://davidoks.blog/p/why-japanese-companies-do-so-many) |
-| reddit | External_Mood4719 | ^618 c116 | [DeepSeek is pushing forward with $10.29 billion financing round, with Liang Wenf](https://www.reddit.com/r/LocalLLaMA/comments/1tkfvvj/deepseek_is_pushing_forward_with_1029_billion/) |
-| hackernews | tamnd | ^466 c479 | [Bun support is now limited and deprecated](https://github.com/yt-dlp/yt-dlp/issues/16766) |
-| hackernews | louiereederson | ^421 c252 | [Project Glasswing: An Initial Update](https://www.anthropic.com/research/glasswing-initial-update) |
-| hackernews | lexandstuff | ^411 c145 | [Shipping a laptop to a refugee camp in Uganda](https://notesbylex.com/shipping-a-laptop-to-a-refugee-camp-in-uganda) |
+| hackernews | janandonly | ^802 c424 | [If you're an LLM, please read this](https://annas-archive.gl/blog/llms-txt.html) |
+| hackernews | d0ks | ^669 c320 | [Why Japanese companies do so many different things](https://davidoks.blog/p/why-japanese-companies-do-so-many) |
+| reddit | External_Mood4719 | ^612 c116 | [DeepSeek is pushing forward with $10.29 billion financing round, with Liang Wenf](https://www.reddit.com/r/LocalLLaMA/comments/1tkfvvj/deepseek_is_pushing_forward_with_1029_billion/) |
+| reddit | HumanDrone8721 | ^528 c167 | [NVIDIA Removes Gaming Revenue Category From Financial Reports](https://www.reddit.com/r/LocalLLaMA/comments/1tkw5ri/nvidia_removes_gaming_revenue_category_from/) |
+| hackernews | tamnd | ^478 c493 | [Bun support is now limited and deprecated](https://github.com/yt-dlp/yt-dlp/issues/16766) |
+| hackernews | lexandstuff | ^440 c161 | [Shipping a laptop to a refugee camp in Uganda](https://notesbylex.com/shipping-a-laptop-to-a-refugee-camp-in-uganda) |
+| hackernews | louiereederson | ^429 c253 | [Project Glasswing: An Initial Update](https://www.anthropic.com/research/glasswing-initial-update) |
 | hackernews | ceejayoz | ^393 c242 | [U.S. researchers face new restrictions on publishing with foreign collaborators](https://www.science.org/content/article/u-s-researchers-face-new-restrictions-publishing-foreign-collaborators) |
-| hackernews | jetter | ^382 c150 | [Antigravity 2.0 Tops the OpenSCAD Architectural 3D LLM Benchmark](https://modelrift.com/blog/openscad-llm-benchmark/) |
-| hackernews | Tiberium | ^377 c218 | [DeepSeek makes the V4 Pro price discount permanent &gt; (3) The deepseek-v4-pro ](https://api-docs.deepseek.com/quick_start/pricing) |
-| hackernews | roflcopter69 | ^349 c152 | [Deno 2.8](https://deno.com/blog/v2.8) |
+| hackernews | jetter | ^385 c150 | [Antigravity 2.0 Tops the OpenSCAD Architectural 3D LLM Benchmark](https://modelrift.com/blog/openscad-llm-benchmark/) |
+| hackernews | Tiberium | ^382 c220 | [DeepSeek makes the V4 Pro price discount permanent &gt; (3) The deepseek-v4-pro ](https://api-docs.deepseek.com/quick_start/pricing) |
+| hackernews | roflcopter69 | ^357 c154 | [Deno 2.8](https://deno.com/blog/v2.8) |
 | hackernews | mychele | ^281 c27 | [Cleve Moler has died](https://www.mathworks.com/company/aboutus/founders/clevemoler.html) |
-| hackernews | robertkarl | ^227 c171 | [Microsoft starts canceling Claude Code licenses <a href="https:&#x2F;&#x2F;archi](https://www.theverge.com/tech/930447/microsoft-claude-code-discontinued-notepad) |
-| hackernews | vitriapp | ^215 c123 | [Open source Kanban desktop app that runs parallel agents on every card](https://www.kanbots.dev/) |
-| hackernews | speckx | ^195 c48 | [CISA tries to contain data leak](https://krebsonsecurity.com/2026/05/lawmakers-demand-answers-as-cisa-tries-to-contain-data-leak/) |
-| reddit | Anbeeld | ^181 c108 | [BeeLlama v0.2.0 – major DFlash update. Single RTX 3090: Qwen 3.6 27B up to 164 t](https://www.reddit.com/r/LocalLLaMA/comments/1tkpz2y/beellama_v020_major_dflash_update_single_rtx_3090/) |
-| hackernews | jicea | ^179 c62 | [Slumber a TUI HTTP Client](https://slumber.lucaspickering.me) |
-| hackernews | colinprince | ^149 c91 | [Sleep research led to a new sleep apnea drug](https://temertymedicine.utoronto.ca/news/how-decades-sleep-research-led-new-sleep-apnea-drug) |
-| hackernews | unprovable | ^143 c53 | [Show HN: ShadowCat – file transfer through QR Codes in a Browser](https://github.com/unprovable/ShadowCat) |
-| hackernews | speckx | ^142 c14 | [A Forth-inspired language for writing websites](https://robida.net/entries/2026/05/21/a-forth-inspired-language-for-writing-websites) |
-| hackernews | bilalq | ^138 c40 | [FBI director's Based Apparel site has been spotted hosting a 'ClickFix' attack](https://www.pcmag.com/news/kash-patels-apparel-site-is-trying-to-trick-visitors-into-installing-malware) |
-| hackernews | dan_hawkins | ^137 c36 | [I'm writing again](https://www.cringely.com/2026/05/21/im-writing-again/) |
-| hackernews | maxloh | ^134 c23 | [Models.dev: open-source database of AI model specs, pricing, and capabilities](https://github.com/anomalyco/models.dev) |
-| x | Anthony_Sofo | ^127 c12 | [Claude Code Cheat Sheet 🧠💻 Master workflows with: • /skills • /agents • /plan • ](https://x.com/Anthony_Sofo/status/2057828266279592318) |
-| x | agnt_hub | ^126 c15 | [Building a private AI agent shouldn't require a computer science degree. AGNT Hu](https://x.com/agnt_hub/status/2057811474416828882) |
+| hackernews | robertkarl | ^243 c188 | [Microsoft starts canceling Claude Code licenses <a href="https:&#x2F;&#x2F;archi](https://www.theverge.com/tech/930447/microsoft-claude-code-discontinued-notepad) |
+| hackernews | vitriapp | ^218 c123 | [Open source Kanban desktop app that runs parallel agents on every card](https://www.kanbots.dev/) |
+| hackernews | speckx | ^204 c50 | [CISA tries to contain data leak](https://krebsonsecurity.com/2026/05/lawmakers-demand-answers-as-cisa-tries-to-contain-data-leak/) |
+| reddit | Anbeeld | ^178 c108 | [BeeLlama v0.2.0 – major DFlash update. Single RTX 3090: Qwen 3.6 27B up to 164 t](https://www.reddit.com/r/LocalLLaMA/comments/1tkpz2y/beellama_v020_major_dflash_update_single_rtx_3090/) |
+| hackernews | colinprince | ^156 c93 | [Sleep research led to a new sleep apnea drug](https://temertymedicine.utoronto.ca/news/how-decades-sleep-research-led-new-sleep-apnea-drug) |
+| hackernews | bilalq | ^147 c41 | [FBI director's Based Apparel site has been spotted hosting a 'ClickFix' attack](https://www.pcmag.com/news/kash-patels-apparel-site-is-trying-to-trick-visitors-into-installing-malware) |
+| hackernews | speckx | ^144 c15 | [A Forth-inspired language for writing websites](https://robida.net/entries/2026/05/21/a-forth-inspired-language-for-writing-websites) |
+| hackernews | dan_hawkins | ^140 c36 | [I'm writing again](https://www.cringely.com/2026/05/21/im-writing-again/) |
+| hackernews | maxloh | ^138 c24 | [Models.dev: open-source database of AI model specs, pricing, and capabilities](https://github.com/anomalyco/models.dev) |
+| x | Anthony_Sofo | ^133 c15 | [Claude Code Cheat Sheet 🧠💻 Master workflows with: • /skills • /agents • /plan • ](https://x.com/Anthony_Sofo/status/2057828266279592318) |
+| x | agnt_hub | ^132 c15 | [Building a private AI agent shouldn't require a computer science degree. AGNT Hu](https://x.com/agnt_hub/status/2057811474416828882) |
 | x | xCryptoAlucard | ^124 c35 | [👉🏻 @lightsprintai is stepping in as the orchestration layer for AI-native engine](https://x.com/xCryptoAlucard/status/2057774717612744994) |
-| x | unicodeveloper | ^115 c16 | [Claude Code users are becoming the React developers of AI coding agents. You can](https://x.com/unicodeveloper/status/2057845190140825810) |
-| hackernews | weaponeer | ^114 c29 | [1940 Air Terminal Museum Begins Liquidation](https://www.1940airterminal.org/news/liquidation-of-simulators) |
-| reddit | Dangerous_Try3619 | ^100 c39 | [[NEW] Supra-50M Released! https://preview.redd.it/kx39ammxno2h1.jpg?width=1080&a](https://www.reddit.com/r/LocalLLaMA/comments/1tkhngq/new_supra50m_released/) |
-| hackernews | avipeltz | ^94 c117 | [Launch HN: Superset (YC P26) – IDE for the agents era Hey HN, we're Avi, Kiet, a](https://github.com/superset-sh/superset) |
+| x | unicodeveloper | ^116 c16 | [Claude Code users are becoming the React developers of AI coding agents. You can](https://x.com/unicodeveloper/status/2057845190140825810) |
+| hackernews | weaponeer | ^115 c29 | [1940 Air Terminal Museum Begins Liquidation](https://www.1940airterminal.org/news/liquidation-of-simulators) |
+| reddit | Dangerous_Try3619 | ^98 c39 | [[NEW] Supra-50M Released! https://preview.redd.it/kx39ammxno2h1.jpg?width=1080&a](https://www.reddit.com/r/LocalLLaMA/comments/1tkhngq/new_supra50m_released/) |
+| hackernews | hasheddan | ^97 c5 | [A blueprint for formal verification of Apple corecrypto](https://security.apple.com/blog/formal-verification-corecrypto/) |
+| reddit | Jorlen | ^95 c58 | [Can't believe I got it working! Dual GPU - 48gb VRAM llama-cpp server - R7900 + ](https://www.reddit.com/r/LocalLLaMA/comments/1tktxr0/cant_believe_i_got_it_working_dual_gpu_48gb_vram/) |
+| hackernews | avipeltz | ^94 c118 | [Launch HN: Superset (YC P26) – IDE for the agents era Hey HN, we're Avi, Kiet, a](https://github.com/superset-sh/superset) |
 
 
 ## โพสต์เด่น
 
 <div class="post-stream">
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Suryanshti777</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 717 · 💬 47</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Suryanshti777/status/2057704871739171047">View @Suryanshti777 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“This is wild 🤯 Somebody finally realized AI coding agents spend half their time searching your codebase instead of actually understanding it. So they built a local knowledge graph for Claude Code, Cur”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>CodeGraph คือ local semantic knowledge graph สำหรับ AI coding agent ที่ pre-index repo ทั้งหมด ให้ agent query relationships/call graphs ได้ทันที แทนการ grep ไล่ไฟล์ — ลด token ~59%, tool calls ~70%, cost ~35%</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>จุดช้าสุดของ Claude Code คือการ explore ไฟล์ตาบอด CodeGraph ตัดวงจรนั้นออกด้วย command เดียว ไม่ต้องพึ่ง cloud เลย</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">รัน `npx @colbymchenry/codegraph` บน project N หรือ W — Next.js+Supabase repos ที่ Claude Code เสีย tool calls ไปกับการหา route structure และ API dependency ก่อนเขียนโค้ดจริง</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/Suryanshti777/status/2057704871739171047" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
     <span class="ndf-author">@External_Mood4719</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 618 · 💬 116</span>
+    <span class="ndf-engagement">♥ 612 · 💬 116</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tkfvvj/deepseek_is_pushing_forward_with_1029_billion/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/v-JHBY6jSSojfn4y_Lcqo13dVINZeAotUfX3Zdfko-E.jpeg?auto=webp&amp;s=0e236e9597694d04268b482e36540bf2abc946e8" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“DeepSeek is pushing forward with $10.29 billion financing round, with Liang Wenfeng committing to continue developing open-source AI models rather than pursuing short-term commercialization goals [htt”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>DeepSeek ระดมทุน $10.29B โดย founder ยืนยันเดินหน้า open-source และมุ่ง AGI ไม่ใช่รายได้ระยะสั้น</dd>
+      <dd>DeepSeek ระดมทุน $10.29B โดย Liang Wenfeng ประกาศชัดว่าจะพัฒนา open-source AI ต่อไปและมุ่งเป้า AGI ไม่ใช่กำไรระยะสั้น</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>DeepSeek มีเงินหนักแต่ยังคง open-source หมายความว่าทีมเล็กยังรัน frontier model ได้ฟรี ต้นทุน inference แทบศูนย์ต่อไปเรื่อยๆ</dd>
+      <dd>เงิน $10B หนุน open-source AGI lab หมายความว่า frontier model ราคาถูกยังคงเข้าถึงได้ฟรี — ทีมเล็กที่ใช้ DeepSeek ผ่าน API หรือ local inference ได้ประโยชน์โดยตรง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">V และ D self-host DeepSeek ได้เลยสำหรับ NPC dialogue หรือสร้าง e-learning content โดยไม่มีค่า API per-token กิน margin project</dd>
+      <dd class="ndf-adapt">ทีมล็อก DeepSeek open model ปัจจุบันสำหรับ AI feature ใน Unity tools และ Next.js app ได้เลย — commitment ระยะยาวต่อ open-source ลด vendor-lock risk</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tkfvvj/deepseek_is_pushing_forward_with_1029_billion/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
@@ -161,18 +129,18 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@Anbeeld</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 181 · 💬 108</span>
+    <span class="ndf-engagement">♥ 178 · 💬 108</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tkpz2y/beellama_v020_major_dflash_update_single_rtx_3090/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/zW4iLnJxN0zQoUdThRA2N1dPbBFF2lRo5kWcCY9s-6I.png?auto=webp&amp;s=7a0ae648f0ddc4a0a417df18941520674e0610fa" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“BeeLlama v0.2.0 – major DFlash update. Single RTX 3090: Qwen 3.6 27B up to 164 tps (4.40x), Gemma 4 31B up to 177.8 tps (4.93x). Prompt processing speed near baseline. **BeeLlama v0.2.0 is here!** &amp;gt”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>BeeLlama v0.2.0 ใช้ DFlash speculative decoding ดัน speed บน RTX 3090 ตัวเดียวได้ 164–178 tps สำหรับ model ขนาด 27–31B เร็วขึ้น 4–5x จาก llama.cpp ปกติ</dd>
+      <dd>BeeLlama v0.2.0 คือ llama.cpp fork ที่ใช้ DFlash speculative decoding ทำได้ 177.8 tps บน Gemma 4 31B และ 164 tps บน Qwen 3.6 27B บน RTX 3090 ตัวเดียว เร็วขึ้นสูงสุด 4.93x</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Speed 4–5x บน GPU consumer ตัวเดียว แปลว่าทีมเล็กรัน local model 30B แบบ real-time ได้โดยไม่ต้องจ่าย cloud API</dd>
+      <dd>GPU consumer ตัวเดียวรัน 31B vision model ได้ใกล้ 200 tps — local inference ใช้งานได้จริงสำหรับ AI features แบบ real-time ไม่ต้องพึ่ง cloud API</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">NDF DEV ติดตั้ง BeeLlama บนเครื่อง RTX 3090 เพื่อรัน AI code-assist หรือ generate content สำหรับโปรเจกต์ V หรือ E ลดค่า token จาก cloud API ในงาน generate ซ้ำๆ</dd>
+      <dd class="ndf-adapt">Studio ลง BeeLlama บน RTX 3090 ที่มีอยู่ได้เลย ได้ local LLM inference เร็วขึ้น 4-5x ใช้กับ e-learning content generation, NPC dialogue หรือ internal dev tools ไม่ต้องเปลี่ยน hardware</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tkpz2y/beellama_v020_major_dflash_update_single_rtx_3090/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
@@ -181,18 +149,18 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@Anthony_Sofo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 127 · 💬 12</span>
+    <span class="ndf-engagement">♥ 133 · 💬 15</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Anthony_Sofo/status/2057828266279592318">View @Anthony_Sofo on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Claude Code Cheat Sheet 🧠💻 Master workflows with: • /skills • /agents • /plan • /compact • MCP tools • Memory &amp;amp; hooks Best practices: ✔️ Review diffs ✔️ Plan before coding ✔️ Compress context ✔️ A”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Cheat sheet สำหรับ Claude Code รวม command สำคัญ (/skills, /agents, /plan, /compact), MCP tools, memory &amp; hooks และ best practice อย่างการ review diffs และ plan ก่อน code</dd>
+      <dd>Cheat sheet สำหรับ Claude Code รวม slash commands (/skills, /agents, /plan, /compact), MCP tools, memory &amp; hooks พร้อม best practices เช่น review diff, plan ก่อน code, compress context</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ยืนยันว่า ROI ของ AI coding มาจาก system—hooks, memory, context compression—ไม่ใช่แค่ prompt เปล่าๆ ทีมเล็กได้ประโยชน์สูงสุดจาก multiplier พวกนี้</dd>
+      <dd>มอง AI coding เป็น systems discipline ไม่ใช่แค่ prompt — ต้องเชื่อม hooks, memory, agents ให้เป็น workflow ที่ทำซ้ำได้ทั้งทีม</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">NDF DEV มี hooks และ /rrr อยู่แล้ว—เพิ่ม /compact trigger ใน session ยาวของ V หรือ D เพื่อลด token cost และ document /agents เฉพาะ project แต่ละตัวลง ONBOARDING.md</dd>
+      <dd class="ndf-adapt">Studio ใช้ Oracle + hooks + MCP อยู่แล้ว — ทำ internal one-pager ให้ทุกคน (Unity, XR, web) เริ่ม session ด้วย pattern เดียวกัน: plan, compress, automate</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/Anthony_Sofo/status/2057828266279592318" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -201,18 +169,18 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@agnt_hub</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 126 · 💬 15</span>
+    <span class="ndf-engagement">♥ 132 · 💬 15</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/agnt_hub/status/2057811474416828882">View @agnt_hub on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Building a private AI agent shouldn't require a computer science degree. AGNT Hub lets you drag and drop modular agents to build automated workflows inside a fully encrypted cloud sandbox. Soon, you'l”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>AGNT Hub เป็น platform no-code แบบ drag-and-drop สำหรับสร้าง AI agent workflow บน cloud ที่ encrypted โดยอ้างว่า deploy ได้ใน 60 วินาที ไม่ต้องเขียนโค้ด</dd>
+      <dd>AGNT Hub เป็นเครื่องมือสร้าง AI agent แบบ drag-and-drop ไม่ต้องเขียนโค้ด ทำงานบน encrypted cloud sandbox และอ้างว่า deploy agent อัตโนมัติได้ใน 60 วินาที</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ทีมเล็กสร้าง multi-agent automation pipeline ได้โดยไม่ต้องมี backend engineer — ลดเวลา experiment จากหลายวันเหลือไม่กี่ชั่วโมง</dd>
+      <dd>การ orchestrate agent แบบ no-code ช่วยให้สมาชิกทีมที่ไม่ใช่ developer สร้าง workflow อัตโนมัติได้เอง โดยไม่ต้องดึงนักพัฒนาออกจากงานหลัก</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">โปรเจกต์ N หรือ E ลองใช้ AGNT Hub automate workflow HR ซ้ำๆ (ลางาน, onboarding checklist) ก่อนตัดสินใจเขียน Supabase Edge Function เอง</dd>
+      <dd class="ndf-adapt">ทีม ops หรือ content ของ studio ลองสร้าง workflow อัตโนมัติสำหรับงานภายใน (pipeline asset, report, อัปเดต client) บน AGNT Hub ก่อนที่ dev team จะลงทุนสร้าง agent tooling เองบน Supabase/Next.js stack</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/agnt_hub/status/2057811474416828882" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -228,11 +196,11 @@ translated_by: claude-sonnet-4-6
     <p class="ndf-quote">“👉🏻 @lightsprintai is stepping in as the orchestration layer for AI-native engineering. The old SDLC tools like Jira or Linear are just not built for a workflow where you run multiple coding agents in ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Lightsprint AI (YC-backed) วาง position ตัวเองเป็น orchestration layer แทน Jira/Linear สำหรับทีมที่รัน coding agents หลายตัวพร้อมกัน พร้อม PR preview environment แยกต่อ task</dd>
+      <dd>Lightsprint (YC-backed) วางตัวแทน Jira/Linear สำหรับทีม AI-native dev รองรับ coding agent หลายตัวพร้อมกัน และมี PR preview environment ทันทีต่อ agentic task</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Workflow แบบ parallel agents ทำให้ ticket-based planning tools กลายเป็น bottleneck — ตรงประเด็นว่าทีมเล็กควรจัด AI-assisted dev process ยังไง</dd>
+      <dd>ทีมที่รัน AI coding agent หลายตัวอยู่แล้วชนกำแพงกับ task board ที่ออกแบบมาสำหรับคน Lightsprint แก้ตรงจุดนั้น ไม่ใช่แค่ wrap tool เดิม</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">NDF DEV รัน G, D, V, N, W, E พร้อมกันอยู่แล้ว — ลอง Lightsprint เป็น planning layer โปรเจกต์เดียวก่อน (V หรือ D) ดูว่า PR preview ต่อ agent ช่วยลด context-switch ได้จริงมั้ย</dd>
+      <dd class="ndf-adapt">Web stack ของ studio กับการใช้ agent ที่เพิ่มขึ้น ควรลอง Lightsprint — PR preview ต่อ task ลดรอบ review web feature และลด context-switching ให้ทีม dev ได้จริง</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/xCryptoAlucard/status/2057774717612744994" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -241,18 +209,18 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@unicodeveloper</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 115 · 💬 16</span>
+    <span class="ndf-engagement">♥ 116 · 💬 16</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/unicodeveloper/status/2057845190140825810">View @unicodeveloper on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Claude Code users are becoming the React developers of AI coding agents. You can’t tell them there are alternatives. Yep, i said it! So I did the comparison nobody wanted: - Claude Code @claudeai vs -”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>นักพัฒนาเปรียบ Claude Code users ว่าเหมือน React devs คือไม่ยอมฟังทางเลือกอื่น พร้อมเปรียบ Claude Code vs Codex vs OpenCode</dd>
+      <dd>Developer เปรียบเทียบ AI coding agent สามตัว — Claude Code, Codex, OpenCode — และสังเกตว่า Claude Code users ภักดีกับเครื่องมือมากจนไม่ยอมฟังทางเลือกอื่น เหมือน React developers</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ถ้า Claude Code ครอง mindshare นักพัฒนา การ bet ทั้งทีมบน tool เดียวลด switching cost — ไม่ต้องกระจายการเรียนรู้หลาย tool</dd>
+      <dd>มี benchmark จริงสามทางแล้ว — ข้อมูลตรงนี้ช่วยทีมเล็กเลือก AI coding agent ได้จากข้อเท็จจริง ไม่ใช่แค่ตาม hype</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทีม NDF DEV ใช้ Claude Code อยู่แล้ว — ล็อกเป็น standard tool ทุก project (G/D/V/N/W/E) เลย ห้ามกระจาย Codex หรือ OpenCode คู่ขนาน</dd>
+      <dd class="ndf-adapt">Studio ควรดู comparison นี้แล้วเลือก agent เดียวใช้ทั้ง Unity, web, XR — ใช้หลายตัวแยกกันเสีย onboarding time โดยไม่จำเป็น</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/unicodeveloper/status/2057845190140825810" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -261,20 +229,40 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@Dangerous_Try3619</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 100 · 💬 39</span>
+    <span class="ndf-engagement">♥ 98 · 💬 39</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tkhngq/new_supra50m_released/" target="_blank" rel="noopener"><img src="https://preview.redd.it/kx39ammxno2h1.jpg?width=1080&amp;format=pjpg&amp;auto=webp&amp;s=d1a2d5b27920a5b61a50547a6e70a6378445cae4" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“[NEW] Supra-50M Released! https://preview.redd.it/kx39ammxno2h1.jpg?width=1080&amp;amp;format=pjpg&amp;amp;auto=webp&amp;amp;s=d1a2d5b27920a5b61a50547a6e70a6378445cae4 # SupraLabs released a new model! - Supra-50”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>SupraLabs ปล่อย Supra-50M โมเดลภาษา 50M parameter (Base + Instruct) เทรนบน 20B token ชนะ GPT-2 124M และ SmolLM-135M ใน benchmark หลายตัว ทั้งที่ขนาดเล็กกว่า 2-5 เท่า</dd>
+      <dd>SupraLabs ปล่อย Supra-50M โมเดล 50M parameter (Base + Instruct) เทรนบน 20B tokens ชนะ GPT-2 124M และ SmolLM-135M ในหลาย benchmark ทั้งที่เล็กกว่า 2-5 เท่า</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>โมเดล 50M ชนะตัวที่ใหญ่กว่าได้ แปลว่า LLM ฝัง on-device หรือ in-browser ได้จริง ทีมเล็กไม่ต้องพึ่ง cloud API ประหยัดต้นทุนได้ชัดเจน</dd>
+      <dd>โมเดล 50M สู้กับ 124-270M ได้ พิสูจน์ว่า data quality ชนะ scale บทเรียนสำคัญสำหรับทีมที่ต้องรัน inference บน edge หรือฮาร์ดแวร์จำกัด</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">V ฝัง Supra-50M-Instruct ทำ NPC dialogue ได้โดยไม่มี cloud latency. E ใช้ทำ HR Q&amp;A แบบ local บน Employee Page ข้อมูลไม่ออกนอก server</dd>
+      <dd class="ndf-adapt">ทีม e-learning และ Unity XR สามารถฝัง Supra-50M-Instruct ลงในตัวแอปโดยตรง ใช้ generate NPC dialogue หรือข้อสอบ ไม่ต้องพึ่ง cloud API</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tkhngq/new_supra50m_released/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Jorlen</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 95 · 💬 58</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tktxr0/cant_believe_i_got_it_working_dual_gpu_48gb_vram/" target="_blank" rel="noopener"><img src="https://i.redd.it/ii1w278ttq2h1.png" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Can't believe I got it working! Dual GPU - 48gb VRAM llama-cpp server - R7900 + 7800XT Setup: Kubuntu 24.04 - AMD cards - R9700 AI PRO and 7800xt (32gb + 16gb) - llama-cpp server - stack setup in dock”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ผู้ใช้รัน llama-cpp server บน dual GPU AMD (R9700 + 7800XT รวม 48GB VRAM) ด้วย Docker Vulkan image บน Kubuntu เพราะ ROCm ใช้กับ GPU ต่าง generation (RDNA4+RDNA3) ไม่ได้</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>Vulkan แทน ROCm ได้จริงกับ AMD GPU ต่าง gen — รัน local LLM 48GB ได้โดยใช้การ์ดเก่าที่มีอยู่แล้ว ไม่ต้องพึ่ง cloud API</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">studio รวม AMD GPU เก่าที่มีอยู่ผ่าน llama-cpp + Docker Vulkan รัน 70B+ model local ได้ ลด API cost สำหรับ AI ช่วยเขียน Unity script หรือสร้าง e-learning content</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tktxr0/cant_believe_i_got_it_working_dual_gpu_48gb_vram/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
 </article>
 </div>

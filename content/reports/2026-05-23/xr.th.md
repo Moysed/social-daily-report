@@ -4,7 +4,7 @@ date: '2026-05-23'
 topic: xr
 lang: th
 pair: xr.en.md
-generated_at: '2026-05-23T08:38:17+00:00'
+generated_at: '2026-05-23T09:38:06+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,17 +12,17 @@ platforms:
 - x
 regions:
 - global
-post_count: 26
+post_count: 25
 salience: 0.35
 sentiment: neutral
 confidence: 0.55
 tags:
 - xr
 - webxr
-- quest
-- r3f
+- quest3
+- walkabout
+- llm-coding
 - edutech
-- immersive-web-sdk
 thumbnail: https://external-preview.redd.it/YXJmZmx2dmdscDJoMVaRBSBGq0TWjj5ZWChVtq5BLrRDdo-OwgRHz4-J1SWl.png?format=pjpg&auto=webp&s=2b64708f17dd05a031eed8379f9d78e45c312cc1
 translated_by: claude-sonnet-4-6
 ---
@@ -30,61 +30,59 @@ translated_by: claude-sonnet-4-6
 # XR / VR / AR — 2026-05-23
 
 ## TL;DR
-- ชุมชน XR บน Reddit เอนไปทางผู้บริโภคและการเล่นเป็นหลัก — ฝึกกีตาร์ใน XR [1], ม็อด flight stick พิมพ์ 3D [2], เกม survival อินดี้ [3], และ DLC ของ Walkabout Mini Golf [4] ครองการมีส่วนร่วม
-- สัญญาณฝั่ง dev ที่ชัดเจน: นักพัฒนา WebXR งานอดิเรกรายหนึ่ง 'vibe-coded' เกมบน Quest 2 ด้วย React Three Fiber + LLM และกำลังพิจารณา Meta's Immersive Web SDK [6]
-- สัญญาณ X/Twitter ด้าน XR วันนี้เป็น noise เกือบทั้งหมด — token 'AR/XR/VR' ส่วนใหญ่ไม่เกี่ยวข้อง (การเมืองตุรกี/ลัตเวีย, NFT, ประกาศขาย iPhone XR, การ์ด Pokémon AR) [8–25]
-- ไม่มีประกาศ headset, SDK, หรือ platform สำคัญในชุดข้อมูลนี้ — วันข่าวเงียบ; ขับเคลื่อนด้วย engagement ไม่ใช่ announcement
-- บทสรุปเชิงปฏิบัติ: XR-as-tool (ฝึกดนตรี, อุปกรณ์เสริม, WebXR prototyping) คือกระแสที่ยั่งยืนและคุ้มค่าติดตาม ไม่ใช่กระแส headline
+- สัญญาณ Consumer XR ครองวันนี้: ฝึกกีตาร์ใน XR [1], 3D-printed flight stick บน Quest 3 [2], และเกม survival บรรยากาศหนักแน่น [3] — ผู้เล่นลงทุนทั้งเวลาและความพิถีพิถัน ไม่ใช่แค่ซื้อ hardware
+- WebXR เริ่ม LLM-friendly: นักพัฒนารายหนึ่งรายงานว่า vibe-coding เกม Quest 2 ด้วย React Three Fiber + WebXR โดยให้ LLM เขียนโค้ดส่วนใหญ่ และตั้งคำถามเกี่ยวกับ Meta's Immersive Web SDK [6]
+- Live-service mini-golf ยังทำรายได้ต่อเนื่อง: Walkabout เพิ่ม Homestar Runner pack [4] ยืนยันว่า social VR แรงเสียดทานต่ำ + IP packs เป็นโมเดลที่ยั่งยืน
+- รายการ X ส่วนใหญ่ที่ tag 'AR/VR' คือ noise (สนทนาภาษาทมิฬ/ลัตเวีย/ตุรกี, ประกาศขาย iPhone XR) [10-25] — signal XR จริงวันนี้กระจุกตัวอยู่ใน Reddit communities
 
 ## สิ่งที่เกิดขึ้น
-engagement ที่แข็งแกร่งที่สุดวันนี้คือเนื้อหา Quest สายผู้บริโภค/งานอดิเรก: ฝึกกีตาร์ใน XR [1], flight stick DIY พิมพ์ 3D สำหรับ Warplanes [2], เกม survival ยุคประวัติศาสตร์ Bramblefort ที่วางขายบน Steam [3], และ DLC ธีม Homestar Runner สำหรับ Walkabout Mini Golf จะวางจำหน่าย 25 มิถุนายน [4] โพสต์ที่เกี่ยวข้องกับ developer เพียงรายการเดียวคือการทดลอง WebXR — เกม Quest 2 ที่สร้างด้วย R3F + WebXR โดยใช้ LLM เขียนเป็นหลัก พร้อมผู้เขียนถามถึง Meta's Immersive Web SDK [6]
+Reddit VR subs โผล่ signal งานอดิเรก-ฝีมือแรงมาก: โพสต์ไวรัลเรื่องฝึกกีตาร์ใน XR ได้ 879 upvotes [1], ผู้ใช้ Quest 3 คนหนึ่ง 3D-print flight stick สำหรับ Warplanes [2], และเกม survival บึงศตวรรษที่ 19 บรรยากาศหม่นหมอง บน Steam [3] Walkabout Mini Golf ประกาศ Homestar Runner DLC วันที่ 25 มิถุนายน [4] สานต่อจังหวะการออก IP pack อย่างสม่ำเสมอ นักพัฒนา WebXR คนหนึ่งแชร์การทดลอง vibe-coding ด้วย React Three Fiber + WebXR บน Quest 2 โดยให้ LLM เขียนโค้ดส่วนใหญ่ พร้อมถามว่ามีใครลอง Meta's Immersive Web SDK บ้าง [6]
 
-ฟีด X ออกนอกเรื่องแทบทั้งหมด — substring 'ar', 'xr', 'vr' ดักจับโพสต์ภาษาตุรกี, ลัตเวีย, ดัตช์, ญี่ปุ่น, และอินโดนีเซียที่ไม่เกี่ยวกัน (Extinction Rebellion [18], ประกาศขาย iPhone XR [24], การ์ด Pokémon AR [23][25], ภาพ AR สาย NFT [13]) มีโพสต์คาดเดาคลุมเครือหนึ่งรายการอ้างว่า 'software กำลังจะทันกับ hardware ในราว 2 เดือน' แต่ไม่มีหลักฐานรองรับ [14]
+รายการ X/Twitter ที่ tag 'AR/VR' แทบทั้งหมดออกนอกเรื่อง (การเมือง, กีฬา, ข้อความภาษาต่างๆ ที่มีตัวอักษร 'ar', ประกาศขาย iPhone XR [14]) [10-25] มี signal จริงเพียงเล็กน้อย — อันดับเพลง VTuber [8], ประสบการณ์ VR พร้อมกลิ่นในพิพิธภัณฑ์ [9], และคุยเรื่อง VR horror ตามปกติ [23]
 
-## เหตุผลที่สำคัญ
-อัตราส่วน signal-to-noise ต่ำวันนี้ ซึ่งตัวมันเองก็เป็นข้อมูล: ไม่มี SDK release, ไม่มีข่าว headset, ไม่มีดีล enterprise XR โผล่มา รูปแบบที่ยั่งยืนใน [1][2][6] คือ value ที่ sticky ที่สุดของ XR ตอนนี้อยู่ที่การเสริมงาน (task-augmentation) และการทดลองดัดแปลง — ฝึกเล่นเครื่องดนตรี, ม็อดอุปกรณ์เสริม, browser-based prototyping — ไม่ใช่เกม blockbuster ผลทางอ้อม: WebXR + LLM-assisted coding [6] ยังคงลดเพดานเข้าถึงสำหรับนักพัฒนาเดี่ยว/studio เล็ก ซึ่งบีบ margin ของประสบการณ์ immersive ทั่วไป แต่ขยายตลาดสำหรับกลุ่มที่ขัดเกลาและเฉพาะ domain (edutech, การฝึกอบรม, ดนตรี) cadence DLC ของ Walkabout [4] ยืนยันว่า content drop แบบ live-service ยังคงขับเคลื่อน engagement บน Quest ได้มากกว่าเรื่องราว hardware ใหม่
+## เหตุที่สำคัญ (เหตุผล)
+กลุ่ม Reddit แสดงให้เห็นว่าจุดศูนย์ถ่วงของ XR กำลังเปลี่ยนจากความตื่นตะลึงไปสู่การฝึกฝนและการ personalize: เครื่องดนตรี [1], haptics ที่ custom เอง [2], เกม social IP เฉพาะกลุ่ม [4] ซึ่งเอื้อต่อ studio ขนาดเล็กที่ ship ประสบการณ์เจาะลึกและเฉพาะเจาะจงมากกว่า AAA โพสต์ WebXR + LLM [6] คือ signal เชิงกลยุทธ์ที่น่าสนใจที่สุด — ถ้า browser-based XR สามารถ prototype ได้โดย dev ที่ใช้ LLM ขับเคลื่อน ต้นทุนขั้นต่ำในการทดลอง XR จะลดลง และ Meta's Immersive Web SDK จะกลายเป็นช่องทางแข่งกับ Unity/Unreal สำหรับ short-form content เสียง noise จาก X ยืนยันว่า 'AR/VR' ในฐานะ keyword เจือจางเกินไปสำหรับการ mine trend — แหล่งที่ scoped ตาม community ให้ signal ที่ดีกว่า
 
 ## ความเป็นไปได้
-น่าจะเกิด (~70%): การนำ WebXR + Meta Immersive Web SDK ไปใช้เติบโตต่อเนื่องตลอดปี 2026 ในฐานะช่องทาง distribution ที่ถูกที่สุด (ไม่ต้องผ่าน store gatekeeping) อาจเกิดขึ้น (~40%): คลื่นแอป 'ฝึก/เรียนทักษะใน XR' (ดนตรี, ภาษา, กีฬา) ตามกระแสความนิยมกีตาร์ [1] และปิงปอง [26] โอกาสน้อย (~20%): คำอ้างคลุมเครือ 'software ทันใน 2 เดือน' [14] จะกลายเป็นอะไรที่จับต้องได้ — ถือเป็นข่าวลือไว้ก่อน ไม่มีหลักฐานในชุดข้อมูลนี้ที่ชี้ถึง platform shift ครั้งใหญ่ (Apple, Samsung, Pico)
+ระยะใกล้ (3-6 เดือน, ~60%): WebXR + LLM scaffolding กลายเป็น path ที่ viable สำหรับ prototype demo ให้ client และ POC edutech โดยเฉพาะในกรณีที่ friction การติดตั้ง Unity ฆ่า deal ได้ ระยะกลาง (6-12 เดือน, ~45%): โมเดล 'social + IP pack' แบบ Walkabout ถูก copy เข้า edutech (ห้องเรียน branded) โอกาสต่ำกว่า (~25%): ประเภทงานอดิเรก-ฝีมือ เช่น ฝึกดนตรี [1] และ sim-rig [2] เติบโตเป็น commercial categories ที่ Meta โปรโมตบน Quest store ข่าว hardware วันนี้ไม่มี — ไม่อยู่ในวงจร launch
 
-## ความเกี่ยวข้องกับ NDF DEV
-เกี่ยวข้องโดยตรงกับจุดที่ XR/edutech ของ NDF DEV ทับกัน มีสองแนวทางเชิงปฏิบัติที่คุ้มค่าลงทุนเล็กน้อย: (1) Spike WebXR prototype โดยใช้ R3F + Meta Immersive Web SDK [6] — สอดคล้องกับ stack Next.js ของ studio, ลด friction ของ Unity build pipeline สำหรับ demo ที่ deliver ผ่าน browser, เหมาะสำหรับ pitch ลูกค้าและ micro-module ด้าน edutech ความพยายาม: 1–2 dev-day สำหรับ proof (2) สังเกตรูปแบบ 'XR เป็นเครื่องมือฝึก' [1][26] — สำหรับลูกค้า Thai edutech (ภาษา, ดนตรี, การฝึกอาชีพ) การวนฝึกบน Quest เป็น pitch ที่ defend ได้มากกว่า XR สาย entertainment ไม่ถึงขนาดต้อง pivot งาน Unity; แต่คุ้มค่าเพิ่ม WebXR เป็น delivery target ที่สอง
+## ความเกี่ยวข้องกับองค์กร — NDF DEV
+จุดที่เชื่อมตรงกับ NDF DEV: (1) รัน WebXR + R3F spike หนึ่งสัปดาห์บน Next.js host เพื่อทดสอบ Meta Immersive Web SDK [6] — ต้นทุนต่ำ, ใช้ประโยชน์จาก stack Next.js/Supabase ที่มีอยู่, มีประโยชน์สำหรับ demo edutech ที่ต้องการ delivery แบบ zero-install (2) สำหรับโปรเจกต์ Unity XR, สังเกตว่าเกมแนว practice/skill-loop [1] และ sim ที่ peripheral-friendly [2] มีกลุ่มผู้ชมที่ engaged — เกี่ยวข้องหากจะ pitch XR edutech (ฝึกเครื่องดนตรี, วิชาชีพ) (3) โมเดล IP pack ของ Walkabout [4] เป็น reference สำหรับ monetize branded edu content ยังไม่ควรดำเนินการตอนนี้: native social-VR engine, AR mobile (ไม่มี signal ในฟีด)
 
-## สัญญาณที่ควรติดตาม
-- การนำ Meta Immersive Web SDK ไปใช้ + tutorials ใน r/WebXR ใน 4–6 สัปดาห์ข้างหน้า
-- ว่า WebXR builds ที่ใช้ LLM ช่วย [6] เริ่มปรากฏเป็น Quest browser apps ที่ publish แล้ว ไม่ใช่แค่การทดลองหรือไม่
-- cadence DLC แบบ Walkabout [4] ในฐานะ benchmark สำหรับ content retention บน Quest
-- ข่าว SDK/headset ที่ชัดเจนใด ๆ เพื่อยืนยันหรือหักล้างข่าวลือ '2 เดือน' ใน [14]
+## Signals ที่ต้องติดตาม
+- Meta's Immersive Web SDK จะมี public roadmap หรืออัปเดต sample repo ในเดือนหน้าหรือไม่ [6]
+- ผลตอบรับ launch Homestar Runner ของ Walkabout วันที่ 25 มิถุนายน — ใช้วัด viability ของ IP pack [4]
+- การเกิดขึ้นของ LLM-friendly WebXR scaffolds / starter kits บน GitHub
+- การ curate Quest store ที่เปลี่ยนไปสู่ประเภท practice/skill vs. arcade
 
-## แหล่งข้อมูลดิบ
+## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| reddit | Motanum | ^859 c96 | [I just can't get over how fun it is to play and practice guitar in XR.](https://www.reddit.com/r/virtualreality/comments/1tkmpa7/i_just_cant_get_over_how_fun_it_is_to_play_and/) |
+| reddit | Motanum | ^879 c97 | [I just can't get over how fun it is to play and practice guitar in XR.](https://www.reddit.com/r/virtualreality/comments/1tkmpa7/i_just_cant_get_over_how_fun_it_is_to_play_and/) |
 | reddit | vfx_tech | ^90 c32 | [3d printed a VR Flight Stick it's sooo much better to play Warplanes 😍](https://www.reddit.com/r/Quest3/comments/1tkltxx/3d_printed_a_vr_flight_stick_its_sooo_much_better/) |
-| reddit | Bramblefort | ^50 c13 | [Surviving a 19th-century marsh encounter Steam link: [https://store.steampowered](https://www.reddit.com/r/virtualreality/comments/1tkqpy1/surviving_a_19thcentury_marsh_encounter/) |
-| reddit | KonceptioN2 | ^36 c8 | [Homestar Runner Distraction Pack Announced as Next Walkabout Mini Golf DLC - Com](https://www.reddit.com/r/virtualreality/comments/1tkp16c/homestar_runner_distraction_pack_announced_as/) |
+| reddit | Bramblefort | ^50 c19 | [Surviving a 19th-century marsh encounter Steam link: [https://store.steampowered](https://www.reddit.com/r/virtualreality/comments/1tkqpy1/surviving_a_19thcentury_marsh_encounter/) |
+| reddit | KonceptioN2 | ^35 c8 | [Homestar Runner Distraction Pack Announced as Next Walkabout Mini Golf DLC - Com](https://www.reddit.com/r/virtualreality/comments/1tkp16c/homestar_runner_distraction_pack_announced_as/) |
 | reddit | vfx_tech | ^10 c7 | [😂 this was really funny a lil bit old but still great - turn sound on!](https://www.reddit.com/r/Quest3/comments/1tktswe/this_was_really_funny_a_lil_bit_old_but_still/) |
-| reddit | fermatf | ^7 c6 | [Tried vibecoding a VR game with R3F + webxr, anyone else? quest 2, mostly LLM-wr](https://www.reddit.com/r/WebXR/comments/1tjk3bz/tried_vibecoding_a_vr_game_with_r3f_webxr_anyone/) |
-| reddit | Equal_Translator_605 | ^6 c1 | [This Is A Great Reason To Reinstall Days Gone! Hopefully we can get this playing](https://www.reddit.com/r/Quest3/comments/1tjsusw/this_is_a_great_reason_to_reinstall_days_gone/) |
-| x | kaluputic_s | ^1 c0 | [Who controls the media? Meta owns: Facebook Instagram WhatsApp Messenger Threads](https://x.com/kaluputic_s/status/2058104136265281699) |
-| x | QArmanc47285 | ^0 c0 | [2 tutsağın tahliyesi 9 ay ertelendi Sincan Kadın Kapalı Cezaevi'nde tutulan Meli](https://x.com/QArmanc47285/status/2058104303412256927) |
-| x | JayneEdwards2 | ^0 c0 | [@davidwhitaker40 GFY yer ZIONAZ! PoS and stuff yer antisemitism bollux up yer ar](https://x.com/JayneEdwards2/status/2058104293731786925) |
-| x | koronevskis | ^0 c0 | [@VDAA_gov_lv es uzreiz piebildīšu, ka aizpildīju https://t.co/8FIF36K0Ii testētā](https://x.com/koronevskis/status/2058104284474921396) |
-| x | yume211212 | ^0 c1 | [【創業日記 3/5】 新澪の身体について、見た目は今までとほぼ同じなのに「一見して全く別物」にするという難題に、ようやく答えが見えてきた。 AIに何度案を作らせ](https://x.com/yume211212/status/2058104279387590875) |
-| x | SirPhilix | ^0 c0 | [Weekend vibes… but the Zillas🦖🔥 still building So I cooked up a little AR visual](https://x.com/SirPhilix/status/2058104279374676424) |
-| x | foomagemindset | ^0 c0 | [get a xr headset. The software is due to catch up with the hardware in about 2 m](https://x.com/foomagemindset/status/2058104262769496150) |
-| x | Hisawa5_v | ^0 c0 | [ARアクスタ？ってやついいな。とても楽しそうである](https://x.com/Hisawa5_v/status/2058104258315325886) |
-| x | KasparsMelkis | ^0 c0 | [@Janis8578943573 Cik saprotu, LPV mērķis ir draudzēties ar Trampu. Tramps ir tok](https://x.com/KasparsMelkis/status/2058104249397944454) |
-| x | jnjmani | ^0 c0 | [ถ้ารู้ว่าเป็นแบบนี้จะรับงานจีนไปถึงเมื่อไหร่ @DomundiTV รับอยู่อย่างไปก็โดนซาแซง](https://x.com/jnjmani/status/2058104238593708349) |
-| x | Water_juffer | ^0 c0 | [Deze klimaatbewuste burger distantieert zich volledig van de aangekondigde actie](https://x.com/Water_juffer/status/2058104233031860420) |
-| x | chocoo_oreoo | ^0 c0 | [@Eiras2u ar tau es osron ga ar](https://x.com/chocoo_oreoo/status/2058104206540828888) |
-| x | ca62711289 | ^0 c0 | [@muslimdijital 21.yy insanında ar kalmamış! Bir defa da özür dileyerek bazı arka](https://x.com/ca62711289/status/2058104160256426101) |
-| x | puthinator11728 | ^0 c0 | [@ar_pencil arさん…！！！やはりそうですよね！！ 私もずっとフガフガ言っています…！！！🐽 arさんはどの商品が一番気になりますか！？👀](https://x.com/puthinator11728/status/2058104143278141674) |
-| x | nekotensan2 | ^0 c0 | [おお〜気になる！ でも黒縁メガネ嫌いだからいつか普通の細いフレームにも実装できたらいいな。 その前にVR欲しい…。](https://x.com/nekotensan2/status/2058104120305946680) |
-| x | kumahaya46 | ^0 c0 | [アビスアイ2パックでSR2枚はラッキー🍀 ニンジャスピナーは欲しかったデンリュウARだったから嬉しい♪︎ https://t.co/6ne11bXhGH](https://x.com/kumahaya46/status/2058104089607897240) |
-| x | febisyelaaaa | ^0 c0 | [yuk masi ready🤩🎀 wts wtb iphone xr](https://x.com/febisyelaaaa/status/2058104088450170943) |
-| x | CloveBase | ^0 c0 | [【🌈#ポケカ 販売情報🌈】 ❤️‍🔥AR特価コーナーに商品が入荷しました❤️‍🔥 ポッチャマ・ラティアス・パチリスが集合中🥳 お求めの方はスタッフまでお申し付け](https://x.com/CloveBase/status/2058103993386275137) |
-| x | chu_ni_2103 | ^0 c0 | [卓球モチベ高すぎてＶＲ卓球で無双してる](https://x.com/chu_ni_2103/status/2058103989020110958) |
+| reddit | fermatf | ^6 c6 | [Tried vibecoding a VR game with R3F + webxr, anyone else? quest 2, mostly LLM-wr](https://www.reddit.com/r/WebXR/comments/1tjk3bz/tried_vibecoding_a_vr_game_with_r3f_webxr_anyone/) |
+| x | omusikaNana0823 | ^1 c0 | [幸せになるライフハック 地面にARななたまを出すとピクミンみたいでかわいい https://t.co/Eku6gA4DV1](https://x.com/omusikaNana0823/status/2058119267699269907) |
+| x | 0423Ikemoto | ^1 c0 | [(ときのそら)ちゃんの『決意のソラへ』に投票します！ #ミューコミVR #VTuber楽曲ランキング](https://x.com/0423Ikemoto/status/2058119205678170186) |
+| x | lio_9 | ^0 c0 | [はじめてふじさんミュージアムに行ってきたけど、ちょっと内容が難しくて大人向けだった VRは匂いもして楽しかった！ https://t.co/yoh4iMjHsl](https://x.com/lio_9/status/2058119434741620906) |
+| x | Santis_Love | ^0 c0 | [@0ivankaTrump1 Ivanka, în problema asta, nu crezi că iranienii (și NUMAI EI) au ](https://x.com/Santis_Love/status/2058119394144722988) |
+| x | jpsin1 | ^0 c0 | [पेड्डी ट्रेलर देखकर लग रहा है भारतीय सिनेमा को नई ऊंचाई मिलने वाली है। राम चरण क](https://x.com/jpsin1/status/2058119386498801742) |
+| x | happyhp2024 | ^0 c0 | [最後の感情が直貴の感情はどんなだったんだろうな… 剛志と同じ気持ちだったのだろうか #VR手紙](https://x.com/happyhp2024/status/2058119366617833795) |
+| x | notfound404omg | ^0 c0 | [ザボ、最終回というかランダーちゃんの最後良かったな♡の気持ちはあるけどソルボは冷凍されたままだし本筋にあんま影響なかったとしても詳細はVRでみたいなのが多かった](https://x.com/notfound404omg/status/2058119321013125130) |
+| x | Haq3c7qk | ^0 c0 | [เครื่องสำรอง ใช้เอง ไว้เซลฟี่ iPhone XR 64GB สีขาว ศูนย์ไทย • แบตใหม่ เบต้า 100%](https://x.com/Haq3c7qk/status/2058119319113093286) |
+| x | rzckmk | ^0 c0 | [@ulkucuhareketr Yüzsüzler lider dediğiniz apoyu dilinden düşürmüyor. Biraz ar ya](https://x.com/rzckmk/status/2058119309444915599) |
+| x | HTMarkazyEN | ^0 c0 | [Al-Rayah Newspaper: Issue 600 in English FOR PDF: CLICK HERE: https://t.co/4JQgp](https://x.com/HTMarkazyEN/status/2058119186514153518) |
+| x | teratoshi81 | ^0 c0 | [買取金の支払いが振込だけのとことかあるんだねw 残ってたAR全部最低保証の250円で買い取って貰えた(◍ ´꒳` ◍)](https://x.com/teratoshi81/status/2058119183070806511) |
+| x | UlvisBrozhe | ^0 c1 | [Zīle: Protams, stulbs noraidījums. Nedarīju apzināti. Viņš pēc svilpes pagrūda m](https://x.com/UlvisBrozhe/status/2058119169254510696) |
+| x | UlvisBrozhe | ^0 c1 | [Somijas uzbrucējs Jese Puljujervi pēc spēles teica, ka Kristaps Zīle viņam atvai](https://x.com/UlvisBrozhe/status/2058119167656538245) |
+| x | AnnulaireIf | ^0 c0 | [@pika08131 ルールが分かれば面白いゲームでした！じゃ、続きはVRで](https://x.com/AnnulaireIf/status/2058119158097932305) |
+| x | Skoca1986 | ^0 c0 | [@gurseltekin34 Sizin Allah belanızı versin be.Hala konuşuyor, ardan edepten bahs](https://x.com/Skoca1986/status/2058119114040746020) |
+| x | breakinglv | ^0 c0 | [@bizenajs_V2 Par civilo aizsardzību katrā apdzīvotā vietā atbild vietējā pašvald](https://x.com/breakinglv/status/2058119111318683844) |
+| x | shenshi_1128 | ^0 c0 | [@itoC_honey 8万のVR機器持ってるからVRホラゲーはやり尽くした🥲](https://x.com/shenshi_1128/status/2058119094378050010) |
+| x | SubhamSg_xD | ^0 c0 | [@avikagain02 culture ar gyan dichis tora? jara naki durand group stage ar derby ](https://x.com/SubhamSg_xD/status/2058119051533320639) |
+| x | lnneto2 | ^0 c0 | [ai to no meu lugarzinho no mundo (tomei banho gelado, liguei o ar-condicionado e](https://x.com/lnneto2/status/2058119029974339939) |
 
 
 ## โพสต์เด่น
@@ -94,18 +92,18 @@ engagement ที่แข็งแกร่งที่สุดวันนี
   <header class="ndf-card-head">
     <span class="ndf-author">@Motanum</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 859 · 💬 96</span>
+    <span class="ndf-engagement">♥ 879 · 💬 97</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/virtualreality/comments/1tkmpa7/i_just_cant_get_over_how_fun_it_is_to_play_and/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/YXJmZmx2dmdscDJoMVaRBSBGq0TWjj5ZWChVtq5BLrRDdo-OwgRHz4-J1SWl.png?format=pjpg&amp;auto=webp&amp;s=2b64708f17dd05a031eed8379f9d78e45c312cc1" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“I just can't get over how fun it is to play and practice guitar in XR.”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้ Reddit แสดงความตื่นเต้นกับการเล่นและฝึกกีตาร์ใน XR บอกว่า fun มาก ใช้เป็น skill-training tool ได้จริง</dd>
+      <dd>ผู้ใช้แชร์ความรู้สึกตื่นเต้นกับการเล่นและฝึกกีตาร์ใน XR ว่าสนุกมาก</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>859 likes บน post ที่ไม่มี feature อวด บ่งชี้ว่า user ต้องการ XR app แบบ practice-loop จริงๆ ไม่ใช่แค่ game หรือ demo</dd>
+      <dd>การฝึกดนตรีใน XR กำลังได้รับความนิยมจริง — บ่งชี้ความต้องการ immersive skill-based learning นอกเหนือจากเกม</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">V ควรมี skill-practice loop ที่วนซ้ำได้ — กีตาร์พิสูจน์ว่า user กลับมาทุกวันถ้า feedback น่าพอใจ</dd>
+      <dd class="ndf-adapt">Unity/XR team ลอง explore mechanics การฝึกเครื่องดนตรีเป็น format สำหรับ e-learning module — haptic feedback + spatial audio loop ต่อยอดบน XR stack ที่มีอยู่ได้เลย</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/virtualreality/comments/1tkmpa7/i_just_cant_get_over_how_fun_it_is_to_play_and/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
@@ -121,11 +119,11 @@ engagement ที่แข็งแกร่งที่สุดวันนี
     <p class="ndf-quote">“3d printed a VR Flight Stick it's sooo much better to play Warplanes 😍”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>User ใน Reddit พิมพ์ 3D flight stick สำหรับ Quest 3 แล้วบอกว่าช่วยให้เล่น Warplanes ใน VR ดีขึ้นมาก</dd>
+      <dd>ผู้ใช้ Quest 3 พิมพ์ 3D flight stick แบบ custom เพื่อเล่น Warplanes บน VR บอกว่า immersion ดีขึ้นมากกว่าใช้ Touch controller ปกติ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Props 3D-print ราคาถูกปิด gap ด้าน immersion ได้ดีกว่า software — สัญญาณชัดว่า VR users ต้องการ physical control จริงๆ</dd>
+      <dd>การแฮก peripheral ด้วย 3D print กำลังลด gap ระหว่าง VR simulation กับ feel จริง — hardware mod จากผู้ใช้เริ่มเหนือกว่า software trick อย่างเดียว</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">V: ออกแบบ STL mount สำหรับ VRoom ให้ผู้เล่น 3D-print steering wheel grip ใช้เอง — ต้นทุนต่ำ immersion สูง ลอง prototype ใน sprint เดียว</dd>
+      <dd class="ndf-adapt">ทีม XR ออกแบบ input layer ของ VR experience ให้รองรับ physical controller นอกมาตรฐานตั้งแต่แรก — อย่า hard-code แค่ Touch button mapping</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/Quest3/comments/1tkltxx/3d_printed_a_vr_flight_stick_its_sooo_much_better/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
@@ -134,18 +132,18 @@ engagement ที่แข็งแกร่งที่สุดวันนี
   <header class="ndf-card-head">
     <span class="ndf-author">@Bramblefort</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 50 · 💬 13</span>
+    <span class="ndf-engagement">♥ 50 · 💬 19</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/virtualreality/comments/1tkqpy1/surviving_a_19thcentury_marsh_encounter/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/bnprdTlpZjdhcTJoMUJN08NCh39FK57KRes9U1e0m46FK3zWLtLn6JVqeT8u.png?format=pjpg&amp;auto=webp&amp;s=30a8590b8f5a39db5953219a674e56bbd8c5df20" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Surviving a 19th-century marsh encounter Steam link: [https://store.steampowered.com/app/3753140/BRAMBLEFORT/](https://store.steampowered.com/app/3753140/BRAMBLEFORT/)”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>BRAMBLEFORT คือเกม VR indie บน Steam ที่ผู้เล่นต้องเอาชีวิตรอดจากเหตุการณ์ในหนองบึงยุค 19th century</dd>
+      <dd>VR game ชื่อ BRAMBLEFORT ให้ผู้เล่นเอาชีวิตรอดในหนองน้ำยุค 19th-century วางขายบน Steam แล้ว.</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>VR survival ที่ใช้ historical environment กำลังสร้าง niche บน Steam ชี้ให้เห็นว่า setting นอกกรอบ sci-fi ก็ carry เกมได้จริงโดยทีมเล็ก</dd>
+      <dd>VR game ที่เจาะ niche historical immersion หา audience บน Steam ได้ — บอกว่า atmosphere แน่นชนะ genre กว้างสำหรับ studio เล็ก.</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">V นำ approach การ anchor world ไว้กับยุคสมัยมาใช้ได้ — ผูก VRoom experience กับ historical หรือ cultural context ชัดๆ เพิ่ม immersion โดยไม่ต้อง build narrative system ซับซ้อน</dd>
+      <dd class="ndf-adapt">Unity team ดู approach ของ BRAMBLEFORT ได้ — historical setting + survival mechanic เดียว — ใช้เป็น model scoping สำหรับ pitch XR experience ต่อไป.</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/virtualreality/comments/1tkqpy1/surviving_a_19thcentury_marsh_encounter/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
@@ -154,18 +152,18 @@ engagement ที่แข็งแกร่งที่สุดวันนี
   <header class="ndf-card-head">
     <span class="ndf-author">@KonceptioN2</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 36 · 💬 8</span>
+    <span class="ndf-engagement">♥ 35 · 💬 8</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/virtualreality/comments/1tkp16c/homestar_runner_distraction_pack_announced_as/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/d2V2azI4eG95cDJoMYTisRf1qblw3rXXADzYObcuLfeqjY9hsfU5HYEpgZMQ.png?format=pjpg&amp;auto=webp&amp;s=043d3c72669daa32348e7052a7679a3127dec5fb" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Homestar Runner Distraction Pack Announced as Next Walkabout Mini Golf DLC - Coming June 25th More info here: [www.mightycoconut.com/homestar-runner](http://www.mightycoconut.com/homestar-runner)”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Walkabout Mini Golf VR ออก DLC ธีม Homestar Runner ชื่อ 'Distraction Pack' วันที่ 25 มิถุนายน โดย Mighty Coconut</dd>
+      <dd>Walkabout Mini Golf จะออก DLC ธีม Homestar Runner วันที่ 25 มิถุนายน โดย Mighty Coconut</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ยืนยันว่า IP nostalgia ใช้เป็น DLC monetization ใน VR ได้จริง — cost ต่ำ แต่ community engagement สูงเพราะ fanbase มีอยู่แล้ว</dd>
+      <dd>DLC แบบ licensed IP เป็น revenue model ที่พิสูจน์แล้วใน VR — แม้ brand เล็กก็ดึง engagement จาก VR player base ที่ loyal ได้</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">V (VRoom) ควร design content เป็น themed pack ตั้งแต่ต้น — environment, audio, UI skin — เพื่อให้ DLC ใหม่ ship ได้เลยโดยไม่ต้อง rearchitect core</dd>
+      <dd class="ndf-adapt">Unity XR team ดู cadence การออก DLC และแนวทาง IP licensing ของ Walkabout เป็น reference สำหรับการออกแบบ optional content pack ใน VR title ต่อไป</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/virtualreality/comments/1tkp16c/homestar_runner_distraction_pack_announced_as/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
@@ -181,33 +179,13 @@ engagement ที่แข็งแกร่งที่สุดวันนี
     <p class="ndf-quote">“😂 this was really funny a lil bit old but still great - turn sound on!”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้ Reddit โพสต์คลิปตลกเก่าในกลุ่ม Quest3 บอกให้เปิดเสียง ไม่มีเนื้อหา technical</dd>
+      <dd>ผู้ใช้แชร์คลิปวิดีโอตลกเก่าเกี่ยวกับ VR/Quest3 บน Reddit พร้อมแนะนำให้เปิดเสียง</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>โพสต์ตลกใน VR community ดึง engagement ได้ดี บางทีเร็วกว่า tutorial จริงจัง</dd>
+      <dd>ไม่มีข้อมูลเชิงเทคนิค แต่คอนเทนต์ตลกที่ viral ใน subreddit Quest3 บอกว่า community รอบ XR hardware ยังแอคทีฟและ engage อยู่</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่ apply ตรง แต่ V (VRoom) ลอง post คลิปตลก/เบาๆ สัปดาห์ละครั้ง ดู engagement เทียบกับ post จริงจัง</dd>
+      <dd class="ndf-adapt">ไม่เกี่ยวข้องโดยตรง</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/Quest3/comments/1tktswe/this_was_really_funny_a_lil_bit_old_but_still/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Equal_Translator_605</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 6 · 💬 1</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/Quest3/comments/1tjsusw/this_is_a_great_reason_to_reinstall_days_gone/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/iEscaGqhDMsYZhRRLFsAYQCnQnTTPqRjet3o2arpGi4.jpeg?auto=webp&amp;s=225b04700b971dbe738bb856635e82f281943a6d" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“This Is A Great Reason To Reinstall Days Gone! Hopefully we can get this playing properly soon!”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>User บน Reddit ตื่นเต้นกับเหตุผลที่จะติดตั้ง Days Gone ใหม่ คาดว่าเกี่ยวกับ VR/MR mode หรือการรองรับ Quest 3</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>เกม console เก่าได้ชีวิตใหม่บน Quest 3 แสดงว่า XR กำลัง mature พอรองรับ AAA titles จริง ไม่ใช่แค่ tech demo</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">V (VRoom) ต้องติดตามว่า AAA port ไหนลง Quest 3 บ้าง เพราะ player จะคาดหวัง quality และ interaction depth สูงขึ้นตามที่เล่นมา</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/Quest3/comments/1tjsusw/this_is_a_great_reason_to_reinstall_days_gone/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
 </article>
 </div>

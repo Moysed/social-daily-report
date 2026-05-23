@@ -49,6 +49,142 @@ def build_body(analysis: dict, posts: list[Post], date_label: str, topic_title: 
     return "\n".join(out) + "\n"
 
 
+def build_top_posts(
+    posts: list[Post],
+    cards: dict[str, dict] | None = None,
+    lang: str = "en",
+) -> str:
+    """Top Posts HTML — appended after translation so HTML doesn't confuse the
+    translator. `cards` maps post.id → {says_en, says_th, interesting_en, ...}
+    when per-post LLM analysis is available; falls back to a slimmer card."""
+    picks = pick_top_posts(posts)
+    if not picks:
+        return ""
+    cards = cards or {}
+    lines = _render_top_posts(picks, cards, lang)
+    return "\n".join(lines) + "\n"
+
+
+def pick_top_posts(posts: list[Post], limit: int = 8) -> list[Post]:
+    """Public picker so the CLI can run per-post LLM analysis on the exact set
+    that will be rendered (avoids paying for posts that get dropped)."""
+    picks: list[Post] = []
+    seen: set[str] = set()
+    for p in posts:
+        if len(picks) >= limit:
+            break
+        if p.url in seen:
+            continue
+        if _is_x_post(p) and p.engagement.likes < _X_EMBED_MIN_LIKES:
+            continue
+        if p.media or _is_x_post(p):
+            picks.append(p)
+            seen.add(p.url)
+    return picks
+
+
+def _is_x_post(p: Post) -> bool:
+    return p.platform == "x"
+
+
+def _top_thumbnail(posts: list[Post]) -> str | None:
+    """First post with a usable media URL — used as the topic card image."""
+    for p in posts[:30]:
+        if p.media:
+            return p.media[0]
+    return None
+
+
+_X_EMBED_MIN_LIKES = 5  # avoid embedding zero-engagement X chatter (esp. XR's noisy 'AR/VR' query)
+
+_HEADING_TOP_POSTS = {"en": "Top Posts", "th": "โพสต์เด่น"}
+_LABEL_SAYS = {"en": "What it says", "th": "เนื้อหา"}
+_LABEL_INTERESTING = {"en": "Why interesting", "th": "ทำไมน่าสนใจ"}
+_LABEL_ADAPT = {"en": "How NDF DEV adapts", "th": "ใช้กับ NDF DEV ยังไง"}
+_LABEL_VIEW_ON = {"en": "View on", "th": "เปิดบน"}
+
+
+def _esc(s: str) -> str:
+    return (
+        s.replace("&", "&amp;")
+         .replace("<", "&lt;")
+         .replace(">", "&gt;")
+         .replace('"', "&quot;")
+    )
+
+
+def _card_field(card: dict, key_base: str, lang: str, fallback: str = "") -> str:
+    val = (card or {}).get(f"{key_base}_{lang}") or (card or {}).get(f"{key_base}_en") or fallback
+    return val.strip()
+
+
+def _render_top_posts(picks: list[Post], cards: dict[str, dict], lang: str) -> list[str]:
+    heading = _HEADING_TOP_POSTS.get(lang, _HEADING_TOP_POSTS["en"])
+    label_says = _LABEL_SAYS.get(lang, _LABEL_SAYS["en"])
+    label_interesting = _LABEL_INTERESTING.get(lang, _LABEL_INTERESTING["en"])
+    label_adapt = _LABEL_ADAPT.get(lang, _LABEL_ADAPT["en"])
+    label_view = _LABEL_VIEW_ON.get(lang, _LABEL_VIEW_ON["en"])
+
+    out: list[str] = ["", f"## {heading}", "", '<div class="post-stream">']
+    for p in picks:
+        card = cards.get(p.id, {})
+        excerpt = _esc(p.text.split("\n", 1)[0][:200])
+        says = _esc(_card_field(card, "says", lang, p.text.split("\n", 1)[0][:200]))
+        interesting = _esc(_card_field(card, "interesting", lang))
+        adapt = _esc(_card_field(card, "adapt", lang))
+
+        media_block = _build_media_block(p)
+        eng_str = f"♥ {p.engagement.likes} · 💬 {p.engagement.comments}"
+
+        parts = [
+            f'<article class="ndf-card platform-{_esc(p.platform)}">',
+            f'  <header class="ndf-card-head">',
+            f'    <span class="ndf-author">@{_esc(p.author)}</span>',
+            f'    <span class="ndf-platform">{_esc(p.platform)}</span>',
+            f'    <span class="ndf-engagement">{_esc(eng_str)}</span>',
+            f'  </header>',
+            media_block,
+            f'  <div class="ndf-card-body">',
+            f'    <p class="ndf-quote">“{excerpt}”</p>',
+            f'    <dl class="ndf-fields">',
+        ]
+        if says:
+            parts += [f'      <dt>{_esc(label_says)}</dt>', f'      <dd>{says}</dd>']
+        if interesting:
+            parts += [f'      <dt>{_esc(label_interesting)}</dt>', f'      <dd>{interesting}</dd>']
+        if adapt:
+            parts += [f'      <dt class="ndf-adapt-label">{_esc(label_adapt)}</dt>',
+                      f'      <dd class="ndf-adapt">{adapt}</dd>']
+        parts += [
+            '    </dl>',
+            f'    <a class="ndf-source" href="{_esc(p.url)}" target="_blank" rel="noopener">'
+            f'{_esc(label_view)} {_esc(p.platform)} →</a>',
+            '  </div>',
+            '</article>',
+        ]
+        out.append("\n".join(parts))
+    out.append('</div>')
+    return out
+
+
+def _build_media_block(p: Post) -> str:
+    """Two flavors: X embed (widgets.js handles it) for X posts; image figure
+    for everything else with media. Returns empty string when neither applies."""
+    if _is_x_post(p):
+        return (
+            f'  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true">'
+            f'<a href="{_esc(p.url)}">View @{_esc(p.author)} on X</a>'
+            f'</blockquote>'
+        )
+    if p.media:
+        return (
+            f'  <a class="ndf-card-media" href="{_esc(p.url)}" target="_blank" rel="noopener">'
+            f'<img src="{_esc(p.media[0])}" alt="" loading="lazy" referrerpolicy="no-referrer" />'
+            f'</a>'
+        )
+    return ''
+
+
 _GITHUB_REPO_PATTERN = __import__("re").compile(
     r"https?://github\.com/([\w.-]+)/([\w.-]+?)(?:/(?:tree|blob|releases|issues|pull|actions|wiki)/|\?|#|/?$)",
 )
@@ -118,6 +254,9 @@ def _front_matter(
         "confidence": analysis.get("confidence"),
         "tags": analysis.get("tags") or tags,
     }
+    thumb = _top_thumbnail(posts)
+    if thumb:
+        fm["thumbnail"] = thumb
     if lang == "th" and translated_by:
         fm["translated_by"] = translated_by
     return fm

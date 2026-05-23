@@ -165,6 +165,11 @@ function trendGlyph(tr: Trend): string {
         const deck = leadDeck(lead.entry.body);
         return (
           <article class="lead-tile" data-row data-topic={lead.topic} data-date={d.date} data-haystack={haystackFor(lead.topic, lead.entry)}>
+            {d.thumbnail && (
+              <a class="lead-thumb" href={href(lead.entry)} aria-hidden="true" tabindex="-1">
+                <img src={d.thumbnail} alt="" loading="lazy" referrerpolicy="no-referrer" />
+              </a>
+            )}
             <p class="kicker accent">{t.leadSignal}</p>
             <h2 class="tile-title"><a href={href(lead.entry)}>{prettyTopic(lead.topic)}</a></h2>
             <div class="tile-signals ui-text">
@@ -211,6 +216,11 @@ function trendGlyph(tr: Trend): string {
             const deck = leadDeck(entry.body);
             return (
               <article class="tile" data-row data-topic={topic} data-date={d.date} data-haystack={haystackFor(topic, entry)}>
+                {d.thumbnail && (
+                  <a class="tile-thumb" href={href(entry)} aria-hidden="true" tabindex="-1">
+                    <img src={d.thumbnail} alt="" loading="lazy" referrerpolicy="no-referrer" />
+                  </a>
+                )}
                 <header class="tile-head">
                   <h3 class="tile-title"><a href={href(entry)}>{prettyTopic(topic)}</a></h3>
                   <span class="tile-sentiment" aria-label={d.sentiment ?? "neutral"}>{sentimentEmoji(d.sentiment)}</span>
@@ -497,6 +507,28 @@ function trendGlyph(tr: Trend): string {
       color: var(--soft-ink);
     }
     .cta-langs a.active { color: var(--accent-ink); border-color: var(--accent); }
+
+    /* ---- Topic thumbnails ---- */
+    .lead-thumb,
+    .tile-thumb {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      background: var(--surface);
+      aspect-ratio: 16 / 9;
+    }
+    .lead-thumb img,
+    .tile-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lead-thumb:hover img,
+    .tile-thumb:hover img { transform: scale(1.03); }
+    .lead-thumb { margin: 0 calc(var(--space-md) * -1) var(--space-sm); border-inline: 0; }
+    .tile-thumb { margin: calc(var(--space-sm) * -1) calc(var(--space-md) * -1) 0; border-inline: 0; border-top: 0; }
 
     /* ---- Activity / trend / sentiment pills ---- */
     .pill {

@@ -23,6 +23,40 @@ from ..models import Engagement, Post
 BASE = "https://www.reddit.com"
 
 
+def _reddit_media(d: dict) -> list[str]:
+    """Pull a single representative image URL from a Reddit post.
+
+    Covers image posts (direct + gallery), video posts (preview frame), and
+    crossposts. Anything else (text, external links without preview) returns
+    an empty list so the renderer falls through to non-thumb cards.
+    """
+    hint = d.get("post_hint")
+    url = d.get("url")
+    if hint == "image" and url:
+        return [url]
+    if hint == "hosted:video":
+        preview = (
+            (d.get("preview") or {})
+            .get("images", [{}])[0]
+            .get("source", {})
+            .get("url")
+        )
+        if preview:
+            return [preview.replace("&amp;", "&")]
+    gallery = d.get("media_metadata") or {}
+    for item in gallery.values():
+        src = (item or {}).get("s") or {}
+        candidate = src.get("u") or src.get("gif")
+        if candidate:
+            return [candidate.replace("&amp;", "&")]
+    preview = (d.get("preview") or {}).get("images") or []
+    if preview:
+        src = preview[0].get("source", {}).get("url")
+        if src:
+            return [src.replace("&amp;", "&")]
+    return []
+
+
 class RedditConnector(Connector):
     platform = "reddit"
 
@@ -84,7 +118,7 @@ class RedditConnector(Connector):
                         comments=d.get("num_comments", 0),
                         score=float(d.get("score", 0)),
                     ),
-                    media=[d["url"]] if d.get("post_hint") == "image" and d.get("url") else [],
+                    media=_reddit_media(d),
                     raw=d,
                 )
             )

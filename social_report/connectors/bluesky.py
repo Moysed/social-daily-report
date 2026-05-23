@@ -71,6 +71,7 @@ class BlueskyConnector(Connector):
                         score=float(item.get("likeCount", 0)),
                     ),
                     author_followers=None,
+                    media=_bluesky_media(item.get("embed") or {}),
                     lang=(record.get("langs") or [None])[0],
                     raw=item,
                 )
@@ -79,6 +80,24 @@ class BlueskyConnector(Connector):
 
     def close(self) -> None:
         self._client.close()
+
+
+def _bluesky_media(embed: dict) -> list[str]:
+    """Extract a thumbnail URL from a Bluesky embed view (images or external)."""
+    images = embed.get("images") or []
+    for img in images:
+        url = img.get("thumb") or img.get("fullsize")
+        if url:
+            return [url]
+    external = embed.get("external") or {}
+    thumb = external.get("thumb")
+    if thumb:
+        return [thumb]
+    # Record-with-media (quote-post wrapper): drill one level deeper.
+    media = embed.get("media") or {}
+    if media:
+        return _bluesky_media(media)
+    return []
 
 
 def _parse_iso(value: str | None) -> datetime | None:

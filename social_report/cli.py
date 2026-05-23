@@ -26,10 +26,18 @@ from dotenv import load_dotenv
 
 from .analyze.client import OPUS_MODEL, SONNET_MODEL, make_llm_client
 from .analyze.pipeline import analyze_topic
+from .analyze.post_cards import analyze_top_posts
 from .connectors import make_connector
 from .dedup import dedup
 from .normalize import normalize
-from .render.markdown import build_body, merge_index_entries, render_index, render_report
+from .render.markdown import (
+    build_body,
+    build_top_posts,
+    merge_index_entries,
+    pick_top_posts,
+    render_index,
+    render_report,
+)
 from .store import db as store
 from .store.files import write_file
 
@@ -137,18 +145,41 @@ def run(args: argparse.Namespace) -> None:
 
             analysis = analyze_topic(client, topic_cfg, date_label, posts)
 
-            # English = canonical
+            # English = canonical. Top Posts HTML is appended *after* translation
+            # so the X embeds / image cards don't get reshaped by the translator.
             en_body = build_body(analysis, posts, date_label, topic_cfg["title"])
-            en_md = render_report(date_label, topic_key, topic_cfg, analysis, posts, "en", en_body, OPUS_MODEL)
-            p_en = write_file(out_base, date_label, f"{topic_key}.en.md", en_md)
 
-            # Thai = translation for human reading
+            # Per-post LLM cards — only for posts we actually plan to render.
+            picks = pick_top_posts(posts)
+            cards: dict[str, dict] = {}
+            if picks and client.enabled:
+                print(f"  {topic_key}: cards for {len(picks)} posts...", end="", flush=True)
+                cards = analyze_top_posts(client, topic_cfg["title"], picks)
+                print(" done")
+
+            en_top = build_top_posts(posts, cards, "en")
+            th_top = build_top_posts(posts, cards, "th")
+
+            # Thai = translation of the prose body only.
             if client.enabled and posts:
-                th_body = client.translate(en_body)
-                translated_by = SONNET_MODEL
+                try:
+                    th_body = client.translate(en_body)
+                    translated_by = SONNET_MODEL
+                except Exception as exc:
+                    print(f"  {topic_key}: !! translate failed ({exc}); falling back to stub")
+                    th_body = STUB_TH_NOTE + en_body
+                    translated_by = None
             else:
                 th_body = STUB_TH_NOTE + en_body
                 translated_by = None
+
+            if en_top:
+                en_body = en_body.rstrip() + "\n\n" + en_top
+            if th_top:
+                th_body = th_body.rstrip() + "\n\n" + th_top
+
+            en_md = render_report(date_label, topic_key, topic_cfg, analysis, posts, "en", en_body, OPUS_MODEL)
+            p_en = write_file(out_base, date_label, f"{topic_key}.en.md", en_md)
             th_md = render_report(
                 date_label, topic_key, topic_cfg, analysis, posts, "th", th_body, OPUS_MODEL, translated_by
             )

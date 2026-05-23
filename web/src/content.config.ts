@@ -26,6 +26,7 @@ const reports = defineCollection({
     confidence: z.number().nullable().default(null),
     tags: z.array(z.string()).default([]),
     translated_by: z.string().optional(),
+    thumbnail: z.string().url().optional(),
   }),
 });
 

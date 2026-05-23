@@ -153,7 +153,12 @@ def render_index(date_label: str, lang: str, entries: list[dict]) -> str:
         "lang": lang,
         "generator": GENERATOR,
         "topics": [
-            {"topic": e["topic"], "salience": e["salience"], "file": f"{e['topic']}.{lang}.md"}
+            {
+                "topic": e["topic"],
+                "title": e["title"],
+                "salience": e["salience"],
+                "file": f"{e['topic']}.{lang}.md",
+            }
             for e in entries
         ],
     }
@@ -162,3 +167,42 @@ def render_index(date_label: str, lang: str, entries: list[dict]) -> str:
     for e in entries:
         out.append(f"| {e['title']} | {e['salience']} | [{e['topic']}.{lang}.md]({e['topic']}.{lang}.md) |")
     return render_file(fm, "\n".join(out) + "\n")
+
+
+def merge_index_entries(existing_path, new_entries: list[dict]) -> list[dict]:
+    """Merge new entries with whatever is already in an existing index file.
+
+    Partial runs (e.g. `--topic ai-news`) must not erase other topics that were
+    written in earlier runs of the same day. Read the prior frontmatter, replace
+    entries whose topic key matches a new entry, and keep the rest. Result is
+    sorted by salience desc, then topic key for stability.
+    """
+    from pathlib import Path
+
+    new_by_key = {e["topic"]: e for e in new_entries}
+    merged: dict[str, dict] = {}
+
+    p = Path(existing_path)
+    if p.exists():
+        text = p.read_text(encoding="utf-8")
+        if text.startswith("---"):
+            try:
+                _, fm_text, _ = text.split("---", 2)
+                fm = yaml.safe_load(fm_text) or {}
+                for t in fm.get("topics", []) or []:
+                    key = t.get("topic")
+                    if not key:
+                        continue
+                    merged[key] = {
+                        "topic": key,
+                        "title": t.get("title") or key,
+                        "salience": t.get("salience"),
+                    }
+            except (ValueError, yaml.YAMLError):
+                pass  # malformed index — treat as no prior state
+
+    merged.update(new_by_key)
+    return sorted(
+        merged.values(),
+        key=lambda e: (-(e.get("salience") or 0), e["topic"]),
+    )

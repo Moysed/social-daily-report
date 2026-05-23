@@ -29,7 +29,7 @@ from .analyze.pipeline import analyze_topic
 from .connectors import make_connector
 from .dedup import dedup
 from .normalize import normalize
-from .render.markdown import build_body, render_index, render_report
+from .render.markdown import build_body, merge_index_entries, render_index, render_report
 from .store import db as store
 from .store.files import write_file
 
@@ -173,9 +173,11 @@ def run(args: argparse.Namespace) -> None:
                 conn.commit()
 
         if not args.dry_run:
-            write_file(out_base, date_label, "index.en.md", render_index(date_label, "en", index_entries))
-            write_file(out_base, date_label, "index.th.md", render_index(date_label, "th", index_entries))
-            print(f"\nDone. Reports in: {out_base / date_label}")
+            day_dir = out_base / date_label
+            for lang in ("en", "th"):
+                merged = merge_index_entries(day_dir / f"index.{lang}.md", index_entries)
+                write_file(out_base, date_label, f"index.{lang}.md", render_index(date_label, lang, merged))
+            print(f"\nDone. Reports in: {day_dir}")
         else:
             print(f"\nDry-run done. {len(topics)} topics inspected.")
 

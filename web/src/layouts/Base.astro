@@ -471,6 +471,11 @@ const switchHref = alternateHref ?? local(homePath[other]);
       }
     </style>
 
+    <script>
+      import { inject } from "@vercel/analytics";
+      inject({ mode: import.meta.env.PROD ? "production" : "development" });
+    </script>
+
     {/* Toggle script: cycles light -> dark -> auto, with label updated for the current lang. */}
     <script is:inline define:vars={{ labels: { auto: t.themeAuto, light: t.themeLight, dark: t.themeDark } }}>
       (() => {

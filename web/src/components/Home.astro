@@ -69,11 +69,21 @@ const rowsForDate = (date: string) =>
   [...byDate.get(date)!.entries()]
       .map(([topic, pair]) => ({ topic, pair, entry: entryFor(pair)! }))
       .sort((a, b) => (b.entry.data.salience ?? 0) - (a.entry.data.salience ?? 0));
-const latestPairs = latest ? rowsForDate(latest) : [];
-const lead = latestPairs[0];
-const others = latestPairs.slice(1);
-const archiveDates = dates.slice(1);
-const archiveGroups = archiveDates.map((date) => ({ date, rows: rowsForDate(date) }));
+
+// Per-day views — every date renders the same hero+grid layout. Only the
+// latest is visible by default; clicking a calendar cell swaps which one is
+// active. Older days are still in the DOM so deep-links + filters work
+// without a network round-trip.
+const days = dates.map((date) => {
+  const pairs = rowsForDate(date);
+  return {
+    date,
+    pairs,
+    lead: pairs[0],
+    others: pairs.slice(1),
+    isLatest: date === latest,
+  };
+});
 
 // ---- Calendar archive ----
 // Group every date that has a report by its YYYY-MM month so we can render a
@@ -128,10 +138,6 @@ const months: Month[] = monthKeys.map((key) => {
 
 // Maximum daily report count across the archive — used to scale heatmap shades.
 const maxDayCount = Math.max(1, ...countsByDate.values());
-
-// Day-detail panels: one for every archive date. Default hidden; JS unhides
-// whichever the user picked in the calendar.
-const archivePanels = archiveDates.map((date) => ({ date, rows: rowsForDate(date) }));
 
 const allTopics: string[] = [];
 {
@@ -204,132 +210,138 @@ function trendGlyph(tr: Trend): string {
     </section>
   ) : (
     <>
-      <section class="brief-masthead" id="top">
-        <p class="kicker">{t.morningBrief}</p>
-        <div class="brief-line">
-          <h1>{t.todayOverview}</h1>
-          <p class="brief-meta ui-text">
-            <strong>{prettyDate(latest)}</strong>
-            <span aria-hidden="true">·</span>
-            <span>{t.todayHeading(latestPairs.length)}</span>
-          </p>
-        </div>
-      </section>
+      <div class="day-views" id="top" data-day-views>
+        {days.map((day) => (
+          <article class="day-view" data-day-view={day.date} aria-hidden={!day.isLatest} hidden={!day.isLatest}>
+            <section class="brief-masthead">
+              <p class="kicker">{day.isLatest ? t.morningBrief : t.archive}</p>
+              <div class="brief-line">
+                <h1>{t.todayOverview}</h1>
+                <p class="brief-meta ui-text">
+                  <strong>{prettyDate(day.date)}</strong>
+                  <span aria-hidden="true">·</span>
+                  <span>{t.todayHeading(day.pairs.length)}</span>
+                </p>
+              </div>
+            </section>
 
-      {lead && (() => {
-        const d = lead.entry.data;
-        const act = activityOf(d.salience);
-        const tr = trendOf(lead.topic, d.salience);
-        const deck = leadDeck(lead.entry.body);
-        return (
-          <article class="lead-tile" data-row data-topic={lead.topic} data-date={d.date} data-haystack={haystackFor(lead.topic, lead.entry)}>
-            {d.thumbnail && (
-              <a class="lead-thumb" href={href(lead.entry)} aria-hidden="true" tabindex="-1">
-                <img src={d.thumbnail} alt="" loading="lazy" referrerpolicy="no-referrer" />
-              </a>
+            {day.lead && (() => {
+              const d = day.lead.entry.data;
+              const act = activityOf(d.salience);
+              const tr = trendOf(day.lead.topic, d.salience);
+              const deck = leadDeck(day.lead.entry.body);
+              return (
+                <article class="lead-tile" data-row data-topic={day.lead.topic} data-date={d.date} data-haystack={haystackFor(day.lead.topic, day.lead.entry)}>
+                  {d.thumbnail && (
+                    <a class="lead-thumb" href={href(day.lead.entry)} aria-hidden="true" tabindex="-1">
+                      <img src={d.thumbnail} alt="" loading="lazy" referrerpolicy="no-referrer" />
+                    </a>
+                  )}
+                  <p class="kicker accent">{t.leadSignal}</p>
+                  <h2 class="tile-title"><a href={href(day.lead.entry)}>{prettyTopic(day.lead.topic)}</a></h2>
+                  <div class="tile-signals ui-text">
+                    <span class={`pill activity activity-${act}`} title={`${t.activityLabel}: ${activityLabel(act)}`}>
+                      <span class="dot" aria-hidden="true"></span>
+                      {activityLabel(act)}
+                    </span>
+                    <span class={`pill trend trend-${tr}`} title={`${t.activityLabel}: ${trendLabel(tr)}`}>
+                      <span aria-hidden="true">{trendGlyph(tr)}</span>
+                      {trendLabel(tr)}
+                    </span>
+                    <span class="pill sentiment" title={`Sentiment: ${d.sentiment ?? "neutral"}`}>
+                      <span aria-hidden="true">{sentimentEmoji(d.sentiment)}</span>
+                      {d.sentiment ?? "neutral"}
+                    </span>
+                    <span class="pill quiet">{t.posts(d.post_count)}</span>
+                  </div>
+                  {deck && <p class="tile-deck">{deck}</p>}
+                  <div class="tile-cta ui-text">
+                    <a class="cta-primary" href={href(day.lead.entry)}>{t.readReport} →</a>
+                    <span class="cta-langs">
+                      {day.lead.pair.en && <a class={lang === "en" ? "active" : ""} href={href(day.lead.pair.en)} hreflang="en">EN</a>}
+                      {day.lead.pair.th && <a class={lang === "th" ? "active" : ""} href={href(day.lead.pair.th)} hreflang="th" lang="th">ไทย</a>}
+                    </span>
+                  </div>
+                </article>
+              );
+            })()}
+
+            <nav class="controls ui-text" aria-label={t.filterTopic} data-filter-controls>
+              <div class="control-row">
+                <label class="search-field">
+                  <span class="visually-hidden">{t.search}</span>
+                  <svg class="search-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6" />
+                    <line x1="15.6" y1="15.6" x2="20" y2="20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                  <input
+                    type="search"
+                    data-filter-search
+                    placeholder={t.searchPlaceholder}
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                </label>
+              </div>
+              <div class="control-row">
+                <button type="button" class="chip active" data-filter-chip data-kind="topic" data-value="">{t.filterAll}</button>
+                {allTopics.map((topic) => (
+                  <button type="button" class="chip" data-filter-chip data-kind="topic" data-value={topic}>{prettyTopic(topic)}</button>
+                ))}
+              </div>
+              <p class="control-empty" data-filter-empty hidden>{t.searchEmpty}</p>
+            </nav>
+
+            {day.others.length > 0 && (
+              <section class="tile-grid" aria-label={t.alsoToday}>
+                {day.others.map(({ topic, pair, entry }) => {
+                  const d = entry.data;
+                  const act = activityOf(d.salience);
+                  const tr = trendOf(topic, d.salience);
+                  const deck = leadDeck(entry.body);
+                  return (
+                    <article class="tile" data-row data-topic={topic} data-date={d.date} data-haystack={haystackFor(topic, entry)}>
+                      {d.thumbnail && (
+                        <a class="tile-thumb" href={href(entry)} aria-hidden="true" tabindex="-1">
+                          <img src={d.thumbnail} alt="" loading="lazy" referrerpolicy="no-referrer" />
+                        </a>
+                      )}
+                      <header class="tile-head">
+                        <h3 class="tile-title"><a href={href(entry)}>{prettyTopic(topic)}</a></h3>
+                        <span class="tile-sentiment" aria-label={d.sentiment ?? "neutral"}>{sentimentEmoji(d.sentiment)}</span>
+                      </header>
+                      <div class="tile-signals ui-text">
+                        <span class={`pill activity activity-${act}`}>
+                          <span class="dot" aria-hidden="true"></span>
+                          {activityLabel(act)}
+                        </span>
+                        <span class={`pill trend trend-${tr}`}>
+                          <span aria-hidden="true">{trendGlyph(tr)}</span>
+                          {trendLabel(tr)}
+                        </span>
+                      </div>
+                      {deck && <p class="tile-deck">{deck}</p>}
+                      {d.tags?.length > 0 && (
+                        <p class="tile-tags ui-text">
+                          {d.tags.slice(0, 3).map((tag) => <span class="tag">#{tag}</span>)}
+                        </p>
+                      )}
+                      <div class="tile-cta ui-text">
+                        <a class="cta-primary" href={href(entry)}>{t.readReport} →</a>
+                        <span class="cta-quiet">{t.posts(d.post_count)}</span>
+                        <span class="cta-langs">
+                          {pair.en && <a class={lang === "en" ? "active" : ""} href={href(pair.en)} hreflang="en">EN</a>}
+                          {pair.th && <a class={lang === "th" ? "active" : ""} href={href(pair.th)} hreflang="th" lang="th">TH</a>}
+                        </span>
+                      </div>
+                    </article>
+                  );
+                })}
+              </section>
             )}
-            <p class="kicker accent">{t.leadSignal}</p>
-            <h2 class="tile-title"><a href={href(lead.entry)}>{prettyTopic(lead.topic)}</a></h2>
-            <div class="tile-signals ui-text">
-              <span class={`pill activity activity-${act}`} title={`${t.activityLabel}: ${activityLabel(act)}`}>
-                <span class="dot" aria-hidden="true"></span>
-                {activityLabel(act)}
-              </span>
-              <span class={`pill trend trend-${tr}`} title={`${t.activityLabel}: ${trendLabel(tr)}`}>
-                <span aria-hidden="true">{trendGlyph(tr)}</span>
-                {trendLabel(tr)}
-              </span>
-              <span class="pill sentiment" title={`Sentiment: ${d.sentiment ?? "neutral"}`}>
-                <span aria-hidden="true">{sentimentEmoji(d.sentiment)}</span>
-                {d.sentiment ?? "neutral"}
-              </span>
-              <span class="pill quiet">{t.posts(d.post_count)}</span>
-            </div>
-            {deck && <p class="tile-deck">{deck}</p>}
-            <div class="tile-cta ui-text">
-              <a class="cta-primary" href={href(lead.entry)}>{t.readReport} →</a>
-              <span class="cta-langs">
-                {lead.pair.en && <a class={lang === "en" ? "active" : ""} href={href(lead.pair.en)} hreflang="en">EN</a>}
-                {lead.pair.th && <a class={lang === "th" ? "active" : ""} href={href(lead.pair.th)} hreflang="th" lang="th">ไทย</a>}
-              </span>
-            </div>
           </article>
-        );
-      })()}
-
-      <nav class="controls ui-text" aria-label={t.filterTopic} data-filter-controls>
-        <div class="control-row">
-          <label class="search-field">
-            <span class="visually-hidden">{t.search}</span>
-            <svg class="search-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-              <circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6" />
-              <line x1="15.6" y1="15.6" x2="20" y2="20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-            </svg>
-            <input
-              type="search"
-              data-filter-search
-              placeholder={t.searchPlaceholder}
-              autocomplete="off"
-              spellcheck="false"
-            />
-          </label>
-        </div>
-        <div class="control-row">
-          <button type="button" class="chip active" data-filter-chip data-kind="topic" data-value="">{t.filterAll}</button>
-          {allTopics.map((topic) => (
-            <button type="button" class="chip" data-filter-chip data-kind="topic" data-value={topic}>{prettyTopic(topic)}</button>
-          ))}
-        </div>
-        <p class="control-empty" data-filter-empty hidden>{t.searchEmpty}</p>
-      </nav>
-
-      {others.length > 0 && (
-        <section class="tile-grid" aria-label={t.alsoToday}>
-          {others.map(({ topic, pair, entry }) => {
-            const d = entry.data;
-            const act = activityOf(d.salience);
-            const tr = trendOf(topic, d.salience);
-            const deck = leadDeck(entry.body);
-            return (
-              <article class="tile" data-row data-topic={topic} data-date={d.date} data-haystack={haystackFor(topic, entry)}>
-                {d.thumbnail && (
-                  <a class="tile-thumb" href={href(entry)} aria-hidden="true" tabindex="-1">
-                    <img src={d.thumbnail} alt="" loading="lazy" referrerpolicy="no-referrer" />
-                  </a>
-                )}
-                <header class="tile-head">
-                  <h3 class="tile-title"><a href={href(entry)}>{prettyTopic(topic)}</a></h3>
-                  <span class="tile-sentiment" aria-label={d.sentiment ?? "neutral"}>{sentimentEmoji(d.sentiment)}</span>
-                </header>
-                <div class="tile-signals ui-text">
-                  <span class={`pill activity activity-${act}`}>
-                    <span class="dot" aria-hidden="true"></span>
-                    {activityLabel(act)}
-                  </span>
-                  <span class={`pill trend trend-${tr}`}>
-                    <span aria-hidden="true">{trendGlyph(tr)}</span>
-                    {trendLabel(tr)}
-                  </span>
-                </div>
-                {deck && <p class="tile-deck">{deck}</p>}
-                {d.tags?.length > 0 && (
-                  <p class="tile-tags ui-text">
-                    {d.tags.slice(0, 3).map((tag) => <span class="tag">#{tag}</span>)}
-                  </p>
-                )}
-                <div class="tile-cta ui-text">
-                  <a class="cta-primary" href={href(entry)}>{t.readReport} →</a>
-                  <span class="cta-quiet">{t.posts(d.post_count)}</span>
-                  <span class="cta-langs">
-                    {pair.en && <a class={lang === "en" ? "active" : ""} href={href(pair.en)} hreflang="en">EN</a>}
-                    {pair.th && <a class={lang === "th" ? "active" : ""} href={href(pair.th)} hreflang="th" lang="th">TH</a>}
-                  </span>
-                </div>
-              </article>
-            );
-          })}
-        </section>
-      )}
+        ))}
+      </div>
 
       <aside class="metric-guide ui-text" aria-label={t.metricGuideTitle}>
         <p class="guide-title">{t.metricGuideTitle}</p>
@@ -372,24 +384,10 @@ function trendGlyph(tr: Trend): string {
                     }
                     const ratio = cell.count / maxDayCount;
                     const intensity = ratio >= 0.85 ? 4 : ratio >= 0.6 ? 3 : ratio >= 0.35 ? 2 : 1;
-                    if (cell.isLatest) {
-                      return (
-                        <a
-                          class={`calendar-cell on latest`}
-                          data-intensity={intensity}
-                          href="#top"
-                          aria-label={`${cell.date} — ${lang === "th" ? "บรีฟวันนี้" : "today's brief"}`}
-                          title={`${cell.count} ${lang === "th" ? "หัวข้อ" : "topics"}`}
-                        >
-                          <span class="day-num num">{day}</span>
-                          <span class="day-count num">{cell.count}</span>
-                        </a>
-                      );
-                    }
                     return (
                       <button
                         type="button"
-                        class={`calendar-cell on`}
+                        class={`calendar-cell on${cell.isLatest ? " latest" : ""}${cell.isLatest ? " selected" : ""}`}
                         data-intensity={intensity}
                         data-cal-day={cell.date}
                         aria-label={`${cell.date} — ${cell.count} ${lang === "th" ? "หัวข้อ" : "topics"}`}
@@ -404,43 +402,6 @@ function trendGlyph(tr: Trend): string {
               </div>
             ))}
           </div>
-          {archivePanels.length > 0 && (
-            <div class="day-detail-host" data-day-detail-host>
-              <p class="day-detail-empty ui-text quiet" data-day-detail-empty>
-                {lang === "th" ? "เลือกวันในปฏิทินด้านบนเพื่อดูรายงานของวันนั้น" : "Pick a day above to see its reports."}
-              </p>
-              {archivePanels.map(({ date, rows }) => (
-                <section class="archive-day" id={`day-${date}`} data-day-detail={date} hidden>
-                  <header class="archive-day-head">
-                    <h3>{prettyDate(date)}</h3>
-                    <span class="ui-text quiet">{t.topics(rows.length)}</span>
-                  </header>
-                  <ul class="archive-list">
-                    {rows.map(({ topic, pair, entry }) => {
-                      const d = entry.data;
-                      const act = activityOf(d.salience);
-                      return (
-                        <li class="archive-row" data-row data-topic={topic} data-date={d.date} data-haystack={haystackFor(topic, entry)}>
-                          <a class="archive-link" href={href(entry)}>
-                            <span class="archive-topic">{prettyTopic(topic)}</span>
-                            <span class={`pill activity activity-${act} ui-text`}>
-                              <span class="dot" aria-hidden="true"></span>
-                              {activityLabel(act)}
-                            </span>
-                            <span class="ui-text quiet">{t.posts(d.post_count)}</span>
-                          </a>
-                          <span class="archive-langs ui-text">
-                            {pair.en && <a href={href(pair.en)} hreflang="en">EN</a>}
-                            {pair.th && <a href={href(pair.th)} hreflang="th" lang="th">TH</a>}
-                          </span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </section>
-              ))}
-            </div>
-          )}
         </section>
       )}
     </>
@@ -457,6 +418,16 @@ function trendGlyph(tr: Trend): string {
     .empty-state {
       max-width: 68rem;
       margin-inline: auto;
+    }
+
+    /* ---- Day-view container ---- */
+    .day-view[hidden] { display: none; }
+    .day-view {
+      animation: day-view-in 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes day-view-in {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ---- Brief masthead (replaces dual-column header) ---- */
@@ -1047,24 +1018,17 @@ function trendGlyph(tr: Trend): string {
   </style>
 
   {/* Filter + search + calendar day picker.
-      - Topic chips: single-select, hides non-matching rows.
-      - Search box: substring match against data-haystack.
-      - Calendar cell click: reveals that day's archive panel, hides others. */}
+      - Day-view swap: each date pre-renders its own brief+lead+grid. The
+        calendar picks which one is active; the layout stays identical.
+      - Each day-view has its own controls (chips + search). The active
+        topic/query state is broadcast across all sets so switching days
+        preserves the current filter.
+      - Calendar cell click: makes that day's view active, scrolls to top. */}
   <script is:inline>
     (() => {
-      const controls = document.querySelector("[data-filter-controls]");
-      if (!controls) return;
-      const chips = Array.from(controls.querySelectorAll("[data-filter-chip]"));
-      const searchInput = controls.querySelector("[data-filter-search]");
-      const emptyMsg = controls.querySelector("[data-filter-empty]");
-
-      const rows = Array.from(document.querySelectorAll("[data-row]"));
-      const grid = document.querySelector(".tile-grid");
-
-      // Calendar + day-detail wiring (optional — present only when archives exist).
-      const calendar = document.querySelector(".calendar-archive");
-      const dayHost = document.querySelector("[data-day-detail-host]");
-      const dayPanels = Array.from(document.querySelectorAll("[data-day-detail]"));
+      const wrapper = document.querySelector("[data-day-views]");
+      if (!wrapper) return;
+      const views = Array.from(wrapper.querySelectorAll("[data-day-view]"));
       const calCells = Array.from(document.querySelectorAll("[data-cal-day]"));
 
       let activeTopic = "";
@@ -1076,64 +1040,93 @@ function trendGlyph(tr: Trend): string {
         return true;
       }
 
-      function apply() {
+      function applyToView(view) {
         let anyVisible = false;
+        const rows = view.querySelectorAll("[data-row]");
         for (const row of rows) {
           const visible = rowMatches(row);
           row.hidden = !visible;
           if (visible) anyVisible = true;
         }
+        const grid = view.querySelector(".tile-grid");
         if (grid) {
           const visibleTiles = grid.querySelectorAll(".tile:not([hidden])").length;
           grid.toggleAttribute("data-empty", visibleTiles === 0);
         }
-        for (const panel of dayPanels) {
-          const visibleRows = panel.querySelectorAll(".archive-row:not([hidden])").length;
-          panel.toggleAttribute("data-empty", visibleRows === 0);
-        }
-        emptyMsg.hidden = anyVisible;
+        const emptyMsg = view.querySelector("[data-filter-empty]");
+        if (emptyMsg) emptyMsg.hidden = anyVisible;
       }
 
-      for (const chip of chips) {
-        chip.addEventListener("click", () => {
-          for (const c of chips) c.classList.toggle("active", c === chip);
-          activeTopic = chip.dataset.value || "";
-          apply();
-        });
+      function applyAll() {
+        for (const view of views) applyToView(view);
       }
 
-      if (searchInput) {
-        let t;
-        searchInput.addEventListener("input", () => {
-          clearTimeout(t);
-          t = setTimeout(() => {
-            activeQuery = (searchInput.value || "").trim().toLowerCase();
-            apply();
-          }, 60);
-        });
-        searchInput.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            searchInput.value = "";
-            activeQuery = "";
-            apply();
-            searchInput.blur();
+      function broadcastChip(value) {
+        activeTopic = value || "";
+        for (const view of views) {
+          for (const c of view.querySelectorAll("[data-filter-chip]")) {
+            c.classList.toggle("active", (c.dataset.value || "") === activeTopic);
           }
-        });
+        }
       }
 
-      // Calendar interaction
+      function broadcastQuery(q) {
+        activeQuery = q || "";
+        for (const view of views) {
+          const input = view.querySelector("[data-filter-search]");
+          if (input && input.value !== activeQuery) input.value = activeQuery;
+        }
+      }
+
+      // Wire all controls (one set per day-view). They share state.
+      const debounce = { id: 0 };
+      for (const view of views) {
+        for (const chip of view.querySelectorAll("[data-filter-chip]")) {
+          chip.addEventListener("click", () => {
+            broadcastChip(chip.dataset.value || "");
+            applyAll();
+          });
+        }
+        const input = view.querySelector("[data-filter-search]");
+        if (input) {
+          input.addEventListener("input", () => {
+            clearTimeout(debounce.id);
+            debounce.id = setTimeout(() => {
+              broadcastQuery((input.value || "").trim().toLowerCase());
+              applyAll();
+            }, 60);
+          });
+          input.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+              broadcastQuery("");
+              applyAll();
+              input.blur();
+            }
+          });
+        }
+      }
+
+      // Day-view swap
       function showDay(date, opts) {
-        const panel = dayPanels.find((p) => p.dataset.dayDetail === date);
-        if (!panel) return;
-        for (const p of dayPanels) {
-          p.hidden = p !== panel;
+        const target = views.find((v) => v.dataset.dayView === date);
+        if (!target) return;
+        for (const v of views) {
+          const on = v === target;
+          v.hidden = !on;
+          v.setAttribute("aria-hidden", on ? "false" : "true");
         }
         for (const c of calCells) {
           c.classList.toggle("selected", c.dataset.calDay === date);
         }
-        if (dayHost) dayHost.setAttribute("data-active", "true");
+        // Sync the newly visible view's controls to the shared state.
+        const input = target.querySelector("[data-filter-search]");
+        if (input) input.value = activeQuery;
+        for (const c of target.querySelectorAll("[data-filter-chip]")) {
+          c.classList.toggle("active", (c.dataset.value || "") === activeTopic);
+        }
+        applyToView(target);
         if (opts && opts.scroll !== false) {
-          panel.scrollIntoView({ behavior: "smooth", block: "start" });
+          wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
 

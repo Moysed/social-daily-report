@@ -75,6 +75,16 @@ const meta = [
       margin: 0 0 var(--space-md);
       padding-bottom: var(--space-md);
       border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .report-chrome::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 4rem;
+      height: 1px;
+      background: var(--accent);
     }
 
     .report-nav {
@@ -132,14 +142,23 @@ const meta = [
     .report-platforms {
       margin: var(--space-xs) 0 0;
       color: var(--soft-ink);
-      font-size: var(--step--1);
+      font-size: 0.84rem;
       line-height: 1.55;
       overflow-wrap: anywhere;
     }
 
     .report-date {
       color: var(--ink);
-      font-weight: 700;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
+    }
+
+    .report-meta {
+      font-family: var(--font-mono);
+      font-feature-settings: "ss01" 1, "tnum" 1;
+      letter-spacing: 0.01em;
     }
 
     .report-platforms {
@@ -192,49 +211,65 @@ const meta = [
        so readers don't see the topic name printed twice. */
     .prose :global(h1):first-child { display: none; }
 
-    /* Numbered section breaks: each ## section gets a generated counter kicker
-       ("01 / SECTION NAME" feel) plus a thick rule above. The big margin and
-       background-flip give each topic a clear "new chapter" beat. */
+    /* Protocol-style section breaks: each ## becomes a two-line header —
+       small mono index ("§ 04") above a serif name. Hairline rule across
+       the column, with an accent stub at the leading edge. */
     .prose { counter-reset: section; }
 
     .prose :global(h2) {
       counter-increment: section;
       position: relative;
-      margin: var(--space-2xl, calc(var(--space-xl) * 1.6)) 0 var(--space-sm);
-      padding-top: var(--space-md);
-      padding-left: 4.6rem;
-      border-top: 3px solid var(--accent);
+      margin: var(--space-xl) 0 var(--space-sm);
+      padding-top: 1.6rem;
       font-family: var(--font-display);
       font-size: var(--step-2);
-      font-weight: 650;
-      line-height: 1.12;
-      letter-spacing: 0;
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.005em;
     }
 
-    .prose :global(h2)::before {
-      content: counter(section, decimal-leading-zero);
+    /* Hairline rule with accent stub */
+    .prose :global(h2)::after {
+      content: "";
       position: absolute;
+      top: 0;
       left: 0;
-      top: var(--space-md);
-      width: 3.8rem;
-      color: var(--accent-ink);
-      font-family: var(--font-ui);
-      font-size: 0.86rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      line-height: 1.6;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--accent) 0,
+        var(--accent) 2.6rem,
+        var(--line) 2.6rem,
+        var(--line) 100%
+      );
     }
 
-    /* First section (TL;DR) is the lead — call it out with a tinted block. */
+    /* Section index — "§ 04" in mono, sits above the heading */
+    .prose :global(h2)::before {
+      content: "§ " counter(section, decimal-leading-zero);
+      display: block;
+      margin-bottom: 0.45rem;
+      font-family: var(--font-mono);
+      font-feature-settings: "ss01" 1;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--accent-ink);
+      line-height: 1;
+    }
+
+    /* TL;DR lead block — wider tinted strip, no left padding because the
+       new heading layout dropped the inline counter. */
     .prose :global(h2):first-of-type {
       margin-top: 0;
     }
     .prose :global(h2):first-of-type + :global(ul),
     .prose :global(h2):first-of-type + :global(p) {
-      padding: var(--space-md) var(--space-md) var(--space-md) 4.6rem;
-      margin-left: -4.6rem;
+      padding: var(--space-md);
+      margin-block: 0 var(--space-md);
       background: color-mix(in oklch, var(--accent), transparent 92%);
-      border-left: 3px solid var(--accent);
+      border-left: 2px solid var(--accent);
     }
 
     .prose :global(h3) {
@@ -351,122 +386,264 @@ const meta = [
       margin: var(--space-xl) 0;
     }
 
-    /* ---- Top Posts stream (NDF cards + X embeds) ---- */
+    /* ---- Top Posts stream (NDF editorial cards) ----
+       Layout: first card = lead (full-width, side-by-side at md+).
+       Subsequent cards = 3-up dense grid that wraps to 2 / 1 on smaller widths.
+       Field labels use small caps with a hanging accent rule, not blocky chips.
+       "How NDF DEV adapts" is the visual anchor — a pull-quote style block
+       with a strong accent bar that reads first when you scan the card. */
     .prose :global(.post-stream) {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
-      gap: var(--space-md);
+      grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+      gap: var(--space-md) var(--space-sm);
       margin: var(--space-md) 0 var(--space-lg);
+      container-type: inline-size;
     }
+    /* The lead card spans every column it can (max 3) and switches to a
+       2-column "image left, prose right" layout once there's room. */
+    .prose :global(.ndf-card:first-child) {
+      grid-column: 1 / -1;
+    }
+
     .prose :global(.ndf-card) {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--line);
-      background: color-mix(in oklch, var(--surface), transparent 35%);
-      overflow: hidden;
-      font-family: var(--font-ui);
+      position: relative;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      border-top: 1px solid var(--line);
+      padding-top: var(--space-sm);
+      background: transparent;
+      font-family: var(--font-body);
       font-size: var(--step--1);
+      gap: 0.6rem;
     }
+    /* Subtle column-rule between non-lead cards on the same row. */
+    .prose :global(.ndf-card:not(:first-child)) {
+      padding-inline: 0.05rem;
+    }
+
+    /* ---- Header strip ---- */
     .prose :global(.ndf-card-head) {
       display: flex;
       flex-wrap: wrap;
       align-items: baseline;
-      gap: 0.4rem 0.7rem;
-      padding: 0.65rem 0.9rem 0.55rem;
-      border-bottom: 1px solid var(--hairline);
+      gap: 0.35rem 0.85rem;
       color: var(--soft-ink);
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
     }
     .prose :global(.ndf-author) {
       color: var(--ink);
       font-weight: 700;
+      letter-spacing: 0;
     }
     .prose :global(.ndf-platform) {
-      text-transform: lowercase;
-      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
       color: var(--accent-ink);
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 0.66rem;
     }
     .prose :global(.ndf-engagement) {
       margin-left: auto;
-      color: var(--soft-ink);
-      font-size: 0.78rem;
+      color: var(--faint-ink);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums slashed-zero;
+      font-feature-settings: "ss01" 1;
+      font-size: 0.74rem;
+      letter-spacing: -0.005em;
     }
+    .prose :global(.ndf-author) {
+      font-family: var(--font-ui);
+    }
+
+    /* ---- Media block ---- */
     .prose :global(.ndf-card-media) {
       display: block;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       background: var(--surface);
-      border-bottom: 1px solid var(--hairline);
     }
     .prose :global(.ndf-card-media img) {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+      filter: saturate(0.92);
     }
-    .prose :global(.ndf-card-media:hover img) { transform: scale(1.03); }
+    .prose :global(.ndf-card-media:hover img) {
+      transform: scale(1.035);
+      filter: saturate(1);
+    }
     .prose :global(.ndf-x-embed) {
       margin: 0 !important;
-      border: 0 !important;
-      border-bottom: 1px solid var(--hairline) !important;
-      padding: 0.6rem 0.9rem !important;
-      background: transparent !important;
+      border: 1px solid var(--hairline) !important;
+      padding: 0.55rem 0.8rem !important;
+      background: color-mix(in oklch, var(--surface), transparent 60%) !important;
     }
+
+    /* ---- Body ---- */
     .prose :global(.ndf-card-body) {
-      padding: 0.7rem 0.9rem 0.9rem;
       display: flex;
       flex-direction: column;
       gap: 0.55rem;
     }
     .prose :global(.ndf-quote) {
       margin: 0;
-      color: var(--soft-ink);
+      color: var(--ink);
+      font-family: var(--font-body);
       font-style: italic;
-      line-height: 1.5;
+      font-size: 0.95em;
+      line-height: 1.55;
+      position: relative;
+      padding-left: 1rem;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       overflow: hidden;
     }
+    .prose :global(.ndf-quote)::before {
+      content: "\201C";
+      position: absolute;
+      left: 0;
+      top: -0.1em;
+      font-family: var(--font-display);
+      font-size: 1.6em;
+      line-height: 1;
+      color: color-mix(in oklch, var(--accent), transparent 35%);
+    }
+
+    /* ---- Field list: small-caps labels, hanging rule indent ---- */
     .prose :global(.ndf-fields) {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.35rem;
-      margin: 0;
+      gap: 0.45rem 0;
+      margin: 0.3rem 0 0;
       padding: 0;
     }
     .prose :global(.ndf-fields dt) {
       margin: 0;
-      font-weight: 700;
-      color: var(--ink);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      padding-left: 0.65rem;
+      position: relative;
+      font-family: var(--font-ui);
+      font-feature-settings: "smcp" 1, "c2sc" 1;
       font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--soft-ink);
+      text-transform: lowercase;  /* small-caps OT renders uppercase glyphs */
+    }
+    .prose :global(.ndf-fields dt)::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 0.4rem;
+      height: 1px;
+      background: var(--soft-ink);
+      opacity: 0.5;
     }
     .prose :global(.ndf-fields dd) {
-      margin: 0 0 0.2rem;
-      color: var(--soft-ink);
-      line-height: 1.55;
+      margin: 0.1rem 0 0 0.65rem;
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.6;
     }
+
+    /* ---- Adapt callout: the visual anchor of every card ---- */
     .prose :global(.ndf-adapt-label) {
       color: var(--accent-ink) !important;
     }
-    .prose :global(.ndf-adapt) {
-      color: var(--ink) !important;
-      padding: 0.4rem 0.55rem;
-      background: color-mix(in oklch, var(--accent), transparent 90%);
-      border-left: 2px solid var(--accent);
+    .prose :global(.ndf-adapt-label)::before {
+      background: var(--accent) !important;
+      opacity: 1 !important;
+      width: 0.55rem !important;
     }
+    .prose :global(.ndf-adapt) {
+      margin: 0.15rem 0 0 0.65rem !important;
+      color: var(--ink) !important;
+      font-family: var(--font-body) !important;
+      font-size: 0.98em !important;
+      line-height: 1.55 !important;
+      padding: 0.5rem 0 0.5rem 0.85rem;
+      border-left: 2px solid var(--accent);
+      background: linear-gradient(
+        90deg,
+        color-mix(in oklch, var(--accent), transparent 92%) 0%,
+        transparent 65%
+      );
+    }
+
+    /* ---- Source link ---- */
     .prose :global(.ndf-source) {
-      margin-top: 0.25rem;
+      margin-top: 0.35rem;
+      align-self: flex-start;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
       font-weight: 700;
+      letter-spacing: 0.04em;
       color: var(--accent-ink);
       text-decoration: none;
-      border-bottom: 1px solid color-mix(in oklch, var(--accent), transparent 50%);
-      align-self: flex-start;
+      border-bottom: 1px solid color-mix(in oklch, var(--accent), transparent 60%);
+      padding-bottom: 0.08em;
+      transition: border-color 0.15s ease;
     }
-    .prose :global(.ndf-source:hover) { border-color: var(--accent); }
+    .prose :global(.ndf-source:hover) {
+      border-color: var(--accent);
+    }
+
+    /* ---- Lead card: two-column composition once we have room ---- */
+    @container (min-width: 44rem) {
+      .prose :global(.ndf-card:first-child) {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        grid-template-rows: auto auto;
+        column-gap: var(--space-md);
+        row-gap: 0.55rem;
+        align-items: start;
+        padding-top: var(--space-md);
+      }
+      .prose :global(.ndf-card:first-child .ndf-card-head) {
+        grid-column: 1 / -1;
+      }
+      .prose :global(.ndf-card:first-child .ndf-card-media),
+      .prose :global(.ndf-card:first-child .ndf-x-embed) {
+        grid-column: 1;
+        grid-row: 2;
+        aspect-ratio: 5 / 4;
+        align-self: start;
+        position: sticky;
+        top: var(--space-md);
+      }
+      .prose :global(.ndf-card:first-child .ndf-card-body) {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      .prose :global(.ndf-card:first-child .ndf-quote) {
+        font-size: 1.1em;
+        -webkit-line-clamp: 4;
+        line-height: 1.5;
+      }
+      .prose :global(.ndf-card:first-child .ndf-quote)::before {
+        font-size: 2em;
+        top: -0.18em;
+      }
+      .prose :global(.ndf-card:first-child .ndf-fields dd) {
+        font-size: 1.02em;
+        line-height: 1.65;
+      }
+      .prose :global(.ndf-card:first-child .ndf-adapt) {
+        font-size: 1.05em !important;
+        padding: 0.7rem 0 0.7rem 1rem;
+      }
+    }
+
+    /* On narrow / single-column post-stream, drop the strict 3-up cadence —
+       cards become more spacious and the quote opens up. */
+    @container (max-width: 36rem) {
+      .prose :global(.ndf-card-media) { aspect-ratio: 16 / 9; }
+      .prose :global(.ndf-quote) { -webkit-line-clamp: 5; }
+    }
 
     @keyframes report-in {
       from {

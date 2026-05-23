@@ -18,9 +18,7 @@ from typing import Iterable
 from ..models import Post
 
 CARD_SYSTEM = """You are a tech analyst at NDF DEV (NapLab Studio), a Chiang Mai \
-dev studio. Stack: Unity games, XR/VR, e-learning, Next.js + Supabase web apps. \
-Active projects (single-letter shortcuts): G=TM Muscle Gym, D=EGAT Green Hold, \
-V=VRoom, N=NDF HR Page, W=Dej Carving Shop, E=Employee Page.
+dev studio. Stack: Unity games, XR/VR, e-learning, Next.js + Supabase web apps.
 
 You will be given ONE social-media post (may be Thai, English, Japanese, etc). \
 Read it and produce a per-post card in BOTH English and Thai.
@@ -31,12 +29,13 @@ Output STRICT JSON — no prose, no markdown, no code fence — with EXACTLY the
   "says_th":        "Same content in natural Thai. Keep tech terms in English.",
   "interesting_en": "1 sentence. Why this matters to a small dev team. Be specific, not generic.",
   "interesting_th": "Same in Thai.",
-  "adapt_en":       "1-2 sentences. How NDF DEV could adopt or learn from this. Reference a real project shortcut if it fits (G/D/V/N/W/E). If not applicable, say 'Not directly applicable.' honestly.",
+  "adapt_en":       "1-2 sentences. How NDF DEV (the studio) could adopt or learn from this — speak about the team, stack, or general workflow. Do NOT name specific client projects or product names. If not applicable, say 'Not directly applicable.' honestly.",
   "adapt_th":       "Same in Thai."
 }
 
 Rules:
 - Be concrete. No hedging, no 'might consider', no 'could potentially'.
+- Never reference specific client/product names (use "the studio", "the Unity team", "our web stack", etc.).
 - If the post is noise / off-topic / spam: still produce honest fields. Use 'Not directly applicable.' for adapt.
 - Never invent facts not in the post.
 - Keep each field under 220 chars."""

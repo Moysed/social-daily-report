@@ -4,7 +4,7 @@ date: '2026-05-22'
 topic: edtech
 lang: th
 pair: edtech.en.md
-generated_at: '2026-05-22T10:33:57+00:00'
+generated_at: '2026-05-23T15:44:57+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,75 +12,82 @@ platforms:
 - x
 regions:
 - global
-post_count: 28
-salience: 0.45
+post_count: 30
+salience: 0.7
 sentiment: mixed
-confidence: 0.55
+confidence: 0.6
 tags:
 - edtech
-- ai-tutoring
-- teacher-burnout
-- evidence-gap
-- governance
+- ai-tutor
+- academic-integrity
+- local-inference
 - language-learning
+- classroom-policy
+thumbnail: https://pbs.twimg.com/media/HJAyvQ8XcAAB_kH.png
 translated_by: claude-sonnet-4-6
 ---
 
 # EdTech — 2026-05-22
 
 ## TL;DR
-- สัญญาณที่ชัดเจนที่สุดวันนี้คือวัฒนธรรมความเหนื่อยล้าของครู (โทรศัพท์, แรงเสียดทานจากผู้ปกครอง, พฤติกรรมนักเรียน) [1][2][3][4][5] — เป็นสัญญาณด้านอุปสงค์อ่อนๆ สำหรับเครื่องมือในห้องเรียนที่ลดภาระ ไม่ใช่เพิ่ม
-- ช่องว่างด้านหลักฐานกำลังปรากฏชัด: การศึกษาพบว่าเครื่องมือ ed-tech ที่นิยมใช้กันมากที่สุดส่วนใหญ่ขาดฐานหลักฐานรองรับ [9]; โครงสร้างพื้นฐานเก่าที่เน่าเฟะในโรงเรียนรัฐบาล K-12 ($30B งบประมาณบนระบบอายุ 17 ปี) [11]
-- คลื่นผลิตภัณฑ์ AI-tutor/mentor ยังคงดำเนินต่อไป — DeltaView, EDII, Cognios — ส่วนใหญ่เป็นสัญญาณการตลาดที่มี engagement ต่ำ แต่รูปแบบ 'train-your-own AI mentor' กำลังรวมตัวกันเป็นกลุ่มที่ชัดเจน [13][14][15][16][22]
-- การเรียนภาษา: การที่ผู้ใช้ระดับ B1 'บริโภคคอนเทนต์เจ้าของภาษา' สูง [6] และความแปรปรวนของคุณภาพติวเตอร์ [10] ยืนยันว่า scaffolded comprehensible-input บวกกับ milestones ที่วัดได้ยังคงเหนือกว่า chatbot ทั่วไป
-- มุมมองด้านธรรมาภิบาลกำลังเพิ่มขึ้นใน Global South — AI tutors กำลังตัดสินใจ 'อย่างเป็นระบบ' ต่อนักเรียนโดยใช้กรอบงานที่ออกแบบมาเพื่อปกป้องสถาบัน ไม่ใช่ผู้เรียน [12]; ญี่ปุ่นกำลังเปลี่ยนจาก 'การนำ AI มาใช้' ไปสู่ 'การออกแบบเชิงปฏิบัติการ' [25]
+- กับดักซ่อน prompt ของครูจับนักเรียนโกงด้วย AI ได้ 7 คน — เป็นหลักฐานไวรัลว่าการตรวจจับแบบ bait ได้ผลจริง [1]
+- AI tutor แบบ local-only เริ่มมาแรง: AiMentor รัน 1-bit model ขนาด 1.15GB บน Windows VRAM ต่ำ สร้าง syllabus แล้วสอนได้เลย [13]
+- โมเดลธุรกิจ edtech เริ่มสั่นคลอน: CodeCrafters หยุดพัฒนาคอร์สใหม่ อ้างว่าไม่มีโมเดลที่ยั่งยืนในยุค AI [14]
+- ความขัดแย้งเรื่อง equity + screen time ดังขึ้นเรื่อยๆ; การฟ้องร้องทางกฎหมายต่อเทคโนโลยีในชั้นเรียนเริ่มเกิดขึ้นในเท็กซัส [10][16][21]
+- AI tutor แบบ Socratic / chat-based (คณิตศาสตร์, Python) กลายเป็น commodity layer; การสร้างความแตกต่างย้ายไปที่ pedagogy แทน [18][19]
 
 ## สิ่งที่เกิดขึ้น
-สัญญาณที่ดังที่สุดในแวดวง EdTech วันนี้เป็นเรื่องวัฒนธรรม ไม่ใช่เทคนิค: กระทู้ครูไวรัลเรื่องครูที่เข้มงวดถูกขอบคุณในงานรับปริญญา [1], ผู้ปกครองที่ใช้สิทธิ์ yearbook/ทัศนศึกษาเป็นอาวุธ [2][3], นักเรียนติดโทรศัพท์ที่สลายตัวเมื่อถูกตรวจสอบ [4][5] ในชั้นใต้นั้น บทความอุตสาหกรรมที่เป็นเนื้อหาจริงหนึ่งชิ้น [9] ชี้ไปที่บทความ GovTech ของเดือนมีนาคม 2026 ที่รายงานว่าเครื่องมือ ed-tech ที่ใช้กันอย่างแพร่หลายที่สุดส่วนใหญ่ขาดหลักฐานด้านประสิทธิผล และอีกโพสต์หนึ่งชี้ให้เห็นว่า Washington State กำลังบริหารงบประมาณ K-12 มูลค่า $30B บนระบบที่มีอายุ 17 ปี [11] ชั้นผลิตภัณฑ์ AI ส่วนใหญ่เป็นการตลาดของผู้ขาย — DeltaView Learn [13], ตัวสร้างข้อสอบ AI / analytics พฤติกรรม / session-transfer ของ EDII [14][15][16], และ marketplace 'train your own AI mentor' บน Solana ชื่อ Cognios [22] — ไม่มีชิ้นไหนที่มี engagement มีนัยสำคัญ กระทู้การเรียนภาษา [6][10] สะท้อนความจริงจากฝั่งผู้ใช้เรื่องความยากของ input และความแปรปรวนของติวเตอร์ กระทู้ธรรมาภิบาล [12][25] โต้แย้งว่ากรอบ AI ของสถาบันล้าหลังการใช้งานจริงในห้องเรียน
+สัญญาณที่โดดเด่นที่สุดของวันนี้คือครูที่ฝัง prompt ที่มองไม่เห็น (ตัวอักษรสีขาว size 2) ไว้ในงานมอบหมาย และจับนักเรียนได้ 7 คนที่นำข้อความนั้นไปวางใน LLM [1] — 14k upvotes, 800+ comments การป้องกันการโกงด้วย AI กำลังเปลี่ยนจากระบบ detector (ที่พังแล้ว) มาเป็น bait/canary token แทน กระแสควบคู่กัน: ผลิตภัณฑ์ AI tutor ขนาดเล็กยังคงออกมาต่อเนื่อง — ทั้ง Windows tutor แบบ fully-local บน 1-bit model ขนาดประมาณ 1.15GB [13], Socratic Python tutor [19], math chat coach [18], และ pipeline แปลง storyboard เป็นคอร์ส Rise [23]
 
-## เหตุใดจึงสำคัญ (การวิเคราะห์)
-แรงสองอย่างกำลังชนกัน (1) ครูและผู้ปกครองเหนื่อยล้าจากการพังทลายของพฤติกรรมและความสนใจ [1][4][5] — อารมณ์ผู้ซื้อกำลังเปลี่ยนจาก 'เพิ่มเครื่องมืออีกชิ้น' ไปเป็น 'ลดภาระ' (2) เรื่องราวหลักฐานด้านประสิทธิผล [9] บวกกับโครงสร้างพื้นฐานเก่าที่เน่าเฟะ [11] หมายความว่าผู้ดูแลการจัดซื้อ (เขตการศึกษา, กระทรวง) จะยิ่งต้องการหลักฐานผลลัพธ์และความมีระเบียบด้านการ integration ไม่ใช่รายการฟีเจอร์ ผลลัพธ์ในลำดับที่สอง: ฝูง AI-tutor SKU ที่ไม่มีความแตกต่าง [13][14][15][16][22] กำลังมุ่งหน้าสู่วิกฤตความน่าเชื่อถือ; ผู้รอดคือผู้ที่มีข้อมูล learning gains ที่วัดได้, ข้อมูลเวลาที่ครูประหยัดได้, และการ integration ที่สะอาดกับ SIS/LMS ที่มีอยู่ โพสต์ธรรมาภิบาล [12][25] บ่งบอกล่วงหน้าถึงชั้นกฎระเบียบ — โดยเฉพาะในตลาดเกิดใหม่และญี่ปุ่น — ที่ 'operational design' (การบันทึก log, ความสามารถในการตรวจสอบ, การ override ของครู) จะกลายเป็นสิ่งขั้นพื้นฐาน
+ในด้านธุรกิจ CodeCrafters รายงานว่าหยุดพัฒนาคอร์สใหม่เพราะหาโมเดลที่ยั่งยืนไม่ได้ [14] และบริษัทในเท็กซัสกำลังฟ้องร้องเรื่องเทคโนโลยีในชั้นเรียน [10] ความขัดแย้งทางวัฒนธรรมทวีความรุนแรงขึ้น: โรงเรียนบังคับให้ใช้อุปกรณ์ ขณะที่พ่อแม่ถูกบอกว่า screen time เป็นอันตรายต่อเด็ก [16] และความเหลื่อมล้ำในการเข้าถึงกำลังถูกนิยามใหม่ว่าคือช่องว่าง equity ที่แท้จริง [21] thread ย่อยเรื่องการเรียนภาษา [5][6][7][9] แสดงให้เห็นความต้องการที่ยังคงอยู่อย่างต่อเนื่องสำหรับการฝึก grammar เชิงโครงสร้างและการพูด ไม่ใช่แค่ AI chat
+
+## ทำไมถึงสำคัญ (เหตุผล)
+สามแรงกำลังชนกัน (1) Detection สิ้นสุดแล้ว; การยับยั้งด้วยกับดัก prompt-injection และหลักฐานระดับ process (drafts, version history, oral defense) กลายเป็นบรรทัดฐานใหม่ — ต้นทุนต่ำ, signal สูง (2) Layer ของ AI tutor กลายเป็น commodity เร็วมาก: ทีมไหนก็ wrap LLM รอบ syllabus ได้ Moat ย้ายไปที่ curriculum design, assessment integrity, local/offline inference (ความเป็นส่วนตัว + ต้นทุน), และ UX สำหรับผู้ปกครอง (3) แรงต้านระดับมหภาค — ธุรกิจคอร์สล้มหายไป [14], การฟ้องร้อง [10], screen-time backlash [16] — หมายความว่าการขาย B2B ให้โรงเรียนจะยากขึ้น ขณะที่ค่าใช้จ่าย B2C จากผู้ปกครอง/ผู้เรียนยังอยู่รอดได้ถ้าพิสูจน์ผลลัพธ์ได้
+
+Second-order: โรงเรียนจะต้องการ audit trail และ AI ที่ทำงาน offline ได้; publisher และผู้สร้างคอร์สบน YouTube เผชิญกับผู้ชมที่ลดลง [8]; micro-tool ที่ครูสร้างเอง (เช่น hidden prompt) แพร่กระจายเร็วกว่าโซลูชันจากผู้ขาย
 
 ## ความเป็นไปได้
-ใน 6–12 เดือนข้างหน้า, ~60%: การ commoditization ของ AI-tutor ต่อเนื่องพร้อมกับการ shakeout เงียบๆ — แรงกดดันด้านราคา, M&A ของผู้เล่น Series A ที่อ่อนแอ ~25%: RCT ที่ตีพิมพ์หรือ pilot ระดับเขตขนาดใหญ่บังคับให้ 'evidence-backed' กลายเป็น baseline ทางการตลาด ทำให้ copy เปลี่ยนจาก 'AI-powered' ไปเป็น 'X% measurable gain' ~15%: เหตุการณ์ความเสียหายจาก AI-tutor ที่มีชื่อเสียง (การตัดสินใจที่มีอคติ, เนื้อหาที่ hallucinated แต่ถูกทำเครื่องหมายว่าเป็นข้อเท็จจริง) ก่อให้เกิดคำแนะนำที่เคลื่อนตัวเร็วจากกระทรวงใหญ่ — น่าจะเกิดขึ้นก่อนในสหภาพยุโรป, ญี่ปุ่น [25], หรือหน่วยงานกำกับดูแลแอฟริกาที่ตอบสนองต่อ [12] marketplace crypto-edtech อย่าง Cognios [22] ไม่น่าจะทะลุผ่านออกไปนอกกลุ่ม dev-skilling เฉพาะกลุ่ม
+มีแนวโน้มสูง (60–70%): รูปแบบ anti-cheat แบบ canary-prompt และ process-trace จะกลายเป็นมาตรฐานใน LMS plugin ภายใน 12 เดือน มีแนวโน้มสูง (55%): platform คอร์ส edtech รายใหญ่อย่างน้อยหนึ่งรายจะ pivot จากวิดีโอแบบ passive ไปสู่ AI tutor แบบ Socratic/project-based ปานกลาง (35–45%): การดำเนินการด้านกฎระเบียบหรือการฟ้องร้องจะจำกัด data flow ของ AI ในชั้นเรียนใน 1–2 รัฐของสหรัฐฯ ภายในปลายปี 2026 ส่งผลให้ความต้องการ local-inference tutor อย่าง [13] เพิ่มขึ้น ต่ำกว่านั้น (20–30%): จะมี 'AI tutor OS' ที่โดดเด่นเกิดขึ้น; มีแนวโน้มมากกว่าที่ตลาดจะยังคงแตกกระจายตามวิชาและภาษา
 
 ## การนำไปใช้กับองค์กร — NDF DEV
-มีประโยชน์ในวงแคบ สำหรับสายงาน edutech/e-learning ของ NDF DEV: (a) เน้นที่ instrumentation ด้านหลักฐานการเรียนรู้ — บันทึก pre/post deltas, time-on-task, เวลาที่ครูประหยัดได้ — เพื่อให้ผลิตภัณฑ์ Next.js/Supabase ตอบคำถามที่ [9] ตั้งขึ้นได้ (b) สำหรับงานภาษาแบบ Enggenius, [6] และ [10] สนับสนุนการสร้าง graded comprehensible-input ladders บวก milestones ที่มองเห็นได้ แทน chat tutors ทั่วไป (c) สำหรับ Unity/XR offerings, สัญญาณความเหนื่อยล้าของครู [1][4][5] บอกให้วางตำแหน่ง immersive content ว่าเป็น 'teacher-amplifying, low-prep' ไม่ใช่ 'student-replacing' (d) ข้ามมุม Solana/AI-mentor marketplace [22] ไปก่อน — ผู้ชมผิด, ภูมิภาคผิด (e) จับตาดู governance frame [12][25] สำหรับ pilot ของกระทรวงศึกษาไทย; การ framing แบบ 'operational design' เป็น wrapper ที่ขายได้รอบงาน ops ที่น่าเบื่อแต่มีคุณค่าจริงที่ NDF สามารถส่งมอบได้
+เข้ากันได้โดยตรงกับสายงาน edutech ของ NDF DEV แนวทางที่ลงมือทำได้เลย: (a) เพิ่มฟีเจอร์ 'canary prompt' ในโมดูล assignment/quiz ของ e-learning build ปัจจุบัน — งาน Next.js/Supabase ที่ทำได้ง่าย, marketing story ที่แข็งแกร่ง (b) ต้นแบบ AI tutor แบบ offline/edge สำหรับโรงเรียนไทยโดยใช้ quantized model ขนาดเล็ก (แบบ Bonsai [13]) — ตอบโจทย์ bandwidth, ความเป็นส่วนตัว, และความกังวลเรื่อง screen time ของผู้ปกครองไปพร้อมกัน (c) สำหรับโปรเจกต์ Enggenius/ภาษา ให้เน้น grammar เชิงโครงสร้าง + hybrid การพูด [5][6] มากกว่า pure chat; AI จัดการการฝึกซ้ำ, มนุษย์/ครูจัดการการแก้ไข (d) หลีกเลี่ยงผลิตภัณฑ์คอร์สวิดีโอล้วนๆ [8][14]; มุ่งสู่ tooling แบบ project-based, assessment-integrated แทน คุ้มค่า: ใช่ ฟีเจอร์ canary ต้นทุนต่ำ + R&D spike สำหรับ offline tutor ขนาดเล็ก (1–2 สัปดาห์) อย่าสร้าง AI tutor ทั่วไป — commoditize ไปแล้ว
 
-## สัญญาณที่ต้องจับตา
-- RCT ที่ตีพิมพ์หรือการศึกษาประสิทธิผลระดับเขตใดๆ ที่ตามมาหลังบทความ GovTech ที่อ้างถึงใน [9]
-- แถลงการณ์ของกระทรวงศึกษาไทยหรือเขตการศึกษา SEA หลักเรื่อง AI-in-classroom governance ที่สะท้อนแนวทางของ [25]
-- การเปลี่ยน pricing/positioning ของผู้ขาย AI-tutor จากการอ้าง feature ไปสู่การอ้าง outcome
-- RFP การแทนที่ legacy SIS หลังเรื่องราวแบบ [11] — จุดเข้าสำหรับ modern Supabase-backed builds
+## สัญญาณที่ต้องติดตาม
+- ติดตาม LMS vendor (Canvas, Google Classroom) ที่นำ prompt-injection-detection หรือฟีเจอร์ canary มาใช้
+- ติดตาม benchmark ของ local inference model ขนาดเล็กบน Windows laptop ของผู้บริโภค (ระดับ 1-bit / Bonsai)
+- ติดตามคดีฟ้องร้อง classroom-tech ในเท็กซัส [10] เพื่อดูบรรทัดฐานด้านข้อมูลและ AI ในโรงเรียน
+- ติดตาม CodeCrafters [14] และ course shop ที่คล้ายกันเพื่อดูรูปแบบการ pivot เทียบกับการปิดตัว
 
 ## แหล่งข้อมูลดิบ
 | platform | author | engagement | url |
 |---|---|---|---|
-| reddit | Difficult-Ad4364 | ^8801 c255 | [The Strict Teacher Got All The Roses At our K-8 school during graduation the 8th](https://www.reddit.com/r/Teachers/comments/1tji68k/the_strict_teacher_got_all_the_roses/) |
-| reddit | South-Lab-3991 | ^5819 c247 | [Senior upset his picture isn't in the yearbook his parents paid for I'll preface](https://www.reddit.com/r/Teachers/comments/1timmm4/senior_upset_his_picture_isnt_in_the_yearbook_his/) |
-| reddit | Emergency-Pepper3537 | ^3437 c230 | [Hey parents: field trips are a PRIVILEGE, not a right :) Every single year aroun](https://www.reddit.com/r/Teachers/comments/1tjq275/hey_parents_field_trips_are_a_privilege_not_a/) |
-| reddit | DrakeSavory | ^2981 c201 | [Student cried in class today The entire semester I'm telling this student to get](https://www.reddit.com/r/Teachers/comments/1tiri6s/student_cried_in_class_today/) |
-| reddit | Known_Negotiation_86 | ^1654 c151 | [An example of what we teachers mean, the kids are different I asked a child to s](https://www.reddit.com/r/Teachers/comments/1tioo4f/an_example_of_what_we_teachers_mean_the_kids_are/) |
-| reddit | tarleb_ukr | ^373 c36 | [Reaching B1 and being able to consume native content is such a high This is just](https://www.reddit.com/r/languagelearning/comments/1timth6/reaching_b1_and_being_able_to_consume_native/) |
-| reddit | everydayreligion1090 | ^85 c31 | [Why is the output of this C code so unpredictable? #include &lt;stdio.h&gt; int ](https://www.reddit.com/r/learnprogramming/comments/1tjmqud/why_is_the_output_of_this_c_code_so_unpredictable/) |
-| reddit | yaoyanone | ^45 c32 | [Too tired after work I clock off at 6pm and genuinely want to spend my evenings ](https://www.reddit.com/r/learnprogramming/comments/1tk3hr8/too_tired_after_work/) |
-| reddit | RudyChinchilla1 | ^30 c28 | [What is going in EdTech rn? 5.21.26 On March 10 2026, govtech.com released an ar](https://www.reddit.com/r/edtech/comments/1tjms9y/what_is_going_in_edtech_rn/) |
-| reddit | ursulaleloon | ^27 c17 | [New tutor and now thinking I was delusional about making progress update: thanks](https://www.reddit.com/r/languagelearning/comments/1tikp3u/new_tutor_and_now_thinking_i_was_delusional_about/) |
-| reddit | Classic_Day5736 | ^9 c3 | [Running on Fumes: The 17-Year-Old Computer System Holding Washington Schools' $3](https://www.reddit.com/r/edtech/comments/1tj3z7x/running_on_fumes_the_17yearold_computer_system/) |
-| x | enamara | ^4 c0 | [Every AI governance framework being imported into Africa was designed to protect](https://x.com/enamara/status/2057749904798154970) |
-| x | DeltaViewTech | ^1 c0 | [Transform learning into engaging, and interactive experience with DeltaView Lear](https://x.com/DeltaViewTech/status/2057750964996833341) |
-| x | TeamEdii | ^0 c0 | [Save 10+ hours/week with EDII's AI question paper generator! Real data from CBSE](https://x.com/TeamEdii/status/2057771155361059114) |
-| x | TeamEdii | ^0 c0 | [Bridge performance tracking gaps with EDII's AI-powered session transfer &amp; d](https://x.com/TeamEdii/status/2057771060330676372) |
-| x | TeamEdii | ^0 c0 | [Upgrade your school's ops with EDII's AI behavior analytics! Try EDII today and ](https://x.com/TeamEdii/status/2057770966961279174) |
-| x | JKBSGurgaon | ^0 c0 | [Education is changing. Fast. AI isn't something students will use in the future.](https://x.com/JKBSGurgaon/status/2057764793080287601) |
-| x | certtun | ^0 c0 | [W3C VC vs PDF+QR: 3 reglas 1) Verificación online y trazabilidad → VC. 2) Docume](https://x.com/certtun/status/2057764731084034188) |
-| x | PawVibesZ | ^0 c0 | [Teachers and schools are seeing real results with this unique approach to social](https://x.com/PawVibesZ/status/2057763167791370265) |
-| x | OneExcellenceEH | ^0 c0 | [What a beautiful day for our AI Course with Adam Bushnell! 🌞🤖 So inspiring to pi](https://x.com/OneExcellenceEH/status/2057762893114843494) |
-| x | Rdene915 | ^0 c0 | [Subscribe to my podcast @THRIVEinEDU on ⚓ https://t.co/fCy6yGC0xn #education #ed](https://x.com/Rdene915/status/2057759646824165602) |
-| x | Cognios_io | ^0 c0 | [Static courses are dead. Interactive AI mentors are the future. 🤖🎓 Meet Cognios:](https://x.com/Cognios_io/status/2057759533557072078) |
-| x | Haelsoftedtech | ^0 c0 | [Dreaming of a global education? Haelsoft Edtech, in collaboration with Unicaf, b](https://x.com/Haelsoftedtech/status/2057756585741459756) |
-| x | YohannDomenech | ^0 c0 | [5 idées simples pour aider les élèves à mieux mémoriser en langues 👇 Réactiver, ](https://x.com/YohannDomenech/status/2057755126769569984) |
-| x | BIZVACroom | ^0 c0 | [2026年5月22日 新着記事①❣️ ☑️生成AI活用は「導入」より「運用設計」で決まる｜公立学校の実装から学ぶガバナンスの要点 https://t.co/fB](https://x.com/BIZVACroom/status/2057755026744054103) |
-| x | sola_way_proj | ^0 c0 | [Meet team, our CEO Olena Product Manager in EdTech &amp; digital products. She b](https://x.com/sola_way_proj/status/2057753997130285331) |
-| x | Parity__Academy | ^0 c0 | [Your students deserve more than education, they deserve digital exposure. Partne](https://x.com/Parity__Academy/status/2057752735148064869) |
-| x | uktodaytv | ^0 c0 | [🎯 EDTECH WORLD FORUM 2026 https://t.co/k0pzHwj0C7 May 12-13. London. BOOK NOW! #](https://x.com/uktodaytv/status/2057748695790076196) |
+| reddit | Intelligent-Bridge15 | ^14403 c803 | [AI HIDDEN PROMPT SUCCESS I placed a hidden prompt in an assignment that I gave t](https://www.reddit.com/r/Teachers/comments/1tkzp68/ai_hidden_prompt_success/) |
+| reddit | Emergency-Pepper3537 | ^4434 c303 | [Hey parents: field trips are a PRIVILEGE, not a right :) Every single year aroun](https://www.reddit.com/r/Teachers/comments/1tjq275/hey_parents_field_trips_are_a_privilege_not_a/) |
+| reddit | umaro900 | ^3352 c359 | [Student wants a C. I had a senior yesterday come to my room during lunch asking ](https://www.reddit.com/r/Teachers/comments/1tklzrc/student_wants_a_c/) |
+| reddit | Emergency-Pepper3537 | ^1879 c83 | [Parent said I don't communicate enough, so now they're getting a National Geogra](https://www.reddit.com/r/Teachers/comments/1tk25ba/parent_said_i_dont_communicate_enough_so_now/) |
+| reddit | LuckyYellowCow | ^107 c31 | [I'm in love with Grammar I know this might sound weird, but I really like learni](https://www.reddit.com/r/languagelearning/comments/1tkva61/im_in_love_with_grammar/) |
+| reddit | Alarming-Source7457 | ^42 c92 | [Do you actually want to "speak from day one," or does that advice only work afte](https://www.reddit.com/r/languagelearning/comments/1tjuggh/do_you_actually_want_to_speak_from_day_one_or/) |
+| reddit | BusDriver341 | ^40 c34 | [How do you guys balance language learning with learning other things? In this co](https://www.reddit.com/r/languagelearning/comments/1tjrvu6/how_do_you_guys_balance_language_learning_with/) |
+| reddit | DrDiv | ^39 c32 | [Do you still reach for YouTube videos or courses to learn? Genuine question. I a](https://www.reddit.com/r/learnprogramming/comments/1tkskhg/do_you_still_reach_for_youtube_videos_or_courses/) |
+| reddit | Only_Protection_8748 | ^34 c23 | [To people who passed a C2 exam How long did you manage to mantain that C2 level ](https://www.reddit.com/r/languagelearning/comments/1tkejyx/to_people_who_passed_a_c2_exam/) |
+| reddit | ComfortablePhoto5 | ^6 c2 | ["The small Texas law firm taking the fight against classroom tech to court" - Wh](https://www.reddit.com/r/edtech/comments/1tkmn3c/the_small_texas_law_firm_taking_the_fight_against/) |
+| x | aeronutist23 | ^1 c0 | [@sama AI as your personal genius 🧠✨ - Adapts to _your_ level - Learns your conte](https://x.com/aeronutist23/status/2058211549400174830) |
+| x | mustofa_shonen | ^1 c0 | [This attendance page is exactly what your school needs to simplify attendance tr](https://x.com/mustofa_shonen/status/2058201197937369362) |
+| x | Rvrndinsanity | ^1 c0 | [Built AiMentor: a fully local AI tutor for Windows. It uses PrismML Bonsai 8B, a](https://x.com/Rvrndinsanity/status/2058191181230846174) |
+| x | xamgore | ^1 c1 | [Казалось бы в эру AI глубокие знания должны цениться, и Edtech должен расти; тем](https://x.com/xamgore/status/2058188848186724622) |
+| x | polsia | ^0 c0 | [ClassReach is a new AI-native social media agency built for EdTech companies. Fi](https://x.com/polsia/status/2058211701779263525) |
+| x | malpani | ^0 c0 | [The contradiction is baked in and nobody wants to name it. Schools require devic](https://x.com/malpani/status/2058211680933605853) |
+| x | Techzo160538 | ^0 c0 | [#EdTech #Automation #ERP #UniversityManagementSystem](https://x.com/Techzo160538/status/2058210045809332656) |
+| x | SparkedMaths | ^0 c0 | [If your child struggles with math, read this. Ask Coach (AI Tutor) on SparkEd — ](https://x.com/SparkedMaths/status/2058207137659339138) |
+| x | polsia | ^0 c0 | [Most online courses teach you to pass. This AI tutor teaches you to think. You g](https://x.com/polsia/status/2058206724516090317) |
+| x | _odsc | ^0 c0 | [What is an AI Tutor? Learn how this emerging role is shaping AI training, evalua](https://x.com/_odsc/status/2058203798464524612) |
+| x | malpani | ^0 c1 | [Your child shares a phone with 3 siblings to do homework. Their classmate has th](https://x.com/malpani/status/2058203053338341457) |
+| x | MyEdTechLife | ^0 c0 | [We underestimate kids. They have the ideas. School just keeps asking them to abs](https://x.com/MyEdTechLife/status/2058202654472376594) |
+| x | onEnterFrame | ^0 c0 | [Storyboard outlines -&gt; fully structured course content. That manual lift is a](https://x.com/onEnterFrame/status/2058202334489108966) |
+| x | rickferdig | ^0 c0 | [How AI helped treat a newborn's ultra rare disease. 'It was almost like a light ](https://x.com/rickferdig/status/2058200470628274554) |
+| x | SamuelB77360950 | ^0 c0 | [Decentralized DePIN infrastructure powering scalable real-time communication wit](https://x.com/SamuelB77360950/status/2058199554873246114) |
+| x | tultican | ^0 c0 | [US Department of Ed: I Can Has Skillz - If you look at the post the title makes ](https://x.com/tultican/status/2058198340270182730) |
+| x | Rdene915 | ^0 c0 | [Looking to bring #AI into your classroom! It is a great day to explore my newest](https://x.com/Rdene915/status/2058197521239834974) |
+| x | trustcircle | ^0 c0 | [Featured by WHO's Mental Health Innovation Network (MHIN). A moment in TrustCirc](https://x.com/trustcircle/status/2058193734211182839) |
+| x | EliteDomainz | ^0 c0 | [https://t.co/9DY34apdoV #Phoneticly #DomainForSale #Phonetics #EdTech #LanguageT](https://x.com/EliteDomainz/status/2058192804862722076) |
+| x | AndyNelson1977 | ^0 c0 | [@mathillustrated I still struggle with these supposedly intellectually superior ](https://x.com/AndyNelson1977/status/2058192301759852934) |

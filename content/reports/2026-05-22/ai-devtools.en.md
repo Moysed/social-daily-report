@@ -4,7 +4,7 @@ date: '2026-05-22'
 topic: ai-devtools
 lang: en
 pair: ai-devtools.th.md
-generated_at: '2026-05-22T10:14:52+00:00'
+generated_at: '2026-05-23T15:29:59+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,84 +12,252 @@ platforms:
 - hackernews
 - lobsters
 - reddit
+- rss
 - x
 regions:
 - global
-post_count: 79
-salience: 0.78
+post_count: 73
+salience: 0.82
 sentiment: mixed
 confidence: 0.62
 tags:
 - coding-agents
-- open-weights
-- qwen
-- gemini
 - local-llm
-- agent-eval
+- claude-code
+- orchestration
+- observability
+- unity-xr
+thumbnail: https://external-preview.redd.it/zW4iLnJxN0zQoUdThRA2N1dPbBFF2lRo5kWcCY9s-6I.png?auto=webp&s=7a0ae648f0ddc4a0a417df18941520674e0610fa
 ---
 
 # AI Devtools — 2026-05-22
 
 ## TL;DR
-- Qwen 3.6/3.7 open-weight models hitting 110 tok/s on 12GB VRAM are reshaping local coding workflows [8][16][20]
-- Google Antigravity accused of bait-and-switch on pricing/quotas; trust hit for agentic IDE adopters [5]
-- Gemini 3.2 Flash leak claims 92% of GPT-5.5 quality at 1/20 cost — major TCO shift if real [35]
-- Meta's legal notice to Heretic (uncensoring tool) signals tightening pressure on open-weight tooling [1]
-- Terminal-Bench Science + Multi-Stream LLM paper push agent eval and parallel inference forward [9][38]
+- Microsoft is canceling internal Claude Code licenses, signaling vendor consolidation pressure on coding-agent stacks [7]
+- Antigravity 2.0 tops a 3D OpenSCAD LLM benchmark, hinting at usable LLM pipelines for procedural/3D content relevant to Unity/XR [5]
+- Local Qwen3.6 and Gemma 4 quants now hit 40–177 tps on single 8–16GB consumer GPUs, making on-prem coding assistants viable for small studios [12][29][30][37][39]
+- Orchestration layer for parallel coding agents (Kanbots, lightsprint, AGNT Hub) is the emerging 'Jira-for-agents' category [9][19][20][32][40]
+- Microsoft open-sourced an AI Engineer Coach VS Code extension that profiles how devs actually use AI agents — free observability for any team [24]
 
 ## What happened
-Open-weight momentum dominates: Qwen3.6 35B-A3B runs at 110 tok/s on a 12GB GPU via ik_llama.cpp [16], and devs report it has replaced cloud Codex for routine tasks [20]; Qwen 3.7 teased as next step [8]. On the closed side, Google Antigravity faces a public 'bait and switch' complaint over changed terms after launch [5], while a leaked Gemini 3.2 Flash benchmark claims near-GPT-5.5 quality at ~5% cost [35]. Tooling/eval news: Terminal-Bench Science opens agent benchmarks on real scientific workflows used by Anthropic/OpenAI/DeepMind [9]; a Multi-Stream LLM paper proposes parallelizing prompt/thinking/I/O streams [38]. Legal/ecosystem friction: Meta sent a legal notice to the Heretic decensoring project [1]. Adjacent: Claude Code cheat-sheet circulating with /skills /agents /plan workflows [34], OpenCode prompt-processing fix lands for llama.cpp users [40], and SimWorld Studio targets self-evolving 3D envs for embodied agents [25].
+The dominant story is the maturation of agentic coding tooling and its commercial fallout. Microsoft is pulling internal Claude Code seats [7], while Anthropic publishes a Claude Code cheat sheet and skills push [15][33], and a new 'Hyper' inference service targets coding agents specifically [38]. A new category of agent orchestrators emerged today: Kanbots runs parallel agents per Kanban card [9], lightsprint positions as Jira-for-agents [20][32][40], and AGNT Hub offers drag-drop private agent workflows [19]. On models, Antigravity 2.0 leads an OpenSCAD architectural 3D benchmark [5], and local-LLM tooling exploded — BeeLlama DFlash gives 4–5x speedups on a 3090 [12], ByteShape and pure-quant builds run Qwen3.6 27B–35B with 256K+ context on 8–16GB consumer cards [29][30][37][39]. Microsoft also open-sourced an 'AI Engineer Coach' VS Code extension that measures real agent usage [24], and an MIT lecture warned against 'vibe coding' with --dangerously-skip-permissions [26][31][36].
 
 ## Why it matters (reasoning)
-Two forces collide. (1) Local inference is crossing the 'good enough for coding' threshold on consumer GPUs [16][20], which erodes the moat of paid coding agents and lets studios run private agents on existing dev machines. (2) Closed providers are simultaneously slashing prices (Gemini 3.2 Flash [35]) and tightening commercial terms (Antigravity [5]) — meaning the cheap path now carries policy/lock-in risk. Meta vs Heretic [1] shows incumbents will use legal pressure, not just licenses, against tools that weaken alignment guardrails — relevant if you depend on uncensored derivative weights. Eval maturity (Terminal-Bench Science [9]) and parallel inference research [38] suggest the next 6 months are about agent reliability and latency, not raw model quality.
+Two trends compound: (a) coding agents are becoming a controlled, evaluated workflow rather than a chat toy — skills, plans, hooks, eval/observability [15][24][26][33]; (b) capable local inference on a single ≤16GB GPU is now real for code-grade models [12][29][30][37][39]. For a studio like NDF DEV this means the cost/sovereignty equation shifts: you can run a Qwen3.6-class assistant on the same workstation that runs Unity, while still using Claude Code or Antigravity for harder tasks. Microsoft canceling Claude Code seats [7] is a warning that single-vendor lock-in on closed coding agents is politically and commercially fragile; portability (skills, MCP, hooks) becomes the hedge. Second-order: as multi-agent orchestration [9][20][32][40] standardizes, the bottleneck moves from code generation to task decomposition, review, and preview environments — exactly where small studios usually under-invest.
 
 ## Possibility
-Likely (>60%): Qwen 3.7 open weights drop within weeks and become default local coding model for studios with RTX 4070+/5070 class GPUs. Likely (~55%): Gemini 3.2 Flash, if leak holds, triggers a price war that pulls Anthropic/OpenAI Haiku-tier rates down ~30-50% by Q3 2026. Plausible (~40%): more Meta-style legal actions against decensoring/distillation projects, chilling some HuggingFace forks. Lower (~25%): Antigravity-style backlash forces clearer SLAs from agentic IDE vendors (Cursor, Windsurf, Antigravity).
+Likely (≥70%): within 6–9 months, mid-size studios run a hybrid stack — frontier API (Claude/Antigravity/Gemini) for hard tasks + a local Qwen3.6/Gemma 4 quant for autocomplete, refactor, and offline work. Plausible (~45%): one of the parallel-agent orchestrators (Kanbots/lightsprint-class) becomes a de-facto 'Jira for agents' and gets acquired or merged into GitHub/Linear. Possible (~30%): Antigravity's 3D-LLM lead [5] generalizes into Unity/Blender procedural pipelines — useful for XR level/asset prototyping. Lower (~20%): closed coding-agent vendors fragment further as enterprises (à la Microsoft [7]) repatriate to in-house or open-weight stacks.
 
 ## Org applicability — NDF DEV
-Concrete moves for NDF DEV: (a) Pilot Qwen3.6 35B-A3B on one workstation via ik_llama.cpp [16] for Unity C# scaffolding, Next.js/Supabase boilerplate, and Thai-language edutech content drafts — zero per-seat cost, private to studio. (b) Treat Antigravity/Cursor as replaceable; keep agent workflows portable (Claude Code /skills + MCP pattern [34] works across vendors). (c) For client-facing edutech where cost matters, prototype with Gemini 3.2 Flash once GA — could cut LLM bill ~20x for content generation pipelines. (d) Avoid building on uncensored/Heretic-derived weights for any deliverable [1] — IP risk. (e) SimWorld Studio [25] worth watching for XR/VR training-sim use cases but too early to adopt. Not worth: chasing every Qwen point release; pick one quarterly.
+Worth doing now: (1) Install the AI Engineer Coach VS Code extension across the team [24] — free baseline on how Unity/Next.js devs actually use agents, no lock-in. (2) Adopt Claude Code skills + /plan + /compact workflow [15][33] as the studio standard; document 3–5 NDF-specific skills (Unity C# review, Supabase migration, XR scene scaffold). (3) Spin up one shared workstation with Qwen3.6 27B Q4 on a 16GB card [30][39] as fallback for offline/private code work and edutech content generation. Worth watching, not adopting: parallel-agent orchestrators [9][20] — promising but unproven for a <10-dev studio; current Kanban + Claude Code is enough. Probably skip: Antigravity for production until OpenSCAD-style results [5] show up on Unity/USD workloads.
 
 ## Signals to Watch
-- Qwen 3.7 open-weight release date and license terms [8]
-- Whether Gemini 3.2 Flash pricing leak [35] is confirmed at Google I/O follow-up
-- Antigravity ToS revision or refund policy after backlash [5]
-- Meta vs Heretic outcome — sets precedent for open-weight derivatives [1]
+- Whether Microsoft formalizes a Claude Code replacement (Copilot Workspace? in-house?) within 60 days [7]
+- Antigravity 2.0 benchmark wins extending to Unity/USD/Blender procedural tasks [5]
+- Qwen3.6 / Gemma 4 official coding variants landing with Q4 builds for 16GB cards [29][30][37]
+- Whether an orchestrator (lightsprint, Kanbots, or GitHub) ships a credible 'parallel agents per ticket' UX that beats single-agent flow [9][20][32][40]
 
 ## Repos & Tools to Try
 | repo | source | url |
 |---|---|---|
-| **eigenpal/docx-editor** — Show HN: Open-source .docx editor library for building document apps We are working on an open-sourc | hackernews | <https://github.com/eigenpal/docx-editor> |
+| **amatsuda/rubish** — Rubish: A Unix shell written in pure Ruby | hackernews | <https://github.com/amatsuda/rubish> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| reddit | -p-e-w- | ^1847 c277 | [Heretic has been served a legal notice by Meta, Inc. To Whomsoever it May Concer](https://www.reddit.com/r/LocalLLaMA/comments/1tjmvx6/heretic_has_been_served_a_legal_notice_by_meta_inc/) |
-| hackernews | tedsanders | ^1388 c1015 | [An OpenAI model has disproved a central conjecture in discrete geometry <a href=](https://openai.com/index/model-disproves-discrete-geometry-conjecture/) |
-| hackernews | sandebert | ^1158 c444 | [Flipper One – we need your help](https://blog.flipper.net/flipper-one-we-need-your-help/) |
-| hackernews | speleo | ^925 c201 | [Project Hail Mary – Stellar Navigation Chart](https://valhovey.github.io/gaia-mary/) |
-| hackernews | ssiddharth | ^684 c305 | [Google's Antigravity bait and switch](https://www.0xsid.com/blog/antigravity-bait-n-switch) |
-| hackernews | napolux | ^617 c356 | [Throwing AI-generated walls of text into conversations](https://noslopgrenade.com/) |
-| hackernews | sofumel | ^607 c541 | [We're testing new ad formats in Search and expanding our Direct Offers pilot](https://blog.google/products/ads-commerce/google-marketing-live-search-ads/) |
-| reddit | LegacyRemaster | ^525 c151 | [Waiting for Qwen 3.7 open weight... The new King has arrived... The hype is real](https://www.reddit.com/r/LocalLLaMA/comments/1tjvz6l/waiting_for_qwen_37_open_weight_the_new_king_has/) |
-| x | StevenDillmann | ^467 c15 | [📣 Announcing Terminal-Bench Science: benchmarking AI agents on real scientific w](https://x.com/StevenDillmann/status/2057144415513420049) |
-| hackernews | root-parent | ^461 c188 | [Seattle Shield, an intelligence-sharing network operated by the Seattle police](https://prismreports.org/2026/05/20/seattle-shield-private-companies-surveillance/) |
-| hackernews | asenna | ^383 c115 | [Indexing a year of video locally on a 2021 MacBook with Gemma4-31B (50GB swap)](https://blog.simbastack.com/indexed-a-year-of-video-locally/) |
-| hackernews | rbanffy | ^377 c187 | [Python 3.15: features that didn't make the headlines](https://blog.changs.co.uk/python-315-features-that-didnt-make-the-headlines.html) |
-| hackernews | pseudolus | ^352 c104 | [Lost Images from the 1945 Trinity Nuclear Test Restored](https://spectrum.ieee.org/trinity-nuclear-test) |
-| hackernews | mattas | ^316 c393 | [Waymo pauses Atlanta service as its robotaxis keep driving into floods](https://techcrunch.com/2026/05/21/waymo-pauses-atlanta-service-as-its-robotaxis-keep-driving-into-floods/) |
-| hackernews | qaz_plm | ^304 c94 | [BBEdit 16](https://www.barebones.com/products/bbedit/bbedit16.html) |
-| reddit | janvitos | ^303 c97 | [110 tok/s with 12GB VRAM on Qwen3.6 35B A3B and ik_llama.cpp Had been getting [g](https://www.reddit.com/r/LocalLLaMA/comments/1tjh7az/110_toks_with_12gb_vram_on_qwen36_35b_a3b_and_ik/) |
-| hackernews | speckx | ^291 c151 | [Blog ran on Ubuntu 16.04 for 10 years. I migrated it to FreeBSD](https://crocidb.com/post/this-blog-ran-on-ubuntu-16-04-for-10-years-i-migrated-it-to-freebsd/) |
-| hackernews | sanity | ^287 c175 | [Show HN: Freenet, a peer-to-peer platform for decentralized apps For the past 5 ](https://freenet.org/) |
-| hackernews | jaredwiener | ^287 c99 | [News outlets are limiting the Internet Archive’s access to their journalism](https://www.niemanlab.org/2026/05/more-than-340-local-news-outlets-are-limiting-the-internet-archives-access-to-their-journalism/) |
-| reddit | mouseofcatofschrodi | ^278 c69 | [Qwen3.6 35Ba3 has changed my workflows and even how I use my computer My workflo](https://www.reddit.com/r/LocalLLaMA/comments/1tjwrp7/qwen36_35ba3_has_changed_my_workflows_and_even/) |
-| hackernews | bambax | ^275 c53 | [The Letter S, by Donald Knuth (1980) [pdf]](https://gwern.net/doc/design/typography/1980-knuth.pdf) |
-| x | kaggle | ^225 c5 | [Join the 5-Day AI Agents: Intensive Vibe Coding Course with @Google! Learn from ](https://x.com/kaggle/status/2057457614116507829) |
-| hackernews | d0ks | ^210 c229 | [The memory shortage is causing a repricing of consumer electronics](https://davidoks.blog/p/ai-is-killing-the-cheap-smartphone) |
-| hackernews | nchagnet | ^210 c109 | [Uv is fantastic, but its package management UX is a mess](https://www.loopwerk.io/articles/2026/uv-ux-mess/) |
-| x | Lianhuiq | ^208 c10 | [Scaling embodied AI starts with automating the environments. Introducing SimWorl](https://x.com/Lianhuiq/status/2057165074532581695) |
-| hackernews | speckx | ^202 c67 | [Using Kagi Search with Low Vision](https://veroniiiica.com/using-kagi-search-with-low-vision/) |
-| x | KullAxel | ^190 c6 | [Agent benchmark not coding benchmark. I have seeen a lot of people criticizing G](https://x.com/KullAxel/status/2057491514490823095) |
-| x | MultiversX | ^183 c6 | [AI coding agents have become the primary authors of most software in 2026. We're](https://x.com/MultiversX/status/2057492868038611350) |
-| x | testingcatalog | ^175 c17 | [Tycoon launched as the world's first operating system for one-person companies, ](https://x.com/testingcatalog/status/2057394368068083738) |
-| reddit | noprompt | ^161 c21 | [When your LLM treats data center GPUs like an optional DLC](https://www.reddit.com/r/LocalLLaMA/comments/1tk4gyy/when_your_llm_treats_data_center_gpus_like_an/) |
+| hackernews | d0ks | ^774 c363 | [Why Japanese companies do so many different things](https://davidoks.blog/p/why-japanese-companies-do-so-many) |
+| reddit | HumanDrone8721 | ^630 c199 | [NVIDIA Removes Gaming Revenue Category From Financial Reports](https://www.reddit.com/r/LocalLLaMA/comments/1tkw5ri/nvidia_removes_gaming_revenue_category_from/) |
+| hackernews | lexandstuff | ^583 c206 | [Shipping a laptop to a refugee camp in Uganda](https://notesbylex.com/shipping-a-laptop-to-a-refugee-camp-in-uganda) |
+| hackernews | louiereederson | ^475 c285 | [Project Glasswing: An Initial Update](https://www.anthropic.com/research/glasswing-initial-update) |
+| hackernews | jetter | ^407 c154 | [Antigravity 2.0 Tops the OpenSCAD Architectural 3D LLM Benchmark](https://modelrift.com/blog/openscad-llm-benchmark/) |
+| hackernews | roflcopter69 | ^390 c161 | [Deno 2.8](https://deno.com/blog/v2.8) |
+| hackernews | robertkarl | ^376 c354 | [Microsoft starts canceling Claude Code licenses <a href="https:&#x2F;&#x2F;archi](https://www.theverge.com/tech/930447/microsoft-claude-code-discontinued-notepad) |
+| hackernews | Tomte | ^268 c103 | [BambuStudio has been violating PrusaSlicer AGPL license since their fork](https://xcancel.com/josefprusa/status/2054602354851254330) |
+| hackernews | vitriapp | ^237 c142 | [Open source Kanban desktop app that runs parallel agents on every card](https://www.kanbots.dev/) |
+| hackernews | speckx | ^233 c54 | [CISA tries to contain data leak](https://krebsonsecurity.com/2026/05/lawmakers-demand-answers-as-cisa-tries-to-contain-data-leak/) |
+| hackernews | colinprince | ^200 c118 | [Sleep research led to a new sleep apnea drug](https://temertymedicine.utoronto.ca/news/how-decades-sleep-research-led-new-sleep-apnea-drug) |
+| reddit | Anbeeld | ^195 c113 | [BeeLlama v0.2.0 – major DFlash update. Single RTX 3090: Qwen 3.6 27B up to 164 t](https://www.reddit.com/r/LocalLLaMA/comments/1tkpz2y/beellama_v020_major_dflash_update_single_rtx_3090/) |
+| hackernews | Michelangelo11 | ^194 c55 | [Experience: We found a baby on the subway – now he's our 26-year-old son](https://www.theguardian.com/lifeandstyle/2026/may/22/experience-found-baby-subway-now-26-year-old-son) |
+| hackernews | gorgmah | ^186 c136 | [I Miss Terry Pratchett](https://www.mahl.me/blog/the-spell-that-wouldnt-leave/) |
+| x | Anthony_Sofo | ^165 c17 | [Claude Code Cheat Sheet 🧠💻 Master workflows with: • /skills • /agents • /plan • ](https://x.com/Anthony_Sofo/status/2057828266279592318) |
+| hackernews | dan_hawkins | ^161 c43 | [I’m writing again](https://www.cringely.com/2026/05/21/im-writing-again/) |
+| hackernews | speckx | ^153 c17 | [A Forth-inspired language for writing websites](https://robida.net/entries/2026/05/21/a-forth-inspired-language-for-writing-websites) |
+| hackernews | zqna | ^145 c102 | [US tech firms share Dutch regulator officials' names with Senate](https://www.dutchnews.nl/2026/05/us-tech-firms-share-dutch-regulator-officials-names-with-senate/) |
+| x | agnt_hub | ^145 c15 | [Building a private AI agent shouldn't require a computer science degree. AGNT Hu](https://x.com/agnt_hub/status/2057811474416828882) |
+| x | xCryptoAlucard | ^124 c35 | [👉🏻 @lightsprintai is stepping in as the orchestration layer for AI-native engine](https://x.com/xCryptoAlucard/status/2057774717612744994) |
+| x | unicodeveloper | ^120 c17 | [Claude Code users are becoming the React developers of AI coding agents. You can](https://x.com/unicodeveloper/status/2057845190140825810) |
+| reddit | LLMFan46 | ^119 c11 | [G4-MeroMero-26B-A4B-it-uncensored-heretic Is Out Now, a Finetune of gemma-4-26B-](https://www.reddit.com/r/LocalLLaMA/comments/1tl1wpd/g4meromero26ba4bituncensoredheretic_is_out_now_a/) |
+| reddit | Jorlen | ^114 c61 | [Can't believe I got it working! Dual GPU - 48gb VRAM llama-cpp server - R7900 + ](https://www.reddit.com/r/LocalLLaMA/comments/1tktxr0/cant_believe_i_got_it_working_dual_gpu_48gb_vram/) |
+| x | akshay_pachaar | ^112 c25 | [Microsoft built a Fitbit for AI. they just open-sourced AI Engineer Coach. a VS ](https://x.com/akshay_pachaar/status/2057901920795378159) |
+| hackernews | winebarrel | ^108 c63 | [Rubish: A Unix shell written in pure Ruby](https://github.com/amatsuda/rubish) |
+| x | slash1sol | ^108 c27 | [MIT JUST DROPPED A 60-MIN LECTURE ON AGENTIC CODING BECAUSE VIBE-CODERS STILL TH](https://x.com/slash1sol/status/2057948111595540736) |
+| hackernews | nand2mario | ^107 c19 | [80386 Microcode Disassembled](https://www.reenigne.org/blog/80386-microcode-disassembled/) |
+| hackernews | ravenical | ^102 c34 | [On The <dl>](https://benmyers.dev/blog/on-the-dl/) |
+| reddit | OsmanthusBloom | ^101 c46 | [ByteShape Qwen3.6-35B-A3B: 30% faster than Unsloth IQ on 6GB VRAM laptop A few d](https://www.reddit.com/r/LocalLLaMA/comments/1tknjcx/byteshape_qwen3635ba3b_30_faster_than_unsloth_iq/) |
+| reddit | bobaburger | ^95 c51 | [Qwen3.6 27B Pure Quant: 40 tok/s on 16 GB VRAM Hello everyone! I want to share t](https://www.reddit.com/r/LocalLLaMA/comments/1tkzk9e/qwen36_27b_pure_quant_40_toks_on_16_gb_vram/) |
+
+
+## Top Posts
+
+<div class="post-stream">
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Anbeeld</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 195 · 💬 113</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tkpz2y/beellama_v020_major_dflash_update_single_rtx_3090/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/zW4iLnJxN0zQoUdThRA2N1dPbBFF2lRo5kWcCY9s-6I.png?auto=webp&amp;s=7a0ae648f0ddc4a0a417df18941520674e0610fa" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“BeeLlama v0.2.0 – major DFlash update. Single RTX 3090: Qwen 3.6 27B up to 164 tps (4.40x), Gemma 4 31B up to 177.8 tps (4.93x). Prompt processing speed near baseline. **BeeLlama v0.2.0 is here!** &amp;gt”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>BeeLlama v0.2.0 brings a major DFlash speculative decoding update, hitting 164–178 tps on 27–31B models with a single RTX 3090 — nearly 5x faster than baseline.</dd>
+      <dt>Why interesting</dt>
+      <dd>5x token throughput on a single consumer GPU means running large local LLMs for dev tooling or AI-assisted workflows is now viable without a server cluster.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio can benchmark BeeLlama on an existing RTX 3090 rig to replace cloud inference costs for internal AI tools — code review, prompt testing, or e-learning content generation pipelines.</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tkpz2y/beellama_v020_major_dflash_update_single_rtx_3090/" target="_blank" rel="noopener">View on reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Anthony_Sofo</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 165 · 💬 17</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Anthony_Sofo/status/2057828266279592318">View @Anthony_Sofo on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Claude Code Cheat Sheet 🧠💻 Master workflows with: • /skills • /agents • /plan • /compact • MCP tools • Memory &amp;amp; hooks Best practices: ✔️ Review diffs ✔️ Plan before coding ✔️ Compress context ✔️ A”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A cheat sheet for Claude Code power-users covering key slash commands (/skills, /agents, /plan, /compact), MCP tools, memory, hooks, and best practices like reviewing diffs and compressing context.</dd>
+      <dt>Why interesting</dt>
+      <dd>Frames AI coding as systems-building, not prompt luck — the specific combo of /plan + /compact + hooks is a replicable workflow any dev team can standardize on.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio already runs Oracle with hooks and /rrr — add /plan before every feature sprint and enforce /compact at context limits to cut wasted tokens across Unity and web work.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/Anthony_Sofo/status/2057828266279592318" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@agnt_hub</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 145 · 💬 15</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/agnt_hub/status/2057811474416828882">View @agnt_hub on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Building a private AI agent shouldn't require a computer science degree. AGNT Hub lets you drag and drop modular agents to build automated workflows inside a fully encrypted cloud sandbox. Soon, you'l”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>AGNT Hub is launching a no-code, drag-and-drop platform for building and deploying private AI agent workflows inside an encrypted cloud sandbox.</dd>
+      <dt>Why interesting</dt>
+      <dd>Zero-code agent orchestration lowers the barrier for non-engineers to automate workflows, which directly threatens the value-add of studios that charge for custom automation builds.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio can benchmark AGNT Hub against the current n8n/custom agent stack — if client-facing automation tasks can be handed off to a no-code tool, the team focuses engineering time on deeper Unity/XR work instead.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/agnt_hub/status/2057811474416828882" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@xCryptoAlucard</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 124 · 💬 35</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/xCryptoAlucard/status/2057774717612744994">View @xCryptoAlucard on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“👉🏻 @lightsprintai is stepping in as the orchestration layer for AI-native engineering. The old SDLC tools like Jira or Linear are just not built for a workflow where you run multiple coding agents in ”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Lightsprint AI positions itself as an orchestration layer replacing Jira/Linear for AI-native dev workflows, offering instant PR preview environments per agentic task, backed by YC.</dd>
+      <dt>Why interesting</dt>
+      <dd>Running multiple coding agents in parallel breaks existing ticket-based planning tools — teams need a new coordination layer or they'll create merge chaos.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio already uses parallel agent workflows; evaluating Lightsprint as a coordination layer over GitHub PRs could cut the overhead of tracking which agent owns which feature branch.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/xCryptoAlucard/status/2057774717612744994" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@unicodeveloper</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 120 · 💬 17</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/unicodeveloper/status/2057845190140825810">View @unicodeveloper on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Claude Code users are becoming the React developers of AI coding agents. You can’t tell them there are alternatives. Yep, i said it! So I did the comparison nobody wanted: - Claude Code @claudeai vs -”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Developer @unicodeveloper compared three AI coding agents — Claude Code, OpenAI Codex, and OpenCode — noting that Claude Code users are as loyal as React developers and resistant to alternatives.</dd>
+      <dt>Why interesting</dt>
+      <dd>A direct side-by-side comparison of the three dominant AI coding agents gives small teams concrete data to justify (or revisit) their current tool choice instead of going by hype.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio should watch the linked comparison, benchmark whichever agent wins on multi-file refactoring and context retention, then standardize on one tool across Unity and Next.js workflows to cut context-switching cost.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/unicodeveloper/status/2057845190140825810" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@LLMFan46</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 119 · 💬 11</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tl1wpd/g4meromero26ba4bituncensoredheretic_is_out_now_a/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/gSlsnzJc3zRUXIwholKZwcUeSos9bcCICafrGQ2pZQU.png?auto=webp&amp;s=88f9458d84f5c78107c913ba484995284480c572" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“G4-MeroMero-26B-A4B-it-uncensored-heretic Is Out Now, a Finetune of gemma-4-26B-A4B-it, With KLD of 0.0152 and 12/100 Refusals! When I previously posted the uncensored version of the 31B version of th”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A new uncensored finetune of Gemma 4 26B (MoE, ~4B active params) is released on HuggingFace in both Safetensors and GGUF formats, achieving only 12/100 refusals and KLD of 0.0152 from the base model.</dd>
+      <dt>Why interesting</dt>
+      <dd>The 26B-A4B MoE architecture runs fast on lower VRAM than a dense 26B model, making capable uncensored local LLMs more accessible for teams with mid-tier GPUs.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio can test this GGUF locally for internal NPC dialogue generation or e-learning content drafting pipelines where cloud API cost or content restrictions are blockers.</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tl1wpd/g4meromero26ba4bituncensoredheretic_is_out_now_a/" target="_blank" rel="noopener">View on reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Jorlen</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 114 · 💬 61</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tktxr0/cant_believe_i_got_it_working_dual_gpu_48gb_vram/" target="_blank" rel="noopener"><img src="https://i.redd.it/ii1w278ttq2h1.png" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Can't believe I got it working! Dual GPU - 48gb VRAM llama-cpp server - R7900 + 7800XT Setup: Kubuntu 24.04 - AMD cards - R9700 AI PRO and 7800xt (32gb + 16gb) - llama-cpp server - stack setup in dock”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A hobbyist got dual AMD GPUs (R9700 AI PRO + 7800XT, 48GB VRAM total) running llama-cpp server via Vulkan on Docker/Kubuntu after ROCM failed on the mixed RDNA4+RDNA3 setup.</dd>
+      <dt>Why interesting</dt>
+      <dd>Vulkan bridges mixed-gen AMD GPUs into a single 48GB pool — a cheap path to running 70B+ models locally without cloud API bills.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio can replicate this stack (Vulkan + llama-cpp Docker) on any mixed AMD rig to self-host large models for internal tools, e-learning content gen, or Unity NPC dialogue without per-token fees.</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tktxr0/cant_believe_i_got_it_working_dual_gpu_48gb_vram/" target="_blank" rel="noopener">View on reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@akshay_pachaar</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 112 · 💬 25</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/akshay_pachaar/status/2057901920795378159">View @akshay_pachaar on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Microsoft built a Fitbit for AI. they just open-sourced AI Engineer Coach. a VS Code extension (also works in Cursor and Antigravity) that analyzes how you actually use AI coding agents. it reads loca”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Microsoft open-sourced AI Engineer Coach, a VS Code extension that reads local session logs from Copilot, Claude Code, Codex CLI and others, then scores your AI workflow across 5 categories with 45 anti-pattern detection rules.</dd>
+      <dt>Why interesting</dt>
+      <dd>The rule engine is markdown-based and extensible — any dev can write or tune detection rules in plain English, making it adaptable without waiting for Microsoft to update it.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio uses Claude Code daily across Unity, XR, and web projects — running this extension reveals which devs are burning tokens on trivial prompts or running mega sessions, so the team can tighten AI discipline with data, not guesswork.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/akshay_pachaar/status/2057901920795378159" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+</div>

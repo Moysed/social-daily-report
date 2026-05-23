@@ -4,7 +4,7 @@ date: '2026-05-23'
 topic: ai-news
 lang: en
 pair: ai-news.th.md
-generated_at: '2026-05-23T09:31:24+00:00'
+generated_at: '2026-05-23T15:51:36+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,48 +14,48 @@ platforms:
 - x
 regions:
 - global
-post_count: 54
-salience: 0.78
+post_count: 57
+salience: 0.85
 sentiment: positive
 confidence: 0.72
 tags:
 - claude-code
 - plugins
-- mcp
-- agent-frameworks
-- deepseek
-- tooling
+- codegraph
+- multi-agent
+- opencode
+- anthropic
 thumbnail: https://i.redd.it/598t9os9po2h1.png
 ---
 
 # AI News & New Skills — 2026-05-23
 
 ## TL;DR
-- Anthropic launched official Claude Code Plugins directory [36] and 13+ free AI courses with certificates [2] — both directly pluggable into our workflow
-- Claude Code 2.1.150 swaps grep for ripgrep, faster and more consistent search [13]
-- CodeGraph [37] and Chrome DevTools MCP [40] are concrete agent extensions: pre-indexed code KG and browser debugging for Claude/Cursor
-- DeepSeek cut prices 75% permanently [3]; community repo routes Claude Code through 10 free providers [20] — cheap-inference options multiplying
-- Mythos (Anthropic next model) rumored near-future [10]; cost trend for frontier models still upward [19]
+- Anthropic shipped an official Claude Code Plugins directory [39] and free 13+ AI courses [2] — direct plug-ins for our workflow.
+- CodeGraph (pre-indexed local code knowledge graph) is the week's fastest-growing repo, cuts tokens/tool calls for Claude Code/Codex/Cursor [36][40].
+- opencode (open-source Claude Code alternative) is now the most-starred coding agent on GitHub [22].
+- Boris Cherny (Claude Code creator) is publicly pushing multi-agent teams over single-agent prompting; multiple talks/notes circulating [15][24][28][32].
+- Cursor CLI + Composer 2.5 closing speed gap; Anthropic 'Mythos' model rumored imminent [6][7][9].
 
 ## What happened
-Two artifacts stand out for direct adoption: Anthropic published an official Claude Code Plugins directory [36], and CodeGraph [37] shipped a pre-indexed local code knowledge graph that targets Claude Code, Codex, Cursor, OpenCode to cut tokens and tool calls. Chrome DevTools team released chrome-devtools-mcp [40], giving coding agents real browser inspection. Claude Code itself shipped 2.1.150 with ripgrep-backed search [13]. On the learning side, Anthropic dropped 13+ free courses including Agentic AI and Claude Code with certificates [2], and freeCodeCamp published a 'build your own Claude Code' handbook in Python + Gemini [5].
+Anthropic published an official curated Claude Code plugins directory [39] and dropped 13+ free certified courses covering Agentic AI and Claude Code [2]. CodeGraph — a local, pre-indexed code knowledge graph for Claude Code, Codex, Cursor, OpenCode, and Hermes — became the fastest-growing GitHub repo of the week (+14.1K stars) by reducing tokens and tool calls [36][40]. opencode, an open-source CC clone, is now the most-starred coding agent on GitHub [22]. Boris Cherny gave a widely-shared talk arguing chatbots and single-agent prompting are dying in favor of agent teams [15][24][28][32], echoed by Karpathy's 'systems around agents' framing [29].
 
-On economics: DeepSeek made its 75% promotional price cut permanent [3], and a 25k-star repo routes Claude Code through 10 providers (DeepSeek, Kimi, etc.) [20] — countering the trend of frontier prices rising [19]. Anthropic's Mythos model is rumored 'near future' [10]. Lots of noise around prompt patterns [17][21], Claude certification roadmaps [22][24], and Cursor weekend-unlimited promos [32]; mostly commentary, low signal.
+On the tooling front, ClawAPI Phase 2 exposes /anthropic/v1/messages across 9 models with streaming + tool use, swappable into Claude Code via 3 env exports [10]. Cursor CLI is reported dramatically faster than Claude Code [9], Cursor hit $3B ARR with slight gross profit [26], and Composer 2.5 is closing on Mythos which Anthropic is rumored to ship soon [6][7]. Smaller artifacts: Tesla CLI / OpenClaw / Hermes skills via ppressdev [21], and a ThunderKittens DSL deep-dive for AI kernels [38].
 
 ## Why it matters (reasoning)
-For a small studio building Unity, XR, edutech and Next.js/Supabase web apps, the plugin directory [36] + CodeGraph [37] + Chrome DevTools MCP [40] together close real gaps: standardized skill distribution, cheaper repo-aware context (relevant to our Almondo and social-daily-report repos), and headless browser debugging for Next.js work. Ripgrep in Claude Code [13] quietly improves every search-heavy session. DeepSeek's permanent cut [3] plus multi-provider routers [20] mean we can run experimental agents at near-zero marginal cost, reserving Claude for production-grade tasks. The free Anthropic courses [2] are a cheap upskilling lever for the team. Second-order: as plugin ecosystems formalize, ad-hoc skills we maintain locally (mempalace, oracle skills) may want to align with the directory format to avoid lock-in.
+The plugin directory [39] + CodeGraph [40] are concrete, mergeable upgrades for any Claude Code shop — they attack the two real bottlenecks we feel daily: context bloat and repetitive tool-call overhead. If CodeGraph's claims hold, indexing our Unity/Next.js/Supabase repos once could materially cut session cost and increase agent reliability across NDF DEV's stacks. Second-order: a sanctioned plugin directory means a Cambrian wave of community skills is about to land; early movers harvest the best ones before noise floods in. The Cherny/Karpathy narrative shift [24][28][29] signals Anthropic's product roadmap is moving toward orchestrated agent teams — our current single-thread Claude Code workflow will feel outdated within months. ClawAPI [10] commoditizes model routing, weakening lock-in but also raising governance risk (key sprawl, audit trails).
 
 ## Possibility
-Likely (>70%): Claude Code plugin directory becomes the de-facto distribution channel within 1–2 quarters; expect rapid plugin growth and quality curation. Likely (~60%): CodeGraph-style local indexers become standard prerequisite for large codebases. Medium (~40%): multi-provider routers like [20] get blocked or rate-limited by Anthropic ToS clarification. Low (~20%): Mythos [10] ships within 4 weeks with materially new agentic primitives. Cost trajectory for frontier models stays mixed — cheap open models keep dropping, top-tier keeps rising [19].
+Likely (~70%): Anthropic ships Mythos within 4–8 weeks [6]; plugin directory grows 5–10x in entries by Q3. Likely (~60%): multi-agent orchestration becomes the default Claude Code UX by year-end; opencode/CC parity tightens [22]. Possible (~40%): Cursor's Composer line overtakes CC on agentic coding benchmarks [7][9], forcing us to dual-wield. Lower (~25%): CodeGraph-style pre-indexing becomes a built-in Claude Code feature, obsoleting standalone installs [40].
 
 ## Org applicability — NDF DEV
-Worth doing now: (1) Install Claude Code 2.1.150 fleet-wide [13] — zero cost. (2) Trial CodeGraph [37] on Almondo and social-daily-report repos; measure token reduction before adopting. (3) Add chrome-devtools-mcp [40] to Next.js/Supabase dev workflows for debugging without screenshots. (4) Browse the official plugin directory [36] before building bespoke skills — replace overlap. (5) Route non-critical agents (daily-report drafts, exploratory research) through DeepSeek via [20] or direct API [3] to cut bill. Skip: certification roadmaps [22][24], generic 'prompt patterns' threads [17][21], iMessage-to-Claude novelty [29]. Assign 1–2 team members to the free Anthropic courses [2] (Agentic AI + Claude Code modules) — ~10 hrs investment, high payoff for our agent work.
+High-value, low-effort wins now: (1) Install CodeGraph on the Almondo and social-daily-report repos — measure token/tool-call delta over a week [36][40]. (2) Audit the official plugins directory [39] and pilot 2–3 plugins that fit our Next.js/Supabase + Unity stacks. (3) Route 1–2 team members through the free Anthropic Agentic AI + Claude Code courses [2]; certs are cheap social proof for client decks. (4) Watch Cherny's talk [15][32] and prototype one multi-agent loop (plan→code→verify) for a real ticket — start with social-daily-report's report-generation pipeline. Skip for now: ClawAPI [10] (governance overhead > savings at our scale), Linux distro [25] (vapor risk), Cursor CLI migration [9] (don't fragment workflow until Mythos lands).
 
 ## Signals to Watch
-- Watch claude-plugins-official [36] for new plugin categories — XR/Unity tooling would be high-value
-- Track CodeGraph [37] token-savings benchmarks on real Next.js repos
-- Watch for Anthropic ToS response to multi-provider Claude Code routers [20]
-- Monitor Mythos release notes [10] for new tool-use or memory primitives
+- Mythos release date / benchmarks vs Composer 2.5 [6][7]
+- CodeGraph stability + Windows support — Unity repo indexing works? [40]
+- First wave of plugins in the official directory — any Unity, Supabase, or Next.js-specific ones [39]
+- Multi-agent orchestration primitives shipping in Claude Code itself (vs plugin land) [28]
 
 ## Repos & Tools to Try
 | repo | source | url |
@@ -76,36 +76,36 @@ Worth doing now: (1) Install Claude Code 2.1.150 fleet-wide [13] — zero cost. 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| reddit | Happy_Macaron5197 | ^3846 c112 | [Aged like fine WINE that meme on the chatgpt subreddit is so spot on ngl. we hav](https://www.reddit.com/r/ClaudeAI/comments/1tkhvju/aged_like_fine_wine/) |
-| reddit | Specialist_Engine522 | ^2383 c119 | [Anthropic officially launched 13+ FREE AI courses with certificates (Including A](https://www.reddit.com/r/ClaudeAI/comments/1tjpfh8/anthropic_officially_launched_13_free_ai_courses/) |
-| reddit | MagicZhang | ^509 c65 | [DeepSeek Announces Permanent Price Cut of 75% after Promotion Period](https://www.reddit.com/r/singularity/comments/1tkj8l8/deepseek_announces_permanent_price_cut_of_75/) |
-| reddit | socoolandawesome | ^384 c142 | [Anthropic Co-founder Jack Clark’s recent predictions: AI will help make a Nobel ](https://www.reddit.com/r/singularity/comments/1tkstc0/anthropic_cofounder_jack_clarks_recent/) |
-| x | freeCodeCamp | ^234 c3 | [What better way to understand a powerful tool like Claude Code than to build you](https://x.com/freeCodeCamp/status/2058035453266186266) |
-| x | igloo1833 | ^215 c6 | [Overspec Neon Cursor #NIKKE #NIKKEfanart #メガニケ https://t.co/qmiciZLhxG](https://x.com/igloo1833/status/2058022217011892365) |
-| x | PreetamXBT | ^178 c151 | [✅selected them randomly where cursor stopped while scrolling - @jjebiz - @Underd](https://x.com/PreetamXBT/status/2058051084816699687) |
-| reddit | Due_Drummer5147 | ^175 c230 | [Is AI viewed as “evil” in non-tech communities? I’m sorry if this is a dumb ques](https://www.reddit.com/r/singularity/comments/1tl68ne/is_ai_viewed_as_evil_in_nontech_communities/) |
-| x | orangie | ^175 c53 | [i really feel like a software engineer now a days if i would've had claude code ](https://x.com/orangie/status/2058067490400288802) |
-| reddit | exordin26 | ^168 c35 | [Anthropic likely to release Mythos in the "near future"](https://www.reddit.com/r/singularity/comments/1tkyrva/anthropic_likely_to_release_mythos_in_the_near/) |
-| reddit | Bizzyguy | ^135 c48 | [Demis says the Singularity could be just a few years away now, potentially trigg](https://www.reddit.com/r/singularity/comments/1tkmngb/demis_says_the_singularity_could_be_just_a_few/) |
-| reddit | TeachTall3390 | ^127 c60 | [Wth, what happened to cursor? I never really understood the hype around Cursor. ](https://www.reddit.com/r/cursor/comments/1tkdlbz/wth_what_happened_to_cursor/) |
-| x | ClaudeCodeLog | ^122 c6 | [Claude Code 2.1.150 has been released. 1 CLI change Highlights: • Tool descripti](https://x.com/ClaudeCodeLog/status/2058038958735360002) |
-| x | chandrarsrikant | ^97 c3 | [🚨MC Interview: High-Agency Generalists will define the AI era, says Claude Code ](https://x.com/chandrarsrikant/status/2058051955700928849) |
-| x | stevenmarkryan | ^69 c2 | [• All In Pod Froths Over SpaceX After IPO Prospectus • Talks Cursor (acquisition](https://x.com/stevenmarkryan/status/2058054063602782636) |
-| reddit | Steap-Edit | ^68 c25 | [Exclusive: Departing Meta Staffer Posts Biting Anti-AI Video Internally Amid Mas](https://www.reddit.com/r/singularity/comments/1tl47n6/exclusive_departing_meta_staffer_posts_biting/) |
-| x | JayBisen473370 | ^62 c29 | [Stop telling Claude, "do this." Stop telling Claude, "write code." Stop telling ](https://x.com/JayBisen473370/status/2058069012807110858) |
-| x | tetsuoai | ^60 c5 | [AgenC Workbench. Tree explorer with vim nav, an editing buffer that hands off to](https://x.com/tetsuoai/status/2058044852613644716) |
-| reddit | AcadiaLow9013 | ^57 c80 | [Why are AI models getting more expensive? The trend before was that models becam](https://www.reddit.com/r/singularity/comments/1tkr1q4/why_are_ai_models_getting_more_expensive/) |
-| x | cyrilXBT | ^55 c6 | [25,600 DEVELOPERS JUST STARRED A GITHUB REPO THAT LETS YOU RUN CLAUDE CODE COMPL](https://x.com/cyrilXBT/status/2058079293884997762) |
-| x | Radha_AI | ^55 c8 | [the engineer who built Claude Code just dropped a 28-minute video on how to writ](https://x.com/Radha_AI/status/2058059551325270378) |
-| x | TedCruz1072676 | ^54 c25 | [Want to become a Claude Certified Architect in 6 weeks? 🚀 Here’s a simple roadma](https://x.com/TedCruz1072676/status/2058035598494216229) |
-| x | 0xSammy | ^53 c11 | [This is huge for open source decentralized inference - Microsoft has removed int](https://x.com/0xSammy/status/2058025582898610662) |
-| x | SaurabhDub28465 | ^52 c12 | [Want to become a Claude Certified Architect in just 6 weeks? Here’s a no-BS road](https://x.com/SaurabhDub28465/status/2058026718791893182) |
-| x | KhusbooT14835 | ^52 c6 | [COMPLETE CLAUDE CODE COURSE OF 4 HOURS This is the most comprehensive Claude gui](https://x.com/KhusbooT14835/status/2058019239383150719) |
-| x | thepatwalls | ^41 c56 | [What's the best Mac terminal app for the Claude Code / AI command line tools? I'](https://x.com/thepatwalls/status/2058014466898288909) |
-| x | Hopemalopa | ^40 c14 | [We know MCP was doing the same koma now its getting out of hand, its either they](https://x.com/Hopemalopa/status/2058072034110804463) |
-| x | neil_xbt | ^39 c3 | [THIS IS THE AI WORKSPACE THAT DOES NOT REQUIRE YOU TO BE TECHNICAL. No code. No ](https://x.com/neil_xbt/status/2058098261563478169) |
-| x | choruscom | ^38 c5 | [oh my... you can add Claude Code to iMessage And then tell it to build you an iO](https://x.com/choruscom/status/2058037619204960427) |
-| x | enjojoyy | ^36 c1 | [Cursor cafe in Da Nang Teaching my designer sister all things vibecoding https:/](https://x.com/enjojoyy/status/2058072076922319104) |
+| reddit | Happy_Macaron5197 | ^4485 c121 | [Aged like fine WINE that meme on the chatgpt subreddit is so spot on ngl. we hav](https://www.reddit.com/r/ClaudeAI/comments/1tkhvju/aged_like_fine_wine/) |
+| reddit | Specialist_Engine522 | ^2453 c121 | [Anthropic officially launched 13+ FREE AI courses with certificates (Including A](https://www.reddit.com/r/ClaudeAI/comments/1tjpfh8/anthropic_officially_launched_13_free_ai_courses/) |
+| reddit | socoolandawesome | ^435 c158 | [Anthropic Co-founder Jack Clark’s recent predictions: AI will help make a Nobel ](https://www.reddit.com/r/singularity/comments/1tkstc0/anthropic_cofounder_jack_clarks_recent/) |
+| reddit | Due_Drummer5147 | ^346 c443 | [Is AI viewed as “evil” in non-tech communities? I’m sorry if this is a dumb ques](https://www.reddit.com/r/singularity/comments/1tl68ne/is_ai_viewed_as_evil_in_nontech_communities/) |
+| x | levelsio | ^323 c14 | [Every bug fix or new feature on any of my sites I now built live on my VPS, in p](https://x.com/levelsio/status/2058149083001286829) |
+| reddit | exordin26 | ^211 c52 | [Anthropic likely to release Mythos in the "near future"](https://www.reddit.com/r/singularity/comments/1tkyrva/anthropic_likely_to_release_mythos_in_the_near/) |
+| x | mark_k | ^177 c38 | [Prediction: The next Cursor / SpaceX model may beat Anthropic Mythos in agentic ](https://x.com/mark_k/status/2058156564477780186) |
+| reddit | TeachTall3390 | ^133 c62 | [Wth, what happened to cursor? I never really understood the hype around Cursor. ](https://www.reddit.com/r/cursor/comments/1tkdlbz/wth_what_happened_to_cursor/) |
+| x | sudoingX | ^129 c25 | [cursor cli is so fucking fast it's unreal. if you jumped from claude code the di](https://x.com/sudoingX/status/2058149356780548390) |
+| x | clawapi_org | ^97 c3 | [ClawAPI Phase 2 complete → /anthropic/v1/messages supports all 9 models → Stream](https://x.com/clawapi_org/status/2058151689711194505) |
+| reddit | Steap-Edit | ^95 c33 | [Exclusive: Departing Meta Staffer Posts Biting Anti-AI Video Internally Amid Mas](https://www.reddit.com/r/singularity/comments/1tl47n6/exclusive_departing_meta_staffer_posts_biting/) |
+| reddit | AcadiaLow9013 | ^66 c88 | [Why are AI models getting more expensive? The trend before was that models becam](https://www.reddit.com/r/singularity/comments/1tkr1q4/why_are_ai_models_getting_more_expensive/) |
+| reddit | TriXandApple | ^66 c52 | [As someone in manufacturing, here's what I don't understand Countless articles a](https://www.reddit.com/r/singularity/comments/1tlfm7h/as_someone_in_manufacturing_heres_what_i_dont/) |
+| reddit | jonclark_ | ^66 c1 | [AI is accelerating drug development](https://www.reddit.com/r/singularity/comments/1tl8y35/ai_is_accelerating_drug_development/) |
+| x | Av1dlive | ^63 c27 | [The people who built Claude Code just gave away how they use it all for free an ](https://x.com/Av1dlive/status/2058132103565541534) |
+| x | gippp69 | ^58 c34 | [This guy just showed why your Claude Code setup hits 100% before the real work e](https://x.com/gippp69/status/2058172550765498697) |
+| x | Oluwaphilemon1 | ^56 c1 | [How I use Claude for 2D website animations 👇 1. Ask Claude to create CSS keyfram](https://x.com/Oluwaphilemon1/status/2058165028906316217) |
+| x | glcst | ^54 c5 | [Oh, I remember. The good old days! Before codex, you would open Claude Code, and](https://x.com/glcst/status/2058175064885932251) |
+| x | leerob | ^53 c5 | [@sri9s You can use GPT models in Cursor 😄](https://x.com/leerob/status/2058182617774673960) |
+| x | antpalkin | ^50 c14 | [> you sent 380 applications > got 2 interviews, 0 offers > meanwhile a Brazilian](https://x.com/antpalkin/status/2058171494849544243) |
+| x | mvanhorn | ^49 c13 | [Introducing: Tesla CLI/Claude Code Skill/OpenClaw and Hermes skill from the @ppr](https://x.com/mvanhorn/status/2058189714088456687) |
+| x | VaibhavSisinty | ^47 c8 | [I just discovered the free version of Claude Code. It is called opencode and it ](https://x.com/VaibhavSisinty/status/2058179951304814780) |
+| x | 0xCindyWeb3 | ^46 c41 | [Jira was built for humans managing tickets one by one. Tools like Cursor are gre](https://x.com/0xCindyWeb3/status/2058135741662888321) |
+| x | 0xTengen_ | ^43 c14 | [The creator of Claude Code at Anthropic, Boris Cherny just explained why the era](https://x.com/0xTengen_/status/2058151137921176052) |
+| x | Computebase | ^42 c10 | [We're about to release our own Linux distribution - for the real builders. USB s](https://x.com/Computebase/status/2058155856861016287) |
+| reddit | truecakesnake | ^41 c7 | [Cursor’s annual revenue hits $3 billion and reaches "slight gross profitability"](https://www.reddit.com/r/cursor/comments/1tkn6vf/cursors_annual_revenue_hits_3_billion_and_reaches/) |
+| reddit | striketheviol | ^40 c1 | [A new brain implant helps restore vision by communicating directly with the brai](https://www.reddit.com/r/singularity/comments/1tld41g/a_new_brain_implant_helps_restore_vision_by/) |
+| x | eng_khairallah1 | ^40 c13 | [Boris Cherny, the creator of Claude Code at Anthropic, just explained why single](https://x.com/eng_khairallah1/status/2058196384969547794) |
+| x | anujcodes_21 | ^39 c6 | [Andrej Karpathy just explained the future of software engineering without direct](https://x.com/anujcodes_21/status/2058161019713638421) |
+| x | Computebase | ^38 c7 | [We're proud to announce: @Syntra402 is now powered by Compute. The Compute Data ](https://x.com/Computebase/status/2058183150329638999) |
 
 
 ## Top Posts
@@ -115,160 +115,160 @@ Worth doing now: (1) Install Claude Code 2.1.150 fleet-wide [13] — zero cost. 
   <header class="ndf-card-head">
     <span class="ndf-author">@Happy_Macaron5197</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 3846 · 💬 112</span>
+    <span class="ndf-engagement">♥ 4485 · 💬 121</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/ClaudeAI/comments/1tkhvju/aged_like_fine_wine/" target="_blank" rel="noopener"><img src="https://i.redd.it/598t9os9po2h1.png" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Aged like fine WINE that meme on the chatgpt subreddit is so spot on ngl. we have antigravity ,claude code, for backend they are great no i mean very good at there task cursor too not going to miss on”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>AI tools like Claude Code (backend), Cursor, and Stitch/Runnable (UI/UX) now let anyone ship a polished site, but clients keep over-scoping into 'next big SaaS' fantasies instead of just defining what they want.</dd>
+      <dd>Developer praises a specialized AI tool stack — Claude Code for backend, Cursor for code, Stitch/Runnable for UI — then vents that clients over-pitch million-dollar SaaS dreams instead of just stating requirements.</dd>
       <dt>Why interesting</dt>
-      <dd>The stack is now split by role — Claude Code/Cursor own logic, Stitch/Runnable own UI — meaning AI specialization has replaced generalist tools, and scope management is now the real dev bottleneck.</dd>
+      <dd>The post maps a real working AI tool stack by role, showing small teams can ship full-stack faster by giving each AI tool a specific lane rather than forcing one tool to do everything.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio locks in a 'describe → build → ship' flow using Claude Code for backend and Stitch/Runnable for UI, and sets a hard scope document with clients before any sprint starts to kill SaaS-fantasy creep.</dd>
+      <dd class="ndf-adapt">The studio can formalize this split: Claude Code for Next.js/Supabase logic, Cursor for code review, Stitch/Runnable for UI prototyping — cutting handoff time between design and dev sprints.</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/ClaudeAI/comments/1tkhvju/aged_like_fine_wine/" target="_blank" rel="noopener">View on reddit →</a>
   </div>
 </article>
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
-    <span class="ndf-author">@MagicZhang</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 509 · 💬 65</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1tkj8l8/deepseek_announces_permanent_price_cut_of_75/" target="_blank" rel="noopener"><img src="https://i.redd.it/n2x6yxx8zo2h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“DeepSeek Announces Permanent Price Cut of 75% after Promotion Period”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>DeepSeek has made its 75% API price cut permanent after the promotional period ends.</dd>
-      <dt>Why interesting</dt>
-      <dd>A permanent 75% cut on an already cheap frontier-class model slashes inference costs significantly — relevant for any team running AI features in production.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can swap or benchmark DeepSeek against current LLM providers for e-learning content generation and NPC dialogue in Unity projects to cut API spend immediately.</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1tkj8l8/deepseek_announces_permanent_price_cut_of_75/" target="_blank" rel="noopener">View on reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
     <span class="ndf-author">@socoolandawesome</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 384 · 💬 142</span>
+    <span class="ndf-engagement">♥ 435 · 💬 158</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1tkstc0/anthropic_cofounder_jack_clarks_recent/" target="_blank" rel="noopener"><img src="https://preview.redd.it/v6d8p2i8nq2h1.jpg?width=828&amp;format=pjpg&amp;auto=webp&amp;s=66f31b80392752a31fc50d5f86fae188278f2e37" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Anthropic Co-founder Jack Clark’s recent predictions: AI will help make a Nobel Prize-winning discovery within the next year, bipedal robots doing useful work in 2 years, RSI by end of 2028 Link to tw”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Anthropic co-founder Jack Clark predicted at an Oxford lecture that AI will contribute to a Nobel Prize-winning discovery within a year, bipedal robots will do useful work in 2 years, and RSI (recursive self-improvement) will arrive by end of 2028.</dd>
+      <dd>Anthropic co-founder Jack Clark predicted at Oxford that AI will contribute to a Nobel Prize discovery within a year, bipedal robots will do useful work within 2 years, and RSI will arrive by end of 2028.</dd>
       <dt>Why interesting</dt>
-      <dd>These are timeline predictions from an Anthropic insider, not a futurist blogger — the RSI-by-2028 claim especially signals that leading AI labs expect transformative capability jumps within this decade.</dd>
+      <dd>RSI by 2028 is a hard timeline from an Anthropic insider — if true, every dev team's tooling and skill assumptions reset completely within 2 years.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio should treat 2026–2028 as a compressed window: start integrating AI-assisted workflows into Unity pipelines and the web stack now, before capability jumps make current tooling obsolete or competitors leap ahead.</dd>
+      <dd class="ndf-adapt">The studio should treat 2028 as the hard deadline for building AI-native pipelines — integrate AI into Unity, XR, and Next.js workflows now so the team is positioned before RSI shifts the baseline.</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1tkstc0/anthropic_cofounder_jack_clarks_recent/" target="_blank" rel="noopener">View on reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@freeCodeCamp</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 234 · 💬 3</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/freeCodeCamp/status/2058035453266186266">View @freeCodeCamp on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“What better way to understand a powerful tool like Claude Code than to build your own version of it? In this handbook, @wagslane walks you through coding your own AI agent. You'll use Python and Gemin”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>freeCodeCamp published a handbook by @wagslane teaching how to build your own AI coding agent from scratch using Python and Gemini, covering multi-directory projects, tool internals, and functional programming.</dd>
-      <dt>Why interesting</dt>
-      <dd>Building an agent from scratch exposes exactly how tool-calling, context management, and file traversal work — knowledge that directly improves prompt engineering and custom tooling decisions for any dev team.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio's web and Unity teams can follow this handbook to prototype lightweight internal agents — e.g. a build-checker or asset-validator — instead of relying solely on off-the-shelf tools.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/freeCodeCamp/status/2058035453266186266" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@igloo1833</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 215 · 💬 6</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/igloo1833/status/2058022217011892365">View @igloo1833 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Overspec Neon Cursor #NIKKE #NIKKEfanart #メガニケ https://t.co/qmiciZLhxG”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>Fan art post of a NIKKE character (Overspec Neon) shared as a cursor-style illustration with game hashtags.</dd>
-      <dt>Why interesting</dt>
-      <dd>Fan art engagement (215 likes) shows community-driven art around gacha titles stays highly shareable even as simple cursor-style pieces.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Not directly applicable.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/igloo1833/status/2058022217011892365" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@PreetamXBT</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 178 · 💬 151</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/PreetamXBT/status/2058051084816699687">View @PreetamXBT on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“✅selected them randomly where cursor stopped while scrolling - @jjebiz - @Underdvg_ A lot more giveaways coming next🔜 ❤️, RT &amp;amp; drop a comment👇 https://t.co/37lJ7dJ4i0”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A Twitter user ran a random giveaway selecting winners based on where their cursor stopped while scrolling, with more giveaways promised soon.</dd>
-      <dt>Why interesting</dt>
-      <dd>Zero substance — pure engagement-bait with RT/comment hooks; no tech, no AI, no dev relevance whatsoever.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Not directly applicable.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/PreetamXBT/status/2058051084816699687" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
     <span class="ndf-author">@Due_Drummer5147</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 175 · 💬 230</span>
+    <span class="ndf-engagement">♥ 346 · 💬 443</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1tl68ne/is_ai_viewed_as_evil_in_nontech_communities/" target="_blank" rel="noopener"><img src="https://i.redd.it/x62zjunset2h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Is AI viewed as “evil” in non-tech communities? I’m sorry if this is a dumb question…. But some context here: I thought I was posting what I thought was a helpful suggestion when a bra size calculator”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A data engineer asks Reddit for a reality check: do non-tech communities see AI as evil, after suggesting AI use on a non-tech forum triggered backlash?</dd>
+      <dd>A tech-background data engineer is surprised by negative reactions to suggesting AI for a simple calculator task, and asks whether non-tech communities broadly view AI as evil.</dd>
       <dt>Why interesting</dt>
-      <dd>Tech insiders routinely underestimate AI fear in the general public — a blind spot that directly affects user adoption of any AI-powered product the studio ships.</dd>
+      <dd>Highlights a real perception gap: even low-stakes AI suggestions trigger backlash outside tech circles, which directly affects how studios pitch AI-powered tools to end users.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Before adding AI features to any studio product, test messaging with non-tech users first. Framing matters — 'smart automation' lands better than 'AI-powered' with skeptical audiences.</dd>
+      <dd class="ndf-adapt">When the studio ships AI features in e-learning or web apps, frame them as 'smart assist' not 'AI' in UI copy — reduces friction with non-tech end users who have negative AI associations.</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1tl68ne/is_ai_viewed_as_evil_in_nontech_communities/" target="_blank" rel="noopener">View on reddit →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@orangie</span>
+    <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 175 · 💬 53</span>
+    <span class="ndf-engagement">♥ 323 · 💬 14</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/orangie/status/2058067490400288802">View @orangie on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2058149083001286829">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“i really feel like a software engineer now a days if i would've had claude code / codex 2 years ago i would've made 9 figs off memecoins no troll at all https://t.co/VNJP87XWc3”</p>
+    <p class="ndf-quote">“Every bug fix or new feature on any of my sites I now built live on my VPS, in production, without any staging Claude Code only failed me 2x in 12 months, it made a small bug and the site was down for”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A non-developer says today's AI coding tools (Claude Code / Codex) make them feel like a software engineer, claiming they could have made 9-figure profits on memecoins 2 years ago with these tools.</dd>
+      <dd>Pieter Levels ships all features and bug fixes directly to production on his VPS with no staging environment, relying on Claude Code and a 3-2-1 backup strategy (live + local + two offsite + Litestream to R2).</dd>
       <dt>Why interesting</dt>
-      <dd>Signals that AI coding tools have genuinely lowered the barrier to building functional software for non-engineers — the perceived capability gap is closing fast.</dd>
+      <dd>Proves a solo/small team can skip staging entirely if backup coverage is airtight — Claude Code caused only 10 seconds of downtime across 12 months of live deploys.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can use Claude Code and Codex to accelerate prototyping — non-dev team members (designers, e-learning writers) can scaffold small tools or automations without waiting on a developer.</dd>
+      <dd class="ndf-adapt">The studio's Next.js + Supabase web projects can drop staging for low-risk hotfixes; pair with Litestream or pg_dump to R2 and a verified 3-2-1 backup policy to match this confidence level.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/orangie/status/2058067490400288802" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/levelsio/status/2058149083001286829" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@exordin26</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 211 · 💬 52</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1tkyrva/anthropic_likely_to_release_mythos_in_the_near/" target="_blank" rel="noopener"><img src="https://i.redd.it/mxk06yv2rr2h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Anthropic likely to release Mythos in the &quot;near future&quot;”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Anthropic is expected to release a new AI model called Mythos in the near future, based on community speculation and leaks discussed on r/singularity.</dd>
+      <dt>Why interesting</dt>
+      <dd>A new flagship Anthropic model could shift capability baselines the studio relies on for Claude-powered features, prompting a re-evaluation of prompt design and API cost assumptions.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">Monitor Mythos release notes and benchmark scores; if context length or reasoning improves significantly, the web stack's Claude API integrations and any AI-assisted Unity tooling should be re-tested against the new model.</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1tkyrva/anthropic_likely_to_release_mythos_in_the_near/" target="_blank" rel="noopener">View on reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@mark_k</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 177 · 💬 38</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/mark_k/status/2058156564477780186">View @mark_k on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Prediction: The next Cursor / SpaceX model may beat Anthropic Mythos in agentic coding. If you have tried Composer 2.5 and seen the trajectory they are on, you know they are cooking. 🔮”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Prediction that Cursor's next model, based on Composer 2.5's trajectory, will surpass Anthropic's top model in agentic coding.</dd>
+      <dt>Why interesting</dt>
+      <dd>If Cursor overtakes Claude-class models for agentic coding, small teams get a faster autonomous dev loop without changing their existing AI stack.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio should benchmark Cursor Composer 2.5 against current Claude-based workflows now — if the gap is real, route agentic coding tasks to Cursor before the next model release.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/mark_k/status/2058156564477780186" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@sudoingX</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 129 · 💬 25</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/sudoingX/status/2058149356780548390">View @sudoingX on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“cursor cli is so fucking fast it's unreal. if you jumped from claude code the difference is not even close. the speed alone changes how you think about prompting. i'm shipping faster than i ever have.”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>The author claims Cursor CLI is dramatically faster than Claude Code, and that the speed difference changes how they approach prompting and shipping.</dd>
+      <dt>Why interesting</dt>
+      <dd>Speed in AI coding tools directly affects developer flow state — a measurable gap between tools can shift team velocity and prompting habits across the whole studio.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio should run a timed benchmark sprint: one dev uses Cursor CLI, one stays on Claude Code, same task. Let data decide — not Twitter takes.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/sudoingX/status/2058149356780548390" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@clawapi_org</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 97 · 💬 3</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/clawapi_org/status/2058151689711194505">View @clawapi_org on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“ClawAPI Phase 2 complete → /anthropic/v1/messages supports all 9 models → Streaming + tool use across the board → Claude Code CLI users: 3 lines of export, switch any model → Same key works on both Op”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>ClawAPI Phase 2 lets one API key hit both OpenAI and Anthropic endpoints, with streaming and tool use across all 9 Claude models, switchable in 3 export lines from Claude Code CLI.</dd>
+      <dt>Why interesting</dt>
+      <dd>A single unified key slashing vendor lock-in means the team can benchmark Claude vs GPT-4o on the same codebase without credential juggling or SDK rewrites.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The Unity and web teams can route AI feature calls through ClawAPI to hot-swap models per task — cheaper model for boilerplate, stronger model for complex reasoning — without touching production code.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/clawapi_org/status/2058151689711194505" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

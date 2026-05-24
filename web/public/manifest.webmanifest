@@ -1,0 +1,27 @@
+{
+  "name": "Social Daily Report",
+  "short_name": "Social Daily",
+  "description": "AI-reasoned daily reports across social platforms for the NDF DEV team.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6efe2",
+  "theme_color": "#b34022",
+  "lang": "en",
+  "categories": ["news", "productivity"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    }
+  ]
+}

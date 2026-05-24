@@ -6,18 +6,24 @@ import { prettyTopic } from "../lib/format";
 
 export const GET = (context: APIContext) => buildFeed(context, "en");
 
-export async function buildFeed(context: APIContext, lang: "en" | "th") {
+export async function buildFeed(
+  context: APIContext,
+  lang: "en" | "th",
+  topic?: string,
+) {
   const t = UI[lang];
   const all = await getCollection("reports");
   const items = all
     .filter((e) => e.data.lang === lang)
+    .filter((e) => (topic ? e.data.topic === topic : true))
     .sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 
   const base = context.site ?? new URL("https://social-daily-report.local");
   const prefix = lang === "th" ? "/th/" : "/";
+  const titleSuffix = topic ? ` · ${topic}` : "";
 
   return rss({
-    title: t.htmlTitle + (lang === "th" ? " (ไทย)" : ""),
+    title: t.htmlTitle + (lang === "th" ? " (ไทย)" : "") + titleSuffix,
     description: t.description,
     site: new URL(prefix, base).toString(),
     items: items.map((entry) => {

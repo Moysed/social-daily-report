@@ -222,6 +222,66 @@ def run(args: argparse.Namespace) -> None:
             conn.close()
 
 
+def distribute_cmd(args: argparse.Namespace) -> None:
+    """Broadcast top stories of a date to Discord/Slack/Teams + dump social copy."""
+    load_dotenv(REPO_ROOT / ".env")
+    from . import distribute as dist
+
+    day = _resolve_date(args.date)
+    date_label = day.isoformat()
+
+    client = None
+    if not args.no_llm and not args.dry_run:
+        try:
+            client = make_llm_client(cwd=str(REPO_ROOT))
+            if not client.enabled:
+                print("distribute: LLM unavailable; falling back to template copy")
+                client = None
+        except Exception as exc:
+            print(f"distribute: LLM init failed ({exc}); template copy only")
+            client = None
+
+    dist.distribute(
+        date_label=date_label,
+        db_path=Path(args.db) if args.db else dist.DEFAULT_DB_PATH,
+        reports_dir=Path(args.reports) if args.reports else dist.DEFAULT_REPORTS_DIR,
+        outbox_dir=Path(args.outbox) if args.outbox else dist.DEFAULT_OUTBOX_DIR,
+        topic_filter=args.topic,
+        top=args.top,
+        dry_run=args.dry_run,
+        client=client,
+        idempotent=args.idempotent,
+    )
+
+
+def digest_cmd(args: argparse.Namespace) -> None:
+    """Build a weekly digest from the last 7 days of reports."""
+    load_dotenv(REPO_ROOT / ".env")
+    from . import weekly
+
+    day = _resolve_date(args.date)
+
+    client = None
+    if not args.no_llm and not args.dry_run:
+        try:
+            client = make_llm_client(cwd=str(REPO_ROOT))
+            if not client.enabled:
+                print("digest: LLM unavailable; using concat fallback")
+                client = None
+        except Exception as exc:
+            print(f"digest: LLM init failed ({exc}); concat fallback")
+            client = None
+
+    weekly.run_digest(
+        end_date=day,
+        db_path=Path(args.db) if args.db else weekly.DEFAULT_DB_PATH,
+        reports_dir=Path(args.reports) if args.reports else weekly.DEFAULT_REPORTS_DIR,
+        digests_dir=Path(args.digests) if args.digests else weekly.DEFAULT_DIGESTS_DIR,
+        dry_run=args.dry_run,
+        client=client,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(prog="social-report")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -235,6 +295,37 @@ def main() -> None:
     run_p.add_argument("--db", help="SQLite path (default: data/reports.db)")
     run_p.add_argument("--no-db", action="store_true", help="skip SQLite store writes entirely")
     run_p.set_defaults(func=run)
+
+    dist_p = sub.add_parser(
+        "distribute",
+        help="broadcast top stories to Discord/Slack/Teams + dump social copy",
+    )
+    dist_p.add_argument("--date", default="today", help="today | yesterday | YYYY-MM-DD")
+    dist_p.add_argument("--topic", help="force a specific topic instead of the top-salience pick")
+    dist_p.add_argument("--top", type=int, default=1, help="broadcast top N topics (default 1)")
+    dist_p.add_argument("--dry-run", action="store_true", help="print payloads instead of POSTing")
+    dist_p.add_argument("--no-llm", action="store_true", help="skip Sonnet copy generation (template only)")
+    dist_p.add_argument("--db", help="SQLite path (default: data/reports.db)")
+    dist_p.add_argument("--reports", help="reports dir (default: content/reports)")
+    dist_p.add_argument("--outbox", help="distribution record dir (default: content/distribution)")
+    dist_p.add_argument(
+        "--idempotent",
+        action="store_true",
+        help="skip if a distribution record already exists for this date",
+    )
+    dist_p.set_defaults(func=distribute_cmd)
+
+    dig_p = sub.add_parser(
+        "digest",
+        help="render a weekly digest from the last 7 days of reports",
+    )
+    dig_p.add_argument("--date", default="today", help="week ending: today | YYYY-MM-DD")
+    dig_p.add_argument("--no-llm", action="store_true", help="skip Sonnet synthesis (concat fallback)")
+    dig_p.add_argument("--dry-run", action="store_true", help="print to stdout, don't write")
+    dig_p.add_argument("--db", help="SQLite path (default: data/reports.db)")
+    dig_p.add_argument("--reports", help="reports dir (default: content/reports)")
+    dig_p.add_argument("--digests", help="digest output dir (default: content/digests)")
+    dig_p.set_defaults(func=digest_cmd)
 
     args = parser.parse_args()
     args.func(args)

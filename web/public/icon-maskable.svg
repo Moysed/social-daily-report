@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <rect width="192" height="192" fill="#b34022"/>
+  <g transform="translate(96,96)">
+    <text x="0" y="-12" font-family="Georgia, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#f6efe2" letter-spacing="2">SOCIAL</text>
+    <text x="0" y="14" font-family="Georgia, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#f6efe2" letter-spacing="2">DAILY</text>
+    <text x="0" y="40" font-family="Georgia, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#f6efe2" letter-spacing="2">REPORT</text>
+  </g>
+</svg>

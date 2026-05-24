@@ -27,6 +27,13 @@ const switchHref = alternateHref ?? local(homePath[other]);
     <title>{title}</title>
     <link rel="alternate" type="application/rss+xml" title={UI.en.htmlTitle} href={`${base}/rss.xml`} hreflang="en" />
     <link rel="alternate" type="application/rss+xml" title={`${UI.th.htmlTitle} (ไทย)`} href={`${base}/th/rss.xml`} hreflang="th" />
+    <link rel="manifest" href={`${base}/manifest.webmanifest`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/icon.svg`} />
+    <meta name="theme-color" content="#b34022" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1828" media="(prefers-color-scheme: dark)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Social Daily" />
     {/* Apply saved theme BEFORE first paint so light-dark() resolves correctly. */}
     <script is:inline>
       (() => {
@@ -474,6 +481,17 @@ const switchHref = alternateHref ?? local(homePath[other]);
     <script>
       import { inject } from "@vercel/analytics";
       inject({ mode: import.meta.env.PROD ? "production" : "development" });
+    </script>
+
+    {/* PWA service worker — production only so dev rebuilds aren't cached. */}
+    <script is:inline>
+      if ("serviceWorker" in navigator && location.protocol !== "http:") {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js").catch((err) => {
+            console.warn("[sw] register failed:", err);
+          });
+        });
+      }
     </script>
 
     {/* Toggle script: cycles light -> dark -> auto, with label updated for the current lang. */}

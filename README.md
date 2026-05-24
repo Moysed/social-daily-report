@@ -272,10 +272,62 @@ git push
 - [x] MCP server (list/get/search/salience/runs)
 - [x] X via paid provider (Xquik connector, Phase 2)
 - [x] Scheduler (Windows Task Scheduler, 10:00 and 22:00 (every 12h) local)
-- [ ] Monitor: email/Discord ping when N consecutive runs fail
+- [x] Monitor: Discord ping when stale / consecutive errors / no run today (`social_report.monitor`)
+- [x] Cross-day salience streak + 14-day sparkline on every card
+- [x] Per-topic RSS feeds (`/rss/<topic>.xml`, `/th/rss/<topic>.xml`)
+- [x] Weekly digest (`python -m social_report.cli digest`) + `/digest/<week>` page
+- [x] Distribute to Discord/Slack/Teams webhooks + auto Twitter/LinkedIn copy in `content/distribution/`
+- [x] PWA: web manifest, install, offline-capable service worker
+- [x] Archive search ("Ask the archive" box, client-side over `/search-index.json`)
+- [ ] AI synthesis backend for /api/qa (needs Astro SSR adapter or Vercel function)
+- [ ] Email subscribe form (provider TBD: Buttondown/ConvertKit/self-hosted)
+- [ ] Web Push backend (VAPID + subscription store; SW already wired)
 - [ ] Astro blog polish (`web/`)
 - [ ] Cost: Batch API + prompt caching + model routing
 - [ ] IG/FB deferred (no legal public access)
+
+## Distribute
+
+Posts the day's top story to chat/social channels and dumps ready-to-post copy
+for X and LinkedIn into `content/distribution/<date>.md` (tracked in git so the
+audit trail lives with the report).
+
+```bash
+# Top story to all configured webhooks + write outbox record
+python -m social_report.cli distribute
+
+# Force a specific topic, top 3 stories
+python -m social_report.cli distribute --topic ai-devtools --top 3
+
+# Idempotent (skip if today already broadcast) — used by run-daily.ps1
+python -m social_report.cli distribute --idempotent
+
+# Dry-run: print all payloads + generated copy, post nothing
+python -m social_report.cli distribute --dry-run
+```
+
+Env vars (any missing → that channel is skipped silently):
+
+- `DISTRIBUTE_DISCORD_WEBHOOK` — public Discord channel
+- `DISTRIBUTE_SLACK_WEBHOOK`   — NDF team Slack
+- `DISTRIBUTE_TEAMS_WEBHOOK`   — NDF team MS Teams (legacy Incoming Webhook)
+- `SITE` — base URL for permalinks (default `https://social-daily-report.vercel.app`)
+
+X and LinkedIn copy is generated locally (Sonnet if available, template
+otherwise) and saved for manual posting — no third-party API keys required.
+
+## Weekly digest
+
+```bash
+python -m social_report.cli digest                  # week ending today
+python -m social_report.cli digest --date 2026-05-24
+python -m social_report.cli digest --no-llm         # concat fallback, no Sonnet
+python -m social_report.cli digest --dry-run        # print, don't write
+```
+
+Writes `content/digests/<YYYY-Www>.md` (ISO week). The Astro page lives at
+`/digest/<YYYY-Www>` and a callout on the home page surfaces the latest one.
+`run-daily.ps1` builds the digest automatically on the Sunday 22:00 run.
 
 ## Notes
 

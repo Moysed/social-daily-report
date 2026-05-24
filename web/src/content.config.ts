@@ -30,4 +30,20 @@ const reports = defineCollection({
   }),
 });
 
-export const collections = { reports };
+const digests = defineCollection({
+  loader: glob({
+    pattern: "*.md",
+    base: "../content/digests",
+  }),
+  schema: z.object({
+    type: z.literal("weekly-digest"),
+    week: z.string(),
+    start: z.string(),
+    end: z.string(),
+    generated_at: z.string(),
+    generator: z.string(),
+    topic_count: z.number().default(0),
+  }),
+});
+
+export const collections = { reports, digests };

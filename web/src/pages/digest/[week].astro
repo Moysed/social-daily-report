@@ -1,0 +1,106 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { UI, type Lang } from "../../lib/i18n";
+
+export async function getStaticPaths() {
+  const all = await getCollection("digests");
+  return all.map((entry) => ({
+    params: { week: entry.data.week },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const lang: Lang = "en";
+const t = UI[lang];
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const home = `${base}/`;
+const title = `Weekly digest · ${entry.data.week}`;
+---
+
+<Base title={title} lang={lang}>
+  <div class="digest-shell">
+    <header class="digest-chrome">
+      <nav class="digest-nav ui-text" aria-label="Digest navigation">
+        <a href={home}>{t.backHome}</a>
+      </nav>
+      <p class="digest-label ui-text">Weekly digest</p>
+      <h1>{entry.data.week}</h1>
+      <p class="digest-meta ui-text">
+        {entry.data.start} → {entry.data.end} · {entry.data.topic_count} topics
+      </p>
+    </header>
+    <article class="prose" lang={lang}>
+      <Content />
+    </article>
+  </div>
+
+  <style>
+    .digest-shell {
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    .digest-chrome {
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--hairline);
+      margin-bottom: var(--space-lg);
+    }
+    .digest-nav {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      margin-bottom: var(--space-sm);
+    }
+    .digest-label {
+      margin: 0 0 0.4rem;
+      color: var(--accent-ink);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .digest-shell h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--step-3);
+      font-weight: 650;
+      line-height: 1.04;
+    }
+    .digest-meta {
+      margin: 0.4rem 0 0;
+      color: var(--soft-ink);
+      font-family: var(--font-mono);
+      font-size: var(--step--1);
+    }
+    .prose :global(h2) {
+      margin-top: var(--space-lg);
+      font-family: var(--font-display);
+      font-size: var(--step-1);
+      font-weight: 650;
+      letter-spacing: -0.005em;
+    }
+    .prose :global(h3) {
+      margin-top: var(--space-md);
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
+    }
+    .prose :global(em) {
+      font-style: normal;
+      color: var(--soft-ink);
+      font-size: 0.9em;
+    }
+    .prose :global(ul) {
+      padding-left: 1.2rem;
+    }
+    .prose :global(li) {
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</Base>

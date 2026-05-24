@@ -74,15 +74,47 @@ try {
     $ExitCode = 1
 }
 
+# Post-pipeline: broadcast to chat/social + (on Sunday) build the weekly digest.
+# Both are best-effort: failure here logs but does NOT fail the task. Distribute
+# is idempotent on the date — repeat runs same day skip re-posting.
+if ($ExitCode -eq 0) {
+    try {
+        & $VenvPython -m social_report.cli distribute --date $Today --idempotent 2>&1 |
+            Tee-Object -FilePath $LogFile -Append
+    } catch {
+        Add-Content -Path $LogFile -Value "distribute: failed ($_)" -Encoding UTF8
+    }
+
+    # ISO week ends on Sunday — build the digest on Sunday's 22:00 run.
+    $DayOfWeek = (Get-Date).DayOfWeek
+    if ($DayOfWeek -eq [System.DayOfWeek]::Sunday) {
+        try {
+            & $VenvPython -m social_report.cli digest --date $Today 2>&1 |
+                Tee-Object -FilePath $LogFile -Append
+        } catch {
+            Add-Content -Path $LogFile -Value "digest: failed ($_)" -Encoding UTF8
+        }
+    }
+}
+
 # Auto-commit + push today's reports so Vercel redeploys without manual work.
 # Only runs on a clean pipeline (exit 0); skips silently if there's nothing to
 # commit or `git` is unavailable. Failure here doesn't fail the whole task —
 # the reports are already on disk; deploy is a nice-to-have.
 if ($ExitCode -eq 0 -and (Get-Command git -ErrorAction SilentlyContinue)) {
     try {
-        $Changed = git -C $RepoRoot status --porcelain "content/reports/$Today" 2>$null
+        $TrackedPaths = @(
+            "content/reports/$Today",
+            "content/distribution/$Today.md",
+            "content/digests"
+        )
+        $Changed = git -C $RepoRoot status --porcelain $TrackedPaths 2>$null
         if ($Changed) {
-            git -C $RepoRoot add "content/reports/$Today" 2>&1 | Out-Null
+            foreach ($p in $TrackedPaths) {
+                if (Test-Path (Join-Path $RepoRoot $p)) {
+                    git -C $RepoRoot add $p 2>&1 | Out-Null
+                }
+            }
             $Commit = "Daily reports $Today $((Get-Date).ToString('HHmm')) (auto)"
             git -C $RepoRoot commit -m $Commit 2>&1 | Tee-Object -FilePath $LogFile -Append
             git -C $RepoRoot push origin main 2>&1 | Tee-Object -FilePath $LogFile -Append

@@ -60,6 +60,21 @@ type Dict = {
   trendEasing: string;
   trendSteady: string;
   trendNew: string;
+  streakBadge: (n: number) => string;
+  streakBadgeAria: (n: number) => string;
+  sparklineLabel: string;
+  rssShort: string;
+  rssTopicAria: (topic: string) => string;
+  subscribeTitle: string;
+  subscribeAllFeed: string;
+  subscribePerTopic: string;
+  askTitle: string;
+  askKicker: string;
+  askPlaceholder: string;
+  askButton: string;
+  askHint: string;
+  askEmpty: string;
+  askAiSoon: string;
   // Home dashboard chrome
   morningBrief: string;
   todayOverview: string;
@@ -125,6 +140,21 @@ export const UI: Record<Lang, Dict> = {
     trendEasing: "Easing",
     trendSteady: "Holding",
     trendNew: "New today",
+    streakBadge: (n) => `trending ${n}d`,
+    streakBadgeAria: (n) => `Topic carried for ${n} consecutive days`,
+    sparklineLabel: "14-day salience",
+    rssShort: "RSS",
+    rssTopicAria: (topic) => `RSS feed for ${topic}`,
+    subscribeTitle: "Subscribe",
+    subscribeAllFeed: "All topics",
+    subscribePerTopic: "Per topic",
+    askTitle: "Ask the archive",
+    askKicker: "Search across every report",
+    askPlaceholder: "Ask anything (e.g. \"local LLM cost\", \"Antigravity\", \"agent eval\")",
+    askButton: "Search",
+    askHint: "Searches TL;DRs, signals, tags, and topics across every day on file.",
+    askEmpty: "No matches across the archive yet — try a broader query.",
+    askAiSoon: "AI synthesis arriving once the backend is live.",
     morningBrief: "Morning brief",
     todayOverview: "What's worth knowing today",
     todayHeading: (n) => (n === 1 ? "1 topic today" : `${n} topics today`),
@@ -186,6 +216,21 @@ export const UI: Record<Lang, Dict> = {
     trendEasing: "ค่อย ๆ ซา",
     trendSteady: "ทรงตัว",
     trendNew: "เพิ่งเริ่มวันนี้",
+    streakBadge: (n) => `ติดเทรนด์ ${n} วัน`,
+    streakBadgeAria: (n) => `หัวข้อนี้อยู่ในรายงานติดต่อกัน ${n} วัน`,
+    sparklineLabel: "salience 14 วัน",
+    rssShort: "RSS",
+    rssTopicAria: (topic) => `ฟีด RSS ของ ${topic}`,
+    subscribeTitle: "สมัครรับ",
+    subscribeAllFeed: "ทุกหัวข้อ",
+    subscribePerTopic: "แยกตามหัวข้อ",
+    askTitle: "ถามคลังรายงาน",
+    askKicker: "ค้นข้ามรายงานทุกวัน",
+    askPlaceholder: "ถามอะไรก็ได้ (เช่น \"local LLM\", \"Antigravity\", \"eval agent\")",
+    askButton: "ค้นหา",
+    askHint: "ค้นทั้ง TL;DR, signals, แท็ก และหัวข้อ ครอบคลุมทุกวันในคลัง",
+    askEmpty: "ยังไม่พบในคลัง ลองคำกว้างขึ้น",
+    askAiSoon: "สรุปด้วย AI กำลังมา ต่อ backend แล้วใช้ได้",
     morningBrief: "บรีฟเช้า",
     todayOverview: "วันนี้ควรรู้อะไร",
     todayHeading: (n) => `${n} หัวข้อวันนี้`,

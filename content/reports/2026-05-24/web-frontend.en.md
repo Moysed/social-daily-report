@@ -4,7 +4,7 @@ date: '2026-05-24'
 topic: web-frontend
 lang: en
 pair: web-frontend.th.md
-generated_at: '2026-05-24T03:16:00+00:00'
+generated_at: '2026-05-24T15:16:09+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,80 +14,80 @@ platforms:
 - x
 regions:
 - global
-post_count: 54
+post_count: 48
 salience: 0.35
 sentiment: neutral
 confidence: 0.55
 tags:
-- frontend
+- web-platform
 - react
-- semantic-html
-- kysely
-- ai-coding
-- wordpress
-thumbnail: https://preview.redd.it/329kbe83pu2h1.png?width=2660&format=png&auto=webp&s=8da3fb35001d1d8a64314f57a5ed9872cbc33e13
+- html-semantics
+- chrome
+- ux
+- edutech
+thumbnail: https://preview.redd.it/oe5op8flgy2h1.jpg?width=626&format=pjpg&auto=webp&s=cbb878d66de390c475289d1866aa9f205ff89267
 ---
 
 # Web & Frontend — 2026-05-24
 
 ## TL;DR
-- Semantic HTML deep-dive on `<dl>` resurfaces — relevant for accessible component design [3]
-- 'Skip reading code' essay challenges AI-assisted dev habits; matters for code review discipline [13]
-- Kysely 0.29 hits 6M weekly NPM downloads, now #3 query builder behind Drizzle and Prisma [28]
-- WordPress 7.0 ships with AI tooling + resource-loading perf improvements [34]
-- Hard-won React lesson: building node-based visual workflow editor with live execution state [32]
+- Truly web/frontend signal is thin today — only a handful of items qualify [3][10][21][22][23][27]
+- Chrome's declarative partial updates [27] is the most consequential platform news: HTML-driven DOM patching could nibble at HTMX/React territory
+- Practical craft reminders: semantic <dl> usage [3] and a copy-blocking UX anti-pattern [10] worth coding-review checklists
+- Indie/showoff builds [21][22][23] show the bar: client-side editors, multi-POI search, and node-based React canvases — relevant to NDF web/edutech UX
+- Macro/AI items dominate engagement but are tangential to web platform craft — discount accordingly
 
 ## What happened
-Genuine web/frontend signal today is thin but pointed. Ben Myers' 2021 piece on the `<dl>` element recirculated, arguing for semantic discipline in component libraries [3]. Olano's '--dangerously-skip-reading-code' critiques the AI-coding habit of merging diffs without reading them [13]. Kysely 0.29 shipped and the team announced 6M weekly downloads, placing it #3 among JS query builders [28]. WordPress 7.0 dropped with built-in AI tooling and lazy-loading improvements [34]. A React dev wrote up the pain of building a Figma-style node-based workflow editor with real-time execution state [32]. Smaller items: gamification shadcn registry components [30], a Forth-inspired website language [23], a Wander Connect-style decentralized site discovery HTML tool [19], a retro-desktop social UI [9], and a webdev inspiration thread [11]. Most top-ranked HN items (immigration, Starship, microcode, DOS source) are off-topic for frontend.
+Most high-engagement items today are off-topic for web/frontend (immigration [1], hardware/retro [2][4][6][14][19], AI macro [9][18][26], health [17]). The genuine web/frontend signal sits in the mid-tier: a Chrome blog post on declarative partial updates [27] proposes HTML-attribute-driven DOM patching as a platform primitive; a republished essay on the <dl> element [3] argues for semantic precision in description lists; a r/webdev thread [10] dissects a site that blocked text selection on a phone number — a real-world UX/accessibility anti-pattern with workarounds via DevTools. Showoff projects include Spearite, a fully client-side pixel/sprite editor [21], MultiSpot, a multi-POI Maps tool [22], and a React node-based workflow editor with real-time state [23]. A short lobsters note flags the HTML5 foster-parenting spec link [28]. A career thread [20] debates frontend vs backend vs data for new entrants.
 
 ## Why it matters (reasoning)
-Two practical threads matter for a small studio. First, the Kysely milestone [28] confirms the type-safe SQL-builder lane is now a real three-way race (Drizzle, Prisma, Kysely) — meaningful when picking a Supabase data layer for Next.js apps. Second, [13] reflects an industry mood shift: as AI-generated PRs scale, teams that don't enforce read-the-diff discipline accumulate silent bugs. Semantic HTML pieces like [3] keep mattering because LLM-generated markup tends to flatten everything to `<div>`, hurting a11y and SEO. WordPress 7.0 [34] signals the CMS incumbent finally bundling AI — pressure on bespoke Next.js content sites that compete on authoring UX. The React workflow-editor post [32] is a useful reference if NDF builds visual editors for edutech lesson flows.
+Declarative partial updates [27] is the only item with real platform-shift potential: if browsers natively patch fragments of the DOM from server responses via HTML attributes, the cost-benefit calculus of HTMX, Turbo, and even some React Server Component patterns shifts — less JS, faster TTI, but a longer adoption window because it's Chrome-only at announcement. Second-order effect: Next.js/Astro will likely add progressive-enhancement adapters once Safari/Firefox signal intent. The <dl> piece [3] and the copy-blocked-number incident [10] are micro-signals of an ongoing trend — semantic HTML and 'don't fight the platform' UX are getting renewed attention as AI-generated UI proliferates and degrades baseline quality. The visual-workflow-editor post [23] reflects a maturing pattern: node-graph editors (React Flow, Rete) are now common in internal tools and edutech authoring — relevant to NDF's edutech roadmap.
 
 ## Possibility
-Near-term (3–6 mo, ~70%): Kysely keeps eating Prisma share for Supabase/Postgres stacks because of lower runtime overhead and better edge-runtime fit. Medium (~50%): AI-in-CMS becomes table-stakes; WordPress 7.0 forces Strapi/Sanity/Payload to ship comparable assistants. Lower (~30%): pushback against blind AI-assisted commits crystallizes into tooling (mandatory diff-summary gates, structured review bots). Long-tail (~20%): semantic-HTML literacy becomes a hiring filter as a11y lawsuits rise.
+Declarative partial updates [27]: ~60% chance it reaches WHATWG/whatnot consideration within 12 months, ~25% it ships cross-browser by 2027, ~15% it stalls as Chrome-only. Likely scenario: htmx-style libraries add a polyfill path, Astro and Next ship experimental adapters by late 2026. Semantic-HTML revival [3]: low-impact but persistent — expect more lint rules (eslint-plugin-jsx-a11y) targeting <dl>/<details> misuse. Node-graph UIs in React [23]: continued growth, React Flow likely to dominate; expect a 'visual workflow builder' template in starter kits within 6 months.
 
 ## Org applicability — NDF DEV
-Concrete moves for NDF DEV: (1) Evaluate Kysely [28] for the next Next.js+Supabase project — lighter than Prisma, better edge fit, types stay sharp; worth a 1-day spike. (2) Adopt a 'no-skip-reading-code' rule for AI-assisted PRs [13] — cheap, high leverage. (3) Audit edutech/e-learning components against [3]'s `<dl>` guidance — definition lists fit vocabulary/glossary UI common in lesson content. (4) Bookmark [32] before building any visual lesson-flow or XR scene editor; node-graph state management is the real cost. (5) Skip WordPress 7.0 [34] unless a client specifically asks — stick with Next.js + Supabase. Gamification components [30] worth a glance for edutech reward UIs but evaluate before adopting.
+Three concrete uses: (1) Watch [27] — for NDF's Next.js/Supabase web apps, declarative partial updates could simplify dashboards and admin panels without adopting htmx; not worth adopting today (Chrome-only, no spec), but worth a 1-hour spike when Firefox signals support. (2) Apply [3] and [10] immediately — add a code-review checklist item: 'is this list semantically <dl>/<ul>/<ol>?' and 'are we breaking copy/select on user-facing data?'. Cheap, ships quality. (3) For edutech authoring tools and any XR/Unity-to-web bridge, study [23]'s React Flow approach — node-based authoring is a credible UI pattern for lesson/scene builders. Effort: medium (1–2 weeks for a PoC), payoff: high if NDF builds a visual lesson-flow editor. Skip [21][22] as direct inspiration but note the client-side-only architecture pattern — good for offline-capable Supabase apps.
 
 ## Signals to Watch
-- Kysely vs Drizzle download trajectory over next quarter
-- Whether shadcn-style registries add a11y-audited semantic primitives
-- AI-PR review tooling emerging from the [13] discussion
-- WordPress 7.0 AI adoption rate vs headless CMS competitors
+- Firefox/Safari position on declarative partial updates [27]
+- React Flow / Rete.js release notes — node-graph editors trending toward edutech
+- Next.js 16/Astro 6 RFCs mentioning declarative DOM patching
+- eslint-plugin-jsx-a11y rules expanding to <dl> and copy-blocking detection
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| hackernews | tlhunter | ^634 c1090 | [Green card seekers must leave U.S. to apply, Trump administration says <a href="](https://www.nytimes.com/2026/05/22/us/politics/green-card-changes-trump.html) |
-| hackernews | busymom0 | ^373 c245 | [SpaceX launches Starship v3 rocket <a href="https:&#x2F;&#x2F;www.nbcnews.com&#x](https://www.space.com/space-exploration/launches-spacecraft/spacex-starship-v3-megarocket-first-test-flight) |
-| hackernews | ravenical | ^360 c108 | [On The <dl> (2021)](https://benmyers.dev/blog/on-the-dl/) |
-| hackernews | hggh | ^309 c175 | [Time to talk about my writerdeck](https://veronicaexplains.net/my-first-writerdeck/) |
-| hackernews | nand2mario | ^223 c46 | [80386 microcode disassembled](https://www.reenigne.org/blog/80386-microcode-disassembled/) |
-| hackernews | dxs | ^210 c138 | [The Art of Money Getting](https://kk.org/cooltools/book-freak-210-the-art-of-money-getting/) |
-| hackernews | tosh | ^154 c59 | [Making deep learning go brrrr from first principles (2022)](https://horace.io/brrr_intro.html) |
-| hackernews | ingve | ^151 c134 | [.NET (OK, C#) finally gets union types](https://andrewlock.net/exploring-the-dotnet-11-preview-2-dotnet-gets-union-types/) |
-| reddit | euklides | ^145 c19 | [[Showoff Saturday] Retro desktop environment for for my social network Cyberspac](https://www.reddit.com/r/webdev/comments/1tlb3x4/showoff_saturday_retro_desktop_environment_for/) |
-| hackernews | borski | ^125 c86 | [Toxic chemical leak at a manufacturing facility in Orange County](https://www.bbc.com/news/articles/c3w2l249j8go) |
-| reddit | Affectionate_Power99 | ^121 c25 | [What are your go-to websites for web design inspiration? What do you guys use fo](https://www.reddit.com/r/webdev/comments/1tlcob2/what_are_your_goto_websites_for_web_design/) |
-| hackernews | evakhoury | ^116 c27 | [Hengefinder: Finding when the sun aligns with your street](https://victoriaritvo.com/blog/hengefinder/) |
-| hackernews | fagnerbrack | ^104 c117 | [-​-dangerously-skip-reading-code](https://olano.dev/blog/dangerously-skip/) |
-| hackernews | cdrnsf | ^94 c24 | [ICE Awards $25M Iris-Scanning Contract to Bi2 Technologies](https://www.projectsaltbox.com/p/ice-awards-25-million-iris-scanning) |
-| lobsters | susam | ^92 c44 | [Don't Roll Your Own …](https://susam.net/do-not-roll-your-own.html) |
-| hackernews | elpocko | ^85 c18 | [Reverse engineering circuitry in a Spacelab computer from 1980](https://www.righto.com/2026/05/reverse-engineering-spacelab-computer.html) |
-| hackernews | MaximilianEmel | ^69 c6 | [Wake up! 16b](https://hellmood.111mb.de/wake_up_16b_writeup.html) |
-| hackernews | DamnInteresting | ^66 c13 | [Microsoft open-sources "the earliest DOS source code discovered to date" <a href](https://arstechnica.com/gadgets/2026/04/microsoft-open-sources-the-earliest-dos-source-code-discovered-to-date/) |
-| reddit | susam | ^60 c21 | [[Showoff Saturday] I wrote a small HTML tool for decentralised discovery of pers](https://www.reddit.com/r/webdev/comments/1tl7461/showoff_saturday_i_wrote_a_small_html_tool_for/) |
-| hackernews | hyperific | ^56 c19 | [Sales and Dungeons: Thermal printer TTRPG utility](https://sales-and-dungeons.app/) |
-| hackernews | NaOH | ^49 c1 | [Judson's Last Ride](https://www.realclearpolitics.com/articles/2026/05/22/judsons_last_ride_154150.html) |
-| reddit | fagnerbrack | ^48 c10 | [Technical Interviews Reject the Wrong Engineers](https://www.reddit.com/r/webdev/comments/1tla084/technical_interviews_reject_the_wrong_engineers/) |
-| lobsters | EvanHahn | ^47 c15 | [A Forth-inspired language for writing websites](https://robida.net/entries/2026/05/21/a-forth-inspired-language-for-writing-websites) |
-| hackernews | spike021 | ^43 c6 | [Scammers are abusing an internal Microsoft account to send spam links](https://techcrunch.com/2026/05/21/scammers-are-abusing-an-internal-microsoft-account-to-send-spam/) |
-| reddit | SinkThemAll | ^43 c12 | [[Showoff Saturday] TeaCorner - a tea app for tea lovers Hey! I'm new to the dev ](https://www.reddit.com/r/webdev/comments/1tleusz/showoff_saturday_teacorner_a_tea_app_for_tea/) |
-| reddit | HiddenGriffin | ^42 c24 | [Was wondering why I couldn't copy the number, genuinely asking how do you get to](https://www.reddit.com/r/webdev/comments/1tlss2c/was_wondering_why_i_couldnt_copy_the_number/) |
-| hackernews | nosolace | ^38 c7 | [My I3-Emacs Integration](https://khz.ac/software/i3-integration.html) |
-| reddit | rebelchatbot | ^32 c8 | [kysely 0.29 is out btw. Hey 👋 DISCLAIMER: I'm co-leading the org/project. We rec](https://www.reddit.com/r/javascript/comments/1tlhcx6/kysely_029_is_out_btw/) |
-| hackernews | layer8 | ^25 c6 | [Byrne's Euclid](https://www.c82.net/euclid/) |
-| reddit | CBRIN13 | ^19 c16 | [Open-source React components for gamification interfaces The shadcn registry dir](https://www.reddit.com/r/reactjs/comments/1tlbi88/opensource_react_components_for_gamification/) |
+| hackernews | tlhunter | ^981 c1633 | [Green card seekers must leave U.S. to apply, Trump administration says <a href="](https://www.nytimes.com/2026/05/22/us/politics/green-card-changes-trump.html) |
+| hackernews | hggh | ^416 c243 | [Time to talk about my writerdeck](https://veronicaexplains.net/my-first-writerdeck/) |
+| hackernews | ravenical | ^414 c121 | [On The <dl> (2021)](https://benmyers.dev/blog/on-the-dl/) |
+| hackernews | DamnInteresting | ^347 c108 | [Microsoft open-sources "the earliest DOS source code discovered to date" <a href](https://arstechnica.com/gadgets/2026/04/microsoft-open-sources-the-earliest-dos-source-code-discovered-to-date/) |
+| hackernews | dxs | ^339 c180 | [The Art of Money Getting](https://kk.org/cooltools/book-freak-210-the-art-of-money-getting/) |
+| hackernews | MaximilianEmel | ^325 c24 | [Wake up! 16b](https://hellmood.111mb.de/wake_up_16b_writeup.html) |
+| hackernews | zdw | ^249 c124 | [Why is Vivado 2026.1 dropping Linux support for free tier?](https://adaptivesupport.amd.com/s/question/0D5Pd00001YQLdMKAX/why-is-vivado-20261-dropping-linux-support-for-free-tier-?language=en_US) |
+| hackernews | spike021 | ^202 c107 | [Scammers are abusing an internal Microsoft account to send spam links](https://techcrunch.com/2026/05/21/scammers-are-abusing-an-internal-microsoft-account-to-send-spam/) |
+| hackernews | prakashqwerty | ^125 c95 | [Greg Brockman: Inside the 72 Hours That Almost Killed OpenAI [video]](https://fs.blog/knowledge-project-podcast/greg-brockman/) |
+| reddit | HiddenGriffin | ^116 c38 | [Was wondering why I couldn't copy the number, genuinely asking how do you get to](https://www.reddit.com/r/webdev/comments/1tlss2c/was_wondering_why_i_couldnt_copy_the_number/) |
+| lobsters | susam | ^108 c51 | [Don't Roll Your Own …](https://susam.net/do-not-roll-your-own.html) |
+| hackernews | nosolace | ^94 c39 | [My I3-Emacs Integration](https://khz.ac/software/i3-integration.html) |
+| hackernews | anujbans | ^93 c21 | [Alexander Grothendieck Revolutionized 20th-Century Mathematics](https://www.quantamagazine.org/how-alexander-grothendieck-revolutionized-20th-century-mathematics-20260520/) |
+| hackernews | masswerk | ^88 c16 | [The C64 Dead Test Font](https://www.masswerk.at/nowgobang/2026/c64-dead-test-font) |
+| hackernews | tosh | ^70 c9 | [Mastering Dyalog APL](https://mastering.dyalog.com/README.html) |
+| hackernews | blenderob | ^65 c32 | [Childhood Computing](https://susam.net/childhood-computing.html) |
+| hackernews | randycupertino | ^61 c25 | [The seed oil panic is hurting my cardiac patients](https://www.statnews.com/2026/05/22/seed-oils-healthy-fats-tallow-fact-check-cardiac-health/) |
+| hackernews | Alifatisk | ^53 c26 | [DeepSeek reasonix, DeepSeek native coding agent with high caching and low cost](https://esengine.github.io/DeepSeek-Reasonix/) |
+| hackernews | GTP | ^47 c9 | [Microsoft's 6502 BASIC is now Open Source (2025)](https://opensource.microsoft.com/blog/2025/09/03/microsoft-open-source-historic-6502-basic/) |
+| reddit | Ok_Sentence725 | ^45 c106 | [If you could start over in tech today, what would you learn? If you decided to l](https://www.reddit.com/r/webdev/comments/1tlyxoh/if_you_could_start_over_in_tech_today_what_would/) |
+| reddit | nooglerhat | ^45 c8 | [[Showoff Saturday] Spearite: I built a free browser-based pixel art &amp; sprite](https://www.reddit.com/r/webdev/comments/1tlqwqz/showoff_saturday_spearite_i_built_a_free/) |
+| reddit | Dalleuh | ^37 c18 | [I built Multispot, find multiple locations at the same time! Hello guys, I built](https://www.reddit.com/r/webdev/comments/1tlzymp/i_built_multispot_find_multiple_locations_at_the/) |
+| reddit | Ctrlnode-ai | ^17 c11 | [The hardest UI I've ever built in React: a visual workflow editor with real-time](https://www.reddit.com/r/reactjs/comments/1tlukjd/the_hardest_ui_ive_ever_built_in_react_a_visual/) |
+| hackernews | wek | ^16 c3 | [Constraint Decay: The Fragility of LLM Agents in Back End Code Generation](https://arxiv.org/abs/2605.06445) |
+| hackernews | ksec | ^13 c1 | [Perceptual Image Codec: What Matters in Practical Learned Image Compression](https://apple.github.io/ml-pico/) |
+| hackernews | moh_maya | ^10 c0 | [DeepSeek to Make Permanent 75% Discount on Flagship AI Model](https://www.bloomberg.com/news/articles/2026-05-23/deepseek-to-make-permanent-75-discount-on-flagship-ai-model) |
+| lobsters | nemin | ^10 c2 | [Declarative partial updates](https://developer.chrome.com/blog/declarative-partial-updates) |
+| lobsters | two | ^3 c0 | [HTML5 Foster Parenting in the post, the link to the section of the spec is not r](https://www.rushis.com/html5-foster-parenting/) |
+| x | secretautism | ^1 c0 | [When you were fighting animals in the original the combat was all based on quick](https://x.com/secretautism/status/2058566696416243869) |
+| x | IonnaNorma | ^0 c0 | [@astro_2468 Buenos días Astro!🤗😃 Feliz y bendecido Domingo!💕✨️🎶⚘️💛](https://x.com/IonnaNorma/status/2058566960938377241) |
 
 
 ## Top Posts
@@ -95,102 +95,62 @@ Concrete moves for NDF DEV: (1) Evaluate Kysely [28] for the next Next.js+Supaba
 <div class="post-stream">
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
-    <span class="ndf-author">@euklides</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 145 · 💬 19</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/webdev/comments/1tlb3x4/showoff_saturday_retro_desktop_environment_for/" target="_blank" rel="noopener"><img src="https://preview.redd.it/329kbe83pu2h1.png?width=2660&amp;format=png&amp;auto=webp&amp;s=8da3fb35001d1d8a64314f57a5ed9872cbc33e13" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“[Showoff Saturday] Retro desktop environment for for my social network Cyberspace Some of you might have seen [ᑕ¥βєяรקค¢є](https://cyberspace.online/) before. *&quot;Social media de-imagined.&quot;* A grass-roo”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A developer built a retro Mac OS 6-inspired web desktop environment for their small ad-free, algorithm-free social network Cyberspace, complete with news feed, IRC chat, DMs, theming, and an open API.</dd>
-      <dt>Why interesting</dt>
-      <dd>Proves a niche, intentionally retro web UI can attract 11k loyal users — aesthetic and values-driven product design beats feature bloat for community retention.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio's web stack could experiment with a retro/terminal aesthetic for internal tools or e-learning portals — windowed UI via CSS + JS is achievable without heavy frameworks and doubles as a memorable UX differentiator.</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/webdev/comments/1tlb3x4/showoff_saturday_retro_desktop_environment_for/" target="_blank" rel="noopener">View on reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Affectionate_Power99</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 121 · 💬 25</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/webdev/comments/1tlcob2/what_are_your_goto_websites_for_web_design/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/Z6-XXcExebIFKZ6H3brzTRT7mLajgwTA-kLKvqN0MVc.jpeg?auto=webp&amp;s=1fd1d84151df359fd7055cdcb98a1441c84f6d66" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“What are your go-to websites for web design inspiration? What do you guys use for webdesign inspo in 2026? need some inspo for a current project and looking for UI inspiration, interactions, landing p”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A Reddit thread crowdsourcing go-to web design inspiration sites in 2026, starting with details.so, mobbin.com, and godly.website, and asking for lesser-known gems covering SaaS UI, portfolios, typography, and motion.</dd>
-      <dt>Why interesting</dt>
-      <dd>This thread is becoming a live, community-curated bookmark list for modern SaaS and creative-dev UI — more signal than a single curated gallery because devs explain why each site works.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio's Next.js front-end team should pin this thread and pull from godly.website and details.so when designing landing pages or e-learning UI — use them as a benchmark before starting any layout.</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/webdev/comments/1tlcob2/what_are_your_goto_websites_for_web_design/" target="_blank" rel="noopener">View on reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@SinkThemAll</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 43 · 💬 12</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/webdev/comments/1tleusz/showoff_saturday_teacorner_a_tea_app_for_tea/" target="_blank" rel="noopener"><img src="https://preview.redd.it/vvya7vaepv2h1.png?width=11520&amp;format=png&amp;auto=webp&amp;s=afc048a6608c310bbade95b0667f93d14ef19277" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“[Showoff Saturday] TeaCorner - a tea app for tea lovers Hey! I'm new to the dev world and I started this app with a school friend who had this tea app idea for years... What started as an end-of-year ”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>Two new devs turned their graduation full-stack project into a live tea management app (React + NestJS + PostgreSQL, self-hosted) with a minimalist UI and a planned 'focus mode' for mindful brewing.</dd>
-      <dt>Why interesting</dt>
-      <dd>Their 'focus mode' concept — embedding mindfulness into an app flow — shows how a non-game product can borrow engagement loops from meditation/wellness UX without gamification.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio's e-learning and XR work can lift this pattern: add a 'focus mode' or presence-check step inside lesson flows to reduce passive clicking and increase user engagement.</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/webdev/comments/1tleusz/showoff_saturday_teacorner_a_tea_app_for_tea/" target="_blank" rel="noopener">View on reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
     <span class="ndf-author">@HiddenGriffin</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 42 · 💬 24</span>
+    <span class="ndf-engagement">♥ 116 · 💬 38</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/webdev/comments/1tlss2c/was_wondering_why_i_couldnt_copy_the_number/" target="_blank" rel="noopener"><img src="https://preview.redd.it/oe5op8flgy2h1.jpg?width=626&amp;format=pjpg&amp;auto=webp&amp;s=cbb878d66de390c475289d1866aa9f205ff89267" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Was wondering why I couldn't copy the number, genuinely asking how do you get to this? It's just a number”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A developer on r/webdev is frustrated that a plain number displayed on a webpage cannot be copied, suspecting intentional or accidental CSS/rendering tricks blocking text selection.</dd>
+      <dd>A user on r/webdev found a UI where a plain number cannot be copied, and is baffled how such a broken interaction made it to production.</dd>
       <dt>Why interesting</dt>
-      <dd>Small teams often ship user-select:none or split numbers into DOM fragments for styling reasons, unknowingly breaking copy UX for phone numbers, prices, and IDs.</dd>
+      <dd>Unselectable plain text is a classic UX failure — often caused by user-select: none applied too broadly or number rendered inside a canvas/SVG element instead of DOM text.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The web team should audit all numeric display components (prices, codes, IDs) in the web stack and ensure no user-select:none or image-based rendering blocks clipboard access.</dd>
+      <dd class="ndf-adapt">The web stack should audit any dashboard or data display component to ensure numbers and key values are always selectable DOM text, not canvas-rendered or CSS-locked.</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/webdev/comments/1tlss2c/was_wondering_why_i_couldnt_copy_the_number/" target="_blank" rel="noopener">View on reddit →</a>
   </div>
 </article>
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
-    <span class="ndf-author">@CBRIN13</span>
+    <span class="ndf-author">@nooglerhat</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 19 · 💬 16</span>
+    <span class="ndf-engagement">♥ 45 · 💬 8</span>
   </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/reactjs/comments/1tlbi88/opensource_react_components_for_gamification/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/owwmnTHPE10s9jKk9rltkqC1U0X58cdThVdqXRB9k10.png?auto=webp&amp;s=43541f3c3e61072c68b9298af02ffda3c44ab4b9" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/webdev/comments/1tlqwqz/showoff_saturday_spearite_i_built_a_free/" target="_blank" rel="noopener"><img src="https://i.redd.it/7k8o5wgv2y2h1.png" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Open-source React components for gamification interfaces The shadcn registry directory is pretty stacked, but there isn't currently any depth in the gamification space. So I decided to build a library”</p>
+    <p class="ndf-quote">“[Showoff Saturday] Spearite: I built a free browser-based pixel art &amp;amp; sprite editor (fully client-side) Hey r/webdev, I'm a big fan of Excalidraw's instant-canvas feel and Figma's clean panel layo”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Trophy UI is a free, open-source library of 17 shadcn-compatible React components covering gamification features like streaks, leaderboards, achievement badges, and points timelines — backend-agnostic via plain props.</dd>
+      <dd>A developer built Spearite, a free browser-based pixel art and sprite editor with no install required, featuring animation timeline with onion skinning and Unity/Godot-ready PNG sprite sheet export with JSON/XML metadata.</dd>
       <dt>Why interesting</dt>
-      <dd>Small teams get production-ready gamification UI for free — streak calendars, ranked leaderboards with collapse logic, and rarity-aware badges that would each take days to build from scratch.</dd>
+      <dd>Sprite sheets with JSON/XML metadata that drop straight into Unity remove the 'install Aseprite' friction point for game dev artists, which directly speeds up the asset pipeline on small teams.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The web stack can drop Trophy UI components directly into any Next.js + Supabase e-learning project to add streaks and leaderboards; wire Supabase queries to the props and ship gamification in hours, not days.</dd>
+      <dd class="ndf-adapt">The Unity team can send artists to Spearite for sprite work immediately — exported PNG sheets with JSON metadata plug into the existing Unity importer without extra tooling or licensing cost.</dd>
     </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/reactjs/comments/1tlbi88/opensource_react_components_for_gamification/" target="_blank" rel="noopener">View on reddit →</a>
+    <a class="ndf-source" href="https://www.reddit.com/r/webdev/comments/1tlqwqz/showoff_saturday_spearite_i_built_a_free/" target="_blank" rel="noopener">View on reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Dalleuh</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 37 · 💬 18</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/webdev/comments/1tlzymp/i_built_multispot_find_multiple_locations_at_the/" target="_blank" rel="noopener"><img src="https://preview.redd.it/t6yma1ja203h1.png?width=1916&amp;format=png&amp;auto=webp&amp;s=ffaca58a5127818defbc7183ad81be44163614ea" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“I built Multispot, find multiple locations at the same time! Hello guys, I built a tool called MultiSpot where you pick 2 to 5 place types (café, gym, pharmacy, whatever) and it finds the closest loca”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A developer built Multispot, a free tool that finds 2–5 place types (café, gym, pharmacy, etc.) near you simultaneously, solving the pain of cross-referencing multiple Google Maps searches.</dd>
+      <dt>Why interesting</dt>
+      <dd>The 'multi-constraint proximity search' UX pattern is underused in tools — bundling location queries into one result removes real friction for users planning errands or work sessions.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio can apply this multi-constraint search pattern in Next.js + Supabase web apps — e.g., letting users find nearby resources matching multiple filters in a single query instead of repeated searches.</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/webdev/comments/1tlzymp/i_built_multispot_find_multiple_locations_at_the/" target="_blank" rel="noopener">View on reddit →</a>
   </div>
 </article>
 </div>

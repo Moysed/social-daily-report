@@ -10,7 +10,7 @@ topics:
   file: ai-news.en.md
 - topic: ai-devtools
   title: AI Devtools
-  salience: 0.75
+  salience: 0.78
   file: ai-devtools.en.md
 - topic: edtech
   title: EdTech
@@ -18,7 +18,7 @@ topics:
   file: edtech.en.md
 - topic: game-dev
   title: Game Dev
-  salience: 0.35
+  salience: 0.55
   file: game-dev.en.md
 - topic: web-frontend
   title: Web & Frontend
@@ -26,7 +26,7 @@ topics:
   file: web-frontend.en.md
 - topic: xr
   title: XR / VR / AR
-  salience: 0.35
+  salience: 0.25
   file: xr.en.md
 ---
 
@@ -35,8 +35,8 @@ topics:
 | topic | salience | report |
 |---|---|---|
 | AI News & New Skills | 0.85 | [ai-news.en.md](ai-news.en.md) |
-| AI Devtools | 0.75 | [ai-devtools.en.md](ai-devtools.en.md) |
+| AI Devtools | 0.78 | [ai-devtools.en.md](ai-devtools.en.md) |
 | EdTech | 0.55 | [edtech.en.md](edtech.en.md) |
-| Game Dev | 0.35 | [game-dev.en.md](game-dev.en.md) |
+| Game Dev | 0.55 | [game-dev.en.md](game-dev.en.md) |
 | Web & Frontend | 0.35 | [web-frontend.en.md](web-frontend.en.md) |
-| XR / VR / AR | 0.35 | [xr.en.md](xr.en.md) |
+| XR / VR / AR | 0.25 | [xr.en.md](xr.en.md) |

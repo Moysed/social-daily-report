@@ -4,7 +4,7 @@ date: '2026-05-24'
 topic: game-dev
 lang: th
 pair: game-dev.en.md
-generated_at: '2026-05-24T03:09:42+00:00'
+generated_at: '2026-05-24T15:10:32+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,83 +14,81 @@ platforms:
 - x
 regions:
 - global
-post_count: 76
-salience: 0.35
-sentiment: mixed
+post_count: 75
+salience: 0.55
+sentiment: neutral
 confidence: 0.6
 tags:
 - godot
 - unity
+- hdrp
 - indie-gamedev
-- graphics
-- shaders
-- monetization
-thumbnail: https://i.redd.it/mmck6oidbv2h1.jpeg
+- rendering
+- steam
+thumbnail: https://external-preview.redd.it/bDhieGF1amY3eDJoMRIhTtrPaTzJQdAEkB6mIxD6SBrKpfWFk8yB5u1XNXWA.png?format=pjpg&auto=webp&s=f13a18d0ec204875d5991f167e6f0daefb40bd59
 translated_by: claude-sonnet-4-6
 ---
 
 # Game Dev — 2026-05-24
 
 ## TL;DR
-- Godot ครองสัญญาณวันนี้ — 14+ จาก 40 อันดับแรกเป็น Godot showcase บ่งชี้ว่า tooling ของ indie กำลังเทียบเท่า Unity มากขึ้น [1][2][4][5][6][8][9]
-- ไฮไลท์เชิงเทคนิค: HDRP real-time scene voxelization สำหรับ GI [18], compute-shader water interaction [17], Dijkstra map pathfinding viz [21], UE5 fluid sim wave breaks [22]
-- thread ตรวจสอบความเป็นจริงด้าน indie monetization โผล่ขึ้นมา; ช่องว่างระหว่างความคาดหวังกับรายได้จริงคือบ่นซ้ำๆ [7]
-- ไม่มี engine release ครั้งใหญ่หรือข่าว AI-pipeline ในชุดนี้ — เนื้อหาส่วนใหญ่เป็น WIP screenshots, VFX experiments, และ milestone ของ solo-dev
-- มุมมองเชิงอารมณ์/ชุมชน: เกมของ Godot dev ช่วยให้ผู้เล่นในเขตสงครามรู้สึกดีขึ้น [1] — เตือนใจว่าเกมมีความหมายเกินกว่าแค่ mechanics
+- Godot ครองปริมาณโพสต์ใน indie showcase วันนี้ — fishing mechanics [1], Gravity Gun clones [2], survival horror [3], Parkour FPS [6] — สะท้อน momentum ของ community ที่ยังเติบโตต่อเนื่องเมื่อเทียบกับโพสต์ Unity/Unreal
+- showcase เชิงเทคนิคของ Unity เน้นหนักไปที่ advanced rendering: HDRP real-time scene voxelization สำหรับ GI [8], procedural zero-texture shader NPCs ที่รัน 500/100FPS [22], stylized billboard foliage [5]
+- เนื้อหา Unreal เบาบางและเน้นระดับเริ่มต้น (UE5.7 low-end optimization [26], Blueprint array gating [33]) — สัญญาณ pro-pipeline น้อยมากในวันนี้
+- สัญญาณด้าน production/marketing: ปุ่ม Steam Playtest เปิดใช้งานได้ที่ 230 wishlists [19], milestone 5000 wishlists [24], scam ที่มุ่งเป้า indie รายเล็กเพิ่มสูงขึ้น [16]
+- ไม่พบรายการ AI-in-pipeline ในวันนี้ — generative tools ไม่ปรากฏใน top 40 แสดงว่า community ให้ความสนใจกับ craft และ rendering tech มากกว่า
 
-## สิ่งที่เกิดขึ้น
-feed game-dev วันนี้หนักไปด้วย Godot indie showcase — destruction systems [2], split-screen multiplayer [5], การสร้าง gravity gun จาก Half-Life 2 ขึ้นมาใหม่ [8], multimesh stress test ระยะ draw-distance 100km [9], และ platformer แรกของเด็กอายุ 16 ปี [4] เนื้อหา Unity เน้นเทคนิค: HDRP real-time scene voxelization สำหรับ GI บน procedural worlds [18], compute-shader water interaction [17], stylized billboard foliage [14], และการทดสอบ volumetric fog atmospheric [13] Unreal ปรากฏเพียงครั้งเดียวผ่าน fluid-sim wave-break plugin [22] thread ถามความเห็น indie dev เรื่องรายได้จริงกับความคาดหวัง [7] — 163 comments, เป็นรายการที่มีคนแสดงความคิดเห็นมากที่สุด
+## What happened
+Reddit r/godot ครองการมีส่วนร่วมด้วยโพสต์ WIP gameplay ที่ขัดเกลาแล้ว [1][2][3][6][11][17][30] รวมถึงการแชร์ tooling/plugin [13][15][27] เนื้อหาของ Unity3D เอียงไปทาง technical-rendering: HDRP GPU voxelization สำหรับ real-time GI ในโลก procedural [8], ระบบ shader-based NPC ที่ render agent 500 ตัวที่ 100fps โดยไม่ใช้ texture เลย [22], และ workflow ของ stylized billboard-card foliage [5][13] Unreal มีเพียงสามรายการ ทั้งหมดเป็นระดับ support: UE5.7 low-end GPU optimization [26], Blueprint dialogue gating [33], และ tutorial series turn-based combat 64 ตอน [35] Bluesky #ScreenshotSaturday เติมเต็มส่วนท้ายด้วย WIP ของ solo-dev [20][24][29][31][32][36][37][39][40] สัญญาณด้าน production: solo dev ที่สะท้อนถึงการเปลี่ยนเกมจากข้อความของผู้เล่นคนเดียว [10], scam ที่มุ่งเป้า indie ที่มีคนรู้จักน้อย [16], และ milestone wishlist/playtest บน Steam [19][24]
 
-ไม่มี engine version release, ไม่มีข่าว AI-in-pipeline, ไม่มีการเคลื่อนไหวครั้งใหญ่ของอุตสาหกรรม สัญญาณเป็น community/showcase ไม่ใช่การประกาศ หนึ่งรายการที่โดดเด่นด้านอารมณ์ [1] — เกมของ dev ที่ช่วยให้คนในเขตสงครามรู้สึกดีขึ้น — ดึง engagement score สูงสุด
+## Why it matters (reasoning)
+สัดส่วนโพสต์ที่ Godot ได้รับ engagement สูงยังคงเพิ่มขึ้นเทียบกับ Unity/Unreal ใน indie community space — มีความเกี่ยวข้องเพราะ stack ที่เน้น Unity ของ NDF DEV ไม่ใช่ตัวเลือกหลักของ indie อีกต่อไป แม้ Unity ยังคงครอง heavy-rendering conversation [8][22] HDRP voxel-GI port [8] มีความสำคัญในเชิงเทคนิค: real-time GI สำหรับ scene แบบ procedural/dynamic เป็นจุดอ่อนที่ Unity เสียเปรียบ Unreal Lumen มาอย่างยาวนาน และ solution ที่ขับเคลื่อนโดย community ช่วยลดช่องว่างนั้นสำหรับ studio ที่ไม่สามารถ justify การย้ายไป Unreal ได้ ระบบ shader-NPC [22] เป็น pattern ที่ใช้งานได้จริงสำหรับ scene ที่มีฝูงชนใน XR/edutech ซึ่ง draw-call budget มีข้อจำกัด รายงาน scam-targeting [16] เป็นผลกระทบทางอ้อมจากการ publish บน Steam ที่มีขั้นตอนน้อย — studio เล็กที่มี public devlog กลายเป็น attack surface
 
-## ทำไมถึงสำคัญ (เหตุผล)
-ความเข้มข้นของ Godot สำคัญ: เมื่อปีที่แล้วรายการนี้คงเป็น Unity เป็นหลัก ความเท่าเทียมด้าน tooling (multiplayer, multimesh scale, shader effects, custom UI work [20]) กำลังแคบลงสำหรับ indie ขนาด 2D และ stylized-3D — ซึ่งตรงกับ wheelhouse ด้าน edutech/web-game ของ NDF DEV พอดี โพสต์เทคนิคของ Unity [17][18] แสดงให้เห็นว่า engine ยังนำหน้าด้าน AAA-grade graphics R&D (voxel GI, compute shaders) ตอกย้ำการแบ่งแยก: Unity สำหรับ high-fidelity XR/3D, Godot สำหรับเป้าหมาย 2D/web ที่คล่องตัว thread รายได้ [7] เป็นสัญญาณตลาดที่เกิดซ้ำ — solo-dev monetization ยังคงโหดร้าย ซึ่งยืนยันทิศทาง contract/edutech mix ของ NDF ดีกว่าการพนัน indie บริสุทธิ์ การไม่มีเนื้อหา AI-pipeline ในอันดับ top 40 วันนี้เป็นสัญญาณในตัวเอง — hype cycle เย็นลงแล้ว กลายเป็น 'tools ที่ dev ใช้อยู่เงียบๆ' ไม่ใช่ข่าวพาดหัว
+## Possibility
+ระยะสั้น (3-6 เดือน, ~70%): Godot ยังคงดูดซับ mindshare ของ solo/small-team ในขณะที่ Unity ยึดครอง mid-tier production และ Unreal ยึดครอง AAA/arch-viz — การแบ่งส่วนสามฝ่ายนิ่งตัว ระยะกลาง (~50%): feature community-rendering ของ HDRP [8] ถูกรวมเข้าไปใน URP หรือ official Unity packages เมื่อ Unity ตอบสนองต่อแรงกดดันของ Lumen โอกาสต่ำกว่า (~25%): indie hit ที่โดดเด่นที่ shipped บน Godot ในปี 2026 กระตุ้นการเร่งตัวของ tooling/asset-store ที่ช่วยปิดช่องว่าง production-pipeline กับ Unity
 
-## ความเป็นไปได้
-น่าจะเกิด (70%): Godot กินส่วนแบ่ง 2D/hobbyist จาก Unity ต่อเนื่องตลอดปี 2026; คาดว่าจะมี commercial release ขนาด mid-scope ที่ ship บน Godot มากขึ้น เป็นไปได้ (40%): งาน HDRP voxel-GI ของ Unity [18] ไหลลงสู่ URP ภายใน 12 เดือน ช่วยเพิ่ม fidelity ด้าน mobile/XR น่าจะเกิดน้อย (20%): Godot title ที่ viral เพียงเกมเดียวในปีนี้บังคับให้มีการประเมินใหม่ในระดับ enterprise การสะท้อนอารมณ์ของชุมชน [1] ชี้ให้เห็นว่าเกม narrative ขนาดเล็กยังคงดึงความสนใจได้เกินมูลค่าที่ควร
+## Org applicability — NDF DEV
+นำไปใช้งานได้โดยตรง: ศึกษา [8] แนวทาง voxel-GI หากโปรเจกต์ XR/VR ของ NDF ใดๆ ต้องการ dynamic GI ในสภาพแวดล้อม procedural — แต่ HDRP รองรับเฉพาะ desktop/PC ไม่รองรับ Quest จึงมีประโยชน์จำกัดสำหรับ VR pipeline [22] pattern ของ shader-NPC ใช้งานได้โดยตรงกับ scene ฝูงชนใน edutech และ mobile Unity build ที่ texture memory มีข้อจำกัด — คุ้มค่ากับการ spike 1 วัน [5][13] workflow ของ billboard-foliage เป็น quick win สำหรับ Unity scene กลางแจ้งที่กำหนดเป้าหมาย low-end Android/Quest [16] ควรแจ้ง team เรื่อง scam หาก NDF title ใดขึ้น Steam ไม่คุ้มค่าที่จะดำเนินการ: การย้ายไป Godot (ไม่มี business case จากสัญญาณวันนี้), Unreal low-end optimization [26] (นอก stack)
 
-## การนำไปใช้ใน Org — NDF DEV
-ความเกี่ยวข้องโดยตรง: จำกัดวันนี้ ไม่มีรายการใดที่ต้องดำเนินการทันที สิ่งที่ควรสังเกตสำหรับ NDF: (a) split-screen ของ Godot [5] และ far-camera multimesh [9] ทำให้มันเป็น candidate ที่น่าเชื่อถือสำหรับ edutech prototype ขนาดเบาที่ Unity รู้สึกหนักเกินไป — คุ้มค่าทดลอง 1 วัน ไม่ใช่เปลี่ยน stack ทั้งหมด (b) Unity compute-shader water [17] และ HDRP voxel GI [18] เป็น reference material สำหรับเป้าหมาย VRoom/XR fidelity — bookmark ไว้ อย่านำมาใช้ตอนนี้ (c) เทคนิค stylized billboard foliage [14] ถูกและนำไปใช้ได้โดยตรงกับงาน open-world หรือ e-learning environment (d) thread รายได้ indie [7] ตอกย้ำ: ยึด client work เป็นกระดูกสันหลัง; มองเกม NDF original เป็น long-tail ไม่ใช่แหล่งรายได้หลัก ความเกี่ยวข้องโดยรวมต่ำ — สังเกตการณ์ อย่าเปลี่ยนทิศทาง
-
-## สัญญาณที่ต้องติดตาม
-- ติดตาม Godot 4.x adoption ใน commercial mid-scope release — ข้อกล่าวอ้างความเท่าเทียมจะพิสูจน์หรือล้มเหลว
-- Unity HDRP→URP feature backports (โดยเฉพาะ voxel GI) เพื่อความเป็นไปได้ด้าน XR
-- thread สำรวจรายได้ indie รายไตรมาสถัดไป — การเปลี่ยนแปลง sentiment = proxy สุขภาพตลาด
-- AI-pipeline tooling ใดๆ (texture/animation/level-gen) ที่กลับมาปรากฏใน top engagement
+## Signals to Watch
+- จับตาว่า Unity จะ ship คำตอบอย่างเป็นทางการสำหรับ community HDRP voxel-GI [8] ใน roadmap update ถัดไปหรือไม่
+- ติดตาม adoption curve ของ Godot 4.x บน Steam — หาก breakout hit ขึ้นมา ecosystem ของ asset/tooling อาจเร่งตัว
+- ติดตาม rendering trick ที่กำหนดเป้าหมาย Quest/mobile (shader NPCs [22], billboard foliage [5][13]) สำหรับ NDF VR backlog
+- จับตา pattern ของ indie scam [16] — อาจต้องมี studio-side policy สำหรับการติดต่อที่ไม่ได้ร้องขอ
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| reddit | Psychological-Road19 | ^1790 c26 | [My game gave someone comfort in an active warzone and it's stuck with me since. ](https://www.reddit.com/r/godot/comments/1tld9wx/my_game_gave_someone_comfort_in_an_active_warzone/) |
-| reddit | Matiesus | ^822 c36 | [I added some destruction to my super "hero" game](https://www.reddit.com/r/godot/comments/1tlfd5o/i_added_some_destruction_to_my_super_hero_game/) |
-| reddit | binbun3 | ^271 c9 | [Claw Effect From my Battle FX: [https://binbun3d.itch.io/battle-fx](https://binb](https://www.reddit.com/r/godot/comments/1tldrkm/claw_effect/) |
-| reddit | Juaniesteban | ^257 c25 | [I'm a 16 Year Old developer making my first game! Would love to hear some feedba](https://www.reddit.com/r/godot/comments/1tlicub/im_a_16_year_old_developer_making_my_first_game/) |
-| reddit | Fit-Hovercraft-7669 | ^231 c14 | [I've added multiplayer split-screen to my ArcadeRacer Recently my multiplayer re](https://www.reddit.com/r/godot/comments/1tlbrag/ive_added_multiplayer_splitscreen_to_my/) |
-| reddit | im_arseny | ^224 c13 | [working on a fishing mechanic in my game about a gopher catching stars from the ](https://www.reddit.com/r/godot/comments/1tlmda5/working_on_a_fishing_mechanic_in_my_game_about_a/) |
-| reddit | PrudentCombination38 | ^132 c163 | [How much did your indie game earn? Hi everyone, I'm curious about the real exper](https://www.reddit.com/r/gamedev/comments/1tl9ph3/how_much_did_your_indie_game_earn/) |
-| reddit | Jeheno | ^130 c4 | [Half-Life 2's Gravity Gun recreation](https://www.reddit.com/r/godot/comments/1tlphly/halflife_2s_gravity_gun_recreation/) |
-| reddit | derethdweller | ^127 c24 | [i was fully expecting godot to crash when i asked him to render that Camera far ](https://www.reddit.com/r/godot/comments/1tl849y/i_was_fully_expecting_godot_to_crash_when_i_asked/) |
-| reddit | EscapeDoodland | ^100 c2 | [Working on something new](https://www.reddit.com/r/Unity3D/comments/1tlkigm/working_on_something_new/) |
-| reddit | FederalProfessor7836 | ^98 c24 | [Quetoo, a love letter to the QUAKE series, released after 19 years This one has ](https://www.reddit.com/r/gamedev/comments/1tlivz7/quetoo_a_love_letter_to_the_quake_series_released/) |
-| reddit | PrinceOnAPie | ^91 c4 | [Some before and afters of my game, trying to create a consistent artstyle If you](https://www.reddit.com/r/godot/comments/1tlfwig/some_before_and_afters_of_my_game_trying_to/) |
-| reddit | halisavakis | ^87 c7 | [Made another atmospheric foggy scene to play around with lighting and colors Thi](https://www.reddit.com/r/Unity3D/comments/1tlfbru/made_another_atmospheric_foggy_scene_to_play/) |
-| reddit | craftymech | ^79 c4 | [Stylized Foliage Fun with stylized foliage! I've created 12 tree/bush species no](https://www.reddit.com/r/Unity3D/comments/1tllqgs/stylized_foliage/) |
-| reddit | BManx2000 | ^77 c2 | [Lowered the tickrate to test interpolation but instead I became an arm flailing ](https://www.reddit.com/r/godot/comments/1tl79jb/lowered_the_tickrate_to_test_interpolation_but/) |
-| reddit | SSV-Interactive | ^57 c9 | [Showcasing My First Game "RUNFALL" RUNFALL is first person Parkour with world sh](https://www.reddit.com/r/godot/comments/1tlng2f/showcasing_my_first_game_runfall/) |
-| reddit | 24Ronin | ^54 c0 | [Water Interaction via Compute Shader](https://www.reddit.com/r/Unity3D/comments/1tl7x9k/water_interaction_via_compute_shader/) |
-| reddit | artengame | ^45 c10 | [Finally managed to port real time scene voxelization natively in HDRP for Global](https://www.reddit.com/r/Unity3D/comments/1tln2yw/finally_managed_to_port_real_time_scene/) |
-| reddit | BlastingBlaster | ^39 c3 | [Added colorful rainbow road like shader to my level!](https://www.reddit.com/r/godot/comments/1tltdj9/added_colorful_rainbow_road_like_shader_to_my/) |
-| reddit | Fabrix10 | ^37 c32 | [Is there a way to get squared edges instead of rounded edges for a Label outline](https://www.reddit.com/r/godot/comments/1tlu3rx/is_there_a_way_to_get_squared_edges_instead_of/) |
-| reddit | Merlord | ^36 c12 | [Visualising Dijkstra's Map values used in enemy pathfinding](https://www.reddit.com/r/godot/comments/1tlg5im/visualising_dijkstras_map_values_used_in_enemy/) |
-| reddit | Atomic_Lighthouse | ^35 c21 | [Been working so hard on getting the wave break effect working in my sim. This is](https://www.reddit.com/r/unrealengine/comments/1tlbf47/been_working_so_hard_on_getting_the_wave_break/) |
-| reddit | Squirrelation_Games | ^31 c1 | [Oops. Someone forgot to hide the player model](https://www.reddit.com/r/godot/comments/1tlouby/oops_someone_forgot_to_hide_the_player_model/) |
-| bluesky | lordwolfenstein.bsky.social | ^19 c0 | [This is the starting screen of Zombie Quest. There will be no animated #introseq](https://bsky.app/profile/lordwolfenstein.bsky.social/post/3mmjf7ozj222v) |
-| bluesky | ruisilvagamedesign.bsky.social | ^19 c1 | [The different colours the wall can change to and what they represent. Rather tha](https://bsky.app/profile/ruisilvagamedesign.bsky.social/post/3mmiynz2af22g) |
+| reddit | im_arseny | ^335 c20 | [working on a fishing mechanic in my game about a gopher catching stars from the ](https://www.reddit.com/r/godot/comments/1tlmda5/working_on_a_fishing_mechanic_in_my_game_about_a/) |
+| reddit | Jeheno | ^234 c7 | [Half-Life 2's Gravity Gun recreation](https://www.reddit.com/r/godot/comments/1tlphly/halflife_2s_gravity_gun_recreation/) |
+| reddit | erofamiliar | ^186 c29 | [working on a survival horror, it's still VERY early but it's slowly getting ther](https://www.reddit.com/r/godot/comments/1tm2e4h/working_on_a_survival_horror_its_still_very_early/) |
+| reddit | EscapeDoodland | ^170 c6 | [Working on something new](https://www.reddit.com/r/Unity3D/comments/1tlkigm/working_on_something_new/) |
+| reddit | craftymech | ^130 c4 | [Stylized Foliage Fun with stylized foliage! I've created 12 tree/bush species no](https://www.reddit.com/r/Unity3D/comments/1tllqgs/stylized_foliage/) |
+| reddit | SSV-Interactive | ^112 c24 | [Showcasing My First Game "RUNFALL" RUNFALL is first person Parkour with world sh](https://www.reddit.com/r/godot/comments/1tlng2f/showcasing_my_first_game_runfall/) |
+| reddit | Fabrix10 | ^98 c43 | [Is there a way to get squared edges instead of rounded edges for a Label outline](https://www.reddit.com/r/godot/comments/1tlu3rx/is_there_a_way_to_get_squared_edges_instead_of/) |
+| reddit | artengame | ^84 c12 | [Finally managed to port real time scene voxelization natively in HDRP for Global](https://www.reddit.com/r/Unity3D/comments/1tln2yw/finally_managed_to_port_real_time_scene/) |
+| reddit | BlastingBlaster | ^84 c8 | [Added colorful rainbow road like shader to my level!](https://www.reddit.com/r/godot/comments/1tltdj9/added_colorful_rainbow_road_like_shader_to_my/) |
+| reddit | Soliloqu-You | ^68 c34 | [Have you ever changed your game because of one player's message? Hi everyone. I'](https://www.reddit.com/r/gamedev/comments/1tm8f61/have_you_ever_changed_your_game_because_of_one/) |
+| reddit | Squirrelation_Games | ^63 c2 | [Oops. Someone forgot to hide the player model](https://www.reddit.com/r/godot/comments/1tlouby/oops_someone_forgot_to_hide_the_player_model/) |
+| reddit | zacharieg14 | ^62 c2 | [Made a simple animation to my game's menu in 5 minutes, now it looks awesome! Hi](https://www.reddit.com/r/godot/comments/1tmchd1/made_a_simple_animation_to_my_games_menu_in_5/) |
+| reddit | Planet1Rush | ^41 c0 | [Updated my foliage system: MultiMesh now supports LODs and collision in debug mo](https://www.reddit.com/r/godot/comments/1tlrdkj/updated_my_foliage_system_multimesh_now_supports/) |
+| reddit | Aalzard | ^31 c6 | [Okay guys, look at this main menu for my game 👀 This is the main menu for my coo](https://www.reddit.com/r/Unity3D/comments/1tlsov6/okay_guys_look_at_this_main_menu_for_my_game/) |
+| reddit | PensiveDemon | ^31 c5 | [[Convert Text Case] Built a plugin for myself - Should I share it to the Asset S](https://www.reddit.com/r/godot/comments/1tm9dew/convert_text_case_built_a_plugin_for_myself/) |
+| reddit | ploxiar | ^30 c13 | [watch out for scammers Hello, there is a target on unreleased / released indie g](https://www.reddit.com/r/gamedev/comments/1tljjgd/watch_out_for_scammers/) |
+| reddit | Shabaubi | ^30 c2 | [I made an environment based off the backrooms trailer shot Very excited for the ](https://www.reddit.com/r/godot/comments/1tlps6y/i_made_an_environment_based_off_the_backrooms/) |
+| reddit | Krons-sama | ^29 c2 | [I tried applying parallax to the particles system](https://www.reddit.com/r/Unity3D/comments/1tlmzf4/i_tried_applying_parallax_to_the_particles_system/) |
+| reddit | JetPoweredGames | ^29 c2 | [My Steam Playtest is Live! Big Saturday Update to Iron Dogs. Many tweaks, added ](https://www.reddit.com/r/godot/comments/1tlvjkm/my_steam_playtest_is_live/) |
+| bluesky | projectsentinelgame.com | ^29 c0 | [I've been refining the roar and arrest mechanics. The Sentinel uses a cybernetic](https://bsky.app/profile/projectsentinelgame.com/post/3mmkbx7azzs2f) |
+| reddit | alexwizardev | ^24 c12 | [Roast my game's look Hey everyone, I'm trying to nail the retro vibe for my game](https://www.reddit.com/r/Unity3D/comments/1tlvl0w/roast_my_games_look/) |
+| reddit | SignificanceLeast172 | ^23 c5 | [I made a procedural zero-texture, shader-based NPC creation system that runs 500](https://www.reddit.com/r/Unity3D/comments/1tlvvu3/i_made_a_procedural_zerotexture_shaderbased_npc/) |
+| reddit | yowanselvakumar | ^21 c0 | [we ready to make our first indie title hopefully we believe this prototype make ](https://www.reddit.com/r/Unity3D/comments/1tln7jq/we_ready_to_make_our_first_indie_title/) |
+| bluesky | studioephua.bsky.social | ^20 c2 | [In Ashes has surpassed 5000 wishlists! Thank you for your support and patience t](https://bsky.app/profile/studioephua.bsky.social/post/3mmlovyasls2h) |
+| reddit | Deimor_ | ^19 c7 | [transferring my game to Unity im converting my pixel art game to a 3D cartoon in](https://www.reddit.com/r/Unity3D/comments/1tlynmb/transferring_my_game_to_unity/) |
+| reddit | Unusual-Newt-96 | ^18 c11 | [How do i optimize the engine for lower end hardware Hi there Currently on UE5.7 ](https://www.reddit.com/r/unrealengine/comments/1tlq6z1/how_do_i_optimize_the_engine_for_lower_end/) |
+| reddit | Jadael | ^18 c1 | [Terrablox - Voxel 3D virtual tabletop For the past month, I've been prototyping ](https://www.reddit.com/r/godot/comments/1tlt44j/terrablox_voxel_3d_virtual_tabletop/) |
+| reddit | IamChipp | ^17 c1 | [I love how wild is this community here Sorry if this comes across as low effort ](https://www.reddit.com/r/godot/comments/1tmbl78/i_love_how_wild_is_this_community_here/) |
 | bluesky | ditheremotion.bsky.social | ^17 c0 | [Never posted anything for #ScreenshotSaturday until now but hey, better late tha](https://bsky.app/profile/ditheremotion.bsky.social/post/3mmk4c4p45k25) |
-| reddit | Krons-sama | ^16 c1 | [I tried applying parallax to the particles system](https://www.reddit.com/r/Unity3D/comments/1tlmzf4/i_tried_applying_parallax_to_the_particles_system/) |
-| bluesky | projectsentinelgame.com | ^16 c0 | [I've been refining the roar and arrest mechanics. The Sentinel uses a cybernetic](https://bsky.app/profile/projectsentinelgame.com/post/3mmkbx7azzs2f) |
-| reddit | Aalzard | ^15 c4 | [Okay guys, look at this main menu for my game 👀 This is the main menu for my coo](https://www.reddit.com/r/Unity3D/comments/1tlsov6/okay_guys_look_at_this_main_menu_for_my_game/) |
-| bluesky | thatfriendlydev.bsky.social | ^15 c0 | [I'm a solo dev making Backpack Guardian. Just added a new dangerous event: The S](https://bsky.app/profile/thatfriendlydev.bsky.social/post/3mmjefxx4w22n) |
+| reddit | Zany19 | ^15 c3 | [First look of my Godot game that I've been working on for 8 Months "Lilifel" The](https://www.reddit.com/r/godot/comments/1tlkaz8/first_look_of_my_godot_game_that_ive_been_working/) |
 
 
 ## โพสต์เด่น
@@ -98,120 +96,20 @@ feed game-dev วันนี้หนักไปด้วย Godot indie showc
 <div class="post-stream">
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Psychological-Road19</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 1790 · 💬 26</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tld9wx/my_game_gave_someone_comfort_in_an_active_warzone/" target="_blank" rel="noopener"><img src="https://i.redd.it/mmck6oidbv2h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“My game gave someone comfort in an active warzone and it's stuck with me since. I feel very touched. It was a while back now, someone popped into my Discord and told me about how the game is comfortin”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>นักพัฒนา Godot แชร์ว่ามีผู้เล่นส่งข้อความมาจากเขตสงครามบอกว่าเกมให้ความสบายใจ และ dev ส่ง ad-free pack ให้ฟรี</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>เกม indie เล็กๆ ให้ความสบายใจจริงๆ แก่คนในเขตสงคราม — ยืนยันว่า studio เล็กก็สร้าง impact ต่อชีวิตคนได้เกินกว่าตัวเลข download</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทีมควรเก็บ player impact story ไว้อย่างจริงจัง — ข้อความจริงจากผู้เล่นแชร์ภายในทีมสร้าง morale ได้มากกว่า dashboard ตัวเลขใดๆ และไม่เสียค่าใช้จ่าย</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tld9wx/my_game_gave_someone_comfort_in_an_active_warzone/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Matiesus</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 822 · 💬 36</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tlfd5o/i_added_some_destruction_to_my_super_hero_game/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/OGxoMWNqeG5zdjJoMdmbDslmZCFVSDpyLFWn28rqcfl7HJHTc2vqnwo6e7Ll.png?format=pjpg&amp;auto=webp&amp;s=c094b08ac084b354ad67c58cd8645e9b95da9171" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“I added some destruction to my super &quot;hero&quot; game”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>นักพัฒนา Godot เพิ่ม destructible environment แบบ real-time ให้เกม superhero indie โชว์ physics-driven debris และการพัง</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Destruction physics เพิ่ม player satisfaction ได้มากเทียบกับ effort — และโปรเจกต์นี้พิสูจน์ว่า indie dev คนเดียวทำได้โดยไม่ต้องใช้ทรัพยากร AAA</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Unity team ทดลอง destruction แบบเดียวกันด้วย Unity Fracture หรือ custom mesh-splitting — เพิ่ม production value ให้เกม action หรือ XR ที่กำลังพัฒนา</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tlfd5o/i_added_some_destruction_to_my_super_hero_game/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@binbun3</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 271 · 💬 9</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tldrkm/claw_effect/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/aGI5OGF1MnQ5djJoMY3siOwDBpXLfsUQbvEbrXiWwjIyVBHHPhtQirBXT6Ym.png?format=pjpg&amp;auto=webp&amp;s=17875087dd92f443049bb4d361dd35d0837648b0" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Claw Effect From my Battle FX: [https://binbun3d.itch.io/battle-fx](https://binbun3d.itch.io/battle-fx) I also made swing effects and these claw effects are actually 3 swing effects with additional de”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>นักพัฒนา Godot แชร์ claw effect ที่ประกอบจาก swing effect 3 ชั้นบวก detail เพิ่ม วางขายเป็น Battle FX asset pack บน itch.io</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>การแตก effect ซับซ้อนออกเป็น primitive ซ้ำได้ (swing × 3 + detail) คือ pattern VFX ที่ดี ทำให้ asset pack modular และขายต่อได้ง่าย</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Unity team ใช้แนวคิดเดียวกันได้เลย — ประกอบ battle/skill VFX จาก sub-effect ย่อยที่ reuse ได้ ลด asset แต่ได้ variety เพิ่ม</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tldrkm/claw_effect/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Juaniesteban</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 257 · 💬 25</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tlicub/im_a_16_year_old_developer_making_my_first_game/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/cmpzbXpkcWxmdzJoMYlriZFskikFGvW9R-mqRZzaBGUpbK_DcINJyt3NkeE2.png?format=pjpg&amp;auto=webp&amp;s=28a16cce8a66991b2dbe834259363c55c36850f1" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“I'm a 16 Year Old developer making my first game! Would love to hear some feedback! I'm developing a 2D fast paced platformer heavily inspired in Pizza Tower, Ultrakill and Speedrunning based games. T”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>นักพัฒนาอายุ 16 สร้าง 2D platformer ชื่อ Speedtickers ด้วย Godot แรงบันดาลใจจาก Pizza Tower และ Ultrakill core mechanic คือต้องชนะก่อน timer หมด — วางบน Steam wishlist แล้ว</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>โซโล่ทีนชิปเกมขึ้น Steam ได้ด้วย Godot โดยใช้ mechanic เดียว (timer pressure) บวก genre reference ที่ชัด — พิสูจน์ว่า scope ที่แน่นพอทำให้จบได้จริง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Unity team ใช้หลักเดียวกันได้: ล็อก mechanic เดียว อ้างอิง 2-3 เกมเป็น design north star และ freeze scope ก่อนเข้า production</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tlicub/im_a_16_year_old_developer_making_my_first_game/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Fit-Hovercraft-7669</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 231 · 💬 14</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tlbrag/ive_added_multiplayer_splitscreen_to_my/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/MWk0N3Y1bTd2dTJoMa7p0FlN6O1BOj4ABt6rYhDkJyXz7EVpueeu4_lyojv9.png?format=pjpg&amp;auto=webp&amp;s=481449462d800b3883f321be4d16c00f8d998e13" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“I've added multiplayer split-screen to my ArcadeRacer Recently my multiplayer received some love - now you can not only race against each other via network, but also on split-screen. (In this video, t”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Dev คนเดียวเพิ่ม split-screen multiplayer แบบ local ให้ arcade racer ใน Godot ที่มี network multiplayer อยู่แล้ว โดยใช้ AI เป็น P2 ในการ demo</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ทำ network และ split-screen multiplayer ใน Godot คนเดียวได้ทั้งคู่ — เป็น benchmark ที่ดีสำหรับการ plan scope โปรเจกต์ game ขนาดเล็ก</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Unity team ดู pattern split-screen ของ Godot นี้ได้ตอน scope local co-op — SubViewport ของ Godot เทียบได้กับ Camera Rect ของ Unity ช่วย estimate effort ได้แม่นขึ้น</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tlbrag/ive_added_multiplayer_splitscreen_to_my/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
     <span class="ndf-author">@im_arseny</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 224 · 💬 13</span>
+    <span class="ndf-engagement">♥ 335 · 💬 20</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tlmda5/working_on_a_fishing_mechanic_in_my_game_about_a/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/bDhieGF1amY3eDJoMRIhTtrPaTzJQdAEkB6mIxD6SBrKpfWFk8yB5u1XNXWA.png?format=pjpg&amp;auto=webp&amp;s=f13a18d0ec204875d5991f167e6f0daefb40bd59" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“working on a fishing mechanic in my game about a gopher catching stars from the sky”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Indie dev กำลังทำ fishing mechanic ใน Godot สำหรับเกมแนว whimsical — gopher โยนสายตกดาวจากท้องฟ้า</dd>
+      <dd>Indie dev สร้าง fishing mechanic ใน Godot — ตัวละคร gopher ตกดาวจากท้องฟ้าแทนปลา</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>เอา mechanic คุ้นเคย (ตกปลา) มาใส่ context แฟนตาซี — design pattern ที่ scope เล็กแต่ charm สูง ดึง engagement ได้ดีแม้แค่โพสต์เดียว</dd>
+      <dd>เอา mechanic คุ้นเคย (ตกปลา) ใส่ context แปลก ๆ เป็นสูตรสร้าง virality ได้ดี — 335 likes ตอน WIP บอกว่า concept แข็งแกร่งมาก</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Unity team เอาแนวนี้ไปใช้ได้เลย — เอา blueprint fishing หรือ grapple system แล้ว reskin จุดประสงค์ให้เข้า world ของเกม ประหยัด design time แต่ยัง depth ครบ</dd>
+      <dd class="ndf-adapt">Unity team เอาไปใช้ได้เลย: หยิบ mechanic มาตรฐาน แล้วเปลี่ยน semantic layer — code เหมือนเดิม แต่ feel ต่างสิ้น — prototype ไว, concept value สูง</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tlmda5/working_on_a_fishing_mechanic_in_my_game_about_a/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
@@ -220,40 +118,140 @@ feed game-dev วันนี้หนักไปด้วย Godot indie showc
   <header class="ndf-card-head">
     <span class="ndf-author">@Jeheno</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 130 · 💬 4</span>
+    <span class="ndf-engagement">♥ 234 · 💬 7</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tlphly/halflife_2s_gravity_gun_recreation/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/c2x1b2k5czR0eDJoMexf6Ifygwfa-FFy1AtzJb_WCmwM8crvquWNI3-_V3-C.png?format=pjpg&amp;auto=webp&amp;s=62898f9f70649ce07385d4d33b6762be96957996" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Half-Life 2's Gravity Gun recreation”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>นักพัฒนา recreate Gravity Gun จาก Half-Life 2 ใน Godot — ระบบ grab, hold, attract, throw physics objects ครบ</dd>
+      <dd>นักพัฒนาสร้าง Gravity Gun จาก Half-Life 2 ขึ้นมาใหม่ใน Godot engine แล้วแชร์ใน r/godot</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>เป็น reference ที่ดีสำหรับระบบ physics interaction แบบ grab/hold/throw ที่สร้างจาก scratch — benchmark ที่ดีสำหรับทีมที่จะทำ mechanic แบบนี้</dd>
+      <dd>ระบบจับ-ขว้างวัตถุแบบ physics เป็น mechanic ที่นำไปใช้ซ้ำได้ — การ implement ที่สะอาดใน Godot ให้ blueprint อ้างอิงสำหรับเกมที่เน้น physics</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Unity team ดู logic grab/attract/throw แล้วทำใหม่ด้วย Rigidbody + ConfigurableJoint หรือ PhysicsJoint ใน Unity ได้เลย — mechanic เดิม แค่เปลี่ยน engine</dd>
+      <dd class="ndf-adapt">ทีม Unity ดู logic ของระบบนี้เป็น reference ตอนสร้าง grab/throw mechanics ใน XR project เพราะ physics feel ของมือกับวัตถุสำคัญมากใน XR</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tlphly/halflife_2s_gravity_gun_recreation/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
 </article>
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
-    <span class="ndf-author">@derethdweller</span>
+    <span class="ndf-author">@erofamiliar</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 127 · 💬 24</span>
+    <span class="ndf-engagement">♥ 186 · 💬 29</span>
   </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tl849y/i_was_fully_expecting_godot_to_crash_when_i_asked/" target="_blank" rel="noopener"><img src="https://preview.redd.it/51r1y37ztt2h1.png?width=1031&amp;format=png&amp;auto=webp&amp;s=0e7aa35964e280ef0e586de1e1dce979599c4eb6" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tm2e4h/working_on_a_survival_horror_its_still_very_early/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/eTZ0bHAxNmZtMDNoMQva5I01QUlbb-O9g6b_pjJ3GUIIgHxvnIXI0cE---M2.png?format=pjpg&amp;auto=webp&amp;s=8ad8dffd610e27cb942a4bc3de58fede03b9ab71" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“i was fully expecting godot to crash when i asked him to render that Camera far somewhere at 100km, 2-5k objects per cell, about 30k cells of land, dirty loaded with 0 optimization except multimeshing”</p>
+    <p class="ndf-quote">“working on a survival horror, it's still VERY early but it's slowly getting there, gameplay-wise I don't really have a title or anything, and the gameplay you're seeing is just about the extent of it,”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Dev ทดสอบ Godot แบบหนักสุด: render distance 100km, ~30k cells, 2–5k objects ต่อ cell บนคอมเก่า ไม่ optimize เลย — โหลด 2–3 นาที FPS ~0.1 แต่ไม่ crash</dd>
+      <dd>Dev คนเดียวโชว์ progress เกม survival horror ใน Godot ช่วง early มาก — ยังขาด level design, sound design และ mechanic kick ที่ตัดหัวศัตรูเพื่อทดสอบ locational damage จาก script แทน raycast</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Godot รับโหลดหนักโหดได้โดยแทบไม่ optimize เลย มีแค่ MultiMesh — ความเสถียรของ engine สูงกว่าที่คาด</dd>
+      <dd>การใช้ script ทดสอบ locational damage ก่อนล็อค raycast แสดง mindset iterate ไวที่ทีมเล็กควรยืมมาใช้ตอน prototype ระบบ combat</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Unity team ลอง benchmark scene open-world แบบไม่ optimize เทียบกับ Godot ได้เลย — ถ้า Godot เสถียรกว่า ให้พิจารณาใช้ใน project terrain หรือ XR ที่ต้องการ scale ใหญ่</dd>
+      <dd class="ndf-adapt">Unity team ลอง wire placeholder hit zone ใน script ก่อน แล้วค่อย swap เป็น raycast จริงตอน gameplay feel โอเคแล้ว ประหยัดเวลา rework</dd>
     </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tl849y/i_was_fully_expecting_godot_to_crash_when_i_asked/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+    <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tm2e4h/working_on_a_survival_horror_its_still_very_early/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@EscapeDoodland</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 170 · 💬 6</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/Unity3D/comments/1tlkigm/working_on_something_new/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/NzRqeHAwZHp0dzJoMWDB3wTLoVrePXTwSowOLksrWWOytGzGRym7NHqsTknw.png?auto=webp&amp;s=f3e28ad03b23ca24e9360b913cd237104ebed872" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Working on something new”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Developer บน r/Unity3D โพสต์ teaser ชื่อ 'Working on something new' น่าจะเป็น screenshot หรือ GIF ของ game ที่กำลังพัฒนา</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>170 likes แต่ comment แค่ 6 — visual WIP บน r/Unity3D ดึง organic reach ได้ดีโดยไม่ต้องรอ content สมบูรณ์</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Unity team โพสต์ WIP ระยะแรกบน r/Unity3D ได้เลย ไม่ต้องรอ polish — screenshot ดิบๆ ก็ reach ได้ดีพอกัน</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/Unity3D/comments/1tlkigm/working_on_something_new/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@craftymech</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 130 · 💬 4</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/Unity3D/comments/1tllqgs/stylized_foliage/" target="_blank" rel="noopener"><img src="https://i.redd.it/b5h62nqf2x2h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Stylized Foliage Fun with stylized foliage! I've created 12 tree/bush species now using the rotating billboard technique and foliage cards that I draw in Photoshop. The foliage cards are really just a”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Dev สร้างต้นไม้/พุ่มไม้ stylized 12 สายพันธุ์ใน Unity โดยใช้ foliage card แบบ alpha cut-out palette 3 สี และ rotating billboard แล้วพัก workflow ไว้ใน Unity tool ของตัวเอง</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ยืนยันว่าได้ foliage stylized สวยและ dense ด้วย flat card ง่ายๆ ซ้อนกัน โดยไม่ต้องใช้ geometry ซับซ้อน ต้นทุน polygon ต่ำมาก</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Unity team สร้าง foliage card tool แบบ reusable ด้วย pipeline billboard+alpha-cutout นี้ เร่ง environment art ได้เลยสำหรับ project stylized ทุกโปรเจกต์</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/Unity3D/comments/1tllqgs/stylized_foliage/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@SSV-Interactive</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 112 · 💬 24</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tlng2f/showcasing_my_first_game_runfall/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/ZXppeDlnaHlleDJoMRe0JTZBc2IlAkUhTTl_8G4spqhx-a-bZQ1Kkeshgh83.png?format=pjpg&amp;auto=webp&amp;s=20368838876067fda66c783e79c4648cbd4cc715" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Showcasing My First Game &quot;RUNFALL&quot; RUNFALL is first person Parkour with world shifting mech like Titanfall 2 , wanted to do my version of something like that , huge fan of titanfall movement mech. Hop”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Developer เดี่ยวโชว์เกมแรก 'RUNFALL' ใน Godot — first-person parkour ที่มี world-shifting mechanic แบบ Titanfall 2</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ระบบ movement ของ Titanfall 2 ถูกยกย่องมาก การที่ solo dev ทำได้ใน Godot พิสูจน์ว่าไม่ต้องใช้ทีม AAA หรือ Unity</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ทีม Unity ดู Titanfall 2-style world-shift เป็น pattern สำหรับ XR/VR locomotion — mechanic หมุน/เปลี่ยน space ใช้กับ headset ได้ดี</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tlng2f/showcasing_my_first_game_runfall/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Fabrix10</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 98 · 💬 43</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/godot/comments/1tlu3rx/is_there_a_way_to_get_squared_edges_instead_of/" target="_blank" rel="noopener"><img src="https://preview.redd.it/srs8ba7spy2h1.png?width=1092&amp;format=png&amp;auto=webp&amp;s=91fc210eb60849dc81fd991f16270d3ef05ce6d3" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Is there a way to get squared edges instead of rounded edges for a Label outline? Hello, I was trying to create a Label using a pixel font(Jersey 10) and while the font renders correctly I'm strugglin”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Developer ใน Godot พบว่า outline ของ pixel font โค้งมนโดย default แก้ได้โดยแปลง font เป็น bitmap font ผ่านเว็บ Snowb.io แล้วตั้งค่า stroke ก่อน import</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>Godot ไม่มี option squared outline ใน Label โดยตรง การ bake stroke ลง bitmap font ตอน export คือวิธีเดียวที่เชื่อถือได้สำหรับ pixel-art UI</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ทีม Unity ที่ทำ 2D หรือ pixel-art UI ควรลอง bake bitmap font ผ่าน Snowb.io แทนการใช้ runtime outline shader ซึ่งมักให้ผลโค้งมนกับ font ขนาดเล็ก</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/godot/comments/1tlu3rx/is_there_a_way_to_get_squared_edges_instead_of/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@artengame</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 84 · 💬 12</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/Unity3D/comments/1tln2yw/finally_managed_to_port_real_time_scene/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/bms4bTd2bWtieDJoMc8VuwnK_eXu-0d0e4QadjeAY4x_v2K247NwPfMfRfQh.png?format=pjpg&amp;auto=webp&amp;s=fcde5b1d7bf4c36f15805967742764d480603272" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Finally managed to port real time scene voxelization natively in HDRP for Global Illumination and other uses, using GPU for maximum performance and full support of procedural changing worlds.”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Dev ทำ real-time scene voxelization ใน Unity HDRP สำเร็จ ใช้ GPU เต็มรูปแบบ รองรับ Global Illumination และ procedural world ที่เปลี่ยนแปลงได้</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>GPU voxelization ใน HDRP ทำให้ได้ dynamic GI โดยไม่ต้อง bake lightmap เลย สำคัญมากสำหรับเกมที่ generate หรือเปลี่ยน environment แบบ runtime</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Unity team ดูเทคนิคนี้ได้เลยสำหรับ HDRP project ที่มี dynamic scene — เลิก bake GI ลด iteration time และรองรับการเปลี่ยน level แบบ real-time โดยไม่ต้อง re-light</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/Unity3D/comments/1tln2yw/finally_managed_to_port_real_time_scene/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
 </article>
 </div>

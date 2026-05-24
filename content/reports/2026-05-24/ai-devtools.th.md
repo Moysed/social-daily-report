@@ -4,7 +4,7 @@ date: '2026-05-24'
 topic: ai-devtools
 lang: th
 pair: ai-devtools.en.md
-generated_at: '2026-05-24T03:03:04+00:00'
+generated_at: '2026-05-24T15:03:27+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -16,213 +16,226 @@ platforms:
 - x
 regions:
 - global
-post_count: 67
-salience: 0.75
-sentiment: mixed
-confidence: 0.6
+post_count: 66
+salience: 0.78
+sentiment: positive
+confidence: 0.62
 tags:
-- ai-devtools
 - coding-agents
+- mcp
+- gemini-flash
 - claude-code
-- gemini
-- orchestration
-- observability
-thumbnail: https://external-preview.redd.it/OAXSl8SY6T3JK9MGQyKxkoYbqZ71HQRYXLeB8CV0NXg.png?auto=webp&s=c7cbcc7517e2406e2326e7a1eb6bdb9022c27fda
+- local-llm
+- ide-tooling
+thumbnail: https://pbs.twimg.com/media/HJBw4-7bsAEkBeY.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # AI Devtools — 2026-05-24
 
 ## TL;DR
-- Claude Code ครองใจคนส่วนใหญ่ แต่คู่แข่ง (Codex, Antigravity) เริ่มถูกนำมาเปรียบเทียบอย่างจริงจัง [11][19][20]
-- Gemini 3.5 Flash ถูกวางตำแหน่งเป็น frontier-level สำหรับ agentic coding workflows [31]
-- tooling layer ใหม่กำลังเกิดขึ้น: codebase-to-graph context engineering [18], MS AI Engineer Coach telemetry extension [21], Hyper inference สำหรับ agents [32]
-- การประสานงาน — ไม่ใช่ความเร็วในการเขียนโค้ด — คือ bottleneck ใหม่ โดย Lightsprint (YC-backed) มุ่งแก้ปัญหา parallel-agent orchestration [27][36][38]
-- สัญญาณต้านกระแส: บทวิจารณ์ 'dangerously-skip-reading-code' [24] และการชะลอตัวของ LocalLLaMA [14] ชี้ว่ากระแสฮือฮาอาจถึงจุดสูงสุดแล้ว
+- Gemini 3.5 Flash วางตำแหน่งเป็น multimodal agent model ระดับ frontier เพิ่มความคมชัดด้าน price/perf เทียบกับ Claude Opus 4.7 และ GPT-5.5 [24][12]
+- Microsoft open-source 'AI Engineer Coach' extension สำหรับ VS Code ที่ profile พฤติกรรมการใช้ coding agent ของนักพัฒนาจริง — eval/observability สำหรับ IDE [19]
+- เครื่องมือ context engineering แบบ codebase-to-graph (open-source) มุ่งเป้าที่ Claude Code / Codex / Antigravity เพื่อลด agent hallucination ใน repo ขนาดใหญ่ [8]
+- llama.cpp server รองรับ native tool-calling (exec_shell, edit_file) แล้ว — local coding agent ใช้งานได้จริงโดยไม่ต้องพึ่ง external runner [25]
+- Microsoft demo pattern ภายใน: Opus 4.7 + MCP tools กว่า 1,400 รายการ เป็น enterprise agent stack โดยพฤตินัย [35][40]
 
-## What happened
-การพูดคุยแบ่งออกเป็นสองทาง คือเรื่อง tools และเรื่อง culture ในด้าน tooling: Claude Code cheat sheet กำลังแพร่หลายอย่างกว้างขวาง [11], การเปรียบเทียบโดยตรงกับ Codex/Antigravity [19], บรรยาย MIT เรื่อง agentic coding [20], Microsoft open-source 'AI Engineer Coach' VS Code extension ที่วัดการใช้งาน agent จริง [21], เครื่องมือ open-source codebase-graph context layer สำหรับ Claude Code/Codex/Antigravity [18] และ Hyper inference engine ของ Charm ที่สร้างมาเพื่อ coding agents โดยเฉพาะ (private beta) [32] ในด้าน models: Gemini 3.5 Flash ถูกนำเสนอสำหรับ agentic coding [31]; leak เรื่อง 'caveman thinking' ของ GPT-5.5 [10]
+## สิ่งที่เกิดขึ้น
+สัญญาณของวันนี้แบ่งออกเป็นสองกลุ่มหลัก กลุ่มแรก model + IDE motion: Google ผลัก Gemini 3.5 Flash ในฐานะ multimodal model ระดับ frontier ที่ออกแบบมาเพื่อ agent [24]; โพสต์ลักษณะ leak ระบุว่า reasoning trace ของ GPT-5.5 กระชับผิดปกติ ('caveman mode') [12]; และ head of AI engineering ของ Cursor เผยแพร่ talk ฟรี 14 นาทีเกี่ยวกับวิธีที่ agent ของพวกเขา ship code ในระดับ scale [37]. MIT ยังเผยแพร่ lecture 60 นาทีว่าด้วย agentic coding internals [21] และบทความวิจารณ์ '--dangerously-skip-reading-code' โต้แย้งการ vibe-coding แบบหลับหูหลับตา [15]
 
-ด้าน culture/meta: หลายโพสต์โต้แย้งว่าการประสานงาน parallel agents คือความเจ็บปวดใหม่ [27][36][38] โดยมีบริษัท YC หนึ่งราย (Lightsprint) กำลังสร้าง shared planning และ preview envs ต่อ task กระแสต้านการใช้ agent แบบไม่ไตร่ตรองเพิ่มขึ้น [24][25][30] ขณะที่ traffic ของ LocalLLaMA ลดลงอย่างเห็นได้ชัด [14] — อาจเป็นสัญญาณการเข้าสู่ Gartner trough
+กลุ่มที่สอง tooling และ infra: Microsoft open-source 'AI Engineer Coach' ซึ่งเป็น VS Code extension ที่อ่าน agent log ในเครื่องและวิเคราะห์ usage pattern [19] พร้อม walkthrough 34 นาทีเกี่ยวกับการสร้าง Claude-based agent ภายในองค์กรด้วย Opus 4.7 + MCP tools 1,400 รายการ [35][40]. OSS project แปลง codebase ใดก็ได้เป็น queryable graph สำหรับ agent [8], llama.cpp รองรับ built-in exec_shell/edit_file tools [25] และ Qwen3.6-35B-A3B หลายตัวแปรขยายแนวโน้ม local-MoE ต่อไป [18]. Gemini Nano (Gemma4) บน Chrome สามารถรันบน PC ที่ใช้ CPU เท่านั้นได้แล้ว [32]
 
-## Why it matters (reasoning)
-ecosystem กำลังแตกออกเป็นสองชั้น Layer 1 (model + IDE agent) กำลังกลายเป็นสินค้าทั่วไป — Claude Code, Codex, Gemini, Antigravity แทนกันได้มากพอจนโพสต์เปรียบเทียบกลายเป็นกระแส [19] Layer 2 (orchestration, observability, context engineering) คือแหล่งคุณค่าใหม่: graph-based code context [18], usage telemetry [21], coordination platforms [27] studio ที่ optimize เฉพาะ Layer 1 จะถึงจุดชะงัก เพราะ productivity delta ขณะนี้มาจากวิธีที่คุณเชื่อมต่อ agents เข้าหากันและวัดผลพวกมัน
+## เหตุใดจึงสำคัญ (การวิเคราะห์)
+ชั้น IDE กำลังรวมศูนย์รอบ triad สามอย่างคือ agent + MCP + observability. AI Engineer Coach ของ Microsoft [19] บ่งชี้ว่า 'วิธีที่คุณ prompt' กำลังกลายเป็น engineering metric ที่วัดได้จริง ไม่ใช่แค่ความรู้สึก — คาดว่าภายในหนึ่งปีจะมี performance review และ team dashboard ที่สร้างบนพื้นฐานนี้. Gemini 3.5 Flash [24] คุกคาม Claude/Codex ด้าน cost สำหรับ agentic loop ได้อย่างน่าเชื่อถือ ซึ่งมีนัยสำคัญเพราะ agent workflow เผา token มากกว่า chat ถึง 10-100 เท่า. เครื่องมือ codebase-graph context [8] และ llama.cpp native tools [25] ต่างแก้ปัญหาเดียวกัน: agent หลุดบริบทใน repo ขนาดใหญ่. ผลลำดับที่สอง: studio ที่สร้าง workflow ผูกติดกับ vendor รายเดียว (Claude Code โดยเฉพาะ [22]) เผชิญความเสี่ยง lock-in เมื่อ Flash/Codex/Antigravity ต่างมาบรรจบกันบน MCP surface เดียวกัน
 
-second-order: meme 'dangerously-skip-reading-code' [24] บวกกับที่ MS ปล่อย coach extension [21] เป็นสัญญาณว่าองค์กรเริ่มต้องการ audit trails สำหรับงาน agent — เกี่ยวข้องกับโค้ดที่ส่งมอบให้ลูกค้า (สัญญา XR, edutech) การลดลงของ LocalLLaMA [14] บ่งชี้ว่า hobbyist self-hosting กำลังแพ้ต่อ hosted frontier models เพราะอัตราส่วน cost/perf เอื้อต่อ API สำหรับ studio ขนาดเล็ก
+## ความเป็นไปได้
+น่าจะเกิดขึ้น (≈70%): ภายใน Q3 2026 MCP กลายเป็น agent-tool protocol โดยพฤตินัย; multi-model routing (Flash สำหรับ loop ราคาถูก, Opus สำหรับ reasoning ยาก) กลายเป็น standard ใน dev shop ที่จริงจัง. พอเป็นไปได้ (≈45%): local coding agent บน Qwen3.6 / llama.cpp [18][25] ทำ boilerplate และ refactor ได้ 'พอใช้' บนเครื่อง 5060Ti ตัวเดียว ลด cloud spend ได้ส่วนหนึ่ง. โอกาสน้อย (≈20%): Gemini 3.5 Flash แทนที่ Claude สำหรับ dev workflow ภาษาไทย/เอเชีย — ขึ้นอยู่กับคุณภาพ Thai tokenization ซึ่งยังไม่ได้ตรวจสอบ ณ ที่นี้
 
-## Possibility
-น่าจะเกิด (70%): ภายใน 3-6 เดือน orchestration play ตัวใดตัวหนึ่ง (แนว Lightsprint [27][36] หรือ graph-context [18]) จะกลายเป็น standard layer เหนือ Claude Code คล้ายกับที่ Cursor นั่งอยู่เหนือ VS Code น่าจะเกิด (60%): Gemini 3.5 Flash [31] กลายเป็น default ราคาถูกสำหรับ background agents ในขณะที่ Claude/GPT ยังคงอยู่สำหรับงานที่ต้องใช้การใช้เหตุผล — multi-model routing กลายเป็น table stakes เป็นไปได้ (40%): open-source eval/observability stack ที่น่าเชื่อถือสำหรับ coding agents เกิดขึ้น ฆ่า dashboard ที่สร้างเองทิ้ง น่าจะเกิดน้อยกว่า (25%): มาตรฐาน 'agent IDE' แบบรวมศูนย์ก่อนปี 2027 — vendor incentive ที่จะแยกส่วนยังมีสูงเกินไป
+## ความเกี่ยวข้องกับองค์กร — NDF DEV
+ประโยชน์โดยตรงสำหรับ NDF DEV: (1) ติดตั้ง AI Engineer Coach [19] บน VS Code/Cursor ทั้งทีม — เก็บ baseline metrics ว่านักพัฒนา Unity/Next.js ใช้ Claude/Codex จริงอย่างไร; ความเสี่ยงต่ำ ใช้ฟรี. (2) ทดลอง codebase-graph tool [8] กับ Unity project ขนาดใหญ่ (VRoom, G) ที่ agent มักหลุดบริบท cross-file — upside สูงสำหรับ XR codebase. (3) ทดลองใช้ Gemini 3.5 Flash [24] สำหรับ agent loop ราคาถูก (asset tagging, การสร้างเนื้อหา e-learning, Supabase migrations) ในขณะที่ยังคง Opus 4.7 ไว้สำหรับ refactor ที่ซับซ้อน — อาจลด LLM bill ได้ 40-60%. (4) จับตา llama.cpp tools [25] สำหรับ demo edutech offline ที่ไม่อนุญาตให้ใช้ cloud. ข้าม: thread hype [33][38] และ rant 'Claude vs alternatives' [22] — ไม่มี signal ที่นำไปใช้ได้จริง. รายการที่คุ้มเวลาได้แก่ 8, 19, 24, 25, 35
 
-## Org applicability — NDF DEV
-นำไปใช้ได้เลยตอนนี้: (1) ติดตั้ง MS AI Engineer Coach [21] ทั่วทีม — telemetry ฟรีว่าใครได้ประโยชน์จริงจาก Claude Code ก่อนจะขยาย agent spend (2) นำ codebase-graph context tool [18] ไปทดลองกับ Next.js/Supabase web stack และโปรเจกต์ Unity C# หนึ่งโปรเจกต์ — คุณภาพ context คือตัวจำกัดอันดับ 1 สำหรับ codebase ด้าน game/XR ที่มี call graph ลึก (3) ใช้ Gemini 3.5 Flash [31] สำหรับ batch tasks ราคาถูก (asset metadata, การเขียน lesson content ใหม่สำหรับ edutech) ขณะที่ใช้ Claude Code สำหรับ core dev (4) จับตาดู Lightsprint [27] แต่ยังไม่ต้องนำมาใช้ — studio 5 คนยังไม่มี coordination pain ขนาดนั้น ค่อยทบทวนเมื่อถึง 10+ คน (5) นำ cheat sheet workflows [11] มาใช้ — /skills, /plan, /compact, hooks — ต้นทุนต่ำ ได้ผลด้าน hygiene ทันที ข้าม: Hyper [32] (private beta, ยังไม่มีสัญญาณ), AGNT Hub [12] (drag-drop low-code ไม่เหมาะกับ dev studio)
-
-## Signals to Watch
-- ว่า Lightsprint หรือคู่แข่งจะปล่อย parallel-agent coordination ที่เหนือกว่าการแค่ใช้ git-worktrees หรือไม่ [27][36]
-- benchmark จริงของ Gemini 3.5 Flash บน agentic coding เทียบกับราคา Claude Sonnet [31]
-- การนำ MS AI Engineer Coach ไปใช้ — มันจะเปิดเผยหรือไม่ว่า 'agent productivity' ส่วนใหญ่เป็นแค่ภาพลวงตา? [21]
-- ว่า codebase-graph context tooling [18] จะ integrate กับ Unity/C# ได้หรือยังคงอยู่แค่ JS/Python
-
-## Repos & Tools to Try
-| repo | source | url |
-|---|---|---|
-| **DamRsn/NeuralNote** — NeuralNote | hackernews | <https://github.com/DamRsn/NeuralNote> |
+## Signals ที่ควรติดตาม
+- ว่า Gemini 3.5 Flash MCP support จะตามทัน tool ecosystem ของ Claude Code ได้หรือไม่
+- Adoption curve ของ AI Engineer Coach — หาก Microsoft ผลัก telemetry ไปที่ GitHub จะกลายเป็น hiring signal
+- ความเสถียรของ llama.cpp native tools บน Windows สำหรับ local Unity/Godot workflow
+- ว่า codebase-graph context tool จะสร้างมาตรฐาน interchange format หรือยังคง vendor-locked
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| hackernews | abawany | ^648 c269 | [Texas woman arrested for Facebook post about town water quality](https://reclaimthenet.org/texas-woman-arrested-for-facebook-post-about-town-water-quality) |
-| hackernews | tlhunter | ^626 c1078 | [Green card seekers must leave U.S. to apply, Trump administration says <a href="](https://www.nytimes.com/2026/05/22/us/politics/green-card-changes-trump.html) |
-| hackernews | busymom0 | ^372 c241 | [SpaceX launches Starship v3 rocket <a href="https:&#x2F;&#x2F;www.nbcnews.com&#x](https://www.space.com/space-exploration/launches-spacecraft/spacex-starship-v3-megarocket-first-test-flight) |
-| hackernews | ravenical | ^358 c108 | [On The <dl> (2021)](https://benmyers.dev/blog/on-the-dl/) |
-| hackernews | hggh | ^306 c175 | [Time to talk about my writerdeck](https://veronicaexplains.net/my-first-writerdeck/) |
-| hackernews | donohoe | ^257 c145 | [Oura says it gets government demands for user data](https://this.weekinsecurity.com/oura-says-it-gets-government-demands-for-user-data-will-it-share-how-many/) |
-| hackernews | embedding-shape | ^237 c91 | [Italy moves to Airbus A330 tankers](https://www.euronews.com/my-europe/2026/05/21/italy-moves-to-airbus-a330-tankers-in-major-nato-aligned-shift) |
-| hackernews | nand2mario | ^222 c46 | [80386 microcode disassembled](https://www.reenigne.org/blog/80386-microcode-disassembled/) |
-| hackernews | dxs | ^208 c138 | [The Art of Money Getting](https://kk.org/cooltools/book-freak-210-the-art-of-money-getting/) |
-| reddit | JustFinishedBSG | ^169 c110 | [GPT 5.5 "secret sauce" is just having the thinking be some stupid caveman mode? ](https://www.reddit.com/r/LocalLLaMA/comments/1tljrtk/gpt_55_secret_sauce_is_just_having_the_thinking/) |
-| x | Anthony_Sofo | ^166 c18 | [Claude Code Cheat Sheet 🧠💻 Master workflows with: • /skills • /agents • /plan • ](https://x.com/Anthony_Sofo/status/2057828266279592318) |
-| x | agnt_hub | ^162 c15 | [Building a private AI agent shouldn't require a computer science degree. AGNT Hu](https://x.com/agnt_hub/status/2057811474416828882) |
-| hackernews | tosh | ^154 c59 | [Making deep learning go brrrr from first principles (2022)](https://horace.io/brrr_intro.html) |
-| reddit | fairydreaming | ^153 c106 | [Have we passed the peak of inflated expectations? I noticed the number of people](https://www.reddit.com/r/LocalLLaMA/comments/1tlcars/have_we_passed_the_peak_of_inflated_expectations/) |
-| hackernews | ingve | ^147 c130 | [.NET (OK, C#) finally gets union types](https://andrewlock.net/exploring-the-dotnet-11-preview-2-dotnet-gets-union-types/) |
-| reddit | Ambitious_Fold_2874 | ^136 c61 | [Does GPU spacing matter if we're undervolting anyways? How close can GPU cards b](https://www.reddit.com/r/LocalLLaMA/comments/1tlonbw/does_gpu_spacing_matter_if_were_undervolting/) |
-| hackernews | gslin | ^129 c89 | [Spanish court declines to fine NordVPN over LaLiga piracy blocking order](https://torrentfreak.com/spanish-court-declines-to-fine-nordvpn-over-laliga-piracy-blocking-order/) |
-| x | Saboo_Shubham_ | ^126 c20 | [This is ACTUALLY context engineering for your AI coding agents. It turns any cod](https://x.com/Saboo_Shubham_/status/2058269167372153129) |
+| hackernews | tlhunter | ^976 c1628 | [Green card seekers must leave U.S. to apply, Trump administration says <a href="](https://www.nytimes.com/2026/05/22/us/politics/green-card-changes-trump.html) |
+| hackernews | ravenical | ^414 c121 | [On The <dl> (2021)](https://benmyers.dev/blog/on-the-dl/) |
+| hackernews | hggh | ^413 c243 | [Time to talk about my writerdeck](https://veronicaexplains.net/my-first-writerdeck/) |
+| hackernews | DamnInteresting | ^346 c106 | [Microsoft open-sources "the earliest DOS source code discovered to date" <a href](https://arstechnica.com/gadgets/2026/04/microsoft-open-sources-the-earliest-dos-source-code-discovered-to-date/) |
+| hackernews | dxs | ^337 c179 | [The Art of Money Getting](https://kk.org/cooltools/book-freak-210-the-art-of-money-getting/) |
+| hackernews | MaximilianEmel | ^323 c24 | [Wake up! 16b](https://hellmood.111mb.de/wake_up_16b_writeup.html) |
+| hackernews | RyeCombinator | ^271 c107 | [Amazon Web Services – Four Years and Out](https://www.adventuresinoss.com/aws-four-years/) |
+| x | Saboo_Shubham_ | ^267 c29 | [This is ACTUALLY context engineering for your AI coding agents. It turns any cod](https://x.com/Saboo_Shubham_/status/2058269167372153129) |
+| hackernews | nand2mario | ^262 c50 | [80386 microcode disassembled](https://www.reenigne.org/blog/80386-microcode-disassembled/) |
+| hackernews | zdw | ^247 c120 | [Why is Vivado 2026.1 dropping Linux support for free tier?](https://adaptivesupport.amd.com/s/question/0D5Pd00001YQLdMKAX/why-is-vivado-20261-dropping-linux-support-for-free-tier-?language=en_US) |
+| x | victormustar | ^234 c12 | [New: LongCat just dropped an excellent open-source talking-avatar model (probabl](https://x.com/victormustar/status/2058492201261244458) |
+| reddit | JustFinishedBSG | ^226 c128 | [GPT 5.5 "secret sauce" is just having the thinking be some stupid caveman mode? ](https://www.reddit.com/r/LocalLLaMA/comments/1tljrtk/gpt_55_secret_sauce_is_just_having_the_thinking/) |
+| reddit | Ambitious_Fold_2874 | ^213 c74 | [Does GPU spacing matter if we're undervolting anyways? How close can GPU cards b](https://www.reddit.com/r/LocalLLaMA/comments/1tlonbw/does_gpu_spacing_matter_if_were_undervolting/) |
+| hackernews | spike021 | ^201 c107 | [Scammers are abusing an internal Microsoft account to send spam links](https://techcrunch.com/2026/05/21/scammers-are-abusing-an-internal-microsoft-account-to-send-spam/) |
+| hackernews | fagnerbrack | ^177 c175 | [-​-dangerously-skip-reading-code](https://olano.dev/blog/dangerously-skip/) |
+| hackernews | gslin | ^176 c111 | [Spanish court declines to fine NordVPN over LaLiga piracy blocking order](https://torrentfreak.com/spanish-court-declines-to-fine-nordvpn-over-laliga-piracy-blocking-order/) |
+| hackernews | evakhoury | ^167 c37 | [Hengefinder: Finding when the sun aligns with your street](https://victoriaritvo.com/blog/hengefinder/) |
+| reddit | EvilEnginer | ^143 c59 | [Qwen3.6-35B-A3B-Uncensored-Genesis-APEX-MTP Here model: [https://huggingface.co/](https://www.reddit.com/r/LocalLLaMA/comments/1tm3toi/qwen3635ba3buncensoredgenesisapexmtp/) |
+| x | akshay_pachaar | ^142 c29 | [Microsoft built a Fitbit for AI. they just open-sourced AI Engineer Coach. a VS ](https://x.com/akshay_pachaar/status/2057901920795378159) |
+| reddit | vick2djax | ^138 c191 | [Is there any reason for an uncensored model if you have no interest in roleplayi](https://www.reddit.com/r/LocalLLaMA/comments/1tlzvfs/is_there_any_reason_for_an_uncensored_model_if/) |
+| x | slash1sol | ^128 c28 | [MIT JUST DROPPED A 60-MIN LECTURE ON AGENTIC CODING BECAUSE VIBE-CODERS STILL TH](https://x.com/slash1sol/status/2057948111595540736) |
 | x | unicodeveloper | ^125 c19 | [Claude Code users are becoming the React developers of AI coding agents. You can](https://x.com/unicodeveloper/status/2057845190140825810) |
-| x | slash1sol | ^122 c28 | [MIT JUST DROPPED A 60-MIN LECTURE ON AGENTIC CODING BECAUSE VIBE-CODERS STILL TH](https://x.com/slash1sol/status/2057948111595540736) |
-| x | akshay_pachaar | ^122 c29 | [Microsoft built a Fitbit for AI. they just open-sourced AI Engineer Coach. a VS ](https://x.com/akshay_pachaar/status/2057901920795378159) |
-| hackernews | borski | ^121 c85 | [Toxic chemical leak at a manufacturing facility in Orange County](https://www.bbc.com/news/articles/c3w2l249j8go) |
-| hackernews | evakhoury | ^115 c27 | [Hengefinder: Finding when the sun aligns with your street](https://victoriaritvo.com/blog/hengefinder/) |
-| hackernews | fagnerbrack | ^102 c117 | [-​-dangerously-skip-reading-code](https://olano.dev/blog/dangerously-skip/) |
-| x | bendee983 | ^95 c14 | [It's a delusion that constantly manifests in different ways as technology advanc](https://x.com/bendee983/status/2057833546513809641) |
-| hackernews | cdrnsf | ^91 c22 | [ICE Awards $25M Iris-Scanning Contract to Bi2 Technologies](https://www.projectsaltbox.com/p/ice-awards-25-million-iris-scanning) |
-| x | rimtoln | ^91 c54 | [coding got faster team coordination didn't that's the real bottleneck now @light](https://x.com/rimtoln/status/2057811493295419498) |
-| hackernews | elpocko | ^84 c17 | [Reverse engineering circuitry in a Spacelab computer from 1980](https://www.righto.com/2026/05/reverse-engineering-spacelab-computer.html) |
-| x | shivraj_me31605 | ^82 c12 | [🚨 Most people use #Claude like Google. Power users use it like an AI operating s](https://x.com/shivraj_me31605/status/2057850428264779897) |
-| x | bendee983 | ^82 c12 | [I'm having the same experience and feelings with AI coding agents. Old-school so](https://x.com/bendee983/status/2057795342314381506) |
+| hackernews | prakashqwerty | ^124 c90 | [Greg Brockman: Inside the 72 Hours That Almost Killed OpenAI](https://fs.blog/knowledge-project-podcast/greg-brockman/) |
+| x | pixeluibygoogle | ^124 c8 | [Gemini 3.5 introduces Flash, a frontier-level AI model that is faster, multimoda](https://x.com/pixeluibygoogle/status/2058227405467299898) |
+| reddit | srigi | ^123 c31 | [llama.cpp server have built-in native tools (exec_shell, edit_file, etc.) https:](https://www.reddit.com/r/LocalLLaMA/comments/1tluma3/llamacpp_server_have_builtin_native_tools_exec/) |
+| hackernews | NaOH | ^122 c5 | [Judson's Last Ride](https://www.realclearpolitics.com/articles/2026/05/22/judsons_last_ride_154150.html) |
+| hackernews | elpocko | ^107 c21 | [Reverse engineering circuitry in a Spacelab computer from 1980](https://www.righto.com/2026/05/reverse-engineering-spacelab-computer.html) |
+| hackernews | nosolace | ^94 c39 | [My I3-Emacs Integration](https://khz.ac/software/i3-integration.html) |
+| hackernews | anujbans | ^91 c21 | [Alexander Grothendieck Revolutionized 20th-Century Mathematics](https://www.quantamagazine.org/how-alexander-grothendieck-revolutionized-20th-century-mathematics-20260520/) |
+| hackernews | masswerk | ^86 c16 | [The C64 Dead Test Font](https://www.masswerk.at/nowgobang/2026/c64-dead-test-font) |
 
 
 ## โพสต์เด่น
 
 <div class="post-stream">
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@JustFinishedBSG</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 169 · 💬 110</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tljrtk/gpt_55_secret_sauce_is_just_having_the_thinking/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/OAXSl8SY6T3JK9MGQyKxkoYbqZ71HQRYXLeB8CV0NXg.png?auto=webp&amp;s=c7cbcc7517e2406e2326e7a1eb6bdb9022c27fda" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“GPT 5.5 &quot;secret sauce&quot; is just having the thinking be some stupid caveman mode? I think I had GPT-5.5 leak its trace during a normal conversation, and it really reads like the caveman mode fad from a ”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>User อ้างว่า leak reasoning trace ภายในของ GPT-5.5 แล้วพบว่าใช้ thinking แบบ 'caveman-style' กระชับสุดขีด และเสนอให้ fine-tune open model ด้วย trace แบบนั้นเพื่อลด token</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ถ้า 'caveman' thinking trace ลด token ได้จริงโดยไม่เสีย quality มันคือ fine-tuning signal ราคาถูกที่ทีมเล็กดึงออกมาจาก open model ที่มีอยู่แล้วได้เลย</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Pipeline AI ของ studio ไม่ว่าจะเป็น e-learning หรือ web tooling ลอง compressed chain-of-thought บน local LLM ก่อน แล้วค่อย scale ไป hosted model เพื่อลด inference cost</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tljrtk/gpt_55_secret_sauce_is_just_having_the_thinking/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Anthony_Sofo</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 166 · 💬 18</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Anthony_Sofo/status/2057828266279592318">View @Anthony_Sofo on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Claude Code Cheat Sheet 🧠💻 Master workflows with: • /skills • /agents • /plan • /compact • MCP tools • Memory &amp;amp; hooks Best practices: ✔️ Review diffs ✔️ Plan before coding ✔️ Compress context ✔️ A”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Cheat sheet สำหรับ Claude Code ครอบคลุม slash commands หลัก (/skills, /agents, /plan, /compact), MCP tools, memory, hooks และ best practices อย่างการ review diff และ compress context</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>รวม workflow สำคัญของ Claude Code ไว้ในที่เดียว ทีมที่ไม่มี standard ร่วมกันมักได้ AI-generated commit ที่ไม่ผ่าน review</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ควร standardize /plan ก่อน code และ /compact สำหรับ session ยาว — เพิ่มเป็น required steps ใน Claude Code workflow doc ของทีมได้เลย</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/Anthony_Sofo/status/2057828266279592318" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@agnt_hub</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 162 · 💬 15</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/agnt_hub/status/2057811474416828882">View @agnt_hub on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Building a private AI agent shouldn't require a computer science degree. AGNT Hub lets you drag and drop modular agents to build automated workflows inside a fully encrypted cloud sandbox. Soon, you'l”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>AGNT Hub เป็น platform no-code แบบ drag-and-drop สำหรับสร้าง AI agent workflow ส่วนตัวใน encrypted cloud sandbox เน้นคนที่ไม่ได้เขียนโค้ด</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>No-code AI agent builder ที่มี encrypted sandbox ช่วยให้ทีมที่ไม่ได้เขียนโค้ดสามารถ automate งานซ้ำๆ ได้โดยไม่แตะ codebase</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ลอง evaluate AGNT Hub ให้ทีมที่ไม่ใช่ dev (QA, admin, HR) สร้าง automation agent เองได้ ลด bottleneck ที่ engineering team สำหรับงาน internal workflow</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/agnt_hub/status/2057811474416828882" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@fairydreaming</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 153 · 💬 106</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tlcars/have_we_passed_the_peak_of_inflated_expectations/" target="_blank" rel="noopener"><img src="https://preview.redd.it/cz2zeuoazu2h1.png?width=1841&amp;format=png&amp;auto=webp&amp;s=ae08c66b55ef32ea1600e55d65a416ae63fb6921" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Have we passed the peak of inflated expectations? I noticed the number of people in this sub going down a bit and checked out some google trends. Any idea what's causing this sharp decline?”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้ r/LocalLLaMA สังเกตเห็น subreddit สมาชิกลดและ Google Trends ด้าน AI ดิ่ง ตั้งคำถามว่า hype cycle peak ผ่านไปแล้วหรือยัง</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ถ้า AI hype เริ่มเย็นตัว budget ลูกค้าและความเต็มใจ approve feature AI อาจตึงขึ้น — trough of disillusionment ทำร้ายทีมที่ over-promise</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ควร frame AI feature ด้วย outcome ที่วัดได้ (load time, cost, error rate) ไม่ใช่ buzzword — positioning แบบนี้รอดทุก hype cycle</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tlcars/have_we_passed_the_peak_of_inflated_expectations/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Ambitious_Fold_2874</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 136 · 💬 61</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tlonbw/does_gpu_spacing_matter_if_were_undervolting/" target="_blank" rel="noopener"><img src="https://preview.redd.it/3tdr5ukanx2h1.jpg?width=4284&amp;format=pjpg&amp;auto=webp&amp;s=dd3b1506db6cbea551a80ef2bc949473bfdfdcf4" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Does GPU spacing matter if we’re undervolting anyways? How close can GPU cards be to each other on the mobo to remain safe and keep the hardware healthy over time? I have 4x 5060ti16gb cards in my mob”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>User ถาม 4x RTX 5060 Ti 16GB บน mobo เดียวว่า spacing ชิดกันเกินไปอันตรายไหม ถ้า undervolt แล้วใช้แค่ case fan 10 ตัว ไม่มี liquid cooling</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Rig multi-GPU จริงมักโดน thermal throttle ไม่ใช่ power limit — ข้อมูลตรงสำหรับทีมที่คิดจะ host model เอง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ถ้าทีมจะซื้อ hardware รัน inference เอง วางแผน airflow และ slot spacing ก่อนสั่ง อย่าเชื่อว่า undervolt อย่างเดียวพอสำหรับ load ต่อเนื่อง</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tlonbw/does_gpu_spacing_matter_if_were_undervolting/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@Saboo_Shubham_</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 126 · 💬 20</span>
+    <span class="ndf-engagement">♥ 267 · 💬 29</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Saboo_Shubham_/status/2058269167372153129">View @Saboo_Shubham_ on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“This is ACTUALLY context engineering for your AI coding agents. It turns any codebase into an interactive graph your agent can query. Works with Claude Code, Codex, Antigravity. 100% Opensource.”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Tool open-source ที่แปลง codebase เป็น interactive graph ให้ AI coding agent อย่าง Claude Code, Codex query ได้เป็น structured context</dd>
+      <dd>Open-source tool แปลง codebase ให้เป็น knowledge graph แบบ interactive ให้ AI coding agent อย่าง Claude Code หรือ Codex query ได้ตรงๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Agent ที่ query graph ของ codebase แทนการอ่านไฟล์ดิบลด hallucination และ edit ผิดไฟล์ — ปัญหาหลักของทีมเล็กที่ project ใหญ่อย่าง Unity หรือ Next.js</dd>
+      <dd>ทีมเล็กเสีย token ไปกับการยิงไฟล์เต็มๆ ให้ agent — graph retrieval ตัด noise และให้ agent เดิน codebase ใหญ่ได้แม่นกว่า</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">รัน tool นี้กับ Unity และ Next.js repo ของ studio ให้ Claude Code ได้ context ที่ถูกต้อง — มีประโยชน์มากตอน agent ต้องทำงานกับ legacy code</dd>
+      <dd class="ndf-adapt">Studio เอาไปต่อกับ Claude Code workflow ให้ agent เดินใน Next.js + Supabase หรือโครงสร้าง Unity project ได้โดยไม่ต้องโยน directory ทั้งก้อนเข้า context</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/Saboo_Shubham_/status/2058269167372153129" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@victormustar</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 234 · 💬 12</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/victormustar/status/2058492201261244458">View @victormustar on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“New: LongCat just dropped an excellent open-source talking-avatar model (probably SOTA) + MIT licensed 🔥 Made a Hugging Face Space for it and it's very impressive. So many cool products to build with ”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>LongCat คือ open-source talking-avatar model ใหม่ MIT license (น่าจะ SOTA) มี Hugging Face demo ฟรี ใช้ทำ AI tutor, dubbing pipeline, NPC dialogue ได้</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>MIT license = เอาไปใส่ใน product จริงได้เลย ไม่มีค่า license ไม่ติด vendor lock-in พร้อม production ตั้งแต่วันแรก</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Unity team เอาไปทำ NPC lip-sync dialogue ได้เลย; e-learning team จับคู่กับ LLM สร้าง talking AI tutor มีหน้า ไม่ต้องทำ 3D avatar rig เอง</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/victormustar/status/2058492201261244458" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@JustFinishedBSG</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 226 · 💬 128</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tljrtk/gpt_55_secret_sauce_is_just_having_the_thinking/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/OAXSl8SY6T3JK9MGQyKxkoYbqZ71HQRYXLeB8CV0NXg.png?auto=webp&amp;s=c7cbcc7517e2406e2326e7a1eb6bdb9022c27fda" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“GPT 5.5 &quot;secret sauce&quot; is just having the thinking be some stupid caveman mode? I think I had GPT-5.5 leak its trace during a normal conversation, and it really reads like the caveman mode fad from a ”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>มีคนอ้างว่า leak reasoning trace ภายในของ GPT-5.5 ออกมาแล้วมันดูเหมือน 'caveman mode' — สไตล์ thinking แบบภาษาดึกดำบรรพ์ย่อๆ ที่เชื่อว่าช่วยลด token cost ใน chain-of-thought</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ถ้า frontier model ย่อ thinking เป็น shorthand เพื่อลด inference cost ทีม open-source ก็ replicate ได้โดย fine-tune บน trace แบบ caveman-ized โดยไม่ต้องใช้ข้อมูล proprietary</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">studio เอา reasoning trace จาก open model เช่น Qwen หรือ Llama มา caveman-ize แล้ว fine-tune เป็น local model สำหรับ internal tooling เช่น code review หรือ content pipeline เพื่อลด inference cost</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tljrtk/gpt_55_secret_sauce_is_just_having_the_thinking/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Ambitious_Fold_2874</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 213 · 💬 74</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tlonbw/does_gpu_spacing_matter_if_were_undervolting/" target="_blank" rel="noopener"><img src="https://preview.redd.it/3tdr5ukanx2h1.jpg?width=4284&amp;format=pjpg&amp;auto=webp&amp;s=dd3b1506db6cbea551a80ef2bc949473bfdfdcf4" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Does GPU spacing matter if we’re undervolting anyways? How close can GPU cards be to each other on the mobo to remain safe and keep the hardware healthy over time? I have 4x 5060ti16gb cards in my mob”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>คนที่มี GPU 4x RTX 5060 Ti 16GB ถามว่าการจัด card ชิดกันบน mobo เป็นความเสี่ยงด้าน thermal ไหม ถ้า undervolt + ใช้แค่ case fan</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ทีมที่ build local LLM rig งบจำกัดเจอความเสี่ยง thermal จาก card ชิดกัน — undervolt ลด heat ได้แต่แก้ airflow ที่ถูกบล็อกไม่ได้</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ถ้า studio จะ build local AI inference rig ให้วาง GPU spacing และ airflow ก่อนซื้อ card — riser cable หรือ case ใหญ่กว่าถูกกว่าซ่อม hardware เสีย</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tlonbw/does_gpu_spacing_matter_if_were_undervolting/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@EvilEnginer</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 143 · 💬 59</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/LocalLLaMA/comments/1tm3toi/qwen3635ba3buncensoredgenesisapexmtp/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/2DEPvcJhwdDFOGAU447G16y1vsHEUocL-p-rWNL5hwM.png?auto=webp&amp;s=fba506cbd23dde5b8c8a62d083dbb8c0e3b55074" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Qwen3.6-35B-A3B-Uncensored-Genesis-APEX-MTP Here model: [https://huggingface.co/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-V2-APEX-MTP-GGUF](https://huggingface.co/LuffyTheFox/Qwen3.6-35B-A3B-Unce”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Community fine-tune ของ Qwen3 35B แบบ MoE (active 3.6B) ที่ uncensored พร้อม MTP multi-token prediction และ APEX quant ทดสอบ stable ที่ 200k context บน hardware AMD consumer</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>35B MoE รัน stable ที่ 200k context บน mini-PC ราคาต่ำกว่า $1k แปลว่า local coding assistant ระดับนี้ทำได้จริงโดยไม่ต้องมี GPU server</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ทีมลอง benchmark model นี้ใน LM Studio สำหรับ local agentic coding — 200k context รับ Unity codebase ขนาดใหญ่หรือ Next.js refactor ยาวๆ ได้โดยไม่เสีย API cost</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/LocalLLaMA/comments/1tm3toi/qwen3635ba3buncensoredgenesisapexmtp/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@akshay_pachaar</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 142 · 💬 29</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/akshay_pachaar/status/2057901920795378159">View @akshay_pachaar on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Microsoft built a Fitbit for AI. they just open-sourced AI Engineer Coach. a VS Code extension (also works in Cursor and Antigravity) that analyzes how you actually use AI coding agents. it reads loca”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Microsoft open-source AI Engineer Coach ส่วนขยายใน VS Code อ่าน session logs จาก Copilot, Claude Code, Codex CLI ฯลฯ แล้ว score workflow ใน 5 หมวดด้วยกฎ anti-pattern 45 ข้อ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ทีมเล็กแทบไม่เคย audit นิสัยใช้ AI — tool นี้ชี้ waste จริง เช่น เสิร์ช token แพงกับคำถามขี้ปะติ๋ว หรือ session ยาวจนหลุด focus ซึ่งบวกเร็วมากถ้างบจำกัด</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ติดตั้ง AI Engineer Coach ครอบ session Claude Code และ Copilot ของทีม แล้วใช้ผล Skill Finder สร้าง prompt patterns มาตรฐานร่วมกันสำหรับ Unity, XR, และ Next.js</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/akshay_pachaar/status/2057901920795378159" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@slash1sol</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 128 · 💬 28</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/slash1sol/status/2057948111595540736">View @slash1sol on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“MIT JUST DROPPED A 60-MIN LECTURE ON AGENTIC CODING BECAUSE VIBE-CODERS STILL THINK &quot;--dangerously-skip-permissions&quot; IS A FEATURE A no-nonsense breakdown of how AI coding agents actually work from the”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>MIT Missing Semester ออก lecture 60 นาทีสอนว่า AI coding agent ทำงานยังไงจริงๆ พร้อมเตือนว่าการใช้ yolo mode โดยไม่รู้ว่า agent เข้าถึง filesystem, shell commands, หรือ API token อะไรบ้าง กำลังทำให้ junior dev ถูกไล่ออก</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>บริษัทใหญ่เริ่ม screen ด้าน agent literacy แล้ว — อธิบายไม่ได้ว่า agent แตะ file หรืออ่าน token อะไร โดนตัดก่อนถึงรอบ technical</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Studio ต้องกำหนด permission allowlist ชัดเจนสำหรับทุก Claude Code session แทนการรัน --dangerously-skip-permissions โดยเฉพาะ workflow ที่แตะ Supabase production หรือ API credentials จริง</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/slash1sol/status/2057948111595540736" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
@@ -236,33 +249,13 @@ second-order: meme 'dangerously-skip-reading-code' [24] บวกกับที
     <p class="ndf-quote">“Claude Code users are becoming the React developers of AI coding agents. You can’t tell them there are alternatives. Yep, i said it! So I did the comparison nobody wanted: - Claude Code @claudeai vs -”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Developer เปรียบ Claude Code, OpenAI Codex และ OpenCode แบบ side-by-side พร้อมสังเกตว่า Claude Code users ภักดีกับ tool ตัวเองเหมือน React developers ที่ไม่ยอมฟัง alternative</dd>
+      <dd>Developer เปรียบ Claude Code users ว่าคลั่งไคล้เหมือน React devs แล้วทำ comparison จริงๆ ระหว่าง Claude Code, Codex, และ OpenCode</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>การ benchmark 3 ตัวหลักตรงๆ สำคัญเพราะ switching cost สูง — เลือก tool ผิดกระทบ productivity ทุก project</dd>
+      <dd>เปรียบ 3 AI coding agent ชั้นนำแบบตรงๆ จาก practitioner จริง ทีมเล็กได้ข้อมูลเลือก daily driver โดยไม่ต้องลองเองทั้งหมด</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ควรอ่าน comparison ที่ link แล้ว map จุดแข็งแต่ละ tool กับงานจริง (Unity scripting, Next.js, Supabase) ก่อน standardise agent ทั้ง team</dd>
+      <dd class="ndf-adapt">ทีมควรดู comparison ก่อน commit Claude Code ทั้งทีม — Codex หรือ OpenCode อาจเหมาะกับ Unity scripting หรือ Next.js workflow บางอย่างมากกว่าในราคาถูกกว่า</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/unicodeveloper/status/2057845190140825810" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@slash1sol</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 122 · 💬 28</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/slash1sol/status/2057948111595540736">View @slash1sol on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“MIT JUST DROPPED A 60-MIN LECTURE ON AGENTIC CODING BECAUSE VIBE-CODERS STILL THINK &quot;--dangerously-skip-permissions&quot; IS A FEATURE A no-nonsense breakdown of how AI coding agents actually work from the”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ทีม Missing Semester ของ MIT ปล่อย lecture 60 นาที เตือนว่าการรัน AI coding agent โดยไม่เข้าใจ sandboxing, filesystem access และ shell permissions กำลังทำให้ junior dev โดนไล่ออกจากบริษัท tier-1 ในปี 2026</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>นิสัย 'approve all' กลายเป็น hiring filter แล้ว — บริษัทเทสว่า candidate อธิบายได้ไหมว่า agent แตะอะไรบน disk, shell, และ env vars ก่อน ship</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ต้องบังคับใช้ sandboxed agent runs — ห้ามให้ Claude Code รัน --dangerously-skip-permissions บนเครื่องที่มี Supabase credentials จริงหรือ Unity project assets อยู่ใน scope</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/slash1sol/status/2057948111595540736" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

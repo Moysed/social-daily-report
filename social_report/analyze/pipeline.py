@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 
 from .client import BaseLLM
 from .prompts import ANALYSIS_SYSTEM, build_analysis_user
@@ -25,23 +26,111 @@ def analyze_topic(
         posts,
     )
     raw = client.analyze(ANALYSIS_SYSTEM, user)
-    try:
-        return _parse_json(raw)
-    except (ValueError, json.JSONDecodeError):
+    parsed = _parse_json_lenient(raw)
+    if parsed is None:
         data = _stub_analysis(topic_cfg, posts)
         data["what_happened"] = "Model output was not valid JSON. Falling back to stub.\n\n" + raw[:1000]
         return data
+    # Merge parsed onto stub so missing keys (truncated output) still render cleanly.
+    base = _stub_analysis(topic_cfg, posts)
+    for k, v in parsed.items():
+        if v not in (None, "", []):
+            base[k] = v
+    return base
 
 
-def _parse_json(text: str) -> dict:
+def _parse_json_lenient(text: str) -> dict | None:
+    """Try several extraction + repair strategies. Returns None if nothing parses."""
+    for candidate in _json_candidates(text):
+        try:
+            obj = json.loads(candidate)
+            if isinstance(obj, dict):
+                return obj
+        except json.JSONDecodeError:
+            continue
+    return None
+
+
+def _json_candidates(text: str) -> list[str]:
     t = text.strip()
+    # Strip markdown code fence if present (```json ... ``` or ``` ... ```).
     if t.startswith("```"):
-        t = t.split("```", 2)[1]
-        t = t[4:] if t.lower().startswith("json") else t
-    start, end = t.find("{"), t.rfind("}")
-    if start == -1 or end == -1:
-        raise ValueError("no JSON object found")
-    return json.loads(t[start : end + 1])
+        parts = t.split("```")
+        for part in parts[1::2]:
+            inner = part.lstrip()
+            if inner.lower().startswith("json"):
+                inner = inner[4:].lstrip()
+            inner = inner.strip().rstrip("`").strip()
+            if inner.startswith("{"):
+                t = inner
+                break
+
+    start = t.find("{")
+    if start == -1:
+        return []
+
+    body = t[start:]
+    candidates: list[str] = []
+
+    # 1. Greedy: from first { to last } as-is.
+    end = body.rfind("}")
+    if end > 0:
+        candidates.append(body[: end + 1])
+
+    # 2. Same slice, but strip trailing commas before } or ].
+    if end > 0:
+        candidates.append(_strip_trailing_commas(body[: end + 1]))
+
+    # 3. Truncation repair: balance open strings/brackets, then strip trailing commas.
+    candidates.append(_strip_trailing_commas(_balance_json(body)))
+
+    return candidates
+
+
+def _balance_json(s: str) -> str:
+    """Close any unterminated strings and unmatched { or [ to make `s` parseable."""
+    stack: list[str] = []
+    in_string = False
+    escape = False
+    last_complete_value_idx = -1  # index of last char that ended a top-level value safely
+
+    for c in s:
+        if escape:
+            escape = False
+            continue
+        if in_string:
+            if c == "\\":
+                escape = True
+            elif c == '"':
+                in_string = False
+            continue
+        if c == '"':
+            in_string = True
+        elif c in "{[":
+            stack.append(c)
+        elif c in "}]":
+            if stack:
+                stack.pop()
+
+    repaired = s
+    if in_string:
+        repaired += '"'
+    while stack:
+        opener = stack.pop()
+        repaired += "}" if opener == "{" else "]"
+    return repaired
+
+
+_TRAILING_COMMA_RE = re.compile(r",(\s*[}\]])")
+
+
+def _strip_trailing_commas(s: str) -> str:
+    prev = None
+    out = s
+    while prev != out:
+        prev = out
+        out = _TRAILING_COMMA_RE.sub(r"\1", out)
+    return out
 
 
 def _stub_analysis(topic_cfg: dict, posts: list[Post]) -> dict:

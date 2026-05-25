@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "social-daily-report": {
+      "command": "D:\\Folder Project\\social-daily-report\\.venv\\Scripts\\social-report-mcp.exe",
+      "args": [],
+      "env": {}
+    }
+  }
+}

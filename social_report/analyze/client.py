@@ -78,10 +78,15 @@ class CliClient(BaseLLM):
 
     backend = "cli"
 
-    def __init__(self, cwd: str | None = None, timeout: float = 300.0) -> None:
+    def __init__(self, cwd: str | None = None, timeout: float | None = None) -> None:
         self.bin = os.environ.get("CLAUDE_BIN") or shutil.which("claude")
         self.enabled = bool(self.bin)
         self.cwd = cwd
+        if timeout is None:
+            try:
+                timeout = float(os.environ.get("CLI_TIMEOUT", "900"))
+            except ValueError:
+                timeout = 900.0
         self.timeout = timeout
 
     def _run(self, model: str, system: str, user: str) -> str:

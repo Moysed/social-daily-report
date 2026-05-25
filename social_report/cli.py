@@ -43,9 +43,15 @@ from .store.files import write_file
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB_PATH = REPO_ROOT / "data" / "reports.db"
-STUB_TH_NOTE = (
-    "> _Thai translation disabled — set `ANTHROPIC_API_KEY` to enable (STUB mode)._\n\n"
+STUB_TH_NOTE_NO_LLM = (
+    "> _การแปลภาษาไทยถูกปิดไว้ — ตั้งค่า `LLM_BACKEND=cli` (Claude Code subscription) "
+    "หรือ `ANTHROPIC_API_KEY` เพื่อเปิดใช้งาน._\n\n"
 )
+STUB_TH_NOTE_FAILED = (
+    "> _การแปลภาษาไทยรอบนี้ล้มเหลว (timeout หรือ error) — แสดงต้นฉบับภาษาอังกฤษแทน._\n\n"
+)
+# Back-compat alias for any external import.
+STUB_TH_NOTE = STUB_TH_NOTE_NO_LLM
 
 
 def _resolve_date(value: str | None) -> date:
@@ -166,11 +172,11 @@ def run(args: argparse.Namespace) -> None:
                     th_body = client.translate(en_body)
                     translated_by = SONNET_MODEL
                 except Exception as exc:
-                    print(f"  {topic_key}: !! translate failed ({exc}); falling back to stub")
-                    th_body = STUB_TH_NOTE + en_body
+                    print(f"  {topic_key}: !! translate failed ({exc}); falling back to English with notice")
+                    th_body = STUB_TH_NOTE_FAILED + en_body
                     translated_by = None
             else:
-                th_body = STUB_TH_NOTE + en_body
+                th_body = STUB_TH_NOTE_NO_LLM + en_body
                 translated_by = None
 
             if en_top:

@@ -19,6 +19,7 @@ import json
 import os
 import shutil
 import subprocess
+import time
 
 # Full model IDs (used by the API backend + recorded in front-matter).
 OPUS_MODEL = os.environ.get("OPUS_MODEL", "claude-opus-4-7")
@@ -89,6 +90,11 @@ class CliClient(BaseLLM):
                 timeout = 900.0
         self.timeout = timeout
 
+    # Transient API statuses that warrant an automatic retry-with-backoff.
+    # 529 = Overloaded (Anthropic-side), 503 = Service Unavailable,
+    # 502/504 = upstream/gateway timeout, 429 = rate limited.
+    _RETRY_STATUSES = ("529", "503", "502", "504", "429")
+
     def _run(self, model: str, system: str, user: str) -> str:
         # User prompt goes via stdin (avoids OS arg-length limits on big inputs).
         cmd = [
@@ -102,23 +108,48 @@ class CliClient(BaseLLM):
         ]
         # Drop ANTHROPIC_API_KEY so the CLI uses OAuth/subscription, not the API.
         env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
-        proc = subprocess.run(
-            cmd,
-            input=user,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            timeout=self.timeout,
-            cwd=self.cwd,
-            env=env,
-        )
-        if proc.returncode != 0:
+
+        max_attempts = int(os.environ.get("CLI_MAX_ATTEMPTS", "3"))
+        backoff = float(os.environ.get("CLI_RETRY_BACKOFF", "8"))
+        last_exc: Exception | None = None
+
+        for attempt in range(1, max_attempts + 1):
+            try:
+                proc = subprocess.run(
+                    cmd,
+                    input=user,
+                    capture_output=True,
+                    text=True,
+                    encoding="utf-8",
+                    timeout=self.timeout,
+                    cwd=self.cwd,
+                    env=env,
+                )
+            except subprocess.TimeoutExpired as exc:
+                last_exc = exc
+                if attempt < max_attempts:
+                    time.sleep(backoff * attempt)
+                    continue
+                raise
+
+            if proc.returncode == 0:
+                try:
+                    return json.loads(proc.stdout).get("result", "")
+                except json.JSONDecodeError:
+                    return proc.stdout
+
             detail = (proc.stderr or proc.stdout or "").strip()[:800]
+            # Retry only for known transient statuses; surface everything else.
+            if (
+                attempt < max_attempts
+                and any(s in detail for s in self._RETRY_STATUSES)
+            ):
+                time.sleep(backoff * attempt)
+                continue
             raise RuntimeError(f"claude CLI exited {proc.returncode}: {detail}")
-        try:
-            return json.loads(proc.stdout).get("result", "")
-        except json.JSONDecodeError:
-            return proc.stdout  # fall back to raw text
+
+        # Defensive — loop should have either returned or raised.
+        raise last_exc if last_exc else RuntimeError("claude CLI: exhausted retries with no result")
 
     def analyze(self, system: str, user: str, max_tokens: int = 4000) -> str:
         return self._run(CLI_OPUS_MODEL, system, user)

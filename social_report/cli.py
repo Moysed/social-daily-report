@@ -149,7 +149,21 @@ def run(args: argparse.Namespace) -> None:
                     print(f"  {p.engagement.likes:>5}pts [{p.platform}{cross}]  {p.text[:80]}")
                 continue
 
-            analysis = analyze_topic(client, topic_cfg, date_label, posts)
+            try:
+                analysis = analyze_topic(client, topic_cfg, date_label, posts)
+            except Exception as exc:
+                # Transient upstream errors (Anthropic 529, network blips) must
+                # not kill the whole multi-topic run. Fall back to stub for this
+                # topic and move on; the rest of the pipeline still produces a
+                # valid report card with raw sources, just missing reasoning.
+                from .analyze.pipeline import _stub_analysis
+
+                print(f"  {topic_key}: !! analyze failed ({exc}); using stub for this topic")
+                analysis = _stub_analysis(topic_cfg, posts)
+                analysis["what_happened"] = (
+                    f"Opus reasoning unavailable this run ({type(exc).__name__}). "
+                    "Top items by engagement listed in Raw Sources below."
+                )
 
             # English = canonical. Top Posts HTML is appended *after* translation
             # so the X embeds / image cards don't get reshaped by the translator.

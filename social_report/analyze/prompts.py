@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from ..models import Post
 
-MAX_POSTS_FOR_LLM = 40
+MAX_POSTS_FOR_LLM = 60
 
 ANALYSIS_SYSTEM = """You are a senior technology trend analyst writing a daily \
 intelligence brief for NDF DEV (NapLab Studio) — a Chiang Mai studio building \

@@ -2,10 +2,17 @@
 
 const TOPIC_TITLES: Record<string, string> = {
   "ai-devtools": "AI Devtools",
+  "ai-news": "AI News",
   "game-dev": "Game Dev",
   xr: "XR / VR / AR",
   "web-frontend": "Web & Frontend",
   edtech: "EdTech",
+  "ai-research": "AI Research",
+  "3d-graphics": "3D & Graphics",
+  "devops-cloud": "DevOps & Cloud",
+  "multimodal-ai": "Multimodal AI",
+  "audio-ai": "Audio AI",
+  "thai-tech": "Thai Tech",
 };
 
 export function prettyTopic(slug: string): string {

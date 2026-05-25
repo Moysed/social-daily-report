@@ -12,6 +12,9 @@
 #
 # min_score (reddit): 30 on large subs to drop meme/low-effort posts. Niche
 # subs (Quest3, HoloLens, WebXR, godot, edtech) use 5 so they're not silenced.
+#
+# Xquik quota = 150K posts/month. Budget per fire (2 fires/day × 30) ≈ 2,500.
+# Two X sub-queries per topic, calibrated to land around 2,400-2,500/fire.
 
 lookback_hours: 48
 
@@ -49,9 +52,13 @@ topics:
         tag: ai
         limit: 20
       - connector: x
-        query: "AI coding agents min_faves:50 lang:en"
+        query: "(claude code OR cursor OR copilot OR codex) min_faves:50 lang:en"
         query_type: Latest
-        limit: 20
+        limit: 120
+      - connector: x
+        query: "(\"MCP server\" OR \"agent skills\" OR \"tool use\") min_faves:30 lang:en"
+        query_type: Latest
+        limit: 120
 
   ai-news:
     title: "AI News & New Skills"
@@ -59,8 +66,7 @@ topics:
     focus: >
       Newly-released AI tools, agent frameworks, prompt patterns, open-source
       repos, Claude/Cursor/Continue/etc. plugins or skills, and notable AI
-      research drops — anything we could plug into our own AI workflow
-      (Claude Code, Almondo, social-daily-report) to extend its abilities.
+      research drops — anything a studio could plug into its AI workflow.
       Prefer concrete artifacts (repos, releases, plugins) over commentary.
     sources:
       - connector: reddit
@@ -90,10 +96,6 @@ topics:
       - connector: lobsters
         tag: ai
         limit: 20
-      # Community-maintained GitHub Trending RSS — daily snapshots, no
-      # per-item pubDate (RSS connector falls back to the channel timestamp).
-      # HuggingFace papers + Anthropic news feeds dropped: hf wants auth (401),
-      # anthropic.com/news has no public RSS (404).
       - connector: rss
         feed_url: "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml"
         limit: 15
@@ -101,9 +103,13 @@ topics:
         feed_url: "https://mshibanami.github.io/GitHubTrendingRSS/daily/python.xml"
         limit: 10
       - connector: x
-        query: "(claude code OR cursor OR mcp OR \"agent skills\") min_faves:30 lang:en"
+        query: "(Anthropic OR Claude OR \"new model\") min_faves:80 lang:en"
         query_type: Latest
-        limit: 25
+        limit: 100
+      - connector: x
+        query: "(OpenAI OR GPT-5 OR Gemini OR DeepMind) min_faves:80 lang:en"
+        query_type: Latest
+        limit: 100
 
   game-dev:
     title: "Game Dev"
@@ -137,16 +143,20 @@ topics:
         limit: 15
         min_score: 5
       - connector: bluesky
-        query: "gamedev OR indiedev"
+        query: "gamedev OR indiedev OR \"Unity 6\" OR UE5"
         sort: latest
         limit: 25
       - connector: rss
         feed_url: "https://www.gamedeveloper.com/rss.xml"
         limit: 15
       - connector: x
-        query: "unreal OR unity OR godot OR gamedev min_faves:30 lang:en"
+        query: "(unity OR \"Unity 6\" OR unity3d) (gamedev OR shader OR asset) min_faves:30 lang:en"
         query_type: Latest
-        limit: 20
+        limit: 120
+      - connector: x
+        query: "(unreal engine OR UE5 OR godot OR indiedev) min_faves:30 lang:en"
+        query_type: Latest
+        limit: 120
 
   xr:
     title: "XR / VR / AR"
@@ -185,10 +195,18 @@ topics:
         time: week
         limit: 10
         min_score: 5
-      - connector: x
-        query: "vr OR ar OR xr OR \"spatial computing\" min_faves:30 lang:en"
-        query_type: Latest
+      - connector: bluesky
+        query: "VR OR XR OR WebXR OR \"Vision Pro\""
+        sort: latest
         limit: 20
+      - connector: x
+        query: "(\"Meta Quest\" OR \"Vision Pro\" OR \"Apple Vision\") min_faves:15 lang:en"
+        query_type: Latest
+        limit: 100
+      - connector: x
+        query: "(VR OR AR OR XR OR \"spatial computing\" OR WebXR) min_faves:15 lang:en"
+        query_type: Latest
+        limit: 100
 
   web-frontend:
     title: "Web & Frontend"
@@ -230,12 +248,14 @@ topics:
       - connector: lobsters
         tag: web
         limit: 15
-      # NOTE: YouTube feed endpoint 404s from this network (geo/IP block) —
-      # connector kept available in code but removed from this topic.
       - connector: x
-        query: "react OR astro OR svelte OR nextjs min_faves:50 lang:en"
+        query: "(react OR nextjs OR \"Next.js\") min_faves:50 lang:en"
         query_type: Latest
-        limit: 20
+        limit: 100
+      - connector: x
+        query: "(astro OR svelte OR solidjs OR qwik OR tailwind OR shadcn) min_faves:30 lang:en"
+        query_type: Latest
+        limit: 100
 
   edtech:
     title: "EdTech"
@@ -273,6 +293,265 @@ topics:
         sort: latest
         limit: 20
       - connector: x
-        query: "edtech OR \"ai tutor\" OR \"language learning\" min_faves:20 lang:en"
+        query: "(\"AI tutor\" OR \"AI for education\" OR edtech) min_faves:10 lang:en"
         query_type: Latest
+        limit: 100
+      - connector: x
+        query: "(\"language learning\" OR Duolingo OR \"language app\" OR pronunciation) min_faves:10 lang:en"
+        query_type: Latest
+        limit: 100
+
+  ai-research:
+    title: "AI Research"
+    tags: [ai-research, papers, benchmarks, evals]
+    focus: >
+      AI research signal — new arXiv papers, benchmark results, evaluation
+      methodologies, model cards, and reproducible eval suites. Filters for
+      results a studio team needs to know before adopting a model or method.
+      Skip pure theory threads; surface findings that move adoption decisions.
+    sources:
+      - connector: reddit
+        subreddit: MachineLearning
+        sort: top
+        time: week
+        limit: 25
+        min_score: 50
+      - connector: reddit
+        subreddit: LocalLLaMA
+        sort: top
+        time: week
+        limit: 15
+        min_score: 30
+      - connector: rss
+        feed_url: "https://export.arxiv.org/rss/cs.AI"
+        limit: 15
+      - connector: rss
+        feed_url: "https://export.arxiv.org/rss/cs.CL"
+        limit: 15
+      - connector: bluesky
+        query: "arxiv OR \"new paper\" OR benchmark lang:en"
+        sort: latest
         limit: 20
+      - connector: x
+        query: "(arxiv.org OR \"new paper\" OR \"benchmark results\") (LLM OR \"language model\" OR \"AI agent\") min_faves:30 lang:en"
+        query_type: Latest
+        limit: 100
+      - connector: x
+        query: "(\"agent eval\" OR \"model card\" OR \"AI leaderboard\" OR \"hallucination benchmark\") min_faves:20 lang:en"
+        query_type: Latest
+        limit: 100
+
+  3d-graphics:
+    title: "3D & Graphics"
+    tags: [3d, graphics, shader, render]
+    focus: >
+      3D and graphics tooling — Blender, real-time shaders, procedural content,
+      Gaussian Splatting, NeRF, photogrammetry, and pipelines feeding game
+      engines (Unity/Unreal). Relevant to asset production for both games and
+      XR experiences in the studio's portfolio.
+    sources:
+      - connector: reddit
+        subreddit: blender
+        sort: top
+        time: day
+        limit: 20
+        min_score: 30
+      - connector: reddit
+        subreddit: GraphicsProgramming
+        sort: top
+        time: week
+        limit: 15
+        min_score: 10
+      - connector: reddit
+        subreddit: gameenginedevs
+        sort: top
+        time: week
+        limit: 10
+        min_score: 5
+      - connector: reddit
+        subreddit: proceduralgeneration
+        sort: top
+        time: week
+        limit: 10
+        min_score: 10
+      - connector: bluesky
+        query: "blender OR shader OR \"gaussian splat\" OR nerf OR photogrammetry"
+        sort: latest
+        limit: 20
+      - connector: rss
+        feed_url: "https://www.blender.org/news/feed/"
+        limit: 10
+      - connector: x
+        query: "(Blender OR Unreal OR Unity) (shader OR procedural OR VFX OR rigging) min_faves:30 lang:en"
+        query_type: Latest
+        limit: 100
+      - connector: x
+        query: "(\"Gaussian Splatting\" OR NeRF OR \"neural radiance\" OR photogrammetry OR \"3D scan\") min_faves:20 lang:en"
+        query_type: Latest
+        limit: 100
+
+  devops-cloud:
+    title: "DevOps & Cloud"
+    tags: [devops, cloud, deploy, infra]
+    focus: >
+      Deploy and runtime stack used by the studio's web work — Vercel, Supabase,
+      Cloudflare, edge functions, Postgres, observability, and CI/CD. Covers
+      reliability and cost signal more than novelty; the goal is fewer 3am
+      pages and lower runtime bills on production Next.js + Supabase apps.
+    sources:
+      - connector: reddit
+        subreddit: devops
+        sort: top
+        time: day
+        limit: 20
+        min_score: 30
+      - connector: reddit
+        subreddit: Supabase
+        sort: top
+        time: week
+        limit: 15
+        min_score: 5
+      - connector: reddit
+        subreddit: vercel
+        sort: top
+        time: week
+        limit: 10
+        min_score: 5
+      - connector: reddit
+        subreddit: PostgreSQL
+        sort: top
+        time: week
+        limit: 10
+        min_score: 10
+      - connector: bluesky
+        query: "Vercel OR Supabase OR Cloudflare OR \"edge functions\""
+        sort: latest
+        limit: 20
+      - connector: lobsters
+        tag: devops
+        limit: 15
+      - connector: x
+        query: "(Vercel OR Supabase OR Cloudflare OR Netlify) min_faves:30 lang:en"
+        query_type: Latest
+        limit: 100
+      - connector: x
+        query: "(observability OR Datadog OR PostHog OR Honeycomb OR Grafana OR OpenTelemetry) min_faves:30 lang:en"
+        query_type: Latest
+        limit: 100
+
+  multimodal-ai:
+    title: "Multimodal AI"
+    tags: [multimodal, image, video, generation]
+    focus: >
+      Image, video, and 3D generative AI — diffusion models, video synthesis,
+      asset generation, and tools that feed real production pipelines for games,
+      XR scenes, and edutech visuals. Prefer models with usable open weights
+      or affordable hosted APIs over closed black-box demos.
+    sources:
+      - connector: reddit
+        subreddit: StableDiffusion
+        sort: top
+        time: day
+        limit: 25
+        min_score: 30
+      - connector: reddit
+        subreddit: midjourney
+        sort: top
+        time: week
+        limit: 15
+        min_score: 30
+      - connector: reddit
+        subreddit: aivideo
+        sort: top
+        time: week
+        limit: 15
+        min_score: 5
+      - connector: reddit
+        subreddit: comfyui
+        sort: top
+        time: week
+        limit: 10
+        min_score: 5
+      - connector: bluesky
+        query: "diffusion OR \"image gen\" OR \"video gen\" OR Flux"
+        sort: latest
+        limit: 20
+      - connector: x
+        query: "(\"Stable Diffusion\" OR Midjourney OR \"DALL-E\" OR ComfyUI OR \"FLUX.1\") (AI OR model OR prompt) min_faves:50 lang:en"
+        query_type: Latest
+        limit: 100
+      - connector: x
+        query: "(Sora OR \"Runway ML\" OR Kling OR \"video generation\" OR \"image to video\") AI min_faves:30 lang:en"
+        query_type: Latest
+        limit: 100
+
+  audio-ai:
+    title: "Audio AI"
+    tags: [audio, tts, voice, music]
+    focus: >
+      Audio AI for production — TTS for edutech narration and in-game voice,
+      voice cloning for character lines, music generation for cinematics and
+      e-learning soundscapes. Track quality, latency, multilingual support
+      (Thai/EN), and license terms (commercial use clarity matters).
+    sources:
+      - connector: reddit
+        subreddit: TTS
+        sort: top
+        time: week
+        limit: 15
+        min_score: 5
+      - connector: reddit
+        subreddit: ElevenLabs
+        sort: top
+        time: week
+        limit: 10
+        min_score: 5
+      - connector: reddit
+        subreddit: MusicAI
+        sort: top
+        time: week
+        limit: 10
+        min_score: 5
+      - connector: reddit
+        subreddit: LocalLLaMA
+        sort: top
+        time: week
+        limit: 10
+        min_score: 30
+      - connector: bluesky
+        query: "TTS OR \"voice clone\" OR ElevenLabs OR Suno"
+        sort: latest
+        limit: 20
+      - connector: x
+        query: "(TTS OR \"text to speech\" OR \"voice clone\" OR ElevenLabs OR \"Sesame AI\") AI min_faves:30 lang:en"
+        query_type: Latest
+        limit: 100
+      - connector: x
+        query: "(Suno OR Udio OR \"music generation\" OR \"audio diffusion\" OR \"ACE-Step\") AI min_faves:30 lang:en"
+        query_type: Latest
+        limit: 100
+
+  thai-tech:
+    title: "Thai Tech"
+    tags: [thai, nlp, localization, sovereign-ai]
+    focus: >
+      Thai-language AI and localization signal — Thai NLP, sovereign Thai LLMs
+      (Typhoon, Pathumma, THaLLE, OpenThaiGPT), Thai TTS quality, and edtech /
+      web products built for the Thai market. Tracks both Thai-language and
+      English coverage of the Thai tech ecosystem.
+    sources:
+      - connector: bluesky
+        query: "Thai LLM OR Typhoon OR Pathumma OR \"Thai NLP\""
+        sort: latest
+        limit: 25
+      - connector: rss
+        feed_url: "https://www.blognone.com/atom.xml"
+        limit: 20
+      - connector: x
+        query: "(\"Typhoon LLM\" OR OpenThaiGPT OR Pathumma OR THaLLE OR \"Thai LLM\" OR \"sovereign AI Thailand\") min_faves:5"
+        query_type: Latest
+        limit: 80
+      - connector: x
+        query: "(\"AI ภาษาไทย\" OR \"LLM ภาษาไทย\" OR \"Thai NLP\" OR \"AI ไทย\" OR \"sovereign Thai\") min_faves:5"
+        query_type: Latest
+        limit: 80

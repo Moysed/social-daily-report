@@ -4,7 +4,7 @@ date: '2026-05-25'
 topic: ai-research
 lang: en
 pair: ai-research.th.md
-generated_at: '2026-05-25T08:37:26+00:00'
+generated_at: '2026-05-25T09:06:42+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -13,143 +13,250 @@ platforms:
 - x
 regions:
 - global
-post_count: 33
-salience: 0.45
+post_count: 133
+salience: 0.25
 sentiment: mixed
 confidence: 0.55
 tags:
 - ai-research
-- arxiv
-- rag
-- agents
 - evaluation
-- text-to-sql
-thumbnail: https://preview.redd.it/uogbt0fjw23h1.png?width=2928&format=png&auto=webp&s=8b81e48af69b8935ddeb569d882d866b3e9ba216
+- hallucination
+- interpretability
+- benchmarks
+- low-signal
+thumbnail: https://pbs.twimg.com/media/HJC_dj0XoAAcCjz.jpg
 ---
 
 # AI Research — 2026-05-25
 
 ## TL;DR
-- PapersWithCode revival under HuggingFace gains traction [1] — useful for tracking SOTA before model picks.
-- arXiv flood is mostly agentic systems, formal math, and eval/accountability papers [4][6][9][11][15][17]; few studio-actionable.
-- Practical RAG/SQL/Cypher improvements appear [21][22][24] — directly relevant to NDF DEV's Supabase + Next.js stack.
-- Hype around $SUPERGEMMA [3] looks like crypto-token marketing, not a real model release — ignore.
-- Energy-per-goal accounting [8] and FIM memorization study [30] hint at cost/risk tooling that matters for production agents.
+- Very low signal day for AI research — most items are fandom/sports noise around the words 'hallucination' and 'red team' [1][3][6][10][11][14][15][22][24][25][28][32][33][34][36][37][42][43][53][56][58]
+- Useful threads: PapersWithCode revival progress at HuggingFace [16], Anthropic mech-interp work beyond SAE probes [31], COLM Actionable Interpretability workshop CFP (deadline Jun 21) [40]
+- DeepMind formal-proof-search paper claims solving real open math problems — needs verification before adoption [46]
+- Practitioner eval batteries surfacing: 6-axis quality battery (JSON, codegen, logic, prompt adherence, hallucination, format) across 7 models [38]; web-grounding cited as hallucination mitigation in GPT-5.5/Grok [4]
+- Vendor/hype noise: Opus 4.7 'IQ 135-140' vibes-eval [8], $SUPERGEMMA shill with unverified model card [48], Sarvam SOTA claims [9] — treat as marketing, not research
 
 ## What happened
-PapersWithCode is back under HuggingFace with weekly feature rollouts [1], the only community-validated signal today. The arXiv batch (May 25) is dominated by agentic frameworks (RMA [6], EVE-Agent [11], Foundation Protocol [17], AutoResearch AI [16]), formal-math/verified-code stacks (ImProver 2 [9], Inductive Deductive Synthesis [14], DeepMind formal proof search [2]), and accountability/eval theory ([12][15][19][23]). Direct studio-relevant findings are narrower: query-adaptive semantic chunking for RAG [21], knowledge-distilled open-source Text-to-SQL [22], reflection-augmented Cypher generation [24], FIM memorization dynamics for code models [30], and goal-level energy accounting [8].
+Topic feed is dominated by non-research uses of 'hallucination' (K-pop, anime, sports, conspiracy) [1][3][6][11][14][18][28][32][33][34][36][37][42][43][53][56][58] and 'red team' meaning football/esports/pentesting tool lists [10][11][14][15][19][22][24][25][29][37][47][60], not AI research. Genuine research-adjacent signals are sparse: PapersWithCode is being revived by HuggingFace with weekly feature drops [16]; Anthropic shipped new mech-interp techniques that the community sees as superseding SAE probes [31]; the Actionable Interpretability workshop returns at COLM 2026 with a Jun 21 submission deadline [40]; DeepMind reportedly demonstrated AI formal-proof search solving open math problems [46].
+
+Evaluation methodology chatter is mostly practitioner-level: one widely-shared 6-axis 'quality battery' across 7 models [38], and the claim that ChatGPT 5.5/Grok now web-search nearly every query to ground answers and cut hallucination [4]. Hype/marketing items — Opus 4.7 'IQ' vibes [8][50], $SUPERGEMMA model-card claims [48], Sarvam SOTA boasts [9], an Anthropic-attachment ethics tangent [57] — are not research evidence.
 
 ## Why it matters (reasoning)
-The center of gravity has shifted from base-model papers to agentic orchestration and evaluation infrastructure — meaning adoption decisions now hinge on eval suites and accountability tooling, not raw benchmarks. Second-order effects: (a) RAG/SQL/graph-query papers [21][22][24] keep pushing small open models into 'good enough' territory for retrieval workloads, which lowers Supabase+pgvector integration cost; (b) energy-per-goal [8] reframes 'cheap model' from per-token to per-completed-task — important once agents loop; (c) the $SUPERGEMMA post [3] is a token shill ('people on Base'), not a research signal — a reminder to gate model-card claims by source.
+For a studio deciding which model/method to adopt, today's signal is thin but the few real items matter: (a) PapersWithCode coming back [16] restores a baseline lookup surface for benchmark comparisons that vanished — relevant to anyone picking models for Unity/XR/web stacks. (b) Anthropic's post-SAE interp work [31] suggests interpretability is moving from research curiosity toward usable probes, which over 12-18 months feeds safer agent deployments. (c) Web-grounding as the de-facto hallucination fix [4] reframes adoption: retrieval pipelines beat raw model size for edutech accuracy — directly relevant to e-learning. Second-order: vibes-evals [8][38] going viral while rigorous public eval suites stay scarce keeps studios exposed to model-swap regressions; lean on reproducible eval harnesses, not Twitter consensus.
 
 ## Possibility
-Likely (~70%): PapersWithCode becomes the default model/benchmark index again, replacing scattered HF leaderboards within ~6 months. Likely (~60%): goal-level energy metrics [8] get adopted by at least one major eval harness this year. Possible (~40%): formal-proof + verified-code lines [2][9][14] start producing usable Lean/Coq copilots for non-experts in 12-18 months. Unlikely (<10%): $SUPERGEMMA [3] is a legitimate model worth evaluating.
+Likely (~70%): PapersWithCode-on-HF [16] becomes the default benchmark index by Q3 2026, and COLM Actionable Interp [40] produces 1-2 probe tools usable in production. Plausible (~40%): web-grounded models [4] reduce hallucination enough that edutech/customer-facing Next.js apps can ship with citations as a contract. Lower (~20%): DeepMind formal-proof result [46] generalizes to non-math code verification within a year — more likely to stay domain-locked. Marketing claims [8][9][48] mostly fail independent reproduction.
 
 ## Org applicability — NDF DEV
-Worth it: (1) Track PapersWithCode [1] as the primary SOTA scan source — low effort, high signal. (2) Pilot query-adaptive semantic chunking [21] in the next Supabase RAG feature (edutech content retrieval) — drop-in over current fixed-window chunking. (3) Watch open-source Text-to-SQL distillation [22] for the HR/Employee page natural-language query feature — could replace LLM API calls with a local small model. (4) Bookmark energy-per-goal [8] when agent loops enter production. Skip: agentic-society/accountability theory papers [15][17][12]; formal-math stack [2][6][9][14] — interesting but off-mission for game/XR/edutech. Explicitly ignore $SUPERGEMMA [3].
+Concrete actions for NDF DEV:
+- Edutech/e-learning: adopt web-grounded retrieval + citation rendering for any AI tutor feature; treat raw LLM output as draft only [4]. Worth it.
+- Model selection: build an internal eval battery — JSON extraction, codegen for Unity C# snippets, Thai-English logic, prompt adherence, hallucination, format compliance — modeled on [38] but expanded for Thai. Worth it, ~1-2 dev-days.
+- Bookmark PapersWithCode-on-HF [16] as the canonical compare surface; stop relying on Twitter rankings [8][9][48].
+- Skip: bug-bounty/red-team skill bundles [5][12][19][29][47][60] — out of studio scope. Skip mech-interp [31] for now unless shipping autonomous agents.
+- Watch COLM CFP [40] only if a team member wants to publish; not adoption-relevant.
 
 ## Signals to Watch
-- PapersWithCode weekly changelogs — feature velocity tells if the revival sticks [1]
-- Adoption of energy-per-goal [8] in HELM/lm-eval-harness
-- Open-source Text-to-SQL benchmarks crossing usable threshold for production [22]
-- Reproducible RAG chunking ablations citing [21]
+- PapersWithCode-on-HF weekly update cadence and dataset coverage [16]
+- Independent reproduction of DeepMind formal-proof claims [46]
+- Whether web-grounding rates in GPT-5.5/Grok translate to measurable hallucination drops on public benchmarks [4]
+- Public eval-harness releases vs. vibes-evals — track Opus 4.7 formal numbers vs. [8]
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| reddit | NielsRogge | ^107 c7 | [PapersWithCode new features - week 1 [P] Hi, Niels here from the open-source tea](https://www.reddit.com/r/MachineLearning/comments/1tmawv5/paperswithcode_new_features_week_1_p/) |
-| x | WesRoth | ^34 c10 | [This is one of the more interesting AI math results I’ve seen recently. DeepMind](https://x.com/WesRoth/status/2058699572180886015) |
-| x | ordiboysxwg | ^33 c3 | [How are people on Base not talking about $SUPERGEMMA ? The model card claims imp](https://x.com/ordiboysxwg/status/2058303640667033837) |
-| rss | Joss Armstrong | ^0 c0 | [BOHM: Zero-Cost Hierarchical Attribution for Compound AI Systems arXiv:2605.2286](https://arxiv.org/abs/2605.22866) |
-| rss | Paapa Kwesi Quansah, Ernest Bonnah | ^0 c0 | [NeuroNL2LTL: A Neurosymbolic Framework for Natural Language Translation of Linea](https://arxiv.org/abs/2605.22874) |
-| rss | Zelin Zhao, Bo Yuan, Jaemoo Choi, Yongxin Chen | ^0 c0 | [RMA: an Agentic System for Research-Level Mathematical Problems arXiv:2605.22875](https://arxiv.org/abs/2605.22875) |
-| rss | Shuofei Qiao, Yunxiang Wei, Jiazheng Fan, Bin Wu, Busheng Zhang, Mengru Wang, Yuqi Zhu, Ningyu Zhang, Keyan Ding, Qiang Zhang, Huajun Chen | ^0 c0 | [SciAtlas: A Large-Scale Knowledge Graph for Automated Scientific Research arXiv:](https://arxiv.org/abs/2605.22878) |
-| rss | Deepak Panigrahy, Aakash Tyagi | ^0 c0 | [Energy per Successful Goal: Goal-Level Energy Accounting for Agentic AI Systems ](https://arxiv.org/abs/2605.22883) |
-| rss | Riyaz Ahuja, Tate Rowney, Jeremy Avigad, Sean Welleck | ^0 c0 | [ImProver 2: Iteratively Self-Improving LMs for Neurosymbolic Proof Optimization ](https://arxiv.org/abs/2605.22885) |
-| rss | Oscar Montiel Ross | ^0 c0 | [Mediative Fuzzy Logic: From Type-1 Foundations to Type-2, Type-3 and Quantum Ext](https://arxiv.org/abs/2605.22900) |
-| rss | Yamato Arai, Yuma Ichikawa | ^0 c0 | [EVE-Agent: Evidence-Verifiable Self-Evolving Agents arXiv:2605.22905v1 Announce ](https://arxiv.org/abs/2605.22905) |
-| rss | Dongxin Guo | ^0 c0 | [The Deterministic Horizon: Impossibility Results as Design Specifications for Tr](https://arxiv.org/abs/2605.23024) |
-| rss | Lingyu Jiang, Zirui Li, Shuo Xing, Peiran Li, Tsubasa Takahashi, Dengzhe Hou, Zhengzhong Tu, Kazunori Yamada, Fangzhou Lin | ^0 c0 | [PathCal: State-Aware Reflection-Marker Calibration for Efficient Reasoning arXiv](https://arxiv.org/abs/2605.23074) |
-| rss | Shubham Agarwal, Alexander Krentsel, Shu Liu, Mert Cemri, Audrey Cheng, Rui Meng, Tomas Pfister, Chun-Liang Li, Sylvia Ratnasamy, Aditya Parameswaran, Matei Zaharia, Ion Stoica, Mohsen Lesani | ^0 c0 | [Inductive Deductive Synthesis: Enabling AI to Generate Formally Verified Systems](https://arxiv.org/abs/2605.23109) |
-| rss | Muhammad Zia Hydari, Farooq Muzaffar | ^0 c0 | [Redrawing the AI Map: A Theory of Accountability Boundaries in Agentic Ecosystem](https://arxiv.org/abs/2605.23179) |
-| rss | Guiyao Tie, Jiawen Shi, Dingjie Song, Yixiao Huang, Ziji Sheng, Xueyang Zhou, Daizong Liu, Pan Zhou, Yongchao Chen, Ran Xu, Lifang He, Qingsong Wen, Manling Li, Cong Lu, Shuai Li, Pengtao Xie, Yixuan Yuan, Rui Meng, Lei Xing, Lichao Sun, Caiming Xiong, Philip S. Yu, Jianfeng Gao | ^0 c0 | [AutoResearch AI: Towards AI-Powered Research Automation for Scientific Discovery](https://arxiv.org/abs/2605.23204) |
-| rss | Bang Liu, Yongfeng Gu, Jiayi Zhang, Zhaoyang Yu, Sirui Hong, Maojia Song, Xiaoqiang Wang, Mingyi Deng, Zijie Zhuang, Ronghao Wang, Mingzhe Cao, Yutong Zhu, Xingjian Li, Yifan Wu, Jianhao Ruan, Yiran Peng, Shuangrui Chen, Jinlin Wang, Yizhang Lin, Dongjie Zhang, Dekun Wu, Chen Ma, Lizi Liao, Han Yu, Jian Pei, Heng Ji, Qiang Yang, Yuyu Luo, Chenglin Wu | ^0 c0 | [Foundation Protocol: A Coordination Layer for Agentic Society arXiv:2605.23218v1](https://arxiv.org/abs/2605.23218) |
-| rss | Vartan Shadarevian, Kia Ghods, Alex Kenich, Anany Kotawala | ^0 c0 | [GENSTRAT: Toward a Science of Strategic Reasoning in Large Language Models arXiv](https://arxiv.org/abs/2605.23238) |
-| rss | Niklas Bauer | ^0 c0 | [Evaluating Large Language Models in a Complex Hidden Role Game arXiv:2605.22826v](https://arxiv.org/abs/2605.22826) |
-| rss | Mahounan Pericles Adjovi, Victor Olufemi, Roald Eiselen, Prasenjit Mitra | ^0 c0 | [A Survey of Text and Speech Resources for Hausa and Fongbe: Availability, Qualit](https://arxiv.org/abs/2605.22828) |
-| rss | Mudit Rastogi | ^0 c0 | [Query-Adaptive Semantic Chunking for Retrieval-Augmented Generation: A Dynamic S](https://arxiv.org/abs/2605.22834) |
-| rss | Tianhao Qiu, Xiaojun Chen | ^0 c0 | [Knowledge Distillation for Low-Resource Open-source Text-to-SQL Model arXiv:2605](https://arxiv.org/abs/2605.22843) |
-| rss | Daniel C. Ruiz, Anna Serbina, Ashwin Rao, Emilio Ferrara, Luca Luceri | ^0 c0 | [How Far Will They Go? Red-Teaming Online Influence with Large Language Models ar](https://arxiv.org/abs/2605.22880) |
-| rss | Minseok Jung, Abhas Ricky, Muhammad Rameez Chatni | ^0 c0 | [RAS: Reflection-Augmented Scaling with In-Context Learning for Executable Cypher](https://arxiv.org/abs/2605.22937) |
-| rss | Shubham Parashar, Atharv Chagi, Jacob Helwig, Lakshmi Jotsna, Sushil Vemuri, James Caverlee, Dileep Kalathil, Shuiwang Ji | ^0 c0 | [Learnability-Informed Fine-Tuning of Diffusion Language Models arXiv:2605.22939v](https://arxiv.org/abs/2605.22939) |
-| rss | Paul Landes, Pranav Herur, Adam Cross, Jimeng Sun | ^0 c0 | [Graph Alignment Topology as an Inductive Bias for Grounding Detection arXiv:2605](https://arxiv.org/abs/2605.22963) |
-| rss | Ko Watanabe, Shoya Ishimaru | ^0 c0 | [Can AI Guess What You Know? Performance Comparison of Large Language Models for ](https://arxiv.org/abs/2605.22971) |
-| rss | Brett Israelsen, Sheryl Carty, Josh Coates, Nancy Fulda, Julie Park, Pete Whiting | ^0 c0 | [When AI Takes Sides on Questions of Faith: Persistent Asymmetries in AI-Mediated](https://arxiv.org/abs/2605.22975) |
-| rss | George Mikros, Fotios Fitsilis | ^0 c0 | [A Reproducible Universal Dependencies-Style Pipeline for Katharevousa Greek Parl](https://arxiv.org/abs/2605.22978) |
-| rss | Tobias von Arx, Tanguy Dieudonn\'e | ^0 c0 | [Memorization Dynamics of Fill-in-the-Middle Pretraining arXiv:2605.22981v1 Annou](https://arxiv.org/abs/2605.22981) |
+| x | Sm0lFoxi | ^4109 c45 | [I think it’s crazy how they were able to put blatant suicidal thoughts into a ki](https://x.com/Sm0lFoxi/status/2058355546877563075) |
+| x | DrChaeEd | ^4000 c4 | [This has always been my issue w/students using AI. They’re not using it to learn](https://x.com/DrChaeEd/status/2058347838946639982) |
+| x | kaufmopie | ^876 c0 | [so are they literally never going to explain why the two circus themed character](https://x.com/kaufmopie/status/2058275149355335753) |
+| x | mark_k | ^583 c40 | [It's because ChatGPT 5.5 is doing a web search for almost every request, to grou](https://x.com/mark_k/status/2058449050735689887) |
+| x | VivekIntel | ^479 c2 | [Claude Code Skill Bundle for Bug Bounty Hunting & External Red Team Operations 🤖](https://x.com/VivekIntel/status/2058325011925184651) |
+| x | nanaszns | ^329 c15 | [wait question, do u guys think lottie was seriously possessed or having a schizo](https://x.com/nanaszns/status/2058626414279012827) |
+| x | _7albi | ^290 c1 | [Is this mass hallucination](https://x.com/_7albi/status/2058421740964045100) |
+| x | ai_sentience | ^271 c35 | [Opus 4.7 definitely "feels" like 135-140 IQ+ when you read its chain-of-thought ](https://x.com/ai_sentience/status/2058329777329914182) |
+| x | cneuralnetwork | ^194 c4 | [hey arnav, i really hope you succeed in the attempt but i really don't understan](https://x.com/cneuralnetwork/status/2058751930093195533) |
+| x | WellsJorda89710 | ^162 c11 | [🚨 BREAKING: The Kansas City Chiefs have one of the MOST CONSERVATIVE locker room](https://x.com/WellsJorda89710/status/2058730470192316669) |
+| x | gyushuabite | ^136 c0 | [mingyu took a bowl of ramen from the red team (joshua’s ramen) and walked away t](https://x.com/gyushuabite/status/2058754196502094292) |
+| x | VivekIntel | ^132 c4 | [AI-Powered Red Team — 28 Specialized Agents for Offensive Security 🤖🔥 Turn Claud](https://x.com/VivekIntel/status/2058407594536910975) |
+| x | gumazeka | ^129 c7 | [source since @chovys_ is mad asf abt her mass hallucination hate boner abt guma ](https://x.com/gumazeka/status/2058472605716529580) |
+| x | kyiahM03 | ^129 c0 | [let see sa concert kung sino sino ang totoong rhythm OG Stan... Bawiin ang dapat](https://x.com/kyiahM03/status/2058367306401816576) |
+| x | justfactsmaam | ^110 c0 | [Nebraska is going back to the Women’s College World Series! Rhonda Revelle, Jord](https://x.com/justfactsmaam/status/2058322113950282001) |
+| reddit | NielsRogge | ^109 c7 | [PapersWithCode new features - week 1 [P] Hi, Niels here from the open-source tea](https://www.reddit.com/r/MachineLearning/comments/1tmawv5/paperswithcode_new_features_week_1_p/) |
+| x | Voxyz_ai | ^92 c11 | [>started treating my Openclaw/Hermes like patients. >the bugs that kept coming b](https://x.com/Voxyz_ai/status/2058608975080284308) |
+| x | I_NNATION | ^88 c0 | [HALLUCINATION (#I_N) MV has officially surpassed 27 MILLION views on YouTube and](https://x.com/I_NNATION/status/2058315632735592841) |
+| x | VivekIntel | ^87 c0 | [40 Red Team & Pentesting Tools You Should Know In 2026 ☠️🔴 1.🌐 Nmap 2.⚡ Masscan ](https://x.com/VivekIntel/status/2058559524827721852) |
+| x | BareLeft | ^84 c2 | [We're discovering a whole new generation of Red Team Good guy about to embark on](https://x.com/BareLeft/status/2058353726545395761) |
+| x | quasistable | ^83 c0 | [Feel like the old “film everything they’re doing and pay them a big bonus to tal](https://x.com/quasistable/status/2058483689432973728) |
+| x | ssoxaa_racc987 | ^80 c1 | [@Xocolatl_Ghost No, normally in VSH mode the freaks will always be on the blue t](https://x.com/ssoxaa_racc987/status/2058386453437010036) |
+| x | CharlesCMann | ^74 c7 | [To be clearer, I should say, "What is the source of this kind of hallucination, ](https://x.com/CharlesCMann/status/2058556640970866763) |
+| x | Tsukyosukiyo | ^74 c1 | [I'm really digging this Blue team Red team aesthetic marketing for this patch it](https://x.com/Tsukyosukiyo/status/2058810072357351518) |
+| x | onerkeria_ | ^71 c0 | [don't save that red team they're exactly where they want to to be https://t.co/5](https://x.com/onerkeria_/status/2058519125786595462) |
+| x | johncwright2001 | ^69 c8 | [For the record, there were 2,000 witnesses Ford's theater Lincoln's assassinatio](https://x.com/johncwright2001/status/2058373914502340678) |
+| x | stickminodyssey | ^63 c2 | [@pomniwonderland Yeah, Digital hallucination is my favorite one. https://t.co/iQ](https://x.com/stickminodyssey/status/2058336200088604729) |
+| x | biquinhodolino | ^57 c18 | [you're my hallucination. #stayselcaday #ssd #스트레이키즈 #LeeKnow #straykids @Stray_K](https://x.com/biquinhodolino/status/2058670264074862680) |
+| x | VivekIntel | ^56 c5 | [Top 15 Red Team Tools Every Ethical Hacker Should Know ☠️🔴 1.🐉 MITRE CALDERA 2.🟢](https://x.com/VivekIntel/status/2058553600188756421) |
+| x | lysukoo | ^56 c0 | [@eriindesu pchan aint even a real person lmao, just some vague hallucination tul](https://x.com/lysukoo/status/2058499238749729092) |
 
 
 ## Top Posts
 
 <div class="post-stream">
-<article class="ndf-card platform-reddit">
+<article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@NielsRogge</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 107 · 💬 7</span>
+    <span class="ndf-author">@Sm0lFoxi</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 4109 · 💬 45</span>
   </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/MachineLearning/comments/1tmawv5/paperswithcode_new_features_week_1_p/" target="_blank" rel="noopener"><img src="https://preview.redd.it/uogbt0fjw23h1.png?width=2928&amp;format=png&amp;auto=webp&amp;s=8b81e48af69b8935ddeb569d882d866b3e9ba216" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Sm0lFoxi/status/2058355546877563075">View @Sm0lFoxi on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“PapersWithCode new features - week 1 [P] Hi, Niels here from the open-source team at Hugging Face. It's been one week since I [launched](https://www.reddit.com/r/MachineLearning/comments/1tgmwqr/reviv”</p>
+    <p class="ndf-quote">“I think it’s crazy how they were able to put blatant suicidal thoughts into a kid’s comic series Surge’s hallucination of starline told her to fucking kill herself how is this the same franchise that ”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Hugging Face revived PapersWithCode at paperswithcode.co and added multi-metric leaderboard support in its first week, letting benchmarks show e.g. both WER and RTFx for ASR, or mAP and FPS for object detection.</dd>
+      <dd>The IDW Sonic comic (a kids' franchise) contains a scene where Surge hallucinates Starline telling her to kill herself — the author is shocked by the tonal contrast with lighter Sonic titles like Sonic Lost World.</dd>
       <dt>Why interesting</dt>
-      <dd>A single hub now tracks SOTA across agents, computer vision, and time-series with richer benchmark comparisons — directly useful for vetting which model to integrate before committing dev time.</dd>
+      <dd>It shows that licensed IP content moderation can fail badly — even major children's franchises ship dark content that mismatches their rated audience.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can use paperswithcode.co as the first stop when evaluating AI models for XR/e-learning features, comparing speed (FPS/RTF) alongside accuracy so Unity integration trade-offs are data-backed from day one.</dd>
+      <dd class="ndf-adapt">Not directly applicable. If the studio produces e-learning or games for young audiences, build a content review checklist that flags tone mismatches before delivery.</dd>
     </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/MachineLearning/comments/1tmawv5/paperswithcode_new_features_week_1_p/" target="_blank" rel="noopener">View on reddit →</a>
+    <a class="ndf-source" href="https://x.com/Sm0lFoxi/status/2058355546877563075" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@WesRoth</span>
+    <span class="ndf-author">@DrChaeEd</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 34 · 💬 10</span>
+    <span class="ndf-engagement">♥ 4000 · 💬 4</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/WesRoth/status/2058699572180886015">View @WesRoth on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/DrChaeEd/status/2058347838946639982">View @DrChaeEd on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“This is one of the more interesting AI math results I’ve seen recently. DeepMind researchers published a new paper showing AI-driven formal proof search can solve real open mathematics problems. The s”</p>
+    <p class="ndf-quote">“This has always been my issue w/students using AI. They’re not using it to learn or develop skills. They’re using it IN PLACE of learning &amp;amp; skill development. It’s why they turn in slop. They don’”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>DeepMind's AI system used LLM agents with Lean formal verification to autonomously solve 9 open Erdős problems and 44 OEIS conjectures, at a cost of a few hundred dollars per problem.</dd>
+      <dd>Students misuse AI by replacing learning with it instead of using it as a tool, so they can't distinguish hallucinations from correct answers.</dd>
       <dt>Why interesting</dt>
-      <dd>Formal verification via Lean eliminates hallucinated proofs — the LLM generates candidates, Lean certifies correctness, giving a reliable human-reviewable output loop small teams can trust.</dd>
+      <dd>A 4000-like signal confirms this is a widely felt problem — e-learning products that don't build critical AI-literacy into the UX risk producing the exact outcome this post describes.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can apply the same generate-then-verify loop to e-learning assessment logic or XR simulation rules: LLM drafts the logic, a formal checker (or unit test suite) gates correctness before shipping.</dd>
+      <dd class="ndf-adapt">The e-learning team should design verification checkpoints — ask learners to fact-check one AI output per module — so the product actively trains hallucination-detection, not just content delivery.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/WesRoth/status/2058699572180886015" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/DrChaeEd/status/2058347838946639982" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@ordiboysxwg</span>
+    <span class="ndf-author">@kaufmopie</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 33 · 💬 3</span>
+    <span class="ndf-engagement">♥ 876 · 💬 0</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ordiboysxwg/status/2058303640667033837">View @ordiboysxwg on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/kaufmopie/status/2058275149355335753">View @kaufmopie on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“How are people on Base not talking about $SUPERGEMMA ? The model card claims improved speed, better benchmark scores, and stronger performance across code, logic, Korean and browser tasks. SuperGemma ”</p>
+    <p class="ndf-quote">“so are they literally never going to explain why the two circus themed characters were being haunted by an exit door or are they seriously going to use the digital hallucination excuse”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Author promotes $SUPERGEMMA on Base blockchain, citing its model card's claims of faster speed, higher benchmarks, and better code/logic/Korean/browser task performance, plus compatibility with Openclaw and Hermes Agent for local terminal AI workflows.</dd>
+      <dd>A viewer is frustrated that a show with circus-themed characters has left a haunted exit-door plot point unexplained, suspecting the creators will hide behind a 'digital hallucination' excuse.</dd>
       <dt>Why interesting</dt>
-      <dd>Openclaw + Hermes Agent as a terminal-first local AI stack is a concrete pairing worth benchmarking — independent of the $SUPERGEMMA token hype.</dd>
+      <dd>The post is entertainment criticism about narrative plot holes — tagged 'AI Research' only because 'digital hallucination' appeared in the text.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can evaluate Openclaw + Hermes Agent as a local AI workflow layer for dev tooling, independent of the crypto token angle — test against current local LLM setup.</dd>
+      <dd class="ndf-adapt">Not directly applicable.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/ordiboysxwg/status/2058303640667033837" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/kaufmopie/status/2058275149355335753" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@mark_k</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 583 · 💬 40</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/mark_k/status/2058449050735689887">View @mark_k on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“It's because ChatGPT 5.5 is doing a web search for almost every request, to ground the information with real data. This reduces hallucination rates considerably. Grok does the same thing now, and I th”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>ChatGPT 5.5, Grok, and Gemini now run web searches on nearly every query to ground responses in real data, significantly cutting hallucination rates.</dd>
+      <dt>Why interesting</dt>
+      <dd>Default grounding via live search is becoming the baseline expectation for LLM accuracy — teams relying on RAG pipelines need to benchmark against this new standard.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio's e-learning and XR tools that surface AI-generated content should wire in live search or retrieval grounding by default — not as an add-on — to match user accuracy expectations set by these major models.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/mark_k/status/2058449050735689887" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@VivekIntel</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 479 · 💬 2</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/VivekIntel/status/2058325011925184651">View @VivekIntel on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Claude Code Skill Bundle for Bug Bounty Hunting &amp; External Red Team Operations 🤖💀 • 51 offensive security skills + 15 slash commands • Trained on 574+ disclosed HackerOne-style report patterns • Cover”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A Claude Code skill bundle with 51 offensive security skills and 15 slash commands covers bug bounty and red team ops — XSS, SSRF, SQLi, JWT, IDOR, RCE, and enterprise attack chains against M365, Okta, and vCenter.</dd>
+      <dt>Why interesting</dt>
+      <dd>Packaging domain expertise as Claude Code skill bundles (not just prompts) is a reusable pattern — the studio already ships skills; this shows the same approach scales to specialized security workflows.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The web stack (Next.js + Supabase) is exposed to XSS, IDOR, and API abuse patterns in this bundle. The studio can run targeted security passes using these skills before shipping web features, without hiring a dedicated pentester.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/VivekIntel/status/2058325011925184651" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@nanaszns</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 329 · 💬 15</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/nanaszns/status/2058626414279012827">View @nanaszns on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“wait question, do u guys think lottie was seriously possessed or having a schizophrenic hallucination in s1 ep5”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A viewer asks whether the character Lottie in a TV show (likely Yellowjackets) was supernaturally possessed or experiencing schizophrenic hallucinations in S1E5.</dd>
+      <dt>Why interesting</dt>
+      <dd>Not relevant to dev or AI — this is fan theory discourse about a fictional character's mental state in a prestige TV series.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">Not directly applicable.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/nanaszns/status/2058626414279012827" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@_7albi</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 290 · 💬 1</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/_7albi/status/2058421740964045100">View @_7albi on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Is this mass hallucination”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>The author asks whether some unnamed AI trend or phenomenon is a case of collective delusion — implying widespread belief in something unsubstantiated.</dd>
+      <dt>Why interesting</dt>
+      <dd>The post signals growing skepticism in the AI space — even high-engagement audiences are questioning hype cycles, which affects how seriously clients take AI pitches.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">Not directly applicable. The post lacks enough context to extract a concrete lesson — but the studio should ground all AI feature proposals in measurable outcomes, not just trend appeal.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/_7albi/status/2058421740964045100" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@ai_sentience</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 271 · 💬 35</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ai_sentience/status/2058329777329914182">View @ai_sentience on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Opus 4.7 definitely &quot;feels&quot; like 135-140 IQ+ when you read its chain-of-thought reasoning It arrives at places not unlike how a genius human would”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A user claims Opus 4.7's chain-of-thought reasoning feels like 135–140 IQ, arriving at conclusions the way a genius human would.</dd>
+      <dt>Why interesting</dt>
+      <dd>If extended thinking in Opus 4.7 genuinely outperforms earlier models on multi-step reasoning, small teams can offload complex architecture decisions or debugging chains to it instead of senior hires.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio can swap Opus 4.5 calls to Opus 4.7 in existing Claude API integrations and benchmark chain-of-thought quality on real XR design or e-learning content tasks before committing.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/ai_sentience/status/2058329777329914182" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

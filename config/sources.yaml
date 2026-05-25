@@ -332,12 +332,16 @@ topics:
         query: "arxiv OR \"new paper\" OR benchmark lang:en"
         sort: latest
         limit: 20
+      # Wide net: papers + benchmarks + interpretability — anything an
+      # AI-adjacent research thread tends to mention. min_faves trimmed to 10
+      # so smaller-account researchers (where the actual signal lives) make it
+      # past the engagement gate.
       - connector: x
-        query: "(arxiv.org OR \"new paper\" OR \"benchmark results\") (LLM OR \"language model\" OR \"AI agent\") min_faves:30 lang:en"
+        query: "(arxiv OR \"new paper\" OR \"new benchmark\" OR \"SOTA\" OR \"state of the art\") (LLM OR \"language model\" OR transformer OR \"deep learning\") min_faves:10 lang:en"
         query_type: Latest
-        limit: 100
+        limit: 120
       - connector: x
-        query: "(\"agent eval\" OR \"model card\" OR \"AI leaderboard\" OR \"hallucination benchmark\") min_faves:20 lang:en"
+        query: "(\"agent eval\" OR \"model card\" OR \"AI leaderboard\" OR \"hallucination\" OR \"chain of thought\" OR interpretability OR \"mech interp\" OR \"red team\") min_faves:10 lang:en"
         query_type: Latest
         limit: 100
 
@@ -479,11 +483,11 @@ topics:
       - connector: x
         query: "(\"Stable Diffusion\" OR Midjourney OR \"DALL-E\" OR ComfyUI OR \"FLUX.1\") (AI OR model OR prompt) min_faves:50 lang:en"
         query_type: Latest
-        limit: 100
+        limit: 80
       - connector: x
         query: "(Sora OR \"Runway ML\" OR Kling OR \"video generation\" OR \"image to video\") AI min_faves:30 lang:en"
         query_type: Latest
-        limit: 100
+        limit: 80
 
   audio-ai:
     title: "Audio AI"
@@ -525,11 +529,11 @@ topics:
       - connector: x
         query: "(TTS OR \"text to speech\" OR \"voice clone\" OR ElevenLabs OR \"Sesame AI\") AI min_faves:30 lang:en"
         query_type: Latest
-        limit: 100
+        limit: 60
       - connector: x
         query: "(Suno OR Udio OR \"music generation\" OR \"audio diffusion\" OR \"ACE-Step\") AI min_faves:30 lang:en"
         query_type: Latest
-        limit: 100
+        limit: 60
 
   thai-tech:
     title: "Thai Tech"
@@ -540,18 +544,43 @@ topics:
       web products built for the Thai market. Tracks both Thai-language and
       English coverage of the Thai tech ecosystem.
     sources:
+      - connector: reddit
+        subreddit: Thailand
+        sort: top
+        time: week
+        limit: 15
+        min_score: 30
+      - connector: reddit
+        subreddit: thaithai
+        sort: top
+        time: week
+        limit: 10
+        min_score: 5
       - connector: bluesky
-        query: "Thai LLM OR Typhoon OR Pathumma OR \"Thai NLP\""
+        query: "Thailand AI OR Typhoon LLM OR Pathumma OR Bangkok tech"
         sort: latest
         limit: 25
       - connector: rss
         feed_url: "https://www.blognone.com/atom.xml"
         limit: 20
+      - connector: rss
+        feed_url: "https://thaipublica.org/feed/"
+        limit: 10
+      # EN-language Thai signal: brand names, sovereign-AI policy, big partner
+      # announcements. min_faves: 2 because Thai-tech accounts are tiny.
       - connector: x
-        query: "(\"Typhoon LLM\" OR OpenThaiGPT OR Pathumma OR THaLLE OR \"Thai LLM\" OR \"sovereign AI Thailand\") min_faves:5"
+        query: "(Typhoon OR OpenThaiGPT OR Pathumma OR THaLLE OR Thaillm OR \"Thai LLM\" OR \"SiamAI\" OR \"SCB10X\" OR \"AIEAT\") min_faves:2"
         query_type: Latest
-        limit: 80
+        limit: 100
+      # Thai-language signal: drop lang filter, use Thai keywords directly.
+      # min_faves:1 since Thai tech Twitter has a small but engaged audience.
       - connector: x
-        query: "(\"AI ภาษาไทย\" OR \"LLM ภาษาไทย\" OR \"Thai NLP\" OR \"AI ไทย\" OR \"sovereign Thai\") min_faves:5"
+        query: "(\"AI ไทย\" OR \"AI ภาษาไทย\" OR \"LLM ไทย\" OR \"โมเดลภาษาไทย\" OR \"AI สัญชาติไทย\" OR \"Generative AI ไทย\") min_faves:1"
         query_type: Latest
-        limit: 80
+        limit: 100
+      # Broader Thai tech / startup / edtech chatter — feeds the topic with
+      # enough surrounding context so Opus isn't reasoning over <20 posts.
+      - connector: x
+        query: "(\"Thai startup\" OR \"Thai tech\" OR \"กรุงเทพ tech\" OR \"BMA AI\" OR \"NIA\" OR \"depa\") min_faves:2"
+        query_type: Latest
+        limit: 60

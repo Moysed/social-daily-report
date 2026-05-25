@@ -4,7 +4,7 @@ date: '2026-05-25'
 topic: ai-news
 lang: th
 pair: ai-news.en.md
-generated_at: '2026-05-25T04:53:08+00:00'
+generated_at: '2026-05-25T08:18:41+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,258 +14,263 @@ platforms:
 - x
 regions:
 - global
-post_count: 58
-salience: 0.85
-sentiment: mixed
+post_count: 222
+salience: 0.75
+sentiment: positive
 confidence: 0.7
 tags:
+- claude-skills
 - claude-code
-- skills
 - workflows
-- agent-frameworks
-- reliability
-- open-source
+- agent-swarm
+- cost-optimization
+- ai-tooling
 thumbnail: https://i.redd.it/a795ky5ihx2h1.png
 translated_by: claude-sonnet-4-6
 ---
 
+# AI News & New Skills — 2026-05-25
+
 ## TL;DR
-- Anthropic ปล่อย Skills อย่างเป็นทางการสำหรับธุรกิจขนาดเล็ก 31 ตัว มียอดดาวน์โหลดวันแรก ~382k — เป็น capability pack แบบ drop-in สำหรับ Claude [2]
-- ฟีเจอร์ Claude Code /workflows รั่วไหลออกมา + pattern 'find skills' meta-skill ทำให้ Claude ค้นหาและเชื่อมต่อเครื่องมือของตัวเองได้อัตโนมัติ [6][28][31]
-- Claude ล่มครั้งใหญ่เมื่อเช้านี้ กระทบ Claude Code/desktop workflows — ความเสี่ยงด้านความเชื่อถือได้สำหรับ pipeline ที่พึ่งพา AI [1][21]
-- gstack (YC, 100k stars ใน 3 สัปดาห์) เปลี่ยน Claude Code ให้เป็น scaffolder สำหรับ e-commerce stack แบบครบวงจร [16]
-- Understand-Anything: repo open-source → interactive knowledge graph รองรับ Claude Code/Codex/Cursor [40]
+- Anthropic ปล่อย Skills สำหรับธุรกิจขนาดเล็กอย่างเป็นทางการ 31 รายการ — ดาวน์โหลดวันแรก ~382k ครั้ง ตอนนี้ชุมชนได้ทำแผนที่/จัดทำดัชนีครบแล้ว [10]
+- Claude Code กำลังจะมีฟีเจอร์ /workflows — เชน prompt สำเร็จรูปสำหรับองค์กร เพิ่ม productivity ได้มาก [18]
+- Anthropic เปิด Claude settings ไว้ 125 รายการ (documented แค่ 40) นักพัฒนารายหนึ่งปรับ 85 รายการที่ซ่อนอยู่ ลดบิล API จาก $340 เหลือ $87 [49]
+- Google Antigravity เพิ่ม tier Gemini 3.5 Flash (Low) เพื่อลดการเผา token บน task ธรรมดา [16]
+- Pattern agent-swarm (Gemini 3.1 Pro + Opus 4.7 + GPT 5.5 routing ตาม task) กำลังได้รับความนิยมสำหรับการสร้าง app จาก prompt เดียว [43]
+- PSA: Claude Code ลบไฟล์ session อัตโนมัติหลัง 30 วัน — ตั้ง cleanupPeriodDays=9999 ไว้ก่อน [28]
 
 ## What happened
-Anthropic ปล่อย Small Business Skills pack อย่างเป็นทางการ (31 skills, ~382k downloads วันแรก) และชุมชนได้จัดทำแผนผังรวมทั้งชุดแล้ว [2] ฟีเจอร์ Claude Code /workflows ใหม่ถูกปล่อยออกมาเป็น enterprise unlock ตัวถัดไป [6] คู่กับ 'find skills' meta-skill ที่กำลังเป็นกระแส จากนักพัฒนาชาวญี่ปุ่น ช่วยให้ Claude ค้นหาและรวม skill ที่เหมาะสมต่อ prompt ได้อัตโนมัติ [28][31] ขณะเดียวกัน Claude ก็ประสบปัญหาล่มตั้งแต่เช้า [1] และพบพฤติกรรมต่างออกไปของ Opus 4.7 ระหว่าง Claude Code desktop กับ Cursor [21][10] สตริงใหม่สำหรับ 'claude-mythos-1-preview' บ่งชี้ว่ากำลังมี Mythos 1 model ที่เน้น Claude Code + Claude Security [22] ในฝั่ง ecosystem: gstack แตะ 100k GitHub stars ในฐานะ Claude Code e-commerce scaffolder [16], Understand-Anything แปลง repo ใด ๆ ให้เป็น knowledge graph แบบสำรวจได้ ข้ามแพลตฟอร์ม Claude Code/Codex/Cursor [40], Boris Cherny ย้ำความสำคัญของ CLAUDE.md และการกำหนด role อีกครั้ง [20] พร้อมคู่มือสั้น ๆ อธิบาย agent harness เบื้องหลัง [24] ด้านความปลอดภัย: พบการโจมตี prompt injection ผ่านเสียงที่ไม่อาจได้ยินในระบบ voice assistant [5] และการวิเคราะห์ที่ชี้ว่า network allow-list อย่างเดียวไม่เพียงพอต่อการป้องกัน exfiltration [39]
+สิ่งที่เกิดขึ้นจริงวันนี้: Anthropic ปล่อย Skills pack สำหรับ SMB อย่างเป็นทางการ 31 รายการ ดาวน์โหลดวันแรก ~382k ครั้ง และแผนที่ชุดทั้งหมดจากชุมชนกำลังแพร่กระจายอยู่ [10] ฟีเจอร์ /workflows สำหรับ Claude Code ถูกปล่อยตัวอย่างว่าจะมาเร็วๆ นี้ — เป็น procedure หลายขั้นตอนที่ตั้งชื่อได้ สำหรับความต่อเนื่องในระดับองค์กร [18] นักพัฒนารายหนึ่งบันทึกข้อมูลว่า Claude มี settings 125 รายการแต่ document อย่างเป็นทางการแค่ 40 รายการ การปรับ 85 รายการที่ไม่ได้ document รายงานว่าลดต้นทุนได้ ~75% [49] Google Antigravity เพิ่ม tier Gemini 3.5 Flash (Low) เพื่อลด token consumption บน task ที่ไม่ซับซ้อน [16] การจัดการ multi-agent แบบ 'swarm' (Opus 4.7 + Gemini 3.1 Pro + GPT 5.5 แยกตาม role) กำลังถูก demo ในฐานะเครื่องมือสร้าง app ซับซ้อนจาก prompt เดียว [43]
+
+หมายเหตุด้านปฏิบัติการ: การลบ session อัตโนมัติหลัง 30 วันของ Claude Code ทำให้ผู้ใช้แปลกใจ [28]; proxy localhost แบบ open-source ชื่อ 'Backdoor' ที่ route ทุก model ผ่าน Claude Code ถูกกล่าวหาว่าถูก OpenAI Codex clone ไป [29] agent ของ DeepMind แก้ปัญหา Erdős แบบ open ได้อิสระ 9 จาก 353 ข้อ ด้วยต้นทุนไม่กี่ร้อย USD ต่อข้อ [24] ขณะที่ Hassabis ลดความคาดหวังเรื่อง AGI ลง [8] หมายเหตุด้านความปลอดภัย: มีการสาธิต inaudible-audio injection attack ต่อ voice assistant [25]
 
 ## Why it matters (reasoning)
-Skills + /workflows + 'find skills' ผลักดัน Claude Code จาก 'smart REPL' ไปสู่ self-composing agent runtime — ซึ่งเป็นทิศทางเดียวกับที่ Almondo และ social-daily-report กำลังมุ่งหน้าอยู่แล้ว Official skill pack ช่วยลด floor (ความสามารถแบบ drop-in ไม่ต้องเขียน glue code) ขณะที่ meta-skill pattern ยก ceiling ขึ้น (agent เลือกเครื่องมือเองได้) ผลระยะที่สอง: skill discoverability กลายเป็น surface จริง — การตั้งชื่อ คำอธิบาย และ layout ของ registry เริ่มมีความสำคัญเหมือน SEO ในยุคก่อน การล่ม [1] และความแตกต่างระหว่าง Cursor กับ desktop [21] เตือนว่าการพึ่งพาผู้ให้บริการรายเดียวกลายเป็นความเสี่ยงระดับ production แล้ว Mythos 1 บ่งชี้ถึง Claude สายพิเศษที่เน้น coding/security ซึ่งอาจปรับเปลี่ยน model routing ของเรา การโจมตีด้วยเสียง [5] และบทความ allow-list bypass [39] ขยาย threat surface สำหรับ voice หรือ MCP-connected workflow ที่เราจะส่งออก
+ศูนย์กลางกำลังเคลื่อนจาก 'โมเดลไหนฉลาดที่สุด' ไปสู่ 'workflow, skills, และ settings แบบไหนบีบคุณค่าต่อ token ได้มากที่สุด' Skills [10], /workflows [18], และ 85 hidden settings [49] ล้วนเป็นเทรนด์เดียวกัน: prompt engineering ที่ถูก productize แล้ว สำหรับสตูดิโอขนาดเล็ก นั่นคือ leverage — ซื้อ/ยืม Skills ที่พิสูจน์แล้วแทนการเขียน scaffolding เอง tier Flash-Low ของ Antigravity [16] และ pattern swarm [43] ยืนยันว่า routing-by-difficulty กำลังกลายเป็น concern ระดับ first-class; การ 'ใช้โมเดลดีที่สุดตลอด' แบบ flat กลายเป็นการสิ้นเปลือง ผลลัพธ์รองคือ: ผู้ให้บริการโมเดลแข่งขันกันที่ dev surface (settings, skills, hooks) ทำให้ vendor lock-in ลึกลงที่ workflow layer ไม่ใช่ที่ model layer ความตระหนักด้าน security มีความสำคัญมากขึ้น — voice-injection [25] และ session-purge default [28] แสดงให้เห็นว่า config เริ่มต้นสามารถรั่วข้อมูลหรือเปิดช่องโจมตีได้
 
 ## Possibility
-น่าจะเกิด (70%): /workflows จะออกภายในไม่กี่สัปดาห์ และ meta-skill แบบ 'find skills' จะกลายเป็น pattern มาตรฐาน — คาดว่าจะมีกระแส community skill registry ตามมา น่าจะเกิด (60%): Mythos 1 เปิดตัวเป็น model ที่ tune สำหรับ Claude Code พร้อม tool-use ที่ดีขึ้น ทำให้ Opus 4.7 เป็น generalist และ Mythos เป็น coder เป็นไปได้ (35%): เกิด Skills marketplace dynamics ขึ้น (skill pack แบบชำระเงิน/ส่วนตัว, signed skills) เป็นไปได้ (25%): การล่มเพิ่มขึ้นตามการขยายตัวของ Anthropic — แรงกดดันให้เพิ่ม Codex/Gemini fallback ใน harness ของเรา ต่ำ (10–15%): หน่วยงานกำกับดูแลเคลื่อนไหวต่อ inaudible-audio injection ภายในปีนี้
+ระยะใกล้ (1-3 เดือน, ~70%): /workflows เปิดตัว, ตลาด Skills (official + 3rd-party) ระเบิดตัว, และ 'cost-optimized routing' กลายเป็น plugin pattern มาตรฐานใน Cursor/Continue/Antigravity ระยะกลาง (3-6 เดือน, ~50%): swarm orchestration พัฒนาเป็น library ที่เสถียร (แนว LangGraph/CrewAI) ครอบ role ของ Opus+Gemini+GPT; ต้นทุนต่อ feature ที่เสร็จสมบูรณ์ลดลง 3-5 เท่าสำหรับทีมที่นำไปใช้ ความน่าจะเป็นต่ำกว่า (~25%): Anthropic เปิด Skills marketplace แบบจ่ายเงินพร้อม rev-share ความเสี่ยงหาง: การโจมตีประเภท voice-injection [25] บังคับให้ platform ปิด always-on assistant ในแอป XR/edu ที่ shipped แล้ว
 
 ## Org applicability — NDF DEV
-คุ้มค่าสูง ต้นทุนต่ำ (1) ดึง Anthropic's 31 small-business skills [2] เข้า Almondo และเลือกตัวที่ตรงกับงาน NDF ops (quotations, reports, client comms) — ซ้อนทับกับ paperwork pipeline เราได้เลย (2) สร้าง 'find skills' meta-skill [28][31] ให้ Almondo และ social-daily-report เพื่อให้ agent เลือกระหว่าง paperwork, engso, deep-research ฯลฯ เองโดยอัตโนมัติ แทนที่เราจะ hardcode flows (3) เพิ่ม Understand-Anything [40] เป็น companion ของ /learn เพื่อแปลง repo Unity, Next.js และ edutech ของเราให้เป็น graph ที่ query ได้ สำหรับสมาชิกทีมใหม่และ AI agent (4) ตั้ง rclone backup รายวันของ Claude Code/Codex chats [14] — ประกันราคาถูก และยังป้อนข้อมูล Mesh Brain ด้วย (5) รอดู /workflows [6] ก่อนตัดสินใจทำ in-house orchestration ข้าม: gstack [16] (โฟกัส e-commerce ไม่ใช่ stack เรา), รายการ crypto/MCP [12][30], gaussian-splat porn [7] เลื่อน: Mythos 1 จนกว่าจะ public [22]
+ประยุกต์ใช้ได้สูงสำหรับ NDF DEV แนวทางที่ทำได้จริง: (1) ติดตั้ง 31-skill SMB pack [10] และคัดเลือก Skills สำหรับการสร้างใบเสนอราคา, สัญญา, และรายงาน — เข้าคู่กับ paperwork pipeline โดยตรง (2) ตรวจสอบ Claude Code settings เทียบกับรายการ 125 settings [49]; แม้แค่ลดบิล Opus 4.7 ได้ 30-50% ก็มีความหมายในระดับสตูดิโอ (3) ตั้ง cleanupPeriodDays=9999 ทุกเครื่อง dev สัปดาห์นี้ [28] — ใช้เวลาน้อย ป้องกัน context session สูญหายสำหรับ thread debug Unity/XR (4) ต้นแบบ workflow routing สำหรับ game dev: Flash/Haiku สำหรับการปรับ shader และเปลี่ยนชื่อ asset, Opus สำหรับ gameplay logic, Gemini สำหรับ review level design ที่ context ยาว — pattern เดียวกับ [16][43] (5) รอดูก่อนสำหรับ /workflows [18] จนกว่าจะ GA แล้วค่อยแปลง NDF process ที่ทำซ้ำๆ (build pipeline, scaffolding บทเรียน e-learning, review Supabase migration) ให้เป็น named workflow ข้าม hype swarm ไปก่อนจนกว่า framework ที่เสถียรจะมา
 
 ## Signals to Watch
-- Claude /workflows public release + docs [6]
-- Mythos 1 ('claude-mythos-1-preview') ความพร้อมใช้และราคา [22]
-- Community 'find skills' / skill-registry repos ที่กำลังได้รับความนิยม [28][31]
-- Anthropic status page incidents — ความถี่หลังจากการล่ม [1][21]
+- วันเปิดตัว GA และ pricing model ของ Anthropic /workflows
+- การเกิดขึ้นของ Skills marketplace จาก third-party และเงื่อนไขลิขสิทธิ์
+- tier-routing ของ Antigravity — เลือกอัตโนมัติหรือต้องเลือกเอง
+- มาตรการป้องกัน voice-injection จาก Google/Amazon/Apple — เกี่ยวข้องถ้า NDF ส่ง app XR ที่ควบคุมด้วยเสียง
 
 ## Repos & Tools to Try
 | repo | source | url |
 |---|---|---|
-| **Lum1104/Understand-Anything** — Graph ที่สอน graph ที่สร้างความประทับใจ แปลง code ใด ๆ ให้เป็น interactive knowledge graph ที่สำรวจได้ | rss | <https://github.com/Lum1104/Understand-Anything> |
-| **rohitg00/ai-engineering-from-scratch** — เรียนรู้มัน สร้างมัน ส่งมอบให้คนอื่น ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒ | rss | <https://github.com/rohitg00/ai-engineering-from-scratch> |
-| **anthropics/claude-plugins-official** — Directory อย่างเป็นทางการที่ Anthropic ดูแล สำหรับ Claude Code Plugins คุณภาพสูง Claude Code Plugins Direct | rss | <https://github.com/anthropics/claude-plugins-official> |
-| **anthropics/knowledge-work-plugins** — Repository open-source ของ plugins สำหรับผู้ที่ทำงานด้านความรู้ ใช้ใน Claude Code เป็นหลัก | rss | <https://github.com/anthropics/knowledge-work-plugins> |
-| **multica-ai/andrej-karpathy-skills** — ไฟล์ CLAUDE.md ไฟล์เดียวเพื่อปรับปรุงพฤติกรรมของ Claude Code โดยอิงจากการสังเกตของ Andrej Karpathy | rss | <https://github.com/multica-ai/andrej-karpathy-skills> |
-| **earendil-works/pi** — AI agent toolkit: coding agent CLI, unified LLM API, TUI & web UI libraries, Slack bot, vLLM pods | rss | <https://github.com/earendil-works/pi> |
-| **Alishahryar1/free-claude-code** — ใช้ claude-code ฟรีใน terminal, VSCode extension หรือ discord เหมือน OpenClaw (รองรับเสียง) | rss | <https://github.com/Alishahryar1/free-claude-code> |
-| **colbymchenry/codegraph** — Pre-indexed code knowledge graph สำหรับ Claude Code, Codex, Cursor, OpenCode และ Hermes Agent — ลด token ที่ใช้ | rss | <https://github.com/colbymchenry/codegraph> |
-| **multica-ai/multica** — แพลตฟอร์ม managed agents แบบ open-source เปลี่ยน coding agent ให้เป็นเพื่อนร่วมทีมจริง — มอบหมายงาน ติดตาม | rss | <https://github.com/multica-ai/multica> |
-| **shiyu-coder/Kronos** — Kronos: Foundation Model สำหรับภาษาของตลาดการเงิน | rss | <https://github.com/shiyu-coder/Kronos> |
-| **manaflow-ai/cmux** — macOS terminal บน Ghostty พร้อม vertical tabs และการแจ้งเตือนสำหรับ AI coding agents | rss | <https://github.com/manaflow-ai/cmux> |
-| **666ghj/MiroFish** — Swarm Intelligence Engine แบบง่ายและใช้งานทั่วไป พยากรณ์ได้ทุกอย่าง 简洁通用的群体智能引擎，预测万物 简洁通用的群体智能引擎， | rss | <https://github.com/666ghj/MiroFish> |
+| **Lum1104/Understand-Anything** — Graphs that teach graphs that impress. Turn any code into an interactive knowledge graph you can exp | rss | <https://github.com/Lum1104/Understand-Anything> |
+| **rohitg00/ai-engineering-from-scratch** — Learn it. Build it. Ship it for others. ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒ | rss | <https://github.com/rohitg00/ai-engineering-from-scratch> |
+| **anthropics/claude-plugins-official** — Official, Anthropic-managed directory of high quality Claude Code Plugins.Claude Code Plugins Direct | rss | <https://github.com/anthropics/claude-plugins-official> |
+| **anthropics/knowledge-work-plugins** — Open source repository of plugins primarily intended for knowledge workers to use in Claude CoworkKn | rss | <https://github.com/anthropics/knowledge-work-plugins> |
+| **multica-ai/andrej-karpathy-skills** — A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations | rss | <https://github.com/multica-ai/andrej-karpathy-skills> |
+| **earendil-works/pi** — AI agent toolkit: coding agent CLI, unified LLM API, TUI & web UI libraries, Slack bot, vLLM pods pi | rss | <https://github.com/earendil-works/pi> |
+| **Alishahryar1/free-claude-code** — Use claude-code for free in the terminal, VSCode extension or discord like OpenClaw (voice supported | rss | <https://github.com/Alishahryar1/free-claude-code> |
+| **colbymchenry/codegraph** — Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, OpenCode, and Hermes Agent — fewer  | rss | <https://github.com/colbymchenry/codegraph> |
+| **multica-ai/multica** — The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, trac | rss | <https://github.com/multica-ai/multica> |
+| **shiyu-coder/Kronos** — Kronos: A Foundation Model for the Language of Financial Markets Kronos: A Foundation Model for the  | rss | <https://github.com/shiyu-coder/Kronos> |
+| **manaflow-ai/cmux** — Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agentscmux A Ghostty | rss | <https://github.com/manaflow-ai/cmux> |
+| **666ghj/MiroFish** — A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物 简洁通用的群体智能引擎， | rss | <https://github.com/666ghj/MiroFish> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| reddit | tahir-k | ^3855 c69 | [Claude is not having a good morning](https://www.reddit.com/r/ClaudeAI/comments/1tlntio/claude_is_not_having_a_good_morning/) |
-| reddit | davidnguyen191 | ^1309 c66 | [🚀 Skills for small businesses, officially released by Anthropic Anthropic's 31 s](https://www.reddit.com/r/ClaudeAI/comments/1tm94ai/skills_for_small_businesses_officially_released/) |
-| reddit | No-Wheel5791 | ^1204 c262 | [$2,500/mo AI Budget: My friend just burned through 62M Opus 4.7 tokens in 24 hou](https://www.reddit.com/r/ClaudeAI/comments/1tm36z1/2500mo_ai_budget_my_friend_just_burned_through/) |
-| reddit | Independent-Wind4462 | ^858 c99 | [Google DeepMind's Al agent autonomously solved 9 of 353 open Erdos problems in m](https://www.reddit.com/r/singularity/comments/1tmjdru/google_deepminds_al_agent_autonomously_solved_9/) |
-| reddit | Distinct-Question-16 | ^777 c68 | [Inaudible sounds to humans can be hidden in YouTube videos, podcasts, or music a](https://www.reddit.com/r/singularity/comments/1tmb7mz/inaudible_sounds_to_humans_can_be_hidden_in/) |
-| x | DanielMiessler | ^711 c61 | [Claude Code is about to release a feature called /workflows that I think will be](https://x.com/DanielMiessler/status/2058699741140222055) |
-| reddit | Devotion-Companion | ^670 c102 | [We're one step closer to technological transcendence…now they do animated gaussi](https://www.reddit.com/r/singularity/comments/1tmtajd/were_one_step_closer_to_technological/) |
-| x | teslayoda | ^484 c65 | [Grok Build should watch and learn from Claude Code and Cursor inside Marcohard.](https://x.com/teslayoda/status/2058705425282081038) |
-| x | mfigge | ^242 c43 | [for this video wanted to see how far i could get with claude code no premiere or](https://x.com/mfigge/status/2058706408569438612) |
-| x | OnlyTerp | ^173 c19 | [Opus 4.7 in codex says it's better then claude code https://t.co/ikULAOVZaX](https://x.com/OnlyTerp/status/2058710749241835676) |
-| reddit | xXCptObviousXx | ^171 c254 | [How I feel like responding every time someone says AI is just a next token predi](https://www.reddit.com/r/singularity/comments/1tm3zis/how_i_feel_like_responding_every_time_someone/) |
-| x | Cryptolution | ^147 c17 | [🚨Official @KrakenPro Submission🚨 Introducing solana:dog1viwbb2vWDpER5FrJ4YFG6gq6](https://x.com/Cryptolution/status/2058680552082071768) |
-| reddit | keemalexis | ^139 c38 | [reconstructing different angles from live footage damn i just found this out tod](https://www.reddit.com/r/singularity/comments/1tmxpbj/reconstructing_different_angles_from_live_footage/) |
-| x | KingBootoshi | ^127 c5 | [This is very important! Additionally, have your agents setup a daily rclone scri](https://x.com/KingBootoshi/status/2058706605139693971) |
-| reddit | Steap-Edit | ^111 c28 | [99% of CEOs Expect AI-Driven Layoffs in the Next Two Years](https://www.reddit.com/r/singularity/comments/1tmpjla/99_of_ceos_expect_aidriven_layoffs_in_the_next/) |
-| x | rohit4verse | ^95 c11 | [garry tan's gstack just crossed 100k github stars. a yc ceo built it in 3 weeks.](https://x.com/rohit4verse/status/2058682520074608946) |
-| x | davidgomes | ^94 c2 | [@encrypted Hi! Was this in Cursor?](https://x.com/davidgomes/status/2058669487201874125) |
-| reddit | Steap-Edit | ^82 c26 | [No Juniors Today, No Seniors in 2031](https://www.reddit.com/r/singularity/comments/1tmlq35/no_juniors_today_no_seniors_in_2031/) |
-| reddit | socoolandawesome | ^77 c31 | [Interesting article about the cyber models (mythos/5.5) living up to the hype: W](https://www.reddit.com/r/singularity/comments/1tmduxh/interesting_article_about_the_cyber_models/) |
-| x | RoundtableSpace | ^73 c16 | [THE CREATOR OF CLAUDE CODE SAYS MOST PEOPLE ARE USING CLAUDE WRONG * Boris Chern](https://x.com/RoundtableSpace/status/2058665593285628369) |
-| reddit | Remarkable-Bowler-60 | ^66 c30 | [Opus 4.7 behaves differently in Claude Code desktop app vs Cursor? Has anyone us](https://www.reddit.com/r/cursor/comments/1tm2ntd/opus_47_behaves_differently_in_claude_code/) |
-| x | WesRoth | ^66 c11 | [Anthropic appears to be preparing Mythos 1, listed as "claude-mythos-1-preview,"](https://x.com/WesRoth/status/2058684656720224676) |
-| x | peterwildeford | ^63 c2 | ['auto mode' in Claude Code is a complete game changer](https://x.com/peterwildeford/status/2058676922171711657) |
-| x | Hesamation | ^63 c1 | [this 8 minute guide will teach you about agent harnesses like Codex and Claude C](https://x.com/Hesamation/status/2058673941397291200) |
-| x | skcd42 | ^63 c8 | [@WernerSevenster you can install playwright mcp and use that. we don't have a na](https://x.com/skcd42/status/2058711241460502547) |
-| reddit | Steap-Edit | ^59 c7 | [Palantir Gets an Initial $3.9 Million to Spy on Federal Workers](https://www.reddit.com/r/singularity/comments/1tml7gz/palantir_gets_an_initial_39_million_to_spy_on/) |
-| x | boristane | ^57 c4 | ["don't mention this to the user" doesn't work sharing for the claude code team h](https://x.com/boristane/status/2058695676717060270) |
-| x | RoundtableSpace | ^53 c13 | [CLAUDE CODE CAN NOW BUILD ENTIRE WORKFLOWS BY ITSELF * A developer created a "fi](https://x.com/RoundtableSpace/status/2058756190130372808) |
-| x | Dharmikpawar13 | ^51 c11 | [How to master Claude in just 5 days(and save yourself hours every week) ☀️ DAY 1](https://x.com/Dharmikpawar13/status/2058731427135672810) |
-| x | Root_Edge | ^49 c9 | [Incoming (give devs time to cook this correctly ty) ❤️‍🔥 We've been cooking toda](https://x.com/Root_Edge/status/2058729714919907534) |
+| x | bryan_johnson | ^16398 c226 | [@jain_harshit You motherfuckers wouldn't listen to me so I had to get claude inv](https://x.com/bryan_johnson/status/2058660071006183638) |
+| reddit | tahir-k | ^3995 c70 | [Claude is not having a good morning](https://www.reddit.com/r/ClaudeAI/comments/1tlntio/claude_is_not_having_a_good_morning/) |
+| x | PolymarketMoney | ^3058 c191 | [JUST IN: Anthropic is now projected to hit a $2,000,000,000,000+ valuation this ](https://x.com/PolymarketMoney/status/2058642109331132491) |
+| x | Andr3jH | ^2753 c33 | [This river here is the official geographical border between Anthropic and OpenAI](https://x.com/Andr3jH/status/2058635602380104178) |
+| x | nongsiii | ^2444 c2 | [Gemini with Papa Nicky 🥹🤍 cr: nicky_nopp GEMINIFOURTH RACE TO LOVE #LOLFanFest20](https://x.com/nongsiii/status/2058732530879361245) |
+| x | justalesky | ^2043 c2 | [https://t.co/8JrYqOmp5n Gemini: "Thank you so much. We've actually never had a f](https://x.com/justalesky/status/2058792384444743806) |
+| x | StealthQE4 | ^1987 c479 | [So if Anthropic, SpaceX, and Open AI all go public around the same time the mark](https://x.com/StealthQE4/status/2058719626817626500) |
+| x | ns123abc | ^1665 c90 | [🚨 Google DeepMind CEO Sir Demis Hassabis: "Today's systems, are nowhere near [AG](https://x.com/ns123abc/status/2058705608564457733) |
+| x | Angelyu_yyy | ^1415 c2 | [William➕Gemini➕BounPrem WILLIAMEST REDLINE LUV #LOLFanFest2026D3 #WilliamEst #wi](https://x.com/Angelyu_yyy/status/2058659725877858634) |
+| reddit | davidnguyen191 | ^1404 c69 | [🚀 Skills for small businesses, officially released by Anthropic Anthropic's 31 s](https://www.reddit.com/r/ClaudeAI/comments/1tm94ai/skills_for_small_businesses_officially_released/) |
+| x | gurishsharma | ^1395 c66 | [I talked to a new grad yesterday and it blows my mind that they are all aware wo](https://x.com/gurishsharma/status/2058663730380993004) |
+| reddit | No-Wheel5791 | ^1258 c269 | [$2,500/mo AI Budget: My friend just burned through 62M Opus 4.7 tokens in 24 hou](https://www.reddit.com/r/ClaudeAI/comments/1tm36z1/2500mo_ai_budget_my_friend_just_burned_through/) |
+| x | g4snara | ^1257 c0 | [fourth has to dye his hair back to black tomorrow to film for scarlet heart and ](https://x.com/g4snara/status/2058790720962802031) |
+| x | hopes_revenge | ^1236 c26 | [FYI - they make you take a 25mg edible before the anthropic culture fit intervie](https://x.com/hopes_revenge/status/2058724977244016645) |
+| x | justalesky | ^1167 c1 | [https://t.co/adeSqekqPa Fourth: "I think I actually gained something from Tanrak](https://x.com/justalesky/status/2058799054482714641) |
+| x | _mohansolo | ^1142 c170 | [We heard concerns that Antigravity consumes many tokens for simple tasks now. So](https://x.com/_mohansolo/status/2058740603563966758) |
+| x | nongsiii | ^1139 c0 | [Gemini confirmed that there will be 6 eps in total, and another OST will be rele](https://x.com/nongsiii/status/2058783540863721782) |
+| x | DanielMiessler | ^1115 c103 | [Claude Code is about to release a feature called /workflows that I think will be](https://x.com/DanielMiessler/status/2058699741140222055) |
+| x | nongsiii | ^1084 c0 | [👩🏻: mae can do gemini's pose na luk 4️⃣: this is not gemini, this is somgem 😹 ♊️](https://x.com/nongsiii/status/2058782067643854886) |
+| reddit | Devotion-Companion | ^1045 c136 | [We're one step closer to technological transcendence…now they do animated gaussi](https://www.reddit.com/r/singularity/comments/1tmtajd/were_one_step_closer_to_technological/) |
+| x | justalesky | ^1017 c1 | [https://t.co/nhK6Aqlq4d 5555555555&555555 Gemini: "So… where should we go today?](https://x.com/justalesky/status/2058798639011778876) |
+| x | RiserMusic | ^960 c1 | [#HITZTHAILANDCHARTSHOW 🎵🙏🏻 NO.1✨ อยู่ด้วยกันนะ (Every Single Day) - FOURTH NO.2✨](https://x.com/RiserMusic/status/2058792956002488519) |
+| x | mikeoxmall70174 | ^949 c3 | [Claude scan hinge and find one of these. Make no mistakes](https://x.com/mikeoxmall70174/status/2058698421427384504) |
+| reddit | Independent-Wind4462 | ^923 c109 | [Google DeepMind's Al agent autonomously solved 9 of 353 open Erdos problems in m](https://www.reddit.com/r/singularity/comments/1tmjdru/google_deepminds_al_agent_autonomously_solved_9/) |
+| reddit | Distinct-Question-16 | ^857 c69 | [Inaudible sounds to humans can be hidden in YouTube videos, podcasts, or music a](https://www.reddit.com/r/singularity/comments/1tmb7mz/inaudible_sounds_to_humans_can_be_hidden_in/) |
+| x | fourthlyst | ^819 c0 | [not fourth making a little bread / meep cat smile and gemini being so whipped fo](https://x.com/fourthlyst/status/2058741137742217503) |
+| x | MaitlandWard | ^775 c38 | [Picked up my new @Tesla ❤️ Loving the new Model Y Juniper! Looking forward to ve](https://x.com/MaitlandWard/status/2058722897187987478) |
+| x | tenobrus | ^707 c26 | [this is ur regular public service announcement that Claude Code by default *perm](https://x.com/tenobrus/status/2058637806176702831) |
+| x | AJs_AI | ^701 c83 | [OpenAI just copied my open-source project within Codex… Last week I built Backdo](https://x.com/AJs_AI/status/2058655974043611505) |
+| x | FE_Shadows_EN | ^691 c23 | [New Season Pass Announcement The Uniting Wind Season Pass is coming soon! This w](https://x.com/FE_Shadows_EN/status/2058744613775589720) |
 
 
 ## โพสต์เด่น
 
 <div class="post-stream">
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@bryan_johnson</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 16398 · 💬 226</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/bryan_johnson/status/2058660071006183638">View @bryan_johnson on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“@jain_harshit You motherfuckers wouldn’t listen to me so I had to get claude involved”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Bryan Johnson โมโหที่ไม่มีใครฟัง เลยดึง Claude (AI) เข้ามาช่วยพิสูจน์จุดยืนแทน</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>คนดังในวงการ tech ใช้ Claude เป็น neutral arbiter แทนที่จะเป็นแค่ productivity tool — บอกว่า AI กำลัง gain authority ในการตัดสินข้อถกเถียงจริงๆ</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ทีมใช้ Claude เป็น neutral third party ตัดสิน code review / architecture / UX ที่เถียงกันไม่จบ — ลด back-and-forth ในทีมเล็กได้จริง</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/bryan_johnson/status/2058660071006183638" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
     <span class="ndf-author">@tahir-k</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 3855 · 💬 69</span>
+    <span class="ndf-engagement">♥ 3995 · 💬 70</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/ClaudeAI/comments/1tlntio/claude_is_not_having_a_good_morning/" target="_blank" rel="noopener"><img src="https://i.redd.it/a795ky5ihx2h1.png" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Claude is not having a good morning”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Claude AI กำลัง outage หรือ performance ตก ทำให้ user บน Reddit แห่ร้องเรียนจนได้ upvote เกือบ 4K</dd>
+      <dd>โพสต์ Reddit ยอดนิยม (3.9k likes) แซวว่า Claude AI มีปัญหา — service down หรือ output แย่ผิดปกติ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>โพสต์ incident โพสต์เดียว viral ถึง 3855 likes — แสดงว่า dev team พึ่ง Claude ในงานจริง ถ้า down คือ workflow หยุด ไม่ใช่แค่รำคาญ</dd>
+      <dd>Engagement สูงบอกว่าเป็น outage จริงในวงกว้าง ไม่ใช่ bug เดี่ยว — ทีมที่พึ่ง Claude API โดนพร้อมกัน</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ต้องมี fallback LLM สำรอง (เช่น Gemini หรือ GPT-4o) ในทุก pipeline ที่ใช้ AI ถ้า Claude down จะได้ไม่บล็อก sprint</dd>
+      <dd class="ndf-adapt">workflow ที่ใช้ Claude API ต้องมี fallback — retry logic หรือสลับ model สำรอง — เพื่อกัน outage บล็อก delivery</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/ClaudeAI/comments/1tlntio/claude_is_not_having_a_good_morning/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
 </article>
-<article class="ndf-card platform-reddit">
+<article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@davidnguyen191</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 1309 · 💬 66</span>
+    <span class="ndf-author">@PolymarketMoney</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 3058 · 💬 191</span>
   </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/ClaudeAI/comments/1tm94ai/skills_for_small_businesses_officially_released/" target="_blank" rel="noopener"><img src="https://i.redd.it/gi7erkyqh23h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/PolymarketMoney/status/2058642109331132491">View @PolymarketMoney on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“🚀 Skills for small businesses, officially released by Anthropic Anthropic’s 31 small-business skills reportedly hit around 382,000 downloads on day one. And now someone has mapped the whole thing into”</p>
+    <p class="ndf-quote">“JUST IN: Anthropic is now projected to hit a $2,000,000,000,000+ valuation this year. https://t.co/277yn2IaIn”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Anthropic ปล่อย skill pack 31 ชุดสำหรับธุรกิจขนาดเล็ก เป็นไฟล์ .md ที่รวม workflow, memory และ operating rules สำหรับ AI agent ยอด download 382,000 ครั้งในวันแรก</dd>
+      <dd>Anthropic คาดจะมี valuation เกิน $2 trillion ในปีนี้ สะท้อนความเชื่อมั่นของนักลงทุนต่อบริษัทผู้สร้าง Claude</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Format .md ของ skill เป็น agent-agnostic — ทีมเล็กศึกษา fork และดัดแปลง template บน Codex, Cursor หรือ Gemini ได้โดยไม่ผูกกับ platform ไหน</dd>
+      <dd>Valuation $2T หมายความว่า Anthropic มีทรัพยากรมหาศาลเร่ง Claude model releases และ API ที่ทีมเล็กอย่างเราพึ่งพาอยู่</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ใช้ไฟล์ .md skill อยู่แล้ว — ศึกษา template 31 ชุดของ Anthropic เพื่อสร้าง skill ที่ reuse ได้เร็วขึ้น สำหรับ e-learning pipeline, Unity automation และ Next.js web workflow</dd>
+      <dd class="ndf-adapt">ควรล็อก API pricing tier ไว้ก่อนที่ Anthropic จะปรับราคาหลัง valuation พุ่ง และติดตาม model rollout ใหม่เพื่อไม่ให้พลาด capability อัปเดต</dd>
     </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/ClaudeAI/comments/1tm94ai/skills_for_small_businesses_officially_released/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@No-Wheel5791</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 1204 · 💬 262</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/ClaudeAI/comments/1tm36z1/2500mo_ai_budget_my_friend_just_burned_through/" target="_blank" rel="noopener"><img src="https://i.redd.it/u5axf5qlu03h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“$2,500/mo AI Budget: My friend just burned through 62M Opus 4.7 tokens in 24 hours. My buddy works for a small international company based in Vietnam, and their AI perks are absolutely insane. Managem”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>บริษัทเล็กในเวียดนามให้ budget AI API $2,500/เดือนต่อคน มีคนหมด 62M tokens บน Opus 4.7 ภายในวันเดียว</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>บริษัทเล็กใช้จ่าย AI ต่อหัวแซง FAANG ได้ — สัญญาณว่า AI tooling เชิงรุกกลายเป็น differentiator ด้านการจ้างงานและ productivity สำหรับ SME แล้ว</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">studio ควรกำหนด cost ceiling API รายเดือนต่อ engineer และ track token burn แยกตาม project — ไม่ cap การใช้ Opus จะเผา budget infra ทั้งหมดได้ภายในไม่กี่วัน</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/ClaudeAI/comments/1tm36z1/2500mo_ai_budget_my_friend_just_burned_through/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Independent-Wind4462</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 858 · 💬 99</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1tmjdru/google_deepminds_al_agent_autonomously_solved_9/" target="_blank" rel="noopener"><img src="https://i.redd.it/7pcw6zw9k43h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Google DeepMind's Al agent autonomously solved 9 of 353 open Erdos problems in mathematics, at a cost of a few hundred dollars per problem.”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>AI agent ของ Google DeepMind แก้ปัญหาคณิตศาสตร์ Erdős ได้ 9 จาก 353 ข้อแบบ autonomous ค่าใช้จ่ายแค่ไม่กี่ร้อยดอลลาร์ต่อปัญหา</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>AI agent แบบ autonomous ตอนนี้ crack ปัญหาระดับ expert ที่ค้างมาหลายสิบปีได้ในราคาเกือบศูนย์ — สัญญาณว่า agentic AI ก้าวข้าม code assistant ไปสู่ research-grade reasoning แล้ว</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio เอา autonomous AI agent มาใช้กับงาน research ที่มีขอบเขตชัด เช่น XR interaction model หรือ e-learning content generation แล้ว budget แบบ per-problem แทนการจ่ายเป็น dev hours</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1tmjdru/google_deepminds_al_agent_autonomously_solved_9/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+    <a class="ndf-source" href="https://x.com/PolymarketMoney/status/2058642109331132491" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@DanielMiessler</span>
+    <span class="ndf-author">@Andr3jH</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 711 · 💬 61</span>
+    <span class="ndf-engagement">♥ 2753 · 💬 33</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/DanielMiessler/status/2058699741140222055">View @DanielMiessler on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Andr3jH/status/2058635602380104178">View @Andr3jH on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Claude Code is about to release a feature called /workflows that I think will be extremely significant. Especially for Enterprise AI. I talked about this in 2024 in a post called Companies Are Just Gr”</p>
+    <p class="ndf-quote">“This river here is the official geographical border between Anthropic and OpenAI. On the other side cosmic horror, torment nexus, machine despotism, you build spyware for the govt and you like it. On ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Claude Code กำลังปล่อย feature /workflows ที่แปลงงาน routine ของบริษัทให้เป็น pipeline แบบ pseudo-deterministic ตาม SOP โดย human เปลี่ยนบทบาทมา optimize workflow แทนที่จะลงมือทำเอง</dd>
+      <dd>Tweet ล้อเลียนวัฒนธรรม Anthropic vs OpenAI — ทั้งคู่ทำ spyware ให้รัฐบาล แต่ฝั่ง Anthropic มี constitution และรู้สึกผิด</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>การ formalize งานเป็น executable SOP ทำให้ studio 5 คนรัน repeatability ระดับ enterprise ได้ — process knowledge ของ senior ไม่ต้องอยู่แค่ในหัวคนอีกต่อไป</dd>
+      <dd>ประเด็นคือ 'AI safety branding' กับ government contracts อยู่ด้วยกันได้ทั้งสองบริษัท — เตือนให้อย่าเชื่อ narrative ด้าน ethics ของบริษัท AI ง่ายๆ</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio map Unity build pipeline, รอบ review content e-learning, และ checklist deploy Next.js ลง /workflows SOP ได้เลย — ลด onboarding time และรักษา quality โดยไม่ต้องมี senior คอยตลอด</dd>
+      <dd class="ndf-adapt">Not directly applicable. เป็นแค่ satire เรื่องการเมืองใน big-lab ไม่มี signal ที่ใช้งานได้สำหรับ studio</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/DanielMiessler/status/2058699741140222055" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Devotion-Companion</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 670 · 💬 102</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1tmtajd/were_one_step_closer_to_technological/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/aHo5eHY4eWdpNjNoMYOUMvt5noqvkZkpeCQ2m8P2yONNf52LrN4JadlKp_Ei.png?format=pjpg&amp;auto=webp&amp;s=f5b21d10cd07d840ef7217b70c3844ac723562a6" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“We're one step closer to technological transcendence…now they do animated gaussian splats porn”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>โพสต์ประชดว่า animated Gaussian splats ถูกนำไปใช้สร้าง adult content แล้ว — มองเป็น 'ก้าวสำคัญ' สู่ technological transcendence</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Animated 3D Gaussian Splatting ที่ mature พอใช้งานจริงแล้ว หมายความว่า tech นี้พร้อมสำหรับ photorealistic XR scene reconstruction และ avatar rendering จริงๆ</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">XR/VR team ควร prototype animated Gaussian Splatting ใน Unity สำหรับ environment capture และ avatar animation — tech ผ่าน proof-of-concept แล้ว</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1tmtajd/were_one_step_closer_to_technological/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+    <a class="ndf-source" href="https://x.com/Andr3jH/status/2058635602380104178" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@teslayoda</span>
+    <span class="ndf-author">@nongsiii</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 484 · 💬 65</span>
+    <span class="ndf-engagement">♥ 2444 · 💬 2</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/teslayoda/status/2058705425282081038">View @teslayoda on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/nongsiii/status/2058732530879361245">View @nongsiii on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Grok Build should watch and learn from Claude Code and Cursor inside Marcohard.”</p>
+    <p class="ndf-quote">“Gemini with Papa Nicky 🥹🤍 cr: nicky_nopp GEMINIFOURTH RACE TO LOVE #LOLFanFest2026D3 #Gemini_NT #เจมีไนน์ https://t.co/gb4BP4MC2k”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Grok Build ควรเรียนรู้จาก Claude Code และ Cursor เพราะสองตัวนั้นคือ benchmark ของ AI coding assistant ในตอนนี้.</dd>
+      <dd>โพสต์แฟนคลับฉลอง Gemini (จากคู่ Gemini-Fourth) ในงาน LOL Fan Fest 2026 Day 3 กับ Papa Nicky</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ตลาดเริ่ม consensus ว่า Claude Code กับ Cursor คือ gold standard ตอนนี้ — ต้องจับตาว่า Grok Build จะตอบโต้ยังไง เพราะการแข่งขันดัน feature ออกเร็วมาก.</dd>
+      <dd>Engagement สูง (2444 likes) แสดงให้เห็นว่า fandom คนดังไทยสร้าง organic reach ได้มากบน X โดยใช้ content เรียบง่าย</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ใช้ Claude Code อยู่แล้ว — เพิ่ม depth การใช้งาน, document workflow ที่ได้ผล, แล้วจับตา Grok Build release ดูว่ามี feature ไหนน่าเสริม.</dd>
+      <dd class="ndf-adapt">Not directly applicable.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/teslayoda/status/2058705425282081038" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/nongsiii/status/2058732530879361245" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@mfigge</span>
+    <span class="ndf-author">@justalesky</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 242 · 💬 43</span>
+    <span class="ndf-engagement">♥ 2043 · 💬 2</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/mfigge/status/2058706408569438612">View @mfigge on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/justalesky/status/2058792384444743806">View @justalesky on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“for this video wanted to see how far i could get with claude code no premiere or after effects allowed this would've taken 15 min using those traditional tools instead i prompted the entire edit and d”</p>
+    <p class="ndf-quote">“https://t.co/8JrYqOmp5n Gemini: “Thank you so much. We’ve actually never had a first episode event before.” 🥹 P’Leo: “Really? Usually you only get final episode events, right?” Gemini: “We’ve never ev”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ผู้สร้างห้ามใช้ Premiere/After Effects แล้ว edit วิดีโอทั้งหมดผ่าน Claude Code + natural language อย่างเดียว — ใช้เวลา 4 ชั่วโมง เผา token เยอะ เทียบกับ 15 นาทีถ้าใช้ tool ปกติ</dd>
+      <dd>โพสต์แฟนคลับเกี่ยวกับนักแสดงไทย เจมีไนน์ และ โฟร์ท ที่อารมณ์ท่วมในงาน press tour 'Ticket to Heaven' ครั้งแรก พร้อมเปิดใจว่าไม่เคยมีงาน event ตอนแรกหรือตอนจบมาก่อนเลย</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Stress test จริงที่พิสูจน์ว่า Claude Code ใช้นอก domain code/logic แล้วพัง — creative tools เฉพาะทางแทนด้วย prompting อย่างเดียวไม่ได้ และ token cost สูงมาก</dd>
+      <dd>ยอด like 2,000+ จากโพสต์ fan sentiment ล้วนๆ ไม่มีเนื้อหา technical เลย — ชี้ว่า content celebrity ยังครอง engagement บน X เหนือ content สาระ</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทีมใช้ Claude Code กับ code และ logic — ให้อยู่แค่นั้น งาน cutscene Unity, e-learning video, หรือ motion ให้ใช้ domain tools เดิม AI เป็นแค่ co-pilot ข้างใน ไม่ใช่ pipeline แทนทั้งหมด</dd>
+      <dd class="ndf-adapt">Not directly applicable.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/mfigge/status/2058706408569438612" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/justalesky/status/2058792384444743806" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@StealthQE4</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1987 · 💬 479</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/StealthQE4/status/2058719626817626500">View @StealthQE4 on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“So if Anthropic, SpaceX, and Open AI all go public around the same time the market will need to find $6 trillion dollars to soak up all of these IPO shares. Where’s the money going to come from?”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ตั้งคำถามว่าถ้า Anthropic, SpaceX, OpenAI IPO พร้อมกัน ตลาดจะหาเงิน $6 trillion มาจากไหนเพื่อรองรับหุ้นทั้งหมด</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>IPO พร้อมกัน 3 บริษัทยักษ์จะดูด liquidity ออกจากตลาด อาจกระทบหุ้น tech เล็กและ AI-adjacent sector ที่ทีมติดตามอยู่</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Not directly applicable. เป็น macro finance ล้วนๆ ไม่มีมุมที่ studio นำไปใช้ได้</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/StealthQE4/status/2058719626817626500" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@ns123abc</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1665 · 💬 90</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ns123abc/status/2058705608564457733">View @ns123abc on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“🚨 Google DeepMind CEO Sir Demis Hassabis: “Today’s systems, are nowhere near [AGI]. Doesn’t matter how many Erdős problems you solve… I think it’s far, far from what a true invention or someone like a”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>CEO ของ Google DeepMind บอกว่า AI ปัจจุบันยังห่างไกล AGI มาก การแก้โจทย์ Erdős ไม่ได้แปลว่าฉลาดแบบ Ramanujan</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>CEO DeepMind เองออกมาค้าน hype AGI — สัญญาณว่า benchmark คณิตศาสตร์ไม่ใช่ตัวชี้วัด intelligence จริง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ทีม studio ควรใช้ AI เป็น assistant ไม่ใช่ creative lead — อย่าพึ่ง LLM สำหรับ game design หรือ XR interaction ใหม่ๆ ที่ต้องการความคิดสร้างสรรค์จริง</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/ns123abc/status/2058705608564457733" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

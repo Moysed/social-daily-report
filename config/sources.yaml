@@ -584,3 +584,24 @@ topics:
         query: "(\"Thai startup\" OR \"Thai tech\" OR \"กรุงเทพ tech\" OR \"BMA AI\" OR \"NIA\" OR \"depa\") min_faves:2"
         query_type: Latest
         limit: 60
+
+  ai-builders-watchlist:
+    title: "AI Builders Watchlist"
+    tags: [ai, builders, voices, curated]
+    focus: >
+      Curated voices the CEO follows — 15 AI / indie / devtool / prompt
+      practitioners. Less keyword noise, more cross-cutting insight (lessons,
+      threads, reflections) that topical search misses. Read as "what these
+      15 people are thinking this week" — complementary to the topic feeds,
+      not a substitute for them.
+    sources:
+      # AI research / devtool / prompt voices.
+      - connector: x
+        query: "(from:karpathy OR from:steipete OR from:EXM7777 OR from:vasuman OR from:godofprompt OR from:AmirMushich OR from:egeberkina OR from:MengTo) min_faves:5"
+        query_type: Latest
+        limit: 40
+      # Indie hacker / solo founder / distribution voices.
+      - connector: x
+        query: "(from:gregisenberg OR from:rileybrown OR from:jackfriks OR from:levelsio OR from:marclou OR from:eptwts OR from:0xROAS) min_faves:5"
+        query_type: Latest
+        limit: 40

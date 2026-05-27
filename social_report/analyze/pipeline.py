@@ -3,11 +3,21 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
+import time
 
 from .client import BaseLLM
 from .prompts import ANALYSIS_SYSTEM, build_analysis_user
 from ..models import Post
+
+_log = logging.getLogger(__name__)
+
+# Retries on malformed-JSON response (truncation / bad output).
+_PARSE_MAX_ATTEMPTS = 3   # 1 initial + 2 retries
+_PARSE_BACKOFFS = [1, 2]  # seconds before attempt 2, 3
+# Bump max_tokens on retries in case the initial response was cut short.
+_RETRY_MAX_TOKENS = 6000
 
 
 def analyze_topic(
@@ -25,12 +35,37 @@ def analyze_topic(
         date_label,
         posts,
     )
-    raw = client.analyze(ANALYSIS_SYSTEM, user)
-    parsed = _parse_json_lenient(raw)
+
+    raw: str | None = None
+    parsed: dict | None = None
+    for attempt in range(1, _PARSE_MAX_ATTEMPTS + 1):
+        max_tokens = 4000 if attempt == 1 else _RETRY_MAX_TOKENS
+        raw = client.analyze(ANALYSIS_SYSTEM, user, max_tokens=max_tokens)
+        parsed = _parse_json_lenient(raw)
+        if parsed is not None:
+            break
+        if attempt < _PARSE_MAX_ATTEMPTS:
+            _log.warning(
+                "JSON parse failed (attempt %d/%d) for topic %r — retrying in %ds",
+                attempt, _PARSE_MAX_ATTEMPTS,
+                topic_cfg.get("title", "?"),
+                _PARSE_BACKOFFS[attempt - 1],
+            )
+            time.sleep(_PARSE_BACKOFFS[attempt - 1])
+
     if parsed is None:
+        _log.error(
+            "All %d JSON parse attempts failed for topic %r; using stub",
+            _PARSE_MAX_ATTEMPTS, topic_cfg.get("title", "?"),
+        )
         data = _stub_analysis(topic_cfg, posts)
-        data["what_happened"] = "Model output was not valid JSON. Falling back to stub.\n\n" + raw[:1000]
+        data["what_happened"] = (
+            f"LLM returned malformed JSON after {_PARSE_MAX_ATTEMPTS} attempts — see logs.\n\n"
+            + (raw or "")[:1000]
+        )
+        data["why_it_matters"] = "Re-run this topic; the model output was truncated or malformed."
         return data
+
     # Merge parsed onto stub so missing keys (truncated output) still render cleanly.
     base = _stub_analysis(topic_cfg, posts)
     for k, v in parsed.items():
@@ -137,8 +172,8 @@ def _stub_analysis(topic_cfg: dict, posts: list[Post]) -> dict:
     top = [p.text.split("\n", 1)[0][:120] for p in posts[:3]]
     return {
         "tldr": top or ["No posts fetched."],
-        "what_happened": "STUB MODE (no ANTHROPIC_API_KEY). Top items by engagement listed in Raw Sources.",
-        "why_it_matters": "Set ANTHROPIC_API_KEY to enable Opus reasoning.",
+        "what_happened": "STUB MODE — LLM disabled or no posts. Top items by engagement listed in Raw Sources.",
+        "why_it_matters": "Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.",
         "possibility": "",
         "org_applicability": "",
         "signals": [],

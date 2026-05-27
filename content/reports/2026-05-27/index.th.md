@@ -34,12 +34,8 @@ topics:
   file: ai-news.th.md
 - topic: edtech
   title: EdTech
-  salience: 0.5
+  salience: 0.55
   file: edtech.th.md
-- topic: xr
-  title: XR / VR / AR
-  salience: 0.5
-  file: xr.th.md
 - topic: 3d-graphics
   title: 3D & Graphics
   salience: 0.45
@@ -48,6 +44,10 @@ topics:
   title: AI Research
   salience: 0.35
   file: ai-research.th.md
+- topic: xr
+  title: XR / VR / AR
+  salience: 0.35
+  file: xr.th.md
 - topic: web-frontend
   title: Web & Frontend
   salience: 0.2
@@ -69,9 +69,9 @@ topics:
 | Audio AI | 0.72 | [audio-ai.th.md](audio-ai.th.md) |
 | AI Builders Watchlist | 0.55 | [ai-builders-watchlist.th.md](ai-builders-watchlist.th.md) |
 | AI News & New Skills | 0.55 | [ai-news.th.md](ai-news.th.md) |
-| EdTech | 0.5 | [edtech.th.md](edtech.th.md) |
-| XR / VR / AR | 0.5 | [xr.th.md](xr.th.md) |
+| EdTech | 0.55 | [edtech.th.md](edtech.th.md) |
 | 3D & Graphics | 0.45 | [3d-graphics.th.md](3d-graphics.th.md) |
 | AI Research | 0.35 | [ai-research.th.md](ai-research.th.md) |
+| XR / VR / AR | 0.35 | [xr.th.md](xr.th.md) |
 | Web & Frontend | 0.2 | [web-frontend.th.md](web-frontend.th.md) |
 | Thai Tech | 0.05 | [thai-tech.th.md](thai-tech.th.md) |

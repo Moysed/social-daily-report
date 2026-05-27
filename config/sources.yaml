@@ -59,6 +59,11 @@ topics:
         query: "(\"MCP server\" OR \"agent skills\" OR \"tool use\") min_faves:30 lang:en"
         query_type: Latest
         limit: 120
+      # People-of-interest — devtool / agent / LLM practitioners.
+      - connector: x
+        query: "(from:simonw OR from:swyx OR from:_philschmid OR from:hwchase17 OR from:jerryjliu0 OR from:mckaywrigley OR from:cline OR from:amasad OR from:nutlope OR from:rauchg OR from:transitive_bs OR from:dzhng) min_faves:5"
+        query_type: Latest
+        limit: 60
 
   ai-news:
     title: "AI News & New Skills"
@@ -157,6 +162,11 @@ topics:
         query: "(unreal engine OR UE5 OR godot OR indiedev) min_faves:30 lang:en"
         query_type: Latest
         limit: 120
+      # People-of-interest — engine devs, graphics legends, indie voices.
+      - connector: x
+        query: "(from:freyaholmer OR from:McFunkypants OR from:reduzio OR from:UnityGames OR from:UnrealEngine OR from:noclip OR from:ID_AA_Carmack OR from:aras_p OR from:RyanJFleury OR from:CasualEffects OR from:Voxagon OR from:ssylvan) min_faves:5"
+        query_type: Latest
+        limit: 60
 
   xr:
     title: "XR / VR / AR"
@@ -204,9 +214,14 @@ topics:
         query_type: Latest
         limit: 100
       - connector: x
-        query: "(VR OR AR OR XR OR \"spatial computing\" OR WebXR) min_faves:15 lang:en"
+        query: "(\"virtual reality\" OR \"augmented reality\" OR \"mixed reality\" OR XR OR \"spatial computing\" OR WebXR) min_faves:15 lang:en"
         query_type: Latest
         limit: 100
+      # People-of-interest — XR builders, WebXR creators, platform voices.
+      - connector: x
+        query: "(from:KentBye OR from:bosworth OR from:HugoBarra OR from:LukeRoss00 OR from:tojiro OR from:cabbibo OR from:dilmerv OR from:ben_lang OR from:TonyVT OR from:meta_quest OR from:VRChat OR from:misterxr) min_faves:2"
+        query_type: Latest
+        limit: 60
 
   web-frontend:
     title: "Web & Frontend"
@@ -341,9 +356,14 @@ topics:
         query_type: Latest
         limit: 120
       - connector: x
-        query: "(\"agent eval\" OR \"model card\" OR \"AI leaderboard\" OR \"hallucination\" OR \"chain of thought\" OR interpretability OR \"mech interp\" OR \"red team\") min_faves:10 lang:en"
+        query: "(\"agent eval\" OR \"model card\" OR \"AI leaderboard\" OR \"LLM hallucination\" OR \"model hallucination\" OR \"chain of thought\" OR interpretability OR \"mech interp\" OR \"red team\") min_faves:10 lang:en"
         query_type: Latest
         limit: 100
+      # People-of-interest — researchers, interp/eval voices, critics.
+      - connector: x
+        query: "(from:_xjdr OR from:teortaxesTex OR from:cwolferesearch OR from:jxmnop OR from:NeelNanda5 OR from:srush_nlp OR from:_jasonwei OR from:rao2z OR from:DrJimFan OR from:lateinteraction OR from:ylecun OR from:jeremyphoward) min_faves:5"
+        query_type: Latest
+        limit: 60
 
   3d-graphics:
     title: "3D & Graphics"
@@ -390,9 +410,14 @@ topics:
         query_type: Latest
         limit: 100
       - connector: x
-        query: "(\"Gaussian Splatting\" OR NeRF OR \"neural radiance\" OR photogrammetry OR \"3D scan\") min_faves:20 lang:en"
+        query: "(\"Gaussian Splatting\" OR \"neural radiance\" OR photogrammetry OR \"3D scan\" OR \"3D capture\") min_faves:20 lang:en"
         query_type: Latest
         limit: 100
+      # People-of-interest — Blender/shader/splat/photogrammetry voices.
+      - connector: x
+        query: "(from:KennyVleugels OR from:Sebastian_Lague OR from:bartwronski OR from:9_ar_t OR from:LumaLabsAI OR from:bilawalsidhu OR from:fxguide OR from:OnitchiBeast OR from:multimodalart OR from:HoudiniSideFX OR from:BlenderDev OR from:thefulcrum) min_faves:5"
+        query_type: Latest
+        limit: 60
 
   devops-cloud:
     title: "DevOps & Cloud"
@@ -488,6 +513,11 @@ topics:
         query: "(Sora OR \"Runway ML\" OR Kling OR \"video generation\" OR \"image to video\") AI min_faves:30 lang:en"
         query_type: Latest
         limit: 80
+      # People-of-interest — image/video gen creators, workflow voices.
+      - connector: x
+        query: "(from:c_valenzuelab OR from:emostaque OR from:javilopen OR from:Suhail OR from:icreatelife OR from:fofrAI OR from:nickfloats OR from:fabianstelzer OR from:dreamingtulpa OR from:bramses OR from:ilumine_ai OR from:runwayml) min_faves:5"
+        query_type: Latest
+        limit: 60
 
   audio-ai:
     title: "Audio AI"

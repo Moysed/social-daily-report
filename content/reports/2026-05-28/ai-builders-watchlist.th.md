@@ -4,7 +4,7 @@ date: '2026-05-28'
 topic: ai-builders-watchlist
 lang: th
 pair: ai-builders-watchlist.en.md
-generated_at: '2026-05-28T03:52:09+00:00'
+generated_at: '2026-05-28T05:20:25+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,14 +14,14 @@ regions:
 post_count: 79
 salience: 0.55
 sentiment: mixed
-confidence: 0.6
+confidence: 0.62
 tags:
-- agents
-- codex
-- autoreview
-- fde
-- solopreneur
-- devtools
+- ai-agents
+- code-review
+- codex-browser
+- claude-skills
+- forward-deployed
+- solo-founder
 thumbnail: https://pbs.twimg.com/media/HJW65IkWcAQtWvl.jpg
 translated_by: claude-sonnet-4-6
 ---
@@ -29,65 +29,63 @@ translated_by: claude-sonnet-4-6
 # AI Builders Watchlist — 2026-05-28
 
 ## TL;DR
-- Steipete ผลักดัน 'autoreview' ให้เป็น dev habit ระดับ top-tier — ระบบ review PR อัตโนมัติช่วยจับ edge cases ก่อน merge [1][51]
-- แนวคิด Codex-as-browser กำลังได้รับความนิยม: ขณะนี้สามารถรัน persistent app session ภายใน Codex agent ได้แล้ว Riley Brown เรียกสิ่งนี้ว่าอนาคตของการทำงาน [4][16]
-- Vasuman (Varick) โต้กระแสชัดเจน: AI coworker แบบ generic ล้มเหลวในระดับ enterprise, Forward Deployed Engineer คือผู้ชนะตลาดการเปลี่ยนแปลงองค์กรมูลค่า $60T [8][13][14][24]
-- เพดานของ solo-founder เลื่อนสูงขึ้น: solopreneur รายได้ $50k/เดือน เริ่มเลือกไม่ไล่ตาม unicorn — devtool + AI บีบขนาดทีมให้เล็กลง [27]
-- Skills/Skill-packaging ถูกมองเป็น moat ลำดับถัดไปที่ก้าวพ้น prompting; LiveAvatar, VibeMotion, Bumblebee scanner แสดงให้เห็นว่าคลื่น open-source devtool ยังคงดำเนินต่อ [15][31][35][41]
+- Autoreview/code-review-on-PR คือ workflow upgrade ที่คุ้มค่าสูงสุดสัปดาห์นี้ตามที่ steipete ระบุ [2][52]
+- Codex-as-browser (session ที่ login ค้างไว้ได้) คือทิศทาง agent ที่ Riley Brown ผลักดันดังที่สุด [4][14][6]
+- Vasuman/Varick ย้ำซ้ำ: AI coworker แบบ generic ล้มเหลวในองค์กรขนาดใหญ่ — Forward Deployed Engineers คือคำตอบ [9][13][16][18][23]
+- เพดาน solo-founder ขยับขึ้น: $50k/เดือนโดยไม่มีทีม โดยไม่จำเป็นต้องตั้งเป้า unicorn [26]
+- Skills > prompts กลายเป็น moat ลำดับถัดไป — การแพ็กเกจกระบวนการสำคัญกว่า prompt tricks [45]
 
-## What happened
-ในบรรดา 15 เสียงที่ติดตาม สัปดาห์นี้มีสามกระแสหลักครอบงำ กระแสแรกคือ agent-tooling/dev-workflow นำโดย Steipete: 'autoreview' (การ review PR อัตโนมัติ) ถูกเรียกว่าการเพิ่มเติม stack ที่ส่งผลกระทบมากที่สุด [1][51] บวกกับ Opus dependency chain ที่ปรับปรุงใหม่ และ Rastermill image lib สำหรับ Node agent [7][22] กระแสที่สองคือ Codex-as-OS จาก Riley Brown — browser session คงอยู่ภายใน Codex ส่งสัญญาณการเปลี่ยนผ่านจาก chat-window สู่ agent-driven workdesk [4][16][42] พร้อมคำใบ้ถึง 'big day' ของการเปิดตัว agent [9][29] กระแสที่สามคือ counter-narrative ระดับ enterprise จาก Vasuman/Varick: generic copilot ทำงานต่ำกว่าเกณฑ์, โมเดล Forward Deployed Engineer ชนะ; เขาอ้าง Uber ที่เผาเงิน AI ไป $3.4B เป็นหลักฐาน [8][13][14][18][24]
+## สิ่งที่เกิดขึ้น
+Operator-builder หลายคนมาบรรจบกันที่สองธีมหลัก ธีมแรก, code-review-as-default-step: steipete โปรโมต autoreview ว่าเป็นสิ่งที่ impact สูงสุดที่เพิ่มเข้า stack ของตัวเอง [2], ชี้แจงว่าคือ codex review ที่ทำงานอัตโนมัติ [52], และ ship library เสริม (Rastermill image processing, opus rewrites) [8][21] ธีมสอง, agent ออกจาก chat box: Riley Brown ชู Codex ที่ keep browser session ให้ยังล็อกอินอยู่ [4][14] และปล่อยสัญญาณ 'วันใหญ่มาก' สำหรับ AI agents [6][24] ส่วนรอบนอก: Vasuman/Varick ผลักดัน thesis Forward Deployed Engineer — AI ในองค์กรต้องพึ่งงาน consulting เข้มข้น ไม่ใช่รูปแบบ generic coworker [9][13][16][18][23] godofprompt frame การเปลี่ยน moat จาก prompts ไปสู่ Skills [45] และแจ้งว่า Perplexity open-source Bumblebee security scanner [32] AmirMushich open-source VibeMotion-1 (Figma→video) [17] และ ship Claude Project สำหรับ brandbook [10] Levelsio โพสต์ปริมาณมากแต่ส่วนใหญ่ off-topic (แอร์โรงแรม, การเลี้ยงลูกแบบดัตช์, การเมือง) [1][3][5][7]; signal-to-noise ต่ำ Jack Friks ตั้งข้อสังเกต plateau $50k/เดือนแบบ solo ว่าเป็น normal ใหม่ [26]
 
-สัญญาณรอง: Levelsio ทำหน้าที่ตัดสิน Vibe Jam 2026 (~1000 submissions เกมจาก Cursor/Bolt/Glif/Tripo) [23], jackfriks สังเกตเห็น solo founder ที่รายได้ถึง $50k/เดือนและปฏิเสธเส้นทาง unicorn [27], AmirMushich open-source VibeMotion-1 (Figma-to-video) และโปรเจกต์ Claude brandbook [10][15], godofprompt นำเสนอ Bumblebee security scanner open-source ของ Perplexity [31] และ LiveAvatar สำหรับ voice agent [35] รวมถึงแนวคิดที่ว่า 'Skills' ที่แพ็กเกจแล้วคือ moat ใหม่ [41] และยังมีเสียงรบกวนนอกประเด็นจาก Levelsio พอสมควร (AC โรงแรมฮอลแลนด์, dropping ritual, การเมือง) [2][3][5][6]
+## เหตุผลที่สำคัญ
+Signal ของสัปดาห์นี้คือการมาบรรจบกันของ agent-driven dev loop ที่มีสอง checkpoint บังคับ: automated review ก่อน merge [2][52] และ persistent browser context สำหรับ execution [4][14] ทั้งสองอย่างรวมกันทำให้ 'AI เขียนโค้ด' + 'AI ใช้แอปของคุณ' กลายเป็น workflow เดียว — ซึ่งตรงกับสิ่งที่ Riley ส่งสัญญาณว่าจะนำมา productize เร็วๆ นี้ [6][24] ผลลำดับสอง: ถ้า Codex-browser กลายเป็น table stakes, การแข่งขันด้าน dev tooling จะเลื่อนขึ้น stack ไปที่ Skills/process packaging [45] และการ implement แบบ FDE [9][18] เพราะ raw capability กลายเป็น commodity แล้ว มุมมองแบบ contrarian ของ Vasuman ที่ว่า 'generic coworker ไม่ work' [23] ขัดกับ narrative ขององค์กร OpenAI/Anthropic และตรงกับสิ่งที่ NDF จะเจอจริงเมื่อขายให้ Thai SMB — ผู้ซื้อต้องการความช่วยเหลือแบบ vertical ที่ฝังลึก ไม่ใช่แค่ chat panel
 
-## Why it matters (reasoning)
-เสียงเหล่านี้คือ leading indicator สำหรับ tooling ระดับ indie dev / small-studio ระบบ autoreview [1] ทำให้รูปแบบ (LLM-as-PR-reviewer) ที่เคยเป็นแบบ ad-hoc มานานหนึ่งปีกลายเป็นสิ่งที่เป็นทางการ — เมื่อ Steipete นำมาใช้เป็น core คาดว่า Claude Code/Codex เทียบเท่าจะกลายเป็น default ภายในหนึ่ง quarter แนวคิด Codex-browser [4][16] สำคัญเพราะหาก agent รับช่วงต่อ authenticated session ของคุณ moat จะเปลี่ยนจาก 'AI ที่เขียนโค้ด' เป็น 'AI ที่ operate แอปของคุณ' — เกี่ยวข้องโดยตรงกับ tooling ด้าน web/edutech narrative FDE ของ Varick [8][24] เป็นตัวแก้ไขที่มีประโยชน์: ผลิตภัณฑ์ agent แบบ generic จะถึงจุดอิ่มตัวในระดับ enterprise; คนที่ deploy ควบคู่ไปกับลูกค้าคือผู้ชนะ สำหรับ studio ที่ Chiang Mai สิ่งนี้ยืนยันแนวทาง services-plus-product hybrid ไม่ใช่การเดิมพัน pure SaaS การเปลี่ยนแปลงเพดาน solopreneur [27] และกระแส Skills-as-moat [41] ต่างชี้ไปที่ผลกระทบลำดับที่สองเดียวกัน: ทีมขนาดเล็กลง ความเชี่ยวชาญที่แพ็กเกจแล้วมากขึ้น การ scaling ที่พึ่งพาจำนวนคนน้อยลง
+## ความเป็นไปได้
+โอกาสสูง (~70%) ว่าภายใน 4-8 สัปดาห์ Codex/Claude browser-agent พร้อม persistent auth จะกลายเป็น standard ซึ่งจะกินส่วนแบ่งของ use case RPA/Zapier-lite ไปได้มาก โอกาสปานกลาง (~50%) ว่า autoreview/PR-gate AI จะกลายเป็น default ในทีมที่จริงจังภายใน Q3 2026 — กลุ่มผู้ติดตาม steipete adopt เร็ว โอกาสต่ำกว่า (~30%) ว่า 'Skills marketplace' [45] จะกลายเป็นช่องทางรายได้จริงๆ เทียบกับแค่เป็น meme — ขึ้นอยู่กับว่า Anthropic จะ ship Skill discovery/monetization หรือไม่ เพดาน solo $50k/เดือน [26] ยังคงอยู่ได้ คาดว่า dev มากขึ้นจะเลือกไม่ระดมทุน
 
-## Possibility
-มีแนวโน้มสูง (70%): PR bot แบบ autoreview จะถูกปล่อยเป็น native feature ใน Claude Code และ Codex ภายใน 1–2 quarter ทำให้ [1] กลายเป็น standard practice มีแนวโน้มสูง (60%): Codex/Comet-style agent-browser กลายเป็น mainstream workflow สำหรับ indie dev ภายใน Q3 2026 [4][16] พอๆ กัน (50%): บทบาท Forward Deployed Engineer กลายเป็น title ที่ได้รับการยอมรับในบริษัท AI ระดับ mid-market ไม่ใช่แค่สายตระกูล Palantir [14][19] ต่ำกว่า (30%): VibeMotion-1 และ tool Figma-to-video คล้ายกันพัฒนาสุกพอที่จะแทนที่ After Effects สำหรับ short-form ภายในหนึ่งปี [15] จับตาดู 'big day' ที่ Riley Brown พูดถึง [9][29] — น่าจะเป็นการประกาศ agent ของ OpenAI หรือ Anthropic
+## การนำไปใช้ของ NDF DEV
+คุ้มค่า, adopt บางส่วน: (1) ต่อ autoreview/code-review-on-PR เข้า repo Next.js/Supabase ของ NDF sprint นี้ — ราคาถูก, จับ edge case ได้, mirror stack ของ steipete [2] (2) Pilot Codex/Claude browser-agent กับงาน client ที่ทำซ้ำ (upload เนื้อหา LMS, Supabase admin, Unity asset pipeline) เมื่อ persistent-auth เสถียรแล้ว [4][14] (3) Package กระบวนการที่ NDF ทำซ้ำได้ (Unity build pipeline, edutech course scaffolding, XR scene setup) เป็น Claude Skills [45] — แปลงความรู้ฝังตัวให้เป็น asset ที่ใช้ซ้ำได้ มีประโยชน์ภายในแม้ไม่มี marketplace (4) รัน Bumblebee บนเครื่อง dev ก่อน deliver งาน client ครั้งถัดไป [32] ข้าม: VibeMotion-1 [17] (pre-alpha, ยังไม่พร้อม), สัญญาณรบกวนของ levelsio FDE thesis [18] เป็น framing ที่น่าสนใจแต่ยังเร็วเกินไปสำหรับขนาดของ NDF
 
-## Org applicability — NDF DEV
-สามการดำเนินการที่เป็นรูปธรรมสำหรับ NDF DEV: (1) นำ autoreview มาใช้ใน Next.js/Supabase repo ทันที — Claude Code รองรับ skill /code-review และ /security-review อยู่แล้ว [1][51]; กำหนดให้บังคับใช้ก่อน merge ต้นทุนต่ำ อัตราการจับข้อผิดพลาดสูง (2) ทดสอบ Codex-browser session persistence [4][16] สำหรับ admin flow ของ e-learning ที่ต้องการ login state — อาจแทนที่ Playwright script ที่เปราะบางได้ คุ้มค่าสำหรับ spike 1 วัน (3) นำ framing แบบ FDE [14][19] มาใช้กับงาน client-facing edutech/XR: วางตำแหน่ง NDF เป็น deployed-engineering ไม่ใช่ delivery agency ข้ามโปรเจกต์ brandbook-builder [10] และ VibeMotion [15] ไปก่อน — น่าสนใจแต่ไม่ใช่ core ข้อมูลเชิงลึก Skills-as-moat [41] นำไปใช้ได้โดยตรง: แพ็กเกจกระบวนการ Unity + edutech ของ studio เป็น Claude/Codex skill ที่นำกลับมาใช้ได้ เพื่อขายหรือใช้ภายในองค์กร
-
-## Signals to Watch
-- จับตา 'big day' ที่ Riley Brown พูดถึงสำหรับการเปิดตัว agent [9][29] — น่าจะเป็นการเคลื่อนไหวของ OpenAI/Anthropic
-- ติดตามการนำ autoreview มาใช้ใน Claude Code skill [1][51] — เมื่อกลายเป็น default ให้อัปเดต CI
-- รูปแบบการจ้างงาน Varick / FDE-role [14][19] — สัญญาณรูปร่างของตลาด enterprise AI services
-- การนำ Bumblebee security scanner [31] มาใช้ — เกี่ยวข้องหาก NDF แจกจ่าย dev tooling ใดๆ
+## สัญญาณที่ต้องติดตาม
+- ติดตาม 'big day' ของ Riley พรุ่งนี้ [6][24] — น่าจะเป็น Codex/Claude agent launch
+- ติดตามความสมบูรณ์ของ Skills ecosystem — discovery, sharing, monetization [45]
+- ติดตาม case study ของ Varick/Vasuman — พิสูจน์ว่า FDE model scale ได้เกิน 100 enterprise conversation [13]
+- ติดตาม autoreview rollout ของ steipete — config pattern ที่น่า copy [2][52]
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | steipete | ^2043 c68 | [autoreview is the most impactful skill I've added to my stack (next to https://t](https://x.com/steipete/status/2059453909819654554) |
-| x | levelsio | ^1748 c64 | [Just checked into a hotel in the Netherlands and of course the AC on max won't g](https://x.com/levelsio/status/2059757907579723917) |
-| x | levelsio | ^1482 c65 | [Just saw a guy at Munich airport code completely without AI like some kind of ma](https://x.com/levelsio/status/2059686467614437808) |
-| x | rileybrown | ^1022 c59 | [This is a huge update... On the recent update to codex, the apps you use in brow](https://x.com/rileybrown/status/2059711832936378630) |
-| x | levelsio | ^768 c29 | [Nah the definitions of left and right really don't work anymore I think We're in](https://x.com/levelsio/status/2059700551583969705) |
-| x | levelsio | ^537 c48 | [So I don't know if this is a thing in other countries (probably?) But Dutch do a](https://x.com/levelsio/status/2059657493597294783) |
-| x | steipete | ^519 c22 | [All the deps around opus are old or terrible, so vibed my own and replaced octos](https://x.com/steipete/status/2059422568352714981) |
-| x | vasuman | ^484 c22 | [Most of what you read about AI adoption inside large companies, on X or in the n](https://x.com/vasuman/status/2059400201211924961) |
-| x | rileybrown | ^391 c63 | [I hope you know tomorrow is going to be a VERY big day in the world of AI agents](https://x.com/rileybrown/status/2059816393311224070) |
-| x | AmirMushich | ^388 c27 | [Claude Design needs brand guidelines. But where to get them? I bulit a Claude Pr](https://x.com/AmirMushich/status/2059588224431911161) |
+| x | levelsio | ^2118 c69 | [Just checked into a hotel in the Netherlands and of course the AC on max won't g](https://x.com/levelsio/status/2059757907579723917) |
+| x | steipete | ^2083 c68 | [autoreview is the most impactful skill I've added to my stack (next to https://t](https://x.com/steipete/status/2059453909819654554) |
+| x | levelsio | ^1539 c69 | [Just saw a guy at Munich airport code completely without AI like some kind of ma](https://x.com/levelsio/status/2059686467614437808) |
+| x | rileybrown | ^1083 c63 | [This is a huge update... On the recent update to codex, the apps you use in brow](https://x.com/rileybrown/status/2059711832936378630) |
+| x | levelsio | ^817 c30 | [Nah the definitions of left and right really don't work anymore I think We're in](https://x.com/levelsio/status/2059700551583969705) |
+| x | rileybrown | ^740 c93 | [I hope you know tomorrow is going to be a VERY big day in the world of AI agents](https://x.com/rileybrown/status/2059816393311224070) |
+| x | levelsio | ^552 c50 | [So I don't know if this is a thing in other countries (probably?) But Dutch do a](https://x.com/levelsio/status/2059657493597294783) |
+| x | steipete | ^520 c22 | [All the deps around opus are old or terrible, so vibed my own and replaced octos](https://x.com/steipete/status/2059422568352714981) |
+| x | vasuman | ^485 c22 | [Most of what you read about AI adoption inside large companies, on X or in the n](https://x.com/vasuman/status/2059400201211924961) |
+| x | AmirMushich | ^392 c27 | [Claude Design needs brand guidelines. But where to get them? I bulit a Claude Pr](https://x.com/AmirMushich/status/2059588224431911161) |
 | x | steipete | ^341 c88 | [What do people use for SSO/SCIM/Endpoint Security in 2026. As we're hiring peopl](https://x.com/steipete/status/2059421603268608302) |
-| x | EXM7777 | ^316 c14 | [this is the absolute best deep research setup: gpt-5.5 + /last30days](https://x.com/EXM7777/status/2059658479674216786) |
-| x | vasuman | ^252 c10 | [AI transformation at the enterprise level is a 60T market: the largest unsolved ](https://x.com/vasuman/status/2059750092282950027) |
-| x | vasuman | ^194 c20 | [Meet Varick's Head of FDE, Daniel. After breaking 2 world records in rowing at C](https://x.com/vasuman/status/2059377374324777222) |
+| x | EXM7777 | ^324 c14 | [this is the absolute best deep research setup: gpt-5.5 + /last30days](https://x.com/EXM7777/status/2059658479674216786) |
+| x | vasuman | ^282 c11 | [AI transformation at the enterprise level is a 60T market: the largest unsolved ](https://x.com/vasuman/status/2059750092282950027) |
+| x | rileybrown | ^237 c26 | [I've been obsessed with Codex becoming a full browser since the day i started us](https://x.com/rileybrown/status/2059820055987106094) |
+| x | levelsio | ^200 c2 | [@TheDealMakerGuy Because it's 23'C inside, and I can't open the window, it's loc](https://x.com/levelsio/status/2059768757552099585) |
+| x | vasuman | ^195 c20 | [Meet Varick's Head of FDE, Daniel. After breaking 2 world records in rowing at C](https://x.com/vasuman/status/2059377374324777222) |
 | x | AmirMushich | ^168 c17 | [Figma-to-video is real now (GitHub repo) we just open-sourced VibeMotion-1 (pre-](https://x.com/AmirMushich/status/2059321893732163616) |
-| x | rileybrown | ^166 c21 | [I've been obsessed with Codex becoming a full browser since the day i started us](https://x.com/rileybrown/status/2059820055987106094) |
-| x | levelsio | ^164 c2 | [@TheDealMakerGuy Because it's 23'C inside, and I can't open the window, it's loc](https://x.com/levelsio/status/2059768757552099585) |
-| x | godofprompt | ^157 c22 | [Uber burned $3.4 billion on AI in four months. Their COO now says it's not payin](https://x.com/godofprompt/status/2059316389127606343) |
-| x | rileybrown | ^146 c31 | [New position at our startup and the most valuable: Forward Deployed Engineer Cre](https://x.com/rileybrown/status/2059713677058797834) |
-| x | levelsio | ^142 c12 | [In a way even the news and posts about fertility dropping are part of our self-b](https://x.com/levelsio/status/2059673030582755512) |
-| x | levelsio | ^137 c3 | [I think he was German (of course)](https://x.com/levelsio/status/2059687823465132494) |
+| x | rileybrown | ^159 c33 | [New position at our startup and the most valuable: Forward Deployed Engineer Cre](https://x.com/rileybrown/status/2059713677058797834) |
+| x | levelsio | ^146 c12 | [In a way even the news and posts about fertility dropping are part of our self-b](https://x.com/levelsio/status/2059673030582755512) |
+| x | levelsio | ^141 c3 | [I think he was German (of course)](https://x.com/levelsio/status/2059687823465132494) |
 | x | steipete | ^134 c12 | [Also extracted our image-logic into a separate library. Especially useful if you](https://x.com/steipete/status/2059423344961671290) |
-| x | levelsio | ^106 c8 | [🏆 Round 1 of judging the Vibe Jam of 2026 sponsored @cursor_ai + @boltdotnew + @](https://x.com/levelsio/status/2059670995259015647) |
-| x | vasuman | ^93 c15 | ["OpenAI and Anthropic are effectively telling the market they can't solve every ](https://x.com/vasuman/status/2059756092410978801) |
+| x | levelsio | ^110 c9 | [🏆 Round 1 of judging the Vibe Jam of 2026 sponsored @cursor_ai + @boltdotnew + @](https://x.com/levelsio/status/2059670995259015647) |
+| x | vasuman | ^100 c15 | ["OpenAI and Anthropic are effectively telling the market they can't solve every ](https://x.com/vasuman/status/2059756092410978801) |
+| x | rileybrown | ^82 c6 | [It will be a big day from both teams...](https://x.com/rileybrown/status/2059823372914073809) |
 | x | steipete | ^79 c4 | [@RihardJarc That data does not reflect reality.](https://x.com/steipete/status/2059357835666813348) |
-| x | levelsio | ^72 c2 | [@theannalux b a s e d a a s s e e d d](https://x.com/levelsio/status/2059668248283541986) |
-| x | jackfriks | ^57 c16 | [the next unicorn founder just hit $50k/month and is completely solo living the g](https://x.com/jackfriks/status/2059817594400440703) |
-| x | godofprompt | ^54 c11 | [https://t.co/GoVjxIXhtH](https://x.com/godofprompt/status/2059341823034675624) |
-| x | rileybrown | ^53 c6 | [It will be a big day from both teams...](https://x.com/rileybrown/status/2059823372914073809) |
-| x | levelsio | ^50 c2 | [@s13k_ Yes how I do that for ALL NIGHT though](https://x.com/levelsio/status/2059768600542523588) |
+| x | jackfriks | ^79 c19 | [the next unicorn founder just hit $50k/month and is completely solo living the g](https://x.com/jackfriks/status/2059817594400440703) |
+| x | levelsio | ^73 c2 | [@theannalux b a s e d a a s s e e d d](https://x.com/levelsio/status/2059668248283541986) |
+| x | levelsio | ^61 c2 | [@s13k_ Yes how I do that for ALL NIGHT though](https://x.com/levelsio/status/2059768600542523588) |
+| x | godofprompt | ^56 c11 | [https://t.co/GoVjxIXhtH](https://x.com/godofprompt/status/2059341823034675624) |
+| x | rileybrown | ^52 c9 | [If @naval makes 20 of these episodes and makes them longer (60 - 90 min) it will](https://x.com/rileybrown/status/2059823214113480719) |
 
 
 ## โพสต์เด่น
@@ -95,38 +93,18 @@ translated_by: claude-sonnet-4-6
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@steipete</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2043 · 💬 68</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2059453909819654554">View @steipete on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“autoreview is the most impactful skill I've added to my stack (next to https://t.co/SEj2XRpaD1). It automatically reviews your code before landing a PR. Finds so many edge cases. Sometimes it runs for”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Developer @steipete บอกว่า autoreview คือ tool ที่ impactful ที่สุดใน stack ของเขา — review code อัตโนมัติก่อน merge PR และจับ edge case ได้เยอะ บางทีรันนานหลายชั่วโมง</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Auto review code ก่อน merge PR โดยไม่ต้องรอคน review ช่วยลด bug ที่หลุดไปถึง production ได้จริง สำคัญมากสำหรับทีมเล็กที่ ship เร็ว</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทั้ง web stack (Next.js + Supabase) และโปรเจกต์ Unity ของ studio ควรเพิ่ม autoreview เป็น required CI check ใน PR workflow ก่อน merge ทุกครั้ง</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2059453909819654554" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1748 · 💬 64</span>
+    <span class="ndf-engagement">♥ 2118 · 💬 69</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2059757907579723917">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Just checked into a hotel in the Netherlands and of course the AC on max won't get the room lower than 23°C &quot;That's the minimum of our hotel sir&quot; So then I thought let's open the window, but &quot;The wind”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>levelsio เข้าพักโรงแรมในเนเธอร์แลนด์ แต่แอร์ต่ำสุดได้แค่ 23°C และหน้าต่างถูกล็อก ชี้ว่านี่คือ degrowth เชิงระบบ</dd>
+      <dd>levelsio บ่นว่าโรงแรมในเนเธอร์แลนด์ไม่ให้ปรับ AC ต่ำกว่า 23°C และล็อคหน้าต่างด้วย แซวว่านี่คือ 'degrowth'</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>โพสต์ engagement สูง สะท้อน frustration ของ developer กับระบบที่ควบคุมมากเกิน — เป็น UX signal เรื่อง autonomy vs. managed systems</dd>
+      <dd>โพสต์บ่นส่วนตัวจาก indie hacker ชื่อดัง engagement สูง — แสดงว่า audience ติดตามชีวิตเขาพอๆ กับเรื่อง tech</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">Not directly applicable.</dd>
     </dl>
@@ -135,20 +113,40 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
+    <span class="ndf-author">@steipete</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 2083 · 💬 68</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2059453909819654554">View @steipete on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“autoreview is the most impactful skill I've added to my stack (next to https://t.co/SEj2XRpaD1). It automatically reviews your code before landing a PR. Finds so many edge cases. Sometimes it runs for”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>@steipete บอกว่า 'autoreview' คือ tool ที่มีผลมากที่สุดใน stack — review code อัตโนมัติก่อน PR merge, จับ edge case ได้เยอะ, บางทีรันนานเป็นชั่วโมง</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ทีมเล็กมักข้าม code review เพราะเวลาน้อย — automated pre-PR review agent จับ bug ก่อนสะสม, มีค่ามากถ้าไม่มี QA dedicated</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Studio เพิ่ม autoreview step ใน GitHub PR workflow ได้เลย ทั้ง Unity C# และ Next.js — รัน Claude-powered review agent ทุก PR ก่อน merge, ได้มาตรฐานสม่ำเสมอโดยไม่เพิ่มเวลา review มือ</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/steipete/status/2059453909819654554" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1482 · 💬 65</span>
+    <span class="ndf-engagement">♥ 1539 · 💬 69</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2059686467614437808">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Just saw a guy at Munich airport code completely without AI like some kind of maniac 🤯”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Levelsio เห็นคนเขียนโค้ดโดยไม่ใช้ AI ที่สนามบินมิวนิก แล้วบอกว่าบ้ามาก — สื่อว่า AI-assisted coding กลายเป็น default ไปแล้ว</dd>
+      <dd>levelsio เห็นคนเขียนโค้ดโดยไม่ใช้ AI ที่สนามบินมิวนิก แล้วบอกว่าบ้าไปแล้ว — สะท้อนว่าการไม่ใช้ AI กลายเป็นเรื่องผิดปกติไปแล้ว</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ยอด like 1,482 บอกว่า dev community เห็นพ้องกันกว้างมากว่า coding ที่ไม่ใช้ AI คือ outlier แล้ว — เป็น cultural shift ที่ชัดเจน</dd>
+      <dd>สัญญาณว่า AI-assisted coding กลายเป็น default ในวัฒนธรรม dev แล้ว — ไม่ใช้ถือว่าแปลกในสายตาคนอย่าง levelsio ที่มีผู้ติดตามกว่า 500k</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ควร audit workflow ทุกส่วน — Unity scripting, Next.js, pipeline สร้างคอนเทนต์ e-learning — แล้ว flag ขั้นตอนไหนที่ยังทำ manual ทั้งที่ AI ทำแทนได้แล้ว</dd>
+      <dd class="ndf-adapt">Studio ควรถือ AI coding tools (Copilot, Claude Code, Cursor) เป็น standard kit — ใครในทีมที่ไม่ใช้กำลังทำงานช้ากว่าคนอื่น ไม่ว่าจะเป็น Unity, Next.js, หรือ XR pipeline</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/levelsio/status/2059686467614437808" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -157,18 +155,18 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@rileybrown</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1022 · 💬 59</span>
+    <span class="ndf-engagement">♥ 1083 · 💬 63</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/rileybrown/status/2059711832936378630">View @rileybrown on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“This is a huge update... On the recent update to codex, the apps you use in browser stay signed in... If you watched the latest @lennysan @danshipper podcast you know how significant this is. Im serio”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>OpenAI Codex อัปเดตให้ browser app ยังคง sign in อยู่ข้ามเซสชัน และจัดกลุ่ม tab ตาม task thread แทนที่จะกระจัดกระจาย — ผู้โพสต์คาดว่านี่อาจแทน web browser แบบเดิมได้เลย</dd>
+      <dd>OpenAI Codex อัปเดตให้ app บน browser stay signed in ข้ามเซสชัน จัด tab ตาม task thread แทน tab กระจัดกระจาย — คาดว่า multi-tab per session และ tab learning จะตามมา</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ถ้า Codex จัดการ browser session แบบ persistent ต่อ task ได้ AI coding agent จะทำงานแบบ full-session ได้จริง ไม่ใช่แค่ one-shot prompt — นี่เปลี่ยนวิธีออกแบบ agentic workflow ของทีม dev</dd>
+      <dd>Codex กำลังกลายเป็น persistent browser environment ไม่ใช่แค่ code assistant — AI agent ถือ authenticated session ได้ยาว เปลี่ยนนิยาม workflow ของ developer ทั้งหมด</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Web stack ของ studio (Next.js + Supabase) ได้ประโยชน์สุด: ส่ง task วิจัยหรือ QA ที่ต้องเปิดหลาย tab ให้ Codex session จัดการแทน แทนที่จะทำ manual และ context ยังอยู่ครบต่อ thread</dd>
+      <dd class="ndf-adapt">loop งานประจำของทีมที่ใช้ Supabase, Vercel, analytics, CMS พร้อม migrate เข้า Codex thread — ลอง run workflow เต็มๆ หนึ่งอันใน Codex sprint นี้แทนการสลับ tab</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/rileybrown/status/2059711832936378630" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -177,16 +175,16 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 768 · 💬 29</span>
+    <span class="ndf-engagement">♥ 817 · 💬 30</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2059700551583969705">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Nah the definitions of left and right really don't work anymore I think We're in a completely different world The liberal left of the 1960s hippies would now be classified as extreme right: - anti pha”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Levelsio บอกว่า label ซ้าย/ขวาทางการเมืองล้าสมัยแล้ว เพราะค่านิยมฮิปปี้ยุค 1960s ตอนนี้ถูกจัดว่าเป็นขวาจัด</dd>
+      <dd>@levelsio บอกว่า label ซ้าย/ขวาทางการเมืองหมดความหมายแล้ว เพราะค่านิยม hippie ยุค 1960s อย่าง anti-pharma, free speech, อาหาร organic ตอนนี้กลับถูกเรียกว่าขวาจัด</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>นักพัฒนา indie ที่มี influence สูงชี้ให้เห็นการแตกตัวของ identity ทางการเมือง — context ที่ควรรู้ถ้า studio target ตลาด maker/indie ระดับโลก</dd>
+      <dd>การแตกขั้วทางวัฒนธรรมแบบนี้ส่งผลต่อความไม่ไว้ใจ platform และ algorithm ของ user — context สำคัญสำหรับทีมที่สร้าง product ที่พึ่ง content distribution หรือ community trust</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">Not directly applicable.</dd>
     </dl>
@@ -195,20 +193,40 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
+    <span class="ndf-author">@rileybrown</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 740 · 💬 93</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/rileybrown/status/2059816393311224070">View @rileybrown on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“I hope you know tomorrow is going to be a VERY big day in the world of AI agents...”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>@rileybrown ปล่อย teaser ว่าพรุ่งนี้จะเป็นวันสำคัญมากในวงการ AI agents โดยไม่บอกรายละเอียด</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>740 likes บน post ที่ไม่มีข้อมูลเลย บ่งชี้ว่า community คาดว่าจะมี release หรือ announcement สำคัญ — ควรติดตามใน 24h</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่ applicable ตรงๆ. ติดตาม @rileybrown และ feed AI agents วันถัดไปเพื่อจับ framework, SDK, หรือ platform ใหม่ที่อาจเกี่ยวกับ workflow ของ studio</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/rileybrown/status/2059816393311224070" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 537 · 💬 48</span>
+    <span class="ndf-engagement">♥ 552 · 💬 50</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2059657493597294783">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“So I don't know if this is a thing in other countries (probably?) But Dutch do a thing called dropping, if you're like 10 to 15 years old your parents drop you with friends in a forest with no phone, ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>เล่าถึง tradition ของ Dutch ที่เรียกว่า 'dropping' — พ่อแม่จะพาเด็กอายุ 10–15 ปีไปทิ้งไว้ในป่าพร้อม map กับ compass แล้วให้หาทางกลับเมืองเอง</dd>
+      <dd>ผู้เขียนเล่าประเพณีของเนเธอร์แลนด์ที่เรียกว่า 'dropping' — เด็กอายุ 10–15 ถูกพาไปทิ้งในป่าพร้อม map และ compass แล้วต้องหาทางกลับเมืองเอง</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่ใช่ insight ด้านเทค แค่ anecdote วัฒนธรรมจาก indie hacker ดัง ไม่มี signal ที่เกี่ยวกับ software หรือ AI tooling</dd>
+      <dd>เป็นเรื่องเล่าวัฒนธรรมจาก @levelsio ไม่ใช่ข้อมูล tech หรือ dev — ไม่เกี่ยวกับ software, AI, หรือ tools</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Not directly applicable.</dd>
+      <dd class="ndf-adapt">ไม่เกี่ยวข้องโดยตรง</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/levelsio/status/2059657493597294783" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -217,40 +235,20 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@steipete</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 519 · 💬 22</span>
+    <span class="ndf-engagement">♥ 520 · 💬 22</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2059422568352714981">View @steipete on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“All the deps around opus are old or terrible, so vibed my own and replaced octoscript and opus-native. Performance of modern wasm on node/V8 is ~equivalent to native. Your claw now automatically takes”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>นักพัฒนาแทนที่ dependency ของ Opus audio codec ที่เก่าและพังด้วย wasm build ของตัวเอง บน Node/V8 ทำให้ AI tool จด meeting notes อัตโนมัติและรองรับ voice chat ระหว่าง meeting</dd>
+      <dd>@steipete เขียน WASM build สำหรับ Opus audio codec เองแทน dependency เก่าที่พัง ได้ performance ใกล้เคียง native บน Node/V8 และ AI CLI ของเขาคุยได้และจด meeting notes อัตโนมัติ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>wasm บน Node/V8 ทำได้เทียบเท่า native หมายความว่า real-time audio processing ใน pure JS ทำได้จริง ไม่ต้อง compile native binary รองรับทุก platform</dd>
+      <dd>WASM บน V8 เร็วเทียบเท่า native สำหรับ audio codec แปลว่า voice feature ใน Node.js ไม่ต้องพึ่ง native binding ที่พังง่ายตาม OS/arch อีกต่อไป</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">web stack ใส่ wasm-based Opus ใน Next.js/Node backend ได้เลย เพิ่ม voice input หรือ live transcription ใน e-learning tool โดยไม่ต้องพึ่ง native binary หรือ build step แยกต่างหาก</dd>
+      <dd class="ndf-adapt">Web stack team เปลี่ยนมาใช้ Opus WASM แทน native binding ใน Next.js API routes ได้เลย — ไม่ต้องมี build step ระดับ OS และไม่ต้องดูแล platform matrix</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/steipete/status/2059422568352714981" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@vasuman</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 484 · 💬 22</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vasuman/status/2059400201211924961">View @vasuman on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Most of what you read about AI adoption inside large companies, on X or in the news, is wrong. We've spent the past year running real implementations at some of the largest companies in the US. The fi”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>คนที่ทำ AI implementation จริงในบริษัทใหญ่ US บอกว่าสิ่งที่คนพูดกันบน X และข่าวเกี่ยวกับ AI adoption นั้นผิด และมีหลักฐานจากประสบการณ์จริง 1 ปี</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ข้อมูลจริงจาก enterprise rollout มีคุณค่ากว่า analyst opinion — ช่องว่างระหว่าง narrative กับความจริงใน implementation คือ risk สำหรับทีมที่ให้คำแนะนำ AI strategy กับ client</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทีมควรตามอ่าน writeup ที่ link ไว้ เพื่อดู blocker จริงที่ enterprise เจอตอน AI rollout — ใช้ inform การ pitch และ scope งาน AI/XR หรือ e-learning กับ corporate client ได้ตรงจุด</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/vasuman/status/2059400201211924961" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

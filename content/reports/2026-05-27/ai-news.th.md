@@ -4,270 +4,269 @@ date: '2026-05-27'
 topic: ai-news
 lang: th
 pair: ai-news.en.md
-generated_at: '2026-05-27T04:21:53+00:00'
+generated_at: '2026-05-27T16:22:14+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
 - lobsters
 - reddit
 - rss
-- x
 regions:
 - global
-post_count: 142
-salience: 0.55
-sentiment: mixed
-confidence: 0.5
+post_count: 38
+salience: 0.85
+sentiment: positive
+confidence: 0.7
 tags:
+- claude-skills
 - agent-frameworks
-- local-models
-- gemini
-- claude-code
-- open-weights
-- image-gen
-thumbnail: https://pbs.twimg.com/media/HJQ5avrXcAAlzBu.png
+- cursor
+- price-war
+- governance
+- plugins
+thumbnail: https://i.redd.it/4nskxdbpeh3h1.png
 translated_by: claude-sonnet-4-6
 ---
 
 # AI News & New Skills — 2026-05-27
 
 ## TL;DR
-- Gemini 3.5 Flash + Antigravity 2.0 CLI เปิดตัวแล้ว — tooling สำหรับสร้าง agent ที่จับต้องได้สำหรับนักพัฒนา [60]
-- Microsoft ยกเลิก Claude Code license บ่งชี้การปรับโครงสร้าง AI dev tools ในองค์กร [7]
-- Local models (Gemma 4 31B, Qwen 3.6 27B) ตอนนี้ชนะ GPT-5 ใน coding benchmark — รันบน MacBook ได้ [53]
-- MiMo 2.5 Pro ทำสงครามราคากับ DeepSeek V4 Pro ดัน inference cost ต่ำลงต่อเนื่อง [39]
-- MAI-Image-2.5 Preview ขึ้นอันดับ 3 ใน Text-to-Image Arena (1,254) — ทางเลือกใหม่สำหรับ asset gen [44]
+- Anthropic เปิดตัว repo plugin สำหรับงาน knowledge work อย่างเป็นทางการ [22]; ecosystem ของ Claude 'skills' ขยายตัวอย่างรวดเร็ว (stop-slop [24], taste [25], cybersecurity [23], persistent memory [31])
+- Microsoft ยกเลิก license Claude Code ภายใน — สัญญาณเตือน platform risk สำหรับสตูดิโอที่พึ่งพา AI vendor รายเดียว [1]
+- Cursor Composer 2.5 Fast ได้รับคำชมว่าใกล้เคียง Opus ในความเร็วที่สูงกว่า [14]; แต่ปัญหา bug-loop ยังคงทำให้ผู้ใช้หงุดหงิด [15]
+- สงครามราคาร้อนแรงขึ้น: MiMo 2.5 Pro ตั้งราคาเท่ากับ DeepSeek V4 Pro [6]; MiniCPM5-1B โดดเด่นเกินขนาดสำหรับ edge [16]
+- Microsoft ปล่อย agent-governance-toolkit ครอบคลุม OWASP agent top-10 [33] — baseline ที่มีประโยชน์สำหรับการ deploy ใน EDU tech และ enterprise XR
 
-## What happened
-Google ปล่อย Gemini 3.5 Flash (เร็วขึ้น 4x) พร้อม Antigravity 2.0 CLI สำหรับ local agents และ Android migration path [60] โดย Flash ได้รับความนิยมสำหรับ instruction-following/chat workloads [42]. Microsoft เริ่มยกเลิก Claude Code license [7] ขณะที่ OpenAI Codex oAuth ถูกแพตช์หลัง spec เปลี่ยน [25][31]. กระแส open-weight: Gemma 4 31B (38.7) และ Qwen 3.6 27B (36.5) รายงานว่าเหนือกว่า GPT-5 (36.0) ด้าน coding [53], MiMo 2.5 Pro จับคู่ราคากับ DeepSeek V4 Pro [39], และ Microsoft MAI-Image-2.5 Preview ขึ้นอันดับ 3 ใน Text-to-Image Arena [44]. Mythos (Claude Code-based) แก้โจทย์คณิตศาสตร์ด้วย 'cute, simple proof' [27] และ OpenAI autoresearch hackathon กับ Raindrop + Modal มุ่งเป้า self-improving agents [30]
+## สิ่งที่เกิดขึ้น
+Anthropic ปล่อย repo knowledge-work-plugins อย่างเป็นทางการ [22] และ community ส่ง 'skills' แบบพกพาออกมาเป็นระลอก — stop-slop [24] และ taste-skill [25] สำหรับตรวจสอบ prose ที่ผลิตโดย AI, claude-mem [31] สำหรับ persistent memory ข้ามเซสชัน, cybersecurity skills 754 รายการที่แมปกับ MITRE/NIST [23] และ ECC harness [20] Microsoft ยกเลิก license Claude Code ภายในพร้อมกัน [1] และเผยแพร่ agent-governance-toolkit [33] Cursor Composer 2.5 Fast ได้รับรีวิวที่ดี [14] ขณะที่ bug-fix loop ยังคงสร้างความหงุดหงิดให้ผู้ใช้ [15] การแข่งขันด้านราคาทวีความรุนแรงขึ้นเมื่อ MiMo 2.5 Pro ตั้งราคาเทียบ DeepSeek V4 Pro [6] และ MiniCPM5 ขนาด 1B ของ OpenBMB ทำคะแนน 17.9 บน AAI [16] Lum1104/Understand-Anything [19] แปลง code ให้เป็น interactive knowledge graph รองรับทั้ง Claude/Codex/Cursor
 
-## Why it matters (reasoning)
-สัญญาณจริงสามอย่างท่ามกลางสัญญาณรบกวน: (1) Agent CLIs กำลังกลายเป็นมาตรฐาน — Antigravity 2.0 [60] คู่กับ Claude Code [7][27] หมายความว่า agent frameworks เป็น table-stakes IDE infra แล้ว. (2) Local/open weights ข้ามเกณฑ์ใช้งานได้จริงด้าน coding [53] และราคา [39] — studio สามารถรัน model ที่มีความสามารถบน dev hardware ลดการพึ่งพา paid API. (3) Vendor lock-in ไม่เสถียร: MS ทิ้ง Claude Code [7] + Codex oAuth churn [25] แสดงให้เห็น enterprise contract ที่เปลี่ยนแปลงเร็ว. ผลกระทบรอง: การสับเปลี่ยนอันดับใน image-gen arena [44] ให้ทางเลือกเพิ่มสำหรับ game/XR asset pipeline; ความเป็นผู้นำด้าน chat/instruction ของ Flash [42] ทำให้ใช้ได้จริงสำหรับ in-game NPC dialog และ edutech tutoring loops
+## เหตุผลที่สำคัญ
+รูปแบบ 'skill' กำลังกลายเป็น plugin layer มาตรฐานสำหรับ agent ระดับ Claude — พกพาได้, composable, และไม่ผูกติดกับ vendor รายใด [22][23][24][25] สำหรับสตูดิโอขนาดเล็ก สิ่งนี้ลดต้นทุนการทำให้ AI workflow เป็นมาตรฐาน: ติดตั้ง skill ครั้งเดียว นักพัฒนาทุกคนได้ใช้ทันที การที่ Microsoft ตัด Claude Code [1] เตือนให้ระวังความเสี่ยงจากการพึ่งพา vendor รายเดียว; skills ที่รองรับหลาย runtime (Claude/Codex/Cursor/Opencode) ช่วยกระจายความเสี่ยงนั้น การกดราคา [6][16] ทำให้ model ขนาดเล็กกลายเป็นตัวเลือกที่ใช้งานได้จริงสำหรับ NPC dialog ในเกม, e-learning tutor และ XR assistant บนอุปกรณ์ — ด้านเศรษฐศาสตร์รองรับการ ship ฟีเจอร์ LLM บน Unity/WebGL ได้แล้ว governance toolkit [33] มีความสำคัญเพราะ client ด้าน EDU (โรงเรียน, องค์กรแบบ EGAT) จะเริ่มเรียกร้อง audit trail ของ agent ก่อนอนุมัติฟีเจอร์ AI
 
-## Possibility
-ความน่าจะเป็นสูง (~70%): Antigravity CLI + Gemini Flash 3.5 กลายเป็นคู่แข่ง Claude Code จริงภายใน 3-6 เดือน. ปานกลาง (~50%): local Gemma 4 / Qwen 3.6 ทดแทน cloud coding calls 30-50% สำหรับทีมที่ sensitive ด้านค่าใช้จ่ายภายใน Q3. ต่ำ-ปานกลาง (~30%): MAI-Image-2.5 สร้างแรงกระเพื่อมต่อ Midjourney/SDXL workflows สำหรับ game asset gen. ต่ำ (~20%): Mythos-style proof-solving agents [27] น่าเชื่อถือพอสำหรับ production game logic verification ปีนี้
+## ความเป็นไปได้
+1-3 เดือนข้างหน้า (ความน่าจะเป็นสูง ~70%): skill marketplace จะมีรูปแบบชัดเจนขึ้น, Anthropic เพิ่ม registry, Cursor/Codex รับรองรูปแบบ skill ระยะ 3-6 เดือน (~50%): สตูดิโอขนาดเล็กทำให้ skills 5-10 ตัวเป็น 'house style' มาตรฐาน (taste, stop-slop, security, memory, project-specific) ความน่าจะเป็นต่ำกว่า (~25%): การถอยของ Microsoft จาก Claude กระตุ้นให้องค์กรขนาดใหญ่อื่นกระจาย vendor เร็วขึ้น เร่ง multi-model agent harness อย่าง ECC [20] และ learn-claude-code [36] Edge-LLM ใน Unity ผ่าน model ระดับ MiniCPM [16] น่าจะเป็นไปได้ภายใน Q3 หาก quantized build พร้อม
 
-## Org applicability — NDF DEV
-ทำเลยตอนนี้: (a) ลอง Antigravity 2.0 CLI [60] สำหรับ Next.js/Supabase scaffolding — ทางเลือกตรงกับ Claude Code, น่าจะมี free tier. (b) Pilot Gemma 4 31B บน M-series Mac สำหรับ boilerplate/codegen [53] — ลด Claude API spend ในโปรเจกต์ NDF HR Page (N), Employee Page (E), VRoom (V). (c) ทดสอบ MAI-Image-2.5 [44] สำหรับ Unity/XR concept art และสื่อการตลาด TM Muscle Gym (G). (d) ย้าย chat-heavy edutech NPC dialog ไป Gemini Flash 3.5 [42] — ถูกกว่า Claude สำหรับ high-volume tutoring loops. ข้าม: hackathon hype [30], Microsoft/OpenAI drama [7][57], สัญญาณรบกวนดาราศาสตร์ (รายการส่วนใหญ่)
+## การประยุกต์ใช้ในองค์กร — NDF DEV
+คุณค่าสูง ทำได้เลย: (1) ใช้ anthropics/knowledge-work-plugins [22] เป็น skill set พื้นฐานของทีม (2) ติดตั้ง stop-slop [24] + taste-skill [25] ใน Claude config ของนักพัฒนาทุกคน — ปรับปรุง marketing copy, e-learning content และ UI string ได้ทันที (3) ทดลอง claude-mem [31] สำหรับเซสชัน Unity/Next.js ที่ยาว ซึ่งการเสีย context ทำให้เสียเวลา (4) บันทึก agent-governance-toolkit [33] ไว้สำหรับการนำเสนอกับ client ด้าน EDU/enterprise — เปลี่ยน 'AI safety' จากข้อโต้แย้งให้เป็น checklist ระดับกลาง: ประเมิน Composer 2.5 Fast [14] ว่าจะใช้แทน Claude Code ในชีวิตประจำวันในต้นทุนที่ถูกกว่าได้หรือไม่ ข้าม: heretic [34] (การลบตัวกรอง — ความเสี่ยงทางกฎหมายและแบรนด์), สงครามราคา MiMo/DeepSeek [6] ยังไม่เร่งด่วนหากใช้ API ไม่ถึง $500/เดือน ความพยายามในการ adopt skills: รวมแล้วไม่ถึง 1 วัน คุ้มค่า
 
-## Signals to Watch
-- Antigravity 2.0 CLI adoption + plugin ecosystem ใน 2 สัปดาห์ข้างหน้า
-- Gemma 4 / Qwen 3.6 quantized builds สำหรับ Mac 32GB — ติดตาม HF releases
-- MS จะแทน Claude Code ด้วย Copilot Workspace หรือสร้างเองหรือไม่ [7]
-- MiMo / DeepSeek price floor — บ่งบอกว่าเมื่อไหร่ self-hosting จะคุ้มกว่า API [39]
+## สัญญาณที่ควรจับตา
+- Anthropic ประกาศ skill registry หรือ marketplace อย่างเป็นทางการ
+- Cursor/Codex รองรับรูปแบบ Claude skill โดยตรง
+- Model ขนาดต่ำกว่า 2B อย่าง MiniCPM หรือที่ใกล้เคียง ปล่อย quantized build สำหรับ Unity/WebGL
+- Client ของ NDF (EDU/enterprise) เริ่มขอเอกสาร AI governance
 
-## Repos & Tools to Try
+## Repos & Tools ที่ควรลอง
 | repo | source | url |
 |---|---|---|
-| **Lum1104/Understand-Anything** — Graphs that teach graphs that impress. Turn any code into an interactive knowledge graph you can exp | rss | <https://github.com/Lum1104/Understand-Anything> |
-| **affaan-m/ECC** — The agent harness performance optimization system. Skills, instincts, memory, security, and research | rss | <https://github.com/affaan-m/ECC> |
-| **rohitg00/ai-engineering-from-scratch** — Learn it. Build it. Ship it for others. ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒ | rss | <https://github.com/rohitg00/ai-engineering-from-scratch> |
-| **anthropics/knowledge-work-plugins** — Open source repository of plugins primarily intended for knowledge workers to use in Claude CoworkKn | rss | <https://github.com/anthropics/knowledge-work-plugins> |
-| **mukul975/Anthropic-Cybersecurity-Skills** — 754 structured cybersecurity skills for AI agents · Mapped to 5 frameworks: MITRE ATT&CK, NIST CSF 2 | rss | <https://github.com/mukul975/Anthropic-Cybersecurity-Skills> |
-| **hardikpandya/stop-slop** — A skill file for removing AI tells from proseStop Slop A skill for removing AI tells from prose. Wha | rss | <https://github.com/hardikpandya/stop-slop> |
-| **Leonxlnx/taste-skill** — Taste-Skill - gives your AI good taste. stops the AI from generating boring, generic slop Taste Skil | rss | <https://github.com/Leonxlnx/taste-skill> |
-| **DigitalPlatDev/FreeDomain** — DigitalPlat FreeDomain: Free Domain For Everyone🌐 Welcome to DigitalPlat Domain Welcome to DigitalPl | rss | <https://github.com/DigitalPlatDev/FreeDomain> |
-| **jellyfin/jellyfin** — The Free Software Media System - Server Backend & APIJellyfin The Free Software Media System Jellyfi | rss | <https://github.com/jellyfin/jellyfin> |
-| **Axorax/awesome-free-apps** — Curated list of the best free apps for PC and mobile Windows Only — macOS Only — Linux Only — Open-s | rss | <https://github.com/Axorax/awesome-free-apps> |
-| **twentyhq/twenty** — The open alternative to Salesforce, designed for AI. The #1 Open-Source CRM Website · Documentation  | rss | <https://github.com/twentyhq/twenty> |
-| **Open-Dev-Society/OpenStock** — OpenStock is an open-source alternative to expensive market platforms. Track real-time prices, set p | rss | <https://github.com/Open-Dev-Society/OpenStock> |
+| **Lum1104/Understand-Anything** — กราฟที่สอน กราฟที่น่าประทับใจ แปลง code ใดก็ได้ให้เป็น interactive knowledge graph ที่สำรวจได้ | rss | <https://github.com/Lum1104/Understand-Anything> |
+| **affaan-m/ECC** — ระบบ performance optimization สำหรับ agent harness รองรับ skills, instincts, memory, security และ research | rss | <https://github.com/affaan-m/ECC> |
+| **rohitg00/ai-engineering-from-scratch** — เรียนรู้ สร้าง แล้วส่งมอบให้คนอื่น ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒ | rss | <https://github.com/rohitg00/ai-engineering-from-scratch> |
+| **anthropics/knowledge-work-plugins** — repository open source ของ plugin ที่มุ่งเน้น knowledge worker สำหรับใช้งานใน Claude | rss | <https://github.com/anthropics/knowledge-work-plugins> |
+| **mukul975/Anthropic-Cybersecurity-Skills** — cybersecurity skills เชิงโครงสร้าง 754 รายการสำหรับ AI agent แมปกับ 5 frameworks: MITRE ATT&CK, NIST CSF 2 | rss | <https://github.com/mukul975/Anthropic-Cybersecurity-Skills> |
+| **hardikpandya/stop-slop** — ไฟล์ skill สำหรับลบลักษณะเฉพาะของ AI ออกจาก prose | rss | <https://github.com/hardikpandya/stop-slop> |
+| **Leonxlnx/taste-skill** — Taste-Skill — ให้ AI มีรสนิยม หยุดไม่ให้ AI สร้างผลลัพธ์ที่น่าเบื่อและซ้ำซาก | rss | <https://github.com/Leonxlnx/taste-skill> |
+| **DigitalPlatDev/FreeDomain** — DigitalPlat FreeDomain: โดเมนฟรีสำหรับทุกคน 🌐 ยินดีต้อนรับสู่ DigitalPlat Domain | rss | <https://github.com/DigitalPlatDev/FreeDomain> |
+| **jellyfin/jellyfin** — ระบบ Media แบบ Free Software — Server Backend & API | rss | <https://github.com/jellyfin/jellyfin> |
+| **Axorax/awesome-free-apps** — รายการแอปฟรีที่ดีที่สุดสำหรับ PC และมือถือ คัดสรรมาแล้ว | rss | <https://github.com/Axorax/awesome-free-apps> |
+| **twentyhq/twenty** — ทางเลือก open source แทน Salesforce ออกแบบมาสำหรับ AI อันดับ 1 Open-Source CRM | rss | <https://github.com/twentyhq/twenty> |
+| **Open-Dev-Society/OpenStock** — OpenStock คือทางเลือก open-source แทน platform การเงินราคาแพง ติดตามราคาแบบ real-time, ตั้ง alert และอื่น ๆ | rss | <https://github.com/Open-Dev-Society/OpenStock> |
 
-## Raw Sources
+## แหล่งข้อมูลดิบ
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | elonmusk | ^23086 c1054 | [@teortaxesTex wtf you talking about, kid? I co-founded OpenAI ten years ago. I u](https://x.com/elonmusk/status/2059341684702412911) |
-| x | avidseries | ^4469 c188 | [Belgian man convicted of hate speech describes the judicial rationale for his la](https://x.com/avidseries/status/2059337441597591901) |
-| x | GreenIrisTarot | ^1519 c7 | [˗ˏˋ ♡ ˎˊ˗ gemini, virgo, sagittarius, pisces (s, m, r,) — random channeled messa](https://x.com/GreenIrisTarot/status/2059334906963009630) |
-| reddit | irelatetolevin | ^1408 c151 | [Are we nearly there? Implying tech companies besides Anthropic, Google, and Nvid](https://www.reddit.com/r/ClaudeAI/comments/1tn9emb/are_we_nearly_there/) |
-| x | astroinrealtime | ^1324 c45 | [gemini, somebody wants to love you slowly and seriously.](https://x.com/astroinrealtime/status/2059371998946488729) |
-| x | itsolelehmann | ^1204 c105 | [Germany is a sleeping giant of physical AI everyone's been writing Germany off i](https://x.com/itsolelehmann/status/2059326734978158610) |
-| reddit | Technical-Relation-9 | ^1021 c64 | [Microsoft, has started canceling Claude Code licenses, per the Verge Microsoft, ](https://www.reddit.com/r/ClaudeAI/comments/1to6kqz/microsoft_has_started_canceling_claude_code/) |
-| x | yonashav | ^998 c82 | [On Friday, I resigned from OpenAI. Today is my first day at the OpenAI Foundatio](https://x.com/yonashav/status/2059352141395882409) |
-| x | eelatit_04 | ^970 c6 | [Still here thinking about fourth's sassy loud whining cuz Gemini used him deep v](https://x.com/eelatit_04/status/2059342555603763497) |
-| reddit | Bizzyguy | ^937 c418 | [What did Andrew Yang see at the AI conference?](https://www.reddit.com/r/singularity/comments/1to60f1/what_did_andrew_yang_see_at_the_ai_conference/) |
-| x | edzitron | ^874 c8 | [@IbrahimAjami yeah you know wework was a bad cash-heavy asset-light business tha](https://x.com/edzitron/status/2059352434749915360) |
-| x | limingbot | ^872 c7 | [everyone were trying to process jimmy's words and here comes homotron3000 claimi](https://x.com/limingbot/status/2059325994012758335) |
-| x | colinjfleming | ^842 c101 | [I'm joining @OpenAI as Chief Marketing Officer, Business. Some companies build g](https://x.com/colinjfleming/status/2059359698214957543) |
-| reddit | sailing67 | ^807 c400 | [Company gave us all unlimited Claude Code Sonnet 4.6 — and now posts a weekly le](https://www.reddit.com/r/ClaudeAI/comments/1tob45x/company_gave_us_all_unlimited_claude_code_sonnet/) |
-| x | Tarotby888 | ^727 c2 | [ೃ🌖 if you see 1:11 or have libra scorpio taurus virgo gemini placements, startin](https://x.com/Tarotby888/status/2059372561322955197) |
-| x | Zodi_Am | ^725 c7 | [Uranus is absolutely in Gemini, because I've seen very little Gemini slander on ](https://x.com/Zodi_Am/status/2059329793984721058) |
-| x | avidseries | ^644 c38 | [I just want to add this: The same thing has also happened in the reverse. That i](https://x.com/avidseries/status/2059338484406505785) |
-| x | astrolindz | ^624 c5 | [💘 current energy check ☁️ gemini libra aquarius smrv 🌬️ karma hitting people who](https://x.com/astrolindz/status/2059352591847338009) |
-| x | ANG3LHUGS | ^561 c2 | [𝘄𝗲𝗲𝗸 ahead themes ꒰ᐢ. .ᐢ꒱ 🎀 use sun and rising aries: plans changing in your fav](https://x.com/ANG3LHUGS/status/2059352225500069921) |
-| x | cb_doge | ^556 c165 | [NEWS: Sam Altman & OpenAI caught in self-dealing scandal. 60+ civic groups just ](https://x.com/cb_doge/status/2059383300469510384) |
-| x | NarendraBa47202 | ^549 c9 | [Full name: London River Nice name: London Date of birth: June -7-1985 Age : 41 y](https://x.com/NarendraBa47202/status/2059334048510833051) |
-| x | DoseofTarot | ^480 c5 | [Gemini Libra Aquarius You are good enough, and the situation you've been carryin](https://x.com/DoseofTarot/status/2059335767898370088) |
-| x | OneLuckyGirl_28 | ^439 c2 | [MAY 26th-MAY 31st Aries: Big Good News Taurus: Manifest Money Gemini: Wishes Com](https://x.com/OneLuckyGirl_28/status/2059388654930325692) |
-| x | OneLuckyGirl_28 | ^405 c4 | [The LUCKIEST signs Summer 2026 1. LEO 2. Aries 3. Sagittarius 4. Aquarius 5. Gem](https://x.com/OneLuckyGirl_28/status/2059408280707801094) |
-| x | Teknium | ^394 c65 | [If you have been experiencing issues with OpenAI Codex oAuth, it is now fixed. O](https://x.com/Teknium/status/2059467329138999709) |
-| x | bubbleboi | ^394 c17 | [At this point people who work at OpenAI &amp; Anthropic have less EV in their co](https://x.com/bubbleboi/status/2059400081464492478) |
-| reddit | TFenrir | ^353 c46 | [Mythos (using Claude code) also solves the unit distance problem recently handle](https://www.reddit.com/r/singularity/comments/1toeii7/mythos_using_claude_code_also_solves_the_unit/) |
-| x | MindBodyBronx | ^353 c5 | [Gemini ♊️🎂 The pressure to break away from all things that feel limiting is gett](https://x.com/MindBodyBronx/status/2059416653432049774) |
-| x | Miles_Brundage | ^343 c8 | [Fourth (at least?) OpenAI old timer to make the switch lately (Woj, Anna, Bianca](https://x.com/Miles_Brundage/status/2059355703219994999) |
-| x | benhylak | ^329 c21 | [this saturday, @OpenAI is throwing an autoresearch hackathon with @raindrop_ai a](https://x.com/benhylak/status/2059432416905928765) |
+| reddit | Technical-Relation-9 | ^1425 c87 | [Microsoft, has started canceling Claude Code licenses, per the Verge Microsoft, ](https://www.reddit.com/r/ClaudeAI/comments/1to6kqz/microsoft_has_started_canceling_claude_code/) |
+| reddit | IamKhanPhD | ^1179 c79 | [I think it's time Vibe Coders 😅](https://www.reddit.com/r/ClaudeAI/comments/1tostyj/i_think_its_time_vibe_coders/) |
+| reddit | sailing67 | ^1087 c467 | [Company gave us all unlimited Claude Code Sonnet 4.6 — and now posts a weekly le](https://www.reddit.com/r/ClaudeAI/comments/1tob45x/company_gave_us_all_unlimited_claude_code_sonnet/) |
+| reddit | VariationLivid3193 | ^558 c216 | [Only 3 years](https://www.reddit.com/r/singularity/comments/1tot8qm/only_3_years/) |
+| reddit | TFenrir | ^457 c56 | [Mythos (using Claude code) also solves the unit distance problem recently handle](https://www.reddit.com/r/singularity/comments/1toeii7/mythos_using_claude_code_also_solves_the_unit/) |
+| reddit | RetiredApostle | ^344 c59 | [Price wars begin. MiMo 2.5 Pro now costs the same as DeepSeek V4 Pro](https://www.reddit.com/r/singularity/comments/1toeft6/price_wars_begin_mimo_25_pro_now_costs_the_same/) |
+| reddit | GraceToSentience | ^254 c42 | [RAI Institute / Juggling [https://www.youtube.com/watch?v=tAPvN-tQpX0](https://w](https://www.reddit.com/r/singularity/comments/1tomg90/rai_institute_juggling/) |
+| reddit | SnoozeDoggyDog | ^246 c120 | [US Law Enforcement Warns of 'Anti-Tech Extremism' as AI Hatred Grows](https://www.reddit.com/r/singularity/comments/1tohbhk/us_law_enforcement_warns_of_antitech_extremism_as/) |
+| reddit | Buck-Nasty | ^192 c19 | [A research group appears to have made a significant step towards programmable at](https://www.reddit.com/r/singularity/comments/1tp6mv4/a_research_group_appears_to_have_made_a/) |
+| reddit | GraceToSentience | ^171 c26 | [Boston Dynamics / Agile footwork (School of Football) [https://www.youtube.com/w](https://www.reddit.com/r/singularity/comments/1tomhw7/boston_dynamics_agile_footwork_school_of_football/) |
+| lobsters | pyfisch | ^125 c68 | [Encyclical Letter of His Holiness Leo XIV Magnifica Humanitas](http://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html) |
+| reddit | Buck-Nasty | ^111 c105 | [Demis Hassabis now says AGI could arrive in just 3 years in 2029](https://www.reddit.com/r/singularity/comments/1toc0nl/demis_hassabis_now_says_agi_could_arrive_in_just/) |
+| reddit | Independent-Wind4462 | ^77 c8 | [Minimiax M3 releasing with some new things](https://www.reddit.com/r/singularity/comments/1tofk9m/minimiax_m3_releasing_with_some_new_things/) |
+| reddit | snihal | ^77 c30 | [Composer 2.5 Fast is so so good! Composer 2.5 Fast surprised me and amazed me th](https://www.reddit.com/r/cursor/comments/1to34n7/composer_25_fast_is_so_so_good/) |
+| reddit | EfficientMongoose317 | ^52 c6 | [Current trend 1. Ask the Cursor to fix the bug 2. Cursor breaks something else 3](https://www.reddit.com/r/cursor/comments/1tp4pw4/current_trend/) |
+| reddit | Profanion | ^34 c5 | [OpenBMB releases MiniCPM5-1B LLM. Currently one of the most powerful LLMs for it](https://www.reddit.com/r/singularity/comments/1tovl72/openbmb_releases_minicpm51b_llm_currently_one_of/) |
+| lobsters | mempko | ^14 c8 | [The Open/Closed Problem in AI](https://blog.mempko.com/the-open-closed-problem-in-ai/) |
+| lobsters | untitaker | ^3 c1 | [Intent to Prototype: Embedding API](https://groups.google.com/a/chromium.org/g/blink-dev/c/EjL1gAy3k3Q/m/31Cnh22MBgAJ) |
+| rss | unknown | ^0 c0 | [Lum1104/Understand-Anything Graphs that teach graphs that impress. Turn any code](https://github.com/Lum1104/Understand-Anything) |
+| rss | unknown | ^0 c0 | [affaan-m/ECC The agent harness performance optimization system. Skills, instinct](https://github.com/affaan-m/ECC) |
+| rss | unknown | ^0 c0 | [rohitg00/ai-engineering-from-scratch Learn it. Build it. Ship it for others. ░░░](https://github.com/rohitg00/ai-engineering-from-scratch) |
+| rss | unknown | ^0 c0 | [anthropics/knowledge-work-plugins Open source repository of plugins primarily in](https://github.com/anthropics/knowledge-work-plugins) |
+| rss | unknown | ^0 c0 | [mukul975/Anthropic-Cybersecurity-Skills 754 structured cybersecurity skills for ](https://github.com/mukul975/Anthropic-Cybersecurity-Skills) |
+| rss | unknown | ^0 c0 | [hardikpandya/stop-slop A skill file for removing AI tells from proseStop Slop A ](https://github.com/hardikpandya/stop-slop) |
+| rss | unknown | ^0 c0 | [Leonxlnx/taste-skill Taste-Skill - gives your AI good taste. stops the AI from g](https://github.com/Leonxlnx/taste-skill) |
+| rss | unknown | ^0 c0 | [DigitalPlatDev/FreeDomain DigitalPlat FreeDomain: Free Domain For Everyone🌐 Welc](https://github.com/DigitalPlatDev/FreeDomain) |
+| rss | unknown | ^0 c0 | [jellyfin/jellyfin The Free Software Media System - Server Backend & APIJellyfin ](https://github.com/jellyfin/jellyfin) |
+| rss | unknown | ^0 c0 | [Axorax/awesome-free-apps Curated list of the best free apps for PC and mobile Wi](https://github.com/Axorax/awesome-free-apps) |
+| rss | unknown | ^0 c0 | [twentyhq/twenty The open alternative to Salesforce, designed for AI. The #1 Open](https://github.com/twentyhq/twenty) |
+| rss | unknown | ^0 c0 | [Open-Dev-Society/OpenStock OpenStock is an open-source alternative to expensive ](https://github.com/Open-Dev-Society/OpenStock) |
 
 
 ## โพสต์เด่น
 
 <div class="post-stream">
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@elonmusk</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 23086 · 💬 1054</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/elonmusk/status/2059341684702412911">View @elonmusk on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“@teortaxesTex wtf you talking about, kid? I co-founded OpenAI ten years ago. I understand the difficulty.”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Elon Musk ตอบโต้คนวิจารณ์ อ้างความน่าเชื่อถือด้าน AI โดยบอกว่าตัวเองเป็น co-founder ของ OpenAI มาสิบปีแล้ว.</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>แสดงให้เห็นว่าความน่าเชื่อถือจากยุค founding ใน AI ยังเป็นประเด็นที่ถกเถียงกันอยู่ แม้แต่ในหมู่คนดังที่สุดในวงการ หลังผ่านมาสิบปี.</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Not directly applicable. เป็นแค่การทะเลาะเรื่อง credibility ส่วนตัว ไม่มี insight ด้าน technical หรือ workflow ที่ studio นำไปใช้ได้.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/elonmusk/status/2059341684702412911" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@avidseries</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 4469 · 💬 188</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/avidseries/status/2059337441597591901">View @avidseries on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Belgian man convicted of hate speech describes the judicial rationale for his latest conviction. I asked Gemini: Is this man's account of his conviction accurate? Gemini replied that it was grossly in”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้ทดสอบ Gemini กับ Grok ตรวจสอบข้อเท็จจริงคดี hate speech ในเบลเยียม — Gemini ตอบผิด, Grok แก้, Gemini ยอมรับว่าผิด</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>การใช้ LLM หนึ่งตรวจ LLM อีกตัว (AI cross-checking) จับ hallucination ที่ใช้ model เดียวไม่เจอ — เป็น reliability layer ที่ไม่มีต้นทุนเพิ่ม</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ควรเพิ่ม two-model audit step ใน AI content หรือ e-learning pipeline — ส่ง prompt เดียวไปสอง model, flag คำตอบที่ต่างกันให้คนตรวจก่อน publish</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/avidseries/status/2059337441597591901" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@GreenIrisTarot</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1519 · 💬 7</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/GreenIrisTarot/status/2059334906963009630">View @GreenIrisTarot on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“˗ˏˋ ♡ ˎˊ˗ gemini, virgo, sagittarius, pisces (s, m, r,) — random channeled messages 🦦 • VIP treatment energy around you. upgrades, priority access, free things, invitations, better seats, skipped line”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ไพ่ทาโรต์ channeled สำหรับ Gemini, Virgo, Sagittarius, Pisces — พลังงาน VIP treatment, อัปเกรด, priority access, และสถานการณ์ที่ดูตายแล้วกลับฟื้นคืนมา</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>เนื้อหาดูดวง แต่ 1,519 likes กับแค่ 7 comments บอกว่าคนกด like โดยไม่คอมเมนต์ — passive resonance engagement สูง น่าจับตาสำหรับ content strategy</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Not directly applicable.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/GreenIrisTarot/status/2059334906963009630" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@irelatetolevin</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 1408 · 💬 151</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/ClaudeAI/comments/1tn9emb/are_we_nearly_there/" target="_blank" rel="noopener"><img src="https://i.redd.it/thq43867da3h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Are we nearly there? Implying tech companies besides Anthropic, Google, and Nvidia have any money left over by 2027 after they all ran through cash on hand for tokens. I feel like there are reasonable”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>user Reddit โต้ว่าบริษัท tech ส่วนใหญ่จะหมด cash จากค่า token ภายในปี 2027 ชมนักการศึกษา AI ที่สอนจริงอย่าง 'ijustvibecodedthis' และกล่าวหา Dario Amodei โกหกเรื่อง AI progress</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ถ้า vendor AI ระดับกลางล้มภายในปี 2027 ราคา, API access, และ tool ที่ทีมเล็กพึ่งอยู่จะเปลี่ยนทันทีโดยไม่มีสัญญาณเตือน</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">studio ควรหลีกเลี่ยง lock-in กับ AI vendor รายเดียว — กระจาย dependency ของ Unity, XR, และ web stack ไปอย่างน้อยสอง provider ตั้งแต่ตอนนี้ก่อนตลาดจะหด</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/ClaudeAI/comments/1tn9emb/are_we_nearly_there/" target="_blank" rel="noopener">เปิดบน reddit →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@astroinrealtime</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1324 · 💬 45</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/astroinrealtime/status/2059371998946488729">View @astroinrealtime on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“gemini, somebody wants to love you slowly and seriously.”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้บอกว่าอยากสร้างความสัมพันธ์จริงจังกับ Gemini — หมายถึงควรใช้งานแบบลึกและตั้งใจ ไม่ใช่แค่ลองเล่น</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>สัญญาณว่า Gemini เริ่มมี advocate จริงจัง ไม่ใช่แค่คนทดลองใช้ — น่าติดตามว่า adoption จะแซง ChatGPT ในกลุ่ม developer ไหม</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio มี /gemini skill อยู่แล้ว — ให้ทีมลอง commit จริงจัง: ใช้เป็น primary model สำหรับ code review หรือ asset pipeline หนึ่ง sprint แล้วเทียบ output กับ model ปัจจุบัน</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/astroinrealtime/status/2059371998946488729" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@itsolelehmann</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1204 · 💬 105</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/itsolelehmann/status/2059326734978158610">View @itsolelehmann on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Germany is a sleeping giant of physical AI everyone's been writing Germany off in the AI race because there's no German OpenAI and no big data center story. but theres actually two AI races happening:”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>เยอรมนีติดอันดับ 3 โลกด้าน robots ต่อแรงงาน (449/10k คน) และกำลังสร้างบริษัท physical AI ระดับโลก เช่น Neura Robotics (มูลค่า €4B) และ Sereact ($110M) — แข็งแกร่งในสนาม robotics AI</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>physical AI กำลังโต เงินทุนระดับพัน-ล้าน — บริษัทพวกนี้ต้องการ simulation, training environment, และ XR interface ซึ่งเป็นจุดที่ studio เล็กเชี่ยวชาญแข่งได้</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทีม XR/VR วาง position ด้าน robot simulation และ digital-twin training environment ได้เลย — Unity เป็น standard ใน industrial robotics sim อยู่แล้ว และคลื่นเงินทุนนี้บอกว่า client budget กำลังมา</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/itsolelehmann/status/2059326734978158610" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
     <span class="ndf-author">@Technical-Relation-9</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 1021 · 💬 64</span>
+    <span class="ndf-engagement">♥ 1425 · 💬 87</span>
   </header>
   <a class="ndf-card-media" href="https://www.reddit.com/r/ClaudeAI/comments/1to6kqz/microsoft_has_started_canceling_claude_code/" target="_blank" rel="noopener"><img src="https://i.redd.it/4nskxdbpeh3h1.png" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Microsoft, has started canceling Claude Code licenses, per the Verge Microsoft, has started canceling Claude Code licenses, per the Verge”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Microsoft เริ่ม cancel license ของ Claude Code แล้ว ตามรายงานจาก The Verge</dd>
+      <dd>Microsoft เริ่มยกเลิก license Claude Code ของ user ตามที่ The Verge รายงาน</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Enterprise รายใหญ่ถอน Claude Code license แสดงให้เห็นว่า AI tooling landscape เปลี่ยนเร็ว — vendor ตกขอบได้ทันทีถ้ามีคู่แข่งจาก internal tools หรือ Microsoft เอง</dd>
+      <dd>enterprise ใหญ่ถอน Claude Code อาจหมายถึง licensing cost พุ่งหรือ strategy เปลี่ยน — กระทบ pricing ที่ทีมเล็กจะเจอด้วย</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ใช้ Claude Code ทุกวัน — นี่คือ signal ให้ติดตาม pricing และ continuity risk ต้องทำ workflow ให้ portable ข้าม AI coding tools ได้ ถ้า license หาย delivery ต้องไม่สะดุด</dd>
+      <dd class="ndf-adapt">studio ใช้ Claude Code ทุกวัน — ตรวจ usage tier ตอนนี้เลย และเลือก fallback tool สำรองไว้ก่อนที่ access จะมีปัญหา</dd>
     </dl>
     <a class="ndf-source" href="https://www.reddit.com/r/ClaudeAI/comments/1to6kqz/microsoft_has_started_canceling_claude_code/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
 </article>
-<article class="ndf-card platform-x">
+<article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
-    <span class="ndf-author">@yonashav</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 998 · 💬 82</span>
+    <span class="ndf-author">@IamKhanPhD</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 1179 · 💬 79</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/yonashav/status/2059352141395882409">View @yonashav on X</a></blockquote>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/ClaudeAI/comments/1tostyj/i_think_its_time_vibe_coders/" target="_blank" rel="noopener"><img src="https://i.redd.it/w5bakmukhl3h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“On Friday, I resigned from OpenAI. Today is my first day at the OpenAI Foundation, where I'm helping build out our AI Resilience program. There is a great deal to do before superintelligence, and litt”</p>
+    <p class="ndf-quote">“I think it’s time Vibe Coders 😅”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>อดีตพนักงาน OpenAI ลาออกแล้วย้ายไปทำ AI Resilience program ที่ OpenAI Foundation พร้อมเรียกร้องให้คนอื่น pivot มาช่วยงาน AI safety ได้แล้ว</dd>
+      <dd>Reddit user ใน r/ClaudeAI ประกาศว่าถึงเวลาของ 'Vibe Coders' แล้ว — นักพัฒนาที่ build ผ่าน AI prompts แทนการเขียน code เอง โทนตลกๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>คนระดับ senior ใน AI กำลัง shift จาก product ไปสาย safety/resilience — บ่งชี้ว่า infrastructure ก่อน superintelligence กลายเป็น priority จริงทั้งด้าน hiring และ funding</dd>
+      <dd>1,179 upvotes บ่งชี้ว่า dev community ยอมรับ AI-driven coding เป็น workflow ปกติแล้ว ไม่ใช่ของแปลกใหม่ — แรงกดดันให้ adopt จริง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ติดตาม AI Resilience framework ที่ออกมาจาก OpenAI Foundation — แนวทาง safe AI integration จะกระทบโดยตรงกับวิธีที่ทีมฝัง AI tools ใน Unity และ web stack</dd>
+      <dd class="ndf-adapt">ทีม Unity และ Next.js ของ studio เปลี่ยนมา scaffold boilerplate, shaders, Supabase queries ด้วย Claude แล้ว review แทนการเขียนเอง</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/yonashav/status/2059352141395882409" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://www.reddit.com/r/ClaudeAI/comments/1tostyj/i_think_its_time_vibe_coders/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@sailing67</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 1087 · 💬 467</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/ClaudeAI/comments/1tob45x/company_gave_us_all_unlimited_claude_code_sonnet/" target="_blank" rel="noopener"><img src="https://i.redd.it/hnki8byc5i3h1.png" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Company gave us all unlimited Claude Code Sonnet 4.6 — and now posts a weekly leaderboard of who burns the most tokens. Any tips to top it?”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>บริษัทแจก Claude Code Sonnet 4.6 แบบ unlimited ทั้งทีม แล้วทำ leaderboard รายสัปดาห์วัดว่าใครเผา token ไปมากสุด</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>การทำ leaderboard แข่งใช้ AI เป็น forcing function ที่ทำให้ทีม adopt tool เร็วกว่าแบบ optional rollout มาก</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Studio ทำ leaderboard token รายเดือนข้าม Unity team และ web stack ได้เลย — ผูก visibility กับการใช้จริง บังคับให้คนหยิบ Claude Code มาใช้ทุกวันแทนที่จะแค่ติดตั้งทิ้งไว้</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/ClaudeAI/comments/1tob45x/company_gave_us_all_unlimited_claude_code_sonnet/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@VariationLivid3193</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 558 · 💬 216</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1tot8qm/only_3_years/" target="_blank" rel="noopener"><img src="https://i.redd.it/5563ns8ukl3h1.jpeg" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Only 3 years”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Post ใน r/singularity ชื่อ 'Only 3 years' โชว์ว่า AI พัฒนาไปเร็วแค่ไหนในแค่ 3 ปี น่าจะเป็นการเปรียบเทียบ before/after</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>3 ปีคือ 1 product cycle — tool ที่เลือกตอนเริ่มโปรเจกต์อาจล้าสมัยก่อนโปรเจกต์เสร็จด้วยซ้ำ</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ทำ stack audit ประจำปี — เช็ค AI tools (code gen, asset gen, voice) ที่ใช้อยู่ว่ายังดีที่สุดไหม หรือมีตัวใหม่แซงไปแล้ว</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1tot8qm/only_3_years/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@TFenrir</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 457 · 💬 56</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1toeii7/mythos_using_claude_code_also_solves_the_unit/" target="_blank" rel="noopener"><img src="https://i.redd.it/wrey1712si3h1.png" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Mythos (using Claude code) also solves the unit distance problem recently handled by GPT 5.5, with a &quot;cute, simple proof&quot;. https://x.com/i/status/2059298565093196012”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Mythos ซึ่งเป็น AI agent ที่สร้างบน Claude Code แก้ unit distance problem ทางคณิตศาสตร์ได้ด้วย proof ที่สั้นกระชับ — ผลลัพธ์เดียวกับที่ GPT-5.5 เพิ่งทำได้</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>AI สองระบบแก้ปัญหาคณิตศาสตร์ยากชิ้นเดียวกันโดยอิสระ บ่งชี้ว่า agentic coding tools ไม่ใช่แค่ code generation อีกต่อไป แต่แตะระดับ research-grade แล้ว</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Studio ใช้ Claude Code อยู่แล้ว — นี่คือสัญญาณให้ใช้มันกับงานเทคนิคหนักขึ้น เช่น algorithm design หรือ shader math ไม่ใช่แค่งาน boilerplate</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1toeii7/mythos_using_claude_code_also_solves_the_unit/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@RetiredApostle</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 344 · 💬 59</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1toeft6/price_wars_begin_mimo_25_pro_now_costs_the_same/" target="_blank" rel="noopener"><img src="https://i.redd.it/yvkpwm1fri3h1.png" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Price wars begin. MiMo 2.5 Pro now costs the same as DeepSeek V4 Pro”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>MiMo 2.5 Pro ลดราคาเท่ากับ DeepSeek V4 Pro บ่งชี้ว่า price war ของ AI model เริ่มแล้ว</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>Frontier model แข่งกันลดราคาจนเท่ากัน ทีมเล็กได้ inference budget มากขึ้นในราคาเดิม</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Studio เปรียบ MiMo 2.5 Pro กับ model ที่ใช้อยู่ใน e-learning และ web app — ถ้าคุณภาพพอ เปลี่ยนได้เลยเพื่อลด API cost</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1toeft6/price_wars_begin_mimo_25_pro_now_costs_the_same/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@GraceToSentience</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 254 · 💬 42</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1tomg90/rai_institute_juggling/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/Y3RmczMzb2Y1azNoMTLo9ioEUhWCZZP08k7eTaAav-i3k3DdjZeHHTCH2jay.png?format=pjpg&amp;auto=webp&amp;s=860d09df2df786fdcdff33f5c2925632a5005893" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“RAI Institute | Juggling [https://www.youtube.com/watch?v=tAPvN-tQpX0](https://www.youtube.com/watch?v=tAPvN-tQpX0)”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>RAI Institute ปล่อยคลิปหุ่นยนต์ juggling ได้สำเร็จ แสดงถึงความก้าวหน้าด้าน real-time dexterous manipulation และ physical AI control</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>Juggling ต้องการ feedback loop ระดับ millisecond การทำสำเร็จบอกว่า physical AI ข้ามเส้นเข้าสู่ motor skill ที่เคยถือว่ายากเกินสำหรับหุ่นยนต์</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Unity team ใช้เป็น benchmark ตอนออกแบบ NPC physics animation หรือ XR hand-interaction — งานวิจัย physical AI ช่วย ground embodied behavior ให้ดูสมจริง</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1tomg90/rai_institute_juggling/" target="_blank" rel="noopener">เปิดบน reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@SnoozeDoggyDog</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 246 · 💬 120</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/singularity/comments/1tohbhk/us_law_enforcement_warns_of_antitech_extremism_as/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/IQOhdQWyCvXSPnQXhiustbvcBYTPS4DA1AkPLoYTEYY.jpeg?auto=webp&amp;s=f29a5772a211039d1c33bc265191d1ca836cdc09" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“US Law Enforcement Warns of ‘Anti-Tech Extremism’ as AI Hatred Grows”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>หน่วยงานบังคับใช้กฎหมายสหรัฐฯ ประกาศให้ 'anti-tech extremism' เป็นหมวดภัยคุกคามอย่างเป็นทางการ สะท้อนว่ากระแสต้าน AI รุนแรงถึงขั้นเป็นประเด็นความปลอดภัยสาธารณะ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>การ adopt AI กำลังก่อแรงเสียดทานสังคมจริง — ทีมที่ ship product ที่ใช้ AI อาจเจอวิกฤต user trust ไม่ใช่แค่ปัญหาเทคนิค</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Studio ควรใส่ human-oversight ที่มองเห็นได้ใน feature ที่ใช้ AI (e-learning, XR) และสื่อสารให้ชัด — trust design ตอนนี้เป็น product requirement ไม่ใช่แค่ PR</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/singularity/comments/1tohbhk/us_law_enforcement_warns_of_antitech_extremism_as/" target="_blank" rel="noopener">เปิดบน reddit →</a>
   </div>
 </article>
 </div>

@@ -4,92 +4,96 @@ date: '2026-05-27'
 topic: web-frontend
 lang: th
 pair: web-frontend.en.md
-generated_at: '2026-05-27T04:35:38+00:00'
+generated_at: '2026-05-27T16:34:02+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
 - hackernews
-- lobsters
 - reddit
 - x
 regions:
 - global
-post_count: 230
+post_count: 228
 salience: 0.2
 sentiment: neutral
 confidence: 0.55
 tags:
+- web
 - frontend
-- react
-- astro
+- cloudflare
 - meta-frameworks
-- tooling
-- llm-limits
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2059395684327903232/img/iKIYw4hEIRYO2KFY.jpg
+- ai-ux
+- noise-heavy
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2059533649389793280/img/BFgqonHV9d1JUUmz.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # Web & Frontend — 2026-05-27
 
 ## TL;DR
-- รายการส่วนใหญ่เป็น noise นอกเรื่อง (ดารา, แฟนคลับ, กีฬา) มีเพียงไม่กี่รายการที่แตะ signal web/frontend จริง [19][23][27][38]
-- Workbench ขยาย native support ไปถึง Astro, Bun, Nuxt, Hono, Next.js และอื่นๆ — เป็นสัญญาณการรวมตัวของ ecosystem JS meta-framework [38]
-- นักพัฒนาคนหนึ่งรายงานว่าใช้เวลา 2 สัปดาห์ optimize React render จนลด tweet-render latency จากที่รู้สึกได้เป็นรู้สึกไม่ได้ — เตือนใจว่า performance ยังต้องปรับแต่งด้วยมือ [19]
-- ถกเถียงใน Reddit/r/webdev โต้แย้งว่า LLM มีข้อจำกัดเชิงโครงสร้างในการทำ software architecture — เกี่ยวข้องกับ frontend workflow ที่ใช้ AI เสริม [27]
-- Salience ของ Web & Frontend วันนี้ต่ำ — อัตราส่วน signal-to-noise เอียงหนักไปทาง keyword 'react' ที่ไม่เกี่ยวข้อง
+- แทบไม่มี signal จริงเกี่ยวกับ web/frontend วันนี้ — feed เต็มไปด้วย k-pop, fandom, และคำว่า 'react' ในความหมายเป็น verb ภาษาอังกฤษ ไม่ใช่ framework [1][2][3][4][6][7]
+- Cloudflare 'Flagship' release ปรากฏบน HN — น่าจะเป็น edge/platform shift ที่ควรติดตามสำหรับทีมที่ใช้ Next.js+Supabase แบบ full-stack [33]
+- เครื่องมือ 'Workbench' รองรับ Astro, Bun, Hono, Next.js, Nuxt ฯลฯ แล้ว — แนวโน้ม meta-framework agnosticism ยังคงเป็นบรรทัดฐาน [39]
+- HN thread 'I'm Tired of AI-Generated Answers' (705 comments) สะท้อน user fatigue กับ AI-first UX — เกี่ยวข้องกับ copy/UX ของ edutech [5]
+- Reddit r/webdev ถกว่า LLMs จะยังไม่เก่งด้าน software architecture — เป็นมุมมองถ่วงดุลที่ดีต่อการ delegate การออกแบบให้ AI มากเกินไป [26]
 
 ## What happened
-feed ถูกครอบงำด้วยโพสต์ social/ดารา ที่ match คำว่า 'react' มากกว่า React.js [1][2][4][6][11][12][13] signal web/frontend ที่แท้จริงมีน้อย: หมายเหตุด้าน tooling ว่า Workbench รองรับ Koa, Astro, Bun, H3, Nuxt, Hono, Express, Fastify, Elysia, NestJS และ Next.js แล้ว [38]; เธรดนักพัฒนาเรื่องการ optimize React render-latency แบบจริงจังสำหรับ tweet UI [19]; บทความใน r/webdev โต้แย้งว่า LLM จะยังคงอ่อนแอด้าน software architecture [27]; และรายการที่อยู่ใกล้เคียงในวงการ (การเปลี่ยน CEO ของ Dropbox [31], ร้องเรียน friendly-fraud ของ Stripe [58], รวบรวม pixel font [34])
-
-วันนี้ไม่มีอะไรที่เขย่า framework เลย Workbench multi-framework support [38] คือ data point ที่ชัดเจนที่สุดว่า layer ของ JS server/edge runtime ยังคงเคลื่อนเข้าหา adapter surface ร่วมกันข้าม Astro/Next/Nuxt/Hono/Bun
+pool วันนี้เต็มไปด้วย noise: รายการคะแนนสูงส่วนใหญ่ใช้คำว่า 'react' ในบริบท fandom/celeb/k-pop (วง ASTRO, เกม Astro Bot, reaction videos) [1][2][4][6][8][16][18][21][29][34] ไม่ใช่ React framework signal จริงด้าน web/frontend มีน้อย: Cloudflare เผยแพร่หน้า 'Flagship' developer [33], เครื่องมือ Workbench ประกาศ multi-framework adapters ครอบคลุม Astro, Bun, H3, Nuxt, Hono, Next.js และอื่นๆ [39], และบทความ discourse สองชิ้น — HN post เรื่อง AI-answer fatigue [5] กับ r/webdev thread ที่ตั้งคำถามต่อ LLMs ด้าน architecture [26] — แตะประเด็นที่ AI กำลังปรับเปลี่ยน workflow และความคาดหวังด้าน UX ของ web dev
 
 ## Why it matters (reasoning)
-มีสองธีมที่ควรติดตาม ประการแรก ecosystem convergence [38]: เมื่อ tool เริ่มมองว่า Astro, Next.js, Nuxt, Hono และ Bun เป็น target ที่แทนกันได้ ต้นทุนการเลือก stack ก็ลดลงพร้อมกับต้นทุนการเปลี่ยน — ดีสำหรับ studio เล็กที่ต้องการความยืดหยุ่น ประการที่สอง การวิจารณ์ LLM-architecture [27] ช่วยปรับความคาดหวังว่า AI จะมาแทน senior frontend judgment ได้ — AI scaffold component ได้แต่ตัดสิน structure ไม่ได้ เรื่อง React perf [19] เป็นตัวถ่วงดุลที่ดีกับแนวคิด 'ใช้ framework ไปเลย' — render budget ยังต้องปรับด้วยมือเมื่อ UX มีความสำคัญ (เช่น XR companion web apps, edutech dashboards)
+รูปแบบ framework-agnostic adapter ใน [39] ยืนยันว่าการเดิมพันกับ meta-framework ตัวเดียวมีความเสี่ยงสูงขึ้น library ต่างๆ ส่ง adapter หลายตัวเป็น table stakes แล้ว — ส่งผลต่อการเลือก SDK สำหรับ Next.js stack ของ NDF โดยตรง Cloudflare Flagship [33] มีความสำคัญเพราะ edge-runtime + Workers + R2 + D1 แข่งขันกับ Vercel+Supabase บน workload เดียวกับที่ NDF ใช้อยู่มากขึ้นเรื่อยๆ การเปลี่ยนแปลงด้านราคาและ DX ที่นั่นส่งผลโดยตรงต่อต้นทุน deploy signal เรื่อง AI-fatigue [5][26] เป็นคำเตือน UX ระดับ second-order: user ของ edutech อาจเริ่มปฏิเสธ content ที่เห็นได้ชัดว่า AI สร้าง ทำให้บาร์สูงขึ้นสำหรับ copy ที่ผ่านมือมนุษย์และสำหรับการตัดสินใจด้าน architecture ที่ไม่ควร delegate ให้ Claude/Cursor อย่างปลอดภัย
 
 ## Possibility
-น่าจะเกิด (~70%): การทำมาตรฐาน meta-framework adapter ดำเนินต่อไป — คาดว่าจะมีประกาศ tooling ที่ 'รองรับ Astro/Next/Nuxt/Hono' เพิ่มขึ้นตลอด 2026 พอสมควร (~45%): ความสนใจ React-perf กลับมาพุ่งสูงเมื่อ UI ที่สร้างด้วย AI ชนกำแพง latency ในโลกจริง ดัน team กลับไปทำ manual profiling เหมือน [19] ต่ำกว่า (~25%): ข้ออ้างสถาปัตยกรรมที่ขับเคลื่อนด้วย LLM เผชิญปฏิกิริยาต่อต้านจากสาธารณะคล้าย [27] ทำให้การตลาด 'AI-built app' ชะลอตัว ไม่มี catalyst วันนี้สำหรับการเขย่า framework
+ค่อนข้างแน่ (~70%): meta-framework adapter sprawl ดำเนินต่อ — SDK ใหม่ทุกตัวส่ง adapter สำหรับ Next/Astro/Nuxt/Hono ตั้งแต่วันแรก ปานกลาง (~45%): Cloudflare Flagship เป็นแค่การ packaging/branding ใหม่ ไม่ใช่ runtime ใหม่ ควร skim 30 นาที ยังไม่ถึงเวลา migrate ต่ำ (~25%): AI-fatigue แปลงเป็น churn ที่วัดได้จริงบน edutech UI ที่ใช้ AI หนักภายใน 6 เดือน — น่าจะยังเป็นแค่ signal ของกลุ่มเสียงดังแต่น้อย แต่ช่วย inform โทนการเขียน copy ได้
 
 ## Org applicability — NDF DEV
-สำหรับงาน Next.js/Supabase ของ NDF DEV: ความเร่งด่วนต่ำวันนี้ คุ้มค่าที่จะดู Workbench [38] สัก 30 นาที ถ้า team ใช้ background jobs ข้าม Next/Hono อยู่แล้ว — อาจทำให้ edutech backend เรียบง่ายขึ้น นำวินัย render-profiling ของ [19] มาใช้กับ HR Page (N) และ Employee Page (E) ก่อนที่จะ scale ใช้ [27] เป็น guardrail: ให้คนดูแล architecture ที่ขอบเขต Unity/XR/web เอาไว้ เปิดให้ AI ทำงาน component-level เท่านั้น ข้ามรายการอื่นทั้งหมดในชุดนี้
+คุณค่าโดยตรงต่ำถึงปานกลางวันนี้ action items: (1) skim Cloudflare Flagship [33] เพื่อตรวจว่า Workers+D1 ตอนนี้คุ้มกว่า Supabase ปัจจุบันสำหรับ NDF web app traffic ต่ำหรือไม่ — 30 นาที ยังไม่ migrate (2) สำหรับ copy ของ e-learning audit text บทเรียนที่ AI สร้างโดยเทียบกับ fatigue signal ใน [5] — ให้มนุษย์ผ่านก่อน publish (3) บันทึก [26] ไว้เป็นหลักฐานต้านการให้ Claude ออกแบบ schema/architecture โดยไม่มีการกำกับดูแลบน NDF HR Page (N) หรือ Employee Page (E) — ใช้ AI สำหรับ code มนุษย์สำหรับ architecture ข้ามทุกอย่างที่เหลือ
 
 ## Signals to Watch
-- จับตาดู framework เพิ่มเติมที่เข้าร่วม universal adapter แบบ Workbench [38]
-- ติดตาม sentiment ของ r/webdev เรื่องสถาปัตยกรรมที่ใช้ LLM ช่วย — กำลังเริ่มมีแรงต้าน [27]
-- ติดตาม Stripe friendly-fraud thread [58] ถ้า NDF DEV วางแผน edutech แบบเสียเงิน
+- รายละเอียด Cloudflare Flagship — เปลี่ยนแปลง runtime จริงหรือแค่ repackage ด้าน marketing [33]
+- SDK ที่มี adapter sprawl — เลือกตัวที่รองรับทั้ง Next.js และ Astro อยู่แล้ว [39]
+- User backlash ต่อ AI copy ที่ดูออกชัดบนเว็บไซต์ edu/SaaS [5]
+- ความเห็นของ r/webdev ต่อการตัดสินใจด้าน architecture โดย LLM [26]
+
+## Repos & Tools to Try
+| repo | source | url |
+|---|---|---|
+| **golang/go** — Go: Support for Generic Methods | hackernews | <https://github.com/golang/go> |
+| **WilliamSmithEdward/xlide_vscode** — XLIDE: VBA without excel | hackernews | <https://github.com/WilliamSmithEdward/xlide_vscode> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | socialistadri | ^4923 c27 | [HASAN AND STAVVY REACT TO ELON MUSK UNFOLLOWING IAN MILES CHEONG FOR HIS TWEET A](https://x.com/socialistadri/status/2059395846865555478) |
-| x | evyverse | ^3970 c10 | [i wasn't gonna jump on this bc people are being dense but the mockery is pissing](https://x.com/evyverse/status/2059413466264609063) |
-| x | MichaelDoesLife | ^1786 c176 | [The lack of detail in 007 First Light is EMBARRASSINGLY bad. It's 2026 and we st](https://x.com/MichaelDoesLife/status/2059420298651279691) |
-| x | WarlordDilley | ^1652 c45 | [...patiently waits for NFL football players to react and throw a fit the way the](https://x.com/WarlordDilley/status/2059425528340152702) |
-| x | CokLemau | ^1433 c1 | [Stroo #dandysworld #dandysworldastro #astro https://t.co/ohs7Oh8swg](https://x.com/CokLemau/status/2059094606944649300) |
-| x | HasPause | ^993 c6 | [idk how else you're supposed to react to something like this 😭](https://x.com/HasPause/status/2059364438596366594) |
-| x | JINJIN_offcl | ^971 c3 | [[🔔] ⏰ 2026. 05. 26. 4PM 📺 EBS FM #아이돌한국어 ▶ https://t.co/VHCu3rwV6i #진진 #JINJIN #](https://x.com/JINJIN_offcl/status/2059160101756481954) |
-| x | RealQueenBee__ | ^903 c19 | [@ChibuikeAmaechi We warned Amaechi before the sham so-called ADC primaries began](https://x.com/RealQueenBee__/status/2059335496807964841) |
-| x | MagicMushMM | ^847 c17 | [Recently played and 100%ed Astro Bot, definitely one of the best platformers I'v](https://x.com/MagicMushMM/status/2059360770517778500) |
-| hackernews | thm | ^822 c376 | [Spain blocks prediction markets Polymarket, Kalshi over lack of gambling licence](https://www.reuters.com/business/spain-blocks-prediction-markets-polymarket-kalshi-over-lack-gambling-licences-2026-05-26/) |
-| x | 02_blag | ^740 c2 | [How N+C protags would react to Godzilla attacking their city: https://t.co/dPnik](https://x.com/02_blag/status/2059376843115954180) |
-| x | SylentBell | ^654 c300 | [Your last saved image made her react like this 🫵😗 https://t.co/5Q9UMOWhzw](https://x.com/SylentBell/status/2059362265959137553) |
-| x | goboee | ^589 c4 | [the funniest part is gero usually folds and blushes over the smallest things but](https://x.com/goboee/status/2059336458465423516) |
-| x | ankleknuckle | ^557 c12 | [i cant imagine calling him the logan paul of rivals lmao. i can imagine being a ](https://x.com/ankleknuckle/status/2059329812032864672) |
-| x | CartoonandFrie1 | ^539 c1 | ["I'm so happy that their friends." (1977) #dandysworld #dandysworldau #dandysglo](https://x.com/CartoonandFrie1/status/2059123184599712056) |
-| x | ShowdownTrends | ^504 c9 | [One Astro can host different activities in a week https://t.co/Hy7i50bafv](https://x.com/ShowdownTrends/status/2059150533039185979) |
-| x | GaLaxycious | ^503 c0 | [Net must be enjoying this scene so much 🤣 Getting kisses from your grumpy-lookin](https://x.com/GaLaxycious/status/2059321750215917822) |
-| x | TheFive | ^495 c29 | [The Price Is WRONG! @TheFive react to DREW CAREY melting down over SPENCER PRATT](https://x.com/TheFive/status/2059431893456605203) |
-| x | yacineMTB | ^463 c12 | [another note I spent like two weeks doing nothing but optimizing the react to ha](https://x.com/yacineMTB/status/2059354805605433746) |
-| x | TravisSkol | ^452 c10 | [The broadcast wanted to react to this so badly. Had Wemby DANCING. https://t.co/](https://x.com/TravisSkol/status/2059457916675973266) |
-| x | SabrinacAccess | ^424 c29 | [Even us admins at Access don't even know how to thank you or react to this. We j](https://x.com/SabrinacAccess/status/2059399145803117050) |
-| x | Shinywcott | ^419 c10 | [Oh? U are using Tailwind? I guess I will have to do the sam— REVERSE TECHNIQUE -](https://x.com/Shinywcott/status/2059305528782737841) |
-| hackernews | cdrnsf | ^379 c214 | [Big tech's anti-labor playbook has come for Wikipedia](https://medium.com/@jakeorlowitz/wikipedia-is-doing-the-capitalist-thing-56a393232943) |
-| x | _lucacg | ^367 c1 | [@UsherNBA Every time chet doesn't react it fuels Wemby's fire even more lmao](https://x.com/_lucacg/status/2059438944912380013) |
-| x | LDN_immigrant | ^358 c4 | [@nickimoraa When a woman doesn't react to a break and just quietly moves on, tru](https://x.com/LDN_immigrant/status/2059316299193352277) |
-| x | mzylvs_2 | ^350 c0 | [sanha showing the pic his brother suddenly sent him🤣 #YOONSANHA #윤산하 #ユンサナ #아스트로](https://x.com/mzylvs_2/status/2059200193988321340) |
-| reddit | NegotiationInner7307 | ^332 c63 | [Why LLMs will be always Terrible at Software Architecture](https://www.reddit.com/r/webdev/comments/1toiki0/why_llms_will_be_always_terrible_at_software/) |
-| hackernews | ggcr | ^325 c687 | [The real cost of owning a home](https://ericturner.dev/posts/cost-of-home-ownership/) |
-| x | hudareports | ^325 c6 | [🚨 DDG has officially followed Huda Mustafa on Instagram. Fans are continuing to ](https://x.com/hudareports/status/2059342563681898890) |
-| x | sushi_astrology | ^320 c18 | [Just found on my computer, an astro love calendar that I created, for fun, few y](https://x.com/sushi_astrology/status/2059207740036100297) |
+| x | namzyvibez | ^6111 c61 | [How Prince and Blanket Jackson would react anytime they watch videos of their da](https://x.com/namzyvibez/status/2059533832856961033) |
+| x | Billlieofficial | ^2544 c27 | [[🎥] all my #아스트로 #진진 on #WORK 🏃💻💼 🔗 https://t.co/cMeakulPCF 🔗 https://t.co/uskHe](https://x.com/Billlieofficial/status/2059614165296410919) |
+| x | allmynut | ^2390 c13 | [wonder how someone would react if they looked into my car and saw this.. https:/](https://x.com/allmynut/status/2059547375887118777) |
+| x | user_300715 | ^2094 c32 | [If hollanov did this trend to each other how do you think they would react cuz I](https://x.com/user_300715/status/2059608510233538940) |
+| hackernews | theorchid | ^1410 c705 | [I'm Tired of Talking to AI](https://orchidfiles.com/im-tired-of-ai-generated-answers/) |
+| x | MagicMushMM | ^1149 c22 | [Recently played and 100%ed Astro Bot, definitely one of the best platformers I'v](https://x.com/MagicMushMM/status/2059360770517778500) |
+| x | HE3XXX | ^1041 c2 | ["How did aang react when you told him?" "He was nothing but supportive." I need ](https://x.com/HE3XXX/status/2059535270618255458) |
+| x | JINJIN_offcl | ^900 c9 | [[🔔] ⏰ 2026. 05. 27. 4PM 📺 EBS FM #아이돌한국어 ▶ https://t.co/VHCu3rwngK #진진 #JINJIN #](https://x.com/JINJIN_offcl/status/2059522490330677662) |
+| x | PrawinGaneshan | ^862 c10 | [DVAC Chief made a Court Staff wait 2 hours yesterday Court Bosses Honourable Jus](https://x.com/PrawinGaneshan/status/2059580952360485363) |
+| x | aroyagain | ^787 c6 | [Don't think I'll have to worry about it but genuinely don't know how I'd react i](https://x.com/aroyagain/status/2059576666901381312) |
+| x | ankleknuckle | ^698 c13 | [i cant imagine calling him the logan paul of rivals lmao. i can imagine being a ](https://x.com/ankleknuckle/status/2059329812032864672) |
+| x | JKJMKEEPGOING | ^587 c0 | [It honestly felt like everyone needed to excuse them for a moment 😭 Jungkook was](https://x.com/JKJMKEEPGOING/status/2059572028269572118) |
+| x | PSSMKR | ^579 c5 | [How Black Noir would react if you asked his pronouns: https://t.co/Yp67dfNH40](https://x.com/PSSMKR/status/2059641753037410722) |
+| x | instablog9ja | ^543 c147 | [Nigerians react after being stopped from using the road because of a politician'](https://x.com/instablog9ja/status/2059568060617412997) |
+| hackernews | oliverio | ^531 c408 | [The worst job interview I ever had](https://www.oliverio.dev/blog/the-worst-job-interview-i-had) |
+| x | realradec | ^509 c27 | [so Astro Bot got a new update a week before the State of Play airs It's probably](https://x.com/realradec/status/2059653919299514844) |
+| x | kzhaabs | ^488 c1 | [this BOOMPALA x REDRED remix slaps omg i need cortis to react to this so baddddd](https://x.com/kzhaabs/status/2059623534079709461) |
+| x | Aglaiet | ^468 c2 | [My Astro plush didn't have his trinket with him but it's a bit too late to ask f](https://x.com/Aglaiet/status/2059503458667884806) |
+| x | Shinywcott | ^443 c11 | [Oh? U are using Tailwind? I guess I will have to do the sam— REVERSE TECHNIQUE -](https://x.com/Shinywcott/status/2059305528782737841) |
+| x | DearS_o_n | ^437 c28 | [Never control a woman, Let her do exactly what she wants. That way, she will rev](https://x.com/DearS_o_n/status/2059511864350937473) |
+| x | twspopbase | ^426 c0 | [SHINYU joins Yoon Sanha (ASTRO) for "IDK ME" challenge https://t.co/zcdYaNUnbh](https://x.com/twspopbase/status/2059554356433936554) |
+| x | lwtguitars | ^424 c1 | [How Pond and his characters would react to "I'm sorry I can't pay rent this mont](https://x.com/lwtguitars/status/2059596389211140204) |
+| x | intlmandotcom | ^401 c16 | [No matter what happens, we are confident the Iran war will be a major tailwind f](https://x.com/intlmandotcom/status/2059241543131627766) |
+| hackernews | zdw | ^399 c95 | [A few interesting modern pixel fonts](https://unsung.aresluna.org/a-few-interesting-modern-pixel-fonts/) |
+| hackernews | nooks | ^389 c174 | [That Methyl Methacrylate Tank](https://www.science.org/content/blog-post/methyl-methacrylate-tank) |
+| reddit | NegotiationInner7307 | ^386 c109 | [Why LLMs will be always Terrible at Software Architecture](https://www.reddit.com/r/webdev/comments/1toiki0/why_llms_will_be_always_terrible_at_software/) |
+| x | TheFJEN | ^386 c6 | [🚨🗣️ Damien Comolli: "Edon Zhegrova told me: 'If I had scored that goal against G](https://x.com/TheFJEN/status/2059563207123984390) |
+| x | sophiapeppin | ^378 c10 | [This is TN CM for you! Many deeply rooted political parties are now facing an op](https://x.com/sophiapeppin/status/2059523824815857820) |
+| x | Genki_JPN | ^353 c4 | [PlayStation Japan made a pixel Slime cake to celebrate the 40th anniversary of D](https://x.com/Genki_JPN/status/2059446577216082294) |
+| x | snaillester | ^339 c8 | [phantwt react announcement tweet Today btw https://t.co/e9zqCBgyFI](https://x.com/snaillester/status/2059535839927918756) |
 
 
 ## โพสต์เด่น
@@ -97,162 +101,162 @@ feed ถูกครอบงำด้วยโพสต์ social/ดารา 
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@socialistadri</span>
+    <span class="ndf-author">@namzyvibez</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 4923 · 💬 27</span>
+    <span class="ndf-engagement">♥ 6111 · 💬 61</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/socialistadri/status/2059395846865555478">View @socialistadri on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/namzyvibez/status/2059533832856961033">View @namzyvibez on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“HASAN AND STAVVY REACT TO ELON MUSK UNFOLLOWING IAN MILES CHEONG FOR HIS TWEET ABOUT HASAN AND ASHLEY 😭 AND STAVVY GIVES SOME GOOD ADVICE TO ELON https://t.co/FC50VmzWyY”</p>
+    <p class="ndf-quote">“How Prince and Blanket Jackson would react anytime they watch videos of their dad Michael Jackson 🥹❤️ https://t.co/2kGnrgUFuo”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์บันเทิง/การเมืองเกี่ยวกับ Elon Musk unfollow คนดังบน Twitter เรื่องทวีตที่เกี่ยวกับ influencer สองคน</dd>
+      <dd>โพสต์ไวรัลเกี่ยวกับปฏิกิริยาของลูกชาย Michael Jackson สองคนคือ Prince และ Blanket เมื่อดูวิดีโอของพ่อ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่มีเนื้อหาเทคนิคเลย เป็นแค่ดราม่า celebrity ไม่เกี่ยวกับ web/frontend หรือ dev workflow</dd>
+      <dd>Engagement สูง (6K+ likes) บน content ที่เป็น emotional ล้วนๆ ยืนยันว่าโมเมนต์ความรู้สึกจริงๆ ทำผล feed ได้ดีกว่า content ที่ขัดเกลาแล้วเสมอ</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่เกี่ยวข้องกับ studio</dd>
+      <dd class="ndf-adapt">ไม่เกี่ยวกับงานของ studio โดยตรง</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/socialistadri/status/2059395846865555478" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/namzyvibez/status/2059533832856961033" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@evyverse</span>
+    <span class="ndf-author">@Billlieofficial</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3970 · 💬 10</span>
+    <span class="ndf-engagement">♥ 2544 · 💬 27</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/evyverse/status/2059413466264609063">View @evyverse on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Billlieofficial/status/2059614165296410919">View @Billlieofficial on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“i wasn’t gonna jump on this bc people are being dense but the mockery is pissing me off. italians can react with outrage at every pasta bastardization but filipinos can’t react in any type of way abou”</p>
+    <p class="ndf-quote">“[🎥] all my #아스트로 #진진 on #WORK 🏃💻💼 🔗 https://t.co/cMeakulPCF 🔗 https://t.co/uskHepyv9F 🔗 https://t.co/LMQBAqWAEQ #Billlie #빌리 #MOONSUA #문수아 #ASTRO #JINJIN #WORK #Billlie_WORK https://t.co/waSGVTN7Yv”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Creator ชาวฟิลิปปินส์โต้ว่า Filipino มีสิทธิ์โกรธเมื่อวัฒนธรรม/อาหารพื้นเมืองถูก gentrify ไม่ต่างจากคนอิตาลีที่โกรธเรื่อง pasta</dd>
+      <dd>แอคเคาท์แฟนคลับ Billlie โพสต์ video compilation ของสมาชิก ASTRO ชื่อ Jinjin ในคอนเทนต์ 'WORK'</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Double standard ทางวัฒนธรรมออนไลน์แสดงให้เห็นว่าคนมองวัฒนธรรม 'exotic' ต่างจากยุโรป — blind spot จริงในงาน content moderation และ UX</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Not directly applicable. แต่ถ้า studio ทำ content ที่แตะวัฒนธรรม Southeast Asia ต้องให้ native voice ร่วม review ไม่ใช่แค่ localize ภาพ</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/evyverse/status/2059413466264609063" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@MichaelDoesLife</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1786 · 💬 176</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/MichaelDoesLife/status/2059420298651279691">View @MichaelDoesLife on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“The lack of detail in 007 First Light is EMBARRASSINGLY bad. It's 2026 and we still have statue NPCs that don't react to anything. YIKES! https://t.co/66jx4ABIaN”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ผู้เล่นวิจารณ์ 007 First Light ว่า NPC นิ่งเหมือนรูปปั้น ไม่มี reactivity เลย ถือว่าน่าอาย สำหรับเกมปี 2026</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>แม้เกม AAA ยังส่งมอบ NPC ที่ broken ได้ในปี 2026 — ชี้ว่า reactive AI ยังทำยากจริง และผู้เล่นให้คะแนน immersion จากจุดนี้โดยตรง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Unity team ควรออกแบบ NPC state machine (idle/aware/react) ตั้งแต่ต้น ไม่ใช่ทำตอน polish — โพสต์นี้พิสูจน์ว่าผู้เล่นสังเกตเห็นและ roast studio ต่อสาธารณะทันที</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/MichaelDoesLife/status/2059420298651279691" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@WarlordDilley</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1652 · 💬 45</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/WarlordDilley/status/2059425528340152702">View @WarlordDilley on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“...patiently waits for NFL football players to react and throw a fit the way they did over Jaxson Dart introducing President Trump. Keep that same energy, fellas...”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ผู้โพสต์แดกดันท้านักฟุตบอล NFL ให้แสดงปฏิกิริยาแบบเดิมที่เคยทำตอน Jaxson Dart แนะนำ President Trump</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวกับ web/frontend เลย — เป็นคอมเมนต์การเมือง/กีฬา US ล้วนๆ</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่เกี่ยวข้องกับ studio</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/WarlordDilley/status/2059425528340152702" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@CokLemau</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1433 · 💬 1</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/CokLemau/status/2059094606944649300">View @CokLemau on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Stroo #dandysworld #dandysworldastro #astro https://t.co/ohs7Oh8swg”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>โพสต์ติด tag Dandy's World และ Astro (web framework) พร้อมรูปภาพ แทบไม่มี context นอกจากคำว่า 'Stroo'</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>engagement สูง (1433 likes) ทั้งที่โพสต์แทบว่างเปล่า แสดงว่า fandom Dandy's World ใหญ่พอที่จะ amplify content ได้แม้ไม่มีสาระ</dd>
+      <dd>คอนเทนต์แฟนคลับ K-pop ได้ 2.5K likes จาก compilation-style post แต่ไม่เกี่ยวกับ web/frontend เลย</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">Not directly applicable.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/CokLemau/status/2059094606944649300" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/Billlieofficial/status/2059614165296410919" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@HasPause</span>
+    <span class="ndf-author">@allmynut</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 993 · 💬 6</span>
+    <span class="ndf-engagement">♥ 2390 · 💬 13</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/HasPause/status/2059364438596366594">View @HasPause on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/allmynut/status/2059547375887118777">View @allmynut on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“idk how else you're supposed to react to something like this 😭”</p>
+    <p class="ndf-quote">“wonder how someone would react if they looked into my car and saw this.. https://t.co/FrSjRNBlaX”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Post แสดงความตกใจหรือไม่เชื่อต่อ 'บางอย่าง' โดยไม่มี context รูป หรือ link แนบมาด้วย</dd>
+      <dd>คนเขียนสงสัยว่าคนอื่นจะรู้สึกยังไงถ้าแอบมองเข้าไปในรถแล้วเห็นสิ่งที่อยู่ข้างใน พร้อมแนบรูปที่ดูแปลกหรือ setup เทคโนโลยีในรถ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>993 likes โดยไม่มี context ชัดเจน — แสดงว่า reaction hook ดึงคนได้แม้ไม่มีเนื้อหาตรงๆ</dd>
+      <dd>เป็น content ส่วนตัว/ไลฟ์สไตล์ ไม่มีสาระเทคนิค และ link รูปเปิดไม่ได้ จึงไม่รู้ว่าในรูปคืออะไร</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">Not directly applicable.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/HasPause/status/2059364438596366594" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/allmynut/status/2059547375887118777" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@user_300715</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 2094 · 💬 32</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/user_300715/status/2059608510233538940">View @user_300715 on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“If hollanov did this trend to each other how do you think they would react cuz I’m laughing my ass off https://t.co/gHkCqEooV0”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ผู้ใช้แชร์โพสต์ตลกถามว่ากลุ่ม 'hollanov' จะ react ยังไงกับ viral trend โดยไม่มีเนื้อหาเทคนิคใดๆ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่มีประโยชน์ด้านเทคนิค — โพสต์นี้ถูก classify ผิด ไม่เกี่ยวกับ Web &amp; Frontend</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่เกี่ยวข้องกับ studio</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/user_300715/status/2059608510233538940" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@MagicMushMM</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1149 · 💬 22</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/MagicMushMM/status/2059360770517778500">View @MagicMushMM on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Recently played and 100%ed Astro Bot, definitely one of the best platformers I've played in years But its a rough game to get through too because going through it, its also a graveyard of dozens and d”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ผู้เล่น 100% Astro Bot แล้วบอกว่าเกมดีมาก แต่ขณะเดียวกันก็เศร้าเพราะมันเป็นสุสานของ franchise เก่า Sony ที่ถูกทิ้งไปแล้ว</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>Astro Bot พิสูจน์ว่าการใช้ nostalgia cameo สร้าง emotional depth ได้จริง — ผู้เล่นรู้สึก loss กับ IP ที่ลืมไปแล้ว ซึ่งเป็น engagement mechanic ที่แรงมาก</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">Not directly applicable.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/MagicMushMM/status/2059360770517778500" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@HE3XXX</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1041 · 💬 2</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/HE3XXX/status/2059535270618255458">View @HE3XXX on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">““How did aang react when you told him?” “He was nothing but supportive.” I need more kya and aang context 😭🤍 https://t.co/qUWqxgjulY”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>โพสต์แฟนคลับอยากได้ context เพิ่มระหว่างตัวละคร Kya กับ Aang พร้อม quote บทสนทนา</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวกับงาน dev เลย — เป็น content แฟนคลับ Avatar ไม่มี tech signal</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่เกี่ยวข้อง</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/HE3XXX/status/2059535270618255458" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@JINJIN_offcl</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 971 · 💬 3</span>
+    <span class="ndf-engagement">♥ 900 · 💬 9</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/JINJIN_offcl/status/2059160101756481954">View @JINJIN_offcl on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/JINJIN_offcl/status/2059522490330677662">View @JINJIN_offcl on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“[🔔] ⏰ 2026. 05. 26. 4PM 📺 EBS FM #아이돌한국어 ▶ https://t.co/VHCu3rwV6i #진진 #JINJIN #아스트로 #ASTRO”</p>
+    <p class="ndf-quote">“[🔔] ⏰ 2026. 05. 27. 4PM 📺 EBS FM #아이돌한국어 ▶ https://t.co/VHCu3rwngK #진진 #JINJIN #아스트로 #ASTRO”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>สมาชิก ASTRO ชื่อ JINJIN ประกาศออกรายการวิทยุ EBS FM 'Idol Korean Language' เวลา 16:00 น. วันที่ 26 พ.ค. 2026</dd>
+      <dd>สมาชิก ASTRO ชื่อ JINJIN ประกาศว่าจะออกรายการวิทยุ EBS FM 'Idol Korean' เวลา 4PM วันที่ 27 พฤษภาคม 2026</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>เป็นโพสต์ประกาศรายการของศิลปิน K-pop ไม่มี technical content สำหรับทีม dev</dd>
+      <dd>โพสต์นี้เป็นตารางงานของศิลปิน K-pop ไม่มีเนื้อหาด้าน tech หรือ dev เลย</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Not directly applicable.</dd>
+      <dd class="ndf-adapt">ไม่เกี่ยวข้องกับ studio โดยตรง</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/JINJIN_offcl/status/2059160101756481954" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/JINJIN_offcl/status/2059522490330677662" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@RealQueenBee__</span>
+    <span class="ndf-author">@PrawinGaneshan</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 903 · 💬 19</span>
+    <span class="ndf-engagement">♥ 862 · 💬 10</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/RealQueenBee__/status/2059335496807964841">View @RealQueenBee__ on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/PrawinGaneshan/status/2059580952360485363">View @PrawinGaneshan on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“@ChibuikeAmaechi We warned Amaechi before the sham so-called ADC primaries began never to participate and now he has seen it. Smart people never let calamity befall them before they learn, they see th”</p>
+    <p class="ndf-quote">“DVAC Chief made a Court Staff wait 2 hours yesterday Court Bosses Honourable Justice Lordships make the DVAC Chief wait whole day I havent seen karma react this faster 🎇”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์การเมืองไนจีเรีย วิจารณ์ Amaechi ที่ไม่ฟังคำเตือนเรื่อง ADC primaries และยกย่อง Obi ว่าเหนือกว่า</dd>
+      <dd>หัวหน้า DVAC ทำให้เจ้าหน้าที่ศาลรอ 2 ชั่วโมง แล้ว karma ตอบแทนทันทีเมื่อผู้พิพากษาทำให้หัวหน้า DVAC รอทั้งวัน</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวกับ web หรือ frontend เลย — topic tag ติดผิด</dd>
+      <dd>ไม่เกี่ยวกับ tech — เป็น viral post เรื่อง karma ในระบบศาลอินเดีย ไม่ใช่เรื่อง dev</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่เกี่ยวข้องกับสตูดิโอ</dd>
+      <dd class="ndf-adapt">ไม่เกี่ยวข้องกับ studio โดยตรง</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/RealQueenBee__/status/2059335496807964841" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/PrawinGaneshan/status/2059580952360485363" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

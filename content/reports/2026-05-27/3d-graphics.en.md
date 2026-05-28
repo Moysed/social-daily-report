@@ -4,7 +4,7 @@ date: '2026-05-27'
 topic: 3d-graphics
 lang: en
 pair: 3d-graphics.th.md
-generated_at: '2026-05-27T04:49:31+00:00'
+generated_at: '2026-05-27T16:45:46+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,245 +12,245 @@ platforms:
 - x
 regions:
 - global
-post_count: 141
-salience: 0.45
-sentiment: mixed
-confidence: 0.7
+post_count: 58
+salience: 0.72
+sentiment: positive
+confidence: 0.78
 tags:
+- gaussian-splatting
 - blender
-- geometry-nodes
-- eevee
+- unity
 - procedural
-- stylized-shading
-- react-three-fiber
-thumbnail: https://external-preview.redd.it/cmhoeGVqajZpZjNoMQsqFFakb1glENvFPS-fTnP6uFK2pksUhB6_rOF6GUec.png?format=pjpg&auto=webp&s=71b23f2a39d8af8a625470d58ebc84232f8e7025
+- ai-3d
+- photogrammetry
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2059419707556438016/img/0fBSltBoNiBhjxOZ.jpg
 ---
 
 # 3D & Graphics — 2026-05-27
 
 ## TL;DR
-- Heavy keyword-noise day: most 'nerf' hits are game-balance chatter, not 3D/graphics signal [2-5,7,8,10-14,16,17,19,22,23,25-29,46,48-51,53-55,57-59].
-- Real signal clusters around Blender Geometry Nodes for procedural builds [6,34,41,56] and stylized/NPR shading workflows [20,32,33,35,38,52].
-- Eevee Next (Blender 5.0) showing production-ready stylized + volumetric output [21,31,35].
-- Web3D pipeline alive: React Three Fiber + GLSL + Blender practical demo [39]; Unreal material graph onboarding still very low-barrier [30].
-- Tech artist / VFX role demand called out as AI-resistant [60].
+- Gaussian Splatting maturing fast: Niantic+Spexi city-scale drone capture [51], production-ready dynamic GS tests [33], native D3D12 splat renderer [41], and a 4D GS pipeline from regular video [27]
+- TriSplat outputs simulation-ready triangle meshes from sparse unposed images — bypasses GS-to-mesh extraction, directly usable in Unity/Unreal physics [53]
+- NVIDIA PiD does 4x latent-space super-resolution for FLUX/Z-Image, fast pixel upscaling for AI-generated textures/concepts [9]
+- Sketched-camera-path → drone POV video via Google Omni/Flow [1][44][57] shows AI virtual cinematography reaching usable fidelity for previs
+- Blender ecosystem still the dominant signal volume: Rigify character rigs [5], Eevee stylized NPR [4], Geo Nodes procedural, VHS add-on [43], URP painterly shader port [31]
 
 ## What happened
-Topic feed is dominated by gaming-balance 'nerf' chatter unrelated to 3D pipelines [2-5,7,8,10-14,16,17,19,22,23,25-29,46,48-51,53-55,57-59]. Filtering those out, the actual graphics signal is consistent: Blender Geometry Nodes powering procedural Lego speed-build animation [6], a realistic procedural galaxy generator [34], procedural cell simulation [41], and procedural creature rigs in Godot [56]. Stylized/NPR work is strong — anime eye shader [20], stylized metal panel texture pack [33], Eevee watercolor fish [21], Eevee nebula on Blender 5.0 [31], Frutiger Aero revival [35], grease-pencil lips [52], sketch-style render [38].
+Two clear threads dominate today's 3D feed. First, Gaussian Splatting keeps moving from research toy to production: Niantic Spatial partnered with Spexi for commissioned drone flights to build city-scale splats [51]; a tested dynamic-scene GS pipeline is being called production-ready [33]; an open-source native D3D12 GS rendering library appeared for embedding in Windows apps [41]; and a coder demoed 4D GS reconstruction from everyday video [27] — though a credible voice pushed back that single-video full-scene capture is misinformation and arrays are still needed [48]. Alongside, TriSplat proposes feed-forward sparse-image → triangle-mesh reconstruction, skipping GS and mesh extraction entirely [53].
 
-Pipeline-adjacent: React Three Fiber + GLSL + Blender mini-game showing the web3D loop [39]; Unreal material editor accessible enough for a 12-year-old to author shape morphs [30]; RayCast system for Blender control rigs [45]; community thread on Blender hygiene habits worth internalizing [43]; tech-artist/VFX still hiring despite AI pressure [60].
+Second, AI-assisted content tooling: Bilawal Sidhu sketched a camera path on a Google Maps screenshot and Google Omni/Flow generated coherent drone POV footage [1][44][57]; NVIDIA released PiD, a 4x latent-space super-resolution for FLUX.1/2 and Z-Image [9]; Luma is pushing 'Agents' for marketplace/LinkedIn/newsletter graphics [47][50][52]. Blender remains the bulk of community volume — Rigify Kung Fu Panda rig [5], Eevee watercolor fish via Geo Nodes [4], a Blender→Unity URP painterly shader port [31], and a VHS add-on [43]. Procedural work spans gas giants [3], cells with genomes [14], and Godot creature gen [20]. A solo dev shipped a game on a custom engine [17], and a freelancer warning [7] flags real client-risk in 3D contracting.
 
 ## Why it matters (reasoning)
-For an NDF DEV-style studio shipping Unity/XR/web, the durable trendline is procedural + stylized as a cost lever. Geometry Nodes [6,34] and procedural sims [41,56] let one artist generate variant-rich assets that would otherwise need a team — directly relevant to e-learning content libraries and XR set dressing. Eevee Next quality [21,31,35] means Blender can now produce marketing/cutscene-grade renders without Cycles farm time, compressing video deliverables. The R3F+GLSL demo [39] confirms the Next.js/Supabase stack can carry real-time 3D on the web without Unity WebGL bloat — relevant for lightweight edutech 3D viewers. Tech-artist demand holding up [60] signals shader/pipeline skill is still the highest-leverage hire, not generalist 3D. Conspicuous absence: zero Gaussian Splatting, NeRF, or photogrammetry items today — that subfield was quiet, not necessarily slowing.
+For a studio doing Unity + XR, the GS + feed-forward mesh wave is the most consequential signal. City-scale captured splats [51] plus native runtime renderers [41] mean photoreal location-based XR content (museum, heritage, real-estate walkthroughs) becomes feasible without hand-modeled geometry — but until TriSplat-style approaches [53] mature, splats remain hard to light, collide, and edit inside Unity. TriSplat directly addresses the missing link: if sparse phone photos can yield engine-ready meshes, photogrammetry pipelines collapse from days to minutes. The skepticism in [48] is a useful brake — capture quality still depends on coverage, not magic. Second-order effect: as AI virtual cinematography [1] and AI upscalers [9] cut concept/previs cost, the value shifts to integration, interactivity, and on-device performance — exactly where Unity studios still hold an edge over pure AI shops. The freelancer dispute [7] is a reminder that as tools get cheaper, contract discipline matters more, not less.
 
 ## Possibility
-Likely (70%): Geometry Nodes becomes the default for any repetitive prop/environment work in indie+studio pipelines within 12 months; Unity studios increasingly import GN-baked variants via Alembic/USD. Moderate (45%): Eevee Next stabilizes enough that small studios drop Cycles for non-hero shots entirely. Possible (35%): web-native 3D (R3F + WebGPU) eats a slice of lightweight Unity WebGL edutech work. Low (15%) but worth watching: today's Gaussian Splatting silence reverses next week with a tooling release — the field is overdue for a Blender-native splat importer.
+Likely (≈70%) within 6–12 months: Gaussian Splatting becomes a normal asset type in Unity/Unreal pipelines with editor tooling for lighting, occlusion, and LOD; feed-forward mesh reconstruction (TriSplat-class) becomes a viable photogrammetry replacement for small/medium objects. Plausible (≈40%): city-scale splat libraries (Niantic/Spexi style) get licensed for location-based XR, enabling 'scan a city, deploy an AR layer' workflows. Lower (≈20%): AI text/sketch-to-video (Omni/Flow) becomes usable for shipped game cinematics — quality is improving but temporal/identity consistency and rights/licensing remain blockers. Watch for: a Unity-official GS importer, and the first AAA title shipping splat-based environments.
 
 ## Org applicability — NDF DEV
-Concrete moves for NDF DEV: (1) Invest one week in a Geometry Nodes proficiency push for the 3D lead — payoff on EGAT Green Hold (D) procedural environments and any TM Muscle Gym (G) UI/prop variants. Cheap, high ROI. (2) Standardize a Blender→Unity export hygiene checklist [43] (naming, applied scale, modifier policy) — costs a day, saves weekly rework. (3) Pilot R3F+GLSL [39] for one Next.js/Supabase edutech 3D viewer instead of Unity WebGL — load-time and bundle wins for e-learning. (4) Bookmark stylized texture packs [33] and anime shader [20] for VRoom (V) and Enggenius-style content. (5) Skip the 'nerf' noise entirely. Do NOT chase Gaussian Splatting this week — no fresh tooling signal worth the diligence cost.
+Concrete near-term moves for NDF DEV: (1) Pilot Gaussian Splatting capture for one XR/heritage scene — phone or drone, render via existing Unity GS plugins; low cost, high differentiator for client pitches. (2) Track TriSplat [53] and similar feed-forward mesh tools for the studio's prop/asset pipeline — could replace manual modeling for static real-world objects in edutech content. (3) Adopt PiD-style upscalers [9] inside the concept/marketing pipeline for FLUX-generated keyart and storefront screenshots. (4) Steal the Blender→URP painterly shader idea [31] for a low-cost stylized look on a Unity title — strong portfolio play. (5) Skip for now: AI sketch-to-video [1] (not production-grade for game cinematics), Luma carousel agents [47][50][52] (marketing utility only, not core). Worth it: items 1, 3, 4 are low-effort/high-signal. Item 2 is a watch-and-prototype, not commit yet.
 
 ## Signals to Watch
-- Blender 5.0 / Eevee Next adoption rate in indie studios — quality ceiling shifts pricing
-- Geometry Nodes → Unity import path (USD/Alembic) maturity
-- React Three Fiber + WebGPU performance vs Unity WebGL for edutech
-- Next Gaussian Splatting / NeRF tooling drop after today's silence
+- Unity/Unreal first-party Gaussian Splatting importer announcements
+- TriSplat code/weights release and quality on small-object capture
+- Niantic Spatial × Spexi pricing/licensing model for city splats
+- PiD integration into ComfyUI/A1111 — signals mainstream adoption
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| reddit | morelebaks | ^2610 c54 | [I made animations for Adult Swim!!!111 (Rick and Morty season premiere countdown](https://www.reddit.com/r/blender/comments/1tnyx1q/i_made_animations_for_adult_swim111_rick_and/) |
-| x | idvlogic | ^1904 c39 | [[ May 2026 Official Q&amp;A Info ] • "Knight" will receive adjustments at the en](https://x.com/idvlogic/status/2059198953795547357) |
-| x | ShiriAllwoodXXX | ^1571 c14 | [Nerf this!👾👾 https://t.co/hAxG0FSnwm](https://x.com/ShiriAllwoodXXX/status/2059031756834226254) |
-| x | LordInosuke741 | ^1385 c14 | [Even the Vegapunk lineage-coding couldn't nerf her inner Luffy fangirl https://t](https://x.com/LordInosuke741/status/2059143393901769193) |
-| x | nealCS | ^1014 c6 | [they might have to nerf the zeus😭 https://t.co/lRqxoFdNPz](https://x.com/nealCS/status/2059379634740076980) |
-| reddit | Nintino | ^908 c32 | [Speedbuilding of a Lego building with Geometry Nodes For a long time now I wante](https://www.reddit.com/r/blender/comments/1toc38t/speedbuilding_of_a_lego_building_with_geometry/) |
-| x | FlipMeAC | ^862 c13 | [Yeah Ive see enough. Nerf Cyno](https://x.com/FlipMeAC/status/2059334749223604528) |
-| x | amoriesux | ^817 c1 | [HES TOO HAPPY SOMEONE NERF HIM https://t.co/O2KsSgE6XX](https://x.com/amoriesux/status/2059025733540860039) |
-| reddit | Significant-Tree4752 | ^783 c160 | [To be honest: all of this is just demotivating :( Edit: guys your comment sectio](https://www.reddit.com/r/blender/comments/1to2vpv/to_be_honest_all_of_this_is_just_demotivating/) |
-| x | notalvajay | ^740 c5 | [Nerf this 💋 https://t.co/BXh8857iUp](https://x.com/notalvajay/status/2059337436770234512) |
-| x | RyanJosephHart | ^730 c91 | [But if you nerf Mai, someone else becomes public enemy number 1 and the cycle co](https://x.com/RyanJosephHart/status/2059009043973214298) |
-| x | captaincoach_mr | ^727 c61 | [Nerf Strategist healing by 10% for 3 healers, Duelist damage by 10% for 3 dps, a](https://x.com/captaincoach_mr/status/2059268143260819926) |
-| x | sin_nl7 | ^679 c12 | [Pray they nerf this combo. https://t.co/gdBLPVD3Xq](https://x.com/sin_nl7/status/2059054344310231191) |
-| x | chillincheeto14 | ^669 c3 | ["Nerf This!" #FortniteArt #Overwatch https://t.co/CPfHxUv0JA](https://x.com/chillincheeto14/status/2059033362262643072) |
-| reddit | BobThe-Bodybuilder | ^657 c23 | [Blender is pretty cool. That's about it. I's just crazy that we get this piece o](https://www.reddit.com/r/blender/comments/1toiy1t/blender_is_pretty_cool/) |
-| x | kurooleaks | ^647 c13 | [On 6.7 v2 Beta, Cyno got a silent nerf on the way his Duststalker Bolts - Starsa](https://x.com/kurooleaks/status/2059225627392188727) |
-| x | dudrandaI | ^573 c0 | [@AgroVator he actually found clorinde kit really fun and she got a huge uptime n](https://x.com/dudrandaI/status/2059230200429220199) |
-| reddit | flockaroo | ^493 c19 | [home grown gas giant](https://www.reddit.com/r/proceduralgeneration/comments/1tofob7/home_grown_gas_giant/) |
-| x | NefariousNova05 | ^487 c20 | [Deadlock is such a beautiful game because you have a character with something pe](https://x.com/NefariousNova05/status/2059229484063051833) |
-| x | CGDASH_ | ^454 c2 | [Anime Eye Shader Blender https://t.co/1V1yuRnpx2](https://x.com/CGDASH_/status/2058820166520344722) |
-| reddit | Kvendy_ | ^431 c11 | [Just a random fish on your feed!! Everything is rendered in Eevee, tried to make](https://www.reddit.com/r/blender/comments/1toesq0/just_a_random_fish_on_your_feed/) |
-| x | J4MIEL4NNISTER_ | ^340 c1 | [Remember last year when everyone thought the Flexi-wings was gonna nerf McLaren ](https://x.com/J4MIEL4NNISTER_/status/2059337742585155982) |
-| x | Justkindofhere | ^338 c3 | [OP pls nerf https://t.co/OUtbBdReYn](https://x.com/Justkindofhere/status/2059299268561629245) |
-| reddit | ViscousRealm | ^335 c44 | [I redesigned Spotify app icon in 3d.](https://www.reddit.com/r/blender/comments/1to5p75/i_redesigned_spotify_app_icon_in_3d/) |
-| x | Synnefaki_ | ^322 c20 | [Knight getting a buff but doctor getting a nerf whatever u all hate women](https://x.com/Synnefaki_/status/2059240240095596978) |
-| x | ChicoFGC_ | ^300 c26 | [I think there’s 3 ways capcom can nerf: 1. Make her 9k, she would still be very ](https://x.com/ChicoFGC_/status/2059328729042518104) |
-| x | MrBubblyTTV | ^267 c33 | [hate to be a negative nancy, but you're gonna wanna wait until they nerf that en](https://x.com/MrBubblyTTV/status/2059137846972182951) |
-| x | Dorkstrict | ^257 c42 | [Axel pick rate shows she's on nearly every single team this season By far one of](https://x.com/Dorkstrict/status/2059282603383914624) |
-| x | lofi_lover0930 | ^255 c11 | [Dead or Alive used to have the best stages compared to any 3D fighting game unti](https://x.com/lofi_lover0930/status/2059005023477198911) |
-| x | delaigrodela | ^235 c6 | [My 12 year old son saw my material generating 4 simple shapes from UV and the co](https://x.com/delaigrodela/status/2058977219188297867) |
+| x | bilawalsidhu | ^2303 c99 | [Gave google omni a sketched camera path and asked it to generate drone POV foota](https://x.com/bilawalsidhu/status/2059419767417487718) |
+| reddit | BobThe-Bodybuilder | ^1000 c37 | [Blender is pretty cool. That's about it. I's just crazy that we get this piece o](https://www.reddit.com/r/blender/comments/1toiy1t/blender_is_pretty_cool/) |
+| reddit | flockaroo | ^723 c22 | [home grown gas giant](https://www.reddit.com/r/proceduralgeneration/comments/1tofob7/home_grown_gas_giant/) |
+| reddit | Kvendy_ | ^536 c13 | [Just a random fish on your feed!! Everything is rendered in Eevee, tried to make](https://www.reddit.com/r/blender/comments/1toesq0/just_a_random_fish_on_your_feed/) |
+| x | 3DxDEV7 | ^461 c2 | [DreamWorks animator Nicolas Prothais showcased a stunning Kung Fu Panda rig in B](https://x.com/3DxDEV7/status/2059497395352748099) |
+| reddit | hunter_2one | ^350 c53 | [Made this in blender, How can I still be jobless??? part 2 🤣, So last time, I po](https://www.reddit.com/r/blender/comments/1toporq/made_this_in_blender_how_can_i_still_be_jobless/) |
+| reddit | Vegetable-Site-3715 | ^343 c51 | [Client agreed to pay hourly on a recorded call, then denied the whole agreement ](https://www.reddit.com/r/blender/comments/1toxcb6/client_agreed_to_pay_hourly_on_a_recorded_call/) |
+| reddit | Educational-Wish7500 | ^324 c13 | [Rate My Work!!](https://www.reddit.com/r/blender/comments/1tomwh0/rate_my_work/) |
+| x | multimodalart | ^288 c7 | [NVidia just released PiD: super resolution in pixel space directly from model la](https://x.com/multimodalart/status/2059003125768339649) |
+| reddit | Wellie_man | ^286 c13 | [First attempts at making a walk cycle! How'd I do?](https://www.reddit.com/r/blender/comments/1tp6fah/first_attempts_at_making_a_walk_cycle_howd_i_do/) |
+| x | delaigrodela | ^258 c6 | [My 12 year old son saw my material generating 4 simple shapes from UV and the co](https://x.com/delaigrodela/status/2058977219188297867) |
+| reddit | LoquatPutrid2894 | ^250 c11 | [Made Saber Artoria Pendragon, used only blender , how is it ?](https://www.reddit.com/r/blender/comments/1toxkbq/made_saber_artoria_pendragon_used_only_blender/) |
+| reddit | Firm-Dragonfruit-723 | ^247 c27 | [I made this Frutiger Aero video in Blender, what do you think?](https://www.reddit.com/r/blender/comments/1tohe4l/i_made_this_frutiger_aero_video_in_blender_what/) |
+| reddit | MaxisGreat | ^177 c19 | [Thousands of procedurally generated cells Each cell has a genome that drives the](https://www.reddit.com/r/proceduralgeneration/comments/1tneul6/thousands_of_procedurally_generated_cells/) |
+| reddit | GrimShadow1 | ^166 c7 | [Anime Lips Animation Practice [GP]](https://www.reddit.com/r/blender/comments/1tole1h/anime_lips_animation_practice_gp/) |
+| x | bilawalsidhu | ^163 c2 | [This is pretty cool — basically “creative upscaling” for 3d scans https://t.co/S](https://x.com/bilawalsidhu/status/2059029365002744034) |
+| reddit | SevenSidedVoxel | ^151 c21 | [Solo dev here, just released my own game, in my own engine I managed to do the i](https://www.reddit.com/r/gameenginedevs/comments/1tnoce5/solo_dev_here_just_released_my_own_game_in_my_own/) |
+| reddit | creationstation99 | ^150 c13 | [Made this low poly character in blender](https://www.reddit.com/r/blender/comments/1tp0hu6/made_this_low_poly_character_in_blender/) |
+| x | sevenout | ^145 c0 | [@MarkDuplass They're saying the same thing about Curry Barker, that some mystery](https://x.com/sevenout/status/2059398926797537667) |
+| reddit | AlarmedBag9653 | ^129 c17 | [Procedural Creature gen and animation Procedural creature generation and animati](https://www.reddit.com/r/proceduralgeneration/comments/1to7rei/procedural_creature_gen_and_animation/) |
+| x | ushadersbible | ^96 c0 | [Despite AI, technical artists and VFX artists continue to be some of the most in](https://x.com/ushadersbible/status/2059027261177704656) |
+| reddit | Content_Economist132 | ^94 c30 | [Why do graphics apis need so many layers of abstractions like buffer, descriptor](https://www.reddit.com/r/GraphicsProgramming/comments/1tow7ic/why_do_graphics_apis_need_so_many_layers_of/) |
+| reddit | IndiProphacy | ^87 c7 | [Test renders for my shortfilm thing :) Not 100% happy with everything yet, but i](https://www.reddit.com/r/blender/comments/1tocwqn/test_renders_for_my_shortfilm_thing/) |
+| reddit | Legal-Collection2425 | ^87 c13 | [i present the ice cube on plate do you like it](https://www.reddit.com/r/blender/comments/1tp89ev/i_present_the_ice_cube_on_plate/) |
+| x | vikare06 | ^86 c9 | [There is no discernible design in that image. Just asking GPT to generate a monu](https://x.com/vikare06/status/2059580032826101762) |
+| reddit | Affectionate_Fly_457 | ^84 c8 | [Made something new using particles](https://www.reddit.com/r/blender/comments/1tp0qt2/made_something_new_using_particles/) |
+| x | MarioNawfal | ^79 c18 | [A coder turned everyday video into an explorable 3D environment with AI-driven 4](https://x.com/MarioNawfal/status/2059103478790713398) |
+| reddit | Legal-Collection2425 | ^75 c30 | [i present this do you like it?](https://www.reddit.com/r/blender/comments/1top27m/i_present_this/) |
+| reddit | ExistingMark2998 | ^72 c17 | [first blender ANIMATION!!! rate my work :)) also any idea what should i start ne](https://www.reddit.com/r/blender/comments/1tp3t7w/first_blender_animation/) |
+| reddit | Linirby | ^71 c10 | [Smol VoxelEngine made a smol voxel engine :3 Built HelloVoxel in C++23 using the](https://www.reddit.com/r/GraphicsProgramming/comments/1tnpefa/smol_voxelengine/) |
 
 
 ## Top Posts
 
 <div class="post-stream">
-<article class="ndf-card platform-reddit">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@morelebaks</span>
-    <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 2610 · 💬 54</span>
-  </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/blender/comments/1tnyx1q/i_made_animations_for_adult_swim111_rick_and/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/cmhoeGVqajZpZjNoMQsqFFakb1glENvFPS-fTnP6uFK2pksUhB6_rOF6GUec.png?format=pjpg&amp;auto=webp&amp;s=71b23f2a39d8af8a625470d58ebc84232f8e7025" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“I made animations for Adult Swim!!!111 (Rick and Morty season premiere countdown) my all time dream was to make something for Adult Swim and here we are! It was a blast making it - as a teenage boy I ”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A freelance Blender animator landed a Rick and Morty season-premiere countdown gig for Adult Swim with full creative freedom — all concepts, assets, and sound design done solo.</dd>
-      <dt>Why interesting</dt>
-      <dd>Proves a solo artist with a strong personal style can win major IP work with zero creative compromise — the style itself was the pitch.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio's 3D artists should build and publicly promote a signature visual style; branded animation jobs increasingly go to artists with a recognizable look, not just a strong reel.</dd>
-    </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/blender/comments/1tnyx1q/i_made_animations_for_adult_swim111_rick_and/" target="_blank" rel="noopener">View on reddit →</a>
-  </div>
-</article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@idvlogic</span>
+    <span class="ndf-author">@bilawalsidhu</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1904 · 💬 39</span>
+    <span class="ndf-engagement">♥ 2303 · 💬 99</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/idvlogic/status/2059198953795547357">View @idvlogic on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/bilawalsidhu/status/2059419767417487718">View @bilawalsidhu on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“[ May 2026 Official Q&amp;amp;A Info ] • &quot;Knight&quot; will receive adjustments at the end of this season (question: buff). • Doctor will receive adjustments at the end of this season (question: nerf). • Compo”</p>
+    <p class="ndf-quote">“Gave google omni a sketched camera path and asked it to generate drone POV footage. https://t.co/cQZFMtOkEi”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Identity V's official Q&amp;A confirms end-of-season balance changes: Knight buffed, Doctor nerfed, and Composer receiving a significant rework.</dd>
+      <dd>Google's Omni model accepted a hand-sketched camera path as input and generated drone POV video footage from it.</dd>
       <dt>Why interesting</dt>
-      <dd>Shows how live-service game studios communicate upcoming balance patches via Q&amp;A format to manage player expectations before changes go live.</dd>
+      <dd>Sketch-to-video with controllable camera trajectories removes the need for expensive drone shoots — a direct cost-killer for small studios producing cinematic content.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Not directly applicable.</dd>
+      <dd class="ndf-adapt">The Unity team can use sketch-based camera path input to pre-visualize flythrough sequences or XR environment walkthroughs before committing to production assets.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/idvlogic/status/2059198953795547357" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@ShiriAllwoodXXX</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1571 · 💬 14</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ShiriAllwoodXXX/status/2059031756834226254">View @ShiriAllwoodXXX on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Nerf this!👾👾 https://t.co/hAxG0FSnwm”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A post tagged 3D &amp; Graphics showcasing NeRF (Neural Radiance Fields) output, using 'Nerf this!' as a pun on the 3D scene-reconstruction technique.</dd>
-      <dt>Why interesting</dt>
-      <dd>NeRF enables photorealistic 3D scene capture from 2D images — directly relevant for XR/VR environment building without full 3D scan rigs.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The XR/VR team can prototype real-world environment capture using NeRF tools (Luma AI, Nerfstudio) and import results into Unity via mesh bake pipelines.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/ShiriAllwoodXXX/status/2059031756834226254" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@LordInosuke741</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1385 · 💬 14</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/LordInosuke741/status/2059143393901769193">View @LordInosuke741 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Even the Vegapunk lineage-coding couldn't nerf her inner Luffy fangirl https://t.co/QYytnw9PiL”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A One Piece fan post (likely 3D art) jokes that a character's Vegapunk-engineered genetics still couldn't kill her obsession with Luffy.</dd>
-      <dt>Why interesting</dt>
-      <dd>Fan 3D character art hitting 1385 likes shows that lore-anchored humor + quality visuals is a reliable formula for organic reach on X.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The Unity team can reference how expressive character poses carry narrative context without dialogue — directly applicable to cutscene and XR avatar design work.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/LordInosuke741/status/2059143393901769193" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@nealCS</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1014 · 💬 6</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/nealCS/status/2059379634740076980">View @nealCS on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“they might have to nerf the zeus😭 https://t.co/lRqxoFdNPz”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>The author reacts to a viral clip showing 'Zeus' (a weapon or character) performing so powerfully in-game that a balance nerf seems inevitable.</dd>
-      <dt>Why interesting</dt>
-      <dd>Viral balance-breaking moments drive massive player discussion fast — useful to watch how studios respond publicly to keep community trust.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Not directly applicable.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/nealCS/status/2059379634740076980" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/bilawalsidhu/status/2059419767417487718" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-reddit">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Nintino</span>
+    <span class="ndf-author">@BobThe-Bodybuilder</span>
     <span class="ndf-platform">reddit</span>
-    <span class="ndf-engagement">♥ 908 · 💬 32</span>
+    <span class="ndf-engagement">♥ 1000 · 💬 37</span>
   </header>
-  <a class="ndf-card-media" href="https://www.reddit.com/r/blender/comments/1toc38t/speedbuilding_of_a_lego_building_with_geometry/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/YTl1bWlxZTJkaTNoMVS11un5SUpY5hGERqornMpxitkFRtR7mjCqBRTekigk.png?format=pjpg&amp;auto=webp&amp;s=22844084d8759407316b5ecaddab4e95b330ad35" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/blender/comments/1toiy1t/blender_is_pretty_cool/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/Mjlzc2Q5MXVpajNoMXROZ9b9B3IrLXLUZ8ILg6Hd7As25347xmr95E20RVkv.png?format=pjpg&amp;auto=webp&amp;s=88f68fb575c3f091e9613065599744e5639ed9e6" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Speedbuilding of a Lego building with Geometry Nodes For a long time now I wanted to make a cool and satisfying 3D animation of a Lego model being built piece by piece with Blender (in the end it happ”</p>
+    <p class="ndf-quote">“Blender is pretty cool. That's about it. I's just crazy that we get this piece of software for free. I want to make something cool with it like a short firebending (from the show Avatar: the last airb”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A Blender artist animated a Lego-style building assembling piece-by-piece bag-by-bag using Geometry Nodes, with pieces organized into numbered collections matching the instruction booklet order.</dd>
+      <dd>A Reddit user praises Blender as an impressive free 3D software and wants to create a short firebending animation inspired by Avatar: The Last Airbender.</dd>
       <dt>Why interesting</dt>
-      <dd>The bag-by-bag collection system is a clean data-organization trick that lets Geometry Nodes drive complex sequential animations without custom scripts — scalable to any modular 3D asset.</dd>
+      <dd>Blender's zero-cost barrier means even hobbyists produce AAA-quality 3D assets, raising the visual baseline that game and XR studios must compete with.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The Unity team can mirror this: organize XR scene assets into numbered collections in Blender, drive reveal sequences via Geometry Nodes, then export to Unity as pre-baked animations for e-learning step-by-step assembly walkthroughs.</dd>
+      <dd class="ndf-adapt">The Unity and XR team can use Blender as the primary free pipeline for modeling, rigging, and VFX—particle-based fire effects like this translate directly into Unity VFX Graph with no licensing cost.</dd>
     </dl>
-    <a class="ndf-source" href="https://www.reddit.com/r/blender/comments/1toc38t/speedbuilding_of_a_lego_building_with_geometry/" target="_blank" rel="noopener">View on reddit →</a>
+    <a class="ndf-source" href="https://www.reddit.com/r/blender/comments/1toiy1t/blender_is_pretty_cool/" target="_blank" rel="noopener">View on reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@flockaroo</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 723 · 💬 22</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/proceduralgeneration/comments/1tofob7/home_grown_gas_giant/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/c3g3bHdsdm15aTNoMVQtrb6zyT3nVgsSB9Yrq2NdNhskp9hccODKkoNMp-gx.png?format=pjpg&amp;auto=webp&amp;s=39d0536eb07e798dacd50cf924457269fb83feff" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“home grown gas giant”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A procedurally generated gas giant planet rendered via a custom algorithm, producing realistic swirling atmospheric bands — posted to r/proceduralgeneration with strong community engagement.</dd>
+      <dt>Why interesting</dt>
+      <dd>Procedural planet rendering at this quality level is achievable without artist-painted textures, meaning small teams can build space environments at scale with minimal asset overhead.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The Unity team can prototype a procedural skybox or space scene shader using similar noise-layering techniques — directly applicable to any XR or game project needing dynamic space backgrounds.</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/proceduralgeneration/comments/1tofob7/home_grown_gas_giant/" target="_blank" rel="noopener">View on reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Kvendy_</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 536 · 💬 13</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/blender/comments/1toesq0/just_a_random_fish_on_your_feed/" target="_blank" rel="noopener"><img src="https://preview.redd.it/4ezhkyr6si3h1.png?width=2160&amp;format=png&amp;auto=webp&amp;s=941ebf17c9d261c8b1150b7d1fa9d93ecc8dcd5e" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Just a random fish on your feed!! Everything is rendered in Eevee, tried to make it resample watercolor, hopefully I did a great job. The fish is animated and has a wobbly feel using Geo node, but red”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A Blender artist rendered an animated fish with a watercolor look using Eevee and Geometry Nodes for a wobbly swim animation.</dd>
+      <dt>Why interesting</dt>
+      <dd>Achieving a hand-painted watercolor style entirely in Eevee (real-time) — no Cycles bake needed — shows the renderer is viable for stylized non-photorealistic art.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The Unity team can reference this Eevee + Geo Nodes watercolor approach when building stylized XR or e-learning assets — translates to Unity's Shader Graph with a custom outline + ink-bleed pass.</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/blender/comments/1toesq0/just_a_random_fish_on_your_feed/" target="_blank" rel="noopener">View on reddit →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@FlipMeAC</span>
+    <span class="ndf-author">@3DxDEV7</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 862 · 💬 13</span>
+    <span class="ndf-engagement">♥ 461 · 💬 2</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/FlipMeAC/status/2059334749223604528">View @FlipMeAC on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/3DxDEV7/status/2059497395352748099">View @3DxDEV7 on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Yeah Ive see enough. Nerf Cyno”</p>
+    <p class="ndf-quote">“DreamWorks animator Nicolas Prothais showcased a stunning Kung Fu Panda rig in Blender using Rigify, seriously impressive 🔥🐼 #B3D #Blender3D #Blender #Animation #Rigify #CharacterRigging #3DArt #VFX h”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>The author has seen enough evidence to call for a nerf to the character Cyno (likely in a game context).</dd>
+      <dd>DreamWorks animator Nicolas Prothais demonstrated a high-quality Kung Fu Panda character rig built in Blender using the Rigify addon.</dd>
       <dt>Why interesting</dt>
-      <dd>High engagement (862 likes) on a vague 5-word opinion post signals strong community sentiment around game balance, but the post itself contains no technical signal.</dd>
+      <dd>A production-grade DreamWorks rig built entirely in free tools proves Blender + Rigify is a viable pipeline for professional character animation without proprietary software.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Not directly applicable.</dd>
+      <dd class="ndf-adapt">The Unity team can adopt Blender + Rigify as the standard character rigging pipeline, exporting rigs via FBX/glTF into Unity to cut licensing costs and unify the 3D workflow.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/FlipMeAC/status/2059334749223604528" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/3DxDEV7/status/2059497395352748099" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@hunter_2one</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 350 · 💬 53</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/blender/comments/1toporq/made_this_in_blender_how_can_i_still_be_jobless/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/ejV0cDdrbW1zazNoMXMC-fj9aGMyp2Y4QAHhio2vfLVLn51_iDTBLr3QOlqq.png?format=pjpg&amp;auto=webp&amp;s=1aae575a8a0df08ec576665598b2ddad9c77359a" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Made this in blender, How can I still be jobless??? part 2 🤣, So last time, I posted a render making a joke.i thought if I say how can I still be jobless, it will be funny and people should give me ad”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A Blender artist posted an impressive 3D render on Reddit (part 2), joking about being unemployed despite their skill level, after their first post sparked controversy.</dd>
+      <dt>Why interesting</dt>
+      <dd>The post shows that strong Blender portfolio work alone doesn't guarantee employment — presentation and community navigation matter too.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The Unity team can note this: when sharing 3D art or XR work publicly, frame the post with context and intent — community reception shapes hiring perception.</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/blender/comments/1toporq/made_this_in_blender_how_can_i_still_be_jobless/" target="_blank" rel="noopener">View on reddit →</a>
+  </div>
+</article>
+<article class="ndf-card platform-reddit">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Educational-Wish7500</span>
+    <span class="ndf-platform">reddit</span>
+    <span class="ndf-engagement">♥ 324 · 💬 13</span>
+  </header>
+  <a class="ndf-card-media" href="https://www.reddit.com/r/blender/comments/1tomwh0/rate_my_work/" target="_blank" rel="noopener"><img src="https://external-preview.redd.it/aWpyMWIyZm84azNoMUZlWw3WitR63OQN0bBOmEnczf7ciJir0mmS_SSdzH7u.png?format=pjpg&amp;auto=webp&amp;s=1be4b1f4742769a35f4df877c2c169e20d07de64" alt="" loading="lazy" referrerpolicy="no-referrer" /></a>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Rate My Work!!”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A Blender artist posted their 3D render on r/blender asking the community to rate and critique their work.</dd>
+      <dt>Why interesting</dt>
+      <dd>324 upvotes signals the work resonated well; community critique loops on r/blender are a reliable free feedback channel for 3D quality benchmarking.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The Unity team can post WIP environment art or character assets to r/blender or r/Unity3D for raw community feedback before assets are locked into production.</dd>
+    </dl>
+    <a class="ndf-source" href="https://www.reddit.com/r/blender/comments/1tomwh0/rate_my_work/" target="_blank" rel="noopener">View on reddit →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@amoriesux</span>
+    <span class="ndf-author">@multimodalart</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 817 · 💬 1</span>
+    <span class="ndf-engagement">♥ 288 · 💬 7</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/amoriesux/status/2059025733540860039">View @amoriesux on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/multimodalart/status/2059003125768339649">View @multimodalart on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“HES TOO HAPPY SOMEONE NERF HIM https://t.co/O2KsSgE6XX”</p>
+    <p class="ndf-quote">“NVidia just released PiD: super resolution in pixel space directly from model latents 🔎 4X resolution for any generated image, FAST! 🏎️💨 FLUX.1, 2 and Z-Image (Qwen Image coming) of course, i built a ”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A 3D character render or animation is going viral for having an extremely expressive, over-the-top happy facial expression, prompting the author to jokingly say it needs to be 'nerfed'.</dd>
+      <dd>Nvidia released PiD, a super-resolution technique that upscales generated images 4x directly from model latents in pixel space, with a live demo producing 4K images via Z-Image.</dd>
       <dt>Why interesting</dt>
-      <dd>High-quality expressive character facial animation is hitting a new realism/charm bar that triggers strong emotional reactions — a signal for what audiences now expect from 3D characters.</dd>
+      <dd>4x upscale at generation time without post-process tools means smaller base models can output print-quality assets — directly cuts render cost for asset pipelines.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The Unity team should study the rig/blend-shape approach behind viral expressive characters and raise the bar on NPC facial animation in current and future game builds.</dd>
+      <dd class="ndf-adapt">The Unity team can pipe PiD into texture/concept-art generation workflows to get 4K assets without buying larger model hardware — test via the Hugging Face demo before any infra investment.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/amoriesux/status/2059025733540860039" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/multimodalart/status/2059003125768339649" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

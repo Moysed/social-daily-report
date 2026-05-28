@@ -4,7 +4,7 @@ date: '2026-05-27'
 topic: ai-builders-watchlist
 lang: en
 pair: ai-builders-watchlist.th.md
-generated_at: '2026-05-27T04:11:57+00:00'
+generated_at: '2026-05-27T17:05:14+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,84 +14,77 @@ regions:
 post_count: 80
 salience: 0.55
 sentiment: mixed
-confidence: 0.62
+confidence: 0.6
 tags:
-- claude-code
-- skills
-- ai-video
-- devtools
+- indie-builders
+- agent-tooling
+- skills-as-product
+- autoreview
+- voice-agents
 - enterprise-ai
-- indie-hackers
-thumbnail: https://pbs.twimg.com/media/HJMAtMDakAAw0EN.png
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2059544338808623104/img/_o_yuQOeLLEWJFIl.jpg
 ---
 
 # AI Builders Watchlist — 2026-05-27
 
 ## TL;DR
-- steipete pushing 'autoreview' as highest-leverage Claude Code skill — auto-reviews PRs before landing, finds edge cases [5]
-- Skills-as-product thesis emerging: godofprompt + steipete framing reusable Skills (Claude Code .claude/skills/, Capafy) as the new moat over raw prompting [13][49][52]
-- jackfriks shows $3 / 1-hour AI launch video drove $26K in 22h for ShipOrDie — cheap UGC video workflow validated [7][51]
-- vasuman: real enterprise AI rollouts diverge sharply from X/news narrative; Uber's $3.4B burn cited as cautionary data point [11][25]
-- EXM7777 + AmirMushich: 'orchestrator + storyboard' is the current meta for AI video (Gemini/Claude routing scenes, Figma→video via VibeMotion-1) [20][21][48]
+- Steipete keeps drumming on autoreview + claw tooling as the highest-leverage agent addition [2][5][17]
+- Godofprompt's recurring thesis: Skills (not prompts) are the new moat, and Capafy/LiveAvatar/Bumblebee show the productization wave [42][47][54]
+- Varick (vasuman) claims most public takes on enterprise AI adoption are wrong, citing a year of real F500 implementations [6]
+- Levelsio pushes back on the 'quit job + savings runway' indie playbook — says ship while employed [3]
+- Marclou flags Rails overtaking NextJS in a 3,658-startup survey, with Vercel still ahead of Cloudflare [14]
 
 ## What happened
-Two threads dominate the watchlist this week. First, a tooling/skills track from steipete and godofprompt — steipete is publicly dogfooding an 'autoreview' Claude Code skill plus a rebuilt opus/wasm stack and an extracted Rastermill image library [5][9][24], while godofprompt rebuilt the evidence stack around Claude's memory architecture (Session Memory, MEMORY.md, CLAUDE.md, hooks, .claude/skills/) [13] and is pushing Skills-as-product narratives via Capafy [49][52]. Second, a creator-economics track from jackfriks, marclou, AmirMushich, EXM7777 and 0xROAS — $3 AI launch videos hitting $26K revenue in a day [7], 200K impressions from a one-day iPhone video [51], open-sourced Figma-to-video (VibeMotion-1) [20], and an explicit 'orchestrator (Gemini/Claude) + storyboard + Seedance/Veo' meta for AI video [21][34][48].
-
-Underneath, vasuman provides the sober counter-current: enterprise AI reality differs from X discourse [11], Uber's $3.4B AI spend isn't paying off and the lesson is being misread [25], and provider-agnostic agents matter because models drift [35]. levelsio is mostly off-topic (market chatter, AC in Europe) [2][6][8][12]. The 2026-grad-renames-a-variable joke [1][3] is the loudest social signal but low substance.
+Steipete dominated the watchlist this cycle with a tight cluster on agentic dev tooling: autoreview as a PR pre-landing gate [2], a WASM rewrite of opus deps for parity with native [5], a separately extracted image library Rastermill for hardening Node agents [17], and a public hunt for 2026 SSO/SCIM/endpoint stacks for the OpenClaw Foundation [8]. Godofprompt ran a parallel narrative arc — that the moat is shifting from prompting to packaged Skills [47], with Capafy turning Skills into paid runnable products [54], LiveAvatar adding presence to voice agents [36], and Perplexity open-sourcing Bumblebee for supply-chain scanning [42]. Vasuman/Varick claimed most public AI-adoption commentary is wrong based on real enterprise rollouts [6][35]. Levelsio challenged the standard indie founder savings-runway approach [3] and judged ~1000 Vibe Jam 2026 submissions [37]. Marclou shared a Rails-vs-Next data point [14], a $5K acquisition case [33], and audience-from-zero playbook [28]. AmirMushich shipped VibeMotion-1 (Figma-to-video, OSS pre-alpha) [16] and a Claude brandbook generator [12]. EXM7777 floated gpt-5.5 + /last30days as the deep-research combo [31].
 
 ## Why it matters (reasoning)
-The convergence is real: 'Skills' (Claude Code's .claude/skills/, Anthropic's published pattern) are being repositioned from personal shortcuts into distributable, monetizable artifacts [13][49][52]. If that thesis holds, the unit of AI craft shifts from prompt → skill bundle (instructions + hooks + tools + checkpoints), which is exactly the layer steipete is hardening with autoreview, parallels adapters, and image sandboxing [5][9][10][24]. Second-order: code review moves left of PR (autoreview catches edge cases pre-merge [5]), which compresses senior-eng time per junior PR — relevant given the [1] gag about 2026 grads. On the media side, the $3-video / orchestrator-storyboard pattern [7][21][48] means small studios can now produce launch assets at near-zero marginal cost, eroding the $500-UGC-creator economy [32]. vasuman's enterprise note [11][25] is the contra-signal: hype-cycle ROI inside Fortune 500s is worse than X suggests, which should temper any 'just plug in agents' pitch to clients.
+The signal under the noise: agent infrastructure is moving from 'prompt the model' to 'harden the pipeline' — autoreview, image sanitization, provider-agnostic routing [35], supply-chain scanners [42]. That maps directly to NDF DEV's Next.js/Supabase + Unity tooling surface. Second, the 'Skill-as-product' framing [47][54] is a credible monetization vector for studios that already encode workflows (Engso pronounce pipeline, brandbook generators). Third, Levelsio's anti-runway take [3] is a useful counterweight for a studio choosing between contract revenue and bet-the-farm product builds. Fourth, the Rails-vs-Next data point [14] is interesting but n=3,658 self-selected startups — don't restack on it.
 
 ## Possibility
-Likely (>60%): Skills-as-distributable becomes a real category in 2026 H2 — expect a marketplace (Capafy-like) and Anthropic-blessed sharing format; autoreview-style pre-PR review becomes table-stakes in serious Claude Code stacks [5][13][49]. Moderate (~40%): AI launch-video workflow (orchestrator + Seedance/Veo + Figma import) collapses indie launch costs by 10x within 6 months [7][20][21]. Lower (~25%): enterprise AI backlash hardens — more Uber-style write-downs become public, pushing buyers toward smaller, verifiable wins rather than platform deals [11][25]. Low (<15%): levelsio-style 'quiet building + ship daily' culture displaces VC-narrative startups at any meaningful scale.
+Likely (70%): Skills-as-product platforms (Capafy-like) get traction in 2026 H2; expect Anthropic to ship a first-party marketplace, pressuring third parties. Plausible (50%): autoreview/pre-PR agent gates become table stakes in Cursor/Claude Code defaults within 6 months. Lower (30%): Rails resurgence is more than a vibes-survey artifact — wait for repeated data before re-platforming. Voice avatars [36] likely overshoot then settle into narrow verticals (sales, edutech tutoring) — directly relevant to NDF's edutech line.
 
 ## Org applicability — NDF DEV
-Concrete moves for NDF DEV:
-1. Adopt autoreview-style Claude Code skill on the Next.js/Supabase web repos and the Unity tooling repo — pre-PR review catches the edge cases a small team misses [5]. Worth it: low cost, high leverage.
-2. Standardize a .claude/skills/ layout per project (game / XR / edutech / web) with MEMORY.md + CLAUDE.md + hooks per [13]. This is the 'package how we think' moat for a studio that ships across 4 verticals [52].
-3. For edutech/e-learning marketing and XR demo reels: pilot the orchestrator+storyboard AI-video pipeline (Gemini/Claude direction → Seedance/Veo → VibeMotion-1 for Figma layers) before paying for traditional UGC [7][20][21][34]. Budget cap: <฿1k per asset, A/B against current process.
-4. Skip the 'Skills marketplace' (Capafy) play for now — too early, and NDF's edge is delivery not distribution [49].
-5. Use vasuman's enterprise reality check [11][25] as sales material when pitching Thai enterprise clients — position NDF as 'verifiable narrow wins' rather than 'AI transformation.'
+Worth adopting now: (1) autoreview workflow [2] in Next.js repos — low cost, catches edge cases before PR land. (2) Rastermill [17] or equivalent for any Supabase upload path that handles user images. (3) Bumblebee [42] scan on dev machines — supply-chain risk is real for an agency shipping client code. Worth piloting: (4) Skill packaging for the Engso pronounce pipeline and any internal lesson-generation flow — could become a paid product per [47][54]. (5) VibeMotion-1 [16] for marketing reels of Unity/XR builds. Skip: provider-agnostic abstraction layers [35] until you actually need >1 model in prod — premature for a studio of NDF's size. The Rails switch [14] is noise for a Next.js shop.
 
 ## Signals to Watch
-- Does autoreview / pre-PR Claude Code review get an official Anthropic pattern or remain steipete's personal stack? [5]
-- Whether Capafy or a competitor produces the first real Skills-as-product revenue numbers in next 60 days [49][52]
-- Open-source momentum on VibeMotion-1 — repo stars, first non-author shipped video [20]
-- More public enterprise AI write-downs following Uber's $3.4B [25] — if 2+ Fortune 100s follow, narrative shifts
+- Whether Anthropic ships an official Skills marketplace (kills or boosts Capafy-class plays)
+- Cursor/Claude Code adopting autoreview as a default feature
+- Varick / enterprise-rollout writeups dropping concrete numbers — current claim [6] is unbacked
+- VibeMotion-1 [16] reaching usable beta — Figma-to-video would compress marketing video cycles 5-10x
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | vasuman | ^3638 c41 | [POV: You asked a 2026 college grad to rename a variable https://t.co/4LxydvW41i](https://x.com/vasuman/status/2058990678030569893) |
-| x | levelsio | ^2911 c130 | [Congrats everyone who participated $500! $AMD https://t.co/eAix9zagbf](https://x.com/levelsio/status/2059351181516816409) |
-| x | vasuman | ^1407 c18 | [https://t.co/kynR4879ab](https://x.com/vasuman/status/2059042300094001302) |
-| x | steipete | ^585 c27 | [@nofil_ai oh man, I keep updating these failed projects, so silly of me!](https://x.com/steipete/status/2059239389562106219) |
-| x | steipete | ^450 c16 | [autoreview is the most impactful skill I've added to my stack (next to https://t](https://x.com/steipete/status/2059453909819654554) |
-| x | levelsio | ^409 c32 | [Quiet and humble https://t.co/Bzoy1C7uDk](https://x.com/levelsio/status/2059315662346920267) |
-| x | jackfriks | ^376 c43 | [you don't have to spend days and $1000-$10,000 on your launch video!!! 22 hours ](https://x.com/jackfriks/status/2059309243124068763) |
-| x | levelsio | ^369 c22 | [First year I see tourists actively leave Europe or stay away because it's 1) too](https://x.com/levelsio/status/2059401673743688074) |
-| x | steipete | ^266 c15 | [All the deps around opus are old or terrible, so vibed my own and replaced octos](https://x.com/steipete/status/2059422568352714981) |
-| x | steipete | ^259 c10 | [@Dimillian yo u need https://t.co/SEj2XRpaD1 - it includes a parallels adapter +](https://x.com/steipete/status/2059231219477254477) |
-| x | vasuman | ^256 c13 | [Most of what you read about AI adoption inside large companies, on X or in the n](https://x.com/vasuman/status/2059400201211924961) |
-| x | levelsio | ^239 c10 | ["In a bull market everyone is always right"](https://x.com/levelsio/status/2059358138269094132) |
-| x | godofprompt | ^180 c13 | [Here's a version of this for Claude Code. Rebuilt the evidence stack for Claude'](https://x.com/godofprompt/status/2059209193446621688) |
-| x | steipete | ^175 c53 | [What do people use for SSO/SCIM/Endpoint Security in 2026. As we're hiring peopl](https://x.com/steipete/status/2059421603268608302) |
-| x | EXM7777 | ^157 c29 | [there's a reason why some people profit from new AI releases on day 1 while you'](https://x.com/EXM7777/status/2059016738570993859) |
-| x | AmirMushich | ^154 c5 | [this is why I call this "the luxury": you can feel it: the visual density - full](https://x.com/AmirMushich/status/2059018386529792309) |
-| x | vasuman | ^149 c18 | [Meet Varick’s Head of FDE, Daniel. After breaking 2 world records in rowing at C](https://x.com/vasuman/status/2059377374324777222) |
-| x | rileybrown | ^120 c6 | [Bro, what????](https://x.com/rileybrown/status/2059465573478629639) |
-| x | marclou | ^118 c22 | [The first crewmate just shipped their startup 🏴‍☠️ He built an AI food tracker, ](https://x.com/marclou/status/2059413493829529710) |
-| x | AmirMushich | ^109 c14 | [Figma-to-video is real now (GitHub repo) we just open-sourced VibeMotion-1 (pre-](https://x.com/AmirMushich/status/2059321893732163616) |
-| x | EXM7777 | ^107 c18 | [this is the current meta for generating insane videos with AI: first you need an](https://x.com/EXM7777/status/2058988759321129466) |
-| x | marclou | ^85 c26 | [Ahoy mate! You can now download your Ship or Die avatar 🫡 https://t.co/WlSSHamVt](https://x.com/marclou/status/2059373571580018948) |
-| x | steipete | ^78 c1 | [@CodeWithStu That screenshot is from Cursor.](https://x.com/steipete/status/2059239696094433693) |
-| x | steipete | ^71 c7 | [Also extracted our image-logic into a separate library. Especially useful if you](https://x.com/steipete/status/2059423344961671290) |
-| x | godofprompt | ^58 c12 | [Uber burned $3.4 billion on AI in four months. Their COO now says it's not payin](https://x.com/godofprompt/status/2059316389127606343) |
-| x | jackfriks | ^53 c6 | [here's a list of all the pirates in @shipordie_ at the moment!! follow these leg](https://x.com/jackfriks/status/2059304057798300086) |
-| x | levelsio | ^52 c1 | [@pasimatalamaki Yes I famously bought $100K Alibaba just before they arrested Ja](https://x.com/levelsio/status/2059360319017783404) |
-| x | EXM7777 | ^51 c15 | [if only codex was any good at writing...](https://x.com/EXM7777/status/2059289839485542729) |
-| x | steipete | ^48 c2 | [@RihardJarc That data does not reflect reality.](https://x.com/steipete/status/2059357835666813348) |
-| x | jackfriks | ^48 c0 | [@yacineMTB built like a robot tbh](https://x.com/jackfriks/status/2059312220631146713) |
+| x | rileybrown | ^7239 c65 | [Bro, what????](https://x.com/rileybrown/status/2059465573478629639) |
+| x | steipete | ^1637 c59 | [autoreview is the most impactful skill I've added to my stack (next to https://t](https://x.com/steipete/status/2059453909819654554) |
+| x | levelsio | ^1146 c91 | [I don't know anyone who quit their job to live of savings and built something th](https://x.com/levelsio/status/2059563929341239350) |
+| x | steipete | ^617 c27 | [@nofil_ai oh man, I keep updating these failed projects, so silly of me!](https://x.com/steipete/status/2059239389562106219) |
+| x | steipete | ^488 c19 | [All the deps around opus are old or terrible, so vibed my own and replaced octos](https://x.com/steipete/status/2059422568352714981) |
+| x | vasuman | ^461 c20 | [Most of what you read about AI adoption inside large companies, on X or in the n](https://x.com/vasuman/status/2059400201211924961) |
+| x | levelsio | ^341 c41 | [Wearing helmets on bicycle in Netherlands is seen as very cringe, only American ](https://x.com/levelsio/status/2059636296230814017) |
+| x | steipete | ^325 c85 | [What do people use for SSO/SCIM/Endpoint Security in 2026. As we're hiring peopl](https://x.com/steipete/status/2059421603268608302) |
+| x | levelsio | ^277 c35 | [So I don't know if this is a thing in other countries (probably?) But Dutch do a](https://x.com/levelsio/status/2059657493597294783) |
+| x | steipete | ^266 c10 | [@Dimillian yo u need https://t.co/SEj2XRpaD1 - it includes a parallels adapter +](https://x.com/steipete/status/2059231219477254477) |
+| x | marclou | ^222 c63 | [I wanted to try Seedance 2.0 for a while, so I made these for Ship or Die avatar](https://x.com/marclou/status/2059545161525534895) |
+| x | AmirMushich | ^214 c17 | [Claude Design needs brand guidelines. But where to get them? I bulit a Claude Pr](https://x.com/AmirMushich/status/2059588224431911161) |
+| x | vasuman | ^188 c20 | [Meet Varick’s Head of FDE, Daniel. After breaking 2 world records in rowing at C](https://x.com/vasuman/status/2059377374324777222) |
+| x | marclou | ^185 c55 | [🚨 Ruby on Rails has taken over NextJS 🚨 and Vercel is still just above Cloudflar](https://x.com/marclou/status/2059616890063085632) |
+| x | levelsio | ^175 c31 | [No, it's weirdly safe from my anecdotal experience as a Dutch person living in N](https://x.com/levelsio/status/2059634681591521507) |
+| x | AmirMushich | ^163 c17 | [Figma-to-video is real now (GitHub repo) we just open-sourced VibeMotion-1 (pre-](https://x.com/AmirMushich/status/2059321893732163616) |
+| x | steipete | ^127 c12 | [Also extracted our image-logic into a separate library. Especially useful if you](https://x.com/steipete/status/2059423344961671290) |
+| x | godofprompt | ^111 c17 | [Uber burned $3.4 billion on AI in four months. Their COO now says it's not payin](https://x.com/godofprompt/status/2059316389127606343) |
+| x | marclou | ^109 c6 | [@HsanC_ That's a good multiple for a 1-year old startup. Sell if you need the mo](https://x.com/marclou/status/2059539399780769839) |
+| x | jackfriks | ^101 c27 | [i just want to have fun making cool things and make my future kids proud](https://x.com/jackfriks/status/2059654886774440382) |
+| x | marclou | ^95 c7 | [@oscargaske If it wasn’t for that SWE’s coding course, Pieter Levels’ book, or t](https://x.com/marclou/status/2059527838181843034) |
+| x | steipete | ^86 c1 | [@CodeWithStu That screenshot is from Cursor.](https://x.com/steipete/status/2059239696094433693) |
+| x | marclou | ^83 c15 | [Roasting the Ship or Die crew 😈 Pirate: @grow_with_dev Landing page: https://t.c](https://x.com/marclou/status/2059591593011937611) |
+| x | steipete | ^72 c4 | [@RihardJarc That data does not reflect reality.](https://x.com/steipete/status/2059357835666813348) |
+| x | levelsio | ^66 c9 | [In a way even the news and posts about fertility dropping are part of our self-b](https://x.com/levelsio/status/2059673030582755512) |
+| x | EXM7777 | ^62 c19 | [if only codex was any good at writing...](https://x.com/EXM7777/status/2059289839485542729) |
+| x | egeberkina | ^61 c2 | [Alcaraz vs Sinner at Roland Garros 🎾 Sadly this matchup won’t happen this year a](https://x.com/egeberkina/status/2059311137808675128) |
+| x | marclou | ^53 c11 | [200K+ impressions for a video I made in a day with my iPhone when I had <5k foll](https://x.com/marclou/status/2059475719495811403) |
+| x | levelsio | ^51 c2 | [1996: My dad sneezing](https://x.com/levelsio/status/2059596706849653068) |
+| x | marclou | ^50 c12 | [You can also download this image now: ✅ Your working avatar ✅ on your ship ✅ wit](https://x.com/marclou/status/2059571581702295904) |
 
 
 ## Top Posts
@@ -99,100 +92,40 @@ Concrete moves for NDF DEV:
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@vasuman</span>
+    <span class="ndf-author">@rileybrown</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3638 · 💬 41</span>
+    <span class="ndf-engagement">♥ 7239 · 💬 65</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vasuman/status/2058990678030569893">View @vasuman on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/rileybrown/status/2059465573478629639">View @rileybrown on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“POV: You asked a 2026 college grad to rename a variable https://t.co/4LxydvW41i”</p>
+    <p class="ndf-quote">“Bro, what????”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A viral meme mocking 2026 CS grads for over-relying on AI even for trivial tasks like renaming a variable.</dd>
+      <dd>User @rileybrown posts a one-line reaction 'Bro, what????' — no context, no link, no substance provided.</dd>
       <dt>Why interesting</dt>
-      <dd>Signals that AI-assisted coding is now the baseline expectation for new hires, not a bonus skill — vetting juniors on fundamentals is more important than ever.</dd>
+      <dd>High engagement (7k+ likes) on a contentless reaction post suggests it references a viral AI event — the actual signal is missing from this excerpt.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio should add a fundamentals check (no-AI live coding segment) to junior hiring screens — especially for Unity and web roles where naming and code clarity directly affect team velocity.</dd>
+      <dd class="ndf-adapt">Not directly applicable. No actionable information present; fetch the full thread or quoted post to determine if the underlying AI news is relevant to the studio.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/vasuman/status/2058990678030569893" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@levelsio</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2911 · 💬 130</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2059351181516816409">View @levelsio on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Congrats everyone who participated $500! $AMD https://t.co/eAix9zagbf”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>levelsio congratulates participants of a $500 giveaway or contest, referencing $AMD (AMD stock/sponsorship) with a link to results or details.</dd>
-      <dt>Why interesting</dt>
-      <dd>High engagement (2.9K likes) suggests levelsio's audience actively joins his micro-contests, showing community-driven growth tactics still work on X.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Not directly applicable. No technical or workflow insight; this is a prize giveaway post with no dev-relevant content for the studio.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/levelsio/status/2059351181516816409" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@vasuman</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1407 · 💬 18</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vasuman/status/2059042300094001302">View @vasuman on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“https://t.co/kynR4879ab”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>@vasuman shared an image-based curated watchlist of AI builders worth following, posted on X with strong engagement (1,407 likes).</dd>
-      <dt>Why interesting</dt>
-      <dd>Curated human watchlists spread faster than algorithm feeds — 1.4K likes signals this list carries trust weight in the AI builder community.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio should identify who made this list and follow them — tracking active AI builders directly accelerates finding tools and patterns worth adopting into our Unity, XR, and web stack.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/vasuman/status/2059042300094001302" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/rileybrown/status/2059465573478629639" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@steipete</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 585 · 💬 27</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2059239389562106219">View @steipete on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“@nofil_ai oh man, I keep updating these failed projects, so silly of me!”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>Developer @steipete admits they keep wasting time updating projects that have already failed, calling it silly.</dd>
-      <dt>Why interesting</dt>
-      <dd>A candid reminder that sunk-cost bias hits even experienced builders — knowing when to kill a project is a real skill.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio should set explicit kill criteria before starting side experiments: if X metric isn't hit by Y date, stop updating and archive it.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2059239389562106219" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@steipete</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 450 · 💬 16</span>
+    <span class="ndf-engagement">♥ 1637 · 💬 59</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2059453909819654554">View @steipete on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“autoreview is the most impactful skill I've added to my stack (next to https://t.co/SEj2XRpaD1). It automatically reviews your code before landing a PR. Finds so many edge cases. Sometimes it runs for”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@steipete says 'autoreview' is their most impactful dev tool — an automated code review skill that runs before every PR merge, catching edge cases sometimes over several hours.</dd>
+      <dd>@steipete calls 'autoreview' the most impactful tool in their dev stack — it automatically reviews code before a PR lands and catches edge cases, sometimes running for hours.</dd>
       <dt>Why interesting</dt>
-      <dd>Automated pre-PR code review that catches edge cases without human intervention directly reduces bug-slip rate — critical for small teams with no dedicated QA.</dd>
+      <dd>Automated pre-PR code review running as a background agent reduces review blind spots without blocking the developer — high ROI for small teams with no dedicated QA.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can wire an autoreview step into the GitHub PR workflow for both Unity and Next.js repos — run it as a Claude-powered check before any branch merges to main.</dd>
+      <dd class="ndf-adapt">The studio can wire an autoreview agent into the GitHub PR workflow for both Unity and Next.js repos — trigger on PR open, post findings as inline comments before human review begins.</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/steipete/status/2059453909819654554" target="_blank" rel="noopener">View on x →</a>
   </div>
@@ -201,60 +134,120 @@ Concrete moves for NDF DEV:
   <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 409 · 💬 32</span>
+    <span class="ndf-engagement">♥ 1146 · 💬 91</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2059315662346920267">View @levelsio on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2059563929341239350">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Quiet and humble https://t.co/Bzoy1C7uDk”</p>
+    <p class="ndf-quote">“I don't know anyone who quit their job to live of savings and built something that made money before their savings run out except @AndreyAzimov I always think it's the wrong way to do it I think you s”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@levelsio posted a photo (likely a revenue or metrics dashboard screenshot) with the ironic one-liner 'Quiet and humble,' implying the numbers speak for themselves.</dd>
+      <dd>levelsio argues you should never hard-quit your job to build a startup — keep building on the side until side income matches or exceeds your salary, then switch, because unemployment kills urgency.</dd>
       <dt>Why interesting</dt>
-      <dd>Levelsio consistently ships solo AI products to $1M+ ARR; his 'build quiet, show numbers' style proves small teams can outpace funded competitors with fast iteration.</dd>
+      <dd>The 'constraints drive output' argument is backed by levelsio's own 2013 data — having YouTube income as a floor forced him to ship faster than pure savings-runway founders.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can apply the same 'ship first, flex later' discipline — launch AI-assisted features in Unity or web projects with minimal announcement, then let metrics justify the investment.</dd>
+      <dd class="ndf-adapt">The studio should treat any new internal tool or product as a side build alongside client work — set a real revenue target before reallocating team time, not the other way around.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/levelsio/status/2059315662346920267" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/levelsio/status/2059563929341239350" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@jackfriks</span>
+    <span class="ndf-author">@steipete</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 376 · 💬 43</span>
+    <span class="ndf-engagement">♥ 617 · 💬 27</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/jackfriks/status/2059309243124068763">View @jackfriks on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2059239389562106219">View @steipete on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“you don't have to spend days and $1000-$10,000 on your launch video!!! 22 hours since launched, and over $26,000 in revenue for @shipordie_ with a launch video i made in 1 hour for $3 bucks here is ho”</p>
+    <p class="ndf-quote">“@nofil_ai oh man, I keep updating these failed projects, so silly of me!”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A developer made a product launch video in 1 hour for $3 using code, which helped generate $26,000+ in revenue within 22 hours of launch.</dd>
+      <dd>Developer @steipete admits (self-deprecatingly) that they keep maintaining and updating projects that have already failed, calling the habit silly.</dd>
       <dt>Why interesting</dt>
-      <dd>Programmatic video generation can replace expensive video production for product launches — proven ROI at near-zero cost is a real signal worth studying.</dd>
+      <dd>Sunk-cost behavior on dead projects is a universal dev trap — recognizing it publicly signals the importance of cutting losses early.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can use code-driven video generation (e.g. Remotion, FFmpeg pipelines, or AI tools) for demo reels, game trailers, or e-learning promo clips instead of outsourcing video work.</dd>
+      <dd class="ndf-adapt">The studio should set explicit kill criteria for internal tools and side experiments — if a project misses defined milestones, stop maintenance, archive it, and redirect effort.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/jackfriks/status/2059309243124068763" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/steipete/status/2059239389562106219" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@steipete</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 488 · 💬 19</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2059422568352714981">View @steipete on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“All the deps around opus are old or terrible, so vibed my own and replaced octoscript and opus-native. Performance of modern wasm on node/V8 is ~equivalent to native. Your claw now automatically takes”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>@steipete replaced outdated Opus audio dependencies (octoscript, opus-native) with a vibe-coded WASM alternative, noting modern WASM on Node/V8 matches native performance, enabling their 'claw' tool to auto-take meeting notes with voice input.</dd>
+      <dt>Why interesting</dt>
+      <dd>Modern WASM on Node/V8 now matches native performance, meaning the studio can drop brittle native audio bindings and ship cross-platform audio features without build-chain nightmares.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The web stack can audit any native Node audio/media bindings and replace them with WASM equivalents; the Unity/XR team can benchmark WASM audio pipelines as a portable alternative to platform-specific plugins.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/steipete/status/2059422568352714981" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@vasuman</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 461 · 💬 20</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vasuman/status/2059400201211924961">View @vasuman on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Most of what you read about AI adoption inside large companies, on X or in the news, is wrong. We've spent the past year running real implementations at some of the largest companies in the US. The fi”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>@vasuman claims that mainstream narratives about enterprise AI adoption are inaccurate, and shares findings from a year of real implementations at major US companies.</dd>
+      <dt>Why interesting</dt>
+      <dd>Ground-truth data from large-scale enterprise AI rollouts is rare — this thread likely surfaces failure patterns and adoption blockers that benchmarks and press releases hide.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio should read the full thread to calibrate expectations before pitching AI-integrated features to enterprise or institutional clients — knowing real blockers saves proposal rewrites.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/vasuman/status/2059400201211924961" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 369 · 💬 22</span>
+    <span class="ndf-engagement">♥ 341 · 💬 41</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2059401673743688074">View @levelsio on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2059636296230814017">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“First year I see tourists actively leave Europe or stay away because it's 1) too hot and 2) there's still no AC installed in most places or it's set way too hot so essentially useless Tourists will si”</p>
+    <p class="ndf-quote">“Wearing helmets on bicycle in Netherlands is seen as very cringe, only American tourists do it, I don't know why”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>levelsio observes that tourists are avoiding Europe for the first time due to extreme heat combined with a widespread lack of effective air conditioning.</dd>
+      <dd>The author observes that wearing bicycle helmets in the Netherlands is culturally stigmatized and associated with American tourists, not locals.</dd>
       <dt>Why interesting</dt>
-      <dd>A digital-nomad-heavy voice flagging that a top remote-work destination is losing appeal fast — relevant for any team that plans international offsites or recruits European freelancers.</dd>
+      <dd>A viral cultural observation from a well-followed indie hacker — shows that safety norms are deeply local, not universal.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">Not directly applicable.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/levelsio/status/2059401673743688074" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/levelsio/status/2059636296230814017" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@steipete</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 325 · 💬 85</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2059421603268608302">View @steipete on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“What do people use for SSO/SCIM/Endpoint Security in 2026. As we're hiring people for the OpenClaw Foundation, I gotta level up.”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>@steipete asks X/Twitter for SSO, SCIM, and Endpoint Security tool recommendations as the OpenClaw Foundation scales up hiring in 2026.</dd>
+      <dt>Why interesting</dt>
+      <dd>Crowdsourced 2026 real-world picks for identity and device security from builders — faster signal than reading vendor docs.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">When the studio adds headcount beyond the core team, this thread is a ready-made shortlist for SSO and device management without a dedicated IT person.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/steipete/status/2059421603268608302" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

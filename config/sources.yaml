@@ -59,11 +59,23 @@ topics:
         query: "(\"MCP server\" OR \"agent skills\" OR \"tool use\") min_faves:30 lang:en"
         query_type: Latest
         limit: 120
+      # Free trending signal — github repos exploding today, complements HN/X.
+      - connector: radar
+        source: github
+        category: dev
+        hours: 24
+        limit: 15
       # People-of-interest — devtool / agent / LLM practitioners.
       - connector: x
         query: "(from:simonw OR from:swyx OR from:_philschmid OR from:hwchase17 OR from:jerryjliu0 OR from:mckaywrigley OR from:cline OR from:amasad OR from:nutlope OR from:rauchg OR from:transitive_bs OR from:dzhng) min_faves:5"
         query_type: Latest
         limit: 60
+      # Curated brand/product handles via X List (root-cause fix).
+      # List managed at https://x.com/i/lists/2059847834854375935 — edit on x.com,
+      # no config redeploy needed. Source-of-truth for ai-devtools accounts.
+      - connector: x_list
+        list_id: "2059847834854375935"
+        limit: 80
 
   ai-news:
     title: "AI News & New Skills"
@@ -115,6 +127,18 @@ topics:
         query: "(OpenAI OR GPT-5 OR Gemini OR DeepMind) min_faves:80 lang:en"
         query_type: Latest
         limit: 100
+      # Free trending HN-curated tech signal — model drops + tool releases
+      # often hit HN front page before X picks them up.
+      - connector: radar
+        source: hacker_news
+        category: tech
+        hours: 24
+        limit: 15
+      # Curated brand/founder handles via X List (root-cause fix).
+      # List managed at https://x.com/i/lists/2059848590634401815.
+      - connector: x_list
+        list_id: "2059848590634401815"
+        limit: 80
 
   game-dev:
     title: "Game Dev"
@@ -165,6 +189,12 @@ topics:
       # People-of-interest — engine devs, graphics legends, indie voices.
       - connector: x
         query: "(from:freyaholmer OR from:McFunkypants OR from:reduzio OR from:UnityGames OR from:UnrealEngine OR from:noclip OR from:ID_AA_Carmack OR from:aras_p OR from:RyanJFleury OR from:CasualEffects OR from:Voxagon OR from:ssylvan) min_faves:5"
+        query_type: Latest
+        limit: 60
+      # Curated platform handles — verified via xquik 2026-05-28.
+      # @unity (engine acct), @godotengine, @playdead (indie), @itchio, @Steamworks.
+      - connector: x
+        query: "from:unity OR from:godotengine OR from:playdead OR from:itchio OR from:Steamworks"
         query_type: Latest
         limit: 60
 
@@ -222,6 +252,11 @@ topics:
         query: "(from:KentBye OR from:bosworth OR from:HugoBarra OR from:LukeRoss00 OR from:tojiro OR from:cabbibo OR from:dilmerv OR from:ben_lang OR from:TonyVT OR from:meta_quest OR from:VRChat OR from:misterxr) min_faves:2"
         query_type: Latest
         limit: 60
+      # Curated platform handles — verified via xquik 2026-05-28.
+      - connector: x
+        query: "from:MetaQuestVR OR from:Apple OR from:HTCVIVE OR from:vrchat OR from:PICOXR"
+        query_type: Latest
+        limit: 60
 
   web-frontend:
     title: "Web & Frontend"
@@ -271,6 +306,11 @@ topics:
         query: "(astro OR svelte OR solidjs OR qwik OR tailwind OR shadcn) min_faves:30 lang:en"
         query_type: Latest
         limit: 100
+      # Curated framework/platform handles — verified via xquik 2026-05-28.
+      - connector: x
+        query: "from:reactjs OR from:nextjs OR from:vuejs OR from:SvelteSociety OR from:nuxt_js OR from:tailwindcss OR from:astrodotbuild"
+        query_type: Latest
+        limit: 70
 
   edtech:
     title: "EdTech"
@@ -315,6 +355,11 @@ topics:
         query: "(\"language learning\" OR Duolingo OR \"language app\" OR pronunciation) min_faves:10 lang:en"
         query_type: Latest
         limit: 100
+      # Curated edtech brand handles — verified via xquik 2026-05-28.
+      - connector: x
+        query: "from:coursera OR from:duolingo OR from:khanacademy OR from:udemy OR from:edXOnline OR from:udacity OR from:MasterClass OR from:3blue1brown"
+        query_type: Latest
+        limit: 70
 
   ai-research:
     title: "AI Research"
@@ -364,6 +409,18 @@ topics:
         query: "(from:_xjdr OR from:teortaxesTex OR from:cwolferesearch OR from:jxmnop OR from:NeelNanda5 OR from:srush_nlp OR from:_jasonwei OR from:rao2z OR from:DrJimFan OR from:lateinteraction OR from:ylecun OR from:jeremyphoward) min_faves:5"
         query_type: Latest
         limit: 60
+      # Free HN trending — research papers + benchmarks often hit HN front page
+      # within hours; cross-reference vs arXiv RSS for signal validation.
+      - connector: radar
+        source: hacker_news
+        category: tech
+        hours: 24
+        limit: 15
+      # Curated research-lab handles via X List (root-cause fix).
+      # List managed at https://x.com/i/lists/2059849129644495207.
+      - connector: x_list
+        list_id: "2059849129644495207"
+        limit: 80
 
   3d-graphics:
     title: "3D & Graphics"
@@ -418,6 +475,12 @@ topics:
         query: "(from:KennyVleugels OR from:Sebastian_Lague OR from:bartwronski OR from:9_ar_t OR from:LumaLabsAI OR from:bilawalsidhu OR from:fxguide OR from:OnitchiBeast OR from:multimodalart OR from:HoudiniSideFX OR from:BlenderDev OR from:thefulcrum) min_faves:5"
         query_type: Latest
         limit: 60
+      # Curated 3D/AI-3D platform handles — verified via xquik 2026-05-28.
+      # @MeshyAI = 3D asset GenAI (also relevant to ai-devtools game subtopic).
+      - connector: x
+        query: "from:sidefx OR from:splinetool OR from:MeshyAI"
+        query_type: Latest
+        limit: 40
 
   devops-cloud:
     title: "DevOps & Cloud"
@@ -467,6 +530,11 @@ topics:
         query: "(observability OR Datadog OR PostHog OR Honeycomb OR Grafana OR OpenTelemetry) min_faves:30 lang:en"
         query_type: Latest
         limit: 100
+      # Curated cloud/devops platform handles — verified via xquik 2026-05-28.
+      - connector: x
+        query: "from:kubernetesio OR from:awscloud OR from:vercel OR from:Cloudflare OR from:flydotio OR from:Railway OR from:dockercon"
+        query_type: Latest
+        limit: 70
 
   multimodal-ai:
     title: "Multimodal AI"
@@ -518,6 +586,11 @@ topics:
         query: "(from:c_valenzuelab OR from:emostaque OR from:javilopen OR from:Suhail OR from:icreatelife OR from:fofrAI OR from:nickfloats OR from:fabianstelzer OR from:dreamingtulpa OR from:bramses OR from:ilumine_ai OR from:runwayml) min_faves:5"
         query_type: Latest
         limit: 60
+      # Curated model/product brand handles via X List (root-cause fix).
+      # List managed at https://x.com/i/lists/2059849304089756139.
+      - connector: x_list
+        list_id: "2059849304089756139"
+        limit: 60
 
   audio-ai:
     title: "Audio AI"
@@ -564,6 +637,11 @@ topics:
         query: "(Suno OR Udio OR \"music generation\" OR \"audio diffusion\" OR \"ACE-Step\") AI min_faves:30 lang:en"
         query_type: Latest
         limit: 60
+      # Curated audio-AI product handles — verified via xquik 2026-05-28.
+      - connector: x
+        query: "from:suno_ai_ OR from:udiomusic OR from:deepgramai OR from:AssemblyAI"
+        query_type: Latest
+        limit: 40
 
   thai-tech:
     title: "Thai Tech"
@@ -598,10 +676,26 @@ topics:
         limit: 10
       # EN-language Thai signal: brand names, sovereign-AI policy, big partner
       # announcements. min_faves: 2 because Thai-tech accounts are tiny.
+      # NOTE 2026-05-28: bare "Typhoon" pulled Eurofighter jets + tropical storms +
+      # Lee Junho K-drama. Bare "NIA" pulled Nigerian intel + Korean idol. Now
+      # disambiguated: "Typhoon LLM"/"Typhoon SCB10X" + exclude common collisions.
       - connector: x
-        query: "(Typhoon OR OpenThaiGPT OR Pathumma OR THaLLE OR Thaillm OR \"Thai LLM\" OR \"SiamAI\" OR \"SCB10X\" OR \"AIEAT\") min_faves:2"
+        query: "(\"Typhoon LLM\" OR \"Typhoon SCB10X\" OR OpenThaiGPT OR Pathumma OR THaLLE OR Thaillm OR \"Thai LLM\" OR SiamAI OR SCB10X OR AIEAT) -Eurofighter -storm -tropical -\"Lee Junho\" min_faves:2"
         query_type: Latest
         limit: 100
+      # Curated Thai-tech voices — verified handles via xquik user lookup 2026-05-28.
+      # Bypasses keyword noise entirely. Drop min_faves so quiet institutional
+      # posts still surface.
+      - connector: x
+        query: "from:SCB10X_OFFICIAL OR from:depaThailand OR from:VISTEC_Thailand OR from:nstda OR from:NectecAcademy"
+        query_type: Latest
+        limit: 60
+      # ROOT-CAUSE FIX (TODO): create an X List with Thai tech handles + swap to:
+      #   - connector: x_list
+      #     list_id: "<paste numeric id from x.com/i/lists/<id>>"
+      #     limit: 50
+      # Eliminates all keyword noise. Add new handles to the List itself, no
+      # config redeploy needed.
       # Thai-language signal: drop lang filter, use Thai keywords directly.
       # min_faves:1 since Thai tech Twitter has a small but engaged audience.
       - connector: x
@@ -610,8 +704,10 @@ topics:
         limit: 100
       # Broader Thai tech / startup / edtech chatter — feeds the topic with
       # enough surrounding context so Opus isn't reasoning over <20 posts.
+      # NOTE 2026-05-28: bare "depa" pulled Spanish (apartment) + Malay particle —
+      # always anchor with Thailand context.
       - connector: x
-        query: "(\"Thai startup\" OR \"Thai tech\" OR \"กรุงเทพ tech\" OR \"BMA AI\" OR \"NIA\" OR \"depa\") min_faves:2"
+        query: "(\"Thai startup\" OR \"Thailand tech\" OR \"BMA AI\" OR \"depa Thailand\" OR \"depa.or.th\" OR \"NIA Thailand\" OR \"NSTDA\" OR \"NECTEC\") min_faves:2"
         query_type: Latest
         limit: 60
 

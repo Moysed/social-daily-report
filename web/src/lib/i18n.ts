@@ -86,6 +86,38 @@ type Dict = {
   nextReport: string;
   alsoToday: string;
   onThisPage: string;
+  // Phase 1 UX
+  tldrTitle: string;
+  readFullReport: string;
+  leadSticker: string;
+  // Phase 2 share
+  shareTitle: string;
+  shareX: string;
+  shareLine: string;
+  shareCopy: string;
+  shareCopied: string;
+  // Phase 3a
+  unread: string;
+  trendingTitle: string;
+  trendingDays: (n: number) => string;
+  // R1
+  whyItMatters: string;
+  minRead: (n: number) => string;
+  newSince: (n: number) => string;
+  scanAll: (n: number) => string;
+  // R2 report page
+  keyPoints: string;
+  wordsUnit: string;
+  // Friendly inline metric (replaces raw "salience .85" jargon on cards/metastrip)
+  interest: (pct: number) => string;
+  sourcesUnit: (n: number) => string;
+  latestEdition: string;
+  frontPage: string;
+  // R3 ⌘K search palette
+  searchRecent: string;
+  searchBrowse: string;
+  searchResultsCount: (n: number) => string;
+  searchMatchesIn: string;
 };
 
 export const UI: Record<Lang, Dict> = {
@@ -164,6 +196,31 @@ export const UI: Record<Lang, Dict> = {
     nextReport: "Newer in this topic",
     alsoToday: "Also today",
     onThisPage: "On this page",
+    tldrTitle: "TL;DR",
+    readFullReport: "Read full report",
+    leadSticker: "Top Signal Today",
+    shareTitle: "Share",
+    shareX: "Share on X",
+    shareLine: "Share on LINE",
+    shareCopy: "Copy link",
+    shareCopied: "Copied",
+    unread: "Unread",
+    trendingTitle: "Trending this week",
+    trendingDays: (n) => `${n} ${n === 1 ? "day" : "days"}`,
+    whyItMatters: "Why it matters",
+    minRead: (n) => `${n} min`,
+    newSince: (n) => `${n} new since you last looked`,
+    scanAll: (n) => `~${n} min to scan all`,
+    keyPoints: "Key points",
+    wordsUnit: "words",
+    interest: (pct) => `${pct}% interest`,
+    sourcesUnit: (n) => (n === 1 ? "source" : "sources"),
+    latestEdition: "latest",
+    frontPage: "front page",
+    searchRecent: "Recent",
+    searchBrowse: "Browse topics",
+    searchResultsCount: (n) => `${n} ${n === 1 ? "result" : "results"}`,
+    searchMatchesIn: "matches in",
   },
   th: {
     htmlTitle: "Social Daily Report",
@@ -240,5 +297,30 @@ export const UI: Record<Lang, Dict> = {
     nextReport: "ใหม่กว่าในหัวข้อนี้",
     alsoToday: "วันนี้ยังมี",
     onThisPage: "หัวข้อในหน้านี้",
+    tldrTitle: "สรุป",
+    readFullReport: "อ่านฉบับเต็ม",
+    leadSticker: "สัญญาณเด่นวันนี้",
+    shareTitle: "แชร์",
+    shareX: "แชร์บน X",
+    shareLine: "แชร์ผ่าน LINE",
+    shareCopy: "คัดลอกลิงก์",
+    shareCopied: "คัดลอกแล้ว",
+    unread: "ยังไม่อ่าน",
+    trendingTitle: "มาแรงสัปดาห์นี้",
+    trendingDays: (n) => `${n} วัน`,
+    whyItMatters: "ทำไมถึงสำคัญ",
+    minRead: (n) => `${n} นาที`,
+    newSince: (n) => `${n} ใหม่ตั้งแต่คุณดูล่าสุด`,
+    scanAll: (n) => `~${n} นาทีเพื่อสแกนทั้งหมด`,
+    keyPoints: "ประเด็นสำคัญ",
+    wordsUnit: "คำ",
+    interest: (pct) => `น่าสนใจ ${pct}%`,
+    sourcesUnit: () => "แหล่ง",
+    latestEdition: "ล่าสุด",
+    frontPage: "หน้ารวมของวัน",
+    searchRecent: "ค้นล่าสุด",
+    searchBrowse: "หัวข้อทั้งหมด",
+    searchResultsCount: (n) => `${n} ผล`,
+    searchMatchesIn: "พบใน",
   },
 };

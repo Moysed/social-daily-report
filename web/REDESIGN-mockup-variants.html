@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Social Daily Report — Front page variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,650;9..144,750&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+Thai:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     Front page — FOUR layout variants on the same warm-paper / ink /
+     ember brand + 3-tier hairline system. Compare compositions.
+     A = The Broadsheet (the locked spec, for reference)
+     B = The Index (text-forward ranked list, NYT-Briefing/TLDR)
+     C = The Spread (3-band magazine: hero → strip → grid-of-rows)
+     D = The Ledger (data-table front, Bloomberg/dev-terminal lean)
+     ============================================================ */
+  :root {
+    color-scheme: light dark;
+    --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
+    --font-body: "Newsreader", "Noto Serif Thai", Georgia, serif;
+    --font-ui: "Space Grotesk", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    --bg:        light-dark(oklch(0.965 0.015 76),  oklch(0.16 0.014 254));
+    --paper:     light-dark(oklch(0.99 0.008 80),   oklch(0.205 0.016 254));
+    --ink:       light-dark(oklch(0.22 0.018 61),   oklch(0.95 0.01 220));
+    --soft-ink:  light-dark(oklch(0.44 0.026 60),   oklch(0.74 0.014 220));
+    --faint-ink: light-dark(oklch(0.57 0.022 60),   oklch(0.58 0.014 230));
+    --line:      light-dark(oklch(0.78 0.03 75),    oklch(0.40 0.022 248));
+    --hairline:  light-dark(oklch(0.88 0.018 76),   oklch(0.28 0.018 250));
+    --accent:    light-dark(oklch(0.5 0.13 33),     oklch(0.78 0.135 65));
+    --accent-ink:light-dark(oklch(0.4 0.13 31),     oklch(0.85 0.13 68));
+    --rule-major:  3px solid var(--ink);
+    --rule-section:1px solid var(--line);
+    --rule-faint:  1px solid var(--hairline);
+    --rule-lead:   3px solid var(--accent);
+    --step--1: clamp(0.78rem, 0.75rem + 0.15vw, 0.88rem);
+    --step-0:  clamp(1.05rem, 1rem + 0.25vw, 1.18rem);
+    --step-1:  clamp(1.28rem, 1.16rem + 0.6vw, 1.65rem);
+    --step-2:  clamp(1.55rem, 1.3rem + 1.2vw, 2.3rem);
+    --step-3:  clamp(2rem, 1.55rem + 2.2vw, 3.6rem);
+    --step-lead: clamp(2.8rem, 1.9rem + 4.6vw, 6.6rem);
+    --max: 80rem;
+    --sp-sm: clamp(0.85rem, 0.74rem + 0.55vw, 1.2rem);
+    --sp-md: clamp(1.35rem, 1.14rem + 1.05vw, 2rem);
+    --sp-lg: clamp(2.1rem, 1.66rem + 2.2vw, 3.4rem);
+  }
+  html[data-theme="light"]{color-scheme:light} html[data-theme="dark"]{color-scheme:dark}
+  *{box-sizing:border-box}
+  html{background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{margin:0;font-family:var(--font-body);font-size:var(--step-0);line-height:1.65}
+  a{color:inherit;text-decoration:none}
+  :lang(th){line-height:1.86}
+  .mono{font-family:var(--font-mono);font-feature-settings:"tnum" 1}
+  .eyebrow{font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.08em;font-size:var(--step--1);font-weight:600;color:var(--soft-ink);margin:0}
+  .eyebrow.accent{color:var(--accent-ink)}
+  .wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(1rem,.5rem + 2vw,2.4rem)}
+  .spark{color:var(--accent);vertical-align:middle}
+  .pill{font-family:var(--font-ui);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600;padding:.1rem .45rem;border:var(--rule-faint);white-space:nowrap}
+  .pill.high{color:var(--accent-ink);border-color:color-mix(in oklch,var(--accent),transparent 55%)}
+  .pill.med{color:var(--soft-ink)}
+  .min{font-family:var(--font-mono);color:var(--faint-ink)}
+  .udot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+
+  /* variant switcher bar */
+  .switch{position:sticky;top:0;z-index:30;background:color-mix(in oklch,var(--bg),transparent 8%);backdrop-filter:none;border-bottom:var(--rule-major)}
+  .switch .inner{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;padding:.6rem 0}
+  .switch .seg{font-family:var(--font-ui);font-size:var(--step--1);font-weight:600;border:var(--rule-section);background:none;color:var(--soft-ink);padding:.35rem .7rem;cursor:pointer}
+  .switch .seg.on{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+  .switch .sp{flex:1}
+  .switch .theme{font-family:var(--font-ui);font-size:var(--step--1);background:none;border:none;color:var(--soft-ink);cursor:pointer}
+
+  /* variant section frame */
+  .variant{display:none;padding:var(--sp-md) 0 var(--sp-lg)}
+  .variant.on{display:block}
+  .vhead{font-family:var(--font-ui);font-size:var(--step--1);color:var(--faint-ink);margin:0 0 var(--sp-sm);padding-bottom:.4rem;border-bottom:var(--rule-faint)}
+  .vhead b{color:var(--accent-ink);text-transform:uppercase;letter-spacing:.06em}
+
+  .brief{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem 1.5rem;flex-wrap:wrap;padding:.3rem 0 var(--sp-sm)}
+  .brief .lhs{font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.08em;font-size:var(--step--1);color:var(--soft-ink)}
+  .brief .lhs .n{font-family:var(--font-mono);color:var(--ink)}
+  .brief .new{font-family:var(--font-ui);font-size:var(--step--1);color:var(--accent-ink);display:inline-flex;align-items:center;gap:.4rem}
+
+  /* ---------------- A · Broadsheet (lead + rail) ---------------- */
+  .A .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);margin-top:var(--sp-sm)}
+  .A .lead{padding-right:var(--sp-lg);border-top:var(--rule-lead);padding-top:1rem}
+  .A .rail{padding-left:var(--sp-lg);border-left:var(--rule-section)}
+  .A h1{font-family:var(--font-display);font-weight:650;font-size:var(--step-lead);line-height:.97;letter-spacing:-.015em;margin:.4rem 0 0;max-width:15ch}
+  .A .why{margin:1rem 0 0;max-width:52ch}
+  .A .why .lbl{font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.07em;font-size:var(--step--1);font-weight:600;color:var(--accent-ink)}
+  .A .why p{margin:.15rem 0 0;font-size:var(--step-1);line-height:1.45;color:var(--soft-ink)}
+  .A .foot{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap;margin-top:1.1rem;padding-top:.8rem;border-top:var(--rule-faint);font-family:var(--font-mono);font-size:var(--step--1);color:var(--faint-ink)}
+  .A .foot .read{font-family:var(--font-ui);font-weight:600;color:var(--accent-ink)}
+  .A .teaser{padding:.9rem 0;border-top:var(--rule-section)}
+  .A .teaser:first-of-type{border-top:0;padding-top:0}
+  .A .teaser h3{font-family:var(--font-display);font-weight:600;font-size:var(--step-2);line-height:1.05;margin:.3rem 0 0}
+  .A .teaser.lg h3{font-size:var(--step-3)}
+  .A .teaser .dek{margin:.25rem 0 0;color:var(--soft-ink);max-width:44ch}
+  .A .teaser .tm{margin:.45rem 0 0;font-family:var(--font-mono);font-size:var(--step--1);color:var(--faint-ink);display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  @media(max-width:56rem){.A .grid{grid-template-columns:1fr}.A .lead{padding-right:0}.A .rail{padding-left:0;border-left:0;border-top:var(--rule-major);margin-top:var(--sp-md);padding-top:var(--sp-md)}}
+
+  /* ---------------- B · The Index (ranked numbered list) ---------------- */
+  .B .lead-band{border-top:var(--rule-lead);padding-top:1rem;margin-bottom:var(--sp-md);max-width:62ch}
+  .B .lead-band h1{font-family:var(--font-display);font-weight:650;font-size:var(--step-3);line-height:1.02;letter-spacing:-.012em;margin:.4rem 0 0}
+  .B .lead-band p{margin:.4rem 0 0;color:var(--soft-ink);font-size:var(--step-1);max-width:54ch}
+  .B .lead-band .foot{margin-top:.8rem;font-family:var(--font-mono);font-size:var(--step--1);color:var(--faint-ink);display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
+  .B .lead-band .read{font-family:var(--font-ui);font-weight:600;color:var(--accent-ink)}
+  .B .ix{list-style:none;margin:0;padding:0;border-top:var(--rule-major)}
+  .B .ix li{display:grid;grid-template-columns:2.4rem 1fr auto;align-items:baseline;gap:.4rem 1rem;padding:.85rem 0;border-bottom:var(--rule-faint)}
+  .B .ix .rk{font-family:var(--font-mono);font-size:var(--step-1);color:var(--faint-ink)}
+  .B .ix .body .ey{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:.1rem}
+  .B .ix .body h3{font-family:var(--font-display);font-weight:500;font-size:var(--step-2);line-height:1.1;margin:0;display:inline}
+  .B .ix .body h3 a:hover{color:var(--accent-ink)}
+  .B .ix .body .dek{color:var(--soft-ink);font-size:var(--step-0)}
+  .B .ix .rhs{font-family:var(--font-mono);font-size:var(--step--1);color:var(--faint-ink);text-align:right;white-space:nowrap;display:flex;flex-direction:column;align-items:flex-end;gap:.25rem}
+  @media(max-width:48rem){.B .ix li{grid-template-columns:1.8rem 1fr}.B .ix .rhs{grid-column:2;text-align:left;align-items:flex-start;flex-direction:row;gap:.6rem}}
+
+  /* ---------------- C · The Spread (3 bands) ---------------- */
+  .C .hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:var(--sp-lg);align-items:end;border-top:var(--rule-lead);padding-top:1rem}
+  .C .hero h1{font-family:var(--font-display);font-weight:750;font-size:var(--step-lead);line-height:.94;letter-spacing:-.02em;margin:.3rem 0 0;max-width:13ch}
+  .C .hero .side{padding-left:var(--sp-md);border-left:var(--rule-section)}
+  .C .hero .side .why .lbl{font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.07em;font-size:var(--step--1);font-weight:600;color:var(--accent-ink)}
+  .C .hero .side .why p{margin:.15rem 0 .9rem;color:var(--soft-ink);font-size:var(--step-1);line-height:1.4}
+  .C .hero .side .foot{font-family:var(--font-mono);font-size:var(--step--1);color:var(--faint-ink);display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  .C .hero .side .read{font-family:var(--font-ui);font-weight:600;color:var(--accent-ink)}
+  .C .strip{display:flex;gap:0;overflow:auto;margin:var(--sp-md) 0;border-top:var(--rule-major);border-bottom:var(--rule-section)}
+  .C .strip .s{flex:1 0 14rem;padding:.9rem 1rem .9rem 0;margin-right:1rem;border-right:var(--rule-faint)}
+  .C .strip .s:last-child{border-right:0}
+  .C .strip .s .ey{display:flex;gap:.4rem;align-items:center;margin-bottom:.2rem}
+  .C .strip .s h4{font-family:var(--font-display);font-weight:600;font-size:var(--step-1);line-height:1.1;margin:0}
+  .C .strip .s h4 a:hover{color:var(--accent-ink)}
+  .C .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .C .grid3 .cell{padding:1rem 1.2rem 1rem 0;border-top:var(--rule-section);border-right:var(--rule-faint)}
+  .C .grid3 .cell:nth-child(3n){border-right:0;padding-right:0}
+  .C .grid3 h4{font-family:var(--font-display);font-weight:600;font-size:var(--step-1);line-height:1.12;margin:.25rem 0 0}
+  .C .grid3 .dek{color:var(--soft-ink);font-size:var(--step--1);margin:.2rem 0 0;line-height:1.4}
+  .C .grid3 .tm{margin:.4rem 0 0;font-family:var(--font-mono);font-size:var(--step--1);color:var(--faint-ink)}
+  @media(max-width:56rem){.C .hero{grid-template-columns:1fr}.C .hero .side{padding-left:0;border-left:0;border-top:var(--rule-section);padding-top:.8rem}.C .grid3{grid-template-columns:1fr}.C .grid3 .cell{border-right:0;padding-right:0}}
+
+  /* ---------------- D · The Ledger (data table front) ---------------- */
+  .D .lead-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--sp-md);align-items:end;border-top:var(--rule-lead);padding:1rem 0 var(--sp-md)}
+  .D .lead-row h1{font-family:var(--font-display);font-weight:650;font-size:var(--step-3);line-height:1;letter-spacing:-.012em;margin:.3rem 0 0;max-width:18ch}
+  .D .lead-row .dek{color:var(--soft-ink);margin:.35rem 0 0;max-width:50ch}
+  .D .lead-row .stat{font-family:var(--font-mono);text-align:right;color:var(--faint-ink);font-size:var(--step--1);white-space:nowrap}
+  .D .lead-row .stat .big{display:block;font-size:var(--step-2);color:var(--accent-ink)}
+  .D table{width:100%;border-collapse:collapse;margin-top:var(--sp-sm);font-size:var(--step-0)}
+  .D thead th{font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;font-weight:600;color:var(--soft-ink);text-align:left;padding:.5rem .6rem;border-bottom:var(--rule-major)}
+  .D thead th.num,.D td.num{text-align:right;font-family:var(--font-mono)}
+  .D tbody td{padding:.7rem .6rem;border-bottom:var(--rule-faint);vertical-align:baseline}
+  .D tbody tr:hover{background:color-mix(in oklch,var(--accent),transparent 92%)}
+  .D .tp{font-family:var(--font-display);font-weight:500;font-size:var(--step-1)}
+  .D .tp a:hover{color:var(--accent-ink)}
+  .D .tp .ey{display:block;font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.05em;font-size:.66rem;color:var(--faint-ink);font-weight:600}
+  .D .mk{color:var(--faint-ink);font-family:var(--font-mono)}
+  .D .up{color:var(--accent-ink)}
+  @media(max-width:48rem){.D .lead-row{grid-template-columns:1fr}.D .col-hide{display:none}}
+
+  .foot-note{margin:var(--sp-lg) 0 3rem;padding:.6rem 1rem;font-family:var(--font-ui);font-size:var(--step--1);color:var(--faint-ink);border:var(--rule-faint)}
+  .foot-note b{color:var(--soft-ink)}
+</style>
+</head>
+<body>
+
+<div class="switch">
+  <div class="wrap inner">
+    <button class="seg on" data-v="A">A · Broadsheet</button>
+    <button class="seg" data-v="B">B · Index</button>
+    <button class="seg" data-v="C">C · Spread</button>
+    <button class="seg" data-v="D">D · Ledger</button>
+    <span class="sp"></span>
+    <button class="theme" id="theme">☾ Auto</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ A · BROADSHEET (locked spec, reference) ============ -->
+  <section class="variant A on" data-variant="A">
+    <p class="vhead"><b>A · The Broadsheet</b> — the locked spec. Lead column + hairline-separated rail. Maximal hierarchy, one big headline. Best when one story dominates the day.</p>
+    <div class="brief"><span class="lhs">Today · 29 May · <span class="n">12</span> reports · ~<span class="n">9</span> min</span><span class="new"><span class="udot"></span> 3 new since you looked</span></div>
+    <div class="grid">
+      <article class="lead">
+        <p class="eyebrow accent">AI Devtools <span class="min">· 4 min</span> ↑ rising</p>
+        <h1><a href="#">Anthropic ships an agentic build pipeline</a></h1>
+        <div class="why"><span class="lbl">Why it matters</span><p>The first credible "describe → ship" loop a small team can run unattended.</p></div>
+        <div class="foot"><svg class="spark" width="80" height="20" viewBox="0 0 80 20"><polyline points="0,17 14,15 28,10 42,11 56,5 70,3 80,1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>· 1.2k posts · 14 sources · salience .82</span><a class="read" href="#">Read →</a></div>
+      </article>
+      <div class="rail">
+        <p class="eyebrow" style="margin-bottom:.6rem">Also today</p>
+        <article class="teaser lg"><p class="eyebrow">AI Research <span class="min">· 3 min</span></p><h3><a href="#">A new agentic eval suite exposes brittle tool-use</a></h3><p class="dek">Models that ace static benchmarks collapse on multi-step chains.</p><p class="tm"><span class="udot"></span> 840 posts · salience .71</p></article>
+        <article class="teaser"><p class="eyebrow">XR / VR / AR <span class="min">· 2 min</span></p><h3><a href="#">WebGPU lands in the WebXR mainline spec</a></h3><p class="tm">410 posts · salience .64</p></article>
+        <article class="teaser"><p class="eyebrow">Web &amp; Frontend <span class="min">· 3 min</span></p><h3><a href="#">View Transitions ship cross-document</a></h3><p class="tm">680 posts · salience .61</p></article>
+        <article class="teaser" lang="th"><p class="eyebrow">Thai Tech <span class="min">· 2 min</span></p><h3><a href="#">Typhoon-2 เปิดตัว เบนช์มาร์กแซง GPT-4o ภาษาไทย</a></h3><p class="tm">220 posts · salience .58</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B · THE INDEX (ranked numbered list) ============ -->
+  <section class="variant B" data-variant="B">
+    <p class="vhead"><b>B · The Index</b> — text-forward ranked list, salience-ordered. No grid at all. Scans top-to-bottom like a leaderboard / TLDR brief. Best for "just tell me the order." Densest, fastest to skim 12 items.</p>
+    <div class="brief"><span class="lhs">Today · 29 May · <span class="n">12</span> reports · ranked by salience</span><span class="new"><span class="udot"></span> 3 new</span></div>
+    <div class="lead-band">
+      <p class="eyebrow accent">Lead · AI Devtools <span class="min">· 4 min</span></p>
+      <h1><a href="#">Anthropic ships an agentic build pipeline</a></h1>
+      <p>The first credible "describe → ship" loop a small team can run unattended — directly relevant to how NDF DEV scaffolds internal tools.</p>
+      <div class="foot"><svg class="spark" width="72" height="18" viewBox="0 0 72 18"><polyline points="0,15 12,13 24,9 36,10 48,5 60,3 72,1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>· 1.2k posts · 14 sources · salience .82 ↑</span><a class="read" href="#">Read →</a></div>
+    </div>
+    <ol class="ix">
+      <li><span class="rk">02</span><div class="body"><span class="ey"><span class="eyebrow">AI Research</span><span class="pill high">high</span></span><h3><a href="#">A new agentic eval suite exposes brittle tool-use </a></h3><span class="dek">— the gap is reasoning persistence, not knowledge.</span></div><span class="rhs"><span>.71 · 3 min</span><span>840 posts</span></span></li>
+      <li><span class="rk">03</span><div class="body"><span class="ey"><span class="eyebrow">XR / VR / AR</span><span class="pill high">high</span></span><h3><a href="#">WebGPU lands in the WebXR mainline spec </a></h3><span class="dek">— compute shaders for on-device hand-tracking.</span></div><span class="rhs"><span>.64 · 2 min</span><span>410 posts</span></span></li>
+      <li><span class="rk">04</span><div class="body"><span class="ey"><span class="eyebrow">Web &amp; Frontend</span><span class="pill med">med</span></span><h3><a href="#">View Transitions ship cross-document in all engines </a></h3><span class="dek">— app-like morphs with zero JS.</span></div><span class="rhs"><span>.61 · 3 min</span><span>680 posts</span></span></li>
+      <li lang="th"><span class="rk">05</span><div class="body"><span class="ey"><span class="eyebrow">Thai Tech</span><span class="pill med">med</span></span><h3><a href="#">Typhoon-2 เปิดตัว เบนช์มาร์กแซง GPT-4o ภาษาไทย </a></h3><span class="dek">— เปิดให้ใช้ฟรีผ่าน API.</span></div><span class="rhs"><span>.58 · 2 min</span><span>220 posts</span></span></li>
+      <li><span class="rk">06</span><div class="body"><span class="ey"><span class="eyebrow">DevOps &amp; Cloud</span><span class="pill med">med</span></span><h3><a href="#">Edge functions get a 50ms cold-start floor </a></h3><span class="dek">— the serverless penalty keeps shrinking.</span></div><span class="rhs"><span>.55 · 2 min</span><span>390 posts</span></span></li>
+    </ol>
+  </section>
+
+  <!-- ============ C · THE SPREAD (3 bands) ============ -->
+  <section class="variant C" data-variant="C">
+    <p class="vhead"><b>C · The Spread</b> — magazine cover in three bands: hero (split) → horizontal scroll strip of "catch up quick" → a 3-up grid of rows below. Most editorial / magazine feel, best on wide screens.</p>
+    <div class="brief"><span class="lhs">Today · 29 May · <span class="n">12</span> reports · ~<span class="n">9</span> min</span><span class="new"><span class="udot"></span> 3 new since you looked</span></div>
+    <div class="hero">
+      <div>
+        <p class="eyebrow accent">Lead · AI Devtools <span class="min">· 4 min</span></p>
+        <h1><a href="#">Anthropic ships an agentic build pipeline</a></h1>
+      </div>
+      <div class="side">
+        <div class="why"><span class="lbl">Why it matters</span><p>The first credible "describe → ship" loop a small team can run unattended.</p></div>
+        <div class="foot"><svg class="spark" width="64" height="18" viewBox="0 0 64 18"><polyline points="0,15 11,13 21,9 32,10 43,5 53,3 64,1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>.82 · 14 sources</span><a class="read" href="#">Read →</a></div>
+      </div>
+    </div>
+    <div class="strip">
+      <div class="s"><p class="eyebrow" style="margin-bottom:.2rem">Catch up quick</p></div>
+      <div class="s"><div class="ey"><span class="udot"></span><span class="min">02 · 3 min</span></div><h4><a href="#">Agentic eval suite exposes brittle tool-use</a></h4></div>
+      <div class="s"><div class="ey"><span class="min">03 · 2 min</span></div><h4><a href="#">WebGPU lands in WebXR mainline</a></h4></div>
+      <div class="s"><div class="ey"><span class="min">04 · 3 min</span></div><h4><a href="#">View Transitions ship cross-document</a></h4></div>
+      <div class="s" lang="th"><div class="ey"><span class="min">05 · 2 min</span></div><h4><a href="#">Typhoon-2 แซง GPT-4o ภาษาไทย</a></h4></div>
+    </div>
+    <div class="grid3">
+      <div class="cell"><p class="eyebrow">DevOps &amp; Cloud <span class="min">· 2 min</span></p><h4><a href="#">Edge functions get a 50ms cold-start floor</a></h4><p class="dek">The serverless penalty keeps shrinking.</p><p class="tm">390 posts · salience .55</p></div>
+      <div class="cell"><p class="eyebrow">Multimodal AI <span class="min">· 3 min</span></p><h4><a href="#">Real-time video understanding on consumer GPUs</a></h4><p class="dek">Sub-second frame reasoning on a 4070.</p><p class="tm">510 posts · salience .53</p></div>
+      <div class="cell"><p class="eyebrow">EdTech <span class="min">· 2 min</span></p><h4><a href="#">AI tutors finally pass a teacher's bar</a></h4><p class="dek">Socratic loops beat answer-dumping in trials.</p><p class="tm">300 posts · salience .49</p></div>
+    </div>
+  </section>
+
+  <!-- ============ D · THE LEDGER (data table front) ============ -->
+  <section class="variant D" data-variant="D">
+    <p class="vhead"><b>D · The Ledger</b> — instrument readout. Lead summary row + a sortable-looking data table of all 12 topics with salience / 7d-trend / posts / min. For a dev audience that wants the numbers up front. Most "terminal," least magazine.</p>
+    <div class="brief"><span class="lhs">Today · 29 May · <span class="n">12</span> signals</span><span class="new"><span class="udot"></span> 3 new</span></div>
+    <div class="lead-row">
+      <div>
+        <p class="eyebrow accent">Lead · AI Devtools <span class="min">· 4 min</span></p>
+        <h1><a href="#">Anthropic ships an agentic build pipeline</a></h1>
+        <p class="dek">The first credible "describe → ship" loop a small team can run unattended.</p>
+      </div>
+      <div class="stat"><span class="big">.82 ↑</span>salience · 1.2k posts<br/>14 sources</div>
+    </div>
+    <table>
+      <thead><tr><th>Topic</th><th class="num">Sal</th><th class="num col-hide">7-day</th><th class="num col-hide">Posts</th><th class="num">Min</th></tr></thead>
+      <tbody>
+        <tr><td class="tp"><span class="ey">AI Research</span><a href="#">Agentic eval suite exposes brittle tool-use</a></td><td class="num up">.71</td><td class="num col-hide"><svg class="spark" width="56" height="14" viewBox="0 0 56 14"><polyline points="0,9 9,10 18,7 28,8 37,5 46,6 56,3" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></td><td class="num col-hide">840</td><td class="num mk">3</td></tr>
+        <tr><td class="tp"><span class="ey">XR / VR / AR</span><a href="#">WebGPU lands in WebXR mainline spec</a></td><td class="num up">.64</td><td class="num col-hide"><svg class="spark" width="56" height="14" viewBox="0 0 56 14"><polyline points="0,3 9,5 18,6 28,7 37,9 46,10 56,11" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></td><td class="num col-hide">410</td><td class="num mk">2</td></tr>
+        <tr><td class="tp"><span class="ey">Web &amp; Frontend</span><a href="#">View Transitions ship cross-document</a></td><td class="num">.61</td><td class="num col-hide"><svg class="spark" width="56" height="14" viewBox="0 0 56 14"><polyline points="0,8 9,7 18,9 28,6 37,7 46,5 56,6" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></td><td class="num col-hide">680</td><td class="num mk">3</td></tr>
+        <tr lang="th"><td class="tp"><span class="ey">Thai Tech</span><a href="#">Typhoon-2 เบนช์มาร์กแซง GPT-4o ภาษาไทย</a></td><td class="num">.58</td><td class="num col-hide"><svg class="spark" width="56" height="14" viewBox="0 0 56 14"><polyline points="0,11 9,9 18,7 28,8 37,5 46,4 56,2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></td><td class="num col-hide">220</td><td class="num mk">2</td></tr>
+        <tr><td class="tp"><span class="ey">DevOps &amp; Cloud</span><a href="#">Edge functions hit a 50ms cold-start floor</a></td><td class="num">.55</td><td class="num col-hide"><svg class="spark" width="56" height="14" viewBox="0 0 56 14"><polyline points="0,6 9,7 18,5 28,8 37,6 46,7 56,5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></td><td class="num col-hide">390</td><td class="num mk">2</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p class="foot-note"><b>Four front-page compositions, same brand.</b> All share the warm-paper / ink / single-ember palette, the 3-tier hairline system (no cards/shadows), the eyebrow→headline→mono-meta font roles, per-item min-read, sparklines, and unread dots. They differ only in <b>composition</b>: A maximizes one big story; B ranks everything as a list; C is a 3-band magazine spread; D leads with the data table. Switch A·B·C·D up top; ☾ toggles dark; narrow the window for mobile. Locked spec = A.</p>
+</div>
+
+<script>
+  const html=document.documentElement;
+  document.querySelectorAll('.seg').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.seg').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.variant').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.querySelector('.variant.'+b.dataset.v).classList.add('on');
+    window.scrollTo({top:0});
+  }));
+  const tb=document.getElementById('theme'),st=[['auto','☾ Auto'],['light','☀ Light'],['dark','☾ Dark']];let i=0;
+  tb.addEventListener('click',()=>{i=(i+1)%3;const[v,l]=st[i];if(v==='auto')html.removeAttribute('data-theme');else html.setAttribute('data-theme',v);tb.textContent=l;});
+</script>
+</body>
+</html>

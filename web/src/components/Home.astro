@@ -1,8 +1,18 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import { prettyDate, prettyTopic, sentimentEmoji } from "../lib/format";
+import { prettyDate, shortDate, prettyTopic, sentimentEmoji, cleanInline, extractTldr, readingMinutes } from "../lib/format";
 import { homePath, UI, type Lang } from "../lib/i18n";
+import { bangkokToday, relativeDate } from "../lib/relative-date";
+// Build-time thumbnail manifest: original-URL -> local /thumbs path (or false if
+// the source 404'd). Populated by `scripts/fetch-thumbs.mjs` (run pre-build).
+// Empty {} when the script hasn't run — the site just renders without images.
+import thumbsManifest from "../lib/thumbs-manifest.json";
+const localThumb = (url: string | undefined | null): string | null => {
+  if (!url) return null;
+  const v = (thumbsManifest as Record<string, string | false>)[url];
+  return typeof v === "string" ? v : null;
+};
 
 interface Props {
   lang: Lang;
@@ -57,15 +67,6 @@ function leadDeck(body: string | undefined): string | null {
   return null;
 }
 
-function cleanInline(s: string): string {
-  return s
-    .replace(/\[(\d+(?:,\s*\d+)*)\]/g, "")
-    .replace(/!?\[([^\]]+)\]\([^)]+\)/g, "$1")
-    .replace(/`([^`]+)`/g, "$1")
-    .replace(/\s{2,}/g, " ")
-    .trim();
-}
-
 const dates = [...byDate.keys()].sort().reverse();
 const latest = dates[0];
 const rowsForDate = (date: string) =>
@@ -73,20 +74,58 @@ const rowsForDate = (date: string) =>
       .map(([topic, pair]) => ({ topic, pair, entry: entryFor(pair)! }))
       .sort((a, b) => (b.entry.data.salience ?? 0) - (a.entry.data.salience ?? 0));
 
+const todayStr = bangkokToday();
+
 // Per-day views — every date renders the same hero+grid layout. Only the
 // latest is visible by default; clicking a calendar cell swaps which one is
 // active. Older days are still in the DOM so deep-links + filters work
 // without a network round-trip.
 const days = dates.map((date) => {
   const pairs = rowsForDate(date);
+  const rel = relativeDate(date, lang, todayStr);
   return {
     date,
     pairs,
     lead: pairs[0],
     others: pairs.slice(1),
     isLatest: date === latest,
+    relLabel: rel.label,
+    relKind: rel.kind,
   };
 });
+
+// ---- Trending this week ----
+// 7-day window ending today (Bangkok). Score by peak salience (primary) + days appeared (tiebreaker).
+// One entry per topic (using entryFor for current lang to avoid double-counting EN+TH).
+const [ty, tm, td] = todayStr.split("-").map(Number);
+const wsDate = new Date(Date.UTC(ty, tm - 1, td - 6));
+const weekStart = `${wsDate.getUTCFullYear()}-${String(wsDate.getUTCMonth()+1).padStart(2,"0")}-${String(wsDate.getUTCDate()).padStart(2,"0")}`;
+
+type TrendRow = { topic: string; entry: Entry; peakSalience: number; daysAppeared: number };
+{
+  // block to scope the map
+}
+const _trendMap = new Map<string, { maxSal: number; count: number; bestEntry: Entry }>();
+for (const date of dates) {
+  if (date < weekStart || date > todayStr) continue;
+  const pairs = byDate.get(date)!;
+  for (const [topic, pair] of pairs) {
+    const entry = entryFor(pair);
+    if (!entry) continue;
+    const sal = entry.data.salience ?? 0;
+    const ex = _trendMap.get(topic);
+    if (!ex) {
+      _trendMap.set(topic, { maxSal: sal, count: 1, bestEntry: entry });
+    } else {
+      ex.count++;
+      if (sal > ex.maxSal) { ex.maxSal = sal; ex.bestEntry = entry; }
+    }
+  }
+}
+const trendingTopics: TrendRow[] = [..._trendMap.entries()]
+  .map(([topic, s]) => ({ topic, entry: s.bestEntry, peakSalience: s.maxSal, daysAppeared: s.count }))
+  .sort((a, b) => b.peakSalience - a.peakSalience || b.daysAppeared - a.daysAppeared)
+  .slice(0, 6);
 
 // ---- Calendar archive ----
 // Group every date that has a report by its YYYY-MM month so we can render a
@@ -109,9 +148,6 @@ const weekdayLabels: string[] =
   lang === "th"
     ? ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"]
     : ["S", "M", "T", "W", "T", "F", "S"];
-
-const today = new Date();
-const todayStr = `${today.getUTCFullYear()}-${String(today.getUTCMonth() + 1).padStart(2, "0")}-${String(today.getUTCDate()).padStart(2, "0")}`;
 
 const months: Month[] = monthKeys.map((key) => {
   const [y, m] = key.split("-").map(Number);
@@ -231,6 +267,17 @@ function sparkAt(date: string, topic: string, n = 14): SparkPoint[] {
 }
 
 // SVG path for the sparkline. Returns "" when fewer than 2 numeric points.
+// Bold lead-in helper: split a TL;DR bullet at em-dash / colon for Axios-style bold clause.
+function boldLeadIn(s: string): { lead: string; rest: string } {
+  const dmIdx = s.indexOf(" — ");
+  if (dmIdx > 0) return { lead: s.slice(0, dmIdx + 3), rest: s.slice(dmIdx + 3) };
+  const colIdx = s.indexOf(": ");
+  if (colIdx > 4 && colIdx < s.length * 0.55) return { lead: s.slice(0, colIdx + 2), rest: s.slice(colIdx + 2) };
+  const words = s.split(/\s+/);
+  const k = Math.min(5, Math.max(3, Math.floor(words.length * 0.35)));
+  return { lead: words.slice(0, k).join(" ") + " ", rest: words.slice(k).join(" ") };
+}
+
 function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
   const nums = points.map((p) => p.salience).filter((v): v is number => v != null);
   if (nums.length < 2) return "";
@@ -254,7 +301,8 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
 }
 ---
 
-<Base title={t.htmlTitle} lang={lang} alternateHref={local(homePath[other])}>
+<Base title={t.htmlTitle} lang={lang} alternateHref={local(homePath[other])} image={new URL("/og/default.png", Astro.site).href} ogType="website">
+  <div data-pagefind-ignore>
   {dates.length === 0 ? (
     <section class="empty-state">
       <p class="kicker">{t.dailyBrief}</p>
@@ -267,75 +315,32 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
       <div class="day-views" id="top" data-day-views>
         {days.map((day) => (
           <article class="day-view" data-day-view={day.date} aria-hidden={!day.isLatest} hidden={!day.isLatest}>
-            <section class="brief-masthead">
-              <p class="kicker">{day.isLatest ? t.morningBrief : t.archive}</p>
-              <div class="brief-line">
-                <h1>{t.todayOverview}</h1>
-                <p class="brief-meta ui-text">
-                  <strong>{prettyDate(day.date)}</strong>
-                  <span aria-hidden="true">·</span>
-                  <span>{t.todayHeading(day.pairs.length)}</span>
-                </p>
-              </div>
-            </section>
-
-            {day.lead && (() => {
-              const d = day.lead.entry.data;
-              const act = activityOf(d.salience);
-              const tr = trendOf(day.lead.topic, d.salience);
-              const deck = leadDeck(day.lead.entry.body);
-              const streak = streakAt(day.date, day.lead.topic);
-              const spark = sparkAt(day.date, day.lead.topic);
-              const sparkD = sparkPath(spark, 96, 24);
+            {(() => {
+              const prevDate = dates[dates.indexOf(day.date) + 1] ?? null;
+              const nextDate = dates[dates.indexOf(day.date) - 1] ?? null;
+              const totalMin = day.pairs.reduce((s, {entry}) => s + readingMinutes(entry.body ?? "", lang), 0);
               return (
-                <article class="lead-tile" data-row data-topic={day.lead.topic} data-date={d.date} data-haystack={haystackFor(day.lead.topic, day.lead.entry)}>
-                  {d.thumbnail && (
-                    <a class="lead-thumb" href={href(day.lead.entry)} aria-hidden="true" tabindex="-1">
-                      <img src={d.thumbnail} alt="" loading="lazy" referrerpolicy="no-referrer" />
-                    </a>
-                  )}
-                  <p class="kicker accent">{t.leadSignal}</p>
-                  <h2 class="tile-title"><a href={href(day.lead.entry)}>{prettyTopic(day.lead.topic)}</a></h2>
-                  <div class="tile-signals ui-text">
-                    <span class={`pill activity activity-${act}`} title={`${t.activityLabel}: ${activityLabel(act)}`}>
-                      <span class="dot" aria-hidden="true"></span>
-                      {activityLabel(act)}
-                    </span>
-                    <span class={`pill trend trend-${tr}`} title={`${t.activityLabel}: ${trendLabel(tr)}`}>
-                      <span aria-hidden="true">{trendGlyph(tr)}</span>
-                      {trendLabel(tr)}
-                    </span>
-                    <span class="pill sentiment" title={`Sentiment: ${d.sentiment ?? "neutral"}`}>
-                      <span aria-hidden="true">{sentimentEmoji(d.sentiment)}</span>
-                      {d.sentiment ?? "neutral"}
-                    </span>
-                    <span class="pill quiet">{t.posts(d.post_count)}</span>
-                    {streak >= 3 && (
-                      <span class="pill streak" aria-label={t.streakBadgeAria(streak)}>
-                        <span class="dot" aria-hidden="true"></span>
-                        {t.streakBadge(streak)}
-                      </span>
-                    )}
-                    {sparkD && (
-                      <svg class="sparkline sparkline-lead" viewBox="0 0 96 24" width="96" height="24" role="img" aria-label={t.sparklineLabel}>
-                        <path d={sparkD} fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" />
-                      </svg>
-                    )}
-                  </div>
-                  {deck && <p class="tile-deck">{deck}</p>}
-                  <div class="tile-cta ui-text">
-                    <a class="cta-primary" href={href(day.lead.entry)}>{t.readReport} →</a>
-                    <a
-                      class="cta-rss num"
-                      href={local(`${lang === "th" ? "/th" : ""}/rss/${day.lead.topic}.xml`)}
-                      aria-label={t.rssTopicAria(prettyTopic(day.lead.topic))}
-                    >{t.rssShort}</a>
-                    <span class="cta-langs">
-                      {day.lead.pair.en && <a class={lang === "en" ? "active" : ""} href={href(day.lead.pair.en)} hreflang="en">EN</a>}
-                      {day.lead.pair.th && <a class={lang === "th" ? "active" : ""} href={href(day.lead.pair.th)} hreflang="th" lang="th">ไทย</a>}
-                    </span>
-                  </div>
-                </article>
+                <div class="brief ui-text">
+                  <span class="brief-label">
+                    {day.isLatest && <span class="brief-today">{lang === "th" ? "วันนี้" : "Today"}</span>}
+                    <span class="num brief-date">{shortDate(day.date)}</span>
+                    <span class="brief-sep" aria-hidden="true">·</span>
+                    <span><span class="num">{day.pairs.length}</span> {lang === "th" ? "รายงาน" : "reports"}</span>
+                    <span class="brief-sep" aria-hidden="true">·</span>
+                    <span class="num brief-time">~{totalMin} {lang === "th" ? "นาที" : "min"}</span>
+                  </span>
+                  <span class="brief-new" data-new-count hidden aria-live="polite"></span>
+                  <nav class="brief-nav" aria-label={lang === "th" ? "เปลี่ยนวัน" : "Change day"}>
+                    {prevDate
+                      ? <a class="brief-daynav num" href={`#${prevDate}`} data-prev-day={prevDate} aria-label={lang === "th" ? `วันก่อนหน้า: ${prevDate}` : `Previous day: ${prevDate}`}>← {shortDate(prevDate)}</a>
+                      : <span class="brief-daynav brief-daynav--disabled num" aria-hidden="true">←</span>
+                    }
+                    {nextDate
+                      ? <a class="brief-daynav num" href={`#${nextDate}`} data-next-day={nextDate} aria-label={lang === "th" ? `วันถัดไป: ${nextDate}` : `Next day: ${nextDate}`}>{shortDate(nextDate)} →</a>
+                      : <span class="brief-daynav brief-daynav--disabled num" aria-hidden="true">→</span>
+                    }
+                  </nav>
+                </div>
               );
             })()}
 
@@ -365,74 +370,153 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
               <p class="control-empty" data-filter-empty hidden>{t.searchEmpty}</p>
             </nav>
 
-            {day.others.length > 0 && (
-              <section class="tile-grid" aria-label={t.alsoToday}>
-                {day.others.map(({ topic, pair, entry }) => {
-                  const d = entry.data;
-                  const act = activityOf(d.salience);
-                  const tr = trendOf(topic, d.salience);
-                  const deck = leadDeck(entry.body);
-                  const streak = streakAt(day.date, topic);
-                  const sparkD = sparkPath(sparkAt(day.date, topic), 72, 20);
-                  return (
-                    <article class="tile" data-row data-topic={topic} data-date={d.date} data-haystack={haystackFor(topic, entry)}>
-                      {d.thumbnail && (
-                        <a class="tile-thumb" href={href(entry)} aria-hidden="true" tabindex="-1">
-                          <img src={d.thumbnail} alt="" loading="lazy" referrerpolicy="no-referrer" />
-                        </a>
+            {day.lead && (() => {
+              const d = day.lead.entry.data;
+              const tr = trendOf(day.lead.topic, d.salience);
+              const allBullets = extractTldr(day.lead.entry.body ?? "");
+              // Headline = the lead story (first TL;DR bullet), NOT the topic name —
+              // so the front page opens with what actually happened today. Dek = the
+              // trailing clause; remaining bullets become the supporting points.
+              const leadFirst = allBullets.length ? boldLeadIn(allBullets[0]) : null;
+              const leadHeadline = leadFirst
+                ? leadFirst.lead.replace(/\s*[—:\-]\s*$/, "").trim()
+                : prettyTopic(day.lead.topic);
+              const leadStand = leadFirst && leadFirst.rest.trim()
+                ? leadFirst.rest.trim().charAt(0).toUpperCase() + leadFirst.rest.trim().slice(1)
+                : leadDeck(day.lead.entry.body);
+              const bullets = allBullets.slice(1, 4);
+              const spark = sparkAt(day.date, day.lead.topic);
+              const sparkD = sparkPath(spark, 84, 22);
+              const minR = readingMinutes(day.lead.entry.body ?? "", lang);
+              const saliencePct = pct(d.salience);
+              return (
+                <div class="frontpage">
+                  {/* Lead block */}
+                  <article class="lead" data-row data-topic={day.lead.topic} data-date={d.date} data-haystack={haystackFor(day.lead.topic, day.lead.entry)} data-unread="">
+                    <span class="unread-dot" aria-label={t.unread}></span>
+
+                    <p class="eyebrow accent lead-eyebrow">
+                      <span class="lead-kicker-topic">{prettyTopic(day.lead.topic)}</span>
+                      <span class="num"> · {t.minRead(minR)}</span>
+                      {(tr === "rising") && <span class="lead-trend-up num"> ↑ {trendLabel(tr)}</span>}
+                      {(tr === "easing") && <span class="lead-trend num"> ↓ {trendLabel(tr)}</span>}
+                    </p>
+
+                    <h1 class="lead-headline">
+                      <a href={href(day.lead.entry)}>{leadHeadline}</a>
+                    </h1>
+
+                    {localThumb(d.thumbnail) && (
+                      <a class="lead-media" href={href(day.lead.entry)} tabindex="-1" aria-hidden="true">
+                        <img src={localThumb(d.thumbnail)} alt="" loading="eager" fetchpriority="high" decoding="async" width="1200" height="675" />
+                      </a>
+                    )}
+
+                    {leadStand && <p class="lead-stand">{leadStand}</p>}
+
+                    {bullets.length > 0 && (
+                      <ul class="tldr-bullets">
+                        {bullets.map((b) => {
+                          const { lead, rest } = boldLeadIn(b);
+                          return <li><b>{lead}</b>{rest}</li>;
+                        })}
+                      </ul>
+                    )}
+
+                    <div class="meta-foot num">
+                      {sparkD && (
+                        <svg class="spark" width="84" height="22" viewBox="0 0 84 22" role="img" aria-label={t.sparklineLabel}>
+                          <path d={sparkD} fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                       )}
-                      <header class="tile-head">
-                        <h3 class="tile-title"><a href={href(entry)}>{prettyTopic(topic)}</a></h3>
-                        <span class="tile-sentiment" aria-label={d.sentiment ?? "neutral"}>{sentimentEmoji(d.sentiment)}</span>
-                      </header>
-                      <div class="tile-signals ui-text">
-                        <span class={`pill activity activity-${act}`}>
-                          <span class="dot" aria-hidden="true"></span>
-                          {activityLabel(act)}
-                        </span>
-                        <span class={`pill trend trend-${tr}`}>
-                          <span aria-hidden="true">{trendGlyph(tr)}</span>
-                          {trendLabel(tr)}
-                        </span>
-                        {streak >= 3 && (
-                          <span class="pill streak" aria-label={t.streakBadgeAria(streak)}>
-                            <span class="dot" aria-hidden="true"></span>
-                            {t.streakBadge(streak)}
-                          </span>
-                        )}
-                        {sparkD && (
-                          <svg class="sparkline" viewBox="0 0 72 20" width="72" height="20" role="img" aria-label={t.sparklineLabel}>
-                            <path d={sparkD} fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" />
-                          </svg>
-                        )}
-                      </div>
-                      {deck && <p class="tile-deck">{deck}</p>}
-                      {d.tags?.length > 0 && (
-                        <p class="tile-tags ui-text">
-                          {d.tags.slice(0, 3).map((tag) => <span class="tag">#{tag}</span>)}
-                        </p>
-                      )}
-                      <div class="tile-cta ui-text">
-                        <a class="cta-primary" href={href(entry)}>{t.readReport} →</a>
-                        <span class="cta-quiet">{t.posts(d.post_count)}</span>
-                        <a
-                          class="cta-rss num"
-                          href={local(`${lang === "th" ? "/th" : ""}/rss/${topic}.xml`)}
-                          aria-label={t.rssTopicAria(prettyTopic(topic))}
-                        >{t.rssShort}</a>
-                        <span class="cta-langs">
-                          {pair.en && <a class={lang === "en" ? "active" : ""} href={href(pair.en)} hreflang="en">EN</a>}
-                          {pair.th && <a class={lang === "th" ? "active" : ""} href={href(pair.th)} hreflang="th" lang="th">TH</a>}
-                        </span>
-                      </div>
-                    </article>
-                  );
-                })}
-              </section>
-            )}
+                      <span>
+                        · {d.post_count} {lang === "th" ? "โพสต์" : "posts"}
+                        {saliencePct != null && ` · ${t.interest(saliencePct)}`}
+                      </span>
+                      <a class="meta-read" href={href(day.lead.entry)}>{t.readReport} →</a>
+                      <span class="meta-langs ui-text">
+                        {day.lead.pair.en && <a class={lang === "en" ? "active" : ""} href={href(day.lead.pair.en)} hreflang="en">EN</a>}
+                        {day.lead.pair.th && <a class={lang === "th" ? "active" : ""} href={href(day.lead.pair.th)} hreflang="th" lang="th">ไทย</a>}
+                      </span>
+                    </div>
+                  </article>
+
+                  {/* Rail */}
+                  {day.others.length > 0 && (
+                    <div class="rail" aria-label={t.alsoToday}>
+                      <p class="eyebrow rail-head">{t.alsoToday}</p>
+                      {day.others.map(({ topic, pair, entry }, idx) => {
+                        const td = entry.data;
+                        const railBullet = extractTldr(entry.body ?? "")[0];
+                        const railSplit = railBullet ? boldLeadIn(railBullet) : null;
+                        const railHeadline = railSplit
+                          ? railSplit.lead.replace(/\s*[—:\-]\s*$/, "").trim()
+                          : prettyTopic(topic);
+                        const dek = railSplit && railSplit.rest.trim() ? railSplit.rest.trim() : leadDeck(entry.body);
+                        const minT = readingMinutes(entry.body ?? "", lang);
+                        const salT = pct(td.salience);
+                        return (
+                          <article
+                            class={`teaser${idx === 0 ? " lg" : ""}${localThumb(td.thumbnail) ? " has-media" : ""}`}
+                            data-row
+                            data-topic={topic}
+                            data-date={td.date}
+                            data-haystack={haystackFor(topic, entry)}
+                            data-unread=""
+                          >
+                            <span class="unread-dot" aria-label={t.unread}></span>
+                            {localThumb(td.thumbnail) && (
+                              <a class="t-media" href={href(entry)} tabindex="-1" aria-hidden="true">
+                                <img src={localThumb(td.thumbnail)} alt="" loading="lazy" decoding="async" width="160" height="160" />
+                              </a>
+                            )}
+                            <p class="eyebrow t-eyebrow">
+                              {prettyTopic(topic)}
+                              <span class="num"> · {t.minRead(minT)}</span>
+                            </p>
+                            <h3 class="t-headline"><a href={href(entry)}>{railHeadline}</a></h3>
+                            {dek && <p class="t-dek">{dek}</p>}
+                            <p class="t-meta num">
+                              {td.post_count} {lang === "th" ? "โพสต์" : "posts"}
+                              {salT != null && ` · ${t.interest(salT)}`}
+                              <a class="t-read" href={href(entry)} tabindex="-1" aria-hidden="true">{t.readReport} →</a>
+                            </p>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
           </article>
         ))}
       </div>
+
+      {trendingTopics.length >= 2 && (
+        <section class="trending" aria-labelledby="trending-title">
+          <h2 id="trending-title" class="eyebrow">{t.trendingTitle}</h2>
+          <ol class="trend-list">
+            {trendingTopics.map(({ topic, entry, peakSalience, daysAppeared }, i) => {
+              const act = activityOf(peakSalience);
+              const sparkD = sparkPath(sparkAt(latest, topic, 7), 64, 18);
+              return (
+                <li class="trend-row">
+                  <span class="trend-rank num">{i + 1}</span>
+                  <a class="trend-topic" href={href(entry)}>{prettyTopic(topic)}</a>
+                  {sparkD && (
+                    <svg class="spark" width="64" height="18" viewBox="0 0 64 18" aria-hidden="true">
+                      <path d={sparkD} fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  )}
+                  <span class={`pill${act === "high" ? " high" : " med"}`}>{activityLabel(act)}</span>
+                  <span class="trend-days num">{t.trendingDays(daysAppeared)}</span>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      )}
 
       <aside class="metric-guide ui-text" aria-label={t.metricGuideTitle}>
         <p class="guide-title">{t.metricGuideTitle}</p>
@@ -532,6 +616,7 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
                         class={`calendar-cell on${cell.isLatest ? " latest" : ""}${cell.isLatest ? " selected" : ""}`}
                         data-intensity={intensity}
                         data-cal-day={cell.date}
+                        aria-current={cell.isLatest ? "date" : undefined}
                         aria-label={`${cell.date} — ${cell.count} ${lang === "th" ? "หัวข้อ" : "topics"}`}
                         title={`${cell.count} ${lang === "th" ? "หัวข้อ" : "topics"}`}
                       >
@@ -548,17 +633,15 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
       )}
     </>
   )}
+  </div>
 
   <style>
     /* ---- Layout primitives ---- */
-    .brief-masthead,
-    .lead-tile,
     .controls,
-    .tile-grid,
     .metric-guide,
     .archive-disclosure,
     .empty-state {
-      max-width: 68rem;
+      max-width: var(--max, 78rem);
       margin-inline: auto;
     }
 
@@ -572,27 +655,395 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ---- Brief masthead (replaces dual-column header) ---- */
-    .brief-masthead {
-      margin-bottom: var(--space-md);
-    }
-    .brief-line {
+    /* ---- Brief line ---- */
+    .brief {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
+      gap: 0.5rem 1.5rem;
       flex-wrap: wrap;
-      gap: var(--space-sm) var(--space-md);
-      padding-bottom: var(--space-sm);
-      border-bottom: 1px solid var(--line);
+      padding: 0.7rem 0;
+      font-size: var(--step--1);
+      max-width: var(--max, 78rem);
+      margin-inline: auto;
     }
-    .brief-masthead h1 {
-      margin: 0;
-      max-width: 22ch;
+    .brief-label {
+      display: inline-flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--soft-ink);
+    }
+    .brief-label .num { color: var(--ink); }
+    .brief-sep { color: var(--hairline); }
+    .brief-today {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.1rem 0.5rem;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: 2px;
+    }
+    .brief-date { color: var(--ink); }
+    .brief-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .brief-daynav {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0.2rem 0.55rem;
+      color: var(--accent-ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      letter-spacing: 0;
+      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+    .brief-daynav:hover {
+      border-color: var(--accent);
+      background: color-mix(in oklch, var(--accent), transparent 92%);
+    }
+    .brief-daynav--disabled {
+      color: var(--faint-ink);
+      opacity: 0.4;
+      pointer-events: none;
+      border-color: var(--hairline);
+    }
+    .brief-new {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: var(--step--1);
+      color: var(--accent-ink);
+      font-family: var(--font-ui);
+    }
+    .brief-new::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ---- Front-page grid (asymmetric lead + rail) ---- */
+    .frontpage {
+      display: grid;
+      grid-template-columns: var(--grid-lead, minmax(0,7fr) minmax(0,5fr));
+      gap: 0;
+      margin-top: var(--space-md);
+      max-width: var(--max, 78rem);
+      margin-inline: auto;
+    }
+    @media (max-width: 56rem) {
+      .frontpage { grid-template-columns: 1fr; }
+    }
+
+    /* ---- Lead block ---- */
+    .lead {
+      padding-right: var(--space-xl);
+      border-top: var(--rule-lead);
+      padding-top: var(--space-sm);
+      position: relative;
+    }
+    .lead-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      letter-spacing: 0.14em;
+    }
+    .lead-trend-up { color: var(--accent-ink); }
+    .lead-trend { color: var(--faint-ink); }
+    .lead-headline {
       font-family: var(--font-display);
-      font-size: var(--step-3);
-      font-weight: 650;
-      line-height: 1.04;
+      /* The dramatic moment — large editorial display for the day's lead story.
+         Sentence headline, so a touch smaller than the old topic-name --step-lead
+         but still the clear focal point of the page. */
+      font-size: var(--step-4);
+      font-weight: 600;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin: var(--space-sm) 0 0;
+      max-width: 16ch;
+      text-wrap: balance;
     }
+    :lang(th) .lead-headline { line-height: 1.24; font-weight: 650; }
+    .lead-headline a { text-decoration: none; color: var(--ink); }
+    .lead-headline a:hover { color: var(--accent-ink); }
+
+    /* Lead media — front-page hero image (build-time snapshot, /thumbs). Fills the
+       left column for visual weight; the inset hairline keeps it editorial. */
+    .lead-media {
+      display: block;
+      margin: var(--space-md) 0 0;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--surface);
+      position: relative;
+    }
+    .lead-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--ink), transparent 88%);
+      pointer-events: none;
+    }
+    .lead-media img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      filter: saturate(0.96);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+    }
+    .lead:hover .lead-media img { transform: scale(1.035); filter: saturate(1); }
+
+    /* Standfirst — the lead story's trailing clause, serif sub-deck under H1.
+       Italic + generous measure gives the front page an editorial, luxury feel. */
+    .lead-stand {
+      margin: var(--space-md) 0 0;
+      max-width: 46ch;
+      font-family: var(--font-body);
+      font-size: var(--step-1);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--soft-ink);
+      text-wrap: pretty;
+    }
+    :lang(th) .lead-stand { font-family: "Noto Serif Thai", var(--font-body); line-height: 1.6; }
+    .lead-kicker-topic { font-weight: 700; }
+
+    /* Lead media — the front-page hero image. Fills the left column (which used to
+       run short next to the rail) and gives the page visual weight. Hotlinked from
+       source post media; a broken-image script removes the figure if it 404s. */
+    .lead-media {
+      display: block;
+      margin: var(--space-md) 0 0;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--surface);
+      position: relative;
+    }
+    .lead-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--ink), transparent 88%);
+      pointer-events: none;
+    }
+    .lead-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.96);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+    }
+    .lead:hover .lead-media img { transform: scale(1.035); filter: saturate(1); }
+    .why {
+      margin: 1rem 0 0;
+      max-width: var(--measure-dek, 56ch);
+    }
+    .why-lbl { display: block; }
+    .why-dek {
+      margin: 0.2rem 0 0;
+      font-size: var(--step-0);
+      line-height: 1.5;
+      color: var(--soft-ink);
+      font-family: var(--font-body);
+    }
+    .tldr-bullets {
+      list-style: none;
+      margin: 1.1rem 0 0;
+      padding: 0;
+      max-width: var(--measure-prose, 66ch);
+    }
+    .tldr-bullets li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin: 0.5rem 0;
+      line-height: 1.55;
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+    }
+    .tldr-bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 0.5rem;
+      border-top: var(--rule-section);
+    }
+    .tldr-bullets li b {
+      font-weight: 600;
+      color: var(--ink);
+      font-style: normal;
+    }
+    .meta-foot {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+      padding-top: 0.8rem;
+      border-top: var(--rule-faint);
+      font-size: var(--step--1);
+      color: var(--faint-ink);
+    }
+    .spark {
+      display: inline-block;
+      vertical-align: middle;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .meta-read {
+      font-family: var(--font-ui);
+      font-weight: 600;
+      color: var(--accent-ink);
+      text-decoration: none;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .meta-read:hover { text-decoration: underline; }
+    .meta-langs {
+      margin-left: auto;
+      display: inline-flex;
+      gap: 0.35rem;
+      font-size: var(--step--1);
+    }
+    .meta-langs a {
+      text-decoration: none;
+      color: var(--soft-ink);
+      font-weight: 600;
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 0.05em;
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .meta-langs a.active { color: var(--accent-ink); border-color: var(--accent); }
+
+    @media (max-width: 56rem) {
+      .lead { padding-right: 0; }
+    }
+
+    /* ---- Rail (hairline-separated teasers) ---- */
+    .rail {
+      padding-left: var(--space-lg);
+      border-left: var(--rule-section);
+    }
+    @media (max-width: 56rem) {
+      .rail {
+        padding-left: 0;
+        border-left: 0;
+        border-top: var(--rule-major);
+        margin-top: var(--space-md);
+        padding-top: var(--space-md);
+      }
+    }
+    .rail-head {
+      margin: 0 0 0.5rem;
+    }
+    .teaser {
+      padding: 0.9rem 0.6rem 0.9rem 0.7rem;
+      margin-left: -0.7rem;
+      border-top: var(--rule-section);
+      border-left: 2px solid transparent;
+      position: relative;
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+    .teaser:first-of-type { border-top: 0; padding-top: 0; }
+    .teaser:hover,
+    .teaser:focus-within {
+      border-left-color: var(--accent);
+      background: color-mix(in oklch, var(--accent), transparent 94%);
+    }
+    .teaser:hover .t-headline a,
+    .teaser:focus-within .t-headline a { color: var(--accent-ink); }
+    .t-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .t-headline {
+      font-family: var(--font-display);
+      /* Sentence headlines now — step down from step-2 so rail teasers read as
+         compact news items, not oversized topic labels. */
+      font-size: var(--step-1);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.008em;
+      margin: 0.3rem 0 0;
+    }
+    :lang(th) .t-headline { line-height: 1.4; }
+    .teaser.lg .t-headline { font-size: var(--step-2); }
+    .t-headline a { text-decoration: none; color: var(--ink); }
+    .t-headline a:hover { color: var(--accent-ink); }
+
+    /* Rail teaser thumbnail — small square at the right; text reflows left. Only
+       when the source post had usable media (.has-media), build-time snapshot.
+       The text column gets a min-width so headlines never wrap mid-word in the
+       narrow remaining space; the image sits beside the kicker+headline rows. */
+    .teaser.has-media {
+      display: grid;
+      grid-template-columns: minmax(13rem, 1fr) 72px;
+      column-gap: var(--space-sm);
+      align-items: start;
+    }
+    .teaser.has-media > .t-media { grid-column: 2; grid-row: 1 / 99; align-self: start; margin-top: 0.15rem; }
+    .teaser.has-media > :not(.t-media) { grid-column: 1; }
+    /* In the narrowed text column, drop the headline a step and keep words intact
+       (the → glyph in "Vercel→Cloudflare" must not break mid-token). */
+    .teaser.has-media .t-headline {
+      font-size: var(--step-0);
+      line-height: 1.2;
+      overflow-wrap: normal;
+      word-break: keep-all;
+      hyphens: none;
+    }
+    .t-media {
+      display: block;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--surface);
+      position: relative;
+    }
+    .t-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--ink), transparent 88%);
+    }
+    .t-media img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      filter: saturate(0.95);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .teaser:hover .t-media img,
+    .teaser:focus-within .t-media img { transform: scale(1.04); }
+    .t-dek {
+      margin: 0.3rem 0 0;
+      color: var(--soft-ink);
+      font-size: var(--step-0);
+      line-height: 1.45;
+      max-width: 46ch;
+      font-family: var(--font-body);
+    }
+    .t-meta {
+      margin: 0.45rem 0 0;
+      font-size: var(--step--1);
+      color: var(--faint-ink);
+    }
+
+    /* ---- old brief-meta kept for phase/badge compat ---- */
     .brief-meta {
       margin: 0;
       color: var(--soft-ink);
@@ -604,64 +1055,7 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
     }
     .brief-meta strong { color: var(--ink); font-weight: 700; }
 
-    /* ---- Lead tile: asymmetric editorial composition ---- */
-    .lead-tile {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.65rem;
-      padding: var(--space-md) 0 var(--space-lg);
-      margin-bottom: var(--space-lg);
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--hairline);
-      background: transparent;
-      animation: tile-in 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
-    .lead-tile .lead-thumb {
-      aspect-ratio: 16 / 9;
-      margin-bottom: var(--space-sm);
-      border-bottom: 1px solid var(--hairline);
-    }
-    .lead-tile .tile-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--step-3);
-      font-weight: 650;
-      line-height: 1.02;
-      letter-spacing: -0.005em;
-      max-width: 18ch;
-    }
-    .lead-tile .tile-deck {
-      margin: 0.4rem 0 0;
-      font-size: var(--step-1);
-      line-height: 1.5;
-      color: var(--soft-ink);
-      max-width: 56ch;
-      font-family: var(--font-body);
-    }
-    .lead-tile .tile-signals { margin: 0.25rem 0 0; }
-    .lead-tile .tile-cta { margin-top: 0.5rem; padding-top: 0.65rem; }
     .kicker.accent { color: var(--accent-ink); }
-
-    /* Two-column layout once there's horizontal room: image left, prose right. */
-    @media (min-width: 56rem) {
-      .lead-tile {
-        grid-template-columns: minmax(0, 6fr) minmax(0, 7fr);
-        column-gap: var(--space-lg);
-        align-items: start;
-      }
-      .lead-tile .lead-thumb {
-        grid-column: 1;
-        grid-row: 1 / span 6;
-        margin-bottom: 0;
-        border-bottom: 0;
-        aspect-ratio: 5 / 6;
-        position: sticky;
-        top: var(--space-md);
-      }
-      .lead-tile > *:not(.lead-thumb) {
-        grid-column: 2;
-      }
-    }
 
     /* ---- Filter chip bar ---- */
     .controls {
@@ -744,149 +1138,6 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
       color: var(--soft-ink);
       font-style: italic;
       font-size: var(--step--1);
-    }
-
-    /* ---- Tile grid (other topics) ---- */
-    .tile-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
-      gap: var(--space-lg) var(--space-md);
-      margin-bottom: var(--space-lg);
-    }
-    .tile {
-      display: grid;
-      gap: 0.45rem;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      animation: tile-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
-    /* Tile head sits below thumbnail; baseline-aligned title + sentiment glyph. */
-    .tile-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.5rem;
-      padding-top: 0.15rem;
-    }
-    .tile-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--step-1);
-      font-weight: 650;
-      line-height: 1.14;
-      letter-spacing: -0.003em;
-    }
-    .tile-title a:hover { color: var(--accent-ink); }
-    .tile-title a { text-decoration: none; }
-    .tile-sentiment {
-      font-size: 1.1rem;
-      line-height: 1;
-    }
-    .tile-deck {
-      margin: 0;
-      color: var(--soft-ink);
-      font-family: var(--font-body);
-      font-size: var(--step-0);
-      line-height: 1.55;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      overflow: hidden;
-    }
-    .tile-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem 0.5rem;
-      margin: 0;
-    }
-    .tag {
-      color: var(--soft-ink);
-      font-size: 0.78rem;
-      letter-spacing: 0.02em;
-    }
-    .tile-signals {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem 0.5rem;
-      margin: 0;
-    }
-    .tile-cta {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.4rem 0.9rem;
-      margin-top: 0.35rem;
-      padding-top: 0.55rem;
-      border-top: 1px solid var(--hairline);
-      font-size: var(--step--1);
-      font-family: var(--font-ui);
-    }
-    .cta-primary {
-      font-weight: 700;
-      color: var(--accent-ink);
-      text-decoration: none;
-      border-bottom: 1px solid color-mix(in oklch, var(--accent), transparent 50%);
-    }
-    .cta-primary:hover { border-color: var(--accent); }
-    .cta-quiet { color: var(--soft-ink); }
-    .cta-rss {
-      min-height: 28px;
-      display: inline-flex;
-      align-items: center;
-      padding: 0 0.5rem;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      color: var(--accent-ink);
-      border: 1px solid color-mix(in oklch, var(--accent), transparent 55%);
-    }
-    .cta-rss:hover {
-      border-color: var(--accent);
-      background: color-mix(in oklch, var(--accent), transparent 88%);
-    }
-    .cta-langs { margin-left: auto; display: inline-flex; gap: 0.3rem; }
-    .cta-langs a {
-      min-width: 2.2rem;
-      min-height: 28px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-weight: 700;
-      border-bottom: 1px solid var(--line);
-      color: var(--soft-ink);
-    }
-    .cta-langs a.active { color: var(--accent-ink); border-color: var(--accent); }
-
-    /* ---- Topic thumbnails ---- */
-    .lead-thumb,
-    .tile-thumb {
-      display: block;
-      overflow: hidden;
-      background: var(--surface);
-    }
-    .lead-thumb img,
-    .tile-thumb img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
-      filter: saturate(0.92);
-    }
-    .lead-thumb:hover img,
-    .tile-thumb:hover img {
-      transform: scale(1.025);
-      filter: saturate(1);
-    }
-    /* Tile thumbnail = framed photograph that anchors the card without
-       swallowing it. 5:3 keeps the eye moving toward the headline below. */
-    .tile-thumb {
-      aspect-ratio: 5 / 3;
-      margin: 0 0 var(--space-xs);
-      border: 1px solid var(--hairline);
     }
 
     /* ---- Activity / trend / sentiment pills ----
@@ -1413,11 +1664,100 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
     }
     .empty-state p { color: var(--soft-ink); }
 
+    /* ---- Trending this week (Front Page style) ---- */
+    .trending {
+      max-width: var(--max, 78rem);
+      margin: var(--space-lg) auto 0;
+      padding-top: var(--space-md);
+      border-top: var(--rule-major);
+    }
+    .trending .eyebrow {
+      margin: 0 0 0.4rem;
+    }
+    .trend-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: 52rem;
+    }
+    .trend-row {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem 1rem;
+      padding: 0.65rem 0;
+      border-top: var(--rule-faint);
+      flex-wrap: wrap;
+    }
+    .trend-row:first-child { border-top: var(--rule-section); }
+    .trend-rank {
+      font-family: var(--font-mono);
+      font-size: var(--step--1);
+      color: var(--faint-ink);
+      width: 1.2rem;
+      flex-shrink: 0;
+    }
+    .trend-topic {
+      font-family: var(--font-display);
+      font-size: var(--step-1);
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--ink);
+      flex: 1 1 auto;
+    }
+    .trend-topic:hover { color: var(--accent-ink); }
+    .trend-days {
+      font-family: var(--font-mono);
+      font-size: var(--step--1);
+      color: var(--faint-ink);
+    }
+    .pill {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      padding: 0.12rem 0.5rem;
+      border: var(--rule-faint);
+      white-space: nowrap;
+      color: var(--soft-ink);
+    }
+    .pill.high { color: var(--accent-ink); border-color: color-mix(in oklch, var(--accent), transparent 55%); }
+    .pill.med { color: var(--soft-ink); }
+
+    /* ---- Unread dot ---- */
+    [data-unread] {
+      position: relative;
+    }
+    .unread-dot {
+      display: none;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: absolute;
+      top: var(--space-md);
+      right: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+    [data-unread] .unread-dot {
+      display: block;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      [data-unread] .unread-dot {
+        animation: unread-pop 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes unread-pop {
+        from { opacity: 0; transform: scale(0.4); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+    }
+
     /* Hide filtered rows + collapsed sections */
-    .tile[hidden],
-    .lead-tile[hidden],
+    .teaser[hidden],
+    .lead[hidden],
     .archive-row[hidden] { display: none; }
-    .tile-grid[data-empty="true"],
+    .rail[data-empty="true"],
     .archive-day[data-empty="true"] { display: none; }
 
     @keyframes tile-in {
@@ -1426,8 +1766,7 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
     }
 
     @media (max-width: 760px) {
-      .brief-line h1 { font-size: var(--step-2); }
-      .lead-tile .tile-title { font-size: var(--step-2); }
+      .lead-headline { font-size: var(--step-3); max-width: 100%; }
     }
   </style>
 
@@ -1462,10 +1801,10 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
           row.hidden = !visible;
           if (visible) anyVisible = true;
         }
-        const grid = view.querySelector(".tile-grid");
-        if (grid) {
-          const visibleTiles = grid.querySelectorAll(".tile:not([hidden])").length;
-          grid.toggleAttribute("data-empty", visibleTiles === 0);
+        const rail = view.querySelector(".rail");
+        if (rail) {
+          const visibleTeasers = rail.querySelectorAll(".teaser:not([hidden])").length;
+          rail.toggleAttribute("data-empty", visibleTeasers === 0);
         }
         const emptyMsg = view.querySelector("[data-filter-empty]");
         if (emptyMsg) emptyMsg.hidden = anyVisible;
@@ -1530,40 +1869,110 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
           v.setAttribute("aria-hidden", on ? "false" : "true");
         }
         for (const c of calCells) {
-          c.classList.toggle("selected", c.dataset.calDay === date);
+          const on = c.dataset.calDay === date;
+          c.classList.toggle("selected", on);
+          if (on) c.setAttribute("aria-current", "date");
+          else c.removeAttribute("aria-current");
         }
-        // Sync the newly visible view's controls to the shared state.
         const input = target.querySelector("[data-filter-search]");
         if (input) input.value = activeQuery;
         for (const c of target.querySelectorAll("[data-filter-chip]")) {
           c.classList.toggle("active", (c.dataset.value || "") === activeTopic);
         }
         applyToView(target);
-        if (opts && opts.scroll !== false) {
-          wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        if (opts && opts.pushState) history.pushState({}, "", "#" + date);
+        if (!opts || opts.scroll !== false) wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
       for (const cell of calCells) {
         cell.addEventListener("click", () => {
           const date = cell.dataset.calDay;
-          if (date) showDay(date, { scroll: true });
+          if (date) showDay(date, { scroll: true, pushState: true });
         });
       }
 
-      // Deep-link: #day-YYYY-MM-DD pre-selects that day on load.
+      // Prev/next day arrows (a[data-prev-day] / a[data-next-day])
+      wrapper.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-prev-day],[data-next-day]");
+        if (!btn) return;
+        e.preventDefault();
+        const date = btn.dataset.prevDay || btn.dataset.nextDay;
+        if (date) showDay(date, { scroll: false, pushState: true });
+      });
+
+      // URL hash sync — #YYYY-MM-DD (new) or #day-YYYY-MM-DD (legacy)
       function fromHash() {
         const h = window.location.hash;
-        const m = h && h.match(/^#day-(\d{4}-\d{2}-\d{2})$/);
-        if (m) showDay(m[1], { scroll: true });
+        const m = h && h.match(/^#(?:day-)?(\d{4}-\d{2}-\d{2})$/);
+        if (m) showDay(m[1], { scroll: false });
       }
       fromHash();
       window.addEventListener("hashchange", fromHash);
+      window.addEventListener("popstate", fromHash);
     })();
   </script>
 
-  {/* Ask-the-archive client. Lazy-loads /search-index.json on first focus,
-      runs a tiny TF-style keyword scorer, renders top 5 hits with bullets. */}
+  {/* Unread indicator: localStorage key "sdr:read" maps "${date}:${topic}" → timestamp.
+      Language-agnostic key so EN read also marks TH card read and vice-versa.
+      SSR default: all [data-row] have data-unread="" (shows dot). Script removes it for read cards.
+      Graceful: try/catch on every localStorage access mirrors Base.astro theme pattern. */}
+  <script is:inline>
+    (() => {
+      const KEY = "sdr:read";
+      function getReadSet() {
+        try {
+          const raw = localStorage.getItem(KEY);
+          return raw ? new Set(Object.keys(JSON.parse(raw))) : new Set();
+        } catch { return new Set(); }
+      }
+      function markRead(date, topic) {
+        try {
+          const raw = localStorage.getItem(KEY);
+          const obj = raw ? JSON.parse(raw) : {};
+          obj[`${date}:${topic}`] = Date.now();
+          localStorage.setItem(KEY, JSON.stringify(obj));
+        } catch {}
+      }
+      // Remove data-unread from already-read cards
+      const readSet = getReadSet();
+      document.querySelectorAll("[data-row][data-unread]").forEach((card) => {
+        const k = `${card.dataset.date}:${card.dataset.topic}`;
+        if (readSet.has(k)) card.removeAttribute("data-unread");
+      });
+      // Update "X new since you last looked" count for the latest day-view
+      (() => {
+        const latestView = document.querySelector("[data-day-view]:not([hidden])");
+        if (!latestView) return;
+        const unreadCount = latestView.querySelectorAll("[data-row][data-unread]").length;
+        const slot = document.querySelector("[data-new-count]");
+        if (!slot) return;
+        if (unreadCount > 0) {
+          slot.textContent = slot.closest("[lang=th]") || document.documentElement.lang === "th"
+            ? `${unreadCount} ใหม่ตั้งแต่คุณดูล่าสุด`
+            : `${unreadCount} new since you last looked`;
+          slot.hidden = false;
+        } else {
+          slot.hidden = true;
+        }
+      })();
+      // Mark as read on report link click (event delegation)
+      const dayViews = document.querySelector("[data-day-views]");
+      if (!dayViews) return;
+      dayViews.addEventListener("click", (e) => {
+        const a = e.target.closest('a[href*="/report/"]');
+        if (!a) return;
+        const card = a.closest("[data-row]");
+        if (!card || !card.dataset.date || !card.dataset.topic) return;
+        markRead(card.dataset.date, card.dataset.topic);
+        card.removeAttribute("data-unread");
+      });
+    })();
+  </script>
+
+  {/* Ask-the-archive client.
+      Production/preview: uses Pagefind full-text search (/pagefind/pagefind.js, built by astro-pagefind).
+      Dev mode fallback: Pagefind absent → loads /search-index.json keyword scorer.
+      The dual-path is decided once on first focus via try/catch on the dynamic import. */}
   <script is:inline>
     (() => {
       const block = document.querySelector("[data-ask-block]");
@@ -1573,94 +1982,98 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
       const results = block.querySelector("[data-ask-results]");
       const empty = block.querySelector("[data-ask-empty]");
 
-      let index = null;
-      let loading = null;
-
-      async function loadIndex() {
-        if (index) return index;
-        if (loading) return loading;
-        loading = fetch("/search-index.json")
-          .then((r) => (r.ok ? r.json() : { docs: [] }))
-          .then((j) => { index = j.docs || []; return index; })
-          .catch(() => { index = []; return index; });
-        return loading;
-      }
+      let pagefindSearch = null;   // Pagefind path (build/preview)
+      let fallbackDocs = null;     // JSON keyword path (dev)
+      let loadPromise = null;
 
       function tokenize(s) {
-        return (s || "")
-          .toLowerCase()
+        return (s || "").toLowerCase()
           .replace(/[`*_#>\[\]\(\)]/g, " ")
           .split(/[^a-z0-9ก-๙\-]+/u)
           .filter((t) => t && t.length > 1);
       }
-
-      function score(doc, tokens) {
-        const hay = [
-          doc.title, doc.topic, doc.tags?.join(" ") || "",
-          doc.tldr?.join(" ") || "", doc.signals?.join(" ") || "",
-        ].join(" ").toLowerCase();
+      function scoreDoc(doc, tokens) {
+        const hay = [doc.title, doc.topic, doc.tags?.join(" ") || "",
+          doc.tldr?.join(" ") || "", doc.signals?.join(" ") || ""].join(" ").toLowerCase();
         let s = 0;
         for (const t of tokens) {
           const re = new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g");
-          const matches = hay.match(re);
-          if (matches) s += matches.length;
-        }
-        if (s > 0) {
-          // Recency tie-breaker (younger doc wins on equal score).
-          const recency = doc.date ? doc.date.localeCompare("0000-00-00") / 5000 : 0;
-          s += Math.min(0.5, recency * 0);  // ordering handled by sort key
+          const m = hay.match(re); if (m) s += m.length;
         }
         return s;
       }
-
       function escapeHtml(s) {
-        return (s || "")
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;");
+        return (s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;")
+          .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
       }
-
-      function render(hits, q) {
+      function render(hits) {
         results.innerHTML = "";
-        if (!hits.length) {
-          empty.hidden = false;
-          return;
-        }
+        if (!hits.length) { empty.hidden = false; return; }
         empty.hidden = true;
         const frag = document.createDocumentFragment();
         for (const h of hits) {
           const li = document.createElement("li");
-          const sal = h.salience == null ? "—" : Math.round(h.salience * 100) + "%";
-          const topBullets = (h.tldr || []).slice(0, 2);
+          const sal = h.sal ?? (h.salience == null ? "—" : Math.round(h.salience * 100) + "%");
+          const bullets = h.tldr ? h.tldr.slice(0, 2) : (h.excerpt ? [h.excerpt] : []);
           li.innerHTML =
             `<div class="ask-result-head">` +
               `<a class="ask-result-title" href="${h.url}">${escapeHtml(h.title)}</a>` +
               `<span class="ask-result-meta num">${h.date} · salience ${sal}</span>` +
             `</div>` +
-            (topBullets.length
-              ? `<ul class="ask-result-bullets">${topBullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>`
+            (bullets.length
+              ? `<ul class="ask-result-bullets">${bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>`
               : "");
           frag.appendChild(li);
         }
         results.appendChild(frag);
       }
 
+      async function loadSearch() {
+        if (loadPromise) return loadPromise;
+        loadPromise = (async () => {
+          try {
+            // Pagefind — only present after `astro build`
+            const pf = await import("/pagefind/pagefind.js");
+            await pf.options({ language: document.documentElement.lang || "en" });
+            pagefindSearch = async (q) => {
+              const r = await pf.search(q);
+              return Promise.all(r.results.slice(0, 5).map((x) => x.data()));
+            };
+          } catch {
+            // Dev fallback: JSON keyword scorer
+            try {
+              const res = await fetch("/search-index.json");
+              fallbackDocs = res.ok ? (await res.json()).docs || [] : [];
+            } catch { fallbackDocs = []; }
+          }
+        })();
+        return loadPromise;
+      }
+
       async function runQuery(q) {
         const tokens = tokenize(q);
-        if (!tokens.length) {
-          results.innerHTML = "";
-          empty.hidden = true;
-          return;
+        if (!tokens.length) { results.innerHTML = ""; empty.hidden = true; return; }
+        await loadSearch();
+        if (pagefindSearch) {
+          try {
+            const data = await pagefindSearch(q);
+            const hits = data.map((d) => ({
+              url: d.url,
+              title: d.meta?.title || d.url,
+              date: d.meta?.date || "",
+              sal: d.meta?.salience ? d.meta.salience + "%" : "—",
+              excerpt: d.excerpt,
+            }));
+            render(hits);
+          } catch { render([]); }
+        } else {
+          const scored = (fallbackDocs || [])
+            .map((d) => [scoreDoc(d, tokens), d])
+            .filter(([s]) => s > 0)
+            .sort((a, b) => b[0] - a[0] || (b[1].date || "").localeCompare(a[1].date || ""))
+            .slice(0, 5).map(([, d]) => d);
+          render(scored);
         }
-        await loadIndex();
-        const scored = (index || [])
-          .map((d) => [score(d, tokens), d])
-          .filter(([s]) => s > 0)
-          .sort((a, b) => b[0] - a[0] || (b[1].date || "").localeCompare(a[1].date || ""))
-          .slice(0, 5)
-          .map(([, d]) => d);
-        render(scored, q);
       }
 
       const debounce = { id: 0 };
@@ -1668,11 +2081,8 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
         clearTimeout(debounce.id);
         debounce.id = setTimeout(() => runQuery(input.value.trim()), 120);
       });
-      input.addEventListener("focus", loadIndex, { once: true });
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        runQuery(input.value.trim());
-      });
+      input.addEventListener("focus", loadSearch, { once: true });
+      form.addEventListener("submit", (e) => { e.preventDefault(); runQuery(input.value.trim()); });
     })();
   </script>
 </Base>

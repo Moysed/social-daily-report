@@ -1,20 +1,49 @@
 ---
 import { homePath, UI, type Lang } from "../lib/i18n";
+import Search from "../components/Search.astro";
+
+// Self-hosted fonts: UI/mono via fontsource CSS (font-display: swap, correct for UI)
+// Display/body fonts use hand-placed woff2 with @font-face font-display:optional (global CSS below)
+import "@fontsource-variable/space-grotesk/index.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/700.css";
+import "@fontsource/noto-sans-thai/400.css";
+import "@fontsource/noto-sans-thai/500.css";
+import "@fontsource/noto-sans-thai/600.css";
+import "@fontsource/noto-sans-thai/700.css";
 
 interface Props {
   title: string;
   description?: string;
   lang?: Lang;
   alternateHref?: string;
+  image?: string;
+  ogType?: string;
 }
 
-const { title, description, lang = "en", alternateHref } = Astro.props;
+const { title, description, lang = "en", alternateHref, image, ogType = "website" } = Astro.props;
 const t = UI[lang];
 const other: Lang = lang === "en" ? "th" : "en";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const local = (path: string) => `${base}${path}`;
 const home = local(homePath[lang]);
 const switchHref = alternateHref ?? local(homePath[other]);
+
+// Build-time masthead date in Bangkok timezone
+const mastheadDate = new Intl.DateTimeFormat("en-GB", {
+  weekday: "short",
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "Asia/Bangkok",
+}).format(new Date());
+const mastheadDateIso = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "Asia/Bangkok",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).format(new Date());
 ---
 
 <!doctype html>
@@ -25,6 +54,18 @@ const switchHref = alternateHref ?? local(homePath[other]);
     <meta name="color-scheme" content="light dark" />
     <meta name="description" content={description ?? t.description} />
     <title>{title}</title>
+    {/* Open Graph */}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description ?? t.description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={new URL(Astro.url.pathname.replace(/\/$/, "") || "/", Astro.site).href} />
+    <meta property="og:image" content={image ?? new URL("/og/default.png", Astro.site).href} />
+    <meta property="og:site_name" content="Social Daily Report" />
+    <meta property="og:locale" content={lang === "th" ? "th_TH" : "en_US"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description ?? t.description} />
+    <meta name="twitter:image" content={image ?? new URL("/og/default.png", Astro.site).href} />
     <link rel="alternate" type="application/rss+xml" title={UI.en.htmlTitle} href={`${base}/rss.xml`} hreflang="en" />
     <link rel="alternate" type="application/rss+xml" title={`${UI.th.htmlTitle} (ไทย)`} href={`${base}/th/rss.xml`} hreflang="th" />
     <link rel="manifest" href={`${base}/manifest.webmanifest`} />
@@ -45,18 +86,24 @@ const switchHref = alternateHref ?? local(homePath[other]);
         } catch (_) { /* localStorage may be blocked; system pref still wins */ }
       })();
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,750&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,650&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    {/* Self-hosted fonts — no Google Fonts request. Preload above-the-fold faces. */}
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/fraunces-variable.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/newsreader-variable.woff2" crossorigin />
   </head>
   <body>
     <header class="site-bar" aria-label="Site">
       <a class="brand" href={home}>Social Daily Report</a>
       <span class="site-note">{t.siteNote}</span>
       <div class="site-bar-actions">
+        <time class="masthead-date num" datetime={mastheadDateIso} aria-label={mastheadDate}>{mastheadDate}</time>
+        <button type="button" class="search-trigger ui-text" data-search-open aria-label={t.search}>
+          <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8" />
+            <line x1="15.6" y1="15.6" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+          <span class="search-trigger-label">{t.search}</span>
+          <kbd class="search-trigger-kbd" aria-hidden="true">⌘K</kbd>
+        </button>
         <button
           type="button"
           class="theme-toggle ui-text"
@@ -100,7 +147,57 @@ const switchHref = alternateHref ?? local(homePath[other]);
       <a class="footer-rss" href={`${base}${lang === "th" ? "/th" : ""}/rss.xml`} hreflang={lang}>RSS</a>
     </footer>
 
+    <Search lang={lang} />
+
     <style is:global>
+      /* ---- Self-hosted @font-face for display + body serifs (font-display: optional = no CLS) ---- */
+      /* Fraunces: editorial display serif — headlines only (Fraunces lane: display) */
+      @font-face {
+        font-family: "Fraunces";
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: optional;
+        src: url("/fonts/fraunces-variable.woff2") format("woff2 supports variations"),
+             url("/fonts/fraunces-variable.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-036F, U+0400-045F, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+FEFF, U+FFFD;
+      }
+      /* Newsreader: editorial body serif — body copy, deks (Newsreader lane: body) */
+      @font-face {
+        font-family: "Newsreader";
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: optional;
+        src: url("/fonts/newsreader-variable.woff2") format("woff2 supports variations"),
+             url("/fonts/newsreader-variable.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-036F, U+2000-206F, U+20AC, U+2122, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Newsreader";
+        font-style: italic;
+        font-weight: 200 800;
+        font-display: optional;
+        src: url("/fonts/newsreader-variable-italic.woff2") format("woff2 supports variations"),
+             url("/fonts/newsreader-variable-italic.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-036F, U+2000-206F, U+20AC, U+2122, U+FEFF, U+FFFD;
+      }
+      /* Noto Serif Thai: Thai prose (optional — Thai layout-shift is acceptable) */
+      @font-face {
+        font-family: "Noto Serif Thai";
+        font-style: normal;
+        font-weight: 400;
+        font-display: optional;
+        src: url("/fonts/noto-serif-thai-400.woff2") format("woff2");
+        unicode-range: U+0E00-0E7F;
+      }
+      @font-face {
+        font-family: "Noto Serif Thai";
+        font-style: normal;
+        font-weight: 500;
+        font-display: optional;
+        src: url("/fonts/noto-serif-thai-500.woff2") format("woff2");
+        unicode-range: U+0E00-0E7F;
+      }
+
       /* Manual theme overrides (set by the inline pre-paint script + toggle).
          When data-theme is absent we fall through to the system preference via
          color-scheme: light dark, which is what light-dark() reads. */
@@ -109,13 +206,15 @@ const switchHref = alternateHref ?? local(homePath[other]);
 
       :root {
         color-scheme: light dark;
-        /* Typography system — "quiet protocol":
-           - serif display + serif body keep long-form prose human and warm
-           - geometric grotesk (Space Grotesk) handles all UI/metadata
-           - mono (JetBrains Mono) appears ONLY for numerals + identifiers
-             (engagement counts, dates, section numerals, post IDs) — never body */
-        --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
-        --font-body: "Newsreader", "Noto Serif Thai", Georgia, serif;
+        /* Typography system — font-role discipline (§1.5 REDESIGN.md):
+           - Fraunces (display serif): HEADLINES ONLY — never body, never UI
+           - Newsreader (body serif): body copy, deks — never headlines
+           - Space Grotesk (grotesque sans): kickers/eyebrows, nav, UI, captions
+           - JetBrains Mono: NUMERALS & IDENTIFIERS ONLY — dates, counts, IDs
+           UI/mono imported via fontsource CSS (font-display: swap, correct for non-content).
+           Display/body hand-placed above with font-display: optional (no CLS). */
+        --font-display: "Fraunces", Georgia, serif;
+        --font-body: "Newsreader", Georgia, serif;
         --font-ui: "Space Grotesk", "Noto Sans Thai", system-ui, sans-serif;
         --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
 
@@ -135,12 +234,15 @@ const switchHref = alternateHref ?? local(homePath[other]);
         --accent-ink: light-dark(oklch(0.4 0.118 31), oklch(0.85 0.13 68));
         --signal: light-dark(oklch(0.55 0.16 24), oklch(0.78 0.14 28)); /* secondary alert tone */
 
-        --step--1: clamp(0.82rem, 0.79rem + 0.15vw, 0.92rem);
-        --step-0: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
-        --step-1: clamp(1.28rem, 1.17rem + 0.55vw, 1.62rem);
-        --step-2: clamp(1.65rem, 1.42rem + 1.15vw, 2.35rem);
-        --step-3: clamp(2.25rem, 1.83rem + 2.1vw, 3.75rem);
-        --step-4: clamp(3.1rem, 2.32rem + 3.9vw, 5.7rem);
+        /* Type scale — widened dynamic range for dramatic lead headline (REDESIGN §3.1) */
+        --step--1: clamp(0.8rem, 0.77rem + 0.15vw, 0.9rem);
+        --step-0:  clamp(1.05rem, 1rem + 0.25vw, 1.18rem);
+        --step-1:  clamp(1.3rem, 1.18rem + 0.6vw, 1.7rem);
+        --step-2:  clamp(1.7rem, 1.4rem + 1.3vw, 2.6rem);
+        --step-3:  clamp(2.3rem, 1.8rem + 2.4vw, 4rem);
+        --step-4:  clamp(3.1rem, 2.32rem + 3.9vw, 5.7rem);
+        /* Lead headline — dramatic moment for R1 front-page rebuild */
+        --step-lead: clamp(2.8rem, 1.9rem + 4.6vw, 6.6rem);
 
         --space-xs: clamp(0.55rem, 0.5rem + 0.25vw, 0.75rem);
         --space-sm: clamp(0.85rem, 0.74rem + 0.55vw, 1.2rem);
@@ -148,8 +250,23 @@ const switchHref = alternateHref ?? local(homePath[other]);
         --space-lg: clamp(2.1rem, 1.66rem + 2.2vw, 3.6rem);
         --space-xl: clamp(3.2rem, 2.35rem + 4.25vw, 6rem);
 
-        --max: 76rem;
+        /* Three-tier hairline system (REDESIGN §2) */
+        --rule-major:   3px solid var(--ink);
+        --rule-section: 1px solid var(--line);
+        --rule-faint:   1px solid var(--hairline);
+        --rule-lead:    3px solid var(--accent);
+
+        /* Measure tokens (REDESIGN §3.2) */
+        --measure-prose: 66ch;
+        --measure-dek: 56ch;
+
+        /* Grid tokens (REDESIGN §3.3) */
+        --max: 78rem;
+        --grid-lead: minmax(0, 7fr) minmax(0, 5fr);
       }
+
+      /* Thai measure override */
+      html:lang(th) { --measure-prose: 52ch; }
 
       * {
         box-sizing: border-box;
@@ -214,58 +331,31 @@ const switchHref = alternateHref ?? local(homePath[other]);
       }
 
       .site-bar {
-        padding-top: 0.9rem;
-        padding-bottom: 0.9rem;
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
         display: grid;
         grid-template-columns: auto 1fr auto;
         column-gap: clamp(0.85rem, 1.5vw, 1.6rem);
         row-gap: 0.4rem;
-        align-items: baseline;
-        border-bottom: 1px solid color-mix(in oklch, var(--line), transparent 18%);
+        align-items: center;
+        /* --rule-major: editorial nameplate underline (replaces aerospace gradient) */
+        border-bottom: var(--rule-major);
         font-family: var(--font-ui);
-        position: relative;
-      }
-      /* Aerospace-style index marker running across the underline. */
-      .site-bar::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -1px;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          var(--accent) 0,
-          var(--accent) 3rem,
-          transparent 3rem,
-          transparent 100%
-        );
-        pointer-events: none;
       }
 
+      /* Editorial nameplate — Fraunces serif brand, one §01 accent tick */
       .brand {
         color: var(--ink);
-        font-family: var(--font-ui);
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        font-size: 0.78rem;
+        font-family: var(--font-display);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        font-size: var(--step-1);
         text-decoration: none;
-        line-height: 1.3;
+        line-height: 1.1;
         display: inline-flex;
         align-items: baseline;
-        gap: 0.55rem;
+        gap: 0.6rem;
       }
-
-      .brand::before {
-        content: "§01";
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        color: var(--accent-ink);
-        letter-spacing: 0;
-        font-weight: 500;
-      }
-
       .site-note,
       .site-footer,
       .locale-switch {
@@ -305,6 +395,53 @@ const switchHref = alternateHref ?? local(homePath[other]);
         display: inline-flex;
         align-items: center;
         gap: clamp(0.55rem, 0.42rem + 0.5vw, 1rem);
+      }
+
+      /* Masthead date — mono, soft-ink, hidden on very narrow screens */
+      .masthead-date {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--soft-ink);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      @media (max-width: 560px) {
+        .masthead-date { display: none; }
+      }
+
+      .search-trigger {
+        appearance: none;
+        cursor: pointer;
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--soft-ink);
+        font-family: var(--font-ui);
+        font-size: 0.78rem;
+        letter-spacing: 0.02em;
+        padding: 0.32rem 0.7rem;
+        min-height: 36px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        line-height: 1;
+        transition: color 0.18s ease, border-color 0.18s ease;
+      }
+      .search-trigger:hover { color: var(--accent-ink); border-color: var(--accent); }
+      .search-trigger svg { flex-shrink: 0; }
+      .search-trigger-kbd {
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        color: var(--faint-ink);
+        border: 1px solid var(--hairline);
+        padding: 0.05rem 0.32rem;
+        letter-spacing: 0;
+      }
+      @media (max-width: 720px) {
+        .search-trigger-label,
+        .search-trigger-kbd { display: none; }
+        .search-trigger { padding: 0.32rem 0.5rem; }
       }
 
       .theme-toggle {
@@ -449,12 +586,19 @@ const switchHref = alternateHref ?? local(homePath[other]);
         }
 
         .site-bar {
-          align-items: flex-start;
-          flex-direction: column;
-          gap: 0.35rem;
+          grid-template-columns: 1fr auto;
+          row-gap: 0.5rem;
+          align-items: center;
         }
 
-        .brand,
+        .site-note { display: none; }
+
+        .brand {
+          font-size: var(--step-0);
+          min-height: 44px;
+          align-items: center;
+        }
+
         .locale-switch {
           min-height: 44px;
         }
@@ -475,6 +619,54 @@ const switchHref = alternateHref ?? local(homePath[other]);
           scroll-behavior: auto !important;
           transition-duration: 0.001ms !important;
         }
+      }
+
+      /* ---- .eyebrow utility (REDESIGN §3.4) — canonical kicker/label across the site ---- */
+      .eyebrow {
+        font-family: var(--font-ui);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-size: var(--step--1);
+        font-weight: 600;
+        color: var(--soft-ink);
+        margin: 0;
+      }
+      .eyebrow.accent { color: var(--accent-ink); }
+
+      /* ---- Native view transition (CSS-only MPA fade, REDESIGN §4.8) ---- */
+      @media (prefers-reduced-motion: no-preference) {
+        @view-transition { navigation: auto; }
+      }
+
+      /* ---- Date badges (home brief-meta + lead/tile cta + report kicker) ---- */
+      .date-badge {
+        display: inline-flex;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 0.12rem 0.45rem;
+        line-height: 1.4;
+        border: 1px solid;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .date-badge-today {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: var(--accent);
+      }
+      .date-badge-yesterday {
+        color: var(--accent-ink);
+        border-color: color-mix(in oklch, var(--accent), transparent 50%);
+        background: transparent;
+      }
+      .date-badge-recent {
+        color: var(--soft-ink);
+        border-color: var(--hairline);
+        background: transparent;
       }
     </style>
 
@@ -529,6 +721,28 @@ const switchHref = alternateHref ?? local(homePath[other]);
             apply(order[(i + 1) % order.length]);
           });
         }
+      })();
+    </script>
+
+    {/* R4 shared-element morph (REDESIGN §4.8): name the clicked report link so it
+        morphs into the report hero title (statically named on the report page).
+        Cross-document View Transitions only (Chrome 126+ pageswap); degrades to the
+        page-level fade everywhere else. VT is already gated off under reduced-motion
+        via @view-transition. Safe to delete this block if the morph ever looks off. */}
+    <script is:inline>
+      (() => {
+        if (!window.matchMedia || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        window.addEventListener("pageswap", (e) => {
+          if (!e.viewTransition || !e.activation || !e.activation.entry) return;
+          let path;
+          try { path = new URL(e.activation.entry.url).pathname; } catch { return; }
+          if (!/\/report\//.test(path)) return;
+          const link = document.querySelector(`a[href$="${path}"], a[href$="${path}/"]`);
+          const head = link && (link.closest(".lead-headline, .t-headline") || link);
+          if (!head) return;
+          head.style.viewTransitionName = "hero-title";
+          e.viewTransition.finished.finally(() => { head.style.viewTransitionName = ""; });
+        });
       })();
     </script>
   </body>

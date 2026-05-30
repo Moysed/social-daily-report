@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Social Daily Report — Front Page mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,650&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+Thai:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     The Front Page — design-token substrate (mirrors REDESIGN.md §3)
+     Standalone mockup. Not production CSS — a visual proof only.
+     ============================================================ */
+  :root {
+    color-scheme: light dark;
+    --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
+    --font-body: "Newsreader", "Noto Serif Thai", Georgia, serif;
+    --font-ui: "Space Grotesk", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    /* warm-paper / graphite palette (OKLCH, same family as the real site) */
+    --bg:        light-dark(oklch(0.965 0.015 76),  oklch(0.16 0.014 254));
+    --paper:     light-dark(oklch(0.99 0.008 80),   oklch(0.195 0.016 254));
+    --ink:       light-dark(oklch(0.22 0.018 61),   oklch(0.95 0.01 220));
+    --soft-ink:  light-dark(oklch(0.44 0.026 60),   oklch(0.74 0.014 220));
+    --faint-ink: light-dark(oklch(0.57 0.022 60),   oklch(0.58 0.014 230));
+    --line:      light-dark(oklch(0.78 0.03 75),    oklch(0.40 0.022 248));
+    --hairline:  light-dark(oklch(0.88 0.018 76),   oklch(0.28 0.018 250));
+    --accent:    light-dark(oklch(0.5 0.13 33),     oklch(0.78 0.135 65));
+    --accent-ink:light-dark(oklch(0.4 0.13 31),     oklch(0.85 0.13 68));
+
+    /* three-tier rule system */
+    --rule-major:  3px solid var(--ink);
+    --rule-section:1px solid var(--line);
+    --rule-faint:  1px solid var(--hairline);
+    --rule-lead:   3px solid var(--accent);
+
+    /* type scale — widened dynamic range, --step-lead is the dramatic moment */
+    --step--1: clamp(0.78rem, 0.75rem + 0.15vw, 0.88rem);
+    --step-0:  clamp(1.05rem, 1rem + 0.25vw, 1.18rem);
+    --step-1:  clamp(1.28rem, 1.16rem + 0.6vw, 1.65rem);
+    --step-2:  clamp(1.6rem, 1.32rem + 1.3vw, 2.4rem);
+    --step-3:  clamp(2rem, 1.6rem + 2vw, 3.4rem);
+    --step-lead: clamp(2.9rem, 2rem + 4.5vw, 6.4rem);
+
+    --measure-prose: 64ch;
+    --measure-dek: 54ch;
+
+    --space-sm: clamp(0.85rem, 0.74rem + 0.55vw, 1.2rem);
+    --space-md: clamp(1.35rem, 1.14rem + 1.05vw, 2rem);
+    --space-lg: clamp(2.1rem, 1.66rem + 2.2vw, 3.4rem);
+    --max: 78rem;
+  }
+  html[data-theme="light"] { color-scheme: light; }
+  html[data-theme="dark"]  { color-scheme: dark; }
+
+  * { box-sizing: border-box; }
+  html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body {
+    margin: 0; font-family: var(--font-body); font-size: var(--step-0);
+    line-height: 1.7; color: var(--ink);
+  }
+  a { color: inherit; text-decoration: none; }
+  :lang(th) { line-height: 1.86; }
+
+  .eyebrow {
+    font-family: var(--font-ui); text-transform: uppercase;
+    letter-spacing: 0.08em; font-size: var(--step--1); font-weight: 600;
+    color: var(--soft-ink); margin: 0;
+  }
+  .eyebrow.accent { color: var(--accent-ink); }
+  .mono { font-family: var(--font-mono); font-feature-settings: "tnum" 1; }
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: clamp(1rem, 0.5rem + 2vw, 2.4rem); }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+    padding: 1.4rem 0 0.9rem;
+  }
+  .masthead .brand { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.01em; }
+  .masthead .util { display: inline-flex; align-items: center; gap: 1rem; font-family: var(--font-ui); font-size: var(--step--1); color: var(--soft-ink); }
+  .masthead .util .date { font-family: var(--font-mono); }
+  .masthead .util button, .masthead .util .pill-link {
+    font: inherit; background: none; border: none; color: var(--soft-ink);
+    cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .masthead .util .kbd {
+    font-family: var(--font-mono); font-size: 0.72em; border: var(--rule-faint);
+    border-radius: 0; padding: 0.05rem 0.3rem; color: var(--faint-ink);
+  }
+  .masthead .util .locale .on { color: var(--accent-ink); font-weight: 700; }
+  .rule-major { border: 0; border-top: var(--rule-major); margin: 0; }
+
+  /* ---------- Brief line ---------- */
+  .brief {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 0.75rem 1.5rem; flex-wrap: wrap; padding: 0.85rem 0 0;
+  }
+  .brief .lhs { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.08em; font-size: var(--step--1); color: var(--soft-ink); }
+  .brief .lhs .n { font-family: var(--font-mono); color: var(--ink); }
+  .brief .daynav { font-family: var(--font-mono); color: var(--accent-ink); padding: 0 0.4rem; }
+  .brief .daynav:hover { text-decoration: underline; }
+  .brief .daynav.disabled { color: var(--faint-ink); opacity: 0.45; pointer-events: none; }
+  .brief .new { font-family: var(--font-ui); font-size: var(--step--1); color: var(--accent-ink); display: inline-flex; align-items: center; gap: 0.4rem; }
+  .brief .new .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; }
+
+  /* ---------- Front page grid ---------- */
+  .frontpage {
+    display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 0; margin-top: var(--space-md); padding-top: var(--space-md);
+  }
+  .lead { padding-right: var(--space-lg); border-top: var(--rule-lead); padding-top: 1rem; }
+  .rail { padding-left: var(--space-lg); border-left: var(--rule-section); }
+
+  @media (max-width: 56rem) {
+    .frontpage { grid-template-columns: 1fr; }
+    .lead { padding-right: 0; }
+    .rail { padding-left: 0; border-left: 0; border-top: var(--rule-major); margin-top: var(--space-md); padding-top: var(--space-md); }
+  }
+
+  /* lead block */
+  .lead .lead-eyebrow { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .lead .lead-eyebrow .min, .lead .lead-eyebrow .trend { font-family: var(--font-mono); color: var(--faint-ink); }
+  .lead .lead-eyebrow .trend.up { color: var(--accent-ink); }
+  .lead h1 {
+    font-family: var(--font-display); font-weight: 650; font-size: var(--step-lead);
+    line-height: 0.97; letter-spacing: -0.015em; margin: 0.5rem 0 0; max-width: 15ch;
+  }
+  .why { margin: 1.1rem 0 0; max-width: var(--measure-dek); }
+  .why .lbl { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.07em; font-size: var(--step--1); font-weight: 600; color: var(--accent-ink); }
+  .why p { margin: 0.15rem 0 0; font-size: var(--step-1); line-height: 1.5; color: var(--soft-ink); }
+  .lead ul.tldr { list-style: none; margin: 1.2rem 0 0; padding: 0; max-width: var(--measure-prose); }
+  .lead ul.tldr li { position: relative; padding-left: 1.1rem; margin: 0.55rem 0; line-height: 1.55; }
+  .lead ul.tldr li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 0.5rem; border-top: var(--rule-section); }
+  .lead ul.tldr li b { font-family: var(--font-body); font-weight: 600; color: var(--ink); }
+  .lead .meta-foot {
+    display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap;
+    margin-top: 1.3rem; padding-top: 0.9rem; border-top: var(--rule-faint);
+    font-family: var(--font-mono); font-size: var(--step--1); color: var(--faint-ink);
+  }
+  .meta-foot .read { font-family: var(--font-ui); font-weight: 600; color: var(--accent-ink); text-transform: none; letter-spacing: 0; }
+  .meta-foot .read:hover { text-decoration: underline; }
+  .meta-foot .unread { margin-left: auto; display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent-ink); }
+  .meta-foot .unread .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; }
+  .spark { display: inline-block; vertical-align: middle; color: var(--accent); }
+
+  /* rail teasers */
+  .rail .rail-head { margin: 0 0 0.6rem; }
+  .teaser { padding: 1rem 0; border-top: var(--rule-section); }
+  .teaser:first-of-type { border-top: 0; padding-top: 0; }
+  .teaser .t-eyebrow { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .teaser .t-eyebrow .min { font-family: var(--font-mono); color: var(--faint-ink); }
+  .teaser h3 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); line-height: 1.05; letter-spacing: -0.01em; margin: 0.35rem 0 0; }
+  .teaser h3 a:hover { color: var(--accent-ink); }
+  .teaser .dek { margin: 0.3rem 0 0; color: var(--soft-ink); font-size: var(--step-0); line-height: 1.45; max-width: 46ch; }
+  .teaser .t-meta { margin: 0.5rem 0 0; font-family: var(--font-mono); font-size: var(--step--1); color: var(--faint-ink); display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+  .teaser .t-meta .unread-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; }
+  /* the rail's first teaser reads slightly larger (no two equal) */
+  .teaser.lg h3 { font-size: var(--step-3); }
+
+  /* ---------- Section group header ---------- */
+  .group-head { margin: var(--space-lg) 0 0; padding-top: 0.6rem; border-top: var(--rule-major); }
+
+  /* ---------- Trending ---------- */
+  .trending { margin-top: var(--space-lg); padding-top: var(--space-md); border-top: var(--rule-major); }
+  .trending h2 { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.08em; font-size: var(--step--1); font-weight: 600; color: var(--soft-ink); margin: 0 0 0.4rem; }
+  .trend-list { list-style: none; margin: 0; padding: 0; max-width: 46rem; }
+  .trend-row { display: flex; align-items: center; gap: 1rem; padding: 0.7rem 0; border-top: var(--rule-faint); }
+  .trend-row .rank { font-family: var(--font-mono); color: var(--faint-ink); width: 1.4rem; }
+  .trend-row .topic { font-family: var(--font-display); font-weight: 500; font-size: var(--step-1); flex: 1; }
+  .trend-row .topic:hover { color: var(--accent-ink); }
+  .trend-row .days { font-family: var(--font-mono); font-size: var(--step--1); color: var(--faint-ink); }
+  .pill { font-family: var(--font-ui); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; padding: 0.12rem 0.5rem; border: var(--rule-faint); white-space: nowrap; }
+  .pill.high { color: var(--accent-ink); border-color: color-mix(in oklch, var(--accent), transparent 55%); }
+  .pill.med { color: var(--soft-ink); }
+
+  /* ---------- footer ---------- */
+  .site-foot { margin-top: var(--space-lg); padding: var(--space-md) 0 var(--space-lg); border-top: var(--rule-section); font-family: var(--font-ui); font-size: var(--step--1); color: var(--faint-ink); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+  /* mockup chrome */
+  .note { max-width: var(--max); margin: 1.2rem auto 0; padding: 0.6rem 1rem; font-family: var(--font-ui); font-size: var(--step--1); color: var(--faint-ink); border: var(--rule-faint); }
+  .note b { color: var(--soft-ink); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- ===== Masthead ===== -->
+  <header class="masthead">
+    <a class="brand" href="#">Social Daily Report</a>
+    <div class="util">
+      <span class="date">Thu 29 May 2026</span>
+      <button type="button" id="search"><span>Search</span><span class="kbd">⌘K</span></button>
+      <span class="locale"><span class="on">EN</span> | <span>ไทย</span></span>
+      <button type="button" id="theme" aria-label="Toggle theme">☾ Auto</button>
+    </div>
+  </header>
+  <hr class="rule-major" />
+
+  <!-- ===== Brief line (with prev/next DAY navigation — all topics) ===== -->
+  <div class="brief">
+    <span class="lhs">
+      <a class="daynav" href="#2026-05-28" title="Previous day">← 28 May</a>
+      Today · <span class="n">29 May</span> · <span class="n">12</span> reports · ~<span class="n">9</span> min to scan all
+      <span class="daynav disabled" title="No newer day">29 May →</span>
+    </span>
+    <span class="new"><span class="dot"></span> 3 new since you last looked</span>
+  </div>
+
+  <!-- ===== Front page: lead + rail ===== -->
+  <div class="frontpage">
+
+    <!-- LEAD -->
+    <article class="lead">
+      <p class="eyebrow lead-eyebrow accent">
+        AI Devtools <span class="min">· 4 min</span> <span class="trend up">↑ rising</span>
+      </p>
+      <h1><a href="#">Anthropic ships an agentic build pipeline</a></h1>
+
+      <div class="why">
+        <span class="lbl">Why it matters</span>
+        <p>The first credible end-to-end "describe → ship" loop a small team can run unattended — directly relevant to how NDF DEV scaffolds internal tools.</p>
+      </div>
+
+      <ul class="tldr">
+        <li><b>Closed-loop agents now plan, write, and verify</b> against a test harness before opening a PR — no human in the inner loop.</li>
+        <li><b>Cost dropped ~40% per task</b> via prompt caching + a cheaper planner model routing to Opus only on hard steps.</li>
+        <li><b>Early adopters report mixed results</b> on legacy codebases — green-field wins, brown-field still needs a babysitter.</li>
+      </ul>
+
+      <div class="meta-foot">
+        <!-- 7-day salience sparkline -->
+        <svg class="spark" width="84" height="22" viewBox="0 0 84 22" role="img" aria-label="salience trend rising">
+          <polyline points="0,18 14,16 28,11 42,12 56,6 70,4 84,2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>· 1.2k posts · 14 sources · salience .82</span>
+        <a class="read" href="#">Read report →</a>
+        <span class="unread"><span class="dot"></span> unread</span>
+      </div>
+    </article>
+
+    <!-- RAIL -->
+    <div class="rail">
+      <p class="eyebrow rail-head">Also today</p>
+
+      <article class="teaser lg">
+        <p class="eyebrow t-eyebrow">AI Research <span class="min">· 3 min</span></p>
+        <h3><a href="#">A new agentic eval suite exposes brittle tool-use</a></h3>
+        <p class="dek">Models that ace static benchmarks collapse on multi-step tool chains — the gap is reasoning persistence, not knowledge.</p>
+        <p class="t-meta"><span class="unread-dot"></span> 840 posts · salience .71</p>
+      </article>
+
+      <article class="teaser">
+        <p class="eyebrow t-eyebrow">XR / VR / AR <span class="min">· 2 min</span></p>
+        <h3><a href="#">WebGPU lands in the WebXR mainline spec</a></h3>
+        <p class="dek">Browser VR finally gets compute shaders — the missing piece for on-device hand-tracking inference.</p>
+        <p class="t-meta">410 posts · salience .64</p>
+      </article>
+
+      <article class="teaser">
+        <p class="eyebrow t-eyebrow">Web &amp; Frontend <span class="min">· 3 min</span></p>
+        <h3><a href="#">View Transitions ship cross-document in all engines</a></h3>
+        <p class="dek">App-like page morphs with zero JS — the MPA renaissance gets its signature move.</p>
+        <p class="t-meta">680 posts · salience .61</p>
+      </article>
+
+      <article class="teaser" lang="th">
+        <p class="eyebrow t-eyebrow">Thai Tech <span class="min">· 2 min</span></p>
+        <h3><a href="#">Typhoon-2 เปิดตัว เบนช์มาร์กแซง GPT-4o ภาษาไทย</a></h3>
+        <p class="dek">โมเดลอธิปไตยของไทยทำคะแนนนำด้าน reasoning ภาษาไทย — เปิดให้ใช้ฟรีผ่าน API.</p>
+        <p class="t-meta">220 posts · salience .58</p>
+      </article>
+
+      <article class="teaser">
+        <p class="eyebrow t-eyebrow">DevOps &amp; Cloud <span class="min">· 2 min</span></p>
+        <h3><a href="#">Edge functions get a 50ms cold-start floor</a></h3>
+        <p class="dek">The serverless penalty keeps shrinking; the "just use a server" crowd grows quieter.</p>
+        <p class="t-meta">390 posts · salience .55</p>
+      </article>
+
+      <article class="teaser">
+        <p class="eyebrow t-eyebrow">Multimodal AI <span class="min">· 3 min</span></p>
+        <h3><a href="#">Real-time video understanding hits consumer GPUs</a></h3>
+        <p class="dek">Sub-second frame reasoning on a 4070 — local-first multimodal is no longer a lab toy.</p>
+        <p class="t-meta">510 posts · salience .53</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- ===== Trending this week ===== -->
+  <section class="trending">
+    <h2>Trending this week</h2>
+    <ol class="trend-list">
+      <li class="trend-row">
+        <span class="rank">1</span>
+        <a class="topic" href="#">AI Devtools</a>
+        <svg class="spark" width="64" height="18" viewBox="0 0 64 18" aria-hidden="true"><polyline points="0,15 10,13 21,9 32,10 43,5 53,3 64,2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span class="pill high">high</span>
+        <span class="days">6 days</span>
+      </li>
+      <li class="trend-row">
+        <span class="rank">2</span>
+        <a class="topic" href="#">AI Research</a>
+        <svg class="spark" width="64" height="18" viewBox="0 0 64 18" aria-hidden="true"><polyline points="0,11 10,12 21,8 32,9 43,6 53,7 64,3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span class="pill high">high</span>
+        <span class="days">5 days</span>
+      </li>
+      <li class="trend-row">
+        <span class="rank">3</span>
+        <a class="topic" href="#">Multimodal AI</a>
+        <svg class="spark" width="64" height="18" viewBox="0 0 64 18" aria-hidden="true"><polyline points="0,3 10,5 21,8 32,9 43,11 53,12 64,14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span class="pill med">medium</span>
+        <span class="days">4 days</span>
+      </li>
+      <li class="trend-row">
+        <span class="rank">4</span>
+        <a class="topic" href="#">Web &amp; Frontend</a>
+        <svg class="spark" width="64" height="18" viewBox="0 0 64 18" aria-hidden="true"><polyline points="0,9 10,8 21,10 32,7 43,8 53,6 64,7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span class="pill med">medium</span>
+        <span class="days">4 days</span>
+      </li>
+    </ol>
+  </section>
+
+  <footer class="site-foot">
+    <span>AI-reasoned daily reports across social platforms for the NDF DEV team.</span>
+    <a href="#">RSS</a>
+  </footer>
+</div>
+
+<p class="note">
+  <b>Mockup — "The Front Page" direction.</b> Static proof of REDESIGN.md: 3-tier hairlines (no cards), asymmetric lead+rail, dramatic type-scale, one ember accent, eyebrow/headline/meta font roles, per-card min-read, sparklines, unread dots, trending block. Toggle ☾ for dark. Fonts via Google CDN (mockup only — production self-hosts). Report-reading-page mockup is separate.
+</p>
+
+<script>
+  // simple 3-state theme toggle for the mockup (auto → light → dark)
+  const html = document.documentElement;
+  const btn = document.getElementById('theme');
+  const states = [['auto','☾ Auto'],['light','☀ Light'],['dark','☾ Dark']];
+  let i = 0;
+  btn.addEventListener('click', () => {
+    i = (i + 1) % states.length;
+    const [val, label] = states[i];
+    if (val === 'auto') html.removeAttribute('data-theme'); else html.setAttribute('data-theme', val);
+    btn.textContent = label;
+  });
+  document.getElementById('search').addEventListener('click', () => alert('⌘K Pagefind command palette — see REDESIGN.md §4.6 (separate phase R3).'));
+</script>
+</body>
+</html>

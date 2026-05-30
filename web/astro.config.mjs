@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import pagefind from "astro-pagefind";
 
 // Static site. Build output is committed-free (gitignored); deploy host
 // (Vercel) runs `npm run build` on push. `site` controls absolute URLs in
@@ -9,4 +10,5 @@ const site = process.env.SITE || "https://social-daily-report.vercel.app";
 export default defineConfig({
   site,
   trailingSlash: "ignore",
+  integrations: [pagefind()],
 });

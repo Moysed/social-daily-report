@@ -1,18 +1,43 @@
 ---
 import { getCollection, render } from "astro:content";
 import Base from "../../../../layouts/Base.astro";
-import { prettyDate, prettyTopic } from "../../../../lib/format";
+import ReportShare from "../../../../components/ReportShare.astro";
+import { prettyTopic, extractTldr, shortDate, readingMinutes, boldLeadIn } from "../../../../lib/format";
 import { UI, type Lang } from "../../../../lib/i18n";
+import { bangkokToday, relativeDate } from "../../../../lib/relative-date";
 
 export async function getStaticPaths() {
   const all = await getCollection("reports");
-  return all.map((entry) => ({
-    params: { date: entry.data.date, topic: entry.data.topic, lang: entry.data.lang },
-    props: { entry },
-  }));
+  // Same-topic prev/next: group by topic+lang, sort by date, attach nearest
+  // older/newer date that also has THIS topic (skips days where it's absent).
+  const groups = new Map<string, typeof all>();
+  for (const e of all) {
+    const key = `${e.data.topic}|${e.data.lang}`;
+    const arr = groups.get(key) ?? [];
+    arr.push(e);
+    groups.set(key, arr);
+  }
+  for (const arr of groups.values()) {
+    arr.sort((a, b) => (a.data.date < b.data.date ? -1 : a.data.date > b.data.date ? 1 : 0));
+  }
+  return all.map((entry) => {
+    const arr = groups.get(`${entry.data.topic}|${entry.data.lang}`)!;
+    const i = arr.findIndex((e) => e.data.date === entry.data.date);
+    const prev = i > 0 ? arr[i - 1] : null;
+    const next = i >= 0 && i < arr.length - 1 ? arr[i + 1] : null;
+    return {
+      params: { date: entry.data.date, topic: entry.data.topic, lang: entry.data.lang },
+      props: {
+        entry,
+        prevDate: prev?.data.date ?? null,
+        nextDate: next?.data.date ?? null,
+        prevSalience: prev?.data.salience ?? null,
+      },
+    };
+  });
 }
 
-const { entry } = Astro.props;
+const { entry, prevDate, nextDate, prevSalience } = Astro.props;
 const { Content, headings } = await render(entry);
 const d = entry.data;
 const hasXEmbed = entry.body?.includes("twitter-tweet") ?? false;
@@ -32,67 +57,114 @@ const activityLabel =
   activityTier === "high" ? t.activityHigh : activityTier === "med" ? t.activityMedium : t.activityLow;
 const postsUnit = lang === "th" ? "โพสต์" : d.post_count === 1 ? "post" : "posts";
 const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
+const tldrBullets = extractTldr(entry.body ?? "");
+const today = bangkokToday();
+const rel = relativeDate(d.date, lang, today);
+const canonicalUrl = new URL(`/report/${d.date}/${d.topic}/${lang}`, Astro.site).href;
+const ogImageUrl = new URL(`/og/report/${d.date}/${d.topic}/${lang}.png`, Astro.site).href;
+// Note: OG image path matches the [..route].ts endpoint key pattern (already .png)
+const rssHref = `${base}${lang === "th" ? "/th" : ""}/rss/${d.topic}.xml`;
+
+// --- R2 metadata strip ---
+const body = entry.body ?? "";
+const wordCount = body.trim() ? body.trim().split(/\s+/).length : 0;
+const minutes = readingMinutes(body, lang);
+// "sources" = distinct inline [n] citation markers; honest fallback to post_count.
+const citeNums = new Set<string>();
+for (const m of body.matchAll(/\[(\d{1,3})\]/g)) citeNums.add(m[1]);
+const sourceCount = citeNums.size;
+// Salience trend vs the previous same-topic run (no glyph if no prior run).
+const trend: "up" | "down" | "steady" | null =
+  d.salience != null && prevSalience != null
+    ? d.salience > prevSalience + 0.02
+      ? "up"
+      : d.salience < prevSalience - 0.02
+        ? "down"
+        : "steady"
+    : null;
+const trendGlyph = trend === "up" ? "↑" : trend === "down" ? "↓" : trend === "steady" ? "→" : "";
+
+// --- R2 prev/next edition foot ---
+const editionHref = (date: string) => `${base}/report/${date}/${d.topic}/${lang}`;
+const frontHref = `${homeHref}#${d.date}`;
+
+// --- Headline from the lead TL;DR bullet: the H1 should BE the story, not the
+// section name (CEO note: "doesn't point out the real detail"). The first TL;DR
+// bullet's lead clause becomes the headline; its trailing clause becomes the
+// standfirst/dek. Remaining bullets fill KEY POINTS so nothing is duplicated.
+// Falls back to the topic name when a report has no TL;DR. ---
+const firstSplit = tldrBullets.length ? boldLeadIn(tldrBullets[0]) : null;
+// Strip the trailing clause separator ("— " / ": ") left on the lead clause so
+// the headline doesn't dangle a dash; capitalize the dek's first letter so the
+// standfirst reads as its own sentence.
+const headline = firstSplit
+  ? firstSplit.lead.replace(/\s*[—:-]\s*$/, "").trim()
+  : prettyTopic(d.topic);
+const rawDek = firstSplit ? firstSplit.rest.trim() : "";
+const standfirst = rawDek ? rawDek.charAt(0).toUpperCase() + rawDek.slice(1) : null;
+const restLeads = tldrBullets.slice(1).map((b) => boldLeadIn(b));
+const kickerYear = d.date.slice(0, 4);
 ---
 
-<Base title={title} lang={lang} alternateHref={reportHref(otherLang)}>
+<Base title={title} lang={lang} alternateHref={reportHref(otherLang)} image={ogImageUrl} ogType="article">
   <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
 
   <div class="report-layout">
     <div class="report-shell">
-      <nav class="report-nav ui-text" aria-label="Report navigation">
-        <a href={homeHref}>{t.backHome}</a>
-        <a class="language-toggle" href={reportHref(otherLang)} aria-label={t.switchReport} hreflang={otherLang}>
-          <span class={lang === "en" ? "active" : ""}>EN</span>
-          <span aria-hidden="true">/</span>
-          <span class={lang === "th" ? "active" : ""}>TH</span>
-        </a>
+      <nav class="report-nav ui-text" aria-label="Report navigation" data-pagefind-ignore>
+        <a href={homeHref}>← {t.backHome}</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span class="crumb-topic">{prettyTopic(d.topic)}</span>
       </nav>
 
       <header class="report-hero">
         <p class="report-kicker ui-text">
-          <span>{t.dailyBrief}</span>
-          <span class="report-kicker-dot" aria-hidden="true">/</span>
-          <span class="report-kicker-date num">{d.date}</span>
+          <span class="rk-topic" data-pagefind-meta="title" data-pagefind-filter="topic">{prettyTopic(d.topic)}</span>
+          <span class="report-kicker-dot" aria-hidden="true">·</span>
+          <span class="report-kicker-date num" data-pagefind-meta="date" data-pagefind-filter="date">{shortDate(d.date, lang)} {kickerYear}</span>
+          {rel.label && <span class={`date-badge date-badge-${rel.kind}`}>{rel.label}</span>}
         </p>
 
-        <h1>{prettyTopic(d.topic)}</h1>
-        <p class="report-deck">{prettyDate(d.date)}</p>
+        <h1>{headline}</h1>
 
-        <dl class="report-instruments" aria-label={t.reportMeta}>
-          <div class={`instrument instrument--${activityTier}`}>
-            <dt>{t.activityLabel}</dt>
-            <dd>
-              <span class="instrument-value num">{d.post_count}</span>
-              <span class="instrument-unit">{postsUnit}</span>
-              <span class={`instrument-tag instrument-tag--${activityTier}`}>{activityLabel}</span>
-            </dd>
-          </div>
-          <div class="instrument">
-            <dt>Salience</dt>
-            <dd>
-              <span class="instrument-value num">
-                {saliencePct ?? "—"}<span class="pct">%</span>
-              </span>
-              <span class="meter" role="img" aria-label={t.salience(saliencePct)}>
-                <span class="meter-fill" style={`--w:${saliencePct ?? 0}%`}></span>
-              </span>
-            </dd>
-          </div>
-          <div class="instrument">
-            <dt>Confidence</dt>
-            <dd>
-              <span class="instrument-value num">
-                {confidencePct ?? "—"}<span class="pct">%</span>
-              </span>
-              <span class="meter" role="img" aria-label={t.confidence(confidencePct)}>
-                <span class="meter-fill meter-fill--soft" style={`--w:${confidencePct ?? 0}%`}></span>
-              </span>
-            </dd>
-          </div>
-        </dl>
+        {standfirst && <p class="report-dek">{standfirst}</p>}
+
+        <div class="metastrip num" aria-label={t.reportMeta} data-pagefind-ignore>
+          <span>{t.minRead(minutes)}</span>
+          {sourceCount > 0 && (
+            <Fragment>
+              <span class="ms-dot" aria-hidden="true">·</span>
+              <span>{sourceCount} {t.sourcesUnit(sourceCount)}</span>
+            </Fragment>
+          )}
+          <span class="ms-dot" aria-hidden="true">·</span>
+          <span>{d.post_count} {postsUnit}</span>
+          {saliencePct != null && (
+            <Fragment>
+              <span class="ms-dot" aria-hidden="true">·</span>
+              <span>{t.interest(saliencePct)}{trendGlyph && (
+                <span class={trend === "up" ? "ms-up" : "ms-flat"}> {trendGlyph}</span>
+              )}</span>
+            </Fragment>
+          )}
+          <span class="metastrip-langs ui-text">
+            <a class={lang === "en" ? "on" : ""} href={reportHref("en")} hreflang="en">EN</a>
+            <span aria-hidden="true">|</span>
+            <a class={lang === "th" ? "on" : ""} href={reportHref("th")} hreflang="th" lang="th">ไทย</a>
+          </span>
+        </div>
+
+        {restLeads.length > 0 && (
+          <section class="keypoints" aria-label={t.keyPoints}>
+            <p class="keypoints-lbl eyebrow">{t.keyPoints}</p>
+            <ul>
+              {restLeads.map(({ lead, rest }) => <li><b>{lead}</b>{rest}</li>)}
+            </ul>
+          </section>
+        )}
 
         {d.platforms.length > 0 && (
-          <ul class="report-platforms ui-text" aria-label={t.platforms}>
+          <ul class="report-platforms ui-text" aria-label={t.platforms} data-pagefind-ignore>
             {d.platforms.map((p) => (
               <li><span class="dot" aria-hidden="true"></span>{p}</li>
             ))}
@@ -105,15 +177,25 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
             {d.translated_by && <span>{t.translatedBy} <code>{d.translated_by}</code></span>}
           </p>
         )}
+
       </header>
 
-      <article class="prose" lang={lang} data-article>
-        <Content />
-      </article>
+      {tldrBullets.length > 0 ? (
+        <details class="mobile-collapse" data-mobile-collapse open>
+          <summary class="ui-text" data-pagefind-ignore>{t.readFullReport}</summary>
+          <article class="prose" lang={lang} data-article data-tldr-hoisted="true" data-pagefind-body>
+            <Content />
+          </article>
+        </details>
+      ) : (
+        <article class="prose" lang={lang} data-article data-pagefind-body>
+          <Content />
+        </article>
+      )}
     </div>
 
     {sectionHeadings.length > 1 && (
-      <aside class="report-toc ui-text" aria-labelledby="toc-label">
+      <aside class="report-toc ui-text" aria-labelledby="toc-label" data-pagefind-ignore>
         <p id="toc-label">{t.onThisPage}</p>
         <ol>
           {sectionHeadings.map((h, i) => (
@@ -127,6 +209,38 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
         </ol>
       </aside>
     )}
+  </div>
+
+  <footer class="r-foot ui-text" data-pagefind-ignore>
+    <nav class="editions" aria-label={t.switchReport}>
+      {prevDate && (
+        <a class="ed-prev" href={editionHref(prevDate)} rel="prev" aria-label={t.prevReport}>
+          ← <span class="num">{shortDate(prevDate, lang)}</span>
+        </a>
+      )}
+      <span class="ed-cur">
+        {prettyTopic(d.topic)} · <span class="num">{shortDate(d.date, lang)}</span>
+        {!nextDate && <span class="ed-latest"> · {t.latestEdition}</span>}
+      </span>
+      {nextDate && (
+        <a class="ed-next" href={editionHref(nextDate)} rel="next" aria-label={t.nextReport}>
+          <span class="num">{shortDate(nextDate, lang)}</span> →
+        </a>
+      )}
+      <a class="frontlink" href={frontHref}>↑ <span class="num">{shortDate(d.date, lang)}</span> {t.frontPage}</a>
+    </nav>
+    <ReportShare title={title} url={canonicalUrl} lang={lang} rssHref={rssHref} compact={true} />
+  </footer>
+
+  <div
+    class="sticky-share-bar"
+    data-sticky-bar
+    data-pagefind-ignore
+    hidden
+    aria-hidden="true"
+    aria-label={t.shareTitle}
+  >
+    <ReportShare title={title} url={canonicalUrl} lang={lang} rssHref={rssHref} compact={true} />
   </div>
 
   {hasXEmbed && (
@@ -151,46 +265,48 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
       window.addEventListener("resize", update);
     })();
 
-    // Inline citation chips: [3] / [15][33] become small mono superscript chips.
+    // Strip inline citation markers ([3], [15][48], ...). The pipeline emits
+    // marker numbers that run past the Raw Sources row count (e.g. [60] with ~30
+    // rows) and the table has no per-row numbering, so the markers point nowhere
+    // and just clutter the prose (CEO note). Remove them cleanly, tidying the
+    // leftover space before punctuation. Pipeline stays untouched (web-only fix).
     (() => {
-      const re = /\[(\d{1,3})\]/g;
-      const targets = document.querySelectorAll(".prose p, .prose li, .prose dd");
+      const re = /\s*\[\d{1,3}\](?:\s*\[\d{1,3}\])*/g;
+      const targets = document.querySelectorAll(".prose p, .prose li, .prose dd, .prose td");
       for (const el of targets) {
         const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
           acceptNode: (n) => {
             const p = n.parentElement;
             if (!p) return NodeFilter.FILTER_REJECT;
-            if (p.closest("code, pre, sup.cite, a, .ndf-card-head, .ndf-engagement")) {
-              return NodeFilter.FILTER_REJECT;
-            }
-            return NodeFilter.FILTER_ACCEPT;
+            if (p.closest("code, pre, a")) return NodeFilter.FILTER_REJECT;
+            return re.test(n.nodeValue || "") ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
           },
         });
         const nodes = [];
         while (walker.nextNode()) nodes.push(walker.currentNode);
         for (const node of nodes) {
-          const text = node.nodeValue || "";
-          re.lastIndex = 0;
-          if (!re.test(text)) continue;
-          re.lastIndex = 0;
-          const frag = document.createDocumentFragment();
-          let last = 0;
-          let m;
-          while ((m = re.exec(text))) {
-            if (m.index > last) {
-              frag.appendChild(document.createTextNode(text.slice(last, m.index)));
-            }
-            const sup = document.createElement("sup");
-            sup.className = "cite num";
-            sup.textContent = m[1];
-            frag.appendChild(sup);
-            last = m.index + m[0].length;
-          }
-          if (last < text.length) {
-            frag.appendChild(document.createTextNode(text.slice(last)));
-          }
-          node.parentNode.replaceChild(frag, node);
+          // Drop the markers; if one sat before a . , ; : keep the punctuation tight.
+          node.nodeValue = (node.nodeValue || "")
+            .replace(re, (m, off, s) => (/^[.,;:!?)]/.test(s.slice(off + m.length)) ? "" : " "))
+            .replace(/\s{2,}/g, " ");
         }
+      }
+    })();
+
+    // Humanize raw engagement cells in the Raw Sources table: "^4465 c0" is
+    // scraper shorthand (^=upvotes/likes, c=comments) that reads as gibberish.
+    // Rewrite to "4,465 likes · 0 comments" (compact "12.3k" past 10k). web-only.
+    (() => {
+      const reEng = /^\s*\^(\d+)\s+c(\d+)\s*$/;
+      const fmt = (n) => (n >= 10000 ? (n / 1000).toFixed(1).replace(/\.0$/, "") + "k" : n.toLocaleString("en-US"));
+      const isTh = document.documentElement.lang === "th";
+      const L = isTh ? { up: "ไลก์", c: "คอมเมนต์" } : { up: "likes", c: "comments" };
+      for (const td of document.querySelectorAll(".prose td")) {
+        const m = (td.textContent || "").match(reEng);
+        if (!m) continue;
+        const up = Number(m[1]), c = Number(m[2]);
+        td.textContent = `${fmt(up)} ${L.up} · ${fmt(c)} ${L.c}`;
+        td.classList.add("eng-cell");
       }
     })();
 
@@ -209,7 +325,10 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
       if (!targets.length) return;
       const setActive = (id) => {
         for (const l of links) {
-          l.classList.toggle("active", l.getAttribute("href") === `#${id}`);
+          const on = l.getAttribute("href") === `#${id}`;
+          l.classList.toggle("active", on);
+          if (on) l.setAttribute("aria-current", "true");
+          else l.removeAttribute("aria-current");
         }
       };
       const obs = new IntersectionObserver(
@@ -236,6 +355,83 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
       });
       // Initial: respect any hash already in the URL.
       if (location.hash) setActive(location.hash.slice(1));
+    })();
+
+    // Copy-link + native share handler for all [data-copy-link] buttons on this page.
+    (() => {
+      document.querySelectorAll("[data-copy-link]").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const url = btn.dataset.url || location.href;
+          const labelEl = btn.querySelector(".copy-label");
+          const copied = btn.dataset.labelCopied || "Copied";
+          const copy = btn.dataset.labelCopy || "Copy link";
+          try {
+            if (navigator.share) {
+              await navigator.share({ title: document.title, url });
+            } else {
+              await navigator.clipboard.writeText(url);
+            }
+          } catch {
+            try { await navigator.clipboard.writeText(url); } catch (_) {}
+          }
+          if (labelEl) labelEl.textContent = copied;
+          btn.setAttribute("aria-label", copied);
+          setTimeout(() => {
+            if (labelEl) labelEl.textContent = copy;
+            btn.setAttribute("aria-label", copy);
+          }, 1800);
+        });
+      });
+    })();
+
+    // Sticky share bar: show after .report-instruments leaves viewport, hide near footer.
+    (() => {
+      const bar = document.querySelector("[data-sticky-bar]");
+      if (!bar) return;
+      const trigger = document.querySelector(".metastrip");
+      const footer = document.querySelector(".site-footer");
+      let triggerGone = false;
+      let footerVisible = false;
+      function updateBar() {
+        const show = triggerGone && !footerVisible;
+        bar.hidden = !show;
+        bar.setAttribute("aria-hidden", show ? "false" : "true");
+      }
+      if (trigger) {
+        new IntersectionObserver(([e]) => {
+          triggerGone = !e.isIntersecting;
+          updateBar();
+        }, { threshold: 0 }).observe(trigger);
+      }
+      if (footer) {
+        new IntersectionObserver(([e]) => {
+          footerVisible = e.isIntersecting;
+          updateBar();
+        }, { threshold: 0.05 }).observe(footer);
+      }
+    })();
+
+    // Hide the original TL;DR heading + its following list when the card is hoisted above.
+    (() => {
+      const prose = document.querySelector('.prose[data-tldr-hoisted="true"]');
+      if (!prose) return;
+      for (const h2 of prose.querySelectorAll("h2")) {
+        if (/^(TL;DR|สรุป)$/i.test((h2.textContent || "").trim())) {
+          const next = h2.nextElementSibling;
+          h2.remove();
+          if (next && (next.tagName === "UL" || next.tagName === "P")) next.remove();
+          break;
+        }
+      }
+    })();
+
+    // Mobile collapse: on desktop (≥721px) force-open the details so prose always shows.
+    (() => {
+      const details = document.querySelector("details[data-mobile-collapse]");
+      if (!details) return;
+      if (window.innerWidth >= 721) {
+        details.open = true;
+      }
     })();
   </script>
 
@@ -279,13 +475,13 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
     .report-nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 0.5rem 1rem;
+      gap: 0.25rem 0.6rem;
       margin-bottom: var(--space-md);
       color: var(--soft-ink);
       font-size: var(--step--1);
-      font-weight: 700;
+      font-weight: 600;
+      letter-spacing: 0.02em;
       line-height: 1.4;
     }
     .report-nav a {
@@ -293,16 +489,50 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
       display: inline-flex;
       align-items: center;
       text-decoration: none;
-      border-bottom: 1px solid var(--line);
+      color: var(--soft-ink);
+      transition: color 0.15s ease;
     }
-    .language-toggle {
-      gap: 0.42rem;
-      color: var(--ink);
+    .report-nav a:hover { color: var(--accent-ink); }
+    .crumb-sep { color: var(--faint-ink); }
+    .crumb-topic { color: var(--ink); }
+
+    /* ---- Metadata strip (R2 §4.5) ---- */
+    .metastrip {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.7rem;
+      margin: var(--space-sm) 0 0;
+      padding: 0.65rem 0;
+      border-top: var(--rule-section);
+      border-bottom: var(--rule-faint);
+      font-family: var(--font-mono);
+      font-feature-settings: "tnum" 1, "ss01" 1;
+      font-size: var(--step--1);
+      color: var(--faint-ink);
+      letter-spacing: -0.005em;
     }
-    .language-toggle .active {
-      color: var(--accent-ink);
-      font-weight: 800;
+    .metastrip .ms-dot { color: var(--hairline); }
+    .metastrip .ms-up { color: var(--accent-ink); font-weight: 700; }
+    .metastrip .ms-flat { color: var(--faint-ink); }
+    .metastrip-langs {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-ui);
+      letter-spacing: 0.02em;
+      color: var(--faint-ink);
     }
+    .metastrip-langs a {
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--soft-ink);
+    }
+    .metastrip-langs a:hover { color: var(--accent-ink); }
+    .metastrip-langs a.on { color: var(--accent-ink); font-weight: 700; }
 
     /* ---- Hero ---- */
     .report-hero {
@@ -355,6 +585,7 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
       text-transform: uppercase;
       color: var(--accent-ink);
     }
+    .report-kicker .rk-topic { color: var(--accent-ink); font-weight: 700; }
     .report-kicker-dot { color: var(--faint-ink); }
     .report-kicker-date {
       color: var(--soft-ink);
@@ -367,18 +598,39 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
       font-size: var(--step-3);
       font-weight: 650;
       letter-spacing: -0.012em;
-      line-height: 1.02;
+      line-height: 1.08;
       color: var(--ink);
       text-wrap: balance;
+      max-width: 20ch;
+    }
+    .report-hero[lang="th"] h1,
+    html[lang="th"] .report-hero h1 {
+      font-family: "Noto Serif Thai", var(--font-display);
+      line-height: 1.35;
     }
 
-    .report-deck {
-      margin: var(--space-xs) 0 0;
-      color: var(--soft-ink);
+    /* Standfirst / dek — the trailing clause of the lead story, Newsreader serif,
+       sits under the headline like a newspaper sub-deck (clarity, CEO note). */
+    .report-dek {
+      margin: var(--space-sm) 0 0;
+      max-width: var(--measure-dek, 56ch);
       font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-style: italic;
-      line-height: 1.5;
+      font-size: var(--step-1);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--soft-ink);
+      text-wrap: pretty;
+    }
+    .report-hero[lang="th"] .report-dek,
+    html[lang="th"] .report-dek {
+      font-family: "Noto Serif Thai", var(--font-body);
+      line-height: 1.6;
+    }
+    /* R4 shared-element morph: same-named hero across report editions morphs on
+       prev/next navigation (cross-document VT). Home→report names the clicked
+       teaser at pageswap (Base.astro). Gated under no-preference. */
+    @media (prefers-reduced-motion: no-preference) {
+      .report-hero h1 { view-transition-name: hero-title; }
     }
 
     /* ---- Instruments grid ---- */
@@ -620,6 +872,19 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
       line-height: 1.9;
     }
 
+    /* Drop cap on the first body paragraph (EN only — Thai combining marks
+       make ::first-letter clip unreliably). Graceful: if the article's first
+       child isn't a <p>, the rule simply doesn't apply. */
+    .prose:not([lang="th"]) > :global(p:first-of-type)::first-letter {
+      float: left;
+      margin: 0.02em 0.08em 0 0;
+      font-family: var(--font-display);
+      font-weight: 650;
+      font-size: 3.4em;
+      line-height: 0.72;
+      color: var(--accent-ink);
+    }
+
     .prose :global(h1),
     .prose :global(h2),
     .prose :global(h3) {
@@ -642,68 +907,27 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
     /* Hero already prints the topic name, so suppress the body H1. */
     .prose :global(h1):first-child { display: none; }
 
-    .prose { counter-reset: section; }
-
+    /* Labeled section headings — eyebrow small-caps over a faint rule (R2 §4.5). */
     .prose :global(h2) {
-      counter-increment: section;
-      position: relative;
       margin: var(--space-xl) 0 var(--space-sm);
-      padding-top: 1.7rem;
-      font-family: var(--font-display);
-      font-size: var(--step-2);
-      font-weight: 600;
-      line-height: 1.08;
-      letter-spacing: -0.008em;
-      text-wrap: balance;
+      padding-top: 0.75rem;
+      border-top: var(--rule-faint);
+      font-family: var(--font-ui);
+      font-size: var(--step--1);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--soft-ink);
       scroll-margin-top: var(--space-md);
     }
-    .prose :global(h2)::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        var(--accent) 0,
-        var(--accent) 2.6rem,
-        var(--line) 2.6rem,
-        var(--line) 100%
-      );
-    }
-    .prose :global(h2)::before {
-      content: "§ " counter(section, decimal-leading-zero);
-      display: block;
-      margin-bottom: 0.5rem;
-      font-family: var(--font-mono);
-      font-feature-settings: "ss01" 1;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--accent-ink);
-      line-height: 1;
+    .prose[lang="th"] :global(h2) {
+      font-family: var(--font-ui);
+      letter-spacing: 0.01em;
+      text-transform: none;
     }
     .prose :global(h2):first-of-type {
       margin-top: 0;
-    }
-    /* TL;DR lead block — tinted strip and tighter cadence. */
-    .prose :global(h2):first-of-type + :global(ul),
-    .prose :global(h2):first-of-type + :global(p) {
-      padding: var(--space-md);
-      margin-block: 0 var(--space-md);
-      background: linear-gradient(
-        180deg,
-        color-mix(in oklch, var(--accent), transparent 92%),
-        color-mix(in oklch, var(--accent), transparent 96%)
-      );
-      border-left: 2px solid var(--accent);
-      border-radius: 2px;
-      font-size: 1.02em;
-      line-height: 1.7;
-    }
-    .prose :global(h2):first-of-type + :global(ul) :global(li) {
-      margin: 0.45rem 0;
     }
 
     .prose :global(h3) {
@@ -755,34 +979,44 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
       color: var(--ink);
     }
 
+    /* Pull quote — inline, no box, ember left edge, larger Fraunces (R2 §4.5). */
     .prose :global(blockquote) {
-      margin-left: 0;
-      padding: var(--space-sm) var(--space-md);
-      border-left: 3px solid var(--accent);
-      background: color-mix(in oklch, var(--surface), transparent 38%);
-      color: var(--soft-ink);
+      margin: var(--space-md) 0;
+      padding: 0.1rem 0 0.1rem var(--space-md);
+      border-left: var(--rule-lead);
+      background: none;
+      max-width: 34ch;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: var(--step-1);
+      line-height: 1.3;
+      color: var(--ink);
     }
+    .prose[lang="th"] :global(blockquote) {
+      font-family: "Noto Serif Thai", var(--font-display);
+      line-height: 1.55;
+    }
+    .prose :global(blockquote p) { margin: 0; }
 
     /* ---- Inline citation chips (injected by client script) ---- */
+    /* Citations: quiet superscript numerals — no chip/box/fill (CEO note: the
+       boxed [19][54] markers cluttered the prose and hurt readability). They stay
+       legible + clickable-feeling via the accent ink, but recede from the line. */
     .prose :global(sup.cite) {
-      display: inline-block;
-      vertical-align: 0.35em;
-      margin: 0 0.05em;
-      padding: 0 0.36em;
+      vertical-align: super;
+      margin: 0 0.04em;
       font-family: var(--font-mono);
       font-feature-settings: "tnum" 1, "ss01" 1;
-      font-size: 0.6em;
-      font-weight: 600;
-      line-height: 1.5;
+      font-size: 0.62em;
+      font-weight: 500;
+      line-height: 0;
       letter-spacing: 0;
-      color: var(--accent-ink);
-      background: color-mix(in oklch, var(--accent), transparent 88%);
-      border: 1px solid color-mix(in oklch, var(--accent), transparent 70%);
-      border-radius: 3px;
-      transform: none;
+      color: var(--faint-ink);
     }
-    .prose :global(sup.cite + sup.cite) {
-      margin-left: 0.12em;
+    .prose :global(sup.cite + sup.cite)::before {
+      content: ",";
+      color: var(--faint-ink);
+      margin: 0 0.05em 0 -0.02em;
     }
 
     /* ---- Table ---- */
@@ -1068,6 +1302,152 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
       .prose :global(.ndf-quote) { -webkit-line-clamp: 5; }
     }
 
+    /* ---- Sticky share bar (mobile/tablet ≤1023px) ---- */
+    .sticky-share-bar {
+      display: none;
+    }
+    @media (max-width: 1023px) {
+      .sticky-share-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 40;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 1.25rem;
+        padding-bottom: calc(0.55rem + env(safe-area-inset-bottom, 0px));
+        background: var(--bg);
+        border-top: 1px solid var(--hairline);
+      }
+      .sticky-share-bar[hidden] { display: none; }
+      @media (prefers-reduced-motion: no-preference) {
+        .sticky-share-bar:not([hidden]) {
+          animation: sticky-bar-in 180ms ease both;
+        }
+        @keyframes sticky-bar-in {
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      }
+    }
+
+    /* ---- KEY POINTS box (R2 §4.5) — hairline-ruled, ember left edge, no fill ---- */
+    .keypoints {
+      margin: var(--space-md) 0 0;
+      padding: var(--space-sm) var(--space-md);
+      border: var(--rule-section);
+      border-left: var(--rule-lead);
+    }
+    .keypoints-lbl {
+      margin: 0 0 0.5rem;
+    }
+    .keypoints ul {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+    .keypoints li {
+      margin: 0.4rem 0;
+      line-height: 1.55;
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      color: var(--soft-ink);
+    }
+    .keypoints li b {
+      font-weight: 650;
+      color: var(--ink);
+    }
+    .keypoints li::marker { color: var(--accent); }
+    :lang(th) .keypoints li { line-height: 1.7; }
+
+    /* ---- Report foot: same-topic prev/next edition + share (R2 §4.5) ---- */
+    .r-foot {
+      max-width: 70rem;
+      margin: var(--space-lg) 0 0;
+      padding: var(--space-md) 0 0;
+      border-top: var(--rule-major);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-md);
+      font-family: var(--font-ui);
+      font-size: var(--step--1);
+    }
+    .r-foot .editions {
+      display: inline-flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.1rem;
+      color: var(--soft-ink);
+      letter-spacing: 0.02em;
+    }
+    .r-foot .editions a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--soft-ink);
+      transition: color 0.15s ease;
+    }
+    .r-foot .editions a:hover { color: var(--accent-ink); }
+    .r-foot .editions .num {
+      font-family: var(--font-mono);
+      font-feature-settings: "tnum" 1;
+      letter-spacing: 0;
+    }
+    .r-foot .ed-cur { color: var(--faint-ink); }
+    .r-foot .ed-cur .num { color: var(--soft-ink); }
+    .r-foot .ed-latest { color: var(--accent-ink); }
+    .r-foot .frontlink { color: var(--accent-ink); }
+    .r-foot .frontlink:hover { text-decoration: underline; }
+    .r-foot .report-share { margin: 0; padding: 0; border: 0; }
+
+    @media (max-width: 720px) {
+      .r-foot { flex-direction: column; align-items: flex-start; }
+      /* leave room above the fixed mobile share bar */
+      .r-foot { margin-bottom: calc(44px + env(safe-area-inset-bottom, 0px)); }
+    }
+
+    /* ---- Mobile collapse disclosure ---- */
+    details[data-mobile-collapse] > summary {
+      display: none;
+    }
+    @media (max-width: 720px) {
+      details[data-mobile-collapse] > summary {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        list-style: none;
+        cursor: pointer;
+        padding: 0.75rem 0;
+        margin: var(--space-md) 0 0;
+        border-top: 1px solid var(--hairline);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--accent-ink);
+        min-height: 44px;
+        user-select: none;
+      }
+      details[data-mobile-collapse] > summary::after {
+        content: "▾";
+        font-size: 1rem;
+        line-height: 1;
+        transition: transform 160ms ease;
+      }
+      details[data-mobile-collapse][open] > summary::after {
+        transform: rotate(-180deg);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        details[data-mobile-collapse] > summary::after {
+          transition: none;
+        }
+      }
+    }
+
     @keyframes hero-in {
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1088,35 +1468,16 @@ const sectionHeadings = (headings ?? []).filter((h) => h.depth === 2);
     }
 
     @media (max-width: 560px) {
-      .report-nav > a:first-child { flex: 1 1 100%; }
-      .language-toggle {
-        width: 100%;
-        justify-content: center;
-        gap: 0.7rem;
-      }
       .report-hero h1 { font-size: var(--step-2); }
       .instrument-value { font-size: var(--step-1); }
       .prose { line-height: 1.72; }
       .prose[lang="th"] { line-height: 1.86; }
       .prose :global(ul),
       .prose :global(ol) { padding-left: 1.05em; }
-      .prose :global(blockquote) { padding-inline: var(--space-sm); }
+      .prose :global(blockquote) { padding-left: var(--space-sm); }
       .prose :global(th),
       .prose :global(td) { padding: 0.55rem 0.62rem; }
-      .prose :global(h2) {
-        padding-left: 0;
-        padding-top: 2.2rem;
-      }
-      .prose :global(h2)::before {
-        position: static;
-        display: block;
-        margin-bottom: 0.25rem;
-      }
-      .prose :global(h2):first-of-type + :global(ul),
-      .prose :global(h2):first-of-type + :global(p) {
-        padding-left: var(--space-md);
-        margin-left: 0;
-      }
+      .prose:not([lang="th"]) > :global(p:first-of-type)::first-letter { font-size: 3em; }
     }
   </style>
 </Base>

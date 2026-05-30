@@ -1,0 +1,118 @@
+---
+import type { Lang } from "../lib/i18n";
+import { UI } from "../lib/i18n";
+
+interface Props {
+  title: string;
+  url: string;
+  lang: Lang;
+  rssHref?: string;
+  compact?: boolean;
+}
+
+const { title, url, lang, rssHref, compact = false } = Astro.props;
+const t = UI[lang];
+
+const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+const lineHref = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`;
+---
+
+<div class={`report-share ui-text${compact ? " report-share--compact" : ""}`} data-pagefind-ignore>
+  {!compact && <span class="share-label">{t.shareTitle}</span>}
+
+  <a class="share-btn" href={xHref} target="_blank" rel="noopener" aria-label={t.shareX}>
+    <svg class="share-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+    </svg>
+    <span class="share-btn-label">X</span>
+  </a>
+
+  <a class="share-btn share-btn--line" href={lineHref} target="_blank" rel="noopener" aria-label={t.shareLine}>
+    <svg class="share-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+      <path d="M22 10c0-4.97-4.93-9-11-9S0 5.03 0 10c0 4.49 4 8.21 9.4 8.87.36.08.86.24.98.54.11.28.07.71.04.99l-.16.94c-.05.28-.22 1.08.95.59 1.17-.49 6.31-3.71 8.62-6.36A8.6 8.6 0 0 0 22 10z" fill="currentColor"/>
+    </svg>
+    <span class="share-btn-label">LINE</span>
+  </a>
+
+  <button
+    class="share-btn"
+    type="button"
+    data-copy-link
+    data-url={url}
+    data-label-copy={t.shareCopy}
+    data-label-copied={t.shareCopied}
+    aria-label={t.shareCopy}
+  >
+    <svg class="share-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="share-btn-label copy-label">{t.shareCopy}</span>
+  </button>
+
+  {rssHref && (
+    <a class="share-btn share-btn--rss num" href={rssHref} aria-label="RSS">
+      RSS
+    </a>
+  )}
+</div>
+
+<style>
+  .report-share {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.5rem;
+  }
+  .report-share:not(.report-share--compact) {
+    margin: var(--space-sm) 0 0;
+    padding: var(--space-sm) 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .share-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--soft-ink);
+    margin-right: 0.15rem;
+  }
+  .share-btn {
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.6rem;
+    min-height: 44px;
+    border: 1px solid var(--hairline);
+    color: var(--soft-ink);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .share-btn:hover { color: var(--accent-ink); border-color: var(--accent); }
+  .share-btn:focus-visible {
+    outline: 3px solid color-mix(in oklch, var(--accent), transparent 25%);
+    outline-offset: 2px;
+  }
+  .share-btn--rss {
+    color: var(--accent-ink);
+    border-color: color-mix(in oklch, var(--accent), transparent 55%);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    min-height: 28px;
+    padding: 0.2rem 0.5rem;
+    align-self: center;
+  }
+  .share-btn--rss:hover { border-color: var(--accent); }
+  .report-share--compact .share-btn { min-height: 40px; }
+  .share-icon { flex-shrink: 0; }
+</style>

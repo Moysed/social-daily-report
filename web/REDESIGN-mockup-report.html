@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Social Daily Report — Report page mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,650&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+Thai:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     The Front Page — Report reading page mockup (REDESIGN.md §4.5 + §4.6)
+     Standalone visual proof. Not production CSS.
+     ============================================================ */
+  :root {
+    color-scheme: light dark;
+    --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
+    --font-body: "Newsreader", "Noto Serif Thai", Georgia, serif;
+    --font-ui: "Space Grotesk", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --bg:        light-dark(oklch(0.965 0.015 76),  oklch(0.16 0.014 254));
+    --paper:     light-dark(oklch(0.99 0.008 80),   oklch(0.205 0.016 254));
+    --ink:       light-dark(oklch(0.22 0.018 61),   oklch(0.95 0.01 220));
+    --soft-ink:  light-dark(oklch(0.44 0.026 60),   oklch(0.74 0.014 220));
+    --faint-ink: light-dark(oklch(0.57 0.022 60),   oklch(0.58 0.014 230));
+    --line:      light-dark(oklch(0.78 0.03 75),    oklch(0.40 0.022 248));
+    --hairline:  light-dark(oklch(0.88 0.018 76),   oklch(0.28 0.018 250));
+    --accent:    light-dark(oklch(0.5 0.13 33),     oklch(0.78 0.135 65));
+    --accent-ink:light-dark(oklch(0.4 0.13 31),     oklch(0.85 0.13 68));
+    --mark-bg:   light-dark(oklch(0.88 0.09 70),    oklch(0.45 0.10 65));
+
+    --rule-major:  3px solid var(--ink);
+    --rule-section:1px solid var(--line);
+    --rule-faint:  1px solid var(--hairline);
+    --rule-lead:   3px solid var(--accent);
+
+    --step--1: clamp(0.78rem, 0.75rem + 0.15vw, 0.88rem);
+    --step-0:  clamp(1.08rem, 1.02rem + 0.25vw, 1.22rem);
+    --step-1:  clamp(1.28rem, 1.16rem + 0.6vw, 1.6rem);
+    --step-2:  clamp(1.55rem, 1.3rem + 1.2vw, 2.2rem);
+    --step-3:  clamp(2rem, 1.55rem + 2.2vw, 3.6rem);
+
+    --measure-prose: 64ch;
+    --space-sm: clamp(0.85rem, 0.74rem + 0.55vw, 1.2rem);
+    --space-md: clamp(1.35rem, 1.14rem + 1.05vw, 2rem);
+    --space-lg: clamp(2.1rem, 1.66rem + 2.2vw, 3.4rem);
+    --max: 78rem;
+  }
+  html[data-theme="light"] { color-scheme: light; }
+  html[data-theme="dark"]  { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body { margin: 0; font-family: var(--font-body); font-size: var(--step-0); line-height: 1.72; }
+  a { color: inherit; text-decoration: none; }
+  :lang(th) { line-height: 1.9; }
+  .mono { font-family: var(--font-mono); font-feature-settings: "tnum" 1; }
+  .eyebrow { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.08em; font-size: var(--step--1); font-weight: 600; color: var(--soft-ink); margin: 0; }
+  .eyebrow.accent { color: var(--accent-ink); }
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: clamp(1rem, 0.5rem + 2vw, 2.4rem); }
+
+  /* reading-progress bar (CSS scroll-driven; falls back to static in unsupported browsers) */
+  .progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; transform-origin: 0 50%; background: var(--accent); z-index: 50; transform: scaleX(0); animation: grow linear; animation-timeline: scroll(root block); }
+  @keyframes grow { to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) { .progress { animation: none; transform: scaleX(0); } }
+
+  /* masthead (slim) */
+  .masthead { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 1.2rem 0 0.8rem; }
+  .masthead .brand { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.01em; }
+  .masthead .util { display: inline-flex; align-items: center; gap: 1rem; font-family: var(--font-ui); font-size: var(--step--1); color: var(--soft-ink); }
+  .masthead .util .date { font-family: var(--font-mono); }
+  .masthead .util button { font: inherit; background: none; border: none; color: var(--soft-ink); cursor: pointer; display: inline-flex; gap: 0.35rem; align-items: center; }
+  .masthead .kbd { font-family: var(--font-mono); font-size: 0.72em; border: var(--rule-faint); padding: 0.05rem 0.3rem; color: var(--faint-ink); }
+  .rule-major { border: 0; border-top: var(--rule-major); margin: 0; }
+
+  /* breadcrumb */
+  .crumb { font-family: var(--font-ui); font-size: var(--step--1); color: var(--soft-ink); padding: 0.8rem 0 0; }
+  .crumb a:hover { color: var(--accent-ink); }
+
+  /* report layout: article + sticky rail TOC */
+  .report { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: var(--space-lg); margin-top: var(--space-sm); }
+  @media (max-width: 60rem) { .report { grid-template-columns: 1fr; } .toc { position: static !important; order: -1; } }
+
+  /* report header */
+  .r-head { }
+  .r-eyebrow { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .r-eyebrow .date { font-family: var(--font-mono); color: var(--faint-ink); }
+  .r-title { font-family: var(--font-display); font-weight: 650; font-size: var(--step-3); line-height: 1.0; letter-spacing: -0.015em; margin: 0.5rem 0 0; max-width: 18ch; }
+
+  /* metadata strip */
+  .metastrip { display: flex; align-items: center; gap: 0.7rem 1rem; flex-wrap: wrap; margin: 1.1rem 0 0; padding: 0.7rem 0; border-top: var(--rule-section); border-bottom: var(--rule-faint); font-family: var(--font-mono); font-size: var(--step--1); color: var(--faint-ink); }
+  .metastrip .up { color: var(--accent-ink); }
+  .metastrip .langtoggle { margin-left: auto; font-family: var(--font-ui); display: inline-flex; gap: 0.3rem; }
+  .metastrip .langtoggle .on { color: var(--accent-ink); font-weight: 700; }
+
+  /* KEY POINTS box — hairline-ruled, not filled */
+  .keypoints { margin: var(--space-md) 0 0; padding: 1rem 1.1rem; border: var(--rule-section); border-left: var(--rule-lead); }
+  .keypoints .lbl { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.07em; font-size: var(--step--1); font-weight: 600; color: var(--soft-ink); margin: 0 0 0.5rem; }
+  .keypoints ul { margin: 0; padding-left: 1.1rem; }
+  .keypoints li { margin: 0.4rem 0; line-height: 1.5; }
+  .keypoints li b { font-weight: 600; }
+
+  /* WHY IT MATTERS */
+  .why { margin: var(--space-md) 0 0; max-width: var(--measure-prose); }
+  .why .lbl { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.07em; font-size: var(--step--1); font-weight: 600; color: var(--accent-ink); }
+  .why p { margin: 0.2rem 0 0; font-size: var(--step-1); line-height: 1.5; color: var(--soft-ink); }
+
+  /* prose body */
+  .prose { margin: var(--space-md) 0 0; max-width: var(--measure-prose); }
+  .prose p { margin: 0 0 1rem; }
+  .prose p + p { text-indent: 1.4em; }   /* Bloomberg print cue */
+  /* drop cap */
+  .prose > p.lead-para::first-letter { font-family: var(--font-display); font-weight: 600; color: var(--accent-ink); float: left; font-size: 3.4em; line-height: 0.74; padding: 0.08em 0.1em 0 0; }
+  .prose h2 { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.07em; font-size: var(--step--1); font-weight: 700; color: var(--soft-ink); margin: var(--space-md) 0 0.6rem; padding-top: 0.6rem; border-top: var(--rule-faint); scroll-margin-top: 1rem; }
+  .prose mark { background: var(--mark-bg); color: var(--ink); padding: 0 0.1em; }
+
+  /* pull quote — inline, no box */
+  .pull { font-family: var(--font-display); font-weight: 500; font-size: var(--step-2); line-height: 1.18; color: var(--ink); margin: 1.4rem 0; padding-left: 1rem; border-left: var(--rule-lead); max-width: 30ch; }
+
+  /* THE NUMBERS block */
+  .numbers { margin: var(--space-md) 0 0; padding-top: 0.6rem; border-top: var(--rule-faint); }
+  .numbers .grid { display: flex; gap: 1.6rem 2.4rem; flex-wrap: wrap; margin-top: 0.7rem; }
+  .numbers .stat .k { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.72rem; color: var(--soft-ink); }
+  .numbers .stat .v { font-family: var(--font-mono); font-size: var(--step-1); display: flex; align-items: center; gap: 0.45rem; }
+  .numbers .stat .v .up { color: var(--accent-ink); }
+  .spark { color: var(--accent); vertical-align: middle; }
+  .sentiment { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .sentiment .glyph { color: var(--accent); }
+
+  /* sources / citations */
+  .cite { font-family: var(--font-mono); font-size: 0.72em; vertical-align: super; color: var(--accent-ink); text-decoration: none; padding: 0 0.05em; }
+  .sources { margin: var(--space-md) 0 0; padding-top: 0.6rem; border-top: var(--rule-faint); }
+  .sources ol { font-family: var(--font-ui); font-size: var(--step--1); color: var(--soft-ink); padding-left: 1.4rem; }
+  .sources li { margin: 0.3rem 0; }
+  .sources a { color: var(--accent-ink); }
+
+  /* rail TOC */
+  .toc { position: sticky; top: 1.5rem; align-self: start; font-family: var(--font-ui); font-size: var(--step--1); }
+  .toc .lbl { text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: var(--soft-ink); margin: 0 0 0.6rem; padding-bottom: 0.5rem; border-bottom: var(--rule-section); }
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc li { margin: 0.1rem 0; }
+  .toc a { display: flex; gap: 0.5rem; padding: 0.3rem 0 0.3rem 0.7rem; color: var(--faint-ink); border-left: 2px solid transparent; }
+  .toc a:hover { color: var(--ink); }
+  .toc a.active { color: var(--accent-ink); border-left-color: var(--accent); font-weight: 600; }
+  .toc .num { font-family: var(--font-mono); }
+
+  /* foot: prev/next + share */
+  .r-foot { margin: var(--space-lg) 0 0; padding: var(--space-md) 0; border-top: var(--rule-major); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-family: var(--font-ui); font-size: var(--step--1); }
+  .r-foot .editions { display: inline-flex; gap: 1.2rem; color: var(--soft-ink); }
+  .r-foot .editions a:hover { color: var(--accent-ink); }
+  .r-foot .editions .cur { font-family: var(--font-mono); color: var(--faint-ink); }
+  .r-foot .editions .frontlink { color: var(--accent-ink); }
+  .r-foot .editions .frontlink:hover { text-decoration: underline; }
+  .r-foot .share { display: inline-flex; gap: 0.9rem; color: var(--soft-ink); }
+  .r-foot .share a:hover, .r-foot .share button:hover { color: var(--accent-ink); }
+  .r-foot .share button { font: inherit; background: none; border: none; color: inherit; cursor: pointer; }
+
+  .site-foot { padding: var(--space-md) 0 var(--space-lg); border-top: var(--rule-section); font-family: var(--font-ui); font-size: var(--step--1); color: var(--faint-ink); }
+
+  /* ===== Search palette (REDESIGN.md §4.6) — solid panel, no glass ===== */
+  .scrim { position: fixed; inset: 0; background: color-mix(in oklch, var(--ink), transparent 55%); display: none; z-index: 100; align-items: flex-start; justify-content: center; padding-top: 12vh; }
+  .scrim.open { display: flex; }
+  .palette { width: min(40rem, 92vw); background: var(--paper); border: var(--rule-section); box-shadow: 0 18px 50px -20px rgba(0,0,0,0.5); }
+  .palette .pinput { display: flex; align-items: center; gap: 0.6rem; padding: 0.9rem 1.1rem; border-bottom: var(--rule-section); }
+  .palette .pinput svg { color: var(--soft-ink); }
+  .palette input { flex: 1; font: inherit; font-family: var(--font-ui); font-size: var(--step-1); background: none; border: none; color: var(--ink); outline: none; }
+  .palette input::placeholder { color: var(--faint-ink); }
+  .palette .res { max-height: 50vh; overflow: auto; }
+  .palette .row { padding: 0.8rem 1.1rem; border-top: var(--rule-faint); cursor: pointer; }
+  .palette .row:first-child { border-top: 0; }
+  .palette .row:hover, .palette .row.sel { background: color-mix(in oklch, var(--accent), transparent 88%); }
+  .palette .row .h { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.72rem; color: var(--soft-ink); display: flex; gap: 0.6rem; }
+  .palette .row .h .min { font-family: var(--font-mono); color: var(--faint-ink); }
+  .palette .row .ex { margin: 0.25rem 0 0; color: var(--soft-ink); font-size: var(--step--1); }
+  .palette .row .ex mark { background: var(--mark-bg); color: var(--ink); }
+  .palette .row .sub { margin: 0.25rem 0 0; font-family: var(--font-ui); font-size: 0.72rem; color: var(--faint-ink); }
+  .palette .pfoot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.7rem 1.1rem; border-top: var(--rule-section); font-family: var(--font-ui); font-size: 0.74rem; color: var(--faint-ink); }
+  .palette .pfoot .facets { display: inline-flex; gap: 0.5rem; }
+  .palette .pfoot .facet { border: var(--rule-faint); padding: 0.1rem 0.5rem; }
+
+  .note { max-width: var(--max); margin: 0 auto 2rem; padding: 0.6rem 1rem; font-family: var(--font-ui); font-size: var(--step--1); color: var(--faint-ink); border: var(--rule-faint); }
+  .note b { color: var(--soft-ink); }
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+
+<div class="wrap">
+  <!-- masthead -->
+  <header class="masthead">
+    <a class="brand" href="REDESIGN-mockup.html">Social Daily Report</a>
+    <div class="util">
+      <span class="date">Thu 29 May 2026</span>
+      <button type="button" id="search"><span>Search</span><span class="kbd">⌘K</span></button>
+      <span><span style="color:var(--accent-ink);font-weight:700">EN</span> | ไทย</span>
+      <button type="button" id="theme">☾ Auto</button>
+    </div>
+  </header>
+  <hr class="rule-major" />
+
+  <nav class="crumb"><a href="REDESIGN-mockup.html">← Social Daily Report</a> / AI Devtools</nav>
+
+  <div class="report">
+    <!-- article -->
+    <article class="r-head">
+      <p class="eyebrow r-eyebrow accent">AI Devtools <span class="date">· 29 May 2026</span></p>
+      <h1 class="r-title">Anthropic ships an agentic build pipeline</h1>
+
+      <div class="metastrip">
+        <span>847 words</span><span>·</span>
+        <span>6-min read</span><span>·</span>
+        <span>14 sources</span><span>·</span>
+        <span>salience .82 <span class="up">↑</span></span>
+        <span class="langtoggle"><span class="on">EN</span>|<span>ไทย</span></span>
+      </div>
+
+      <!-- KEY POINTS -->
+      <section class="keypoints">
+        <p class="lbl">Key points</p>
+        <ul>
+          <li><b>Closed-loop agents plan, write, and verify</b> against a test harness before opening a PR.</li>
+          <li><b>~40% cheaper per task</b> via prompt caching + planner→Opus routing only on hard steps.</li>
+          <li><b>Green-field wins, brown-field still needs a babysitter</b> on legacy codebases.</li>
+        </ul>
+      </section>
+
+      <!-- WHY IT MATTERS -->
+      <div class="why">
+        <span class="lbl">Why it matters</span>
+        <p>The first credible "describe → ship" loop a small team can run unattended — directly relevant to how NDF DEV scaffolds internal tools.</p>
+      </div>
+
+      <!-- prose -->
+      <div class="prose">
+        <p class="lead-para">Anthropic's new pipeline closes the loop that earlier coding agents left open: instead of emitting a diff and hoping, the agent now runs the project's own test harness, reads the failures, and iterates until green before a human ever sees a pull request.<a class="cite" href="#s1">1</a> That single change moves the trust boundary from "review every line" to "review the outcome."</p>
+
+        <p class="pull">The trust boundary moves from every line to the outcome.</p>
+
+        <h2 id="the-news">The news</h2>
+        <p>The release pairs a cheap planner model with selective routing to Opus on the hard steps, which is where the <mark>~40% cost reduction</mark> comes from.<a class="cite" href="#s2">2</a> Prompt caching across the plan-act-verify cycle does the rest.</p>
+
+        <h2 id="signals">Signals</h2>
+        <p>Early adopters split cleanly by codebase age. Green-field projects report near-autonomous runs; brown-field teams still report a babysitter tax on anything touching legacy modules and implicit conventions.<a class="cite" href="#s3">3</a></p>
+
+        <h2 id="the-numbers">The numbers</h2>
+        <section class="numbers">
+          <div class="grid">
+            <div class="stat"><div class="k">Salience</div><div class="v">.82 <span class="up">↑</span> <svg class="spark" width="64" height="16" viewBox="0 0 64 16"><polyline points="0,13 10,11 21,7 32,8 43,4 53,3 64,1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div></div>
+            <div class="stat"><div class="k">Sentiment</div><div class="v"><span class="sentiment"><span class="glyph">◗</span> positive</span></div></div>
+            <div class="stat"><div class="k">Confidence</div><div class="v">.76</div></div>
+            <div class="stat"><div class="k">Posts</div><div class="v">1.2k</div></div>
+            <div class="stat"><div class="k">Sources</div><div class="v">14</div></div>
+          </div>
+        </section>
+
+        <section class="sources" id="sources">
+          <h2 id="sources-h" style="border:0;padding:0;margin-bottom:0.3rem">Sources</h2>
+          <ol>
+            <li id="s1"><a href="#">anthropic.com/engineering/agentic-pipeline</a></li>
+            <li id="s2"><a href="#">@swyx — cost breakdown thread</a></li>
+            <li id="s3"><a href="#">r/ExperiencedDevs — brown-field report</a></li>
+          </ol>
+        </section>
+      </div>
+    </article>
+
+    <!-- rail TOC -->
+    <aside class="toc" aria-label="On this page">
+      <p class="lbl">On this page</p>
+      <ol>
+        <li><a href="#the-news" class="active"><span class="num">01</span> The news</a></li>
+        <li><a href="#signals"><span class="num">02</span> Signals</a></li>
+        <li><a href="#the-numbers"><span class="num">03</span> The numbers</a></li>
+        <li><a href="#sources"><span class="num">04</span> Sources</a></li>
+      </ol>
+    </aside>
+  </div>
+
+  <!-- foot: prev/next edition (SAME TOPIC across days) + back-to-front-page + share -->
+  <div class="r-foot">
+    <span class="editions">
+      <a href="#" title="Previous AI Devtools report">← 27 May</a>
+      <span class="cur">AI Devtools · 29 May · latest</span>
+      <!-- no "next" arrow: 29 May is the latest run of this topic -->
+      <a class="frontlink" href="REDESIGN-mockup.html">↑ 29 May front page</a>
+    </span>
+    <span class="share">
+      <a href="#">Share on X</a>
+      <a href="#">LINE</a>
+      <button type="button">Copy link</button>
+      <a href="#">RSS</a>
+    </span>
+  </div>
+
+  <footer class="site-foot">AI-reasoned daily reports across social platforms for the NDF DEV team.</footer>
+</div>
+
+<!-- ===== Search palette overlay ===== -->
+<div class="scrim" id="scrim">
+  <div class="palette" role="dialog" aria-label="Search">
+    <div class="pinput">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.7"/><line x1="15.6" y1="15.6" x2="20" y2="20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <input type="text" value="agentic build" aria-label="Search reports" />
+    </div>
+    <div class="res">
+      <div class="row sel">
+        <div class="h">AI Devtools <span>· 29 May</span> <span class="min">· 4 min</span></div>
+        <p class="ex">…Anthropic ships an <mark>agentic build</mark> pipeline that runs the test harness before…</p>
+        <p class="sub">› matches in: The news · Signals</p>
+      </div>
+      <div class="row">
+        <div class="h">AI Research <span>· 27 May</span> <span class="min">· 3 min</span></div>
+        <p class="ex">…a new <mark>agentic</mark> eval suite exposes brittle tool-use under multi-step chains…</p>
+        <p class="sub">› matches in: The numbers</p>
+      </div>
+      <div class="row">
+        <div class="h">DevOps &amp; Cloud <span>· 25 May</span> <span class="min">· 2 min</span></div>
+        <p class="ex">…CI runners now spin up <mark>agentic</mark> fixers on red <mark>builds</mark> automatically…</p>
+      </div>
+    </div>
+    <div class="pfoot">
+      <span class="facets"><span class="facet">topic ▾</span><span class="facet">date ▾</span></span>
+      <span>12 results · ↑↓ navigate · ↵ open · esc close</span>
+    </div>
+  </div>
+</div>
+
+<p class="note"><b>Mockup — report reading page + ⌘K search.</b> Proves REDESIGN.md §4.5–4.6: metadata strip, hairline KEY POINTS box, WHY IT MATTERS, drop cap, inline pull quote, labeled sections (THE NEWS / SIGNALS / THE NUMBERS / SOURCES), superscript citation chips → sources, sticky rail TOC, CSS scroll-progress bar (top), prev/next edition + share foot, and a solid-panel search palette (no glass). Click <b>⌘K / Search</b> to open it; ☾ toggles dark. Home/trending mockup → REDESIGN-mockup.html.</p>
+
+<script>
+  const html = document.documentElement;
+  const tbtn = document.getElementById('theme');
+  const states = [['auto','☾ Auto'],['light','☀ Light'],['dark','☾ Dark']]; let i = 0;
+  tbtn.addEventListener('click', () => { i=(i+1)%states.length; const [v,l]=states[i]; if(v==='auto')html.removeAttribute('data-theme');else html.setAttribute('data-theme',v); tbtn.textContent=l; });
+
+  const scrim = document.getElementById('scrim');
+  const open = () => { scrim.classList.add('open'); scrim.querySelector('input').focus(); };
+  const close = () => scrim.classList.remove('open');
+  document.getElementById('search').addEventListener('click', open);
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k') { e.preventDefault(); open(); }
+    else if (e.key==='/' && !/input|textarea/i.test(e.target.tagName)) { e.preventDefault(); open(); }
+    else if (e.key==='Escape') close();
+  });
+  scrim.addEventListener('click', e => { if (e.target===scrim) close(); });
+
+  // mock scrollspy for the rail TOC
+  const links = [...document.querySelectorAll('.toc a')];
+  const ids = links.map(a => a.getAttribute('href').slice(1));
+  const io = new IntersectionObserver(es => {
+    es.forEach(en => { if (en.isIntersecting) { const id=en.target.id; links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id)); } });
+  }, { rootMargin: '-10% 0px -75% 0px' });
+  ids.forEach(id => { const el=document.getElementById(id); if(el) io.observe(el); });
+</script>
+</body>
+</html>

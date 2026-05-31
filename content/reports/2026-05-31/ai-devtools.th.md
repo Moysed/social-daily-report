@@ -4,7 +4,7 @@ date: '2026-05-31'
 topic: ai-devtools
 lang: th
 pair: ai-devtools.en.md
-generated_at: '2026-05-30T18:03:43+00:00'
+generated_at: '2026-05-31T03:56:09+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,21 +12,20 @@ platforms:
 - hackernews
 - lobsters
 - radar
-- rss
 - x
 regions:
 - global
-post_count: 166
-salience: 0.8
+post_count: 153
+salience: 0.78
 sentiment: mixed
-confidence: 0.58
+confidence: 0.6
 tags:
-- ai-devtools
 - agent-skills
-- coding-agents
+- document-parsing
 - local-models
-- llm-models
-- doc-parsing
+- coding-agents
+- llm-infra
+- edge-wasm
 thumbnail: https://pbs.twimg.com/media/HJhEMMtaMAAK-hb.jpg
 translated_by: claude-sonnet-4-6
 ---
@@ -34,79 +33,79 @@ translated_by: claude-sonnet-4-6
 # AI Devtools — 2026-05-31
 
 ## TL;DR
-- Agent Skills กลายเป็นธีมหลักของ devtools: stack ที่ประกอบด้วย SKILL.md + MCP + plugins ครอบคลุม Claude Code, Codex, และ Cursor แล้ว โดย Microsoft's SkillOpt เสนอให้ train/optimize skills แทนการเขียนด้วยมือ [9][24][30][45][47][54][57]
-- Anthropic ปล่อย Opus 4.8 (เลือก thinking effort ได้ 5 ระดับ, tool use ดีกว่า 4.7) แต่ยังตามหลัง GPT-5.5 อยู่ 3.6% บน Terminal-Bench 2.1 ใน Cline — ปรับปรุงแบบค่อยเป็นค่อยไป ไม่ใช่ก้าวกระโดด [7][26][31]
-- Coding agents เริ่มได้รับ execution feedback จริง: Chrome DevTools for agents ออก stable 1.0 แล้ว (browser debugging, emulation, audits) และ Warp เพิ่มปุ่ม commit/push/PR สำหรับโค้ดที่ agent เขียน [6][60]
-- Small local models ก้าวเข้าสู่ความสามารถระดับ agentic: Gemma 4 รันบนอุปกรณ์ได้ทั้งหมด (image→JSON, audio transcribe) และ Liquid LFM2.5-8B-A1B (active 1.5B) อ้างว่าเหนือกว่า Gemma-4-26B/Qwen3-30B ด้าน instruction following [4][10][42][50]
-- Document parsing สำหรับ agent pipelines รวมศูนย์รอบเครื่องมือที่เร็วและพกพาได้: LlamaIndex liteparse รันใน WASM บน browser/edge/Cloudflare พร้อมกัน Microsoft markitdown แปลงไฟล์→Markdown [2][8][13][39]
+- Agent Skills (SKILL.md) คือธีมหลักของวัน: skills repo สาธารณะของ Anthropic [23], คอร์ส context-engineering บน Hugging Face ที่ครอบคลุม SKILL.md/MCP/plugins [25], Firebase/Android Studio Agent Mode [48], Supabase skill ใน Codex's Build Web Apps plugin [55], และ Microsoft's SkillOpt ที่มอง skills เป็น object ที่ฝึกและ optimize ได้แทนการเขียนด้วยมือ [45][60].
+- กลุ่มเครื่องมือ document parsing: Microsoft markitdown (files/Office → Markdown) [2], LlamaIndex liteparse พร้อม WASM build ที่รันใน browser/Cloudflare Workers/edge ภายในมิลลิวินาที [7][10][34][46].
+- Small local models ถึงคุณภาพที่ใช้งานได้จริง: Gemma 4 รันบน device ครบทุกฟีเจอร์ (image→JSON, audio transcription, tool use) ใน Google AI Edge Gallery [5], minicpm5 สำหรับ agentic tool use บนเครื่อง 4–8GB [6], LFM2.5-8B-A1B MoE สำหรับ agentic behavior [59].
+- Infra/funding: OpenRouter ระดมทุน Series B มูลค่า $113M [26]; Vercel ส่ง Docker-in-sandbox [36] และ per-API-key spend caps บน AI Gateway [57]; Gemini API เพิ่ม Managed Agents (sandboxed Linux + code exec + web + file I/O ในการเรียกครั้งเดียว) [58].
+- สัญญาณต้านกระแส: ข้ออ้างที่ว่า Uber ใช้จ่าย AI เกินตัวดูเหมือนอิงรายงานที่ไม่น่าเชื่อถือ [13]; "domain expertise has always been the real moat" [29]; และ "use lots of AI, some AI, or none — just be the best" [3].
 
-## What happened
-หลายรายการที่เกิดขึ้นพร้อมกันชี้ให้เห็นว่า agent skills กำลังกลายเป็น packaging standard: anthropics/skills [24], cross-tool harnesses (ECC [9], compound-engineering-plugin [30]), Cursor's plugin spec [45], คอร์ส Hugging Face ที่ครอบคลุม SKILL.md/MCP/plugins [47], Microsoft's SkillOpt ที่โต้แย้งว่า skills ควร train ไม่ใช่เขียนมือ [54], และ semantic search ครอบคลุม 500k+ skills [57] Anthropic ปล่อย Opus 4.8 พร้อม thinking-effort 5 ระดับและ tool use ที่ดีกว่า 4.7 [26][31] แต่การทดสอบ side-by-side ของ Cline ยังให้ผลตาม GPT-5.5 อยู่ 3.6% บน Terminal-Bench 2.1 [7] ด้าน execution, Chrome DevTools for agents ออก stable 1.0 เพื่อให้ agents เข้าถึง browser debugging และ audits [6] และ Warp เพิ่ม commit/push/PR actions ใน panel [60]
+## สิ่งที่เกิดขึ้น
+สัญญาณ AI-devtools ของวันนี้กระจุกตัวอยู่ที่ ecosystem ของ agent-skills. Anthropic ดูแล public skills repo [23] และ Claude Code [18]; ผู้ผลิตส่ง skills เป็น distribution format: Firebase/Android Studio Agent Mode พร้อม Firestore/Auth skills ที่ไม่ต้องตั้งค่า [48], Supabase Postgres best-practice skill ใน Codex's Build Web Apps plugin [55], Cursor plugins [41], และ third-party harness (ECC) ที่รองรับ Claude Code/Codex/Cursor/Opencode [9][28]. Tooling รอบ skills ก็ปรากฏตัว: security scanner สำหรับ skills [20], semantic search เหนือ 500k+ skills [44], คอร์ส Hugging Face เรื่อง SKILL.md/MCP/plugins [25], และ Microsoft's SkillOpt ที่ optimize SKILL.md ใน text-space แทนการเขียนด้วยมือ [45][60].
 
-## Why it matters (reasoning)
-การรวมตัวของ skills/MCP/plugin หมายความว่าการลงทุนใน agent tooling กำลังกลายเป็นสิ่งที่ใช้ข้ามแพลตฟอร์มได้ระหว่าง Claude Code, Codex, และ Cursor แทนที่จะผูกติดกับ vendor รายเดียว [9][30][45] ซึ่งลด switching cost ลง — แต่โพสต์ 'MCP is dead?' [29] บ่งชี้ว่า protocol layer ยังอยู่ในสภาวะที่ถกเถียงกันอยู่ การเดิมพันกับ spec ใดก็ตามอย่างหนักจึงยังเร็วเกินไป ช่องว่าง benchmark แคบของ Opus 4.8 [7] ยืนยันว่าการเลือก model เป็นการตัดสินใจเรื่อง tuning ไม่ใช่ moat แล้ว การควบคุม effort-level [31] สำคัญกว่า raw capability ในแง่ cost/latency เครื่องมือ agent-feedback [6][60] ตอบโจทย์ปัญหาที่แท้จริงของ code agents — เขียนโค้ดที่ compile ได้แต่ไม่ทำงาน — ซึ่งเป็น blocker จริงสำหรับการนำไปใช้ใน studio On-device models [4][42][50] เปิดทาง offline/edge inference สำหรับ XR และ mobile ที่ latency และ privacy ไม่อนุญาตให้ใช้ cloud APIs
+## ทำไมถึงสำคัญ (reasoning)
+สองเทรนด์ที่บรรจบกันมีประโยชน์ต่อ studio โดยตรง. หนึ่ง, document parsing ถูกลงและพกพาได้ — markitdown [2] และ WASM build ของ liteparse [34][46] ทำให้ PDF/Office→structured-text รันฝั่ง client หรือที่ edge ได้ เหมาะกับการ ingest เนื้อหา edutech และ mobile/offline pipeline โดยไม่ต้องวน server. สอง, small models บน device [5][6][59] ทำให้ local inference (transcription, image→JSON, tool calls) ใช้งานได้จริงสำหรับ XR/VR และ mobile ที่ latency, privacy, และการทำงาน offline คือปัจจัยสำคัญ. ด้าน infra, การระดมทุน $113M ของ OpenRouter [26] และ per-key spend caps ของ Vercel [57] ชี้ว่า model-routing และ cost-governance กำลังกลายเป็นความกังวลมาตรฐานเมื่อทีมต่อ LLM calls เข้ากับ product. รายการที่ตั้งคำถาม [3][13][29] เป็นข้อเตือนสติที่มีประโยชน์: skills/agents คือรูปแบบการจัดแพ็คเกจ ไม่ใช่ moat — domain expertise และคุณภาพ product ยังตัดสินผลลัพธ์ และอย่างน้อยหนึ่งเรื่อง AI-cost failure ที่ถูกอ้างถึงบ่อยดูไม่น่าเชื่อถือ [13].
 
-## Possibility
-มีแนวโน้มสูง: agent skills จะรวมตัวเป็น format ที่ interoperable ไม่กี่รูปแบบ จากปริมาณ tooling ที่มาบรรจบกันสัปดาห์นี้ [24][47][57] เป็นไปได้: MCP layer อาจถูกแทนที่บางส่วนหรือ fork ตาม 'MCP is dead?' ที่ยังถกเถียงกันอยู่ [29] — ให้มอง MCP ว่ามีประโยชน์แต่ยังไม่นิ่ง เป็นไปได้: small MoE models อย่าง LFM2.5 [42][50] และ Gemma 4 [4] จะใช้งานได้จริงสำหรับ on-device agent tasks ที่เฉพาะเจาะจงภายในไม่กี่เดือน แต่ claim 'beats X' มาจาก vendor self-report [50] และยังไม่มีการยืนยันจากภายนอก ไม่น่าเกิดขึ้น: frontier model รายใดรายหนึ่งจะครอง coding lead ได้อย่างยั่งยืน เพราะ spread แค่ 3.6% และ release cadence เร็วมาก [7][33]
+## ความเป็นไปได้
+Likely: SKILL.md / agent-skills จะรวมตัวเป็น cross-tool packaging format มาตรฐาน เนื่องจาก Anthropic, Google (Firebase/Android), Cursor, และ Codex ล้วนส่ง format นี้ [23][41][48][55] และ tooling (scanners, search, optimizers) กำลังก่อตัวรอบมัน [20][44][45][60]. Plausible: edge/WASM document parsing กลายเป็น default สำหรับ content pipeline เมื่อ liteparse รันใน Workers และ browser ได้ [34][46]. Plausible: on-device agents ถึงระดับ "good enough" สำหรับงาน XR/mobile ที่เฉพาะเจาะจงภายในไม่กี่เดือน [5][6]. Unlikely near-term: local models แทนที่ cloud LLMs สำหรับงาน coding-agent ทั่วไป — หลักฐานชี้ว่า small models ถูก tune สำหรับ tool use แบบแคบ [6][59] ไม่ใช่ทัดเทียมกับ cloud. ไม่มีแหล่งระบุตัวเลข probability.
 
-## Org applicability — NDF DEV
-นำ SKILL.md packaging มาใช้กับ studio workflow ที่ทำซ้ำได้ (Unity build steps, lesson-content generation, QA scripts) เพื่อให้ใช้ข้าม Claude Code/Cursor ได้ — effort ต่ำ [24][47] ทดลอง liteparse WASM ใน edutech/web content pipelines ที่ต้องการ parsing ใน browser หรือบน Cloudflare edge — effort ต่ำ/กลาง [8][39] ใช้ markitdown สำหรับการแปลงไฟล์→Markdown แบบ batch — ต่ำ [2] Pilot Chrome DevTools for agents ใน web/mobile QA เพื่อให้ coding agents ตรวจสอบ rendered behavior ไม่ใช่แค่ compilation — effort กลาง [6] ประเมิน Gemma 4 / LFM2.5 on-device สำหรับ XR/mobile ที่ต้องการ offline หรือ privacy-sensitive (image→JSON, transcription) — effort กลาง/สูง [4][42][50] ให้มอง Opus 4.8 กับ GPT-5.5 เป็น interchangeable สำหรับ coding แล้วเลือกตาม price/latency ใช้ thinking-effort levels คุม cost — ต่ำ [7][31] ข้าม: SkillOpt (ยังอยู่ในขั้น research ไม่มี shipping product) [54], MoneyPrinterTurbo [1], และการผูกติดกับ MCP เป็น foundation จนกว่าถกเถียง [29] จะยุติ
+## การนำไปใช้ใน NDF DEV
+1) ทดลอง liteparse (WASM) สำหรับ ingest PDF/worksheet ด้าน edutech — รันที่ edge/browser, ต้นทุน server ต่ำ; effort ต่ำ [34][46]. 2) ทดสอบ markitdown เพื่อแปลง Office/docs เป็น Markdown สำหรับ LLM context และเตรียมเนื้อหา e-learning; effort ต่ำ [2]. 3) นำ agent-skills มาใช้กับ internal workflow ที่ทำซ้ำได้ใน Claude Code/Codex/Cursor (เช่น Unity build steps, Supabase/Firebase setup) และรัน skills security scanner ก่อนใช้ third-party skills; effort กลาง [20][23][48][55]. 4) ถ้าเรียกหลาย model provider ให้ประเมิน OpenRouter สำหรับ routing และ Vercel AI Gateway per-key spend caps สำหรับ cost control; effort ต่ำ–กลาง [26][57]. 5) สำหรับ XR/mobile, prototype on-device model (Gemma 4 via AI Edge หรือ minicpm5) สำหรับ offline transcription/vision-to-JSON; effort กลาง [5][6]. ข้ามไปก่อน: SkillOpt auto-optimization [45][60] (ยังอยู่ในขั้น research), รายการ crypto/chain agent-skill [42][47], และ short-video generators [1] — ไม่ใช่ core ของ studio.
 
-## Signals to Watch
-- ติดตามว่า debate MCP-vs-alternatives [29] จะสร้าง successor spec ก่อนที่จะ standardize studio integrations หรือไม่
-- ติดตาม SkillOpt-style trained/optimized skills [54] เทียบกับ hand-written skills [24] — อาจเปลี่ยนวิธี maintain internal skill libraries
-- ติดตาม benchmark claim ของ local-MoE (LFM2.5 'beats Gemma-4-26B') รอการยืนยันจากอิสระก่อนนำไปใช้งานจริง [50][42]
-- ติดตาม agent-feedback tooling (Chrome DevTools 1.0 [6], Warp PR buttons [60]) ว่ามี IDE-native equivalent ที่เข้ากับ stack ของคุณหรือไม่
+## สัญญาณที่ต้องติดตาม
+- Microsoft SkillOpt — SKILL.md ที่ฝึกและ optimize ได้จะชนะ hand-written skills ในทางปฏิบัติหรือไม่ [45][60].
+- Codex ย้ายออกจาก Electron ไปยัง custom web layer (OWL) — สัญญาณว่า AI-native desktop apps มุ่งไปทางไหน [4].
+- VS Code Live จาก Microsoft Build วันที่ 3 มิถุนายน — คาดว่าจะมี AI/agent features ใหม่สำหรับ editor ที่ทีมส่วนใหญ่ใช้ [54].
+- Vercel AI Gateway spend caps + Docker sandbox — สัญญาณว่า cost-governance และ sandboxed execution กำลังกลายเป็น table-stakes สำหรับการ ship agents [36][57].
 
-## Repos & Tools to Try
+## Repos & Tools ที่ควรลอง
 | repo | source | url |
 |---|---|---|
-| **harry0703/MoneyPrinterTurbo** — 利用AI大模型，一键生成高清短视频 Generate short videos with one click using AI LLM. | radar | <https://github.com/harry0703/MoneyPrinterTurbo> |
-| **microsoft/markitdown** — Python tool for converting files and office documents to Markdown. | radar | <https://github.com/microsoft/markitdown> |
-| **run-llama/liteparse** — A fast, helpful, and open-source document parser | radar | <https://github.com/run-llama/liteparse> |
-| **affaan-m/ECC** — The agent harness performance optimization system. Skills, instincts, memory, security, and research | radar | <https://github.com/affaan-m/ECC> |
-| **codecrafters-io/build-your-own-x** — Master programming by recreating your favorite technologies from scratch. | radar | <https://github.com/codecrafters-io/build-your-own-x> |
-| **OpenBMB/VoxCPM** — VoxCPM2: Tokenizer-Free TTS for Multilingual Speech Generation, Creative Voice Design, and True-to-L | radar | <https://github.com/OpenBMB/VoxCPM> |
-| **ruvnet/RuView** — π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, an | radar | <https://github.com/ruvnet/RuView> |
-| **anthropics/claude-code** — Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and he | radar | <https://github.com/anthropics/claude-code> |
-| **Crosstalk-Solutions/project-nomad** — Project N.O.M.A.D, is a self-contained, offline survival computer packed with critical tools, knowle | radar | <https://github.com/Crosstalk-Solutions/project-nomad> |
-| **anthropics/skills** — Public repository for Agent Skills | radar | <https://github.com/anthropics/skills> |
-| **EveryInc/compound-engineering-plugin** — Official Compound Engineering plugin for Claude Code, Codex, Cursor, and more | radar | <https://github.com/EveryInc/compound-engineering-plugin> |
-| **galilai-group/stable-worldmodel** — A platform for reproducible world model research and evaluation | radar | <https://github.com/galilai-group/stable-worldmodel> |
+| **harry0703/MoneyPrinterTurbo** — 利用AI大模型，一键生成高清短视频 สร้างวิดีโอสั้นคุณภาพสูงด้วย AI LLM เพียงคลิกเดียว | radar | <https://github.com/harry0703/MoneyPrinterTurbo> |
+| **microsoft/markitdown** — เครื่องมือ Python สำหรับแปลง files และ Office documents เป็น Markdown | radar | <https://github.com/microsoft/markitdown> |
+| **run-llama/liteparse** — document parser ที่เร็ว มีประโยชน์ และ open-source | radar | <https://github.com/run-llama/liteparse> |
+| **affaan-m/ECC** — ระบบ optimize ประสิทธิภาพ agent harness ครอบคลุม Skills, instincts, memory, security, และ research | radar | <https://github.com/affaan-m/ECC> |
+| **codecrafters-io/build-your-own-x** — เชี่ยวชาญการเขียนโปรแกรมโดยสร้าง technology ที่ชื่นชอบขึ้นมาใหม่จากศูนย์ | radar | <https://github.com/codecrafters-io/build-your-own-x> |
+| **OpenBMB/VoxCPM** — VoxCPM2: Tokenizer-Free TTS สำหรับ Multilingual Speech Generation, Creative Voice Design, และ True-to-L | radar | <https://github.com/OpenBMB/VoxCPM> |
+| **ruvnet/RuView** — π RuView แปลงสัญญาณ WiFi ทั่วไปให้เป็น spatial intelligence แบบ real-time, การตรวจวัด vital signs, และอื่น ๆ | radar | <https://github.com/ruvnet/RuView> |
+| **anthropics/claude-code** — Claude Code เป็น agentic coding tool ที่อยู่ใน terminal เข้าใจ codebase และช่วยพัฒนา | radar | <https://github.com/anthropics/claude-code> |
+| **Crosstalk-Solutions/project-nomad** — Project N.O.M.A.D เป็น survival computer แบบ self-contained offline พร้อม tools และความรู้ที่จำเป็นในสถานการณ์วิกฤต | radar | <https://github.com/Crosstalk-Solutions/project-nomad> |
+| **anthropics/skills** — repo สาธารณะสำหรับ Agent Skills | radar | <https://github.com/anthropics/skills> |
+| **EveryInc/compound-engineering-plugin** — Official Compound Engineering plugin สำหรับ Claude Code, Codex, Cursor, และอื่น ๆ | radar | <https://github.com/EveryInc/compound-engineering-plugin> |
+| **kristapsdz/openrsync** — Openrsync: การ implement rsync โดยทีม OpenBSD | hackernews | <https://github.com/kristapsdz/openrsync> |
 
-## Raw Sources
+## แหล่งข้อมูลดิบ
 | platform | author | engagement | url |
 |---|---|---|---|
-| radar | harry0703_MoneyPrinterTurbo | ^2775 c0 | [harry0703/MoneyPrinterTurbo 利用AI大模型，一键生成高清短视频 Generate short videos with one cli](https://github.com/harry0703/MoneyPrinterTurbo) |
-| radar | microsoft_markitdown | ^2473 c0 | [microsoft/markitdown Python tool for converting files and office documents to Ma](https://github.com/microsoft/markitdown) |
-| x | theo | ^1574 c63 | [I think Codex stopped using Electron 👀 The owl was a big hint, the custom archit](https://x.com/theo/status/2060472145831174194) |
-| x | googlegemma | ^1193 c50 | [A completely local agent that lives right inside your pocket. 📱 Watch Gemma 4 ru](https://x.com/googlegemma/status/2060411370139795877) |
-| hackernews | WillDaSilva | ^1191 c1305 | [The dead economy theory](https://www.owenmcgrann.com/p/the-dead-economy-theory) |
-| x | ChromiumDev | ^974 c32 | [AI coding agents can write code, but they can't see if it actually works. Chrome](https://x.com/ChromiumDev/status/2060114203621335523) |
-| x | cline | ^965 c42 | [Anthropic's new Opus 4.8 scores 3.6% lower than GPT 5.5 on Terminal-Bench 2.1. A](https://x.com/cline/status/2060063889874972905) |
-| radar | run-llama_liteparse | ^929 c0 | [run-llama/liteparse A fast, helpful, and open-source document parser](https://github.com/run-llama/liteparse) |
-| radar | affaan-m_ECC | ^918 c0 | [affaan-m/ECC The agent harness performance optimization system. Skills, instinct](https://github.com/affaan-m/ECC) |
-| x | 0xSero | ^888 c47 | [Best models I've seen this week for your hardware: if you have 8-16gb you have a](https://x.com/0xSero/status/2060456091817824404) |
-| x | amasad | ^876 c15 | [@paulg I keep thinking we must've seen peak horror but I'm proven wrong on an al](https://x.com/amasad/status/2060289768986968246) |
-| x | rauchg | ^867 c15 | [@Kalshi Great country](https://x.com/rauchg/status/2060130850453512681) |
-| x | jerryjliu0 | ^849 c25 | [Parse PDFs at lightspeed (this video is at 1x) Absolute cinema https://t.co/4l1S](https://x.com/jerryjliu0/status/2060401682610262424) |
-| x | simonw | ^825 c76 | [I'm suspicious of that that whole story about Uber blowing their AI budget and b](https://x.com/simonw/status/2060209010486493500) |
-| radar | codecrafters-io_build-your-own-x | ^814 c0 | [codecrafters-io/build-your-own-x Master programming by recreating your favorite ](https://github.com/codecrafters-io/build-your-own-x) |
-| x | theo | ^785 c23 | [Next big donation is pnpm, the package manager powering the majority of my proje](https://x.com/theo/status/2060497767651569679) |
-| radar | OpenBMB_VoxCPM | ^658 c0 | [OpenBMB/VoxCPM VoxCPM2: Tokenizer-Free TTS for Multilingual Speech Generation, C](https://github.com/OpenBMB/VoxCPM) |
-| radar | ruvnet_RuView | ^656 c0 | [ruvnet/RuView π RuView turns commodity WiFi signals into real-time spatial intel](https://github.com/ruvnet/RuView) |
-| hackernews | tomasol | ^637 c341 | [SQLite is all you need for durable workflows](https://obeli.sk/blog/sqlite-is-all-you-need-for-durable-workflows/) |
-| radar | anthropics_claude-code | ^595 c0 | [anthropics/claude-code Claude Code is an agentic coding tool that lives in your ](https://github.com/anthropics/claude-code) |
-| x | NVIDIAAI | ^517 c29 | [Hours of video, now searchable by your agent. We just released a new set of agen](https://x.com/NVIDIAAI/status/2060481312511623513) |
-| x | jdevalk | ^482 c28 | [Launching https://t.co/36UBUXMmiq. A platform-agnostic spec of what a good websi](https://x.com/jdevalk/status/2060343048672821361) |
-| radar | Crosstalk-Solutions_project-nomad | ^473 c0 | [Crosstalk-Solutions/project-nomad Project N.O.M.A.D, is a self-contained, offlin](https://github.com/Crosstalk-Solutions/project-nomad) |
-| radar | anthropics_skills | ^471 c0 | [anthropics/skills Public repository for Agent Skills](https://github.com/anthropics/skills) |
-| hackernews | vnglst | ^434 c185 | [Notes from the Mistral AI Now Summit](https://koenvangilst.nl/lab/mistral-ai-now-summit) |
-| x | AskVenice | ^424 c23 | [Claude Opus 4.8 is now available anonymously on Venice. Anthropic's most capable](https://x.com/AskVenice/status/2060062670598893915) |
-| x | Replit | ^420 c13 | [Proud day at Replit. His Majesty King Abdullah II, King of Jordan, awarded our C](https://x.com/Replit/status/2060481312188961116) |
-| hackernews | watermelon0 | ^361 c577 | [It's hard to justify buying a Framework 12 <a href="https:&#x2F;&#x2F;www.youtub](https://www.jeffgeerling.com/blog/2026/its-hard-to-justify-framework-12/) |
-| hackernews | nadis | ^351 c335 | [MCP is dead?](https://www.quandri.io/engineering-blog/mcp-is-dead) |
-| radar | EveryInc_compound-engineering-plugin | ^348 c0 | [EveryInc/compound-engineering-plugin Official Compound Engineering plugin for Cl](https://github.com/EveryInc/compound-engineering-plugin) |
+| radar | harry0703_MoneyPrinterTurbo | ^2768 c0 | [harry0703/MoneyPrinterTurbo 利用AI大模型，一键生成高清短视频 สร้างวิดีโอสั้นคุณภาพสูงด้วย AI LLM เพียงคลิกเดียว](https://github.com/harry0703/MoneyPrinterTurbo) |
+| radar | microsoft_markitdown | ^2470 c0 | [microsoft/markitdown เครื่องมือ Python แปลง files และ Office documents เป็น Markdown](https://github.com/microsoft/markitdown) |
+| x | rauchg | ^2212 c162 | [Ship the best product. Use lots of AI, some AI, maybe no AI. Just be the best.](https://x.com/rauchg/status/2060803480823193840) |
+| x | theo | ^1713 c64 | [คิดว่า Codex หยุดใช้ Electron แล้ว 👀 owl เป็นคำใบ้ architecture แบบ custom...](https://x.com/theo/status/2060472145831174194) |
+| x | googlegemma | ^1332 c56 | [agent ในเครื่องล้วน ๆ ที่อยู่ในกระเป๋าของคุณ 📱 ดู Gemma 4 รัน...](https://x.com/googlegemma/status/2060411370139795877) |
+| x | 0xSero | ^1018 c54 | [โมเดลที่ดีที่สุดสัปดาห์นี้ตามขนาด RAM: ถ้ามี 8-16GB...](https://x.com/0xSero/status/2060456091817824404) |
+| radar | run-llama_liteparse | ^925 c0 | [run-llama/liteparse document parser ที่เร็ว มีประโยชน์ และ open-source](https://github.com/run-llama/liteparse) |
+| x | theo | ^910 c30 | [การบริจาคครั้งต่อไปคือ pnpm package manager ที่ขับเคลื่อนโปรเจกต์ส่วนใหญ่ของฉัน...](https://x.com/theo/status/2060497767651569679) |
+| radar | affaan-m_ECC | ^908 c0 | [affaan-m/ECC ระบบ optimize ประสิทธิภาพ agent harness ครอบคลุม Skills, instincts...](https://github.com/affaan-m/ECC) |
+| x | jerryjliu0 | ^886 c27 | [Parse PDFs ด้วยความเร็วสูง (วิดีโอนี้เล่นที่ 1x) Absolute cinema https://t.co/4l1S](https://x.com/jerryjliu0/status/2060401682610262424) |
+| x | theo | ^886 c37 | [ผลลัพธ์ดี! สอดคล้องกับประสบการณ์ของฉัน](https://x.com/theo/status/2060837269402181942) |
+| x | amasad | ^881 c14 | [@paulg ฉันคิดอยู่เสมอว่าเห็นจุดสยองสูงสุดแล้ว แต่ก็ถูกพิสูจน์ว่าผิดซ้ำแล้วซ้ำเล่า](https://x.com/amasad/status/2060289768986968246) |
+| x | simonw | ^831 c82 | [ฉันสงสัยเรื่องที่ว่า Uber ใช้งบ AI หมดและ...](https://x.com/simonw/status/2060209010486493500) |
+| radar | codecrafters-io_build-your-own-x | ^817 c0 | [codecrafters-io/build-your-own-x เชี่ยวชาญการเขียนโปรแกรมโดยสร้าง technology ที่ชื่นชอบขึ้นมาใหม่](https://github.com/codecrafters-io/build-your-own-x) |
+| radar | OpenBMB_VoxCPM | ^779 c0 | [OpenBMB/VoxCPM VoxCPM2: Tokenizer-Free TTS สำหรับ Multilingual Speech Generation, Creative Voice Design](https://github.com/OpenBMB/VoxCPM) |
+| radar | ruvnet_RuView | ^655 c0 | [ruvnet/RuView π RuView แปลงสัญญาณ WiFi ทั่วไปเป็น spatial intelligence แบบ real-time](https://github.com/ruvnet/RuView) |
+| x | NVIDIAAI | ^629 c31 | [วิดีโอนับชั่วโมง ค้นหาได้ด้วย agent เราเพิ่งปล่อย agent tools ชุดใหม่...](https://x.com/NVIDIAAI/status/2060481312511623513) |
+| radar | anthropics_claude-code | ^592 c0 | [anthropics/claude-code Claude Code เป็น agentic coding tool ที่อยู่ใน terminal ของคุณ](https://github.com/anthropics/claude-code) |
+| hackernews | antipurist | ^544 c177 | [Microsoft ลดฟังก์ชันของผลิตภัณฑ์ offline ที่มีสิทธิ์ใช้งานตลอดชีพ](https://consumerrights.wiki/w/Microsoft_Office_2019_and_2021_for_Mac_view-only_conversion_(2026)) |
+| x | Dinosn | ^532 c3 | [Security scanner สำหรับ AI agent skills ตรวจจับช่องโหว่ รูปแบบอันตราย...](https://x.com/Dinosn/status/2060610895458553977) |
+| x | jdevalk | ^503 c29 | [เปิดตัว https://t.co/36UBUXMmiq spec ที่ไม่ขึ้นกับ platform สำหรับนิยามเว็บไซต์ที่ดี...](https://x.com/jdevalk/status/2060343048672821361) |
+| radar | Crosstalk-Solutions_project-nomad | ^469 c0 | [Crosstalk-Solutions/project-nomad Project N.O.M.A.D survival computer แบบ self-contained offline](https://github.com/Crosstalk-Solutions/project-nomad) |
+| radar | anthropics_skills | ^454 c0 | [anthropics/skills repo สาธารณะสำหรับ Agent Skills](https://github.com/anthropics/skills) |
+| x | Replit | ^452 c16 | [วันที่ภาคภูมิใจของ Replit พระบาทสมเด็จพระราชา Abdullah II แห่งจอร์แดน ทรงมอบรางวัลแก่ CEO ของเรา...](https://x.com/Replit/status/2060481312188961116) |
+| x | _vmlops | ^388 c5 | [HUGGING FACE ปล่อยคอร์ส CONTEXT ENGINEERING ฟรี และหลักสูตรเริ่มต้นด้วย...](https://x.com/_vmlops/status/2060556680870649975) |
+| hackernews | freeCandy | ^374 c186 | [OpenRouter ระดมทุน Series B มูลค่า $113M](https://openrouter.ai/announcements/series-b) |
+| hackernews | ankitg12 | ^369 c48 | [Pandoc Templates](https://pandoc-templates.org/) |
+| radar | EveryInc_compound-engineering-plugin | ^349 c0 | [EveryInc/compound-engineering-plugin Official Compound Engineering plugin สำหรับ Claude Code, Codex, Cursor](https://github.com/EveryInc/compound-engineering-plugin) |
+| hackernews | aaronbrethorst | ^339 c209 | [domain expertise คือ moat ที่แท้จริงเสมอมา](https://www.brethorsting.com/blog/2026/05/domain-expertise-has-always-been-the-real-moat/) |
+| hackernews | sph | ^331 c146 | [Openrsync: การ implement rsync โดยทีม OpenBSD](https://github.com/kristapsdz/openrsync) |
 
 
 ## โพสต์เด่น
@@ -114,20 +113,40 @@ translated_by: claude-sonnet-4-6
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
+    <span class="ndf-author">@rauchg</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 2212 · 💬 162</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/rauchg/status/2060803480823193840">View @rauchg on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Ship the best product. Use lots of AI, some AI, maybe no AI. Just be the best.”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Guillermo Rauch (CEO Vercel) บอกว่าปริมาณการใช้ AI ไม่สำคัญ — สิ่งเดียวที่นับคือส่ง product ที่ดีที่สุดออกไป</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/rauchg/status/2060803480823193840" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
     <span class="ndf-author">@theo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1574 · 💬 63</span>
+    <span class="ndf-engagement">♥ 1713 · 💬 64</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2060472145831174194">View @theo on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“I think Codex stopped using Electron 👀 The owl was a big hint, the custom architecture used for the ChatGPT Atlas browser was called &quot;OWL&quot; (OpenAI’s Web Layer) https://t.co/ALFTbVCIXq”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@theo ตั้งข้อสังเกตว่า Codex น่าจะเลิกใช้ Electron แล้วหันมาใช้ web layer ของตัวเองชื่อ OWL (OpenAI's Web Layer) โดยอิงจากโลโก้นกฮูกและ architecture ของ ChatGPT Atlas</dd>
+      <dd>Theo พบหลักฐานว่า Codex ของ OpenAI กำลังเลิกใช้ Electron แล้วเปลี่ยนไปใช้ OWL (OpenAI's Web Layer) ซึ่งเป็น custom browser runtime ตัวเดียวกับ ChatGPT Atlas browser</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ถ้าจริง ยืนยัน trend ที่ AI coding tools เลิก Electron หัน custom web runtime — มีนัยต่อ studio ที่จะทำ desktop tool หรือ AI-integrated workflow</dd>
+      <dd>OpenAI สร้าง runtime เองสำหรับ coding tool บ่งชี้ว่า Electron หนักเกินไปสำหรับ AI-native app — น่าติดตามว่า OWL จะกลายเป็น pattern ที่ใช้ได้กว้างขึ้นหรือเปล่า</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action — ยังเป็นการคาดเดา รอ OpenAI ประกาศอย่างเป็นทางการก่อนสรุป architecture ของ Codex</dd>
+      <dd class="ndf-adapt">ติดตาม Codex release notes ดูว่า OWL ถูก ship แบบ public หรือเปล่า ถ้าใช่ ทีมอาจกลับมาพิจารณา desktop tooling stack ที่ใช้อยู่ได้</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/theo/status/2060472145831174194" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -136,140 +155,120 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@googlegemma</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1193 · 💬 50</span>
+    <span class="ndf-engagement">♥ 1332 · 💬 56</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/googlegemma/status/2060411370139795877">View @googlegemma on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“A completely local agent that lives right inside your pocket. 📱 Watch Gemma 4 run 100% locally in the Google AI Edge Gallery app. It converts images into JSON schemas, transcribes audio, and uses agen”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Gemma 4 รันบน Android ได้แบบ fully offline ผ่าน Google AI Edge Gallery รองรับ image-to-JSON, audio transcription, และ agentic interaction กับแอปอื่น — ไม่ต้องใช้ server</dd>
+      <dd>Google AI Edge Gallery รัน Gemma 4 บนเครื่องแบบ 100% offline รองรับแปลงรูปเป็น JSON schema, transcribe เสียง, และ agent ที่โต้ตอบกับ app ได้โดยไม่ต้องใช้อินเทอร์เน็ต</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Agentic AI บนตัวเครื่องโดยไม่มีค่า API และไม่ต้องมีเน็ต ตรงกับ use case ของ mobile app และ XR ที่ต้องทำงาน offline</dd>
+      <dd>Inference บนเครื่องที่มี multimodal + agentic ทำให้ใส่ AI ใน mobile app ได้โดยไม่มี latency, ไม่เสียค่า API, และข้อมูลไม่ออกจากเครื่อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ลง Google AI Edge Gallery บน Android แล้วทดสอบ image-to-JSON และ agent skills กับ requirement จริงของ mobile หรือ XR project</dd>
+      <dd class="ndf-adapt">ลอง Gemma 4 ผ่าน AI Edge Gallery บน Android เพื่อดูว่า on-device inference เหมาะกับ mobile หรือ XR project ของ studio ที่ต้องทำงาน offline</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/googlegemma/status/2060411370139795877" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@ChromiumDev</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 974 · 💬 32</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ChromiumDev/status/2060114203621335523">View @ChromiumDev on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“AI coding agents can write code, but they can't see if it actually works. Chrome DevTools for agents 1.0 fixes this. The stable release brings powerful browser debugging, emulation, and automated audi”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Chrome DevTools MCP Server 1.0 stable แล้ว — AI coding agent เข้าถึง browser debugging, emulation และ automated audit แบบ real-time ได้ ไม่ใช่แค่เขียน code</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>AI agent ดู console error, network call, รัน accessibility audit ใน browser จริงได้ — ปิด gap ระหว่าง 'เขียนเสร็จ' กับ 'ทำงานได้จริง'</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ต่อ Chrome DevTools MCP server เข้า AI coding setup ของทีม ให้ agent verify web UI ได้เองโดยไม่ต้อง manual check</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/ChromiumDev/status/2060114203621335523" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@cline</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 965 · 💬 42</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/cline/status/2060063889874972905">View @cline on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Anthropic's new Opus 4.8 scores 3.6% lower than GPT 5.5 on Terminal-Bench 2.1. Available to compare side-by-side in Cline now. (They also announced a plan to release new models with higher intelligenc”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Opus 4.8 ของ Anthropic ทำคะแนนต่ำกว่า GPT 5.5 อยู่ 3.6% บน Terminal-Bench 2.1; Cline เพิ่มฟีเจอร์ side-by-side model comparison และ Anthropic แผน release model ที่แรงขึ้นหลังเพิ่ม cyber safeguards</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Cline side-by-side mode ให้ทีมเทียบ model บน task จริงได้เลย ไม่ต้องเดาว่าตัวไหนดีกว่า</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ลอง Cline side-by-side กับ task จริงของทีมเพื่อเลือกระหว่าง Opus 4.8 กับ GPT 5.5 ให้เหมาะกับ agentic workflow</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/cline/status/2060063889874972905" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@0xSero</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 888 · 💬 47</span>
+    <span class="ndf-engagement">♥ 1018 · 💬 54</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/0xSero/status/2060456091817824404">View @0xSero on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Best models I’ve seen this week for your hardware: if you have 8-16gb you have a competitive model finally! ———- 4gb - 8gb: - minicpm5: this model was built for agentic tool use on tiny machines: http”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>รวม local LLM แนะนำตาม VRAM: MiniCPM5 (4–8 GB, agentic), LFM-2.5-8B (8–16 GB, context 131k, train บน 38T tokens), Step-3.7-Flash (196 GB+, vision, context 256k)</dd>
+      <dd>รวม local LLM แนะนำแยกตาม VRAM: minicpm5 (4–8 GB, agentic), LFM-2.5-8B (8–16 GB, context 131k, train 38T tokens), Step-3.7-Flash (196 GB+, 199B/11B active, vision, context 256k)</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>LFM-2.5-8B รันได้บน dev laptop 8–16 GB, context 131k — ใช้เป็น local agent สำหรับ workflow หรือ e-learning AI โดยไม่มีค่า API</dd>
+      <dd>LFM-2.5-8B ใช้ GPU ทั่วไปตัวเดียว context 131k ได้ — พอสำหรับ local AI dev workflow โดยไม่เสีย API cost</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ลอง LFM-2.5-8B บน laptop ทีม ใช้เป็น local agent สำหรับ internal tooling หรือ prototype e-learning content ก่อนตัดสินใจใช้ cloud API</dd>
+      <dd class="ndf-adapt">รัน LFM-2.5-8B บนเครื่อง 8–16 GB VRAM แทน API call ตอน prototype หรือ demo offline ให้ client</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/0xSero/status/2060456091817824404" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@amasad</span>
+    <span class="ndf-author">@theo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 876 · 💬 15</span>
+    <span class="ndf-engagement">♥ 910 · 💬 30</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/amasad/status/2060289768986968246">View @amasad on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2060497767651569679">View @theo on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“@paulg I keep thinking we must’ve seen peak horror but I’m proven wrong on an almost daily basis”</p>
+    <p class="ndf-quote">“Next big donation is pnpm, the package manager powering the majority of my projects. @zkochan's thankless work has been essential to the web dev ecosystem. $3,000 honestly feels cheap for how much his”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@amasad (CEO Replit) ตอบ @paulg ว่าตัวเองยังคงถูก surprise กับสิ่งที่แย่ลงเรื่อยๆ — ไม่มีข้อมูลหรือ context ที่ชัดเจน</dd>
+      <dd>Theo บริจาค $3,000 ให้ @zkochan ผู้ดูแล pnpm คนเดียว โดยบอกว่า pnpm มีคุณค่ามากกว่าตัวเงินที่จ่ายไป</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/amasad/status/2060289768986968246" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@rauchg</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 867 · 💬 15</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/rauchg/status/2060130850453512681">View @rauchg on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“@Kalshi Great country”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>@rauchg คอมเมนต์สั้นๆ ชมบัญชี Kalshi (prediction market) ไม่มีเนื้อหาด้านเทคนิค</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/rauchg/status/2060130850453512681" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/theo/status/2060497767651569679" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@jerryjliu0</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 849 · 💬 25</span>
+    <span class="ndf-engagement">♥ 886 · 💬 27</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/jerryjliu0/status/2060401682610262424">View @jerryjliu0 on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Parse PDFs at lightspeed (this video is at 1x) Absolute cinema https://t.co/4l1Sr47qjU”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Jerry Liu ผู้ร่วมก่อตั้ง LlamaIndex โชว์ demo parse PDF ที่วิดีโอเล่น 1x จริง ไม่ได้เร่ง แปลว่า throughput ของ LlamaParse เพิ่มขึ้นมาก</dd>
+      <dd>Jerry Liu ผู้ร่วมก่อตั้ง LlamaIndex โชว์ PDF parser ที่ประมวลผลเอกสารได้เร็วมาก โดยวิดีโอที่เห็นคือความเร็วจริง (1x) ไม่ได้ fast-forward</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Parsing เร็วขึ้นตัด bottleneck ของ RAG หรือ e-learning pipeline ที่ต้องจัดการเอกสารจำนวนมาก</dd>
+      <dd>PDF ingestion ที่เร็วขึ้นลด latency ใน RAG pipeline และ content prep สำหรับ e-learning ซึ่งเป็นงานที่ studio ใช้ LlamaIndex-style tooling อยู่แล้ว</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ลอง LlamaParse กับ PDF ingestion step ที่ใช้อยู่ใน e-learning หรือ doc-search project แล้ววัดเวลาเทียบกัน</dd>
+      <dd class="ndf-adapt">Benchmark LlamaIndex PDF parser ล่าสุดเทียบกับ document ingestion step ที่ใช้อยู่ใน RAG หรือ e-learning pipeline เพื่อดูตัวเลข throughput จริง</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/jerryjliu0/status/2060401682610262424" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@theo</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 886 · 💬 37</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2060837269402181942">View @theo on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Good results! Lines up with my experience”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>@theo โพสต์ว่า 'ผลดี ตรงกับประสบการณ์' โดยไม่ระบุว่าหมายถึงอะไร และเนื้อหาที่อ้างถึงเข้าไม่ได้</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/theo/status/2060837269402181942" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@amasad</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 881 · 💬 14</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/amasad/status/2060289768986968246">View @amasad on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“@paulg I keep thinking we must’ve seen peak horror but I’m proven wrong on an almost daily basis”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>@amasad ตอบ @paulg ว่าเจอเรื่องน่าตกใจซ้ำแล้วซ้ำเล่า ไม่มีบริบท ไม่มีเนื้อหาเทคนิค</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/amasad/status/2060289768986968246" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

@@ -4,7 +4,7 @@ date: '2026-05-31'
 topic: ai-builders-watchlist
 lang: th
 pair: ai-builders-watchlist.en.md
-generated_at: '2026-05-31T04:43:34+00:00'
+generated_at: '2026-05-31T16:31:18+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,82 +12,80 @@ platforms:
 regions:
 - global
 post_count: 80
-salience: 0.45
+salience: 0.35
 sentiment: mixed
 confidence: 0.55
 tags:
-- agentic-coding
-- claude-code
-- prompt-engineering
+- indie-hackers
+- ai-agents
+- codex
+- video-gen
 - devtools
-- ai-workflow
-- anthropic
-thumbnail: https://pbs.twimg.com/media/HJmP09xWEAc8q7O.png
+- openclaw
+thumbnail: https://pbs.twimg.com/media/HJo95BoXIAsVniK.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # AI Builders Watchlist — 2026-05-31
 
 ## TL;DR
-- steipete รายงานว่าการรวม GPT-5.5 กับ /goal ของ Claude Code บวก tool 'autoreview' และ 'crabbox' ยืดเวลา agent run จาก ~30-60 นาที เป็น task 4-10 ชั่วโมง พร้อม confidence ในผลลัพธ์ที่สูงขึ้น [1][10][19]
-- เทคนิค prompting ใช้ได้จริง: บอก Codex ว่า 'มี bug' ทำให้มัน loop และหาปัญหาจริง แทนที่จะตรา 'ผ่าน' ไปเฉยๆ [2]; และ 'high reasoning + autoreview' ได้ผลดีกว่า 'extra high' อย่างเดียว [24]
-- /goal ของ Anthropic เพิ่ม mode completion-condition แบบ 'ไม่หยุดจนเสร็จ' ที่วน iterate ข้าม turn โดยไม่ต้องดูแล [19]; แยกกัน rileybrown เรียก launch 'Cowork' ของ Anthropic (วิดีโอ 50M view) ว่าเป็นความผิดพลาดครั้งใหญ่ที่สุด [9]
-- thread prompt-craft (godofprompt): เปลี่ยนคำเดียว ('explain' vs 'describe') ส่งผลต่อ output แต่ประโยคบริบทสักประโยคชนะการล่าคำพ้องความที่สมบูรณ์แบบ [34][54][60]
-- เนื้อหาส่วนใหญ่ใน watchlist สัปดาห์นี้ไม่ตรงประเด็น (rants เรื่อง hotel/ESG ของ levelsio, AI video/Seedance prompt demo, โพสต์ส่วนตัว) signal ที่เกี่ยวกับ coding จึงน้อย [3][5][25][29][32][43]
+- สัปดาห์นี้ dominated ด้วยโพสต์รายได้ indie: marclou รายงาน $87,507 สำหรับ May 2026 [2], jackfriks $59,347 [4]; joint venture ร่วม Ship or Die แบ่ง 50/50 ทำรายได้รวมประมาณ $40K [31][34].
+- steipete ย้ายไป San Francisco ช่วง MS Build และกำลังพัฒนา OpenClaw อย่างต่อเนื่อง ซึ่งเป็น personal agent framework แบบ modular/lean ที่ยึดหลัก "เพิ่มเฉพาะสิ่งที่จำเป็น" [1][11].
+- signal ใช้งานจริงด้าน coding agent: steipete รายงานว่า Codex เขียน codemods แบบ ad-hoc สำหรับ TypeScript migration ขนาดใหญ่ และใช้ 'autoreview' ร่วมกับ spec ใน agents.md เพื่อควบคุม model ให้ครอบคลุม edge case [21][17][23].
+- การเปรียบเทียบ video-gen เป็น live thread ในกลุ่มนี้: Seedance 2.0 vs Gemini Omni Flash โดยมีการโต้แย้งว่าข้อได้เปรียบของ Omni อยู่ที่ distribution/access ไม่ใช่คุณภาพ output โดยตรง [24][25][40][41].
+- TrustMRR ของ marclou ตรวจสอบ metrics ของ startup (MRR, churn, visitors) จาก Stripe/GSC/GA และ levelsio เตือนว่าการ claim '$1M ARR in a month' ส่วนใหญ่เป็นการปั่น [18][10].
 
 ## What happened
-thread builder หลักสัปดาห์นี้คือการปรับแต่ง agentic coding workflow steipete อธิบาย stack ของ GPT-5.5 + Claude Code /goal + 'autoreview' + 'crabbox' ที่ให้รัน autonomous task ได้นานขึ้นมาก (4-10h vs 30-60 นาที) พร้อม confidence ที่พร้อม ship สูงขึ้น [1][10][44] เขาแชร์ tactics ชัดเจน: prompt Codex ด้วยการยืนยันว่ามี bug อยู่ทำให้มัน iterate และหาปัญหาจริง แทนที่จะประกาศว่า code สะอาด [2]; 'high + autoreview' ชนะ 'extra high' reasoning อย่างเดียว [24]; และควรนิยาม behavior ใน agents.md เพื่อให้ agent รู้ว่าต้องลึกแค่ไหนกับ edge case [22] feature /goal ของ Anthropic—กำหนด completion condition แล้ววางมือ ให้วน iterate ข้าม turn—อธิบายโดย godofprompt [19] thread ย่อยจาก steipete โต้แย้งการใช้ passkey ด้วยเหตุผลด้าน practical/security-friction ขณะที่ชอบ concept [4][20][45][51]
-
-signal รอง: rileybrown เรียก 'Cowork' ของ Anthropic ว่าเป็นความผิดพลาดใหญ่ที่สุดแม้วิดีโอจะได้ 50M view [9]; godofprompt ถ่ายทอด framing ว่า valuation AI อยู่บนฐาน 'ไม่มีใครต้องการสินค้าที่ดีที่สุดอันดับ 8' เชื่อมกับ narrative $1T ของ Anthropic [36]; vasuman เสนอ enterprise agent solution แบบ forward-deployed สร้างเฉพาะ และกำลัง hire ผ่าน paid work trial [8][11]; และ jackfriks รัน feedback review app แบบโหดสำหรับ cohort 'ship or die' ปฏิเสธ 9 app [16] ส่วนที่เหลือเป็นเนื้อหาไม่ technical (hotels/ESG, อาหาร, คอนเสิร์ต) หรือ AI media-generation prompt demo [3][5][25][29][32][43]
+นี่คือ feed ที่ติดตามตัวบุคคล ไม่ใช่ข่าว รายการ engagement สูงส่วนใหญ่เป็นรายงานรายได้รายเดือนของ indie hacker: marclou $87,507 จากหลายโปรเจกต์ (TrustMRR $27K, DataFast $20K, Ship or Die $20K, CodeFast $8K, ShipFast $7K) [2], jackfriks $59,347 [4] และ levelsio รายงานว่าโปรเจกต์หนึ่งถึง $16K MRR ในเวลา 4 เดือน [3]. marclou และ jackfriks ยืนยันว่า Ship or Die เป็น joint venture แบบ 50/50 ดังนั้นแต่ละคนรายงานครึ่งหนึ่งของยอดรวม ~$40K [31][34]. TrustMRR ของ marclou อ้างว่าตรวจสอบ MRR/churn/visitors จาก Stripe, Google Search Console และ Google Analytics [18] ในขณะที่ levelsio เตือนสาธารณะว่าเรื่องเล่าการเติบโต '$1M ARR in a month' ส่วนใหญ่เป็นการสร้างภาพหรือปั่นตัวเลข [10]. นอกจากนี้ steipete ประกาศย้ายไป San Francisco ช่วง MS Build และทำงาน OpenClaw ต่อเนื่อง ซึ่ง frame ไว้เป็น personal agent แบบ modular, minimal [1][11].
 
 ## Why it matters (reasoning)
-ข้อความที่สม่ำเสมอจาก practitioner ที่ engaged มากที่สุด (steipete) คือคุณภาพ output จาก agent ตอนนี้ขึ้นอยู่กับ workflow ของ operator มากกว่า raw model tier: review loop, completion condition และ spec edge-case ที่ชัดเจน สำคัญกว่าการเลือก 'extra high' [1][22][24][44] เทคนิค 'assume a bug exists' ของ Codex [2] เปิดเผย failure mode จริง—agent มี default เป็นการยืนยันว่า code โอเค—ซึ่งเกี่ยวข้องโดยตรงกับใครก็ตามที่พึ่ง AI self-review /goal ของ Anthropic ดัน agent ไปสู่การรัน multi-turn แบบไม่ต้องดูแล เปลี่ยนต้นทุนจากการเขียน prompt ไปสู่การนิยาม stopping condition ที่ดีและ review gate [19] คำวิจารณ์ Cowork [9] และ valuation framing '8th best product' [36] เป็น market signal ลำดับสอง: vendor tool ยังค้นหา product surface ที่ถูกต้อง และแรงกดดันการรวมตัวเอื้อต่อ coding agent หนึ่งหรือสองตัวบนสุด ซึ่งกระทบการเลือก tool ที่ปลอดภัยสำหรับ standardize
+signal ที่มีประโยชน์ที่สุดข้ามเรื่องเป็นเรื่อง operational ไม่ใช่ตัวเลขการเงิน: note ของ steipete เรื่อง Codex สร้าง codemods สำหรับ TypeScript migration [21], การใช้ 'autoreview' เพื่อควบคุม model [17] และการเข้ารหัส edge-case depth ไว้ใน agents.md spec [23] เป็น pattern ที่เป็นรูปธรรมสำหรับ agent-assisted refactoring ที่ทีม web/mobile ของ NDF DEV นำไปใช้ได้ทันที. thesis ของ OpenClaw ที่ว่า 'skills น้อยลง, tools น้อยลง = agent ที่มีประสิทธิภาพมากขึ้น' [11] สอดคล้องกับความกังวลด้าน context management ในทางปฏิบัติ. โพสต์รายได้ส่วนใหญ่เป็น noise สำหรับวัตถุประสงค์ของเรา — มันบ่งบอกว่า niche solo-SaaS/marketing-app ที่ builders กลุ่มนี้อยู่ยังแข็งแกร่ง แต่ตัวเลขเป็น self-reported และ specific กับ portfolio ของแต่ละคน [2][4] และ levelsio เองก็ชี้ว่าหลายอย่างใน genre นี้ถูกปั่น [10]. data point เชิงกลยุทธ์ที่ควรสนใจคือ framing ว่า 'ไม่มีใครต้องการสินค้าที่ดีที่สุดอันดับแปด' ที่อยู่เบื้องหลัง AI valuations อย่าง Anthropic ที่ $1T [32]: ใน AI tooling ตลาดกระจุกตัว ซึ่งสำคัญเมื่อต้องเลือก model/devtool vendor ที่จะ standardize.
 
 ## Possibility
-น่าจะเกิด: agent run นานขึ้นแบบไม่ต้องดูแล พร้อม completion condition และ automated review กลายเป็น standard practice ใน coding tool ตลอดปี 2026 เนื่องจาก practitioner high-signal รายงาน task 4-10h อยู่แล้วและ Anthropic ส่ง /goal ออกมา [1][19] เป็นไปได้: review-loop wrapper แบบ 'autoreview / crabbox' ถูกดูดซึมเข้า mainstream agent หรือ replicate เป็น open tooling เพราะ tactic พื้นฐาน (บังคับ model ให้ assume ว่ามีข้อบกพร่อง) เรียบง่ายและทำซ้ำได้ [2][10] เป็นไปได้: consulting 'forward-deployed custom agent' สำหรับองค์กรโตขึ้นในฐานะ model ธุรกิจ [8] ไม่น่าเกิด (ไม่มีหลักฐาน): AI video/Seedance prompt demo ใดก็ตามแทน production workflow ที่ยั่งยืน—เหล่านี้คือ showcase driven by engagement ไม่ใช่ pipeline ที่ validate แล้ว [29][32][43]
+**Likely:** agent-assisted codemods และ review loop (Codex/autoreview/agents.md) จะกลายเป็น standard practice สำหรับ migration ในกลุ่มนักปฏิบัติเหล่านี้ เพราะ steipete รายงานว่าใช้งานได้จริงใน production-scale TS work แล้ว [21][23]. **Plausible:** video-gen tooling (Seedance 2.0, Gemini Omni Flash) ยังคง churn ต่อไปโดยไม่มีผู้ชนะชัดเจนในระยะใกล้ — การถกเถียงเน้นที่ distribution vs raw quality ไม่ใช่ความได้เปรียบที่ชัดเจน [41]. **Plausible:** OpenClaw พัฒนาเป็น open personal-agent stack ที่ใช้งานได้จริง แต่ยังเร็วและผูกกับ momentum ของคนเดียว [1][11]. **Unlikely to matter operationally:** monthly MRR theater ยังดำเนินต่อแต่ได้ insight ที่ถ่ายทอดได้น้อยมาก [2][4].
 
 ## Org applicability — NDF DEV
-1) เพิ่ม forced-review step ใน AI coding loop ของ NDF DEV: prompt agent เหมือนมี bug อยู่แทนที่จะถาม 'ถูกไหม?' และเลือก 'high reasoning + review pass' แทนการ max reasoning setting อย่างเดียว (low effort) [2][24] 2) ทดลอง Claude Code /goal กับ task ที่มีขอบเขตชัดและตรวจสอบได้ (เช่น migration, test-coverage pass) ที่มี completion condition ชัดเจน คงไว้ซึ่ง human review gate ก่อน merge (med effort) [19][1] 3) รักษา agents.md ต่อ repo ที่นิยามความลึกในการจัดการ edge case เพื่อให้ agent ปฏิเสธ review comment ที่อ่อนแอและตรงกับ standard ของ house (low effort) [22] 4) สำหรับ app submission (ฝั่ง Unity/mobile) ป้องกัน store rejection ด้วย self-review checklist ก่อน ship เพราะ app โดน bounce บ่อยเพียงใด [16] ข้าม: การถกเถียง passkey adoption [4][20], AI video/UGC prompt fad [32][43] และเนื้อหา hotel/ESG/travel ทั้งหมด—ไม่เกี่ยวกับ studio
+1) ทดลองใช้ Codex (หรือเทียบเท่า) กับ TypeScript/Unity-tooling codemod ขอบเขตเล็กและรับ agents.md-style spec มาจำกัด edge-case behavior — low effort, high transfer [21][23]. 2) เพิ่ม 'autoreview' pass (model ตรวจ diff ตัวเองก่อน human review) ใน agent workflow ของ repo หนึ่งและวัดว่าลด review churn ได้หรือไม่ — low effort [17]. 3) ประเมิน Seedance 2.0 vs Gemini Omni Flash สำหรับคลิป marketing/promo ของ game หรือ edutech launch โดยดู access/cost ควบคู่กับคุณภาพ output — med effort [25][40][41]. 4) ติดตาม OpenClaw เป็น reference สำหรับ lean, modular agent design ก่อนเพิ่ม tools เข้า internal agents — low effort [11]. **Skip:** รายงาน MRR [2][4][3] และโพสต์ส่วนตัวที่ไม่เกี่ยวข้อง [9][15][19][25-personal] — ไม่มี action. อย่านำ self-reported revenue มาใช้ sizing market [10].
 
 ## Signals to Watch
-- ว่า review wrapper แบบ 'autoreview/crabbox' จะถูกเผยแพร่หรือดูดซึมเข้า Claude Code/Codex defaults [10][2]
-- ความน่าเชื่อถือของ /goal ในโลกจริงบน run นานแบบไม่ต้องดูแล—ดู follow-up report เรื่อง drift หรือ iteration ที่เสียเปล่า [19][1]
-- ทิศทาง product ของ Anthropic หลังคำวิจารณ์ 'Cowork'—หดตัวกลับมาที่ Claude Code เป็น core surface หรือไม่ [9]
-- model enterprise-agent forward-deployed ของ vasuman และการ hire เป็น signal แรกของตลาด custom-agent consulting [8][11]
+- ทิศทาง modular/minimal agent ของ OpenClaw และ SF momentum รอบ steipete [1][11].
+- Codex codemods + autoreview + agents.md ในฐานะ repeatable migration pattern [21][17][23].
+- Seedance 2.0 vs Gemini Omni Flash — distribution-vs-quality framing สำหรับ video gen [40][41].
+- verified-metrics model ของ TrustMRR และ pushback ของ levelsio ต่อ inflated growth claims [18][10].
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | steipete | ^2803 c142 | [With GPT 5.5, /goal, autoreview and crabbox my prompts moved from ~30-60min to o](https://x.com/steipete/status/2060678430031597696) |
-| x | steipete | ^2569 c111 | [I do this with codex all the time. Ask it to review code for bugs and it will te](https://x.com/steipete/status/2060672154727825718) |
-| x | levelsio | ^1253 c76 | [It's a disease all over Europe](https://x.com/levelsio/status/2060766986523553929) |
-| x | steipete | ^576 c53 | [@jjpcodes first lesson: never use passkeys](https://x.com/steipete/status/2060671704498573626) |
-| x | levelsio | ^490 c32 | [Companies in Europe get a few things for doing this: 1) extreme cost savings: th](https://x.com/levelsio/status/2060785409211130067) |
-| x | EXM7777 | ^346 c15 | [https://t.co/ip0CFHxG7R](https://x.com/EXM7777/status/2060736517564477901) |
-| x | levelsio | ^238 c26 | [https://t.co/yHVz4TUlse](https://x.com/levelsio/status/2060836472958165167) |
-| x | vasuman | ^196 c25 | [Imagine an AI company that forward deploys into your enterprise to first underst](https://x.com/vasuman/status/2060847258283999376) |
-| x | rileybrown | ^184 c46 | [I've been saying this from day 1. Despite their launch video getting 50M views, ](https://x.com/rileybrown/status/2060833051609903551) |
-| x | steipete | ^182 c4 | [Autoreview: https://t.co/zbUjIS2e1i crabbox: https://t.co/SEj2XRpaD1](https://x.com/steipete/status/2060691552486175041) |
-| x | vasuman | ^171 c32 | [If you're a software engineer that is down for a paid work trial (1-2 weeks, con](https://x.com/vasuman/status/2060866035067343240) |
-| x | levelsio | ^133 c8 | [@MaxRovensky I wonder if it's your Slavicness that you have a lack of class but ](https://x.com/levelsio/status/2060785938482024869) |
-| x | jackfriks | ^121 c19 | [wife appreciation post (she made me banana bread today) https://t.co/I5ZycalO7d](https://x.com/jackfriks/status/2060871445622796739) |
-| x | levelsio | ^115 c15 | [So funny because the hotel I'm booking now literally says "making a difference a](https://x.com/levelsio/status/2060809084345979344) |
-| x | levelsio | ^90 c3 | [@pederzh Which hotel is this btw? I will add it to my anti-ESG filter on https:/](https://x.com/levelsio/status/2060777259368157320) |
-| x | jackfriks | ^82 c34 | [9 APPS REJECTED... are we are harder critics then apple review team??? more toug](https://x.com/jackfriks/status/2060742914909610226) |
-| x | levelsio | ^72 c5 | [Logged into the chain of the next hotel I'm booking EUR 600/night It's so cringe](https://x.com/levelsio/status/2060808777977242094) |
-| x | steipete | ^64 c8 | [@iruletheworldmo very much depends on the skillset of the person driving the AI.](https://x.com/steipete/status/2060749955707351156) |
-| x | godofprompt | ^63 c17 | [Anthropic just gave Claude Code a "don't stop until it's done" mode. /goal lets ](https://x.com/godofprompt/status/2060696477115339136) |
-| x | steipete | ^60 c5 | [@sergiopesch too distracting and too much hate here, and one misstep on a key an](https://x.com/steipete/status/2060691161279303691) |
-| x | levelsio | ^60 c8 | [I have that sort! And if you sort by newness it shows you the year it's built I ](https://x.com/levelsio/status/2060797815404528030) |
-| x | steipete | ^57 c3 | [@segolovach parent codex is pretty good at rejecting review comments. You need t](https://x.com/steipete/status/2060794664521781466) |
-| x | steipete | ^49 c4 | [@macmatan private one, a few work work. Difference is mostly permissions.](https://x.com/steipete/status/2060750352127770860) |
-| x | steipete | ^49 c3 | [@danielendara high + autoreview is better than extra high alone](https://x.com/steipete/status/2060680611094761635) |
-| x | egeberkina | ^48 c0 | [Off-White™ presents: impossible places https://t.co/Bvy2jIR8BD](https://x.com/egeberkina/status/2060705806891249691) |
-| x | AmirMushich | ^44 c12 | [GPT-2 x Seedance 2.0 animated logo mockup smart workflow + prompts 👇 Get more de](https://x.com/AmirMushich/status/2060775801121816995) |
-| x | steipete | ^41 c1 | [@artee_49 charge more for your work](https://x.com/steipete/status/2060702497396650316) |
-| x | steipete | ^41 c4 | [@jjpcodes I love the idea of passkeys.](https://x.com/steipete/status/2060683626203787519) |
-| x | egeberkina | ^38 c2 | [Tonight Turkey at Ye's concert 🇹🇷 Made with Omni Flash https://t.co/iHEwBZ5zlP](https://x.com/egeberkina/status/2060828495521976754) |
-| x | steipete | ^38 c1 | [@dir @jjpcodes idk that's one feature I would most certainly not "vibe"](https://x.com/steipete/status/2060700947450405206) |
+| x | steipete | ^1239 c74 | [Finally got my visa sorted out and moving to San Francisco, just in time for MS ](https://x.com/steipete/status/2061031509088231640) |
+| x | marclou | ^736 c106 | [I made $87,507 in May 2026. ⭐️ TrustMRR — $27K 📈 DataFast — $20K 🏴‍☠️ Ship or Di](https://x.com/marclou/status/2061065911394836861) |
+| x | levelsio | ^657 c50 | [Update after 4 months he's at $16K MRR https://t.co/1MpJWnyP9N](https://x.com/levelsio/status/2061027867274674194) |
+| x | jackfriks | ^575 c83 | [i made $59,347 in may 2026 ... ($81,919 CAD) 🌉 post bridge — $36K 🏴‍☠️ ship or d](https://x.com/jackfriks/status/2061072407608066353) |
+| x | EXM7777 | ^494 c17 | [https://t.co/ip0CFHxG7R](https://x.com/EXM7777/status/2060736517564477901) |
+| x | levelsio | ^408 c43 | [https://t.co/yHVz4TUlse](https://x.com/levelsio/status/2060836472958165167) |
+| x | vasuman | ^329 c45 | [Imagine an AI company that forward deploys into your enterprise to first underst](https://x.com/vasuman/status/2060847258283999376) |
+| x | vasuman | ^320 c46 | [If you're a software engineer that is down for a paid work trial (1-2 weeks, con](https://x.com/vasuman/status/2060866035067343240) |
+| x | jackfriks | ^258 c30 | [wife appreciation post (she made me banana bread today) https://t.co/I5ZycalO7d](https://x.com/jackfriks/status/2060871445622796739) |
+| x | levelsio | ^245 c17 | [P.S. this is how actual realistc growth looks like You see all these ecom bros n](https://x.com/levelsio/status/2061036511202603374) |
+| x | steipete | ^219 c33 | [The idea of OpenClaw is always that it should be yours. It's modular and lean, o](https://x.com/steipete/status/2061072753998856696) |
+| x | EXM7777 | ^176 c7 | [this is the Hermes setup top 1% operators are using to get rid of AI slop... htt](https://x.com/EXM7777/status/2061086049326256356) |
+| x | marclou | ^155 c34 | [These have been the best 10 years of my life. Entrepreneurship has taught me so ](https://x.com/marclou/status/2061104163745075339) |
+| x | rileybrown | ^133 c7 | [What mean? https://t.co/CODJszlnCY](https://x.com/rileybrown/status/2060908536549261320) |
+| x | jackfriks | ^109 c18 | [does this look like i'm trolling? this brand new toyota corolla will last longer](https://x.com/jackfriks/status/2061089156374114449) |
+| x | steipete | ^104 c2 | [@theo Yes! See ya around this week?](https://x.com/steipete/status/2061038721290400240) |
+| x | steipete | ^99 c2 | [@theo @VictorTaelin gotta use autoreview, that keeps gpt honest and usually help](https://x.com/steipete/status/2061036923397845456) |
+| x | marclou | ^95 c33 | [Heads up! TrustMRR doesn't just show startup MRR, but also: 📉 Churn 📈 Visitors 👀](https://x.com/marclou/status/2061021034631852295) |
+| x | egeberkina | ^93 c0 | [@tervisscoot Average concert in Turkey https://t.co/tExymyP6Ab](https://x.com/egeberkina/status/2060830061381431780) |
+| x | rileybrown | ^86 c8 | [@vansh22b Shut up](https://x.com/rileybrown/status/2060910981484622132) |
+| x | steipete | ^81 c13 | [Haven't seen codex writing ad-hoc codemods before, but it just did for a bigger ](https://x.com/steipete/status/2061115471760441692) |
+| x | steipete | ^68 c8 | [@iruletheworldmo very much depends on the skillset of the person driving the AI.](https://x.com/steipete/status/2060749955707351156) |
+| x | steipete | ^67 c3 | [@segolovach parent codex is pretty good at rejecting review comments. You need t](https://x.com/steipete/status/2060794664521781466) |
+| x | AmirMushich | ^66 c14 | [GPT-2 x Seedance 2.0 animated logo mockup smart workflow + prompts 👇 Get more de](https://x.com/AmirMushich/status/2060775801121816995) |
+| x | egeberkina | ^64 c3 | [Tonight Turkey at Ye's concert 🇹🇷 Made with Omni Flash https://t.co/iHEwBZ5zlP](https://x.com/egeberkina/status/2060828495521976754) |
+| x | godofprompt | ^59 c10 | [I pulled a full week of @OpenAI's X analytics without an API key, a scraper, or ](https://x.com/godofprompt/status/2060808562314772519) |
+| x | egeberkina | ^56 c0 | [Off-White™ presents: impossible places https://t.co/Bvy2jIR8BD](https://x.com/egeberkina/status/2060705806891249691) |
+| x | steipete | ^55 c1 | [@artee_49 charge more for your work](https://x.com/steipete/status/2060702497396650316) |
+| x | steipete | ^52 c1 | [@dasPoppers @openclaw Did we had the same idea yesterday? Didn't see your propos](https://x.com/steipete/status/2060974727213027435) |
+| x | steipete | ^51 c5 | [@macmatan private one, a few work work. Difference is mostly permissions.](https://x.com/steipete/status/2060750352127770860) |
 
 
 ## โพสต์เด่น
@@ -97,114 +95,98 @@ signal รอง: rileybrown เรียก 'Cowork' ของ Anthropic ว่
   <header class="ndf-card-head">
     <span class="ndf-author">@steipete</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2803 · 💬 142</span>
+    <span class="ndf-engagement">♥ 1239 · 💬 74</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2060678430031597696">View @steipete on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2061031509088231640">View @steipete on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“With GPT 5.5, /goal, autoreview and crabbox my prompts moved from ~30-60min to often 4-10h tasks and my confidence that it’s ready is much much higher. Yielding agents is a skill.”</p>
+    <p class="ndf-quote">“Finally got my visa sorted out and moving to San Francisco, just in time for MS Build and OpenClaw’s after hours! https://t.co/agbyZ79kb1”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@steipete รายงานว่าใช้ GPT-5.5 ร่วมกับ /goal, autoreview และ crabbox ขยาย task window ของ agent จาก 30–60 นาที เป็น 4–10 ชั่วโมง และมั่นใจผลลัพธ์มากขึ้นชัดเจน</dd>
+      <dd>@steipete ได้วีซ่าสหรัฐแล้ว และกำลังย้ายไป San Francisco พร้อมกับช่วง MS Build และ after-hours ของ OpenAI</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>'Yielding agents' คือการจับคู่ goal-setting กับ auto-review เพื่อรัน autonomous task ได้นานขึ้น — เป็น workflow skill ที่ทีมเล็กเรียนและนำไปใช้ต่อ session ได้จริง</dd>
+      <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทีมทดลอง pattern /goal + autoreview ใน Claude Code session ที่ใช้อยู่แล้ว ไม่ว่าจะเป็น Unity scripting หรืองาน web feature เพื่อขยาย autonomous task ให้ยาวขึ้น</dd>
+      <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2060678430031597696" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/steipete/status/2061031509088231640" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@steipete</span>
+    <span class="ndf-author">@marclou</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2569 · 💬 111</span>
+    <span class="ndf-engagement">♥ 736 · 💬 106</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2060672154727825718">View @steipete on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/marclou/status/2061065911394836861">View @marclou on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“I do this with codex all the time. Ask it to review code for bugs and it will tell you all good, tell it there is a bug and it will LOOP AND LOOP and will find issues.”</p>
+    <p class="ndf-quote">“I made $87,507 in May 2026. ⭐️ TrustMRR — $27K 📈 DataFast — $20K 🏴‍☠️ Ship or Die — $20K 🧑‍💻 CodeFast — $8K ⚡️ ShipFast — $7K 🐥 Twitter — $3.2K 🦐 SuperShrimp — $1K 🍜 Indie Page — $715 🛡️ ByeDispute — ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@steipete พบว่าถ้าถาม Codex ว่า 'มี bug ไหม' มักได้คำตอบว่าโอเค แต่ถ้าบอกตรงๆ ว่า 'มี bug อยู่ ให้หา' มันจะวน loop จนเจอปัญหาจริง</dd>
+      <dd>Marc Lou รายงานรายได้ $87,507 ในเดือน พ.ค. 2026 จาก 13 products โดย TrustMRR, DataFast และ Ship or Die เป็นตัวนำ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>AI code reviewer มีแนวโน้มตอบว่าโค้ดโอเค ถ้าไม่ถูกกดดัน การยืนยันว่า 'มี bug' บังคับให้มัน analyze ลึกขึ้น</dd>
+      <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">หลัง AI review บอกว่าโค้ดโอเค ให้ต่อด้วย 'มี bug อยู่ ให้หา' เป็น second pass มาตรฐานก่อน merge ทุกครั้ง</dd>
+      <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2060672154727825718" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/marclou/status/2061065911394836861" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1253 · 💬 76</span>
+    <span class="ndf-engagement">♥ 657 · 💬 50</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2060766986523553929">View @levelsio on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2061027867274674194">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“It's a disease all over Europe”</p>
+    <p class="ndf-quote">“Update after 4 months he's at $16K MRR https://t.co/1MpJWnyP9N”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@levelsio โพสต์ประโยคสั้นๆ ว่า 'It's a disease all over Europe' โดยไม่มีบริบท หัวข้อ หรือเนื้อหาทางเทคนิคใดๆ</dd>
+      <dd>@levelsio แชร์ update ของ builder รายหนึ่งที่ทำรายได้ $16K MRR ภายใน 4 เดือน โดยไม่ระบุ product, stack หรือวิธีการใดๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/levelsio/status/2060766986523553929" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/levelsio/status/2061027867274674194" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@steipete</span>
+    <span class="ndf-author">@jackfriks</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 576 · 💬 53</span>
+    <span class="ndf-engagement">♥ 575 · 💬 83</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2060671704498573626">View @steipete on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/jackfriks/status/2061072407608066353">View @jackfriks on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“@jjpcodes first lesson: never use passkeys”</p>
+    <p class="ndf-quote">“i made $59,347 in may 2026 ... ($81,919 CAD) 🌉 post bridge — $36K 🏴‍☠️ ship or die — $20K 🐷 lovelee couples — $3K 📔 year pix — $45 this has become an insanely stupid amount of money to me and doesn't ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@steipete ตอบ @jjpcodes ด้วยประโยคเดียว 'never use passkeys' ไม่มีเหตุผล ไม่มีบริบท ไม่มีรายละเอียดเพิ่มเติม</dd>
+      <dd>Indie maker @jackfriks รายงานรายได้ $59,347 USD ในเดือนพ.ค. 2026 จาก 4 product ที่สร้างเอง: Post Bridge ($36K), Ship or Die ($20K), Lovelee Couples ($3K), Year Pix ($45)</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2060671704498573626" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@levelsio</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 490 · 💬 32</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2060785409211130067">View @levelsio on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Companies in Europe get a few things for doing this: 1) extreme cost savings: they don't have to stock amenities in every room, wash towels, clean rooms every day, putting AC at minimum 23-25C lowers ”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Levelsio ชี้ว่าโรงแรมในยุโรปลด AC, สิ่งอำนวยความสะดวก และทำความสะอาดรายวัน เพื่อดึงดูด corporate booking และสิทธิ์ลดหย่อนภาษี ESG โดยแลกกับประสบการณ์แขก</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/levelsio/status/2060785409211130067" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/jackfriks/status/2061072407608066353" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@EXM7777</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 346 · 💬 15</span>
+    <span class="ndf-engagement">♥ 494 · 💬 17</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/EXM7777/status/2060736517564477901">View @EXM7777 on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“https://t.co/ip0CFHxG7R”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>https://t.co/ip0CFHxG7R</dd>
+      <dd>Post นี้มีแค่ลิงก์ X Premium article ที่ต้องสมัครสมาชิกถึงเปิดได้ ไม่มีข้อความหรือบริบทใดๆ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/EXM7777/status/2060736517564477901" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -213,14 +195,14 @@ signal รอง: rileybrown เรียก 'Cowork' ของ Anthropic ว่
   <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 238 · 💬 26</span>
+    <span class="ndf-engagement">♥ 408 · 💬 43</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2060836472958165167">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“https://t.co/yHVz4TUlse”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@levelsio quote tweet โพสต์ที่บอกว่ากฎระเบียบด้านรถยนต์บังคับให้ผู้ผลิตสร้างรถเพื่อ compliance ก่อน แล้วค่อยคิดถึงผู้บริโภค พร้อมภาพ SUV 16 รุ่นจาก 16 brand ที่แทบแยกกันไม่ออก</dd>
+      <dd>levelsio โพสต์รูป SUV 18 ยี่ห้อที่ดีไซน์แทบเหมือนกันทุกเจ้า พร้อม quote-tweet ว่าสาเหตุมาจากกฎระเบียบและนโยบายเศรษฐกิจ ไม่ใช่ความต้องการของผู้บริโภค</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -233,20 +215,40 @@ signal รอง: rileybrown เรียก 'Cowork' ของ Anthropic ว่
   <header class="ndf-card-head">
     <span class="ndf-author">@vasuman</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 196 · 💬 25</span>
+    <span class="ndf-engagement">♥ 329 · 💬 45</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vasuman/status/2060847258283999376">View @vasuman on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Imagine an AI company that forward deploys into your enterprise to first understand how everything works, then architects what an agent solution looks like custom built for you, and only then builds t”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ผู้โพสต์เสนอไอเดียว่าควรมีบริษัท AI ที่ embed เข้าไปใน enterprise ก่อนเพื่อทำความเข้าใจ workflow แล้วค่อย design และสร้าง agent solution แบบ custom — เป็นแค่ความคิด ไม่ใช่การประกาศ</dd>
+      <dd>@vasuman เสนอ model: AI firm เข้าฝังตัวในองค์กร เข้าใจ workflow ก่อน แล้ว architect และสร้าง custom agent — และระบุว่ายังไม่มีใครทำแบบนี้ครบวงจร</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>model 'discover → architect → build' สำหรับ enterprise AI agents คือ gap ที่ studio เล็กเข้าได้ก่อนที่ big consulting จะมาตีตลาด</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">จัด client AI engagement เป็น 3 phases ชัดเจน: audit workflow → architect agent → build agent แล้ว pitch เป็น enterprise service ที่ต่างจากคนอื่น</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/vasuman/status/2060847258283999376" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@vasuman</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 320 · 💬 46</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vasuman/status/2060866035067343240">View @vasuman on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“If you're a software engineer that is down for a paid work trial (1-2 weeks, converts to an internship or full-time offer), come by our office today or tomorrow. I'll interview everyone and get back t”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>บุคคลรายหนึ่ง (@vasuman) เปิดรับ software engineer ทำ paid work trial 1-2 สัปดาห์ ที่ออฟฟิศ โอกาสต่อเป็น internship หรือ full-time — รับ DM แค่ช่วงสุดสัปดาห์นี้</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/vasuman/status/2060847258283999376" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/vasuman/status/2060866035067343240" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

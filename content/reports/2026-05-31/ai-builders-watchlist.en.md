@@ -4,7 +4,7 @@ date: '2026-05-31'
 topic: ai-builders-watchlist
 lang: en
 pair: ai-builders-watchlist.th.md
-generated_at: '2026-05-31T04:43:34+00:00'
+generated_at: '2026-05-31T16:31:18+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,81 +12,79 @@ platforms:
 regions:
 - global
 post_count: 80
-salience: 0.45
+salience: 0.35
 sentiment: mixed
 confidence: 0.55
 tags:
-- agentic-coding
-- claude-code
-- prompt-engineering
+- indie-hackers
+- ai-agents
+- codex
+- video-gen
 - devtools
-- ai-workflow
-- anthropic
-thumbnail: https://pbs.twimg.com/media/HJmP09xWEAc8q7O.png
+- openclaw
+thumbnail: https://pbs.twimg.com/media/HJo95BoXIAsVniK.jpg
 ---
 
 # AI Builders Watchlist — 2026-05-31
 
 ## TL;DR
-- steipete reports that combining GPT-5.5 with Claude Code's /goal, plus 'autoreview' and 'crabbox' tools, stretched his agent runs from ~30-60min to 4-10h tasks with higher confidence in the output [1][10][19].
-- Practical prompting tricks surfaced: telling Codex 'there is a bug' makes it loop and actually find issues vs. rubber-stamping 'all good' [2]; and 'high reasoning + autoreview' reportedly beats 'extra high' alone [24].
-- Anthropic's /goal adds a 'don't stop until done' completion-condition mode that iterates across turns unattended [19]; separately, rileybrown calls Anthropic's 'Cowork' launch (50M-view video) its biggest mistake [9].
-- Prompt-craft thread (godofprompt): single word swaps ('explain' vs 'describe') shift outputs, but a sentence of context beats hunting for the perfect synonym [34][54][60].
-- Much of the watchlist this week is off-topic (levelsio hotel/ESG rants, AI video/Seedance prompt demos, personal posts), so coding-relevant signal is thin [3][5][25][29][32][43].
+- Indie revenue posts dominate this week: marclou reported $87,507 for May 2026 [2], jackfriks $59,347 [4]; their joint venture Ship or Die is split 50/50 and made ~$40K total [31][34].
+- steipete is moving to San Francisco for MS Build and is actively developing OpenClaw, a modular/lean personal agent framework ("only add what you need") [1][11].
+- Practical coding-agent signal: steipete reports Codex writing ad-hoc codemods for a larger TypeScript migration, and using 'autoreview' plus an agents.md spec to keep the model honest on edge cases [21][17][23].
+- Video-gen comparison is a live thread among these voices: Seedance 2.0 vs Gemini Omni Flash, with one arguing Omni's edge is non-quality (distribution/access), not raw output [24][25][40][41].
+- marclou's TrustMRR verifies startup metrics (MRR, churn, visitors) from Stripe/GSC/GA, and levelsio cautions that viral '$1M ARR in a month' claims are mostly pumped [18][10].
 
 ## What happened
-The dominant builder thread this week is agentic coding workflow tuning. steipete describes a stack of GPT-5.5 + Claude Code /goal + 'autoreview' + 'crabbox' that lets him run much longer autonomous tasks (4-10h vs 30-60min) with higher confidence they are ready to ship [1][10][44]. He shares concrete tactics: prompting Codex with the assertion that a bug exists makes it iterate and find real issues instead of declaring code clean [2]; 'high + autoreview' outperforms 'extra high' reasoning alone [24]; and behavior should be defined in agents.md so the agent knows how deep to go on edge cases [22]. Anthropic's /goal feature—set a completion condition, walk away, iterate across turns—is described by godofprompt [19]. A side thread from steipete argues against passkeys for practical/security-friction reasons while liking the concept [4][20][45][51].
-
-Secondary signals: rileybrown calls Anthropic's 'Cowork' its biggest mistake despite 50M video views [9]; godofprompt relays a framing that AI valuations rest on 'nobody wants the 8th best product,' tied to Anthropic's $1T narrative [36]; vasuman pitches forward-deployed, custom-built enterprise agent solutions and is hiring via paid work trials [8][11]; and jackfriks runs harsh app-review feedback for a 'ship or die' cohort, rejecting 9 apps [16]. The remaining bulk is non-technical (hotels/ESG, food, concerts) or AI media-generation prompt demos [3][5][25][29][32][43].
+This is a personalities feed, not a news feed. The bulk of high-engagement items are monthly indie-hacker revenue reports: marclou $87,507 across a portfolio (TrustMRR $27K, DataFast $20K, Ship or Die $20K, CodeFast $8K, ShipFast $7K) [2], jackfriks $59,347 [4], and levelsio noting a project at $16K MRR after 4 months [3]. marclou and jackfriks confirm Ship or Die is a 50/50 joint venture, so each reports half of ~$40K total [31][34]. marclou's TrustMRR claims verification of MRR/churn/visitors from Stripe, Google Search Console, and Google Analytics [18], and levelsio warns publicly that '$1M ARR in a month' growth stories are largely fabricated or pumped [10]. Separately, steipete announced a move to San Francisco for MS Build and continued work on OpenClaw, framed as a modular, minimal personal agent [1][11].
 
 ## Why it matters (reasoning)
-The consistent message from the most-engaged practitioner (steipete) is that output quality from agents now depends more on the operator's workflow than on raw model tier: review loops, completion conditions, and explicit edge-case specs matter more than picking 'extra high' [1][22][24][44]. The Codex 'assume a bug exists' trick [2] exposes a real failure mode—agents default to confirming code is fine—which is directly relevant to anyone relying on AI self-review. Anthropic's /goal moves agents toward unattended multi-turn runs [19], shifting the cost from prompt-writing to defining good stopping conditions and review gates. The Cowork criticism [9] and the '8th best product' valuation framing [36] are second-order market signals: tool vendors are still searching for the right product surface, and consolidation pressure favors the top one or two coding agents, which affects which tools are safe to standardize on.
+The most useful cross-cutting signal is operational, not financial: steipete's notes on Codex generating codemods for a TypeScript migration [21], using 'autoreview' to keep the model honest [17], and encoding edge-case depth in an agents.md spec [23] are concrete patterns for agent-assisted refactoring that NDF DEV's web/mobile teams can copy directly. The OpenClaw 'fewer skills, fewer tools = more efficient agent' thesis [11] aligns with practical context-management concerns. The revenue posts are mostly noise for our purposes — they signal that the solo-SaaS/marketing-app niche these builders occupy is healthy, but the numbers are self-reported and portfolio-specific [2][4], and levelsio himself flags how much of this genre is inflated [10]. The one strategic data point worth noting is the 'nobody wants the eighth-best product' framing behind AI valuations like Anthropic's $1T [32]: in AI tooling, market position concentrates, which matters when picking which model/devtool vendors to standardize on.
 
 ## Possibility
-Likely: longer unattended agent runs with completion conditions and automated review become standard practice in coding tools through 2026, given a high-signal practitioner already reports 4-10h tasks and Anthropic shipped /goal [1][19]. Plausible: 'autoreview / crabbox'-style review-loop wrappers get absorbed into mainstream agents or replicated as open tooling, since the underlying tactic (force the model to assume a defect) is simple and reproducible [2][10]. Plausible: enterprise 'forward-deployed custom agent' consulting grows as a model [8]. Unlikely (no evidence here): any of the AI video/Seedance prompt demos [29][32][43] represent durable production workflows—these are engagement-driven showcases, not validated pipelines.
+Likely: agent-assisted codemods and review loops (Codex/autoreview/agents.md) become standard practice for migrations among these practitioners, because steipete reports them already working in production-scale TS work [21][23]. Plausible: video-gen tooling (Seedance 2.0, Gemini Omni Flash) keeps churning with no settled winner near-term — the debate is framed around distribution vs raw quality rather than a decisive lead [41]. Plausible: OpenClaw matures into a usable open personal-agent stack, but it is early and tied to one author's momentum [1][11]. Unlikely to matter operationally: the monthly MRR theater continues but yields little transferable insight [2][4].
 
 ## Org applicability — NDF DEV
-1) Adopt a forced-review step in NDF DEV's AI coding loop: prompt the agent as if a bug exists rather than asking 'is this correct?', and prefer 'high reasoning + a review pass' over maxing a single reasoning setting (low effort) [2][24]. 2) Trial Claude Code /goal for well-bounded, verifiable tasks (e.g., migrations, test-coverage passes) where a clear completion condition exists; keep a human review gate before merge (med effort) [19][1]. 3) Maintain an agents.md per repo defining how deep to go on edge cases so agents reject weak review comments and match house standards (low effort) [22]. 4) For app submissions (relevant to the Unity/mobile side), pre-empt store rejections with a self-review checklist before shipping, given how routinely apps get bounced [16]. Skip: passkey adoption debates [4][20], AI video/UGC prompt fads [32][43], and all hotel/ESG/travel content—no relevance to the studio.
+1) Trial Codex (or equivalent) for a contained TypeScript/Unity-tooling codemod and adopt an agents.md-style spec to bound edge-case behavior — low effort, high transfer [21][23]. 2) Add an 'autoreview' pass (model reviews its own diff before human review) to one repo's agent workflow and measure whether it reduces review churn — low effort [17]. 3) Evaluate Seedance 2.0 vs Gemini Omni Flash for marketing/promo clips for game or edutech launches, judging on access/cost not just output quality — med effort [25][40][41]. 4) Watch OpenClaw as a reference for lean, modular agent design before adding more tools to internal agents — low effort [11]. Skip: the MRR reports [2][4][3] and the off-topic personal posts [9][15][19][25-personal] — no action. Do not treat self-reported revenue as market sizing [10].
 
 ## Signals to Watch
-- Whether 'autoreview/crabbox'-style review wrappers get published or absorbed into Claude Code/Codex defaults [10][2].
-- Real-world reliability of /goal on long unattended runs—watch for follow-up reports of drift or wasted iterations [19][1].
-- Anthropic product direction after the 'Cowork' criticism—does it retrench toward Claude Code as the core surface [9].
-- vasuman's forward-deployed enterprise-agent model and hiring as an early signal of the custom-agent consulting market [8][11].
+- OpenClaw's modular/minimal agent direction and SF momentum around steipete [1][11].
+- Codex codemods + autoreview + agents.md as a repeatable migration pattern [21][17][23].
+- Seedance 2.0 vs Gemini Omni Flash — distribution-vs-quality framing for video gen [40][41].
+- TrustMRR's verified-metrics model and levelsio's pushback on inflated growth claims [18][10].
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | steipete | ^2803 c142 | [With GPT 5.5, /goal, autoreview and crabbox my prompts moved from ~30-60min to o](https://x.com/steipete/status/2060678430031597696) |
-| x | steipete | ^2569 c111 | [I do this with codex all the time. Ask it to review code for bugs and it will te](https://x.com/steipete/status/2060672154727825718) |
-| x | levelsio | ^1253 c76 | [It's a disease all over Europe](https://x.com/levelsio/status/2060766986523553929) |
-| x | steipete | ^576 c53 | [@jjpcodes first lesson: never use passkeys](https://x.com/steipete/status/2060671704498573626) |
-| x | levelsio | ^490 c32 | [Companies in Europe get a few things for doing this: 1) extreme cost savings: th](https://x.com/levelsio/status/2060785409211130067) |
-| x | EXM7777 | ^346 c15 | [https://t.co/ip0CFHxG7R](https://x.com/EXM7777/status/2060736517564477901) |
-| x | levelsio | ^238 c26 | [https://t.co/yHVz4TUlse](https://x.com/levelsio/status/2060836472958165167) |
-| x | vasuman | ^196 c25 | [Imagine an AI company that forward deploys into your enterprise to first underst](https://x.com/vasuman/status/2060847258283999376) |
-| x | rileybrown | ^184 c46 | [I’ve been saying this from day 1. Despite their launch video getting 50M views, ](https://x.com/rileybrown/status/2060833051609903551) |
-| x | steipete | ^182 c4 | [Autoreview: https://t.co/zbUjIS2e1i crabbox: https://t.co/SEj2XRpaD1](https://x.com/steipete/status/2060691552486175041) |
-| x | vasuman | ^171 c32 | [If you're a software engineer that is down for a paid work trial (1-2 weeks, con](https://x.com/vasuman/status/2060866035067343240) |
-| x | levelsio | ^133 c8 | [@MaxRovensky I wonder if it's your Slavicness that you have a lack of class but ](https://x.com/levelsio/status/2060785938482024869) |
-| x | jackfriks | ^121 c19 | [wife appreciation post (she made me banana bread today) https://t.co/I5ZycalO7d](https://x.com/jackfriks/status/2060871445622796739) |
-| x | levelsio | ^115 c15 | [So funny because the hotel I'm booking now literally says "making a difference a](https://x.com/levelsio/status/2060809084345979344) |
-| x | levelsio | ^90 c3 | [@pederzh Which hotel is this btw? I will add it to my anti-ESG filter on https:/](https://x.com/levelsio/status/2060777259368157320) |
-| x | jackfriks | ^82 c34 | [9 APPS REJECTED... are we are harder critics then apple review team??? more toug](https://x.com/jackfriks/status/2060742914909610226) |
-| x | levelsio | ^72 c5 | [Logged into the chain of the next hotel I'm booking EUR 600/night It's so cringe](https://x.com/levelsio/status/2060808777977242094) |
-| x | steipete | ^64 c8 | [@iruletheworldmo very much depends on the skillset of the person driving the AI.](https://x.com/steipete/status/2060749955707351156) |
-| x | godofprompt | ^63 c17 | [Anthropic just gave Claude Code a "don't stop until it's done" mode. /goal lets ](https://x.com/godofprompt/status/2060696477115339136) |
-| x | steipete | ^60 c5 | [@sergiopesch too distracting and too much hate here, and one misstep on a key an](https://x.com/steipete/status/2060691161279303691) |
-| x | levelsio | ^60 c8 | [I have that sort! And if you sort by newness it shows you the year it's built I ](https://x.com/levelsio/status/2060797815404528030) |
-| x | steipete | ^57 c3 | [@segolovach parent codex is pretty good at rejecting review comments. You need t](https://x.com/steipete/status/2060794664521781466) |
-| x | steipete | ^49 c4 | [@macmatan private one, a few work work. Difference is mostly permissions.](https://x.com/steipete/status/2060750352127770860) |
-| x | steipete | ^49 c3 | [@danielendara high + autoreview is better than extra high alone](https://x.com/steipete/status/2060680611094761635) |
-| x | egeberkina | ^48 c0 | [Off-White™ presents: impossible places https://t.co/Bvy2jIR8BD](https://x.com/egeberkina/status/2060705806891249691) |
-| x | AmirMushich | ^44 c12 | [GPT-2 x Seedance 2.0 animated logo mockup smart workflow + prompts 👇 Get more de](https://x.com/AmirMushich/status/2060775801121816995) |
-| x | steipete | ^41 c1 | [@artee_49 charge more for your work](https://x.com/steipete/status/2060702497396650316) |
-| x | steipete | ^41 c4 | [@jjpcodes I love the idea of passkeys.](https://x.com/steipete/status/2060683626203787519) |
-| x | egeberkina | ^38 c2 | [Tonight Turkey at Ye's concert 🇹🇷 Made with Omni Flash https://t.co/iHEwBZ5zlP](https://x.com/egeberkina/status/2060828495521976754) |
-| x | steipete | ^38 c1 | [@dir @jjpcodes idk that’s one feature I would most certainly not “vibe”](https://x.com/steipete/status/2060700947450405206) |
+| x | steipete | ^1239 c74 | [Finally got my visa sorted out and moving to San Francisco, just in time for MS ](https://x.com/steipete/status/2061031509088231640) |
+| x | marclou | ^736 c106 | [I made $87,507 in May 2026. ⭐️ TrustMRR — $27K 📈 DataFast — $20K 🏴‍☠️ Ship or Di](https://x.com/marclou/status/2061065911394836861) |
+| x | levelsio | ^657 c50 | [Update after 4 months he's at $16K MRR https://t.co/1MpJWnyP9N](https://x.com/levelsio/status/2061027867274674194) |
+| x | jackfriks | ^575 c83 | [i made $59,347 in may 2026 ... ($81,919 CAD) 🌉 post bridge — $36K 🏴‍☠️ ship or d](https://x.com/jackfriks/status/2061072407608066353) |
+| x | EXM7777 | ^494 c17 | [https://t.co/ip0CFHxG7R](https://x.com/EXM7777/status/2060736517564477901) |
+| x | levelsio | ^408 c43 | [https://t.co/yHVz4TUlse](https://x.com/levelsio/status/2060836472958165167) |
+| x | vasuman | ^329 c45 | [Imagine an AI company that forward deploys into your enterprise to first underst](https://x.com/vasuman/status/2060847258283999376) |
+| x | vasuman | ^320 c46 | [If you're a software engineer that is down for a paid work trial (1-2 weeks, con](https://x.com/vasuman/status/2060866035067343240) |
+| x | jackfriks | ^258 c30 | [wife appreciation post (she made me banana bread today) https://t.co/I5ZycalO7d](https://x.com/jackfriks/status/2060871445622796739) |
+| x | levelsio | ^245 c17 | [P.S. this is how actual realistc growth looks like You see all these ecom bros n](https://x.com/levelsio/status/2061036511202603374) |
+| x | steipete | ^219 c33 | [The idea of OpenClaw is always that it should be yours. It's modular and lean, o](https://x.com/steipete/status/2061072753998856696) |
+| x | EXM7777 | ^176 c7 | [this is the Hermes setup top 1% operators are using to get rid of AI slop... htt](https://x.com/EXM7777/status/2061086049326256356) |
+| x | marclou | ^155 c34 | [These have been the best 10 years of my life. Entrepreneurship has taught me so ](https://x.com/marclou/status/2061104163745075339) |
+| x | rileybrown | ^133 c7 | [What mean? https://t.co/CODJszlnCY](https://x.com/rileybrown/status/2060908536549261320) |
+| x | jackfriks | ^109 c18 | [does this look like i'm trolling? this brand new toyota corolla will last longer](https://x.com/jackfriks/status/2061089156374114449) |
+| x | steipete | ^104 c2 | [@theo Yes! See ya around this week?](https://x.com/steipete/status/2061038721290400240) |
+| x | steipete | ^99 c2 | [@theo @VictorTaelin gotta use autoreview, that keeps gpt honest and usually help](https://x.com/steipete/status/2061036923397845456) |
+| x | marclou | ^95 c33 | [Heads up! TrustMRR doesn't just show startup MRR, but also: 📉 Churn 📈 Visitors 👀](https://x.com/marclou/status/2061021034631852295) |
+| x | egeberkina | ^93 c0 | [@tervisscoot Average concert in Turkey https://t.co/tExymyP6Ab](https://x.com/egeberkina/status/2060830061381431780) |
+| x | rileybrown | ^86 c8 | [@vansh22b Shut up](https://x.com/rileybrown/status/2060910981484622132) |
+| x | steipete | ^81 c13 | [Haven't seen codex writing ad-hoc codemods before, but it just did for a bigger ](https://x.com/steipete/status/2061115471760441692) |
+| x | steipete | ^68 c8 | [@iruletheworldmo very much depends on the skillset of the person driving the AI.](https://x.com/steipete/status/2060749955707351156) |
+| x | steipete | ^67 c3 | [@segolovach parent codex is pretty good at rejecting review comments. You need t](https://x.com/steipete/status/2060794664521781466) |
+| x | AmirMushich | ^66 c14 | [GPT-2 x Seedance 2.0 animated logo mockup smart workflow + prompts 👇 Get more de](https://x.com/AmirMushich/status/2060775801121816995) |
+| x | egeberkina | ^64 c3 | [Tonight Turkey at Ye's concert 🇹🇷 Made with Omni Flash https://t.co/iHEwBZ5zlP](https://x.com/egeberkina/status/2060828495521976754) |
+| x | godofprompt | ^59 c10 | [I pulled a full week of @OpenAI's X analytics without an API key, a scraper, or ](https://x.com/godofprompt/status/2060808562314772519) |
+| x | egeberkina | ^56 c0 | [Off-White™ presents: impossible places https://t.co/Bvy2jIR8BD](https://x.com/egeberkina/status/2060705806891249691) |
+| x | steipete | ^55 c1 | [@artee_49 charge more for your work](https://x.com/steipete/status/2060702497396650316) |
+| x | steipete | ^52 c1 | [@dasPoppers @openclaw Did we had the same idea yesterday? Didn’t see your propos](https://x.com/steipete/status/2060974727213027435) |
+| x | steipete | ^51 c5 | [@macmatan private one, a few work work. Difference is mostly permissions.](https://x.com/steipete/status/2060750352127770860) |
 
 
 ## Top Posts
@@ -96,114 +94,98 @@ Likely: longer unattended agent runs with completion conditions and automated re
   <header class="ndf-card-head">
     <span class="ndf-author">@steipete</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2803 · 💬 142</span>
+    <span class="ndf-engagement">♥ 1239 · 💬 74</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2060678430031597696">View @steipete on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2061031509088231640">View @steipete on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“With GPT 5.5, /goal, autoreview and crabbox my prompts moved from ~30-60min to often 4-10h tasks and my confidence that it’s ready is much much higher. Yielding agents is a skill.”</p>
+    <p class="ndf-quote">“Finally got my visa sorted out and moving to San Francisco, just in time for MS Build and OpenClaw’s after hours! https://t.co/agbyZ79kb1”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@steipete reports that combining GPT-5.5 with /goal, autoreview, and crabbox extended their agentic task window from 30–60 min to 4–10 h, with noticeably higher completion confidence.</dd>
+      <dd>@steipete (Peter Steinberger, PSPDFKit founder) announced he got his US visa and is relocating to San Francisco, timing the move with MS Build and an OpenAI after-hours event.</dd>
       <dt>Why interesting</dt>
-      <dd>'Yielding agents' — pairing goal-setting with auto-review to sustain longer autonomous runs — is a concrete workflow skill a small dev team can learn and apply per AI session.</dd>
+      <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can trial /goal + autoreview patterns inside existing Claude Code sessions on Unity scripting or web feature work to push autonomous task length further.</dd>
+      <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2060678430031597696" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/steipete/status/2061031509088231640" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@steipete</span>
+    <span class="ndf-author">@marclou</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2569 · 💬 111</span>
+    <span class="ndf-engagement">♥ 736 · 💬 106</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2060672154727825718">View @steipete on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/marclou/status/2061065911394836861">View @marclou on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“I do this with codex all the time. Ask it to review code for bugs and it will tell you all good, tell it there is a bug and it will LOOP AND LOOP and will find issues.”</p>
+    <p class="ndf-quote">“I made $87,507 in May 2026. ⭐️ TrustMRR — $27K 📈 DataFast — $20K 🏴‍☠️ Ship or Die — $20K 🧑‍💻 CodeFast — $8K ⚡️ ShipFast — $7K 🐥 Twitter — $3.2K 🦐 SuperShrimp — $1K 🍜 Indie Page — $715 🛡️ ByeDispute — ”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@steipete found that asking Codex to 'review for bugs' returns false all-clears, but asserting 'there is a bug' forces it to loop and actually surface real issues.</dd>
+      <dd>Marc Lou publicly reported $87,507 in May 2026 MRR spread across 13 products, with TrustMRR ($27K), DataFast ($20K), and Ship or Die ($20K) as the top earners.</dd>
       <dt>Why interesting</dt>
-      <dd>LLM code reviewers default to confirming code looks fine — adversarial assertion ('there is a bug') breaks that bias and triggers deeper analysis.</dd>
+      <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">After any AI code review returns clean, follow up with 'there is a bug in this code — find it' as a standard second pass before merging.</dd>
+      <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2060672154727825718" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/marclou/status/2061065911394836861" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1253 · 💬 76</span>
+    <span class="ndf-engagement">♥ 657 · 💬 50</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2060766986523553929">View @levelsio on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2061027867274674194">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“It's a disease all over Europe”</p>
+    <p class="ndf-quote">“Update after 4 months he's at $16K MRR https://t.co/1MpJWnyP9N”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@levelsio posted a vague one-liner — 'It's a disease all over Europe' — with no subject, context, or technical content provided.</dd>
+      <dd>@levelsio shared a revenue update for an unnamed builder who reached $16K MRR four months after launch, with no product, stack, or method details in the post.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/levelsio/status/2060766986523553929" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/levelsio/status/2061027867274674194" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@steipete</span>
+    <span class="ndf-author">@jackfriks</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 576 · 💬 53</span>
+    <span class="ndf-engagement">♥ 575 · 💬 83</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2060671704498573626">View @steipete on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/jackfriks/status/2061072407608066353">View @jackfriks on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“@jjpcodes first lesson: never use passkeys”</p>
+    <p class="ndf-quote">“i made $59,347 in may 2026 ... ($81,919 CAD) 🌉 post bridge — $36K 🏴‍☠️ ship or die — $20K 🐷 lovelee couples — $3K 📔 year pix — $45 this has become an insanely stupid amount of money to me and doesn't ”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@steipete replied to @jjpcodes with a single bare assertion — 'never use passkeys' — with no explanation, context, or supporting detail.</dd>
+      <dd>Indie maker @jackfriks reports $59,347 USD in May 2026 revenue split across four self-built products: Post Bridge ($36K), Ship or Die ($20K), Lovelee Couples ($3K), and Year Pix ($45).</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2060671704498573626" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@levelsio</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 490 · 💬 32</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2060785409211130067">View @levelsio on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Companies in Europe get a few things for doing this: 1) extreme cost savings: they don't have to stock amenities in every room, wash towels, clean rooms every day, putting AC at minimum 23-25C lowers ”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>Levelsio argues European hotels cut AC, amenities, and daily cleaning to chase ESG tax breaks and corporate bookings, at the direct expense of guest comfort.</dd>
-      <dt>Why interesting</dt>
-      <dd>Not relevant.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">No action.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/levelsio/status/2060785409211130067" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/jackfriks/status/2061072407608066353" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@EXM7777</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 346 · 💬 15</span>
+    <span class="ndf-engagement">♥ 494 · 💬 17</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/EXM7777/status/2060736517564477901">View @EXM7777 on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“https://t.co/ip0CFHxG7R”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>https://t.co/ip0CFHxG7R</dd>
+      <dd>The post is a bare link to an X Premium article (HTTP 402 paywall) with no caption, headline, or context provided — content is inaccessible without a subscription.</dd>
+      <dt>Why interesting</dt>
+      <dd>Not relevant.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">No action.</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/EXM7777/status/2060736517564477901" target="_blank" rel="noopener">View on x →</a>
   </div>
@@ -212,14 +194,14 @@ Likely: longer unattended agent runs with completion conditions and automated re
   <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 238 · 💬 26</span>
+    <span class="ndf-engagement">♥ 408 · 💬 43</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2060836472958165167">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“https://t.co/yHVz4TUlse”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@levelsio quote-tweets a take that automotive regulation forces manufacturers to build for compliance first and consumers last, pairing it with an image of 16 brand-name SUVs that are visually indistinguishable from each other.</dd>
+      <dd>@levelsio shared an 18-brand SUV side-by-side showing near-identical shapes, quoting a thread arguing that regulations and economic policy — not consumer preference — caused this homogenization.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
@@ -232,20 +214,40 @@ Likely: longer unattended agent runs with completion conditions and automated re
   <header class="ndf-card-head">
     <span class="ndf-author">@vasuman</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 196 · 💬 25</span>
+    <span class="ndf-engagement">♥ 329 · 💬 45</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vasuman/status/2060847258283999376">View @vasuman on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Imagine an AI company that forward deploys into your enterprise to first understand how everything works, then architects what an agent solution looks like custom built for you, and only then builds t”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Author @vasuman floats the idea that someone should build an AI firm that embeds inside an enterprise first to map workflows, then designs and builds custom agent solutions — framed as a gap in the market, not an announcement.</dd>
+      <dd>@vasuman describes an AI consulting model: embed in an enterprise, learn its workflows, architect a custom agent solution, then build it — and points out no company currently does this end-to-end.</dd>
+      <dt>Why interesting</dt>
+      <dd>This 'discover → architect → build' model for enterprise AI agents is an open gap a boutique studio can fill before large consultancies commoditize it.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The studio can package client AI work into three explicit phases — workflow audit, agent architecture, agent build — and pitch it as a differentiated enterprise service.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/vasuman/status/2060847258283999376" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@vasuman</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 320 · 💬 46</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vasuman/status/2060866035067343240">View @vasuman on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“If you're a software engineer that is down for a paid work trial (1-2 weeks, converts to an internship or full-time offer), come by our office today or tomorrow. I'll interview everyone and get back t”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>An individual (@vasuman) is offering a 1-2 week paid work trial at their office that may convert to an internship or full-time role, recruiting via X DM this weekend only.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/vasuman/status/2060847258283999376" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/vasuman/status/2060866035067343240" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

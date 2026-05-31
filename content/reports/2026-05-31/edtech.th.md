@@ -4,87 +4,90 @@ date: '2026-05-31'
 topic: edtech
 lang: th
 pair: edtech.en.md
-generated_at: '2026-05-31T04:17:52+00:00'
+generated_at: '2026-05-31T16:08:28+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
 - x
 regions:
 - global
-post_count: 136
-salience: 0.4
+post_count: 135
+salience: 0.42
 sentiment: mixed
 confidence: 0.55
 tags:
 - edtech
 - ai-tutor
 - brilliant-koji
-- stem-learning
-- classroom-pushback
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2060375547910238209/img/m8cRbHRQ1bPaOvUO.jpg
+- multimodal
+- edtech-business
+- language-learning
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2060931386404450305/img/OzWC2q0L9LztaimG.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # EdTech — 2026-05-31
 
 ## TL;DR
-- Brilliant (แพลตฟอร์ม math/coding ผู้ใช้ ~10M คน) เปิดตัว Koji ซึ่งเป็น AI tutor แบบ real-time ที่มองเห็นและวาดบนหน้าจอของนักเรียนได้ พร้อม coach ทีละขั้นตอนแทนการให้คำตอบตรงๆ พัฒนาโดยทีมที่อ้างพื้นเลี้ยง MIT/Harvard [1][11][51][52]
-- AI tutor คู่แข่งหลายรายเปิดตัวพร้อมกันในวันเดียวกัน: OpenAI โชว์ 'Curo' (tutor ผ่าน voice interface) [42], 'Tutorial AI' วางบน Solana Mobile's Seeker แปลงสื่อเป็น flashcard/quiz/tutor [30] และ Jensen Huang พูดต่อสาธารณะว่า AI tutoring แบบ real-time จะเปิดโอกาสให้ทุกคนเข้าถึงการสอนแบบ 1:1 [43]
-- Jonathan Haidt เสนอวิทยานิพนธ์ฝั่งตรงข้าม — โรงเรียนปลอดโทรศัพท์และ 'การผลักดันโดยผู้ปกครองต่อ EdTech' โดยโต้ว่าเทคโนโลยีมากขึ้นไม่ได้ดีกว่าเสมอไปสำหรับเด็ก [16][44]
-- Duolingo ยังคงเป็น cultural reference (streaks, ภาษาเพื่อสุขภาพสมอง) แต่ปรากฏในฐานะกล่าวถึงเท่านั้น ไม่ใช่ข่าวผลิตภัณฑ์ [15][19][31][36]
-- รายการส่วนใหญ่ในชุดนี้ (~40 จาก 60) เป็นการโต้เถียงไวรัลเรื่องการออกเสียงคำที่ไม่เกี่ยวกับ edtech — signal edtech จริงๆ กระจุกตัวอยู่น้อยมาก [2][3][20][21][24][29]
+- Brilliant (แพลตฟอร์ม STEM 10 ล้านผู้ใช้) เปิดตัว Koji — AI tutor แบบ real-time ที่มองเห็นและวาดบนหน้าจอนักเรียนได้ สอนทีละขั้นตอนแทนการให้คำตอบโดยตรง [8][46][31]; ทีมพัฒนามาจาก MIT/Harvard [42]
+- ทีม dev ของ OpenAI นำเสนอ Curo — AI tutor แบบ voice interface แบบตัวต่อตัว [37]; Solana Mobile app ชื่อ 'Tutorial AI' แปลงสื่อเป็น notes/flashcards/quizzes พร้อม tutor ในตัว [22] — pattern 'AI tutor ที่ coach ไม่ใช่แก้โจทย์' กลายเป็น multi-vendor แล้ว
+- ความเคลื่อนไหวธุรกิจ edtech ในอินเดีย: PhysicsWallah สร้างแขนงสินเชื่อ FinZ Finance ปล่อยสินเชื่อระยะสั้น โดย 70–75% ไปที่นักเรียนที่ลงทะเบียนอยู่แล้ว [38]; และข้อกล่าวหาเรื่องการประกวดราคาที่อ้างว่าเงื่อนไขถูกปรับเพื่อเอื้อ Coempt ซึ่งเชื่อมกับ Manipal Global Education [2]
+- สัญญาณ Duolingo ส่วนใหญ่เป็นวัฒนธรรม/การตลาด — streak recovery prompt ที่ viral [15], โค้ชใช้มันเรียนสเปนเพื่อสุขภาพสมอง [19] — ไม่ใช่ข่าวผลิตภัณฑ์ [20]
+- รายการส่วนใหญ่ใน feed นี้เป็นเรื่องการออกเสียง/K-pop ไม่ใช่ edtech; สัญญาณจริงกระจุกตัวอยู่ในรายการผลิตภัณฑ์และธุรกิจเพียงไม่กี่ชิ้น
 
 ## สิ่งที่เกิดขึ้น
-เหตุการณ์ edtech สำคัญของวันคือการเปิดตัว Koji ของ Brilliant ซึ่งเป็น AI tutor แบบ real-time ฝังอยู่ในแพลตฟอร์ม STEM interactive ผู้โปรโมตอธิบายว่า Koji coach ให้นักเรียนคิดเองแทนการแก้ปัญหาแทน พร้อมความสามารถมองเห็นและวาดบนหน้าจอในแบบ real-time ซึ่งวางตำแหน่งว่าเป็น category first [1][11][33][52] Founder และผู้สนับสนุน (รวมถึง Kevin Weil) ขยายสัญญาณอย่างหนัก ทำให้ engagement score พุ่งสูง [1][49] กิจกรรม AI tutor คู่ขนานเกิดขึ้นจาก developer account ของ OpenAI (Curo แบบ voice, ทีละขั้นตอน) [42], แอปบน Solana Mobile (Tutorial AI) [30] และคำวิจารณ์จาก Jensen Huang เรื่อง AI instruction แบบ personalized [43]
+เหตุการณ์ที่ชัดเจนที่สุดคือการเปิดตัว Koji ของ Brilliant — AI tutor แบบ real-time ที่ฝังอยู่ในแพลตฟอร์ม STEM แบบ interactive ซึ่งติดตามนักเรียนขณะแก้โจทย์ annotate หน้าจอ และปรับการ coach แบบ live แทนการให้คำตอบ [8][31][46][58] Brilliant มีผู้ใช้ราว 10 ล้านคน [46] และ Koji มาจากทีมที่มีพื้นหลัง MIT/Harvard [42]; ได้รับการสนับสนุนจากบุคคลในวงการ OpenAI และมีการอ้างถึง Jensen Huang ในเรื่อง AI tutoring [28][40][36] tutor แนว 'coaching not solving' ปรากฏพร้อมกัน: ทีม OpenAI Devs นำเสนอ Curo ซึ่งเป็น tutor แบบ voice-first 1:1 [37] และ Solana Mobile app Tutorial AI ที่แปลง video/บทความ/voice note ให้เป็น study artifact พร้อม tutor [22]
 
-## เหตุใดจึงสำคัญ (การวิเคราะห์)
-การที่ 'AI tutor ที่ coach ไม่ใช่ตอบ' หลายราย launch พร้อมกันในวันเดียว [11][42][43] บ่งชี้ว่า category กำลังรวมตัวรอบ product thesis เดียวกัน: การแนะนำแบบ Socratic เชิงกระบวนการพร้อม screen interaction แบบ multimodal ซึ่งทำตลาดโดยตรงต่อต้านความกลัว 'AI ทำการบ้านแทน/ทำให้เด็กโง่ลง' [1][33][56] ความสามารถ see-and-draw บนหน้าจอ [52] ยกระดับ technical bar ให้สูงกว่า text chat ธรรมดา ผลกระทบรองคือสงครามการวางตำแหน่งด้านความน่าเชื่อถือ: ผู้ขายแข่งกันบน pedagogy claims (เสริมความเข้าใจ, สร้างกระบวนการคิด) แทนที่จะเป็น feature ของคู่แข่ง 'EdTech pushback ที่นำโดยผู้ปกครอง' และขบวนการโรงเรียนปลอดโทรศัพท์ของ Haidt [16][44] แสดงให้เห็น demand-side risk ที่แท้จริง — โรงเรียนและครอบครัวอาจปฏิเสธ AI ในชั้นเรียนโดยไม่คำนึงถึงคุณภาพผลิตภัณฑ์ ซึ่งสำคัญมากสำหรับ go-to-market แบบ B2B/B2school
+ด้านธุรกิจ PhysicsWallah ถูกรายงานว่ากำลังสร้างแขนงสินเชื่อ FinZ Finance โดยเน้นสินเชื่อการศึกษาระยะสั้นที่กระจุกตัว (70–75%) ในกลุ่มนักเรียนที่ลงทะเบียนอยู่แล้ว [38] และข้อพิพาทการจัดซื้อจัดจ้างกล่าวหาว่าเงื่อนไขการประกวดราคาถูกแก้ไขเพื่อเอื้อ Coempt ซึ่งเชื่อมกับ Manipal Global Education Services [2] Duolingo ปรากฏส่วนใหญ่ในแง่การตลาดและวัฒนธรรม [15][19][20] ควบคู่กับการรับรอง classroom tool เฉพาะกลุ่ม (SmartPass สำหรับติดตามการออกจากห้องเรียน) [23] และ TED talk ของ Jonathan Haidt ที่ตีกรอบ edtech ผ่านความต้องการทางสังคม/ชุมชน [12] ส่วนใหญ่ของ feed เป็นการถกเรื่องการออกเสียงและ fandom ที่ไม่เกี่ยวข้อง [1][3][4][7][21] และเรื่องทำนองเดียวกัน
+
+## เหตุใดจึงสำคัญ (เหตุผล)
+การที่ Brilliant Koji [8][46], Curo ของ OpenAI [37] และ Tutorial AI บนมือถือ [22] ปรากฏในช่วงเวลาเดียวกัน แสดงว่า product category ของ AI tutor กำลังรวมศูนย์รอบการออกแบบเฉพาะ: การ coach เชิงกระบวนการที่ไม่ให้คำตอบ โดยมี screen-aware interface และ voice เป็นตัวแยกความแตกต่าง [31][37][46] Tutor ที่มองเห็น/annotate หน้าจอได้ [46] ยกระดับมาตรฐาน multimodal interaction — สำคัญสำหรับผู้พัฒนา learning UX เพราะ baseline ที่คาดหวังกลายเป็นการ guide แบบ live บน artifact จริง ไม่ใช่แค่ chat ในระดับ second-order: การออกแบบ pedagogy และ assessment (ติดตามกระบวนการ ไม่ใช่ output) [54][42] กลายเป็น moat ที่แท้จริง เพราะหลาย vendor เข้าถึง model ที่เทียบเคียงกันได้ ด้านธุรกิจ การที่ PW ก้าวเข้าสู่สินเชื่อการศึกษา [38] บ่งชี้ว่า edtech firm กำลัง monetize ชั้นการเงิน — และกระจุกความเสี่ยงไว้ที่นักเรียนปัจจุบัน — ขณะที่ข้อพิพาท Coempt/Manipal [2] เตือนว่าการจัดซื้อ edtech ภาครัฐมีความเสี่ยงด้านชื่อเสียงและ governance ความที่ off-topic chatter ครองพื้นที่ใน feed นี้หมายความว่าสัญญาณ edtech จริงวันนี้มีขอบเขตแคบและไม่ควรให้น้ำหนักเกิน
 
 ## ความเป็นไปได้
-น่าจะเกิด: การแข่งขัน AI tutor แบบ 'coaching' เพิ่มขึ้นต่อเนื่อง เพราะอย่างน้อยสามรายปรากฏพร้อมกัน [11][42][43] เป็นไปได้: multimodal screen-aware tutoring (see/draw) กลายเป็น baseline ที่คาดหวังใน category เนื่องจาก Koji วางตัวเองเป็น first [52] เป็นไปได้: การต่อต้านจากสถาบัน/ผู้ปกครองจำกัดการ adopt ในชั้นเรียน แม้ consumer adoption จะเติบโต จากการผลักดันที่มีการจัดตั้ง [16][44] ไม่น่าจะเกิด (จากหลักฐานนี้) ที่ผลิตภัณฑ์ใดจะครอง dominance ที่ยั่งยืน — signal ที่เห็นคือการขยายจาก founder/investor อย่างหนัก [1][49] ไม่ใช่การยืนยันอิสระหรือข้อมูลการใช้งาน ไม่มีแหล่งข้อมูลใดให้ตัวเลข adoption หรือ efficacy จริง ดังนั้น efficacy claims ยังไม่ได้รับการยืนยัน
+**น่าจะเกิด:** tutor แบบ 'coaching not answering', screen-aware และ voice จาก vendor รายอื่นจะออกมาภายในไม่กี่เดือน เพราะมีตัวอย่างอิสระสามรายอยู่แล้ว [8][37][22] **เป็นไปได้:** assessment/process-tracking (tutor สร้างโมเดลความพยายามและการใช้เหตุผลก่อนหน้าของนักเรียนหรือไม่) จะกลายเป็นแกนแข่งขันหลัก เพราะนั่นคือสิ่งที่ผู้สนับสนุนเน้น [54][42][40] **เป็นไปได้:** edtech-as-lender จะขยายเกิน PW หาก FinZ แสดงผลลัพธ์ แม้การกระจุกตัวในผู้กู้ที่ลงทะเบียนอยู่แล้ว [38] จะดึงดูดการตรวจสอบ **ไม่น่าจะเกิด (จาก feed นี้):** Duolingo มีการเปลี่ยนแปลงผลิตภัณฑ์ครั้งใหญ่ — การกล่าวถึงเป็นแค่การตลาดและเกร็ดเรื่องเล่า [15][19][20] ไม่มีแหล่งข้อมูลใดระบุตัวเลขการใช้งานหรือรายได้ จึงไม่กล่าวอ้างความน่าจะเป็นใดๆ
 
-## ความเกี่ยวข้องกับ NDF DEV
-1) สำหรับสาย edutech/e-learning ของ NDF DEV ให้ประเมิน interaction pattern 'coach-not-answer' เป็น product reference — prompting เชิงกระบวนการบวก on-screen annotation [33][52] (effort: กลาง) 2) สำหรับงานที่หันหน้าสู่ห้องเรียน ออกแบบรับมือ objection เรื่องความน่าเชื่อถือ/การผลักดันตั้งแต่ต้น (parent controls, ความโปร่งใส, รองรับ offline/phone-free) แทนการสันนิษฐานว่าทุกคนสนับสนุน AI [16][44] (effort: ต่ำ) 3) จดบันทึก voice-as-interface tutoring ว่าเป็น modality ที่ทำได้สำหรับแอป language/edu จาก Curo และ demand ด้านการออกเสียงที่หนักแน่น [42] (effort: กลาง) ข้ามไป: การไล่ตาม hype ของ Brilliant launch ในฐานะหลักฐาน market validation — ถูกขยายโดย founder และนักลงทุน ไม่ใช่ข้อมูลการใช้งาน [1][49] ข้ามไป: รายการ tender ของ Manipal/Coempt [4] และ thread การออกเสียง [2][3][20] — ไม่มี relevance ที่ actionable
+## ความเกี่ยวข้องกับองค์กร — NDF DEV
+1) สำหรับ NDF DEV edutech/e-learning: prototype loop ของ tutor แบบ 'coach-not-solve' — hints แบบ adaptive ที่ตอบสนองต่อความพยายามของผู้เรียนแทนการส่งคำตอบ — โดยอิงจาก pattern ของ Koji/Curo [8][37][54]; effort ปานกลาง 2) ประเมิน screen-aware/annotation interaction สำหรับ Unity และ web learning app เพราะ on-artifact guidance กำลังกลายเป็น category baseline [46]; effort สูง (multimodal capture + overlay) ควร scope pilot แคบๆ ก่อน 3) สำหรับฟีเจอร์ language learning ให้พิจารณา voice เป็น interface สำหรับฝึกการออกเสียง/พูด — voice-first tutoring กำลังถูก productize [37] และความสนใจเรื่องการออกเสียงใน feed [5][9][25] บ่งชี้ demand; effort ปานกลาง และสอดคล้องกับ tooling การออกเสียงที่มีอยู่แล้ว 4) classroom-ops tool แบบ lightweight (เช่น SmartPass-style tracking) ได้รับการยืนยันจากครู [23] — effort ต่ำ ความเสี่ยงต่ำหากมีลูกค้าต้องการ ข้าม: การสร้างแขนง lending/fintech [38] (นอก scope) และการไล่ตาม crypto-token learning app [22] (ยังไม่ได้รับการพิสูจน์ token-driven) ข้ามการตอบสนองต่อการตลาดของ Duolingo [15] และรายการการออกเสียง/fandom ทั้งหมด — ไม่มี product takeaway
 
-## Signals ที่ต้องติดตาม
-- บทวิจารณ์อิสระ (ไม่ใช่จากฝ่ายโปรโมต) หรือข้อมูล usage/efficacy ของ Koji หรือ Curo จะเกิดขึ้นหรือไม่ เทียบกับการขยายจาก founder/investor ปัจจุบัน [1][49]
-- Multimodal screen-aware tutoring (see-and-draw) กลายเป็น baseline expectation หรือไม่ [52]
-- ความแข็งแกร่งของขบวนการ 'EdTech pushback' ของผู้ปกครอง/ครู และโรงเรียนปลอดโทรศัพท์ในฐานะ adoption constraint [16][44]
-- Voice ในฐานะ primary tutor interface กำลังได้รับการยอมรับจาก Curo หรือไม่ [42]
+## สัญญาณที่ควรติดตาม
+- Brilliant เผยแพร่ข้อมูล retention/learning-outcome ของ Koji เทียบกับ tool ที่ให้คำตอบหรือไม่ — การกล่าวอ้างที่ยังไม่ได้รับการพิสูจน์คือการ coaching ดีกว่าการ solving [31][42]
+- การแพร่กระจายของ tutor ที่มองเห็น/annotate หน้าจอไปยังแพลตฟอร์มอื่น; Brilliant อ้างสิทธิ์ first-mover [46]
+- องค์ประกอบสมุดสินเชื่อ PW FinZ Finance และการตอบสนองด้านกฎระเบียบ เพราะ 70–75% ไปที่นักเรียนที่ลงทะเบียนอยู่แล้ว [38]
+- ผลลัพธ์ของข้อกล่าวหา Coempt/Manipal ในฐานะกรณีศึกษา governance การจัดซื้อ edtech [2]
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | suekhim | ^11186 c2052 | [AI is making kids dumber. It should be making them geniuses. Introducing Koji, t](https://x.com/suekhim/status/2060378988606878147) |
-| x | jjack_95 | ^4969 c60 | [Sorry but I refuse to take pronunciation lessons from a country of people that c](https://x.com/jjack_95/status/2060624463956156860) |
-| x | HiddenYorkshire | ^3570 c205 | [Sorry, not going to listen to Americans complain about pronunciation when they p](https://x.com/HiddenYorkshire/status/2060696176106631197) |
-| x | manoj_216 | ^3397 c101 | [Here is the mystery of Coempt and why the tenders were modified to suit Coempt..](https://x.com/manoj_216/status/2060533728615763997) |
-| x | hlovo_ | ^1049 c6 | [Fairs Is the pronunciation different?](https://x.com/hlovo_/status/2060614983231193166) |
-| x | GhanaBlackstars | ^940 c21 | [🗣️ Head Coach Carlos Queiroz demonstrates the correct pronunciation of his name,](https://x.com/GhanaBlackstars/status/2060667483908915280) |
-| x | viiccc89 | ^918 c2 | [Oline 📃🎤 #DreamBakudanJKT48 good pronunciation 🤩 https://t.co/2e4W2ma1W9](https://x.com/viiccc89/status/2060651912433942754) |
-| x | JoySportsGH | ^719 c31 | [Black Stars players and officials try the right pronunciation of the name of hea](https://x.com/JoySportsGH/status/2060636346331300234) |
-| x | Ladynoirarebae | ^693 c3 | ["Adrien" feels so unisex with the English pronunciation and then I remember the ](https://x.com/Ladynoirarebae/status/2060871747176387062) |
-| x | noisemusicstan | ^446 c0 | [crying the prompter says "be SURE to decide the concert nickname / subtitle" the](https://x.com/noisemusicstan/status/2060681923018784894) |
-| x | unusual_whales | ^351 c50 | [JUST IN: Brilliant, the premium interactive learning platform for math and codin](https://x.com/unusual_whales/status/2060460347018944636) |
-| x | Timstillherelol | ^349 c4 | [@micconuk Sure, but the British objectively pronounce it incorrectly. They can't](https://x.com/Timstillherelol/status/2060749004875399456) |
-| x | jimbojd4 | ^347 c12 | [@OurCrazyWorldT Yeah that's totally the reason I made such an innocuous comment ](https://x.com/jimbojd4/status/2060691348076794344) |
-| x | velcrolezbo | ^346 c0 | [@madschiato no but they're literally trying to gaslight in my comments telling m](https://x.com/velcrolezbo/status/2060744134114066848) |
-| x | FCB_Wyzz | ^345 c1 | [Gordon is Duolingo final boss, no way he speaks Spanish this fluently](https://x.com/FCB_Wyzz/status/2060697493458108601) |
-| x | JonHaidt | ^251 c7 | [Just posted: My latest TED talk. I look at technology from the perspective of hu](https://x.com/JonHaidt/status/2060689991324319757) |
-| x | msyj05 | ^244 c26 | [Some Black Stars players and the technical team struggle with the pronunciation ](https://x.com/msyj05/status/2060675884240019779) |
-| x | goKPOP | ^226 c1 | [Our Malaysian diva Aina Abdul just casually delivered a Korean OST medley with n](https://x.com/goKPOP/status/2060638678112997856) |
-| x | duolingo | ^200 c176 | [best excuse gets it back https://t.co/GoGN9CD70o](https://x.com/duolingo/status/2060408272813740185) |
-| x | dejectedvole | ^189 c18 | [The British pronunciation is closer to the Italian pronunciation btw](https://x.com/dejectedvole/status/2060690450567078008) |
-| x | jhallwood | ^178 c35 | [A bizarre claim I saw was from a Yank saying *they* pronounce it the Italian way](https://x.com/jhallwood/status/2060759301942104206) |
-| x | bbhyonggin | ^172 c7 | [and like WHY do nctzens unanimously hate taeyong. even the "taeyong biased" ones](https://x.com/bbhyonggin/status/2060825978922783100) |
-| x | CitiSportsGHA | ^140 c5 | [🎥 🇬🇭 Black Stars players and officials attempt to get the correct pronunciation ](https://x.com/CitiSportsGHA/status/2060639069537804373) |
-| x | champagnesftboi | ^128 c18 | [The audacity of Americans complaining about the pronunciation of anything](https://x.com/champagnesftboi/status/2060632736914940322) |
-| x | Timstillherelol | ^126 c2 | [@ginandkoosh Yeah. But the American pronunciation of lieutenant is closer to the](https://x.com/Timstillherelol/status/2060751497671901598) |
-| x | Yuiscoer | ^121 c0 | [#JAMES is the kind of person who isn't afraid of looking imperfect if it helps h](https://x.com/Yuiscoer/status/2060601728089891179) |
-| x | museofdae | ^109 c0 | [I love how Daesung will always try his best to speak in whole different language](https://x.com/museofdae/status/2060815636318867643) |
-| x | kyeominoori | ^98 c0 | [dxs' message from the NOL ticket for serenade on stage in daegu day 1 💌 #도겸 #승관 ](https://x.com/kyeominoori/status/2060715318725808368) |
-| x | ManishEarth | ^92 c15 | [I used to find the British pronunciation silly until I realized Italian: /a/ Gen](https://x.com/ManishEarth/status/2060762802957201704) |
-| x | tutorialtoken | ^91 c10 | [Tutorial AI is now live on @solanamobile 🚀 Turn videos, articles, photos, and vo](https://x.com/tutorialtoken/status/2060703996004741329) |
+| x | han_chocochip | ^4988 c16 | [Just noticed in this one 3racha live that Jisung corrected his pronunciation fro](https://x.com/han_chocochip/status/2060931447641297274) |
+| x | manoj_216 | ^3545 c110 | [Here is the mystery of Coempt and why the tenders were modified to suit Coempt..](https://x.com/manoj_216/status/2060533728615763997) |
+| x | Ladynoirarebae | ^2221 c5 | ["Adrien" feels so unisex with the English pronunciation and then I remember the ](https://x.com/Ladynoirarebae/status/2060871747176387062) |
+| x | JacobLaney69 | ^1883 c16 | [Americans invented the modern soldering iron that everyone else uses. The englis](https://x.com/JacobLaney69/status/2060849511824535719) |
+| x | 271candua02 | ^938 c2 | [As a Vietnamese fan, I can confirm that his pronunciation was really on point. A](https://x.com/271candua02/status/2061036956981817835) |
+| x | ShowdownTrends | ^668 c54 | [The South African guy felt the heat and he's back again. This time, he was caref](https://x.com/ShowdownTrends/status/2061000902140666127) |
+| x | arojinle1 | ^481 c71 | [I was already in 300L in the university before I learnt the proper pronunciation](https://x.com/arojinle1/status/2061092905305944297) |
+| x | unusual_whales | ^355 c50 | [JUST IN: Brilliant, the premium interactive learning platform for math and codin](https://x.com/unusual_whales/status/2060460347018944636) |
+| x | lixiesflower | ^322 c2 | [to this day i can't believe how on point his pronunciation is too???](https://x.com/lixiesflower/status/2061011333404102924) |
+| x | tbfl141 | ^304 c1 | [@realmsmisery @DerekJBeaver So you say it sounds stupid because it's the CORRECT](https://x.com/tbfl141/status/2060880712723578997) |
+| x | thehawkeyex | ^303 c8 | [If students lead any civil chaos or Gen Z, online tutors, and coaching instructo](https://x.com/thehawkeyex/status/2060936417304547785) |
+| x | JonHaidt | ^292 c10 | [Just posted: My latest TED talk. I look at technology from the perspective of hu](https://x.com/JonHaidt/status/2060689991324319757) |
+| x | MeadNMoonshine | ^247 c3 | [@McBidens Such as accents ! I've noticed that Americans will fawn over posher En](https://x.com/MeadNMoonshine/status/2060870244164333799) |
+| x | bbhyonggin | ^247 c8 | [and like WHY do nctzens unanimously hate taeyong. even the "taeyong biased" ones](https://x.com/bbhyonggin/status/2060825978922783100) |
+| x | duolingo | ^215 c188 | [best excuse gets it back https://t.co/GoGN9CD70o](https://x.com/duolingo/status/2060408272813740185) |
+| x | forkoojungmo | ^181 c1 | [jungmo trying to speak malay and struggling with the pronunciation, he so funny ](https://x.com/forkoojungmo/status/2061074776555426096) |
+| x | peachocha | ^178 c0 | [🧸 go for that backpacker tone the way pgw guided mtw during the recording and he](https://x.com/peachocha/status/2061047202315927613) |
+| x | ginandkoosh | ^164 c4 | [@Munky99954444 Yes, Americans do not speak Italian, but the British pronunciatio](https://x.com/ginandkoosh/status/2061046603331301735) |
+| x | Joseph_Duarte | ^158 c0 | [About eight years ago, Houston coach Will Davis subscribed to Duolingo to learn ](https://x.com/Joseph_Duarte/status/2060885796547076474) |
+| x | Velxrana | ^134 c21 | [Lost my duolingo streak cuz of lan btw✌️🫩 https://t.co/Wq4FOStdJX](https://x.com/Velxrana/status/2060851311625568383) |
+| x | roman_prophet | ^113 c31 | [People are so hung up on the 'R in Pasta' thing that they're ignoring the fact t](https://x.com/roman_prophet/status/2060946541159092543) |
+| x | tutorialtoken | ^98 c10 | [Tutorial AI is now live on @solanamobile 🚀 Turn videos, articles, photos, and vo](https://x.com/tutorialtoken/status/2060703996004741329) |
+| x | ZillennialApple | ^92 c13 | [The one edtech app I will endorse is SmartPass to keep track of when students go](https://x.com/ZillennialApple/status/2060543169217929387) |
+| x | duhshaun_ | ^90 c0 | [@duskgumi Them convincing themselves they pronounce "pasta" correctly when the A](https://x.com/duhshaun_/status/2060932411228115425) |
+| x | xiu_wegosix | ^88 c0 | [After Wooyeon's Kona Yuki cover 🐾 : I was looking at the comments carefully and ](https://x.com/xiu_wegosix/status/2060969694476063228) |
+| x | Strangeland_Elf | ^85 c6 | [I'm pretty sure the Italian language doesn't even have that pronunciation of 'A'](https://x.com/Strangeland_Elf/status/2060913466417037767) |
+| x | sumotacular | ^85 c0 | [@nathandg12 @genuinezebratom @cammyk_67 The h being pronounced came much later t](https://x.com/sumotacular/status/2060878257231102264) |
+| x | kevinweil | ^84 c8 | [I'm such a huge fan of what @suekhim and the Brilliant team have built. When eve](https://x.com/kevinweil/status/2060826960927015015) |
+| x | forhakie | ^83 c0 | [Welcome to my new fucking obsession: Upside Down!!! I've barely listened to a fr](https://x.com/forhakie/status/2061074563492983192) |
+| x | IrisSateenkaari | ^83 c0 | [@48RequestHour Wow, I thought Bahasa Indonesia pronunciation would be quite diff](https://x.com/IrisSateenkaari/status/2060930242672509115) |
 
 
 ## โพสต์เด่น
@@ -92,76 +95,36 @@ translated_by: claude-sonnet-4-6
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@suekhim</span>
+    <span class="ndf-author">@han_chocochip</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 11186 · 💬 2052</span>
+    <span class="ndf-engagement">♥ 4988 · 💬 16</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/suekhim/status/2060378988606878147">View @suekhim on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/han_chocochip/status/2060931447641297274">View @han_chocochip on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“AI is making kids dumber. It should be making them geniuses. Introducing Koji, the first AI tutor that gets kids to actually think. 👇 https://t.co/tmCdVoEZYF”</p>
+    <p class="ndf-quote">“Just noticed in this one 3racha live that Jisung corrected his pronunciation from “Turkey” to “Türkiye” which isn’t always known cuz it was an official change in 2022 to the country’s globally recogni”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Koji คือ AI tutor ที่ใช้วิธีถามกลับแทนการให้คำตอบ เพื่อฝึกให้เด็กคิดเป็นแทนที่จะรับข้อมูลแบบ passive</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>สำหรับทีมที่ทำ e-learning pattern แบบ prompt-before-answer ของ Koji คือ UX direction ที่ชัดเจน แตกต่างจาก chatbot tutor ทั่วไป</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ลองเพิ่ม Socratic mode ใน e-learning ที่ทำอยู่ — AI ถามก่อน แสดงคำตอบหลังจากผู้เรียน attempt แล้วเท่านั้น</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/suekhim/status/2060378988606878147" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@jjack_95</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 4969 · 💬 60</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/jjack_95/status/2060624463956156860">View @jjack_95 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Sorry but I refuse to take pronunciation lessons from a country of people that can’t say “Craig” properly.”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>โพสต์ล้อเล่นเรื่องสำเนียงการออกเสียงชื่อ 'Craig' ไม่มีเนื้อหาด้านเทคโนโลยีหรือการศึกษาใดๆ</dd>
+      <dd>แฟนเพลง K-pop สังเกตว่า Jisung จาก 3RACHA แก้การออกเสียงชื่อประเทศจาก 'Turkey' เป็น 'Türkiye' ในไลฟ์สตรีม อ้างอิงการเปลี่ยนชื่อทางการปี 2022</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/jjack_95/status/2060624463956156860" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@HiddenYorkshire</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3570 · 💬 205</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/HiddenYorkshire/status/2060696176106631197">View @HiddenYorkshire on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Sorry, not going to listen to Americans complain about pronunciation when they pronounce &quot;niche&quot; as &quot;nitch&quot;”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้ Twitter โพสต์ล้อเลียนการออกเสียงคำว่า 'niche' แบบอเมริกัน ('nitch') เพื่อตอบโต้การบ่นเรื่องการออกเสียง</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/HiddenYorkshire/status/2060696176106631197" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/han_chocochip/status/2060931447641297274" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@manoj_216</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3397 · 💬 101</span>
+    <span class="ndf-engagement">♥ 3545 · 💬 110</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/manoj_216/status/2060533728615763997">View @manoj_216 on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Here is the mystery of Coempt and why the tenders were modified to suit Coempt... 1. The Manipal Group (primarily through its division Manipal Global Education Services) holds a majority stake and con”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้ Twitter อินเดียอ้างว่าทีโออาร์สอบรัฐบาลถูกเขียนให้เอื้อ Coempt ซึ่งเป็นบริษัท EdTech ในเครือ Manipal Group โดยชี้ถึงความสัมพันธ์ทางการเมืองกับ BJP</dd>
+      <dd>Thread ดังบน X อ้างว่า Coempt เป็น EdTech arm ของ Manipal Group และ tender รัฐบาลอินเดียถูกปรับเพื่อเอื้อบริษัทนี้ โดยชี้ความเชื่อมโยงกับนักการเมือง BJP</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -172,82 +135,122 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@hlovo_</span>
+    <span class="ndf-author">@Ladynoirarebae</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1049 · 💬 6</span>
+    <span class="ndf-engagement">♥ 2221 · 💬 5</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/hlovo_/status/2060614983231193166">View @hlovo_ on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Ladynoirarebae/status/2060871747176387062">View @Ladynoirarebae on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Fairs Is the pronunciation different?”</p>
+    <p class="ndf-quote">““Adrien” feels so unisex with the English pronunciation and then I remember the French one and it’s so manly😭 https://t.co/px2dwmxgXk”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์ถามสั้นๆ ว่าคำว่า 'fairs' ออกเสียงต่างกันไหม ไม่มีบริบทหรือรายละเอียดเพิ่มเติม</dd>
+      <dd>ผู้ใช้สังเกตว่าชื่อ 'Adrien' ฟังดู unisex ในสำเนียงอังกฤษ แต่ฟังดูผู้ชายชัดเจนในสำเนียงฝรั่งเศส</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/hlovo_/status/2060614983231193166" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/Ladynoirarebae/status/2060871747176387062" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@GhanaBlackstars</span>
+    <span class="ndf-author">@JacobLaney69</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 940 · 💬 21</span>
+    <span class="ndf-engagement">♥ 1883 · 💬 16</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/GhanaBlackstars/status/2060667483908915280">View @GhanaBlackstars on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/JacobLaney69/status/2060849511824535719">View @JacobLaney69 on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“🗣️ Head Coach Carlos Queiroz demonstrates the correct pronunciation of his name, followed by players and staff. 😀 #BlackStars https://t.co/tofdDANUEA”</p>
+    <p class="ndf-quote">“Americans invented the modern soldering iron that everyone else uses. The english didnt invent it. We have more claim to the pronunciation than you.”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>กุนซือทีมชาติกานา Carlos Queiroz สาธิตการออกเสียงชื่อตัวเองให้นักเตะและสต๊าฟดูในคลิปสั้น</dd>
+      <dd>ผู้ใช้เถียงเรื่องสิทธิ์การออกเสียงคำว่า 'soldering' โดยอ้างว่าอเมริกาเป็นผู้ประดิษฐ์หัวแร้งสมัยใหม่</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/GhanaBlackstars/status/2060667483908915280" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/JacobLaney69/status/2060849511824535719" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@viiccc89</span>
+    <span class="ndf-author">@271candua02</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 918 · 💬 2</span>
+    <span class="ndf-engagement">♥ 938 · 💬 2</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/viiccc89/status/2060651912433942754">View @viiccc89 on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/271candua02/status/2061036956981817835">View @271candua02 on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Oline 📃🎤 #DreamBakudanJKT48 good pronunciation 🤩 https://t.co/2e4W2ma1W9”</p>
+    <p class="ndf-quote">“As a Vietnamese fan, I can confirm that his pronunciation was really on point. And the fact that he genuinely wanted to speak Vietnamese has made so many of my friends fall in love with him after the ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์แฟนคลับชม Oline สมาชิก JKT48 เรื่องการออกเสียง ไม่มีเนื้อหาด้าน tech หรือ EdTech</dd>
+      <dd>แฟนชาวเวียดนามชื่นชม TLE ที่ออกเสียงภาษาเวียดนามได้แม่นยำในงาน fan meet และความตั้งใจที่จะพูดทำให้แฟนๆ ประทับใจ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/viiccc89/status/2060651912433942754" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/271candua02/status/2061036956981817835" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@JoySportsGH</span>
+    <span class="ndf-author">@ShowdownTrends</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 719 · 💬 31</span>
+    <span class="ndf-engagement">♥ 668 · 💬 54</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/JoySportsGH/status/2060636346331300234">View @JoySportsGH on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ShowdownTrends/status/2061000902140666127">View @ShowdownTrends on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Black Stars players and officials try the right pronunciation of the name of head coach Carlos Queiroz. Jordan and others had to dodge 😂😂 #JoySports https://t.co/hDh1rhAsxW”</p>
+    <p class="ndf-quote">“The South African guy felt the heat and he’s back again. This time, he was careful in the pronunciation of the name Kevin, and he also got a T-shirt on 🤣 https://t.co/2qZyGMRMw4”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>นักฟุตบอลและเจ้าหน้าที่ทีม Ghana Black Stars ลองออกเสียงชื่อโค้ช Carlos Queiroz ในคลิปสนุกๆ ของ Joy Sports</dd>
+      <dd>โพสต์ไวรัลล้อเลียนชายชาวแอฟริกาใต้ที่ออกเสียงชื่อ Kevin ผิด แล้วกลับมาใหม่พร้อมออกเสียงถูกและใส่เสื้อแล้ว</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/JoySportsGH/status/2060636346331300234" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/ShowdownTrends/status/2061000902140666127" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@arojinle1</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 481 · 💬 71</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/arojinle1/status/2061092905305944297">View @arojinle1 on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“I was already in 300L in the university before I learnt the proper pronunciation of GIGANTIC. I was watching a movie and one of the actors pronounced it. I thought I heard it wrong. I played it back a”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>นักศึกษาไนจีเรียปี 3 เพิ่งรู้การออกเสียง 'gigantic' ที่ถูกต้องจากการดูหนัง ไม่ใช่จากการเรียนในห้อง</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/arojinle1/status/2061092905305944297" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@unusual_whales</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 355 · 💬 50</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/unusual_whales/status/2060460347018944636">View @unusual_whales on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“JUST IN: Brilliant, the premium interactive learning platform for math and coding, launches Koji, the first real-time AI tutor that deepens students’ understanding through live, adaptive coaching.”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Brilliant เปิดตัว Koji — AI tutor แบบ real-time ฝังอยู่ใน platform ที่ให้ coaching แบบ adaptive ตาม response ของ student แต่ละคน</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>สำหรับ studio ที่ทำ e-learning การมี adaptive AI tutor ใน platform ยกระดับ expectation ด้าน interactivity เหนือกว่า quiz และ video ธรรมดา</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ลอง prototype adaptive-hint layer ใน e-learning project นึง โดยใช้ streaming LLM API เมื่อ learner ตอบผิดติดกัน 2 ครั้ง</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/unusual_whales/status/2060460347018944636" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

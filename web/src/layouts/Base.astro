@@ -93,50 +93,14 @@ const mastheadDateIso = new Intl.DateTimeFormat("en-CA", {
   <body>
     <header class="site-bar" aria-label="Site">
       <a class="brand" href={home}>Social Daily Report</a>
-      <span class="site-note">{t.siteNote}</span>
-      <div class="site-bar-actions">
-        <time class="masthead-date num" datetime={mastheadDateIso} aria-label={mastheadDate}>{mastheadDate}</time>
-        <button type="button" class="search-trigger ui-text" data-search-open aria-label={t.search}>
-          <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8" />
-            <line x1="15.6" y1="15.6" x2="20" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-          </svg>
-          <span class="search-trigger-label">{t.search}</span>
-          <kbd class="search-trigger-kbd" aria-hidden="true">⌘K</kbd>
-        </button>
-        <button
-          type="button"
-          class="theme-toggle ui-text"
-          aria-label={t.themeLabel}
-          data-theme-toggle
-        >
+      <div class="nav-utils">
+        <a class="nav-locale" href={switchHref} hreflang={other} lang={other}>{t.switchLabel}</a>
+        <button type="button" class="nav-theme" aria-label={t.themeLabel} data-theme-toggle>
           <span class="theme-toggle-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="16" height="16" class="theme-icon-sun" aria-hidden="true">
-              <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6" />
-              <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-                <line x1="12" y1="2.5" x2="12" y2="5" />
-                <line x1="12" y1="19" x2="12" y2="21.5" />
-                <line x1="2.5" y1="12" x2="5" y2="12" />
-                <line x1="19" y1="12" x2="21.5" y2="12" />
-                <line x1="5.2" y1="5.2" x2="6.95" y2="6.95" />
-                <line x1="17.05" y1="17.05" x2="18.8" y2="18.8" />
-                <line x1="5.2" y1="18.8" x2="6.95" y2="17.05" />
-                <line x1="17.05" y1="6.95" x2="18.8" y2="5.2" />
-              </g>
-            </svg>
-            <svg viewBox="0 0 24 24" width="16" height="16" class="theme-icon-moon" aria-hidden="true">
-              <path
-                d="M20.5 14.4A8 8 0 0 1 9.6 3.5a8 8 0 1 0 10.9 10.9Z"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <svg viewBox="0 0 24 24" width="14" height="14" class="theme-icon-sun"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.95" y2="6.95"/><line x1="17.05" y1="17.05" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.95" y2="17.05"/><line x1="17.05" y1="6.95" x2="18.8" y2="5.2"/></g></svg>
+            <svg viewBox="0 0 24 24" width="14" height="14" class="theme-icon-moon"><path d="M20.5 14.4A8 8 0 0 1 9.6 3.5a8 8 0 1 0 10.9 10.9Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           </span>
-          <span class="theme-toggle-label" data-theme-label>{t.themeAuto}</span>
         </button>
-        <a class="locale-switch" href={switchHref} hreflang={other} lang={other}>{t.switchLabel}</a>
       </div>
     </header>
     <main>
@@ -331,34 +295,85 @@ const mastheadDateIso = new Intl.DateTimeFormat("en-CA", {
       }
 
       .site-bar {
-        padding-top: 0.85rem;
-        padding-bottom: 0.85rem;
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        column-gap: clamp(0.85rem, 1.5vw, 1.6rem);
-        row-gap: 0.4rem;
-        align-items: center;
-        /* --rule-major: editorial nameplate underline (replaces aerospace gradient) */
+        padding-top: 1rem;
+        padding-bottom: 0.9rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
         border-bottom: var(--rule-major);
         font-family: var(--font-ui);
       }
 
-      /* Editorial nameplate — Fraunces serif brand, one §01 accent tick */
+      /* Editorial nameplate — Fraunces serif brand */
       .brand {
         color: var(--ink);
         font-family: var(--font-display);
-        font-weight: 500;
-        letter-spacing: -0.01em;
+        font-weight: 600;
+        letter-spacing: -0.015em;
         font-size: var(--step-1);
         text-decoration: none;
         line-height: 1.1;
-        display: inline-flex;
-        align-items: baseline;
-        gap: 0.6rem;
+        flex-shrink: 0;
       }
-      .site-note,
-      .site-footer,
-      .locale-switch {
+      .brand:hover { color: var(--accent-ink); }
+
+      .nav-utils {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      .nav-locale {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--soft-ink);
+        padding: 0.18rem 0.55rem;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+      }
+      .nav-locale:hover {
+        color: var(--accent-ink);
+        border-color: var(--accent);
+        background: color-mix(in oklch, var(--accent), transparent 93%);
+      }
+
+      .nav-theme {
+        appearance: none;
+        background: transparent;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        color: var(--soft-ink);
+        padding: 0.18rem 0.48rem;
+        min-height: 26px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+      }
+      .nav-theme:hover {
+        color: var(--accent-ink);
+        border-color: var(--accent);
+        background: color-mix(in oklch, var(--accent), transparent 93%);
+      }
+
+      .theme-toggle-icon {
+        display: inline-grid;
+        place-items: center;
+        width: 14px;
+        height: 14px;
+      }
+      .theme-toggle-icon > svg {
+        grid-area: 1 / 1;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .site-footer {
         color: var(--soft-ink);
         font-family: var(--font-ui);
         font-size: 0.78rem;
@@ -366,126 +381,12 @@ const mastheadDateIso = new Intl.DateTimeFormat("en-CA", {
         letter-spacing: 0.01em;
       }
 
-      .site-note {
-        justify-self: start;
-        text-align: left;
-        padding-left: clamp(0.5rem, 1vw, 1rem);
-        border-left: 1px solid var(--hairline);
-        max-width: 48ch;
-      }
 
-      .locale-switch {
-        min-height: 36px;
-        display: inline-flex;
-        align-items: center;
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        text-decoration: none;
-        padding: 0.32rem 0.7rem;
-        border: 1px solid var(--line);
-        color: var(--soft-ink);
-        white-space: nowrap;
-        transition: color 0.18s ease, border-color 0.18s ease;
-      }
-      .locale-switch:hover { color: var(--accent-ink); border-color: var(--accent); }
-
-      .site-bar-actions {
-        display: inline-flex;
-        align-items: center;
-        gap: clamp(0.55rem, 0.42rem + 0.5vw, 1rem);
-      }
-
-      /* Masthead date — mono, soft-ink, hidden on very narrow screens */
-      .masthead-date {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        font-weight: 500;
-        letter-spacing: 0.04em;
-        color: var(--soft-ink);
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-      @media (max-width: 560px) {
-        .masthead-date { display: none; }
-      }
-
-      .search-trigger {
-        appearance: none;
-        cursor: pointer;
-        background: transparent;
-        border: 1px solid var(--line);
-        color: var(--soft-ink);
-        font-family: var(--font-ui);
-        font-size: 0.78rem;
-        letter-spacing: 0.02em;
-        padding: 0.32rem 0.7rem;
-        min-height: 36px;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        line-height: 1;
-        transition: color 0.18s ease, border-color 0.18s ease;
-      }
-      .search-trigger:hover { color: var(--accent-ink); border-color: var(--accent); }
-      .search-trigger svg { flex-shrink: 0; }
-      .search-trigger-kbd {
-        font-family: var(--font-mono);
-        font-size: 0.66rem;
-        color: var(--faint-ink);
-        border: 1px solid var(--hairline);
-        padding: 0.05rem 0.32rem;
-        letter-spacing: 0;
-      }
-      @media (max-width: 720px) {
-        .search-trigger-label,
-        .search-trigger-kbd { display: none; }
-        .search-trigger { padding: 0.32rem 0.5rem; }
-      }
-
-      .theme-toggle {
-        appearance: none;
-        background: transparent;
-        border: 1px solid var(--line);
-        color: var(--soft-ink);
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        font-weight: 500;
-        letter-spacing: 0.04em;
-        text-transform: lowercase;
-        padding: 0.32rem 0.7rem;
-        min-height: 36px;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        line-height: 1;
-        transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-      }
-
-      .theme-toggle:hover {
-        color: var(--accent-ink);
-        border-color: var(--accent);
-      }
-
-      .theme-toggle-icon {
-        display: inline-grid;
-        place-items: center;
-        width: 16px;
-        height: 16px;
-      }
-
-      .theme-toggle-icon > svg {
-        grid-area: 1 / 1;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-
+      /* Theme icon visibility — global, driven by data-theme on <html> (set by inline script + toggle) */
       html:not([data-theme="dark"]) .theme-icon-moon { opacity: 0; transform: scale(0.8); }
       html:not([data-theme="light"]) .theme-icon-sun { opacity: 0; transform: scale(0.8); }
       html[data-theme="dark"] .theme-icon-moon { opacity: 1; transform: scale(1); }
       html[data-theme="light"] .theme-icon-sun { opacity: 1; transform: scale(1); }
-      /* Auto (no data-theme) falls back to system pref glyph */
       @media (prefers-color-scheme: dark) {
         html:not([data-theme]) .theme-icon-moon { opacity: 1; transform: scale(1); }
         html:not([data-theme]) .theme-icon-sun  { opacity: 0; transform: scale(0.8); }

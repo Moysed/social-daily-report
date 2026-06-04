@@ -142,7 +142,7 @@ const kickerYear = d.date.slice(0, 4);
           {saliencePct != null && (
             <Fragment>
               <span class="ms-dot" aria-hidden="true">·</span>
-              <span>{t.interest(saliencePct)}{trendGlyph && (
+              <span>{activityLabel}{trendGlyph && (
                 <span class={trend === "up" ? "ms-up" : "ms-flat"}> {trendGlyph}</span>
               )}</span>
             </Fragment>

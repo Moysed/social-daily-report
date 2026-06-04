@@ -440,7 +440,7 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
                       )}
                       <span>
                         · {d.post_count} {lang === "th" ? "โพสต์" : "posts"}
-                        {saliencePct != null && ` · ${t.interest(saliencePct)}`}
+                        {saliencePct != null && ` · ${activityLabel(activityOf(d.salience))}`}
                       </span>
                       <a class="meta-read" href={href(day.lead.entry)}>{t.readReport} →</a>
                       <span class="meta-langs ui-text">
@@ -488,7 +488,7 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
                             {dek && <p class="t-dek">{dek}</p>}
                             <p class="t-meta num">
                               {td.post_count} {lang === "th" ? "โพสต์" : "posts"}
-                              {salT != null && ` · ${t.interest(salT)}`}
+                              {salT != null && ` · ${activityLabel(activityOf(td.salience))}`}
                               <a class="t-read" href={href(entry)} tabindex="-1" aria-hidden="true">{t.readReport} →</a>
                             </p>
                           </article>
@@ -531,7 +531,6 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
       <aside class="metric-guide ui-text" aria-label={t.metricGuideTitle}>
         <p class="guide-title">{t.metricGuideTitle}</p>
         <p><strong>{t.activityLabel}</strong> — {t.legendSalience[1]}</p>
-        <p><strong>{t.evidenceLabel}</strong> — {t.legendConfidence[1]}</p>
       </aside>
 
 
@@ -1316,133 +1315,6 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
       text-transform: uppercase;
     }
 
-    /* ---- Ask the archive (Q&A scaffold) ---- */
-    .ask-block {
-      max-width: 68rem;
-      margin: var(--space-lg) auto 0;
-      padding: var(--space-md) 0;
-      border-top: 1px solid var(--line);
-    }
-    .ask-kicker {
-      margin: 0 0 0.35rem;
-      color: var(--accent-ink);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .ask-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--step-2);
-      font-weight: 650;
-      letter-spacing: -0.005em;
-    }
-    .ask-form {
-      margin-top: var(--space-sm);
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .ask-form input {
-      flex: 1 1 18rem;
-      min-height: 38px;
-      padding: 0.4rem 0.75rem;
-      border: 1px solid var(--line);
-      background: color-mix(in oklch, var(--paper), transparent 12%);
-      color: var(--ink);
-      font-family: var(--font-ui);
-      font-size: var(--step-0);
-    }
-    .ask-form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-    .ask-form button {
-      appearance: none;
-      cursor: pointer;
-      padding: 0.4rem 1.1rem;
-      min-height: 38px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: var(--bg);
-      font-family: var(--font-ui);
-      font-size: var(--step-0);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-    .ask-form button:hover { filter: brightness(1.08); }
-    .ask-hint {
-      margin: 0.5rem 0 0;
-      color: var(--soft-ink);
-      font-size: var(--step--1);
-    }
-    .ask-ai-soon {
-      margin: 0.4rem 0 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      color: var(--faint-ink);
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .ai-soon-dot {
-      width: 0.45rem;
-      height: 0.45rem;
-      background: var(--accent);
-      animation: ai-pulse 2.4s ease-in-out infinite;
-    }
-    @keyframes ai-pulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
-    }
-    .ask-results {
-      margin: var(--space-md) 0 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 0.4rem;
-    }
-    .ask-results li {
-      padding: 0.65rem 0;
-      border-bottom: 1px dashed var(--hairline);
-    }
-    .ask-result-head {
-      display: flex;
-      gap: 0.6rem 1rem;
-      flex-wrap: wrap;
-      align-items: baseline;
-    }
-    .ask-result-title {
-      font-family: var(--font-display);
-      font-size: var(--step-1);
-      font-weight: 650;
-      text-decoration: none;
-      color: var(--ink);
-    }
-    .ask-result-title:hover { color: var(--accent-ink); }
-    .ask-result-meta {
-      color: var(--soft-ink);
-      font-family: var(--font-mono);
-      font-size: var(--step--1);
-    }
-    .ask-result-bullets {
-      margin: 0.35rem 0 0;
-      padding-left: 1.1rem;
-      color: var(--soft-ink);
-      font-size: var(--step--1);
-    }
-    .ask-result-bullets li {
-      padding: 0;
-      border: 0;
-      list-style: disc;
-    }
-    .ask-empty {
-      margin: var(--space-sm) 0 0;
-      color: var(--soft-ink);
-      font-style: italic;
-    }
-
     /* ---- Weekly digest callout ---- */
     .digest-callout {
       max-width: 68rem;
@@ -1578,7 +1450,7 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
     .calendar-head h2 {
       margin: 0;
       font-family: var(--font-display);
-      font-size: var(--step-2);
+      font-size: var(--step-1);
       font-weight: 650;
       letter-spacing: -0.005em;
     }
@@ -1778,7 +1650,7 @@ function sparkPath(points: SparkPoint[], w = 72, h = 20): string {
       max-width: var(--max, 78rem);
       margin: var(--space-lg) auto 0;
       padding-top: var(--space-md);
-      border-top: var(--rule-major);
+      border-top: var(--rule-section);
     }
     .trending .eyebrow {
       margin: 0 0 0.4rem;

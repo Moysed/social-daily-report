@@ -68,13 +68,6 @@ type Dict = {
   subscribeTitle: string;
   subscribeAllFeed: string;
   subscribePerTopic: string;
-  askTitle: string;
-  askKicker: string;
-  askPlaceholder: string;
-  askButton: string;
-  askHint: string;
-  askEmpty: string;
-  askAiSoon: string;
   // Home dashboard chrome
   morningBrief: string;
   todayOverview: string;
@@ -108,8 +101,6 @@ type Dict = {
   // R2 report page
   keyPoints: string;
   wordsUnit: string;
-  // Friendly inline metric (replaces raw "salience .85" jargon on cards/metastrip)
-  interest: (pct: number) => string;
   sourcesUnit: (n: number) => string;
   latestEdition: string;
   frontPage: string;
@@ -180,13 +171,6 @@ export const UI: Record<Lang, Dict> = {
     subscribeTitle: "Subscribe",
     subscribeAllFeed: "All topics",
     subscribePerTopic: "Per topic",
-    askTitle: "Ask the archive",
-    askKicker: "Search across every report",
-    askPlaceholder: "Ask anything (e.g. \"local LLM cost\", \"Antigravity\", \"agent eval\")",
-    askButton: "Search",
-    askHint: "Searches TL;DRs, signals, tags, and topics across every day on file.",
-    askEmpty: "No matches across the archive yet — try a broader query.",
-    askAiSoon: "AI synthesis arriving once the backend is live.",
     morningBrief: "Morning brief",
     todayOverview: "What's worth knowing today",
     todayHeading: (n) => (n === 1 ? "1 topic today" : `${n} topics today`),
@@ -213,7 +197,6 @@ export const UI: Record<Lang, Dict> = {
     scanAll: (n) => `~${n} min to scan all`,
     keyPoints: "Key points",
     wordsUnit: "words",
-    interest: (pct) => `${pct}% interest`,
     sourcesUnit: (n) => (n === 1 ? "source" : "sources"),
     latestEdition: "latest",
     frontPage: "front page",
@@ -281,13 +264,6 @@ export const UI: Record<Lang, Dict> = {
     subscribeTitle: "สมัครรับ",
     subscribeAllFeed: "ทุกหัวข้อ",
     subscribePerTopic: "แยกตามหัวข้อ",
-    askTitle: "ถามคลังรายงาน",
-    askKicker: "ค้นข้ามรายงานทุกวัน",
-    askPlaceholder: "ถามอะไรก็ได้ (เช่น \"local LLM\", \"Antigravity\", \"eval agent\")",
-    askButton: "ค้นหา",
-    askHint: "ค้นทั้ง TL;DR, signals, แท็ก และหัวข้อ ครอบคลุมทุกวันในคลัง",
-    askEmpty: "ยังไม่พบในคลัง ลองคำกว้างขึ้น",
-    askAiSoon: "สรุปด้วย AI กำลังมา ต่อ backend แล้วใช้ได้",
     morningBrief: "บรีฟเช้า",
     todayOverview: "วันนี้ควรรู้อะไร",
     todayHeading: (n) => `${n} หัวข้อวันนี้`,
@@ -314,7 +290,6 @@ export const UI: Record<Lang, Dict> = {
     scanAll: (n) => `~${n} นาทีเพื่อสแกนทั้งหมด`,
     keyPoints: "ประเด็นสำคัญ",
     wordsUnit: "คำ",
-    interest: (pct) => `น่าสนใจ ${pct}%`,
     sourcesUnit: () => "แหล่ง",
     latestEdition: "ล่าสุด",
     frontPage: "หน้ารวมของวัน",

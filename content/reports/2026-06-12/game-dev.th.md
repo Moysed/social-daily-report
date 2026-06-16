@@ -4,7 +4,7 @@ date: '2026-06-12'
 topic: game-dev
 lang: th
 pair: game-dev.en.md
-generated_at: '2026-06-12T03:13:59+00:00'
+generated_at: '2026-06-12T15:16:17+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,81 +12,81 @@ platforms:
 - x
 regions:
 - global
-post_count: 174
-salience: 0.6
+post_count: 156
+salience: 0.55
 sentiment: mixed
-confidence: 0.55
+confidence: 0.6
 tags:
 - unreal-engine-5
 - godot
 - unity
-- ai-in-gamedev
-- xr-vr
+- ai-in-pipeline
 - performance
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2065109409844334592/img/OxNFlG_QeTBaXhVj.jpg
+- game-engines
+thumbnail: https://pbs.twimg.com/media/HKi2wG4bYAENem6.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # Game Dev — 2026-06-12
 
 ## TL;DR
-- UE5 ครองสัญญาณ game-dev วันนี้ ประเด็นหลักคือ performance backlash — Halo: Campaign Evolved (UE5 remake, วางจำหน่าย 28 ก.ค. 2026 [9][13]) รายงานว่า RTX 5090 แทบไม่ทะลุ 100 FPS ที่ 1440p ultra [58] และมีเสียงบ่นว่า UE5 titles render ภายในที่ ~540p เพื่อให้ได้ '1080p' 60fps ผ่าน upscaling [17]
-- Epic's State of Unreal (17 มิ.ย. ที่ Chicago) ตั้งธงชัดเรื่อง optimization ทั่ว Epic tools [44] — ตอบรับคำวิจารณ์ด้าน performance โดยตรง
-- Generative AI เข้าสู่ production AAA จริงแล้ว: Tomb Raider: Legacy of Atlantis (UE5 remake) ยืนยันการใช้ gen-AI ใน Game Informer interview [3][21][47]; Carmack เสนอแนวคิด LLMs ปรับโครงสร้างโค้ดให้ weaker model ทำงานต่อได้ [6]
-- Godot 4.7 Release Candidate 2 ออกแล้ว รอรายงาน regression ก่อน stable [25]
-- tooling ฝั่ง XR/mobile: UnRealityKit เชื่อม UE5 กับ Apple Vision Pro RealityKit รองรับ eye tracking, gestures, room lighting [49]; Arm demo Android upscaler แบบ DLSS พร้อมเกม UE5 MegaLights จาก Sumo Digital [26]
+- Unreal Engine 5 ครองฟีดวันนี้: Halo: Campaign Evolved (UE5, วางจำหน่าย 28 ก.ค. 2026) [6], เกมแข่งรถ Clutch ที่ใช้ physics engine ของ UE5 แบบ custom [3][7], รีเมค Tomb Raider: Legacy of Atlantis [19], KH4 [25], และรายงาน job posting ของ Riot ที่ระบุว่า Teamfight Tactics จะย้ายมาใช้ Unreal [57][24]
+- ปัญหา performance ของ UE5 ดังที่สุด: Halo: Campaign Evolved รายงานว่า RTX 5090 'แทบไม่ถึง 100 FPS ที่ 1440p ultra' [36] และนักพัฒนาวิจารณ์การ render ภายในที่ 540p แล้ว upscale เป็น '1080p' 60fps [11] — แม้ Series X Performance Mode จะล็อก 60fps ที่ 1080p ด้วย Lumen + hardware RT ได้ [47]
+- Godot 4.7 Release Candidate 2 ออกแล้ว นิยามเป็นโอกาสสุดท้ายรับรายงาน regression ก่อน stable [17]; Godot ยังมี Xbox console sample พร้อม Q&A จากทีม [52] และฉากการ port จาก Roblox ไป Godot ที่คึกคัก [60]
+- Generative AI ในไปป์ไลน์ยังเป็นที่ถกเถียง: ผู้กำกับรีเมค Tomb Raider พูดถึงการใช้ generative AI [34], มีคนสร้าง prototype ที่เล่นได้ด้วย AI agent ('GTA 6 agent in the loop' [10], เกม Pokémon×Clash Royale ใน '5 นาที' [56]), ขณะที่นักวิจารณ์โต้ว่า output จาก AI 'ดูถูก' หากไม่มีทักษะ art/design จริง [37]
+- สัญญาณ Unity tooling: Real Fake Interiors เครื่องมือ baking + shader ใน Unity ที่จำลองห้องที่มีเฟอร์นิเจอร์ให้มองเห็นผ่านหน้าต่างแบน [22]
 
-## What happened
-Unreal Engine 5 คือจุดศูนย์กลางของวัน Halo: Campaign Evolved ซึ่งเป็น UE5 remake กำหนดวันออก 28 ก.ค. 2026 [9][13] แต่มีรายงานว่า RTX 5090 ผ่าน 100 FPS ที่ 1440p ultra แทบไม่ได้ [58] เป็นเชื้อให้เสียงร้องเรียนกว้างขึ้นว่า UE5 games วิ่งที่ internal resolution ~540p เพื่อบรรลุ '1080p' 60fps หลัง upscaling [17] Clutch เกมแข่งรถจากอดีต developers Forza Horizon ใช้ UE5 กับ custom physics layer สำหรับ tire temperature, grip และ suspension ใน open world จำลองทางใต้ของฝรั่งเศสและ Monaco แบบ 1:1 [5][10][35] Tomb Raider: Legacy of Atlantis (UE5 remake) ยืนยันการใช้ generative AI ผ่าน Game Informer interview กับ experience director [3][21][47] State of Unreal ของ Epic วันที่ 17 มิ.ย. ตั้งธงเรื่อง optimization ทั่ว Epic tools [44]
+## สิ่งที่เกิดขึ้น
+หัวข้อนี้หนักไปทาง Unreal อย่างชัดเจน มีหลาย production บน UE5 โผล่พร้อมกัน: Halo: Campaign Evolved กำหนด 28 ก.ค. 2026 [6][47], เกมแข่งรถ Clutch ใช้ custom UE5 physics จำลองอุณหภูมิยาง แรงยึดเกาะ และระบบกันสะเทือนในโลกเปิด 1:1 ของ Monaco/South-of-France สร้างโดยทีมอดีต Forza Horizon [3][7][21], รีเมค Tomb Raider: Legacy of Atlantis [19][34], รีเมค Halo 3 Sierra 117 [4], KH4 [25], Danganronpa Another v3 [14], และรายงาน job posting ของ Riot ที่ชี้ว่า TFT จะเปลี่ยนมาใช้ Unreal [57][24] ประเด็น performance ถูกวิจารณ์ซ้ำ — framerates ของฮาร์ดแวร์ระดับสูงที่อ่อนแอ [36] และการ upscale จาก resolution ภายในต่ำ [11] — โดยมีรายงาน Series X Performance Mode ที่ทำได้ดีพอควรเป็นข้อยันกลับ [47] ฝั่ง Godot, 4.7 RC2 ลงมาเป็นรอบตรวจ regression สุดท้ายก่อน stable [17] พร้อม session Xbox Godot sample [52] และการ port จาก Roblox มา Godot [60] Unity ปรากฏหลักผ่านเครื่องมือ baking/shader ของ Real Fake Interiors [22] เธรด AI-in-pipeline รันคู่ขนาน: ถกเรื่อง generative AI ในรีเมค Tomb Raider [34], การทดลองสร้างเกมด้วย AI agent [10][56][8], และความสงสัยเรื่องคุณภาพ output ของ AI [37] รายการที่เหลือส่วนใหญ่เป็น indie marketing, tutorials [32][45][28], และ engine-fandom debate รอบ Glitch Productions/Epic [1][16][31]
 
-## Why it matters (reasoning)
-ธีมซ้ำๆ คือช่องว่างระหว่าง fidelity กับ performance ของ UE5 [17][58] หนักพอที่ Epic ต้องนำ optimization ขึ้นหน้าในงาน showcase ของตัวเอง [44] นั่นยืนยันว่าต้องระวัง: เปิด UE5 features เต็มทุกตัวโดย default คือกับดักที่รู้จักกันดี และแนวคิดเรื่อง resolution/feature budgeting ใช้ได้กับทุก engine เช่นกัน on-device upscaling ที่ย้ายมาบน Android ผ่าน Arm [26] กระทบ performance budget ของ mobile และ standalone XR โดยตรง เพราะไม่มี desktop GPU headroom มารองรับ UnRealityKit [49] สะท้อน friction จริงในการ ship immersive content ไปยัง Apple Vision Pro และเป็น pattern ที่คนอื่นกำลังหาทางเลี่ยง Generative AI เริ่มเปลี่ยนจากการทดลองข้างเคียง [15][38][51] ไปสู่ production pipeline ที่ระบุชื่อ [47] และการพัฒนา pipeline tooling [6] ซึ่งสร้างความคาดหวังที่ clients และ tools จะนำเข้ามาใน edutech และ asset workflows
+## ทำไมถึงสำคัญ (เหตุผล)
+สัญญาณที่ซ่อนอยู่ใต้เสียงรบกวนคือ feature set ระดับสูงของ UE5 (Lumen, Nanite, hardware RT) ยังคงถูกส่งมอบใน AAA remake แต่แลกมาด้วย performance headroom จนต้องพึ่ง upscaling เชิงรุกที่ทำให้ความคมชัดของภาพตกลงอย่างเห็นได้ชัด [11][36] trade-off นี้สำคัญมากต่อสตูดิโอที่มุ่งเป้า XR/VR หรือ mobile ซึ่ง resolution ภายในต่ำและ artifact จากการ upscale ทนได้น้อยกว่าบนทีวีมาก ตัวอย่างที่ขัดกัน [47] แสดงว่า engine เดียวกันล็อก 60fps ได้หากกำหนดขอบเขตที่ 1080p ด้วยการตั้งค่าที่มีวินัย — บทเรียนคือวินัยการ configuration ไม่ใช่ตัวเลือก engine Godot 4.7 stable ที่ใกล้เข้ามา [17] บวกกับเส้นทาง console (Xbox) [52] สะท้อนความสุกงอมอย่างช้าๆ ในฐานะทางเลือกน้ำหนักเบาสำหรับงาน 2D และ 3D เล็ก/edutech ด้าน AI ความแตกต่างระหว่างความตื่นเต้นแบบ 'สร้าง prototype ได้ในไม่กี่นาที' [10][56] กับการวิจารณ์ว่า 'ดูถูกหากขาดงานฝีมือจริง' [37] สะท้อนสถานะที่แท้จริงของ tooling: เร็วสำหรับ throwaway prototype และ scaffolding แต่ยังทดแทน art และ design direction ไม่ได้ การที่ generative AI ถูกใช้ใน remake ระดับ marquee [34] บ่งชี้ว่าสตูดิโอกำลังทดสอบแบบเปิดเผยใน production ซึ่งจะกำหนดความคาดหวังของลูกค้าและผู้เล่น
 
-## Possibility
-เป็นไปได้สูง: State of Unreal (17 มิ.ย.) นำด้วย optimization tooling เพราะ performance backlash และ framing ของ Epic เอง [44][17][58] เป็นไปได้: การใช้ on-device/mobile upscaling ขยายตัวเมื่อ Arm ผลักดัน DLSS-style path บน Android [26] ซึ่งเกี่ยวข้องกับ mobile และ standalone XR เป็นไปได้: generative AI ใน production กลายเป็นเรื่องปกติถ้า Tomb Raider ได้รับการตอบรับดีหรือกลางๆ [47] ไม่น่าจะเกิด: คำวิจารณ์เรื่อง UE5 internal resolution/upscaling จะหายไปในระยะใกล้ [17][58] — นี่คือ engine default และ hardware tradeoff ไม่ใช่ patch แก้ได้เร็ว ไม่มี source ใดให้ตัวเลขความน่าจะเป็น จึงไม่ระบุ
+## ความเป็นไปได้
+Godot 4.7 จะ stable ในเร็วๆ นี้มีความน่าจะเป็นสูง เพราะ RC2 ถูกนิยามชัดว่าเป็น regression window สุดท้าย [17] กระแสต่อต้าน performance ของ UE5 น่าจะยังต่อเนื่อง เนื่องจากมีสองรายงานอิสระในวันเดียว [11][36] ต่อหนึ่งข้อมูลเชิงบวก [47] การย้าย TFT ไป Unreal เป็นไปได้แต่ยังไม่ยืนยัน — อาศัยการอ่าน job posting เพียงรายการเดียว [57][24] ให้ถือเป็นข่าวลือจนกว่า Riot จะยืนยัน การนำ generative AI มาใช้ในไปป์ไลน์กระแสหลักในวงกว้างเป็นไปได้และกำลังเติบโต แต่จะยังคงเป็นที่ถกเถียงเรื่องคุณภาพแทนที่จะกลายเป็น default [34][37] ไม่มีแหล่งใดระบุตัวเลขความน่าจะเป็น จึงไม่ได้ให้ไว้
 
-## Org applicability — NDF DEV
-ติดตาม State of Unreal 17 มิ.ย. สำหรับ optimization roadmap และการเปลี่ยนแปลง tool [44] (low) นำบทเรียน UE5 perf ไปใช้กับงาน high-fidelity ทุกชิ้น — budget internal resolution และอย่าเปิดทุก feature โดย default [17][58] (low) สำหรับงาน Unity มี tool ที่ใช้ได้โดยตรงสองตัว: Real Fake Interiors ซึ่งเป็น Unity baking-tool-plus-shader สำหรับจำลองห้องเฟอร์นิเจอร์หลังหน้าต่าง [41] และ stylized water VFX shader technique [20] (low) ถ้า XR/VR roadmap เล็งไปที่ Apple Vision Pro ให้ศึกษาแนวทาง UnRealityKit bridge สำหรับ eye tracking/gestures/room lighting [49] (med) ติดตาม Android upscaler ของ Arm รอ SDK/availability ก่อนผูกมัด mobile perf budget [26] (med) สำหรับ edutech/asset pipeline ประเมินที่ที่ generative AI เหมาะสม โดยใช้ production case ของ Tomb Raider [47] และ coding-style note ของ Carmack [6] เป็นจุดอ้างอิง (med) ถ้าพิจารณา Godot เป็น lightweight/2D option ให้รู้ว่า 4.7 RC2 ใกล้ stable แล้ว [25] (low) ข้ามได้: Halo/Clutch AAA hype [5][10][35], โพสต์ D&D ของ Carmack [4][19][22][24], indie marketing/wishlist posts และ Godot 'Pronoun Palace' controversy [33] — ไม่มี signal ที่นำไปปฏิบัติได้
+## การประยุกต์ใช้สำหรับ NDF DEV
+1) ประเมิน Real Fake Interiors สำหรับ scene arch-viz/mobile/XR ใน Unity ที่สามารถ fake ห้องมีเฟอร์นิเจอร์ผ่านหน้าต่างแทนการ model จริง — ลด geometry และ draw calls (effort ต่ำ) [22] 2) จัดทำ settings-discipline checklist สำหรับงาน UE5 หรือ Unity ฟิเดลิตีสูง โดยเฉพาะ XR/VR: จำกัดการพึ่งพา Lumen/Nanite และตรวจสอบ native internal resolution เพราะ upscaling ที่พอรับได้บนทีวีพังในหน้าจอ headset (effort ต่ำ, internal policy) [11][36][47] 3) ติดตาม Godot 4.7 stable สำหรับ prototype 2D และ edutech/e-learning เบาๆ และดู Xbox Godot sample session เพื่อเส้นทาง console (effort ต่ำ) [17][52] 4) Pilot AI agent เฉพาะสำหรับ greybox/prototype scaffolding อย่างรวดเร็ว โดยให้มนุษย์เป็นเจ้าของ art และ design — กำหนดความคาดหวังว่า raw output จาก AI ดูถูกหากขาดงานฝีมือ (effort ปานกลาง) [10][56][37] ข้าม: engine-fandom และ debate ของ Glitch/Epic [1][16][25][31], ข้อโต้เถียงทางการเมืองของ Pronoun Palace [18], โพสต์การเมืองนอกเรื่อง [41][43], และโพสต์ indie marketing/wishlist — ไม่มีสิ่งใดต้องดำเนินการ
 
-## Signals to Watch
-- State of Unreal 17 มิ.ย. — optimization tooling ที่ Epic จะ ship จริง [44]
-- Android upscaler ของ Arm — SDK release และ engine/device ที่รองรับ [26]
-- การตอบรับ Tomb Raider: Legacy of Atlantis เป็นบททดสอบการยอมรับ gen-AI ใน production [47]
-- UE5 perf backlash จะเริ่มเปลี่ยน engine choice ของ indie/studio หรือไม่ [17][58]
+## สัญญาณที่ต้องจับตา
+- การ release Godot 4.7 stable หลัง RC2 — ยืนยัน timing และตรวจ regression ก่อนพิจารณานำไปใช้ในโปรเจกต์ [17]
+- Riot จะยืนยันอย่างเป็นทางการว่า TFT ย้ายมา Unreal หรือไม่ ตอนนี้ยังเป็นแค่การอนุมานจาก job posting [57][24]
+- การตอบรับการใช้ generative AI ในรีเมค Tomb Raider ตอนและหลัง reveal — เป็นการทดสอบสาธารณะว่า AI-in-production จะเป็นที่ยอมรับหรือไม่ [34]
+- กระแสต้าน image clarity ของ UE5 (การ upscale จาก internal resolution ต่ำ) — เกี่ยวข้องหากลูกค้าผลักดัน UE5 สำหรับ VR หรือ mobile [11][36]
 
-## Raw Sources
+## แหล่งข้อมูลดิบ
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | bilawalsidhu | ^5982 c46 | [OG Anunoby is too sick. Here is the full point-of-view 3d reconstruction of his ](https://x.com/bilawalsidhu/status/2065109650475712908) |
-| x | iDuckFilms | ^4284 c32 | [There are plenty of valid reasons to criticize Glitch Productions, but why are s](https://x.com/iDuckFilms/status/2065102252789174337) |
-| x | TheGameVerse | ^2944 c53 | [New gameplay montages from Tomb Raider: Legacy of Atlantis. - Set in the same un](https://x.com/TheGameVerse/status/2065083789559341334) |
-| x | ID_AA_Carmack | ^1591 c52 | [Trista had never played tabletop Dungeons & Dragons before, so I recently dusted](https://x.com/ID_AA_Carmack/status/2064720302005748031) |
-| x | farzam_plays | ^1382 c53 | [Clutch will be using UE5 with a custom physics engine for aspects such as: - Tir](https://x.com/farzam_plays/status/2065117350551076925) |
-| x | ID_AA_Carmack | ^1171 c131 | [It seems like LLMs could optimize coding style by exploring ways of structuring ](https://x.com/ID_AA_Carmack/status/2065138674950414428) |
-| x | Windpress | ^926 c5 | [This SFW Horror game leaves a BIG impact on the player. You must navigate tight ](https://x.com/Windpress/status/2065119093124899111) |
-| x | ciirulean | ^619 c4 | [very pleased to see godot feature our game for obvious reasons but also I'm just](https://x.com/ciirulean/status/2065135580166737933) |
-| x | Pirat_Nation | ^587 c97 | [A new look at Halo Campaign Evolved realistic graphics The game has been develop](https://x.com/Pirat_Nation/status/2065170541992890415) |
-| x | GameRiot | ^478 c15 | [NEW details on Clutch from recent previews 👀 • Open world set in the South of Fr](https://x.com/GameRiot/status/2065134642483835132) |
-| x | Infiniteforges | ^455 c27 | [Here's an update on my Halo 3: Sierra 117 remake in Unreal Engine 5 https://t.co](https://x.com/Infiniteforges/status/2065218610587382231) |
-| x | HedProtag | ^406 c2 | [Discord Server for Synapse is now open. Exclusive roles are still preserved for ](https://x.com/HedProtag/status/2065117361129033869) |
-| x | digitalfoundry | ^402 c11 | [Halo: Campaign Evolved Is a Fascinating Preview of the Series' Unreal Engine Fut](https://x.com/digitalfoundry/status/2065077868158234952) |
-| x | Stoneshard | ^381 c12 | [Wands ability tree - all speculation welcome 🪄✨ #teaser #medieval #pixelart #gam](https://x.com/Stoneshard/status/2065089439982846130) |
-| x | ziwenxu_ | ^305 c89 | [Day 2 of building my GTA 6 agent in the loop. It's working better than yesterday](https://x.com/ziwenxu_/status/2065090683501728110) |
-| x | IsThisA3DModel | ^286 c4 | [@ABAOProductions @Kling_ai @kitbash3d kling is not a render engine. unreal actua](https://x.com/IsThisA3DModel/status/2065140983461789840) |
-| x | Weston_Mitchell | ^281 c8 | [all these new ue5 games have all the shit turned on and they have to do 540p int](https://x.com/Weston_Mitchell/status/2065111412981293266) |
-| x | iDuckFilms | ^242 c3 | [If people want Glitch Productions to not work with Epic Games, what are they sup](https://x.com/iDuckFilms/status/2065102255922291035) |
-| x | ID_AA_Carmack | ^221 c4 | [A novel thing for me happened during character creation: one of the players had ](https://x.com/ID_AA_Carmack/status/2064720305868640532) |
-| x | jettelly | ^215 c0 | [Ever wondered how to make a clean, stylized water pipeline VFX in Unity? Here's ](https://x.com/jettelly/status/2064678973775155209) |
-| x | DMC_Ryan | ^214 c8 | [We got to play about 45 minutes of Tomb Raider: Legacy of Atlantis, the upcoming](https://x.com/DMC_Ryan/status/2065124279218487748) |
-| x | ID_AA_Carmack | ^213 c12 | [I always add a few low-level player friendly rule tweaks, but my favorite house ](https://x.com/ID_AA_Carmack/status/2064720308490092844) |
-| x | MagicStone23 | ^203 c17 | [After over two years of solo development, my game is finally live on Steam! 🎉🐟🏠✨](https://x.com/MagicStone23/status/2065089825850716384) |
-| x | ID_AA_Carmack | ^200 c5 | [@evildojo666 Trista is my partner, not my daughter 😃. You can see my original 4'](https://x.com/ID_AA_Carmack/status/2064755973336482288) |
-| x | godotengine | ^195 c6 | [Our second Release Candidate for #GodotEngine 4.7 has arrived! This will be your](https://x.com/godotengine/status/2065123733367345515) |
-| x | digitalfoundry | ^180 c2 | [Arm shows off its answer to DLSS on Android - and a whole-ass game by Sumo Digit](https://x.com/digitalfoundry/status/2065011189776625949) |
-| x | jaderbxm | ^177 c11 | [working on server authority (connected to an actual remote server) #threatcentra](https://x.com/jaderbxm/status/2064967800310149423) |
-| x | Talegamesnews | ^173 c2 | [Just your casual forest stroll 🐍🐗💥 #metroidvania #platformer #indiegame #indiede](https://x.com/Talegamesnews/status/2065027262345330793) |
-| x | KrakenCombo | ^169 c9 | [After 23 days of dev, I finally rebuilt my UI system and I'm honestly pretty hap](https://x.com/KrakenCombo/status/2065047980759982477) |
-| x | SaveChan_Dev | ^168 c3 | [BEEN PRACTICING MY DANCE MOVES Daluob is an action roguelite with fast builds an](https://x.com/SaveChan_Dev/status/2064965491513569612) |
+| x | iDuckFilms | ^4714 c35 | [There are plenty of valid reasons to criticize Glitch Productions, but why are s](https://x.com/iDuckFilms/status/2065102252789174337) |
+| x | Windpress | ^4301 c16 | [This SFW Horror game leaves a BIG impact on the player. You must navigate tight ](https://x.com/Windpress/status/2065119093124899111) |
+| x | farzam_plays | ^1934 c73 | [Clutch will be using UE5 with a custom physics engine for aspects such as: - Tir](https://x.com/farzam_plays/status/2065117350551076925) |
+| x | Infiniteforges | ^1271 c42 | [Here's an update on my Halo 3: Sierra 117 remake in Unreal Engine 5 https://t.co](https://x.com/Infiniteforges/status/2065218610587382231) |
+| x | ciirulean | ^1035 c5 | [very pleased to see godot feature our game for obvious reasons but also I'm just](https://x.com/ciirulean/status/2065135580166737933) |
+| x | Pirat_Nation | ^1011 c137 | [A new look at Halo Campaign Evolved realistic graphics The game has been develop](https://x.com/Pirat_Nation/status/2065170541992890415) |
+| x | GameRiot | ^647 c19 | [NEW details on Clutch from recent previews 👀 • Open world set in the South of Fr](https://x.com/GameRiot/status/2065134642483835132) |
+| x | itsnicholash | ^573 c31 | [fable, I want you to grab a MetaHuman file off of Unreal Engine Marketplace or F](https://x.com/itsnicholash/status/2065189876035629322) |
+| x | HedProtag | ^431 c2 | [Discord Server for Synapse is now open. Exclusive roles are still preserved for ](https://x.com/HedProtag/status/2065117361129033869) |
+| x | ziwenxu_ | ^370 c102 | [Day 2 of building my GTA 6 agent in the loop. It's working better than yesterday](https://x.com/ziwenxu_/status/2065090683501728110) |
+| x | Weston_Mitchell | ^368 c11 | [all these new ue5 games have all the shit turned on and they have to do 540p int](https://x.com/Weston_Mitchell/status/2065111412981293266) |
+| x | IsThisA3DModel | ^349 c5 | [@ABAOProductions @Kling_ai @kitbash3d kling is not a render engine. unreal actua](https://x.com/IsThisA3DModel/status/2065140983461789840) |
+| x | AboveLandGame | ^337 c6 | [Hack-and-slash? Sports? YES! ⚔️🏀 #ShowcaseThursday #gamedev #indiedev #gamingcli](https://x.com/AboveLandGame/status/2065226330220712292) |
+| x | _Buckadeer | ^291 c3 | [Danganronpa Another v3 forced to resume progress with unreal engine](https://x.com/_Buckadeer/status/2065214437318066345) |
+| x | Hairtails1 | ^291 c4 | [The full version of 《The Shu Legend》 is now available on Steam. Thank you for su](https://x.com/Hairtails1/status/2065277108365255154) |
+| x | iDuckFilms | ^271 c3 | [If people want Glitch Productions to not work with Epic Games, what are they sup](https://x.com/iDuckFilms/status/2065102255922291035) |
+| x | godotengine | ^255 c6 | [Our second Release Candidate for #GodotEngine 4.7 has arrived! This will be your](https://x.com/godotengine/status/2065123733367345515) |
+| x | LundukeJournal | ^243 c42 | [The Open Source Godot Game Engine is promoting an extreme, pro-Trans game titled](https://x.com/LundukeJournal/status/2065149436951667038) |
+| x | DMC_Ryan | ^242 c8 | [We got to play about 45 minutes of Tomb Raider: Legacy of Atlantis, the upcoming](https://x.com/DMC_Ryan/status/2065124279218487748) |
+| x | IRONY_the_game | ^226 c6 | [THE IRONY has reached 50,000 wishlists! Thank you so much for all your support a](https://x.com/IRONY_the_game/status/2065256898098864131) |
+| x | everyonebpup | ^201 c12 | [🚨 HOLY CRAP the ex-Forza Horizon team just dropped their new game and it's NFS a](https://x.com/everyonebpup/status/2065144209489764622) |
+| x | 80Level | ^195 c1 | [Real Fake Interiors by @AmplifyCreates is a Unity baking tool and shader combo t](https://x.com/80Level/status/2065109302562422981) |
+| x | artyfact_game | ^192 c12 | [⚡️ Why Artyfact is different 🎮 AAA graphics powered by Unreal Engine 5.7 ⚡️ Thri](https://x.com/artyfact_game/status/2065102885265014849) |
+| x | SkinSpotlights | ^188 c6 | [@0Replex0 I just can't imagine them doing a transition like this but I don't kno](https://x.com/SkinSpotlights/status/2065339159963693506) |
+| x | MasterLeytrx | ^175 c6 | ["KH4's combat looks like KH3 combat!!!" I mean… yeah? Did you expect otherwise? ](https://x.com/MasterLeytrx/status/2065114248754135163) |
+| x | drivethegame | ^158 c5 | [Not every run is perfect. #indiegames #indiedev #unity https://t.co/NB70qCsSjB](https://x.com/drivethegame/status/2065101755734757421) |
+| x | RPGPaperMaker | ^143 c2 | [New feature added in RPG Paper Maker 3.1.20: Camera properties live preview! #ga](https://x.com/RPGPaperMaker/status/2065132137200697430) |
+| x | delaigrodela | ^142 c3 | [Thursday. Tea. Because it's not time for coffee. Warming up with Unreal Engine. ](https://x.com/delaigrodela/status/2065125980117606512) |
+| x | SCF_Games | ^140 c6 | [When you miss the toss.. Wishlist Black Tides on Steam now link in Bio! #BlackTi](https://x.com/SCF_Games/status/2065097577666683232) |
+| x | novasoupONLINE | ^134 c8 | [looks like bad Shovelware with an Unreal Engine coat of paint. same tier as Garf](https://x.com/novasoupONLINE/status/2065124874935280106) |
 
 
 ## โพสต์เด่น
@@ -94,36 +94,16 @@ Unreal Engine 5 คือจุดศูนย์กลางของวัน 
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@bilawalsidhu</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 5982 · 💬 46</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/bilawalsidhu/status/2065109650475712908">View @bilawalsidhu on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“OG Anunoby is too sick. Here is the full point-of-view 3d reconstruction of his winning tip-in from the Knicks game last night. You can literally relive it from his perspective. Built with viewpoint p”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Viewpoint Pro ใช้ tracking camera ในสนามกีฬา + Unreal Engine สร้าง 3D scene แบบ first-person POV จากท่วงท่าของนักบาส OJ Anunoby ได้หลังจบเกมจริง</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>พิสูจน์ว่า pipeline จริง spatial tracking → Unreal Engine POV scene ทำได้แล้ว ตรงกับงาน XR/VR live-event ของทีม</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทีม XR ใช้ Viewpoint Pro เป็น reference architecture เวลา scope งาน spatial capture สำหรับโปรเจกต์ XR หรือ sports simulation</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/bilawalsidhu/status/2065109650475712908" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@iDuckFilms</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 4284 · 💬 32</span>
+    <span class="ndf-engagement">♥ 4714 · 💬 35</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/iDuckFilms/status/2065102252789174337">View @iDuckFilms on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“There are plenty of valid reasons to criticize Glitch Productions, but why are so many people surprised that they are collaborating with Fortnite? A lot of their stuff is partially funded by Epic and ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>นักวิจารณ์ชี้ว่าการ collab ของ Glitch Productions กับ Fortnite ไม่ใช่เรื่องน่าแปลก เพราะ Epic Games อัดฉีดทุนบางส่วนให้ และ Glitch ใช้ Unreal Engine ในงาน 3D ทุกชิ้น</dd>
+      <dd>คนโพสต์ชี้ว่าการที่ Glitch Productions ร่วมงานกับ Fortnite ไม่ใช่เรื่องน่าแปลกใจ เพราะ Epic Games ให้ทุนสตูดิโอนี้บางส่วนและพวกเขาใช้ Unreal Engine อยู่แล้ว</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -134,96 +114,16 @@ Unreal Engine 5 คือจุดศูนย์กลางของวัน 
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@TheGameVerse</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2944 · 💬 53</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/TheGameVerse/status/2065083789559341334">View @TheGameVerse on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“New gameplay montages from Tomb Raider: Legacy of Atlantis. - Set in the same universe as the Survivor Trilogy - Features scanning mechanics - Hints at expanded skill trees for Lara Croft - Introduces”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Tomb Raider: Legacy of Atlantis สร้างใน Unreal Engine 5 กำหนดปล่อย 12 ก.พ. 2027 เผย mechanics ใหม่สามอย่าง — environmental scanning, skill tree แบบแบ่งชั้น และ grapple gadget ต่อจาก Survivor Trilogy</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Mechanics สามอย่างที่ระบุชัดเป็น AAA design pattern ที่ทีม game ของ studio ใช้เป็น reference สำหรับระบบ traversal, progression และ exploration ได้ตรงๆ</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทีม Unity ของ studio เก็บ mechanics เหล่านี้เป็น design reference แบบ tag ไว้ใช้กับโปรเจกต์ที่มี skill progression หรือ gadget traversal</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/TheGameVerse/status/2065083789559341334" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@ID_AA_Carmack</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1591 · 💬 52</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ID_AA_Carmack/status/2064720302005748031">View @ID_AA_Carmack on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Trista had never played tabletop Dungeons &amp; Dragons before, so I recently dusted off some old skills and ran a little four player game for her. I never learned modern 5e rules, and I wanted to keep it”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>John Carmack จัด session D&amp;D แบบ tabletop โดยใช้ Rules Cyclopedia และผู้เล่นที่ paint Warhammer figures มาช่วยทำ miniature — เขายอมรับว่า visual aids ดีกว่าที่คิด</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/ID_AA_Carmack/status/2064720302005748031" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@farzam_plays</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1382 · 💬 53</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/farzam_plays/status/2065117350551076925">View @farzam_plays on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Clutch will be using UE5 with a custom physics engine for aspects such as: - Tire temperature - grip levels - suspension - etc. From what I've seen the game is very gorgeous and didn't seem that have ”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>เกม Clutch (racing) ใช้ UE5 คู่กับ custom physics engine สำหรับ tire temperature, grip และ suspension โดยนักพัฒนาระบุว่าไม่มีปัญหา traversal stutter แบบที่พบใน UE5 open-world ทั่วไป</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>การ layer custom physics engine เฉพาะทางบน commercial engine เป็น architecture ที่ใช้ได้จริงสำหรับเกม simulation-heavy และการแก้ traversal stutter ตรง pain point จริงของ UE5 open-world</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">Studio ใช้ Unity ไม่ใช่ UE5 แต่ pattern ของ custom physics layer ใช้ได้กับ Unity simulation project (VR driving, physics puzzle) ที่ PhysX built-in ไม่พอ</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/farzam_plays/status/2065117350551076925" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@ID_AA_Carmack</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1171 · 💬 131</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ID_AA_Carmack/status/2065138674950414428">View @ID_AA_Carmack on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“It seems like LLMs could optimize coding style by exploring ways of structuring code so weaker and weaker models can still successfully perform tasks in a codebase. There are surely stylistic quirks t”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Carmack ชี้ว่า code ที่เขียนให้ LLM อ่านง่าย (structure ชัด, ชื่อ explicit) ช่วยให้ AI coding tools ทุก tier ทำงานได้ดีขึ้น และตรงกับสิ่งที่ช่วย developer คนอ่านด้วย</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Studio ที่ใช้ AI coding tools ทุกวันได้ประโยชน์ต่อเนื่องจาก codebase อ่านง่าย — AI แนะ code ได้ดีขึ้นโดยไม่ต้องเปลี่ยน model แพงขึ้น</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">จัด 1 วัน audit repo ที่ใช้ AI tools บ่อย: ปรับชื่อตัวแปร, ลด nesting ลึก, เพิ่ม inline comment อธิบาย intent ตรงจุดที่ logic ซับซ้อน</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/ID_AA_Carmack/status/2065138674950414428" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@Windpress</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 926 · 💬 5</span>
+    <span class="ndf-engagement">♥ 4301 · 💬 16</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Windpress/status/2065119093124899111">View @Windpress on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“This SFW Horror game leaves a BIG impact on the player. You must navigate tight corridors while avoiding being spotted. Triple A Horror games have been SLOP since Unreal Engine became a thing. Indie D”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>มีคนโปรโมต indie horror game ที่ไม่ได้เปิดเผยชื่อ บน X โดยบอกว่า corridor stealth ให้ผลดีกว่า AAA horror ที่ใช้ Unreal Engine</dd>
+      <dd>ผู้ใช้ X ยก indie horror game ไม่ระบุชื่อเป็นตัวอย่างความสำเร็จ โดยบอกว่า AAA horror ตกต่ำลงนับตั้งแต่วงการย้ายมาใช้ Unreal Engine</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -234,22 +134,122 @@ Unreal Engine 5 คือจุดศูนย์กลางของวัน 
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
+    <span class="ndf-author">@farzam_plays</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1934 · 💬 73</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/farzam_plays/status/2065117350551076925">View @farzam_plays on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Clutch will be using UE5 with a custom physics engine for aspects such as: - Tire temperature - grip levels - suspension - etc. From what I've seen the game is very gorgeous and didn't seem that have ”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>เกม Clutch ใช้ UE5 ร่วมกับ custom physics engine ดูแล tire temperature, grip, และ suspension — และนักพัฒนารายงานว่าไม่พบ traversal stutter แบบที่เห็นใน UE5 open-world เกมอื่น</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>การวาง custom physics layer บน UE5 เพื่อหลีก traversal stutter เป็น architecture pattern ที่ควรติดตามสำหรับงาน open-world simulation-heavy</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ถ้าทีม Unity ประเมิน UE5 สำหรับ open-world หรือ driving sim ให้ใช้ approach ของ Clutch เป็น reference สำหรับแก้ปัญหา stutter</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/farzam_plays/status/2065117350551076925" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Infiniteforges</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1271 · 💬 42</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Infiniteforges/status/2065218610587382231">View @Infiniteforges on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Here’s an update on my Halo 3: Sierra 117 remake in Unreal Engine 5 https://t.co/rguNb6D3Fh”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>นักพัฒนาเดี่ยวกำลัง recreate ด่าน Sierra 117 จาก Halo 3 ใน Unreal Engine 5 พร้อมแชร์ความคืบหน้าด้านภาพ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>แสดงคุณภาพ environment art ที่ทำได้จริงด้วยคนเดียวใน UE5 — ใช้เป็น visual benchmark ตอน scope งาน level design ได้</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ใช้ clip นี้เป็น reference ด้าน environment fidelity ถ้าทีมประเมิน UE5 สำหรับ 3D project ในอนาคต</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/Infiniteforges/status/2065218610587382231" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
     <span class="ndf-author">@ciirulean</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 619 · 💬 4</span>
+    <span class="ndf-engagement">♥ 1035 · 💬 5</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ciirulean/status/2065135580166737933">View @ciirulean on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“very pleased to see godot feature our game for obvious reasons but also I'm just glad that they didn't censor the clown boobs. I wanted to make a point of including nonsexual nudity in pp because the ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Indie dev บอกว่าเกมตัวเองถูก Godot feature อย่างเป็นทางการ และทาง Godot ไม่ได้ censor nudity ที่ตั้งใจใส่ไว้ในเกม</dd>
+      <dd>Indie dev ดีใจที่ Godot นำเกมของตัวเองไปแนะนำ และชื่นชมที่ platform ไม่เซนเซอร์ nudity ที่ตั้งใจใส่ไว้เพื่อสื่อ artistic statement</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/ciirulean/status/2065135580166737933" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Pirat_Nation</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1011 · 💬 137</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Pirat_Nation/status/2065170541992890415">View @Pirat_Nation on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“A new look at Halo Campaign Evolved realistic graphics The game has been developed in Unreal Engine 5 with updated high-definition visuals. The game is scheduled to release on July 28 2026 https://t.c”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>แฟนนักพัฒนา (@Pirat_Nation) รีเมค Halo Campaign Evolved ใน Unreal Engine 5 พร้อม visuals แบบ photorealistic กำหนดปล่อย 28 กรกฎาคม 2026</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>แสดง visual bar ที่ UE5 Nanite/Lumen ทำได้บน classic shooter IP — ใช้อ้างอิงเวลา client ถามเรื่อง scope งาน high-fidelity 3D</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/Pirat_Nation/status/2065170541992890415" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@GameRiot</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 647 · 💬 19</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/GameRiot/status/2065134642483835132">View @GameRiot on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“NEW details on Clutch from recent previews 👀 • Open world set in the South of France 🇫🇷 • 1:1 recreation of Monaco 🇲🇨 • Collectibles, stunt jumps, speed traps &amp; more • Custom Unreal Engine 5 tech • In”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Clutch คือเกม arcade racing open-world ที่กำลังจะมา สร้างบน custom UE5 มี Monaco จำลอง 1:1, รถ 150 คัน, โหมด PvPvE และ co-op story เต็มรูปแบบ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/GameRiot/status/2065134642483835132" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@itsnicholash</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 573 · 💬 31</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/itsnicholash/status/2065189876035629322">View @itsnicholash on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“fable, I want you to grab a MetaHuman file off of Unreal Engine Marketplace or Fab Marketplace or something like that. There should be free ones. Find a character controller that works with that for w”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Fable AI agent สร้าง three.js demo บินแบบ Superman ครบ — MetaHuman character, environment จาก World Labs gsplats, camera animation, bloom+grain post-FX — จาก 1 prompt, ผู้เขียนให้คะแนน 'not bad'</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>1 prompt สามารถ scaffold 3D web experience ครบ (assets + physics + post-FX) ได้แล้ว — เป็น baseline ความเร็วที่จับต้องได้สำหรับงาน XR/web prototype</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ลอง Fable สร้าง three.js + gsplat prototype สำหรับ demo XR concept ให้ลูกค้าก่อน commit Unity build เต็ม</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/itsnicholash/status/2065189876035629322" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

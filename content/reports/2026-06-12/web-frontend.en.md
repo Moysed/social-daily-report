@@ -4,7 +4,7 @@ date: '2026-06-12'
 topic: web-frontend
 lang: en
 pair: web-frontend.th.md
-generated_at: '2026-06-12T03:22:01+00:00'
+generated_at: '2026-06-12T15:24:23+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -13,86 +13,84 @@ platforms:
 - x
 regions:
 - global
-post_count: 237
-salience: 0.25
+post_count: 229
+salience: 0.2
 sentiment: neutral
-confidence: 0.55
+confidence: 0.6
 tags:
-- web
 - frontend
-- astro
 - react
+- shadcn
 - vercel
 - tooling
-thumbnail: https://pbs.twimg.com/tweet_video_thumb/HKjalspbgAA49LV.jpg
+- low-signal
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2065079249757966336/img/y0QQE344y3pHBjfF.jpg
 ---
 
 # Web & Frontend — 2026-06-12
 
 ## TL;DR
-- Most items tagged with this topic are noise — 'astro' here mostly means the K-pop band, a Dandy's World character, or the PlayStation game Astro Bot [7][14][19], and 'react' means reacting to posts, not React.js. Real web/frontend signal today is thin.
-- Starlight v0.40 added support for Astro's new Rust-based Markdown pipeline to speed up docs builds [56].
-- A widely-shared React stack list names the current default toolkit: zod, react-hook-form, react-table, tRPC + react-query, shadcn, motion, date-fns, and the ai SDK [21].
-- xAI announced a Vercel plugin to deploy to production, spin up sandboxes, and build apps with Shadcn [6].
-- A React Native demo (margelo/humandco) claims scroll/animation parity with or better than a Google native build [52]; an HTML-first rebuild reportedly doubled users [44].
+- Genuine web/frontend signal today is thin: only two of 60 items are on-topic — [4] and [26].
+- [26] A widely-shared post codified a default React stack: zod (validation), react-hook-form, react-table, tRPC + react-query (data), shadcn (UI), motion, date-fns, ai SDK.
+- [4] xAI promoted a Vercel plugin to deploy to production, spin up sandboxes, and build apps with Shadcn — AI coding agent tied to a deploy platform.
+- Shadcn is the one name appearing in both real items [4][26]; it reads as the assumed UI component layer.
+- Most high-engagement 'astro'/'react' hits are noise: K-pop group ASTRO [5][50], the PlayStation game Astro Bot [19], a game character [14][43], and 'react' the verb [3][7][15] — not the frameworks.
 
 ## What happened
-Genuine web/frontend items are few. Starlight v0.40 added support for Astro's new Rust-based Markdown pipeline, pitched as faster documentation builds [56]. A popular post listed a mainstream React stack — zod, react-hook-form, react-table, tRPC + react-query, shadcn, motion, date-fns, and the ai SDK [21]. xAI promoted a Vercel plugin that deploys to production, spins up sandboxes, and scaffolds apps with Shadcn [6]. On performance, a vendor demo argued React Native can match or beat a native Google build for scrolling/animation [52], and a blog claimed an HTML-first rebuild doubled its users [44]. Adjacent tooling: Homebrew 6.0.0 shipped a tap-trust security mechanism and a faster default internal store [11], and Zed introduced DeltaDB framed around 'software is made between commits' [54]. The large majority of items are unrelated (football/World Cup [1][5][23], K-pop ASTRO [48][55], Dandy's World fan art [14][16][35], politics [4][13][45]).
+For the Web & Frontend topic, the engagement-sorted feed is dominated by unrelated content. Two items are directly relevant. [26] lists a concrete React-ecosystem stack used in production: zod for validation, react-hook-form for forms, react-table for tables, tRPC + react-query for data, shadcn for UI, motion for animation, date-fns for dates, and the ai SDK. [4] is an xAI post pitching the Vercel plugin to deploy to production, spin up sandboxes, and build apps with Shadcn. Adjacent dev-tooling items appear but are not frontend: Homebrew 6.0.0 shipped a tap-trust security mechanism and a faster default internal store [9], and Zed announced DeltaDB framing 'software is made between commits' [49]. The remaining top items — [5][14][19][30][43][50] ('astro' as a band, game, or character) and [3][7][8][15][22] ('react' as the verb) — share keywords with frameworks but carry no web-platform signal.
 
 ## Why it matters (reasoning)
-The low signal-to-noise ratio is itself the finding: keyword routing on 'astro' and 'react' pulled in entertainment and social content, so treat today's feed for this topic as mostly false positives. Of the real items, the consistent thread is the consolidation of the React/Astro/Vercel/Shadcn stack as a default [6][21][56] — useful as a baseline reference but not new direction. Performance claims [44][52] point to a recurring pattern: shipping less JavaScript (HTML-first) or tuning the render path yields large measured wins, but both are vendor/author-framed and lack independent reproduction.
+The two real items point the same direction: Shadcn shows up both in a hand-picked production stack [26] and as the default UI layer an AI agent reaches for [4], which suggests component-library convergence rather than churn. [4] also shows the pattern of AI coding agents wiring directly into a deploy/sandbox platform, collapsing build-and-ship into one prompt-driven step. Beyond that, today carries little frontend news — no framework releases, browser-API, or build-tooling changes of consequence — so drawing broad conclusions would be over-reading keyword collisions.
 
 ## Possibility
-Likely: the Astro/Starlight Rust Markdown pipeline keeps reducing docs build times as it matures, since that is the stated goal of v0.40 [56]. Plausible: AI-assisted deploy flows like the xAI Vercel plugin spread, given the explicit deploy/sandbox/Shadcn integration [6], though lock-in and reliability are open questions. Unlikely to conclude from today's items alone: that React Native reaches general native parity — the only evidence is a single client demo [52], not a benchmark suite.
+Likely: Shadcn stays the default copy-in component layer for new React work near-term, since it recurs across both independent on-topic items [4][26]. Plausible: prompt-to-deploy pipelines (agent → Vercel sandbox → production) become a normal prototyping path given platform vendors actively promote them [4]. Unlikely to conclude anything about framework momentum (React/Astro/Svelte/Vue) from this feed — the apparent 'Astro' volume is a band and a game, not the framework [5][14][19][50].
 
 ## Org applicability — NDF DEV
-For e-learning/docs sites, test Starlight v0.40 to cut documentation build times — low effort [56]. Keep the React stack list [21] as a reference checklist when scaffolding new web/mobile projects, but adopt selectively, not wholesale — low effort. For marketing/landing pages where SEO and load time matter, trial an HTML-first build and measure before/after — med effort [44]. For mobile, note the React Native performance claim but run your own scroll/animation benchmarks before trusting it for game-adjacent UI — med effort [52]. If already on Vercel, try the xAI plugin for prototype deploys, not production-critical paths yet — low effort [6]. Skip everything else in today's feed for this topic — the K-pop, gaming, sports, and politics items are keyword false positives.
+1) Treat the [26] stack as a sanity-check reference for NDF DEV's web/mobile projects (zod, react-hook-form, react-query/tRPC, shadcn, motion, date-fns) — low effort, it's a reference list, not a migration [26]. 2) For throwaway prototypes or client demos, trial the Vercel + Shadcn deploy/sandbox path to shorten the build-to-preview loop — med effort, scope to one pilot before standardizing [4]. 3) If brew is in any CI or dev-setup scripts, note Homebrew 6.0.0's new tap-trust mechanism may require config when pulling third-party taps — low effort, check before next upgrade [9]. Skip today: the coding-model and Claude Fable items [27][32][34][46][55] are off-topic for frontend and belong to the AI brief; do not act on them here.
 
 ## Signals to Watch
-- Astro's Rust-based Markdown pipeline — watch for measured build-time numbers as adoption widens [56].
-- AI-assisted deploy tooling (xAI + Vercel) — watch whether it moves beyond sandboxes to reliable production use [6].
-- Homebrew 6.0.0 tap-trust security mechanism — relevant to dev-machine supply-chain hygiene [11].
+- Shadcn recurring as the assumed UI layer across independent sources [4][26].
+- AI-agent-to-deploy integrations promoted by platform vendors (Vercel) [4].
+- Homebrew 6.0.0 tap-trust security — relevant only if brew is in your toolchain [9].
 
 ## Repos & Tools to Try
 | repo | source | url |
 |---|---|---|
-| **huggingface/open-r1** — Open Reproduction of DeepSeek-R1 | hackernews | <https://github.com/huggingface/open-r1> |
-| **icitry/FPS.cob** — FPS.cob: A first person shooter in COBOL | hackernews | <https://github.com/icitry/FPS.cob> |
-| **coder/boo** — Show HN: Boo – Screen-style terminal multiplexer built on libghostty | hackernews | <https://github.com/coder/boo> |
+| **WebAssembly/WASI** — WASI 0.3.0 Released | hackernews | <https://github.com/WebAssembly/WASI> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | johndumelo | ^14887 c910 | [The World Cup starts today and here is good news for Ayawaso West. 1. I have pai](https://x.com/johndumelo/status/2065025991395713305) |
-| x | Bandeater1 | ^3034 c71 | [been getting a lot of transphobic replies lately I'm not sure how you expect me ](https://x.com/Bandeater1/status/2065140781816647741) |
-| x | armanevalois | ^2319 c65 | [How Would u react ??💕 https://t.co/LyXulaXW4T](https://x.com/armanevalois/status/2065158558283366648) |
-| x | ChristianHeiens | ^1381 c55 | [White people have spent my entire life apologizing over and over again for every](https://x.com/ChristianHeiens/status/2065137922995613879) |
-| x | ExtremeBlitz__ | ^1377 c10 | [how mfs who have never watched a game of football in their lives react to the Wo](https://x.com/ExtremeBlitz__/status/2065245952793772498) |
-| x | xai | ^1355 c130 | [Use the @vercel plugin to deploy to production, spin up sandboxes, or build apps](https://x.com/xai/status/2065143638838157559) |
-| x | cortisbyartists | ^1327 c0 | [KEONHO appeared in a “guess the artist by their eyes” segment (Dive Studios) wit](https://x.com/cortisbyartists/status/2065079328254332957) |
-| x | itsmichaelluu | ^1324 c94 | [When $SPY crashes 10%-20% this summer, I'd BUY ONLY bottleneck AI stocks. Withou](https://x.com/itsmichaelluu/status/2064929197336715382) |
-| x | LeakyCloud10 | ^1150 c43 | [Kendrick Lamar — BOOM (Ft. Jay Rock, Ray Vaughan, ???) https://t.co/BwyzPpmxuV v](https://x.com/LeakyCloud10/status/2065141975330812099) |
-| x | aleabitoreddit | ^1080 c202 | [New Anthropic news looks like a potential tailwind for the Neocloud colo sector.](https://x.com/aleabitoreddit/status/2065130589204992048) |
-| hackernews | mikemcquaid | ^1033 c241 | [Show HN: Homebrew 6.0.0 Today, I’m proud to announce Homebrew 6.0.0. The most si](https://brew.sh/2026/06/11/homebrew-6.0.0/) |
-| x | PeterCronau | ^908 c23 | [Apparently criticising the fools who are pressured by the lobby is ‘antisemitic’](https://x.com/PeterCronau/status/2064925127318655127) |
-| x | JimFergusonUK | ^875 c53 | [🚨 THE ANGER IS NO LONGER CONFINED TO BELFAST A migrant delivery driver's car has](https://x.com/JimFergusonUK/status/2065190639696855240) |
-| x | Madelin23187438 | ^709 c4 | [It’s 1am help- Anyways~ Sprout can be strong too! #dandysworld #sprout #vee #she](https://x.com/Madelin23187438/status/2064937458630828369) |
-| x | JaynitMakwana | ^706 c63 | [Dario Amodei, anthropic's CEO, just answered the question everyone is asking. sh](https://x.com/JaynitMakwana/status/2065014853107097825) |
-| x | e0lo4 | ^652 c5 | [Redesign #dandysworld #astro #dandy #sprout https://t.co/ISJbXKZu6A](https://x.com/e0lo4/status/2064899545822294184) |
-| x | VinnyVinesauce | ^646 c30 | [@chonzodraws @thegrayfruit How should I optimally react when a game is revealed ](https://x.com/VinnyVinesauce/status/2065145177476419809) |
-| x | babyhimejoshi | ^642 c3 | [wip maid astro https://t.co/VdxYpIkyzp](https://x.com/babyhimejoshi/status/2065090477347541054) |
-| x | Genki_JPN | ^641 c24 | [Astro Bot climbed back into the top 10 best selling physical games in Japan this](https://x.com/Genki_JPN/status/2065128316965965974) |
-| x | laughlovexo | ^622 c5 | [Dede haters are the only ones that wants her to react. Her fans know that she is](https://x.com/laughlovexo/status/2065185319629066587) |
-| x | pontusab | ^540 c28 | [Libraries I can't live without: ◇ zod - validation ◇ react-hook-form - forms ◇ r](https://x.com/pontusab/status/2065069116424380661) |
-| x | ThatMr2711Guy | ^536 c7 | [old dandy's world was so funny this unironically happend after I finally bought ](https://x.com/ThatMr2711Guy/status/2065049506727497751) |
-| x | NoodleHairCR7 | ^511 c24 | [What did the ref say for him to react that way 😭😭😭😭 https://t.co/Dmfp5sQNvb](https://x.com/NoodleHairCR7/status/2065179682375418349) |
-| x | FreudGreyskull | ^478 c4 | [Rybar reports of #Ukraine success in west Zaporizhia: The trend towards deterior](https://x.com/FreudGreyskull/status/2065175549610516736) |
-| x | CyYuVtuber | ^452 c15 | [Hey guys. Don’t know why I’ve felt so tired today, but I’m gonna just sleep toda](https://x.com/CyYuVtuber/status/2065202949362479535) |
-| hackernews | apeters | ^434 c251 | [MiMo Code is now released and open-source](https://mimo.xiaomi.com/mimocode) |
-| x | pannchoa | ^433 c1 | [Knets react to foreigners' shopping spree in South Korea https://t.co/s9FPZz6wGV](https://x.com/pannchoa/status/2065172058460365147) |
-| x | certifiedpari | ^390 c16 | [i’m confused 😭 if victoria lovatsis and raina morris post something publicly and](https://x.com/certifiedpari/status/2065159946929574241) |
-| hackernews | hmokiguess | ^381 c132 | [Petition to Withdraw Canada's Bill C-22](https://www.ourcommons.ca/petitions/en/Petition/Sign/e-7416) |
-| hackernews | RyeCombinator | ^368 c252 | [Lines of code got a better publicist](https://curlewis.co.nz/posts/lines-of-code-got-a-better-publicist/) |
+| x | johndumelo | ^15548 c942 | [The World Cup starts today and here is good news for Ayawaso West. 1. I have pai](https://x.com/johndumelo/status/2065025991395713305) |
+| x | lowpeas | ^3221 c8 | [@nauiparatise The whole yume/kin shit is hilarious to me and I don't really resp](https://x.com/lowpeas/status/2065292131715969110) |
+| x | guynotgod | ^2244 c18 | [@speakuplive cause u 28 ur perception of the world has changed, u been fucking t](https://x.com/guynotgod/status/2065286656337281281) |
+| x | xai | ^2237 c227 | [Use the @vercel plugin to deploy to production, spin up sandboxes, or build apps](https://x.com/xai/status/2065143638838157559) |
+| x | cortisbyartists | ^1603 c0 | [KEONHO appeared in a “guess the artist by their eyes” segment (Dive Studios) wit](https://x.com/cortisbyartists/status/2065079328254332957) |
+| x | FoxNews | ^1575 c172 | [A London restaurant manager saw a little girl hanging from a balcony ledge — the](https://x.com/FoxNews/status/2065419142866334208) |
+| x | Rainmaker1973 | ^1547 c17 | [If your parents react like this after not seeing you for three days, you are ric](https://x.com/Rainmaker1973/status/2065401226028855336) |
+| x | elaikwong | ^1436 c4 | [She’s trying so hard not to react but orm’s system is NOT cooperating 😭😭 https:/](https://x.com/elaikwong/status/2065381557301657657) |
+| hackernews | mikemcquaid | ^1352 c319 | [Show HN: Homebrew 6.0.0 Today, I’m proud to announce Homebrew 6.0.0. The most si](https://brew.sh/2026/06/11/homebrew-6.0.0/) |
+| x | aleabitoreddit | ^1273 c216 | [New Anthropic news looks like a potential tailwind for the Neocloud colo sector.](https://x.com/aleabitoreddit/status/2065130589204992048) |
+| hackernews | jjfoooo4 | ^1176 c384 | [If you are asking for human attention, demonstrate human effort](https://tombedor.dev/human-attention-and-human-effort/) |
+| x | SimplyUtd | ^1126 c17 | [🚨 Manchester United are in official conversations with the agent [Jorge Mendes] ](https://x.com/SimplyUtd/status/2065319844346503306) |
+| hackernews | xiaoyu2006 | ^1114 c422 | [AI agent bankrupted their operator while trying to scan DN42](https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/) |
+| x | babyhimejoshi | ^987 c3 | [wip maid astro https://t.co/VdxYpIkyzp](https://x.com/babyhimejoshi/status/2065090477347541054) |
+| x | hvgoenka | ^962 c70 | [Sharpen your inner self: Speak less. Listen more. React less. Observe more.](https://x.com/hvgoenka/status/2065313926469071138) |
+| x | JaynitMakwana | ^942 c78 | [Dario Amodei, anthropic's CEO, just answered the question everyone is asking. sh](https://x.com/JaynitMakwana/status/2065014853107097825) |
+| x | john322226 | ^905 c496 | [Unverified acc video react to my tweet of me saying dangote wil buy me and start](https://x.com/john322226/status/2065348645969342571) |
+| x | vampmoonrise | ^896 c2 | [Maybe no new art today, I'm exhausted ｡⁠:ﾟ⁠(⁠;⁠´⁠∩⁠`⁠;⁠)ﾟ⁠:⁠｡ But I want to put ](https://x.com/vampmoonrise/status/2065222361910026688) |
+| x | Genki_JPN | ^826 c25 | [Astro Bot climbed back into the top 10 best selling physical games in Japan this](https://x.com/Genki_JPN/status/2065128316965965974) |
+| x | ThatMr2711Guy | ^826 c9 | [old dandy's world was so funny this unironically happend after I finally bought ](https://x.com/ThatMr2711Guy/status/2065049506727497751) |
+| x | StretfordPaddck | ^766 c18 | [🚨🗣️ Fabrizio Romano on Mateus Fernandes: "Manchester United are in official cont](https://x.com/StretfordPaddck/status/2065358228020482339) |
+| x | goalsside | ^750 c28 | [🚨🗣️/ Michael Olise: "I am just not a super emotional person. I don't react the s](https://x.com/goalsside/status/2065369408868868481) |
+| x | adprojectpics | ^717 c2 | [One DAY ONE asked Annie what the members would react if she wrote “I love you” i](https://x.com/adprojectpics/status/2065369984885199206) |
+| x | MotionMindsEntt | ^713 c40 | [To all our fans, please do not worry. Regarding the accounts that have been post](https://x.com/MotionMindsEntt/status/2065359377712791933) |
+| x | dresdroplets | ^680 c3 | [“girls they’re putting pressure, how do we react? compose tayo, compose tayo.” -](https://x.com/dresdroplets/status/2065346893312647334) |
+| x | pontusab | ^661 c33 | [Libraries I can't live without: ◇ zod - validation ◇ react-hook-form - forms ◇ r](https://x.com/pontusab/status/2065069116424380661) |
+| hackernews | lumpa | ^633 c511 | [Claude Fable is relentlessly proactive](https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/) |
+| x | Rainmaker1973 | ^628 c36 | [Crows (especially American crows) are highly intelligent and have remarkable abi](https://x.com/Rainmaker1973/status/2065380939778179231) |
+| hackernews | sam_bristow | ^621 c197 | [Nobody ever gets credit for fixing problems that never happened (2001) [pdf]](https://web.mit.edu/nelsonr/www/Repenning=Sterman_CMR_su01_.pdf) |
+| x | 4k_Kaijueiga | ^547 c4 | ["The Fury of the 3 Monsters" - Invasion of Astro-Monster (1965) https://t.co/ty7](https://x.com/4k_Kaijueiga/status/2065242851982582065) |
 
 
 ## Top Posts
@@ -102,14 +100,14 @@ For e-learning/docs sites, test Starlight v0.40 to cut documentation build times
   <header class="ndf-card-head">
     <span class="ndf-author">@johndumelo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 14887 · 💬 910</span>
+    <span class="ndf-engagement">♥ 15548 · 💬 942</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/johndumelo/status/2065025991395713305">View @johndumelo on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“The World Cup starts today and here is good news for Ayawaso West. 1. I have paid the dstv for tv viewing centers across Ayawaso west. 2. Free giant screen at Abelemkpe Astro Turf park for all Ghana m”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A Ghanaian politician announces free public World Cup screenings and free meals for constituents in Ayawaso West ahead of the 2026 FIFA World Cup.</dd>
+      <dd>A Ghanaian constituency representative announces free World Cup viewing events with giant screens and free meals across Ayawaso West for Ghana matches.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
@@ -120,100 +118,60 @@ For e-learning/docs sites, test Starlight v0.40 to cut documentation build times
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Bandeater1</span>
+    <span class="ndf-author">@lowpeas</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3034 · 💬 71</span>
+    <span class="ndf-engagement">♥ 3221 · 💬 8</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Bandeater1/status/2065140781816647741">View @Bandeater1 on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/lowpeas/status/2065292131715969110">View @lowpeas on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“been getting a lot of transphobic replies lately I'm not sure how you expect me to react all I'll say is: I hope you learn to become a better person I believe in you, even if you hate me &amp;lt;3 https:/”</p>
+    <p class="ndf-quote">“@nauiparatise The whole yume/kin shit is hilarious to me and I don't really respect it. I told some girl that I kin the same character she does just to see how she'd react. She called me a slur and to”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Author @Bandeater1 is addressing transphobic replies they have been receiving, expressing goodwill toward those sending hate.</dd>
+      <dd>A user recounts trolling someone in an online fandom community and receiving a hostile response — no technical content.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/Bandeater1/status/2065140781816647741" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/lowpeas/status/2065292131715969110" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@armanevalois</span>
+    <span class="ndf-author">@guynotgod</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2319 · 💬 65</span>
+    <span class="ndf-engagement">♥ 2244 · 💬 18</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/armanevalois/status/2065158558283366648">View @armanevalois on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/guynotgod/status/2065286656337281281">View @guynotgod on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“How Would u react ??💕 https://t.co/LyXulaXW4T”</p>
+    <p class="ndf-quote">“@speakuplive cause u 28 ur perception of the world has changed, u been fucking the same girl for 10 years and ur job is to react to bleood and 2slimey so it leads to nothing hitting the same”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A user posted a vague reaction-bait question with a media link and no technical content.</dd>
+      <dd>A user replies to @speakuplive arguing that at 28, being in a long-term relationship and reacting to gross content for a living dulls one's sense of excitement about the world.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/armanevalois/status/2065158558283366648" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@ChristianHeiens</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1381 · 💬 55</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ChristianHeiens/status/2065137922995613879">View @ChristianHeiens on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“White people have spent my entire life apologizing over and over again for every imaginable sin under the sun, including their very existence, essentially. They've done it every step of the way in the”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A political opinion post about race relations and racial violence in the United States, with no technical content.</dd>
-      <dt>Why interesting</dt>
-      <dd>Not relevant.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">No action.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/ChristianHeiens/status/2065137922995613879" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@ExtremeBlitz__</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1377 · 💬 10</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ExtremeBlitz__/status/2065245952793772498">View @ExtremeBlitz__ on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“how mfs who have never watched a game of football in their lives react to the World Cup https://t.co/whqrbbUfyS”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A viral meme post mocking people who only engage with the World Cup without actually following football.</dd>
-      <dt>Why interesting</dt>
-      <dd>Not relevant.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">No action.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/ExtremeBlitz__/status/2065245952793772498" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/guynotgod/status/2065286656337281281" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@xai</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1355 · 💬 130</span>
+    <span class="ndf-engagement">♥ 2237 · 💬 227</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/xai/status/2065143638838157559">View @xai on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Use the @vercel plugin to deploy to production, spin up sandboxes, or build apps with Shadcn.”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>xAI's Grok now ships a Vercel plugin that lets an AI agent deploy to production, spin up preview sandboxes, and scaffold Shadcn apps directly from chat.</dd>
+      <dd>xAI (Grok) launched an official Vercel plugin that lets users deploy to Vercel production, spin up sandboxes, and scaffold Shadcn apps directly inside the Grok chat interface.</dd>
       <dt>Why interesting</dt>
-      <dd>AI-driven deploy from chat removes the context-switch between coding and shipping — shortens front-end iteration cycles for small teams.</dd>
+      <dd>Grok can now write code and immediately ship it to Vercel in one session, cutting the gap between prototyping and a live URL for web projects.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Run the Grok + Vercel plugin on a low-stakes web project to evaluate whether AI-driven deploys actually cut turnaround on front-end iterations.</dd>
+      <dd class="ndf-adapt">The studio's web team can trial the Grok + Vercel plugin on a sandbox project to see whether AI-to-deploy in one step fits the current workflow.</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/xai/status/2065143638838157559" target="_blank" rel="noopener">View on x →</a>
   </div>
@@ -222,7 +180,7 @@ For e-learning/docs sites, test Starlight v0.40 to cut documentation build times
   <header class="ndf-card-head">
     <span class="ndf-author">@cortisbyartists</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1327 · 💬 0</span>
+    <span class="ndf-engagement">♥ 1603 · 💬 0</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/cortisbyartists/status/2065079328254332957">View @cortisbyartists on X</a></blockquote>
   <div class="ndf-card-body">
@@ -240,22 +198,62 @@ For e-learning/docs sites, test Starlight v0.40 to cut documentation build times
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@itsmichaelluu</span>
+    <span class="ndf-author">@FoxNews</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1324 · 💬 94</span>
+    <span class="ndf-engagement">♥ 1575 · 💬 172</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/itsmichaelluu/status/2064929197336715382">View @itsmichaelluu on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/FoxNews/status/2065419142866334208">View @FoxNews on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“When $SPY crashes 10%-20% this summer, I'd BUY ONLY bottleneck AI stocks. Without them there is no AI: $MU — Micron Technology Current: ~$879 | Buy Zone: $680–$700 HBM demand floor, prior ATH breakout”</p>
+    <p class="ndf-quote">“A London restaurant manager saw a little girl hanging from a balcony ledge — then made the catch of his life. He says that he acted on “pure instinct” as the child fell from an upper-floor flat and he”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A trader lists 9 AI infrastructure stocks (NVDA, MU, ASML, TSM, etc.) with personal buy-zone price targets for a projected 10–20% SPY market pullback this summer.</dd>
+      <dd>A London restaurant manager caught a child who fell from a balcony, attributing his quick reaction to cricket experience.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/itsmichaelluu/status/2064929197336715382" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/FoxNews/status/2065419142866334208" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Rainmaker1973</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1547 · 💬 17</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Rainmaker1973/status/2065401226028855336">View @Rainmaker1973 on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“If your parents react like this after not seeing you for three days, you are rich. https://t.co/VvK6Toy0W0”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A viral post about family reunions after a 3-day absence — no technical content.</dd>
+      <dt>Why interesting</dt>
+      <dd>Not relevant.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">No action.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/Rainmaker1973/status/2065401226028855336" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@elaikwong</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1436 · 💬 4</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/elaikwong/status/2065381557301657657">View @elaikwong on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“She’s trying so hard not to react but orm’s system is NOT cooperating 😭😭 https://t.co/qf2FH8vGTj”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A viral post shows a person named Orm visibly struggling to suppress a reaction in a video clip.</dd>
+      <dt>Why interesting</dt>
+      <dd>Not relevant.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">No action.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/elaikwong/status/2065381557301657657" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

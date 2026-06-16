@@ -4,88 +4,88 @@ date: '2026-06-12'
 topic: edtech
 lang: th
 pair: edtech.en.md
-generated_at: '2026-06-12T03:25:47+00:00'
+generated_at: '2026-06-12T15:28:40+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
 - x
 regions:
 - global
-post_count: 151
-salience: 0.32
+post_count: 141
+salience: 0.42
 sentiment: mixed
 confidence: 0.5
 tags:
 - edtech
+- language-learning
 - duolingo
 - ai-tutoring
-- gamification
-- language-learning
-- e-learning
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2065074560773525504/img/7dMa_YmrWiT5S9Zk.jpg
+- pronunciation
+- emerging-markets
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2065269826835333120/img/UXpKEEPKeYWPdke4.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # EdTech — 2026-06-12
 
 ## TL;DR
-- Duolingo เป็นชื่อ edtech ที่ปรากฏหนาแน่นที่สุดวันนี้: CEO Luis von Ahn วางกรอบระยะยาว [52], $DUOL ถูกอ้างที่ ~14x earnings ในกลุ่มหุ้น sub-20x [24] และใช้การตลาดแนว meme/brand อย่างหนัก [7][9][10][42][50] — แต่ผู้เรียนจริงจังปฏิเสธอย่างตรงไปตรงมา ('please don't say Duolingo' [53]; 'sounding like a textbook' [32])
-- 'AI tutor ส่วนตัว' กำลังถูกประกอบขึ้นจาก tool ทั่วไป ไม่ใช่ platform เฉพาะทาง: Gemini + NotebookLM แปลง PDF/YouTube/notes ใดก็ได้เป็น tutor ที่ตั้งคำถามได้ ถูกพูดถึงซ้ำหลายครั้ง [18][45]
-- AI coding tools ถูกนำไปสร้าง edtech โดยตรง — แอป English tutor 'vibe coded' ที่ Cursor [25], edtech SaaS สร้างบน Claude/Opus [58] และ phonetic pronunciation workbook สร้างด้วย Fable [59]
-- แนวทาง gamification แบบ streak/hearts/XP กำลังขยายออกนอกวงภาษา — แอป Bible-study-as-Duolingo อ้างรายได้ $40K/mo [29]
-- ปริมาณส่วนใหญ่ใน feed เป็นบทสนทนาเรื่องการออกเสียงจากบริบท K-pop, ดนตรี และดารา [1][3][8][16][28] ไม่ใช่ edtech — signal เชิงผลิตภัณฑ์/ธุรกิจที่แท้จริงมีน้อยมาก
+- ข่าว edtech จริงๆ วันนี้มีน้อย รายการที่ engagement สูง [1][3][4][8][10][11][12][22] ส่วนใหญ่เป็นเรื่องการออกเสียง (เพลง multilingual ของ Tyla, เทสต์การออกเสียง K-pop) และ Love Island [2] — ไม่ใช่ signal ด้านผลิตภัณฑ์หรือธุรกิจ
+- Duolingo ครอง mindshare ผ่าน meme และ brand มากกว่าข่าวผลิตภัณฑ์: โพสต์ของตัวเอง [6][7][23][50] บวกกับ mention แบบ organic อีกหลายสิบรายการ [13][15][18][25][29][36][40][45][56][60] แสดงให้เห็นว่าแทรกซึมวัฒนธรรมแล้ว แต่แทบไม่มี capability ใหม่
+- ความตึงเครียดที่กำลังเกิดจริงคือ AI tutor แทนที่แอปเรียนภาษา: โพสต์ viral แนะให้ 'DELETE DUOLINGO' แล้วใช้ prompt ChatGPT สี่อัน [24] และ Gemini + NotebookLM ถูกเสนอเป็น learning stack ที่แปลง PDF/วิดีโอใดก็ได้ให้เป็นคอร์สแบบ personalized [42]
+- เงินสถาบันกำลังเคลื่อนเข้า emerging markets: Mastercard Foundation เปิด EdTech Fellowship cohort แรกในรวันดา [38] และ XIIID กำลังให้นักศึกษาปารากวัยสร้าง AI tutor บนเวทีสหรัฐฯ [9]
+- pain point ซ้ำๆ ของผู้เรียน: เกลียดการ 'ฟังดูเหมือนตำรา' [20] และต้องการ feedback การออกเสียงที่แม่นยำ [30][52]; รายการคอร์สฟรี (CS50, Coursera, Brilliant) ยังวนเวียนเป็นทางเลือกแทนปริญญา [35][48]
 
 ## What happened
-ไอเทมที่ engagement สูงส่วนใหญ่ไม่ใช่ edtech: หลายสิบรายการเกี่ยวกับการออกเสียงเพลง/แร็ปของ Tyla, ไอดอล K-pop และดารา [1][2][3][4][8][11][12][13][14][15][16][17][26][27][28][34][43][44][55][57] ขึ้นมาเพราะ keyword 'pronunciation' และ 'language learning' เท่านั้น signal edtech จริงๆ กระจุกอยู่ในไม่กี่ thread: Duolingo ปรากฏซ้ำผ่าน reply การตลาดและ meme มาสคอต [7][9][10][42][50], anecdote การใช้งาน [22][35][37][54], กรอบมุมมองนักลงทุน [24][52] และการโต้กลับจากผู้เรียนที่ต้องการ tool จริงจังกว่า [32][53] กลุ่มที่สองคือ AI tutoring สร้างจาก tool เอนกประสงค์: Gemini + NotebookLM ในฐานะ 'learning stack' ที่อธิบายและตั้งคำถามจาก material ที่อัปโหลด [18][45], แอป English tutor สร้างด้วย Cursor [25], edtech SaaS บน Claude [58] และ pronunciation workbook สร้างด้วย AI [59]
+Feed ถูกครอบงำด้วยบทสนทนาเรื่องภาษาและการออกเสียง โดยไม่มี product event รองรับ: Tyla ร้องเพลงชาติแอฟริกาใต้ใน 4 ภาษา [1][3][4][10][14][22][54], สมาชิก K-pop รับเทสต์การออกเสียง [11][12][17] และ commentary เรื่อง multilingual ทั่วไป [8][27][30][41] Duolingo โผล่ตลอด — ในฐานะ brand voice โพสต์เรื่อง TV และ NBA Finals [6][7], promo ในตลาดสเปน [23][50] และเป็น punchline แบบ organic หรือ reference เรื่อง habit [13][15][18][25][29][36][40][45][56][60] รายการที่ relevant กับผลิตภัณฑ์มากที่สุดคือ AI-as-tutor: thread 'ลบ Duolingo แล้วใช้ ChatGPT prompts' [24] และโพสต์ Gemini + NotebookLM 'upload อะไรก็ได้ รับคอร์สแบบ personalized' [42] ฝั่งสถาบัน: Mastercard Foundation เปิด EdTech Fellowship cohort สำหรับนวัตกรรวันดา [38] และ XIIID นำนักศึกษาปารากวัยขึ้นเวทีสหรัฐฯ เพื่อสร้าง AI tutor [9] signal เล็กๆ อื่นๆ: Youdao Dictionary แต่งตั้ง brand ambassador [37], นักพัฒนา indie กำลังสร้าง school-management SaaS ชื่อ 'Edusmartix' [59], รายการคอร์สฟรีวนซ้ำ [35][48] และมี commentary เรื่อง 'Alpha School' อนาคตของการศึกษา [55] โพสต์ timesoul หลายอัน [16][19][21] โปรโมต app ที่ผสม Web3 กับ mindfulness ดูเหมือน coordinated promotion มากกว่า edtech จริง
 
 ## Why it matters (reasoning)
-สองรูปแบบสำคัญสำหรับผู้สร้าง e-learning รูปแบบแรก ประสบการณ์ AI-tutor กลายเป็น product layer บางๆ ครอบ model ทั่วไปมากขึ้นเรื่อยๆ: NotebookLM/Gemini 'อธิบาย ตั้งคำถาม และช่วยเรียนได้เร็วขึ้น' จาก content ใดก็ได้ [18][45] และคนที่ไม่ใช่ engineer ก็ ship แอป tutoring ด้วย AI coding tools ได้ในชั่วโมงเดียว [25] สิ่งนี้ลด moat ของฟีเจอร์ content-to-quiz ทั่วไป และผลักให้ต้องสร้างความแตกต่างที่คุณภาพหลักสูตร, กลไกการรักษา retention และความเหมาะกับ locale รูปแบบที่สอง กลไกของ Duolingo (streaks, hearts, XP) กลายเป็น template ที่ถ่ายโอนได้ — นำไปใช้กับ Bible study ที่อ้างรายได้ $40K/mo [29] — หมายความว่า engagement loop ไม่ใช่เนื้อหา คือ asset ที่ reuse ได้ ข้อร้องเรียนของผู้เรียนที่มองเห็นได้ [32][53] ชี้ช่องว่างจริง: แอป gamified สร้างนิสัยได้แต่ไม่ตอบโจทย์ความสามารถสนทนา เปิดพื้นที่ให้ tool ที่มุ่งเน้น output และการพูด
+pattern หลักคือ footprint ทางวัฒนธรรมของการเรียนภาษา (Duolingo, ความภูมิใจในการออกเสียง) ใหญ่มาก [6][40][45] ขณะที่ข่าว product differentiation จริงๆ มีน้อย — engagement ขับเคลื่อนด้วยบุคลิกและ meme ไม่ใช่ feature สิ่งนี้อ่านต่อได้ตรงๆ ว่า brand voice, maskot และ streak mechanics สร้าง mindshare ได้ถูก แต่ป้องกัน substitution ไม่ได้ ภัยคุกคาม substitution ชัดเจนใน [24] และ [42]: LLM general-purpose (ChatGPT, Gemini/NotebookLM) ถูกวางตำแหน่งเป็นทางเลือกฟรีแบบ personalized แทนแอป content delivery ที่มีโครงสร้างตายตัว สำหรับผู้สร้าง e-learning ผลกระทบลำดับสองคือ 'content delivery' ตาม curriculum ตายตัวเป็นชั้นที่เปราะบางที่สุด ขณะที่ feedback loop ที่ LLM ลอกเลียนได้ยาก — การออกเสียงที่วัดคะแนนได้ [20][30][52], progress ที่มีโครงสร้าง, accountability — กลายเป็นส่วนที่ defend ได้ แยกออกมา signal การระดมทุน [38][9] แสดงว่าเงินของ donor และโปรแกรมกำลังกระจุกตัวที่ AI education ใน emerging markets ซึ่งเป็น partner/grant channel ที่ studio ในเชียงใหม่เข้าถึงได้ cluster timesoul [16][19][21] สำคัญแค่ในฐานะ noise ที่ต้องตัดทิ้ง: ภาษาโปรโมตที่ซ้ำกันเกือบเหมือนกันคือ flag ของความน่าเชื่อถือ ไม่ใช่ trend
 
 ## Possibility
-มีแนวโน้ม: AI tool ทั่วไป (แบบ NotebookLM) จะยังคงดูดซับ use case 'ศึกษา document ใดก็ได้' ต่อไป ทำให้ quiz-generator แบบ standalone เผชิญกับการ commoditize [18][45][25] เป็นไปได้: กลไก gamified-habit จะถูก clone ไปยัง vertical ที่ไม่ใช่ภาษาเพิ่มเติมนอกเหนือจากตัวอย่าง Bible study [29] รวมถึงหัวข้อตลาดท้องถิ่น เป็นไปได้: edtech ตลาดเกิดใหม่และโปรแกรมภาษาที่รัฐสนับสนุนขยายตัว — ความเห็นเรื่อง uLesson scaling [33] และ Confucius Institute แห่งใหม่ใน Pretoria [48] ชี้ไปทางนั้น แม้แต่ละรายการเป็นเพียง data point เดียว ไม่น่าเกิดขึ้นจากหลักฐานวันนี้: การ launch platform/funding/product รายใหญ่ — ไม่มีปรากฏใน feed ดังนั้นถือว่าเป็นวันเงียบ ไม่ใช่จุดเปลี่ยน ไม่มี source ใดระบุความน่าจะเป็นเป็นตัวเลข จึงไม่มีการให้ไว้
+น่าจะเกิด: แรงกดดัน AI tutor substitution ต่อแอป content ตายตัวดำเนินต่อ เพราะ value proposition ใน [24][42] (ฟรี, personalized, ไม่ lock-in) สาธิตและแพร่กระจายได้ง่าย น่าจะเกิด: Duolingo ยังชนะความสนใจผ่าน brand/personality มากกว่า pedagogy [6][7][40] เพราะนั่นคือสิ่งที่ engagement data ที่นี่ให้รางวัล เป็นไปได้: โปรแกรม AI education ที่ donor และรัฐบาลสนับสนุนใน emerging markets จะมีมากขึ้นตามตัวอย่างรวันดา [38] และปารากวัย [9] เปิดช่องทาง grant/partnership เป็นไปได้: pronunciation/speech feedback กลายเป็น feature ที่แข่งขันกันมากขึ้นจากความต้องการซ้ำๆ [20][30][52] ไม่น่าเกิด: กรอบ Web3-plus-mindfulness [16][19][21] กลายเป็น edtech category ที่ยั่งยืน — หลักฐานเป็นแค่โปรโมชันและบางมาก ไม่มีแหล่งข้อมูลใดระบุความน่าจะเป็นเป็นตัวเลข จึงไม่ระบุ
 
 ## Org applicability — NDF DEV
-1) Prototype ฟีเจอร์ 'content-to-tutor' สำหรับลูกค้า e-learning — รับ PDF หรือวิดีโอ แล้วสร้างคำอธิบายและ quiz อัตโนมัติ — benchmark กับ NotebookLM แทนการสร้างจาก scratch (effort: med) [18][45] 2) Reuse retention loop แบบ streak/hearts/XP เป็น packaged module ข้าม edutech และแม้แต่ผลิตภัณฑ์ที่ไม่ใช่ภาษา เพราะกลไกถ่ายโอนได้ (effort: low-med) [29][7] 3) ใช้ AI coding tools (Cursor/Claude) ลดต้นทุน prototyping บน tutoring MVP โดยตระหนักว่า model routing ไปยัง tier สูงขึ้นเพิ่มต้นทุนบน edtech SaaS [25][58] (effort: low) 4) สำหรับงาน Enggenius/pronunciation ทดสอบ AI-generated phonetic workbook เป็น shortcut ผลิต content (effort: low) [59] ข้าม: โปรโมชัน timesoul Web3 + mental-wellbeing [19][31][36], thread เลือกหุ้น [21][24] และบทสนทนาการออกเสียงของดารา — ไม่มี signal เชิงผลิตภัณฑ์หรือเทคนิค
+1) Feature pronunciation/speech feedback — มีความต้องการซ้ำๆ ชัดเจนสำหรับการออกเสียงที่แม่นยำและความหงุดหงิดกับผลลัพธ์แบบ 'ตำรา' [20][30][52]; สอดคล้องกับงาน Enggenius pronunciation ที่ NDF DEV มีอยู่แล้ว Effort: low-med [20][52] 2) Prototype flow แบบ LLM 'upload → personalized lesson/quiz' เพื่อทำความเข้าใจภัยคุกคาม substitution และตัดสินใจว่าจะสร้างอะไรหรือ defend อะไร [42][24] Effort: med [42] 3) ยืม retention mechanics — brand personality แบบ mascot และ streak สร้าง mindshare ได้ถูก [6][40][45]; นำไปใช้กับ e-learning products ของตัวเอง Effort: low [6] 4) ติดตาม AI-education funding ใน emerging markets (Mastercard Foundation รวันดา [38], XIIID ปารากวัย [9]) เป็น grant/partner channel ที่เป็นไปได้ Effort: low (monitoring) [38][9] ข้าม: รายการ Web3/mindfulness ของ timesoul [16][19][21] (pattern coordinated-promo ไม่มี signal actionable); ข้ามการสร้างแอป content-delivery course ทั่วไปอีกตัว ซึ่งเป็นชั้นที่เปิดรับ LLM substitution มากที่สุด [24][42]
 
 ## Signals to Watch
-- Learner backlash ต่อ Duolingo ที่ไม่ผลิต fluency จริง [32][53] — ช่องว่างสำหรับ tool ที่เน้นการพูด/output
-- AI assistant ทั่วไปเข้ามาแทนที่แอป tutoring เฉพาะทางใน job 'ศึกษา document ใดก็ได้' [18][45][25]
-- ความเคลื่อนไหว edtech ตลาดเกิดใหม่: uLesson scaling ใน 7+ ประเทศ [33] และ Confucius Institute แห่งใหม่ใน Pretoria [48]
-- AI coding tools ลดต้นทุน — และเพิ่ม model-tier bill อย่างเงียบๆ — สำหรับ edtech builder รายเดียว [25][58]
+- ดูว่า framing 'ลบแอป แล้วใช้ LLM' [24] และ NotebookLM-as-course [42] ได้รับ traction ไหม — signal substitution ตรงๆ สำหรับ e-learning แบบ content delivery
+- ดูผลลัพธ์ Mastercard Foundation EdTech Fellowship [38] และ AI tutor cohort ของ XIIID [9] เพื่อดู pattern funding และ partnership ใน emerging markets
+- ดูความต้องการ pronunciation/speech feedback [20][30][52] — feature ที่ chatbot ทั่วไป replicate ได้ยากกว่า
+- Discount cluster Web3 + mindfulness ของ timesoul [16][19][21] ถ้าไม่มีการรายงานอิสระที่ไม่ใช่โปรโมชันปรากฏ
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | BassieLastrassi | ^2762 c10 | [Tyla's pronunciation was so good. Multilingual QUEEN.](https://x.com/BassieLastrassi/status/2065147402143613359) |
-| x | williamjkp_my | ^1867 c3 | [They sold out all the packages and then started talking about going back home (t](https://x.com/williamjkp_my/status/2065074752604238288) |
-| x | bunniewiju | ^1401 c1 | [istg euijoo is the most endearing person on earth 😭😭😭❤️ euijoo lives include: ac](https://x.com/bunniewiju/status/2064923994457805264) |
-| x | CExornam62784 | ^1137 c24 | [This is Dede speaking, now tell me that she didn't articulate her words so well ](https://x.com/CExornam62784/status/2064973566496354384) |
-| x | 3blue1brown | ^1041 c20 | [Suppose you wanted to reinvent the idea of Shannon Entropy for yourself. This pu](https://x.com/3blue1brown/status/2064715036497420760) |
-| x | longdepzai_n | ^1013 c1 | [Funny baby pronunciation 😂😂 https://t.co/7oF9vb2PVs](https://x.com/longdepzai_n/status/2064943088758604198) |
-| x | duolingo | ^919 c13 | [if you do your lesson i'll watch your show](https://x.com/duolingo/status/2064761638193111358) |
-| x | parkjixing | ^724 c1 | [i guess his english pronunciation has improved🤓 https://t.co/VriItiDMTH](https://x.com/parkjixing/status/2064979352094171636) |
-| x | duolingo | ^468 c15 | [if knicks win the finals, i'm bringing your streak back. KNICKS IN 5. https://t.](https://x.com/duolingo/status/2064925053955735959) |
-| x | evanmisu | ^425 c1 | [not duolingo in the comments again😅 "My husband I love you too!!! You are my bes](https://x.com/evanmisu/status/2065069205540745469) |
-| x | amahlegebane | ^335 c0 | [Oh she did justice honey!!!! The perfect pronunciation of 'dintwa'? YESSSSSSSSSS](https://x.com/amahlegebane/status/2065157546868961618) |
-| x | belanvital_1004 | ^297 c1 | [Kim always wrote poems in Chinese characters, and while the content was ordinary](https://x.com/belanvital_1004/status/2064920408613335353) |
-| x | November_Rainy_ | ^295 c3 | [IU + Lee Jong Hoon + Kim Jehwi = Perfect! I love their banter in behind of the r](https://x.com/November_Rainy_/status/2064984777745400287) |
-| x | loveyy_doll | ^266 c6 | [You guys are upset because she sang in an English accent (her home language) whe](https://x.com/loveyy_doll/status/2065197697435406338) |
-| x | amahlegebane | ^262 c1 | [the Sotho and Xhosa parts are about Black Death and struggle. Her tone matched t](https://x.com/amahlegebane/status/2065196359276179642) |
-| x | hopemin291013 | ^241 c0 | ["K-POP RAPPER PRIDE" is so real. 👑 Looking at ⁠this image and seeing J-Hope lead](https://x.com/hopemin291013/status/2064916847443730448) |
-| x | sourscoziest | ^210 c0 | [you can tell Tyla practiced her pronunciation multiple times, she didn't want no](https://x.com/sourscoziest/status/2065153685374501343) |
-| x | jamescoder12 | ^179 c46 | [🚨 Google Gemini + NotebookLM can turn any PDF, YouTube video, or notes into a pe](https://x.com/jamescoder12/status/2064701693665923569) |
-| x | kokondukwe | ^170 c119 | [Interesting to see projects exploring the connection between Web3 and mental wel](https://x.com/kokondukwe/status/2065053001291567466) |
-| x | aureumsbaby | ^168 c6 | [i finally watched the Friends Keep Secrets episode with H in it and tell me WHY ](https://x.com/aureumsbaby/status/2065057924263608657) |
-| x | TheBigBerbowski | ^155 c17 | [Here's the list of the most obvious 10x before 2030. Sponsored by Fintwit commun](https://x.com/TheBigBerbowski/status/2065025661484269986) |
-| x | wallflowerperry | ^150 c3 | [One of my students is about to see Saya Kamitani wrestle today, and she's so exc](https://x.com/wallflowerperry/status/2065179048657985895) |
-| x | harrysbangs | ^130 c4 | [Zoe cant talk about Harry so they pull a - doesnt gave instagram on her phone - ](https://x.com/harrysbangs/status/2065088529856704911) |
-| x | patientinvestor | ^124 c24 | [Stocks Trading Below 20x Earnings: Shift4 $FOUR 6x PayPal $PYPL 7x Sandisk $SNDK](https://x.com/patientinvestor/status/2065055195843969299) |
-| x | benkimbuilds | ^120 c16 | [My mom vibe coded her first app at @cursor_ai today ☺️ I told them we'd stop by ](https://x.com/benkimbuilds/status/2064925371062222881) |
-| x | sacred_texts_ss | ^99 c8 | [I'm sorry to inform you guys i used to pronounce it "goontess" until i figured o](https://x.com/sacred_texts_ss/status/2065030953634873612) |
-| x | _blasfemme_ | ^97 c0 | [@95naoj @chloesthetics_ 김종국 (Kim Jôngkook), the letter "O" is more closed. 전정국 (](https://x.com/_blasfemme_/status/2065033863856877672) |
+| x | amahlegebane | ^5293 c27 | [the Sotho and Xhosa parts are about Black Death and struggle. Her tone matched t](https://x.com/amahlegebane/status/2065196359276179642) |
+| x | Isaiah_Jaay | ^4362 c50 | [LOVE ISLAND USA SEASON 8 EPISODE 8 🍿 Kenzie think she Andy from Toy Story 🙄 you ](https://x.com/Isaiah_Jaay/status/2065270060042838429) |
+| x | loveyy_doll | ^3872 c22 | [You guys are upset because she sang in an English accent (her home language) whe](https://x.com/loveyy_doll/status/2065197697435406338) |
+| x | BassieLastrassi | ^3413 c11 | [Tyla's pronunciation was so good. Multilingual QUEEN.](https://x.com/BassieLastrassi/status/2065147402143613359) |
+| x | Eivor_Koy | ^1317 c26 | [This Japanese dude complained that Chinese uses a single-character system for ev](https://x.com/Eivor_Koy/status/2065237562948735104) |
+| x | duolingo | ^932 c13 | [if you do your lesson i'll watch your show](https://x.com/duolingo/status/2064761638193111358) |
+| x | duolingo | ^481 c17 | [if knicks win the finals, i'm bringing your streak back. KNICKS IN 5. https://t.](https://x.com/duolingo/status/2064925053955735959) |
+| x | gully_point | ^371 c4 | [I don't know much about how Bengali sounds when spoken. But my jaw dropped at he](https://x.com/gully_point/status/2065274720208216132) |
+| x | xiiid_official | ^358 c205 | [🎓 XIIID U.S. Internship: Building the Future of AI Education From 2,000+ applica](https://x.com/xiiid_official/status/2065363112145174631) |
+| x | amahlegebane | ^346 c0 | [Oh she did justice honey!!!! The perfect pronunciation of 'dintwa'? YESSSSSSSSSS](https://x.com/amahlegebane/status/2065157546868961618) |
+| x | zghaosolo | ^331 c0 | [everyone getting amazed after zhang hao managed to read this long phrase with ac](https://x.com/zghaosolo/status/2065394163017990499) |
+| x | yupeaches | ^291 c0 | [yujin is actually so good at pronunciation test and his deep voice is so satisfy](https://x.com/yupeaches/status/2065395670807167047) |
+| x | simplylovelymap | ^245 c2 | [what level of Dutch Duolingo do I learn: "the soup is not eaten as hot as it is ](https://x.com/simplylovelymap/status/2065116468547571849) |
+| x | sourscoziest | ^214 c0 | [you can tell Tyla practiced her pronunciation multiple times, she didn't want no](https://x.com/sourscoziest/status/2065153685374501343) |
+| x | harrystylzluver | ^194 c4 | ["she doesn't even have instagram, in its place is now a language-learning app" 😣](https://x.com/harrystylzluver/status/2065103122284851384) |
+| x | 0xZane_ | ^186 c216 | [Interesting to see @timesoulcom not just building another app. They're more abou](https://x.com/0xZane_/status/2065147200662130958) |
+| x | kuroihimitsu | ^183 c0 | [Behind the scenes of Kuta helping Taegang with his Japanese pronunciation - what](https://x.com/kuroihimitsu/status/2065303003717108191) |
+| x | wallflowerperry | ^174 c3 | [One of my students is about to see Saya Kamitani wrestle today, and she's so exc](https://x.com/wallflowerperry/status/2065179048657985895) |
+| x | kokondukwe | ^171 c120 | [Interesting to see projects exploring the connection between Web3 and mental wel](https://x.com/kokondukwe/status/2065053001291567466) |
+| x | marlee_and_us | ^114 c3 | [The worst part of language learning is sounding like a textbook and I HATE IT.](https://x.com/marlee_and_us/status/2065208072331784315) |
+| x | dhavied_brown | ^96 c92 | [We've spent years optimizing everything. Productivity. Fitness. Learning. But on](https://x.com/dhavied_brown/status/2065248905919410535) |
 | x | MelusiProB | ^91 c0 | [@zacisontime The mic stays on!! 🥹 And like a true South African she nailed the p](https://x.com/MelusiProB/status/2065155890500481352) |
-| x | adriamatz | ^89 c13 | [Someone turned Bible study into Duolingo $40K/mo A lamb you name Hearts you lose](https://x.com/adriamatz/status/2064964536445157725) |
-| x | Eivor_Koy | ^84 c3 | [This Japanese dude complained that Chinese uses a single-character system for ev](https://x.com/Eivor_Koy/status/2065237562948735104) |
+| x | duolingoespanol | ^89 c1 | [@DebsSZN download duolingo if you also want to speak "mexicano"](https://x.com/duolingoespanol/status/2065179474400846152) |
+| x | AiWithSaira | ^89 c33 | [DELETE DUOLINGO TODAY. HERE YOU HAVE 4 PROMPTS FOR CHATGPT THAT WILL TEACH YOU E](https://x.com/AiWithSaira/status/2065265626848059555) |
+| x | bittercold | ^84 c1 | [@KashiwaOmoi Translation apps, wild hand gestures and bad DuoLingo Japanese did ](https://x.com/bittercold/status/2065344839755960449) |
+| x | AlaskanScribe | ^84 c3 | [@femiiiszn All the time. I also figured out early that a reader's pronunciation ](https://x.com/AlaskanScribe/status/2065298330713010207) |
+| x | mariolexxx | ^83 c22 | [Youruba will not ki1l us sha,same spelling but different pronunciation Ogun:(Med](https://x.com/mariolexxx/status/2065122696174703016) |
+| x | silly_dwaekki | ^80 c0 | [but thats just how the name is supposed to be said &amp; u constantly hear the c](https://x.com/silly_dwaekki/status/2065232195195658717) |
+| x | itsnotovaaah | ^78 c0 | [No need to do this at the World Cup dawgggg, ref was just spamming english duoli](https://x.com/itsnotovaaah/status/2065176032794030107) |
+| x | edudzi_ | ^76 c7 | [Just learnt the correct pronunciation of Asics. • AY-SICKS ❌ • AH-SICKS - accept](https://x.com/edudzi_/status/2065206255510081643) |
 
 
 ## โพสต์เด่น
@@ -93,16 +93,76 @@ translated_by: claude-sonnet-4-6
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
+    <span class="ndf-author">@amahlegebane</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 5293 · 💬 27</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/amahlegebane/status/2065196359276179642">View @amahlegebane on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“the Sotho and Xhosa parts are about Black Death and struggle. Her tone matched the macabre theme of the prayer😭 her pronunciation was great. The English and Afrikaans part is just celebratory (we need”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ผู้ใช้วิจารณ์การแสดงหลายภาษา (Sotho, Xhosa, อังกฤษ, Afrikaans) เรื่อง tone และ pronunciation ที่ไม่สอดคล้องกัน</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/amahlegebane/status/2065196359276179642" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Isaiah_Jaay</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 4362 · 💬 50</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Isaiah_Jaay/status/2065270060042838429">View @Isaiah_Jaay on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“LOVE ISLAND USA SEASON 8 EPISODE 8 🍿 Kenzie think she Andy from Toy Story 🙄 you don’t get ownership of Buzz Lightyear &amp; Woody lmao. She is SELFISH &amp; her new name need to be “Alexa” cause she turned on”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ทวีตไวรัลวิจารณ์ Love Island USA Season 8 ตอน 8 — ดราม่าตัวละครในรายการ มี mention Duolingo แบบผ่านๆ ไม่มีเนื้อหา EdTech จริง</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/Isaiah_Jaay/status/2065270060042838429" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@loveyy_doll</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 3872 · 💬 22</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/loveyy_doll/status/2065197697435406338">View @loveyy_doll on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“You guys are upset because she sang in an English accent (her home language) when she had perfect pronunciation on ALL 4 languages. Lmao yeah you guys run out things to dislike her for 😭😭😭”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>แฟนคลับปกป้องนักร้องที่พูดได้ 4 ภาษา หลังถูกวิจารณ์เรื่องสำเนียงภาษาอังกฤษ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/loveyy_doll/status/2065197697435406338" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
     <span class="ndf-author">@BassieLastrassi</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2762 · 💬 10</span>
+    <span class="ndf-engagement">♥ 3413 · 💬 11</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/BassieLastrassi/status/2065147402143613359">View @BassieLastrassi on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Tyla’s pronunciation was so good. Multilingual QUEEN.”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้ชื่นชม Tyla นักร้องป็อป เรื่องออกเสียงหลายภาษา ไม่มีบริบทเชิงเทคนิคหรือการศึกษา</dd>
+      <dd>ผู้ใช้ชมการออกเสียงของนักร้อง Tyla ว่าพูดได้หลายภาษาดี</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -113,116 +173,36 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@williamjkp_my</span>
+    <span class="ndf-author">@Eivor_Koy</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1867 · 💬 3</span>
+    <span class="ndf-engagement">♥ 1317 · 💬 26</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/williamjkp_my/status/2065074752604238288">View @williamjkp_my on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Eivor_Koy/status/2065237562948735104">View @Eivor_Koy on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“They sold out all the packages and then started talking about going back home (their 回家 pronunciation is so cute) look at William being so happy and clapping when the staff said they can bring back th”</p>
+    <p class="ndf-quote">“This Japanese dude complained that Chinese uses a single-character system for every element in the periodic table — yet this is precisely one of the reasons why Chinese students can learn chemistry wi”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์แฟนคลับงาน WilliamEst x Foamdream — แพ็กเกจขายหมด พนักงานประกาศแจก PJs กลับบ้าน</dd>
+      <dd>ชื่อธาตุในภาษาจีนใช้ radical บอก category (钅 = โลหะ, 气 = แก๊ส) ทำให้ผู้เรียนเดา property ได้ทันที ส่วนญี่ปุ่นใช้ katakana ทับศัพท์ ไม่มี hint ในตัว load จำสูงกว่า</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
+      <dd>การฝัง category ไว้ใน symbol ตัดภาระความจำได้จริง เป็น pattern ตรงที่ใช้ได้กับการออกแบบ e-learning content</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
+      <dd class="ndf-adapt">ออกแบบ e-learning ให้ใช้ icon prefix หรือ color radical ต่างกันต่อ category ผู้เรียนอ่านความหมายจาก structure ก่อนอ่าน label</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/williamjkp_my/status/2065074752604238288" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@bunniewiju</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1401 · 💬 1</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/bunniewiju/status/2064923994457805264">View @bunniewiju on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“istg euijoo is the most endearing person on earth 😭😭😭❤️ euijoo lives include: accidental aegyo, flexing that he’s up past his bedtime, very loud breathing, cheering for luné taking exams, english time”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>โพสต์แฟนคลับพูดถึงพฤติกรรมน่ารักของ idol ชื่อ Euijoo ใน live ไม่มีเนื้อหาด้านเทคโนโลยีหรือ dev</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/bunniewiju/status/2064923994457805264" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@CExornam62784</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1137 · 💬 24</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/CExornam62784/status/2064973566496354384">View @CExornam62784 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“This is Dede speaking, now tell me that she didn't articulate her words so well did you have problems with pronunciation when you were growing up?” Insecurity bulshit Dede cleared the air in this vide”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>โพสต์ปกป้องคนชื่อ Dede จากการวิจารณ์เรื่องการออกเสียง เป็นดราม่าส่วนตัวระหว่างบุคคล</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/CExornam62784/status/2064973566496354384" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@3blue1brown</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1041 · 💬 20</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/3blue1brown/status/2064715036497420760">View @3blue1brown on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Suppose you wanted to reinvent the idea of Shannon Entropy for yourself. This puzzle is a good place to start (Full video on YouTube). https://t.co/VSdwu431JC”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>3Blue1Brown ปล่อย teaser แบบ puzzle-first สำหรับวิดีโอ YouTube ใหม่ที่สร้าง Shannon Entropy ขึ้นมาใหม่จาก first principles สำหรับคนที่อยากเข้าใจแบบ derive เอง</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>รูปแบบการสอนแบบ puzzle-first เป็นเทคนิคที่ทีม e-learning ของ studio ดูเป็นแนวทางได้ สำหรับ module ที่หนักด้าน math หรือ information theory</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ดูวิดีโอเต็มแล้วถอด structure การสอน (puzzle → conflict → derivation) มาเป็น template สำหรับออกแบบ e-learning content ตัวต่อไปของ studio</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/3blue1brown/status/2064715036497420760" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@longdepzai_n</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1013 · 💬 1</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/longdepzai_n/status/2064943088758604198">View @longdepzai_n on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Funny baby pronunciation 😂😂 https://t.co/7oF9vb2PVs”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>โพสต์ viral บน X แชร์คลิปเด็กออกเสียงผิดเพื่อความขำ ไม่มี tool, งานวิจัย หรือเทคนิคใดเกี่ยวข้อง</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/longdepzai_n/status/2064943088758604198" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/Eivor_Koy/status/2065237562948735104" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@duolingo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 919 · 💬 13</span>
+    <span class="ndf-engagement">♥ 932 · 💬 13</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/duolingo/status/2064761638193111358">View @duolingo on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“if you do your lesson i’ll watch your show”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Duolingo โพสต์ joke สั้นๆ ในสไตล์ brand voice ของตัวเอง ไม่มี announcement หรือ feature ใดๆ</dd>
+      <dd>Duolingo โพสต์ tweet สั้นๆ ในสไตล์ brand persona แบบข่มขู่เบาๆ ว่าต้องทำ lesson ก่อนถึงจะดู series ได้</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -233,22 +213,42 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@parkjixing</span>
+    <span class="ndf-author">@duolingo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 724 · 💬 1</span>
+    <span class="ndf-engagement">♥ 481 · 💬 17</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/parkjixing/status/2064979352094171636">View @parkjixing on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/duolingo/status/2064925053955735959">View @duolingo on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“i guess his english pronunciation has improved🤓 https://t.co/VriItiDMTH”</p>
+    <p class="ndf-quote">“if knicks win the finals, i'm bringing your streak back. KNICKS IN 5. https://t.co/fjKTsw1vzw”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้โพสต์ความเห็นส่วนตัวเกี่ยวกับการออกเสียงภาษาอังกฤษของใครบางคน พร้อมลิงก์คลิปวิดีโอ</dd>
+      <dd>แอคเคาท์ X ของ Duolingo โพสต์ stunt การตลาดเรื่องกีฬา สัญญาว่าจะคืน streak ถ้า Knicks ชนะ NBA Finals — ไม่มีการประกาศ product หรือ tech ใดๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/parkjixing/status/2064979352094171636" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/duolingo/status/2064925053955735959" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@gully_point</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 371 · 💬 4</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/gully_point/status/2065274720208216132">View @gully_point on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“I don’t know much about how Bengali sounds when spoken. But my jaw dropped at her Tamil pronunciation. Just wow 😳 https://t.co/P6nBL1Wnum”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ผู้ใช้แสดงความประหลาดใจกับการออกเสียงภาษา Tamil ของคนในวิดีโอ ไม่มีเนื้อหาทางเทคนิคหรือ EdTech ใด ๆ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/gully_point/status/2065274720208216132" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

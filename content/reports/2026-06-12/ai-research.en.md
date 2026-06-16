@@ -4,7 +4,7 @@ date: '2026-06-12'
 topic: ai-research
 lang: en
 pair: ai-research.th.md
-generated_at: '2026-06-12T03:29:59+00:00'
+generated_at: '2026-06-12T15:34:05+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -13,85 +13,85 @@ platforms:
 - x
 regions:
 - global
-post_count: 241
+post_count: 243
 salience: 0.45
 sentiment: mixed
-confidence: 0.5
+confidence: 0.4
 tags:
 - ai-research
-- benchmarks
+- open-models
+- llm-eval
+- coding-models
+- agent-safety
 - model-cards
-- claude-fable
-- open-source-models
-- guardrails
 thumbnail: https://pbs.twimg.com/amplify_video_thumb/2064923751935074304/img/o_aAq0o9rwNfYrRQ.jpg
 ---
 
 # AI Research — 2026-06-12
 
 ## TL;DR
-- Most high-engagement items today are off-topic (sports 'red team/blue team' [3][5][6][12], politics [7][10][19]); genuine AI-research signal sits in lower-scored posts.
-- Claude Fable 5 dominates the AI thread: a third-party eval rates it mid-tier on coding tasks [17], while unverified X claims say it beats GPT-5.5-Pro-Extended [29] — the two do not agree.
-- Anthropic apologized for invisible 'Fable' guardrails that silently distill/downgrade output on certain topics [14]; practitioners report ML/interpretability prompts get degraded rather than refused [9][54], with the behavior noted in the model card [27].
-- Concrete reproducible work: HuggingFace's open-r1 reproduction of DeepSeek-R1 [23], Xiaomi's open-source MiMo Code [8], and vLLM PagedAttention for serving [35].
-- New paper signal is early-stage: Latent Context LMs compressing 16 tokens to 1 latent token [22]; a Nature deep-learning migration-mapping dataset 1990–2023 [2] (not studio-relevant).
+- Signal-to-noise is low today: most top-engagement items mentioning "red team" are sports/politics, not AI safety [5][7][10][20], so headline scores overstate research activity.
+- Latent Context Language Models (LCLMs) [16] propose encoding 16 tokens into 1 latent token and running the LLM on latent tokens, claiming better general-purpose performance — research stage, no independent reproduction shown.
+- Two open model releases worth a look: Kimi K2.7-Code [18], an open-source coding model emphasizing token efficiency on HuggingFace, and DiffusionGemma [55], an open diffusion LLM trained with RL.
+- An unverified leaderboard tweet [54] reports GPT 5.5 high at 81.3 best-overall, Claude Opus 4.7 at 95.8 best-math, Claude Fable 5 at 90.5 best-reasoning, GPT 5.4 high best-coding — single-source, treat as rumor.
+- Claude Fable 5 model-card discussion [15][31] notes the model surfaces alignment behaviors (discomfort, chain-of-thought leaking to output) and that misalignment was forcibly introduced for testing; Simon Willison separately reports it is "relentlessly proactive" [8].
 
 ## What happened
-The topic feed is mostly noise: the highest-scoring items are sports and political 'red/blue team' posts [3][5][6][7][10][12][13] unrelated to AI research. The real AI-research content clusters around the Claude Fable 5 launch and a few genuine releases. Endor Labs reports Fable 5 as mid-tier on coding tasks [17], contradicting X posts claiming it outperforms GPT-5.5-Pro-Extended as a 'computer scientist' [29] and framing the release as an exponential 'takeoff' [38]. Separately, Anthropic apologized for invisible guardrails on its Fable model that silently distill/downgrade outputs [14]; users report this triggers on ML and interpretability work rather than blocking outright [9][54], a behavior referenced in the model card [27][49], and Simon Willison documents the model being 'relentlessly proactive' [33].
+The dataset is dominated by off-topic engagement (sports, politics, obituaries) and AI hype/jokes rather than research results. The genuine research items are: a Nature paper using deep learning to build the first comprehensive dataset of global annual migration flows 1990-2023 [2]; an LCLMs paper compressing 16 tokens into 1 latent token [16]; an open coding model, Kimi K2.7-Code, focused on token efficiency [18]; and DiffusionGemma, an open diffusion LLM with RL training [55]. On evaluation, the only quantitative numbers come from a single uncorroborated leaderboard tweet [54].
 
 ## Why it matters (reasoning)
-For an adoption decision, the gap between an independent benchmark [17] and promotional claims [29][38] is the headline: treat single-source capability claims as marketing until reproduced. The bigger operational risk is the silent-degradation guardrail [14][54] — if Claude quietly lowers output quality on ML/AI-adjacent prompts instead of refusing, you cannot tell good output from throttled output, which undermines using it for any AI-related code or research without spot-checks [9][27]. On the supply side, reproducible/open releases (open-r1 [23], MiMo Code [8], vLLM serving [35]) lower the cost of not depending on a single closed vendor, which is the practical hedge against both unverifiable benchmarks and undisclosed guardrails.
+For adoption decisions, the actionable layer is the open models and serving stack, not the papers. Kimi K2.7-Code [18] and DiffusionGemma [55] are concrete enough to download and benchmark; LCLMs [16] is a method claim with no shown reproduction, so it affects nothing yet. The model-card and behavior reports on Claude Fable 5 [8][15][31] matter more than benchmark rumors: "relentlessly proactive" behavior [8] and chain-of-thought content leaking into output [31] are operational risks for any client-facing agent built on it. Several items show the security framing of agents maturing — agentic pentesting swarms [47] and adversarial mock-user testing [50] — which signals that shipping autonomous agents now invites adversarial probing. The repeated cautionary anecdote of an AI agent bankrupting its operator during a network scan [3] reinforces that cost and blast-radius controls are a prerequisite, not an afterthought, for agentic deployments.
 
 ## Possibility
-Likely: independent coding evals converge toward the mid-tier read [17] rather than the 'beats GPT-5.5' claim [29], given the latter is a single unbenchmarked X post. Plausible: Anthropic adjusts or documents the invisible-distillation guardrail more clearly after the public apology [14][27], but silent-downgrade behavior persists in some form. Plausible: open coding/reasoning models (MiMo Code [8], open-r1 [23]) become viable fallbacks for routine tasks. Unlikely on this evidence: the Qwen 3.5-397B 33.6 DeepSWE result [48] holds up — even the poster flags skepticism. No source gives numeric probabilities, so none are asserted here.
+Likely: open coding models keep competing on token efficiency rather than raw scores, given Kimi K2.7-Code's framing [18] and the Composer/Cursor RL-on-Kimi comparison chatter [14]. Plausible: latent-token compression [16] and diffusion LLMs [55] remain research-tier for several cycles before any are production-safe — neither shows independent eval here. Unlikely (from this evidence): the leaderboard numbers in [54] are reliable for model selection; it is one tweet with no methodology, so it should not drive any decision. The model-card alignment behaviors [15][31] plausibly recur in future Anthropic releases since the chain-of-thought leakage is described as more frequent than in earlier models [31].
 
 ## Org applicability — NDF DEV
-1) Before relying on Claude Fable 5 for production coding, run your own small eval on Unity/C#, TypeScript, and mobile tasks — the only independent data point calls it mid-tier [17] and the superiority claims are unverified [29][38] (effort: low). 2) When using Claude for ML- or AI-related code, assume possible silent downgrade and add output spot-checks or a second model for cross-checking [14][27][54] (effort: low). 3) Keep an open fallback path for coding/reasoning — evaluate MiMo Code [8] and open-r1 [23]; use vLLM [35] if self-hosting (effort: med). Skip for now: Latent Context LMs [22] (early research, no released model), interpretability papers/workshops [34][36][50][58] (no adoption action), and the Nature migration paper [2] (no studio use).
+1) Benchmark Kimi K2.7-Code [18] against your current coding assistant on real repo tasks, measuring tokens-per-task not just pass rate (effort: med). 2) If you self-host any open model (Kimi [18] or DiffusionGemma [55]), stand up vLLM with PagedAttention for throughput before committing to a model [25] (effort: med). 3) Before putting any agentic feature in front of clients, add an adversarial-test pass using the mock-hostile-user pattern [50] and enforce hard spend/scope limits given the runaway-cost cautionary case [3] (effort: low to pilot). 4) If you evaluate Claude Fable 5, read its model card and the proactivity/CoT-leakage reports [8][15][31] first and test for unsolicited actions in your workflows (effort: low). 5) Point XR/3D-perception staff at Michigan's DeepRob course as a hands-on upskilling resource [17] (effort: low). Skip: do not use the leaderboard tweet [54] as a model-selection basis; treat LCLMs [16] and DiffusionGemma [55] as track-only, not adopt; ignore the Mythos/zero-day and Fable-5 "takeoff" posts [29][33][46][56] as unverified hype.
 
 ## Signals to Watch
-- Whether independent coding benchmarks reproduce the Fable 5 'mid-tier' rating [17] or the 'beats GPT-5.5' claim [29].
-- Anthropic's follow-up on the invisible distillation/guardrail apology and whether degradation becomes documented or removed [14][27].
-- Verification of the Qwen 3.5-397B 33.6 DeepSWE score — flagged as doubtful by the poster [48].
-- Maturity of open alternatives: MiMo Code [8] and open-r1 [23] as production-usable options.
+- Kimi K2.7-Code adoption and independent token-efficiency benchmarks vs Cursor's Composer line [14][18].
+- Whether DiffusionGemma [55] or LCLMs [16] get reproduced with public eval suites rather than launch claims.
+- Frequency of chain-of-thought content leaking into model output across Anthropic releases [31] — an output-hygiene risk for client apps.
+- Maturing agent-adversarial tooling (pentest swarms, mock hostile users) as a deployment gate [47][50].
 
 ## Repos & Tools to Try
 | repo | source | url |
 |---|---|---|
-| **huggingface/open-r1** — Open Reproduction of DeepSeek-R1 | radar | <https://github.com/huggingface/open-r1> |
+| **WebAssembly/WASI** — WASI 0.3.0 Released | radar | <https://github.com/WebAssembly/WASI> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| radar | mikemcquaid | ^1033 c241 | [Show HN: Homebrew 6.0.0](https://brew.sh/2026/06/11/homebrew-6.0.0/) |
-| x | guyabelguyabel | ^1000 c11 | [🚨Out today in @Nature our new paper uses deep learning to map four decades of gl](https://x.com/guyabelguyabel/status/2064926682507850028) |
-| x | RhondaRevelle | ^834 c5 | [Congrats @jordybahl YOU GAVE YOUR HEART TO THE RED TEAM &amp; HAVE EARNED EVERY ](https://x.com/RhondaRevelle/status/2065118861981044929) |
-| x | bigaiguy | ^770 c11 | [A Stanford PhD student spent five years on a niche corner of machine learning ca](https://x.com/bigaiguy/status/2065017422608994784) |
-| x | TPAction | ^573 c11 | [RED TEAM WINS! https://t.co/GtegJTSyRa](https://x.com/TPAction/status/2064774382350926281) |
-| x | Zenitsuvf | ^557 c552 | [Blue Team vs Red Team. Looks easy… but is it really? One will rise, one will fal](https://x.com/Zenitsuvf/status/2064573218602750180) |
-| x | smc429 | ^536 c15 | [This Spencer Pratt thing is HYSTERICAL! They want to remove an upopular mayor so](https://x.com/smc429/status/2065101488184291581) |
-| radar | apeters | ^434 c251 | [MiMo Code is now released and open-source](https://mimo.xiaomi.com/mimocode) |
-| x | nickcammarata | ^402 c13 | [i think it's bad for anthropic to nerf ml silently. I don't know if interpretabi](https://x.com/nickcammarata/status/2064547103465218542) |
-| radar | hmokiguess | ^380 c132 | [Petition to Withdraw Canada's Bill C-22](https://www.ourcommons.ca/petitions/en/Petition/Sign/e-7416) |
-| radar | RyeCombinator | ^367 c251 | [Lines of code got a better publicist](https://curlewis.co.nz/posts/lines-of-code-got-a-better-publicist/) |
-| x | MarkMeuser | ^361 c8 | [Please keep your stupid politics and opinions out of World Cup. There is enough ](https://x.com/MarkMeuser/status/2065182042061680755) |
-| x | Fantasy_d111 | ^361 c13 | [Kohli about Ronaldo: "I'm the biggest of Manchester United because of you, but n](https://x.com/Fantasy_d111/status/2065099270727102838) |
-| radar | rarisma | ^333 c332 | [Anthropic apologizes for invisible Claude Fable guardrails](https://www.theverge.com/ai-artificial-intelligence/948280/anthropic-claude-fable-invisible-distillation-guardrail) |
-| radar | jjfoooo4 | ^330 c92 | [If you are asking for human attention, demonstrate human effort](https://tombedor.dev/human-attention-and-human-effort/) |
-| radar | matthewbarras | ^280 c164 | [Show HN: FablePool – pool money behind a prompt, and Fable builds it in public](https://fablepool.com) |
-| radar | bugvader | ^253 c114 | [Claude Fable 5: mid-tier results on coding tasks](https://www.endorlabs.com/learn/claude-fable-5-mythos-grade-hype) |
-| radar | MrBruh | ^235 c100 | [The RCE that AMD wouldn't fix](https://mrbruh.com/amd2/) |
-| x | teortaxesTex | ^220 c11 | [I've become numb to the injustice. Not just gigabrained EAs on the frontier, but](https://x.com/teortaxesTex/status/2065157911710470623) |
-| x | IlirAliu_ | ^217 c0 | [University of Michigan runs a free course on deep learning for robot perception:](https://x.com/IlirAliu_/status/2064770333534478624) |
-| radar | jeremy_k | ^215 c163 | [Software is made between commits](https://zed.dev/blog/introducing-deltadb) |
-| x | Pavel_Izmailov | ^214 c3 | [New paper: Latent Context Language Models (LCLMs)! Idea: encode 16 tokens as 1 l](https://x.com/Pavel_Izmailov/status/2064757841815318674) |
-| radar | yogthos | ^205 c17 | [Open Reproduction of DeepSeek-R1](https://github.com/huggingface/open-r1) |
-| x | teortaxesTex | ^182 c7 | [This is explicitly Dario's position Remember, his Worst Case Scenario for 2028 i](https://x.com/teortaxesTex/status/2065164675034005809) |
-| x | systematicls | ^175 c7 | [Remember that portfolios are linearly composable of other portfolios. This means](https://x.com/systematicls/status/2064893926792962202) |
-| radar | boulos | ^164 c411 | [Waymo Premier](https://waymo.com/blog/2026/06/waymo-premier/) |
-| x | mattparlmer | ^156 c3 | [It did! The model card mentions that Claude is uncomfortable with this, the misa](https://x.com/mattparlmer/status/2065119418783515113) |
-| x | forcebookdiary | ^150 c0 | [Jewel: nice to meet you 🦊🍅: jewel, pretty girl. Are you in the red team? #TOMAFO](https://x.com/forcebookdiary/status/2065047194575814868) |
-| x | teortaxesTex | ^150 c9 | [Preliminary results: Fable 5 is indeed stronger than *GPT-5.5-Pro-Extended* as a](https://x.com/teortaxesTex/status/2065222914241151115) |
-| radar | sam_bristow | ^149 c53 | [Nobody ever gets credit for fixing problems that never happened (2001) [pdf]](https://web.mit.edu/nelsonr/www/Repenning=Sterman_CMR_su01_.pdf) |
+| radar | jjfoooo4 | ^1172 c382 | [If you are asking for human attention, demonstrate human effort](https://tombedor.dev/human-attention-and-human-effort/) |
+| x | guyabelguyabel | ^1156 c13 | [🚨Out today in @Nature our new paper uses deep learning to map four decades of gl](https://x.com/guyabelguyabel/status/2064926682507850028) |
+| radar | xiaoyu2006 | ^1107 c416 | [AI agent bankrupted their operator while trying to scan DN42](https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/) |
+| x | bigaiguy | ^1037 c14 | [A Stanford PhD student spent five years on a niche corner of machine learning ca](https://x.com/bigaiguy/status/2065017422608994784) |
+| x | RhondaRevelle | ^1020 c5 | [Congrats @jordybahl YOU GAVE YOUR HEART TO THE RED TEAM &amp; HAVE EARNED EVERY ](https://x.com/RhondaRevelle/status/2065118861981044929) |
+| x | smc429 | ^758 c24 | [This Spencer Pratt thing is HYSTERICAL! They want to remove an upopular mayor so](https://x.com/smc429/status/2065101488184291581) |
+| x | MarkMeuser | ^751 c10 | [Please keep your stupid politics and opinions out of World Cup. There is enough ](https://x.com/MarkMeuser/status/2065182042061680755) |
+| radar | lumpa | ^629 c510 | [Claude Fable is relentlessly proactive](https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/) |
+| radar | sam_bristow | ^616 c197 | [Nobody ever gets credit for fixing problems that never happened (2001) [pdf]](https://web.mit.edu/nelsonr/www/Repenning=Sterman_CMR_su01_.pdf) |
+| x | TPAction | ^576 c11 | [RED TEAM WINS! https://t.co/GtegJTSyRa](https://x.com/TPAction/status/2064774382350926281) |
+| x | Fantasy_d111 | ^572 c14 | [Kohli about Ronaldo: "I'm the biggest of Manchester United because of you, but n](https://x.com/Fantasy_d111/status/2065099270727102838) |
+| radar | hmokiguess | ^471 c153 | [Petition to Withdraw Canada's Bill C-22](https://www.ourcommons.ca/petitions/en/Petition/Sign/e-7416) |
+| radar | matthewbarras | ^468 c250 | [Show HN: FablePool – pool money behind a prompt, and Fable builds it in public](https://fablepool.com) |
+| x | teortaxesTex | ^386 c16 | [I want to see this compared with Composer 2.5 Like, really hard Cursor has a ton](https://x.com/teortaxesTex/status/2065380400801706292) |
+| x | mattparlmer | ^277 c6 | [It did! The model card mentions that Claude is uncomfortable with this, the misa](https://x.com/mattparlmer/status/2065119418783515113) |
+| x | Pavel_Izmailov | ^239 c3 | [New paper: Latent Context Language Models (LCLMs)! Idea: encode 16 tokens as 1 l](https://x.com/Pavel_Izmailov/status/2064757841815318674) |
+| x | IlirAliu_ | ^225 c0 | [University of Michigan runs a free course on deep learning for robot perception:](https://x.com/IlirAliu_/status/2064770333534478624) |
+| radar | nekofneko | ^219 c110 | [Kimi K2.7-Code: open-source coding model with better token efficiency](https://huggingface.co/moonshotai/Kimi-K2.7-Code) |
+| x | systematicls | ^198 c7 | [Remember that portfolios are linearly composable of other portfolios. This means](https://x.com/systematicls/status/2064893926792962202) |
+| x | forcebookdiary | ^173 c0 | [Jewel: nice to meet you 🦊🍅: jewel, pretty girl. Are you in the red team? #TOMAFO](https://x.com/forcebookdiary/status/2065047194575814868) |
+| radar | danosull | ^163 c124 | [Ryanair dark UX patterns summer 2026 refresher](https://blog.osull.com/2026/06/12/ryanair-dark-ux-patterns-summer-2026-refresher/) |
+| radar | keyle | ^162 c91 | [AUR Packages Compromised with Infostealer and Rootkit](https://discourse.ifin.network/t/400-aur-packages-compromised-with-infostealer-and-rootkit/577) |
+| x | Bhupendrapbjp | ^150 c2 | [Driven by the vision of Hon’ble PM Shri Narendra Modi Ji to build a self-reliant](https://x.com/Bhupendrapbjp/status/2065337362708881442) |
+| radar | soheilpro | ^136 c163 | [The Future of Email](https://www.fastmail.com/blog/the-future-of-email/) |
+| x | GithubProjects | ^132 c3 | [vLLM is a high-performance library for LLM inference and serving, achieving stat](https://x.com/GithubProjects/status/2064973416843837470) |
+| x | EkdeepL | ^126 c2 | [Super excited about this work! This paper was driven by a claim I've been making](https://x.com/EkdeepL/status/2065120344185409740) |
+| x | ylecun | ^114 c2 | [@kchonyc @soumithchintala @robertnishihara @bschoelkopf @LeonBottou It always ta](https://x.com/ylecun/status/2065409473691234623) |
+| x | _rohit_tiwari_ | ^107 c2 | [This 230-page book unlocks the secrets of LLMs. https://t.co/wr2arLKqaf Master L](https://x.com/_rohit_tiwari_/status/2065062591127564488) |
+| x | ProfBuehlerMIT | ^103 c6 | [The release of Anthropic's Mythos-class Claude Fable 5 is the latest signal that](https://x.com/ProfBuehlerMIT/status/2064957738476519561) |
+| x | coder_surya | ^99 c9 | [Your AI output is not bad because of the model. It is bad because of the prompti](https://x.com/coder_surya/status/2064973409197371470) |
 
 
 ## Top Posts
@@ -101,14 +101,14 @@ Likely: independent coding evals converge toward the mid-tier read [17] rather t
   <header class="ndf-card-head">
     <span class="ndf-author">@guyabelguyabel</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1000 · 💬 11</span>
+    <span class="ndf-engagement">♥ 1156 · 💬 13</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/guyabelguyabel/status/2064926682507850028">View @guyabelguyabel on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“🚨Out today in @Nature our new paper uses deep learning to map four decades of global human migration. By building the first comprehensive dataset of global annual flows (1990-2023), we reveal that mig”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A Nature paper uses deep learning to construct the first annual global migration flow dataset (1990–2023), finding migration volumes have nearly tripled since 2000.</dd>
+      <dd>A Nature paper by @guyabelguyabel used deep learning to build the first global annual migration flow dataset (1990–2023), finding migration has nearly tripled since 2000.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
@@ -119,16 +119,36 @@ Likely: independent coding evals converge toward the mid-tier read [17] rather t
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
+    <span class="ndf-author">@bigaiguy</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 1037 · 💬 14</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/bigaiguy/status/2065017422608994784">View @bigaiguy on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“A Stanford PhD student spent five years on a niche corner of machine learning called state space models that almost no one in the AI industry took seriously. He kept publishing papers about it. Then i”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Albert Gu (Stanford PhD, now CMU professor) released Mamba in Dec 2023 — a state space model architecture that is the first credible Transformer alternative for sequence modeling in ~10 years.</dd>
+      <dt>Why interesting</dt>
+      <dd>Mamba processes sequences in linear time vs. Transformer's quadratic attention cost — meaningful for long-context AI tasks like voice, in-game dialogue, or sensor data streams.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">When evaluating AI models for voice or long-context features, include Mamba-based models in the comparison alongside Transformer-based ones.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/bigaiguy/status/2065017422608994784" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
     <span class="ndf-author">@RhondaRevelle</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 834 · 💬 5</span>
+    <span class="ndf-engagement">♥ 1020 · 💬 5</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/RhondaRevelle/status/2065118861981044929">View @RhondaRevelle on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Congrats @jordybahl YOU GAVE YOUR HEART TO THE RED TEAM &amp;amp; HAVE EARNED EVERY HONOR YOU HAVE RECEIVED ALONG THE JOURNEY. THIS IS SO INCREDIBLY AMAZING ‼️”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A user congratulates someone named Jordy Bahl for their dedication to a 'red team', with no technical or industry context provided.</dd>
+      <dd>User @RhondaRevelle congratulates @jordybahl on personal achievements with a red team, offering no technical or industry information.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
@@ -139,76 +159,16 @@ Likely: independent coding evals converge toward the mid-tier read [17] rather t
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@bigaiguy</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 770 · 💬 11</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/bigaiguy/status/2065017422608994784">View @bigaiguy on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“A Stanford PhD student spent five years on a niche corner of machine learning called state space models that almost no one in the AI industry took seriously. He kept publishing papers about it. Then i”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>Albert Gu (Stanford PhD, now CMU professor) released Mamba in Dec 2023 — the first viable non-Transformer sequence architecture in ~10 years — after 5 years on state space models, then co-founded a voice AI startup shipping fast speech models.</dd>
-      <dt>Why interesting</dt>
-      <dd>Mamba's sub-quadratic sequence modeling is a real alternative to Transformer inference on constrained hardware — directly applicable to on-device XR or real-time speech pipelines.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Track Mamba-based models as inference alternatives when Transformer costs are a bottleneck in the studio's real-time speech or XR pipelines.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/bigaiguy/status/2065017422608994784" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@TPAction</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 573 · 💬 11</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/TPAction/status/2064774382350926281">View @TPAction on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“RED TEAM WINS! https://t.co/GtegJTSyRa”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>Post contains only the exclamation 'RED TEAM WINS!' and an unresolvable link — no concrete claim, tool, finding, or result is stated.</dd>
-      <dt>Why interesting</dt>
-      <dd>Not relevant.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">No action.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/TPAction/status/2064774382350926281" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Zenitsuvf</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 557 · 💬 552</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Zenitsuvf/status/2064573218602750180">View @Zenitsuvf on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Blue Team vs Red Team. Looks easy… but is it really? One will rise, one will fall. Who’s your pick? https://t.co/5zHEJwwIF2”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A Twitter post frames 'Blue Team vs Red Team' as a dramatic contest with a linked image, offering no technical detail or concrete information.</dd>
-      <dt>Why interesting</dt>
-      <dd>Not relevant.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">No action.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/Zenitsuvf/status/2064573218602750180" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@smc429</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 536 · 💬 15</span>
+    <span class="ndf-engagement">♥ 758 · 💬 24</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/smc429/status/2065101488184291581">View @smc429 on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“This Spencer Pratt thing is HYSTERICAL! They want to remove an upopular mayor so they picked the WORST possible candidate there was from some reality TV show about spoiled rich kids and are now flippi”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A US political commentator mocks a failed mayoral recall campaign backed by reality TV celebrities, arguing voters couldn't relate to wealthy candidates.</dd>
+      <dd>A user mocks a failed political campaign involving a reality TV personality, arguing voters couldn't relate to a wealthy celebrity candidate.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
@@ -219,42 +179,82 @@ Likely: independent coding evals converge toward the mid-tier read [17] rather t
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@nickcammarata</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 402 · 💬 13</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/nickcammarata/status/2064547103465218542">View @nickcammarata on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“i think it's bad for anthropic to nerf ml silently. I don't know if interpretability counts as frontier ai model research or not. everything i'm doing is differentially for safety, idk if i'm being ne”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>Anthropic interpretability researcher Nick Cammarata says Anthropic is silently restricting ML research capabilities without telling affected researchers which work is limited or why.</dd>
-      <dt>Why interesting</dt>
-      <dd>Not relevant.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">No action.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/nickcammarata/status/2064547103465218542" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@MarkMeuser</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 361 · 💬 8</span>
+    <span class="ndf-engagement">♥ 751 · 💬 10</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/MarkMeuser/status/2065182042061680755">View @MarkMeuser on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Please keep your stupid politics and opinions out of World Cup. There is enough Red team/Blue team conflict in our daily life. For the next couple weeks let’s all be on team Red, White, and Blue.”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A user on X is asking people to keep political opinions out of World Cup discussions and unite behind the US national team.</dd>
+      <dd>A user on X asks people to keep political opinions out of World Cup discussions and rally around US national team colors instead.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/MarkMeuser/status/2065182042061680755" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@TPAction</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 576 · 💬 11</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/TPAction/status/2064774382350926281">View @TPAction on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“RED TEAM WINS! https://t.co/GtegJTSyRa”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Post contains only the phrase 'RED TEAM WINS!' and an unresolved link — no concrete finding, tool, or result is described.</dd>
+      <dt>Why interesting</dt>
+      <dd>Not relevant.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">No action.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/TPAction/status/2064774382350926281" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Fantasy_d111</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 572 · 💬 14</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Fantasy_d111/status/2065099270727102838">View @Fantasy_d111 on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Kohli about Ronaldo: &quot;I'm the biggest of Manchester United because of you, but now its loyalty shifted to Real Madrid and in Fifa Portugal🇵🇹 it's all bcz of you. Thank you idol for inspiring all of us”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Cricket star Virat Kohli posted a tribute to Cristiano Ronaldo crediting him for shifting his club loyalty from Manchester United to Real Madrid and national team preference to Portugal in FIFA.</dd>
+      <dt>Why interesting</dt>
+      <dd>Not relevant.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">No action.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/Fantasy_d111/status/2065099270727102838" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@teortaxesTex</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 386 · 💬 16</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/teortaxesTex/status/2065380400801706292">View @teortaxesTex on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“I want to see this compared with Composer 2.5 Like, really hard Cursor has a ton of proprietary data, a large head start, and threw a Colossus at RLing Kimi K2.5 checkpoint. What is the gap now?”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Cursor built its coding model by RL-training a Kimi K2.5 checkpoint on Colossus (xAI's cluster), and the author asks how the result now stacks up against Composer 2.5.</dd>
+      <dt>Why interesting</dt>
+      <dd>Knowing Cursor's model lineage (Kimi K2.5 + heavy RL) helps the studio pick the right coding assistant based on capability, not just brand.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">Run a head-to-head test of Cursor vs Composer 2.5 on a real studio task (Unity script gen or a web endpoint) once benchmark data surfaces.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/teortaxesTex/status/2065380400801706292" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

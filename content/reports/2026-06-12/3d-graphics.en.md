@@ -4,87 +4,87 @@ date: '2026-06-12'
 topic: 3d-graphics
 lang: en
 pair: 3d-graphics.th.md
-generated_at: '2026-06-12T03:34:21+00:00'
+generated_at: '2026-06-12T15:38:38+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
 - x
 regions:
 - global
-post_count: 51
-salience: 0.68
+post_count: 46
+salience: 0.58
 sentiment: mixed
-confidence: 0.58
+confidence: 0.6
 tags:
 - gaussian-splatting
-- xr
 - visionos
+- unity
 - threejs
-- blender
-- ai-3d-assets
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2065109409844334592/img/OxNFlG_QeTBaXhVj.jpg
+- ai-3d
+- procedural
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2065400058565079040/img/K_mHR8IT0VE_qxwT.jpg
 ---
 
 # 3D & Graphics — 2026-06-12
 
 ## TL;DR
-- Gaussian Splatting is converging across major platforms in one news cycle: Apple visionOS 27 reportedly combines photogrammetry meshes + splats in Apple Maps [21], Alibaba's ABot-Earth 0.5 builds 3DGS environments from satellite imagery at under 10 min/km² [8], and Spark fuses splats with meshes in the same THREE.js scene [29].
-- Radiance-field/volumetric capture from multi-camera sports rigs went viral: a point-of-view 3D reconstruction of OG Anunoby's tip-in scored 6112 [1], built from broadcast/Hawkeye-style sensor fusion [46][47].
-- Research is lowering the capture barrier: Wild3R does feed-forward 3DGS from unconstrained sparse photos via an AnySplat finetune [40], and a PyTorch abstraction scales splatting across multiple GPUs [25].
-- Apple is opening visionOS 27 + Reality Composer Pro 3 APIs to developers [23], but native splat culling fades scenes when you get close — a real blocker for interiors [22].
-- Traditional DCC pipeline activity stayed steady: Houdini 22 keynote lands June 17 [27], Unreal 5.8 Niagara fluids run smoother [26], and AI asset tools (Meshy [48], Claude Fable 5 [32]) claim chat-to-rigged-mesh.
+- Gaussian splatting is the dominant cluster today: Apple visionOS 27 / Vision Pro adds native splat support [17], Apple Maps appears to fuse photogrammetry meshes with splats [20], and Spark brings 3D GS into the three.js pipeline alongside meshes [26].
+- Apple is exposing more visionOS 27 and Reality Composer Pro 3 APIs to developers [19], but Vision Pro splat culling fades splats at close range, which breaks interior/walkthrough use [17].
+- Research is lowering GS capture cost: Wild3R does feed-forward GS from unconstrained sparse photo collections [32], and a multi-GPU PyTorch GS abstraction scales reconstruction to larger scenes/higher resolution [18].
+- Unity asset tooling: Real Fake Interiors is a baking tool + shader that fakes a furnished room behind a flat window [5]; a Unity Editor tool handles masks, channel packing, and ramps without Photoshop round-trips [12].
+- AI-assisted 3D and DCC releases: Claude Fable 5 reportedly generates rigged meshes with clean hierarchy and LLM-readable metadata [31] and drives a three.js GTA-style scene (with shimmering still unsolved) [23]; Houdini 22 keynote is June 17 in London [11] and Unreal 5.8 reports smoother Niagara fluids [22].
 
 ## What happened
-The day's strongest cluster is 3D Gaussian Splatting (3DGS) appearing simultaneously across platforms and research. Apple's visionOS 27 reportedly renders Apple Maps with photogrammetry meshes plus Gaussian splats [21], with developers noting new visionOS 27 / Reality Composer Pro 3 APIs but criticizing aggressive splat culling at close range [22][23]. Alibaba released ABot-Earth 0.5, generating 3DGS environments from satellite imagery for real-time web maps [8]. Spark integrates 3DGS into the THREE.js pipeline, mixing splat and mesh objects cross-device [29]. Gracia VR and Meta Reality Labs stress-tested splatting and volumetric video [16]. On the research side, Wild3R produces feed-forward 3DGS from sparse, unconstrained photos [40], and a multi-GPU PyTorch abstraction scales reconstruction [25]; a separate tool rebuilds moving scenes as navigable 4D/dynamic splats from video [17].
+The strongest signal is a Gaussian splatting / radiance field cluster spanning platforms and pipelines. Apple added GS support in Vision Pro but with aggressive close-range culling that degrades interiors [17]; observers infer Apple Maps in visionOS 27 combines photogrammetry meshes with splats [20], and visionOS 27 plus Reality Composer Pro 3 are said to open more platform internals to developers [19]. On the web, Spark integrates 3D GS into the three.js render pipeline and mixes splat and mesh objects in one scene [26]. Research items push capture and scale: Wild3R is feed-forward GS from sparse, unconstrained photos [32], and a multi-GPU PyTorch abstraction scales GS reconstruction [18]; a SIGGRAPH NeRF capture of Jensen Huang also resurfaced [8][35], and a Meta Reality Labs collaboration stress-tested GS and volumetric video [10].
 
 ## Why it matters (reasoning)
-The signal is breadth, not a single launch: splatting is showing up in a consumer OS [21], a hyperscaler's mapping product [8], a mainstream web renderer [29], and a corporate research lab [16] in the same window — that pattern usually precedes a capture-and-delivery format becoming standard rather than experimental. Two second-order effects matter for an XR/web studio. First, splat-plus-mesh fusion [29] and feed-forward capture from casual photos [40] cut the asset-production cost of photoreal environments, which competes with manual photogrammetry-to-mesh workflows. Second, the limitations are equally informative: Vision Pro culling breaks interior use cases [22] and a THREE.js GTA-style scene still shimmers on complex materials [24], so the tech is production-viable for some scenes and not others. The viral sports reconstruction [1][46][47] shows the same capture techniques riding existing camera infrastructure, but that depends on multi-camera rigs most studios don't have.
+GS is moving from research demos toward production-shaped tooling that touches the studio's exact stack: Unity, web (three.js), and Vision Pro XR. Spark mixing splats with meshes in three.js [26] and Apple's native Vision Pro support [17][20] mean splats can sit inside conventional scenes rather than living in isolated viewers. Feed-forward, sparse-input methods [32] and multi-GPU scaling [18] attack the two biggest production blockers — capture effort and reconstruction cost — which is the precondition for splats becoming a routine asset type rather than a specialist capture. The counter-signal is concrete: Apple's culling makes splats unreliable for close-up interior XR right now [17], and AI-generated geometry still shows artifacts like shimmering materials [23], so quality and platform constraints, not capability claims, gate adoption. Separately, Unity micro-tools [5][12] and DCC releases [11][22] are incremental iteration-speed wins rather than directional shifts.
 
 ## Possibility
-Likely: 3DGS settles in as a delivery format for web and XR scenes over the next year, given native OS support [21][23], a mainstream THREE.js path [29], and maturing capture research [40][25]. Plausible: hybrid splat+mesh pipelines feed real engines for environment backdrops while interactive geometry stays mesh-based [29], because pure-splat interaction and culling are still rough [22]. Plausible but unproven: chat-to-asset AI tools [48][32] reach shippable quality — current evidence is marketing and WIP with visible artifacts [24]. Unlikely near-term: close-range splat interiors on Vision Pro without an Apple culling fix [22].
+Likely: GS continues consolidating into existing engines and web runtimes as a mesh-compatible asset type, given simultaneous movement on three.js [26], Apple platforms [17][20], and scaling research [18][32]. Plausible: feed-forward sparse-photo capture [32] makes splats practical for environment/asset reference capture within months. Plausible but constrained: Vision Pro interior experiences built purely on splats stay blocked until Apple changes the culling behavior [17]; building on photogrammetry-mesh + splat hybrids [20] is the safer near-term bet. Unlikely on this evidence: AI mesh generation (Fable 5) replacing hand/auto-rigged production assets soon — the demos show promise but also unresolved artifacts [23][31]. No source states numeric probabilities.
 
 ## Org applicability — NDF DEV
-Do: (1) Prototype a walkable splat scene in the browser with Spark/THREE.js to evaluate it for web and XR experiences — low effort, directly matches the studio's web 3D stack [29][45]. (2) Trial AI asset generation (Meshy, Claude Fable 5) on a throwaway edutech/game prototype to measure quality and editability before trusting it in production — low effort [48][32]. (3) Test the Real Fake Interiors Unity tool for cheap furnished-room-behind-window effects in mobile/Unity titles — low effort, a known performance trick [12]. (4) Grab the Unity stylized water shader and the Editor mask/channel-packing tool to speed tech-art iteration — low effort [6][20]. (5) If Vision Pro is on the roadmap, evaluate visionOS 27 splat support but plan around the close-range culling limit for interiors — med effort [21][22][23]. Watch, don't act yet: Houdini 22 features (keynote June 17) [27] and multi-GPU splat reconstruction [25] — high effort to adopt. Skip: broadcast-grade sports reconstruction [1] (no camera infrastructure), NFT/crypto 3D art [42], and the culture-war/asset-discourse threads [14][30][39].
+1) Evaluate Real Fake Interiors for stylized building interiors in games/XR where full geometry is wasteful — effort low [5]. 2) Prototype Spark in a three.js test scene to see how splat+mesh mixing performs on the studio's web/mobile targets — effort med [26]. 3) Before scoping any Vision Pro splat interior, validate against the close-range culling limit and prefer a photogrammetry-mesh + splat hybrid like Apple Maps' approach — effort low to confirm, med to design around [17][20][19]. 4) Add the Unity mask/channel-packing editor tool to the VFX/texture workflow to cut Photoshop round-trips — effort low [12]. 5) Watch the Houdini 22 keynote (June 17) for procedural pipeline features before any tool-version decision — effort low [11]. 6) Run a small, time-boxed test of Fable 5 mesh/rig generation for greyboxing and prototyping only, treating output as draft given shimmering/quality caveats — effort med [31][23]. 7) Point edutech/internal upskilling at the free Bonn robotics/photogrammetry curriculum for spatial-capture fundamentals — effort low [2]. Skip: crypto/NFT items [30][39], the radiance-field celebrity capture as production-relevant [8][35], Luma Cannes marketing [38][44], and all off-topic politics/personal posts [7][9][15][28][29][33].
 
 ## Signals to Watch
-- Houdini 22 keynote June 17 — check for procedural/splat or simulation features relevant to asset pipelines [27].
-- Apple visionOS 27 splat culling behavior — whether Apple loosens close-range fade decides interior XR viability [22][23].
-- Spark THREE.js splat+mesh fusion maturity — the most directly usable path for the studio's web stack [29].
-- Feed-forward splatting from casual photos (Wild3R/AnySplat) — lowers capture cost if it generalizes beyond the new dataset [40].
+- Apple changing Vision Pro splat culling — it currently blocks close-up interior splats [17]; watch visionOS 27 API notes [19].
+- Feed-forward sparse-photo GS (Wild3R / AnySplat finetune) maturing into a usable capture tool [32].
+- Spark / three.js GS adoption as a route to splats in web and mobile XR builds [26].
+- Houdini 22 keynote (June 17, London) feature set for procedural content pipelines [11].
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | bilawalsidhu | ^6112 c47 | [OG Anunoby is too sick. Here is the full point-of-view 3d reconstruction of his ](https://x.com/bilawalsidhu/status/2065109650475712908) |
-| x | sai_charan_md | ^584 c1 | [Iridescent Material Blender Tip! Follow for more. #b3d #blender #procedural http](https://x.com/sai_charan_md/status/2064658224440353124) |
-| x | luci_animates | ^510 c3 | [Mi Fu's model is available to download for GOO ENGINE (Blender) 4.4.3, check the](https://x.com/luci_animates/status/2064640462749855848) |
-| x | IlirAliu_ | ^492 c1 | [One professor at the University of Bonn quietly put his entire robotics curricul](https://x.com/IlirAliu_/status/2064979957009285375) |
-| x | StormcoreDev | ^432 c0 | [WIP for water spell "Hydro-Megia." We captured water particles from Blender in c](https://x.com/StormcoreDev/status/2064627351145865449) |
-| x | jettelly | ^216 c0 | [Ever wondered how to make a clean, stylized water pipeline VFX in Unity? Here’s ](https://x.com/jettelly/status/2064678973775155209) |
-| x | afrotron | ^206 c2 | [Rig is done just ironing out some kinks. I'll put it up on my gumroad later this](https://x.com/afrotron/status/2064789451839049861) |
-| x | HuggingPapers | ^204 c3 | [Alibaba just released ABot-Earth 0.5 A generative 3D model that builds seamless ](https://x.com/HuggingPapers/status/2064582374315131295) |
-| x | delaigrodela | ^154 c1 | [Wednesday, coffee, game dev and intellectual exercises for your brain with Unrea](https://x.com/delaigrodela/status/2064667317636628828) |
+| x | ItzFAILURE | ^1062 c9 | ["Keep moving forward." Our past should define us not hold us prisioner. TY for 6](https://x.com/ItzFAILURE/status/2065400456591937620) |
+| x | IlirAliu_ | ^658 c1 | [One professor at the University of Bonn quietly put his entire robotics curricul](https://x.com/IlirAliu_/status/2064979957009285375) |
+| x | afrotron | ^222 c2 | [Rig is done just ironing out some kinks. I'll put it up on my gumroad later this](https://x.com/afrotron/status/2064789451839049861) |
+| x | RyanLykos | ^212 c2 | [Zhu Yuan face rig - Work in progress! #blender #rigging https://t.co/3WRnb3gtwv](https://x.com/RyanLykos/status/2065189214413611291) |
+| x | 80Level | ^198 c1 | [Real Fake Interiors by @AmplifyCreates is a Unity baking tool and shader combo t](https://x.com/80Level/status/2065109302562422981) |
+| x | VFX_Therapy | ^173 c0 | [Detailed breakdown of the flame vfx in one frame by @S_SerraMock in Unreal. #vfx](https://x.com/VFX_Therapy/status/2065397660119716179) |
+| x | zephyyy7 | ^170 c6 | [@Will40746376 @Dexerto funny how last game this same crowd swore "no real woman ](https://x.com/zephyyy7/status/2065112542448374086) |
+| x | RadianceFields | ^152 c8 | [In the summer of 2023, I cold emailed Jensen Huang and asked to capture a NeRF o](https://x.com/RadianceFields/status/2064766228866924681) |
 | x | sachin_inc | ^148 c9 | [The action of the Returning Officer, who is also the Secretary of the Madhya Pra](https://x.com/sachin_inc/status/2064727133411475762) |
-| x | RadianceFields | ^146 c8 | [In the summer of 2023, I cold emailed Jensen Huang and asked to capture a NeRF o](https://x.com/RadianceFields/status/2064766228866924681) |
-| x | 80Level | ^136 c1 | [Real Fake Interiors by @AmplifyCreates is a Unity baking tool and shader combo t](https://x.com/80Level/status/2065109302562422981) |
-| x | RyanLykos | ^132 c1 | [Zhu Yuan face rig - Work in progress! #blender #rigging https://t.co/3WRnb3gtwv](https://x.com/RyanLykos/status/2065189214413611291) |
-| x | zephyyy7 | ^120 c4 | [@Will40746376 @Dexerto funny how last game this same crowd swore "no real woman ](https://x.com/zephyyy7/status/2065112542448374086) |
-| x | bilawalsidhu | ^103 c13 | [Wow, this is really cool. Has anyone productized this? I would love to be able t](https://x.com/bilawalsidhu/status/2064865579547193788) |
-| x | gracia_vr | ^102 c2 | [We teamed up with researchers at Meta @RealityLabs to stress-test what's actuall](https://x.com/gracia_vr/status/2065106030539997345) |
+| x | gracia_vr | ^140 c3 | [We teamed up with researchers at Meta @RealityLabs to stress-test what's actuall](https://x.com/gracia_vr/status/2065106030539997345) |
+| x | sidefx | ^132 c0 | [Houdini 22 launches in London next week! Join us at Curzon Soho Cinema for an ex](https://x.com/sidefx/status/2065141618509005226) |
+| x | VFX_Therapy | ^106 c0 | [Tired of opening Photoshop for every tiny mask tweak? @KenDeng built a Unity Edi](https://x.com/VFX_Therapy/status/2065035196358094848) |
+| x | bilawalsidhu | ^105 c13 | [Wow, this is really cool. Has anyone productized this? I would love to be able t](https://x.com/bilawalsidhu/status/2064865579547193788) |
 | x | filicroval | ^101 c7 | [🤖time for another 4D tool! this tool turns videos into moving 3D places film a m](https://x.com/filicroval/status/2064731328210145625) |
-| x | DemNikoArt | ^100 c5 | [A small reminder, that this tutorial exists on my YouTube 🚲 And yes, at the end,](https://x.com/DemNikoArt/status/2064712809489879169) |
 | x | rmacdon627 | ^96 c3 | [✅ The SAVE America Act (proof of citizenship + photo ID for federal elections) i](https://x.com/rmacdon627/status/2064881931221602482) |
-| x | VFX_Therapy | ^76 c0 | [Tired of opening Photoshop for every tiny mask tweak? @KenDeng built a Unity Edi](https://x.com/VFX_Therapy/status/2065035196358094848) |
-| x | Azadux | ^64 c5 | [I believe that Apple Maps in visionOS 27 is a combination of photogrammetry mesh](https://x.com/Azadux/status/2064876849252225246) |
-| x | iBrews | ^62 c3 | [Apple's new gaussian splatting support is cool, but the culling is kind of ridic](https://x.com/iBrews/status/2064836100720394464) |
-| x | xchester16 | ^59 c1 | [After spending some time with the new visionOS 27 APIs and Reality Composer Pro ](https://x.com/xchester16/status/2064900511116185939) |
-| x | drashyakuruwa | ^56 c8 | [A minor graphics update to the initial version of my GTA V-style game with @thre](https://x.com/drashyakuruwa/status/2065055670496276601) |
-| x | janusch_patas | ^56 c1 | [A Scalable PyTorch Abstraction for Multi-GPU Gaussian Splatting Abstract (excerp](https://x.com/janusch_patas/status/2064965130413048221) |
-| x | RedefineFX | ^51 c2 | [Falcon 9 landing real-time VFX in Unreal 5.8, continuing with my space explorati](https://x.com/RedefineFX/status/2065047711477301342) |
-| x | sidefx | ^50 c0 | [Houdini 22 launches in London next week! Join us at Curzon Soho Cinema for an ex](https://x.com/sidefx/status/2065141618509005226) |
-| x | multimodalart | ^47 c2 | [folks @liquidai trained a specialist tiny model to do one thing rly well: extrac](https://x.com/multimodalart/status/2064864942180679962) |
-| x | GithubProjects | ^41 c3 | [Spark integrates 3D Gaussian splatting with the THREE.js rendering pipeline for ](https://x.com/GithubProjects/status/2064807319255515476) |
+| x | AKantemirov | ^82 c3 | [Took a few days to get procedural materials from @noaxdesign onto my model and s](https://x.com/AKantemirov/status/2065233326386843944) |
+| x | iBrews | ^71 c3 | [Apple's new gaussian splatting support is cool, but the culling is kind of ridic](https://x.com/iBrews/status/2064836100720394464) |
+| x | janusch_patas | ^69 c1 | [A Scalable PyTorch Abstraction for Multi-GPU Gaussian Splatting Abstract (excerp](https://x.com/janusch_patas/status/2064965130413048221) |
+| x | xchester16 | ^69 c1 | [After spending some time with the new visionOS 27 APIs and Reality Composer Pro ](https://x.com/xchester16/status/2064900511116185939) |
+| x | Azadux | ^69 c5 | [I believe that Apple Maps in visionOS 27 is a combination of photogrammetry mesh](https://x.com/Azadux/status/2064876849252225246) |
+| x | multimodalart | ^69 c2 | [folks @liquidai trained a specialist tiny model to do one thing rly well: extrac](https://x.com/multimodalart/status/2064864942180679962) |
+| x | RedefineFX | ^67 c2 | [Falcon 9 landing real-time VFX in Unreal 5.8, continuing with my space explorati](https://x.com/RedefineFX/status/2065047711477301342) |
+| x | drashyakuruwa | ^64 c8 | [A minor graphics update to the initial version of my GTA V-style game with @thre](https://x.com/drashyakuruwa/status/2065055670496276601) |
+| x | DillyWillyVR | ^62 c2 | [Texturing a commission for my friend @Lightning260493 and here is the process! 🐾](https://x.com/DillyWillyVR/status/2065214193511326082) |
+| x | pablovelagomez1 | ^53 c4 | [There's been a few cool updates recently. In particular, @rerundotio 0.33 releas](https://x.com/pablovelagomez1/status/2065154703068193138) |
+| x | GithubProjects | ^47 c3 | [Spark integrates 3D Gaussian splatting with the THREE.js rendering pipeline for ](https://x.com/GithubProjects/status/2064807319255515476) |
+| x | Deathbymetal87 | ^41 c2 | [if 420 of you guys donated to my kofi i could get an original 3d printed model o](https://x.com/Deathbymetal87/status/2065150122489430375) |
 | x | fistandilus12 | ^40 c2 | [Funny how people who spent 20 years defending Photoshop, CGI, motion capture, pr](https://x.com/fistandilus12/status/2064943228340535490) |
+| x | GSAIGETOA | ^38 c0 | [Update on Meeting of Team BDM with JS (Admin), DoT Shri K. Balaji on 09.06.2026 ](https://x.com/GSAIGETOA/status/2064954292612764048) |
+| x | EnochsDegenCrib | ^37 c1 | [⭕️ $RENDER = The Decentralized GPU Powerhouse AI Actually Needs ⭕️💻🚀 Everyone’s ](https://x.com/EnochsDegenCrib/status/2065155872914035156) |
 
 
 ## Top Posts
@@ -92,136 +92,56 @@ Do: (1) Prototype a walkable splat scene in the browser with Spark/THREE.js to e
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@bilawalsidhu</span>
+    <span class="ndf-author">@ItzFAILURE</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 6112 · 💬 47</span>
+    <span class="ndf-engagement">♥ 1062 · 💬 9</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/bilawalsidhu/status/2065109650475712908">View @bilawalsidhu on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ItzFAILURE/status/2065400456591937620">View @ItzFAILURE on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“OG Anunoby is too sick. Here is the full point-of-view 3d reconstruction of his winning tip-in from the Knicks game last night. You can literally relive it from his perspective. Built with viewpoint p”</p>
+    <p class="ndf-quote">“&quot;Keep moving forward.&quot; Our past should define us not hold us prisioner. TY for 600 followers over these last couple of days! Model: @Artstudious Rig: @cookie_sugar42 Shader: @LuminaryOfAges Textures: ”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Viewpoint Pro used stadium tracking cameras and Unreal Engine to generate a full POV 3D reconstruction of OJ Anunoby's game-winning tip-in from the Knicks game.</dd>
+      <dd>A fan animator hit 600 followers and shared a RWBY fanart animation in Blender, crediting separate artists for the model, rig, shader, and textures.</dd>
       <dt>Why interesting</dt>
-      <dd>Demonstrates a live multi-camera volumetric capture pipeline feeding Unreal Engine at sports-broadcast scale — a real production XR reference.</dd>
+      <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Research Viewpoint Pro's camera-to-engine pipeline to benchmark how a similar multi-camera-to-game-engine workflow could apply to the studio's XR productions.</dd>
+      <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/bilawalsidhu/status/2065109650475712908" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@sai_charan_md</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 584 · 💬 1</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/sai_charan_md/status/2064658224440353124">View @sai_charan_md on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Iridescent Material Blender Tip! Follow for more. #b3d #blender #procedural https://t.co/T4xQn2SHuI”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A Blender tip demonstrates how to build a procedural iridescent material using node-based shading, shared as a short video tutorial.</dd>
-      <dt>Why interesting</dt>
-      <dd>Procedural iridescent shaders authored in Blender can be baked and exported as PBR textures directly usable in Unity and XR scenes.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The 3D team can study the node graph and apply the same iridescent technique when authoring stylized assets for Unity or XR builds.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/sai_charan_md/status/2064658224440353124" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@luci_animates</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 510 · 💬 3</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/luci_animates/status/2064640462749855848">View @luci_animates on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Mi Fu's model is available to download for GOO ENGINE (Blender) 4.4.3, check the thread below! Huge thanks to @BNBaku for rigging her, and 新杨XIYAG for providing the shader! #GooEngine #Blender https:/”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>A rigged Mi Fu character model with custom shaders is now available as a free download for Goo Engine (Blender fork) 4.4.3, shared by the community.</dd>
-      <dt>Why interesting</dt>
-      <dd>Free rigged anime-style character with shaders is a ready-made asset for any team prototyping stylized 3D or testing Goo Engine's NPR rendering pipeline.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The Unity or XR team can import this model to benchmark stylized NPR shading workflows before committing to a Goo Engine or Blender-to-Unity pipeline.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/luci_animates/status/2064640462749855848" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/ItzFAILURE/status/2065400456591937620" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@IlirAliu_</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 492 · 💬 1</span>
+    <span class="ndf-engagement">♥ 658 · 💬 1</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/IlirAliu_/status/2064979957009285375">View @IlirAliu_ on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“One professor at the University of Bonn quietly put his entire robotics curriculum on YouTube: SLAM. Sensor fusion. State estimation. Probabilistic robotics. Self-driving cars. Motion planning. Photog”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Cyrill Stachniss, Univ. of Bonn robotics professor, has published his full university curriculum on YouTube free — SLAM, photogrammetry, sensor fusion, motion planning, each as a complete playlist.</dd>
+      <dd>Prof. Cyrill Stachniss (Univ. of Bonn), a top-cited mobile robotics researcher, has published complete university lecture playlists on YouTube free — covering SLAM, photogrammetry, sensor fusion, state estimation, and motion planning.</dd>
       <dt>Why interesting</dt>
-      <dd>The photogrammetry and SLAM playlists are directly applicable to XR/VR 3D reconstruction and AR spatial tracking work.</dd>
+      <dd>SLAM and photogrammetry map directly onto XR/VR spatial tracking and 3D reconstruction work the studio builds in Unity.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Point the XR/VR team to the photogrammetry and SLAM playlists as reference for any spatial mapping or 3D scanning feature work.</dd>
+      <dd class="ndf-adapt">The XR/VR team can assign the SLAM and photogrammetry playlists as reference study when scoping spatial anchoring or AR tracking features.</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/IlirAliu_/status/2064979957009285375" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@StormcoreDev</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 432 · 💬 0</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/StormcoreDev/status/2064627351145865449">View @StormcoreDev on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“WIP for water spell &quot;Hydro-Megia.&quot; We captured water particles from Blender in combination of a customized Mesh distortion in unreal to make it! We'll show you more when other spells are done! #VFX #B”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>An indie dev team combined Blender particle simulations with custom mesh distortion in Unreal Engine to produce a water spell VFX effect called 'Hydro-Megia'.</dd>
-      <dt>Why interesting</dt>
-      <dd>The Blender-to-Unreal pipeline for stylized spell VFX is a practical workflow applicable to the studio's Unity/XR game projects as a cross-tool reference.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The Unity team can prototype a similar water VFX by exporting Blender particle caches as alembic and driving mesh distortion via a custom shader graph.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/StormcoreDev/status/2064627351145865449" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@jettelly</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 216 · 💬 0</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/jettelly/status/2064678973775155209">View @jettelly on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Ever wondered how to make a clean, stylized water pipeline VFX in Unity? Here’s a simple and quick technique you can try! 🌊 Learn more about tech art, shader &amp;amp; tools ✨ https://t.co/gPPcuZDuFX #uni”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>Jettelly shares a stylized water pipeline VFX technique for Unity, with a linked breakdown covering the shader and tech art approach.</dd>
-      <dt>Why interesting</dt>
-      <dd>A ready-to-study shader technique directly applicable to Unity game projects that need stylized fluid or pipe VFX.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The Unity team can reference this breakdown when building environment or gameplay VFX that involves liquid flow or pipeline visuals.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/jettelly/status/2064678973775155209" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@afrotron</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 206 · 💬 2</span>
+    <span class="ndf-engagement">♥ 222 · 💬 2</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/afrotron/status/2064789451839049861">View @afrotron on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Rig is done just ironing out some kinks. I'll put it up on my gumroad later this month #blender #rigging #anissa #invincible https://t.co/CGVgJltzLt”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>An independent Blender artist finished rigging a fan-made character (Anissa from Invincible) and plans to release it on Gumroad later this month.</dd>
+      <dd>Blender artist @afrotron completed a character rig for Anissa (from the Invincible IP) and plans to release it on Gumroad later this month.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
@@ -232,22 +152,102 @@ Do: (1) Prototype a walkable splat scene in the browser with Spark/THREE.js to e
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@HuggingPapers</span>
+    <span class="ndf-author">@RyanLykos</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 204 · 💬 3</span>
+    <span class="ndf-engagement">♥ 212 · 💬 2</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/HuggingPapers/status/2064582374315131295">View @HuggingPapers on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/RyanLykos/status/2065189214413611291">View @RyanLykos on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Alibaba just released ABot-Earth 0.5 A generative 3D model that builds seamless environments from satellite imagery in under 10 minutes per km². It uses 3D Gaussian Splatting for real-time web maps an”</p>
+    <p class="ndf-quote">“Zhu Yuan face rig - Work in progress! #blender #rigging https://t.co/3WRnb3gtwv”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Alibaba released ABot-Earth 0.5, a generative 3D model that converts satellite imagery into navigable 3D environments via 3D Gaussian Splatting in under 10 minutes per km².</dd>
+      <dd>Artist RyanLykos shared a work-in-progress Blender face rig for a character named Zhu Yuan, posted as a short video clip with no technical breakdown.</dd>
       <dt>Why interesting</dt>
-      <dd>3D Gaussian Splatting at geographic scale is directly applicable to the studio's XR/VR outdoor scenes and Unity-based simulation work.</dd>
+      <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio's XR/VR team should test ABot-Earth 0.5 as a satellite-to-scene pipeline for large-scale outdoor environment generation.</dd>
+      <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/HuggingPapers/status/2064582374315131295" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/RyanLykos/status/2065189214413611291" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@80Level</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 198 · 💬 1</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/80Level/status/2065109302562422981">View @80Level on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Real Fake Interiors by @AmplifyCreates is a Unity baking tool and shader combo that lets you create the illusion of a furnished room behind a flat window surface. Get it here: https://t.co/w9rlA4b1an ”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>Real Fake Interiors by AmplifyCreates is a Unity baking tool + shader that simulates lit, furnished rooms behind flat window geometry using interior mapping.</dd>
+      <dt>Why interesting</dt>
+      <dd>Interior mapping delivers believable building depth at near-zero runtime cost — a practical win for any Unity project with exterior architecture.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The Unity team should test this on any project with building facades before committing to more expensive geometry or baked lightmap solutions.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/80Level/status/2065109302562422981" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@VFX_Therapy</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 173 · 💬 0</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/VFX_Therapy/status/2065397660119716179">View @VFX_Therapy on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Detailed breakdown of the flame vfx in one frame by @S_SerraMock in Unreal. #vfx https://t.co/i257Fz3YZt”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>@S_SerraMock published a frame-by-frame flame VFX breakdown built in Unreal Engine, showing the layered techniques behind a single shot.</dd>
+      <dt>Why interesting</dt>
+      <dd>Seeing how a professional layers particle, shader, and lighting in one frame gives the Unity team a concrete reference for real-time fire effects in games or XR scenes.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">Use this breakdown as a reference when building fire or environmental VFX in Unity — map the Unreal node logic to Unity VFX Graph or Shader Graph equivalents.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/VFX_Therapy/status/2065397660119716179" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@zephyyy7</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 170 · 💬 6</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/zephyyy7/status/2065112542448374086">View @zephyyy7 on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“@Will40746376 @Dexerto funny how last game this same crowd swore &quot;no real woman looks like that,&quot; then Eve turned out to be a 3D scan of an adult Korean model. now an adult Korean face &quot;must be&quot; a chi”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>A user on X argues that critics misidentify adult Korean face references in two games, citing that a prior game's character was a 3D scan of an adult Korean model.</dd>
+      <dt>Why interesting</dt>
+      <dd>Not relevant.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">No action.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/zephyyy7/status/2065112542448374086" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@RadianceFields</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 152 · 💬 8</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/RadianceFields/status/2064766228866924681">View @RadianceFields on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“In the summer of 2023, I cold emailed Jensen Huang and asked to capture a NeRF of him at SIGGRAPH. He responded in about an hour and said yes. A radiance field is, in the simplest terms, akin to a 3D ”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>An independent researcher captured a 360° Gaussian splat of Jensen Huang at SIGGRAPH 2023; three years later NVIDIA now ships multiple radiance-field projects — NuRec, fVDB, 3DGRUT, and gsplat — validating the format at scale.</dd>
+      <dt>Why interesting</dt>
+      <dd>Gaussian splatting now has NVIDIA-backed tooling, making real-world scene capture a practical option for XR/VR projects without expensive photogrammetry pipelines.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">The XR/VR team should test NVIDIA's gsplat or 3DGRUT for capturing real environments in upcoming XR scenes as a faster alternative to manual 3D modelling.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/RadianceFields/status/2064766228866924681" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

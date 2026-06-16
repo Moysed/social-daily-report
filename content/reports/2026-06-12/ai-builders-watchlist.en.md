@@ -4,7 +4,7 @@ date: '2026-06-12'
 topic: ai-builders-watchlist
 lang: en
 pair: ai-builders-watchlist.th.md
-generated_at: '2026-06-12T03:57:19+00:00'
+generated_at: '2026-06-12T16:02:20+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,77 +14,77 @@ regions:
 post_count: 80
 salience: 0.6
 sentiment: mixed
-confidence: 0.55
+confidence: 0.5
 tags:
-- ai-coding
-- claude-fable
+- claude-fable-5
+- agentic-coding
 - codex
-- web-games
-- indie-hackers
-- agentic-workflows
-thumbnail: https://pbs.twimg.com/media/HKhY9ykbAAAQzT2.jpg
+- indie-hacking
+- monetization
+- prompt-engineering
+thumbnail: https://pbs.twimg.com/media/HKnP03yWYAE8Hpp.jpg
 ---
 
 # AI Builders Watchlist — 2026-06-12
 
 ## TL;DR
-- "Claude Fable 5" dominates the feed this week: levelsio ported Quake 1, Quake 2 and Return to Castle Wolfenstein to multiplayer web [8][9][36], godofprompt built a walkable Three.js Kyoto grid in-browser [21] and cloned a McKinsey PDF's layout/typography/charts into a new report [15], and marclou had it build DataEmpire on his analytics API (64 live visitors as villagers) [3][39].
-- steipete is running an agentic maintenance loop: Codex wakes every ~5 min and directs work to threads via an orchestrator skill [2]; the Codex mac/win app can now spawn threads [37], and he runs the highest model setting because he is "not constrained by token" [59][18].
-- OpenClaw hardening: media conversion that previously shelled out to ffmpeg is moving to ffmpeg-compiled-to-wasm with similar performance and reduced surface risk [7][42].
-- Access-tier and monetization discourse: godofprompt frames "Mythos" as gated to trusted orgs while Fable 5 is the public tier [50][5]; rileybrown predicts users will accept ads in exchange for top-tier models [19].
-- Reflections carrying the most engagement: "only boomers fix typos in prompts" (score 5,178) [1], "the moat is the original idea" [45], and a weighted-score decision prompt [25]; counter-note: "writing mac apps is still hard" [14].
+- Claude Fable 5's release dominates the curated feed: practitioners claim a connected walkable 3D Kyoto built in-browser with Three.js [26], native iOS+Android spec generation from a complex web app [49], and a McKinsey PDF report cloned for layout/typography/charts [13] — all promotional, none independently verified.
+- Agentic coding loops are the week's core workflow: steipete's '/goal refactor until happy' and '/loop' prompts auto-test, auto-review and reportedly merged then closed a PR unattended [2][18][27], and the Codex mac/win app now spawns threads [42].
+- Indie business reality checks run alongside the hype: MengTo says months of vibe-coding produced near-zero sales [24][47], levelsio is leaving Wise Business over a 10-14 day hold on large transfers [1], and jackfriks values saving $600/month over $50K MRR [28].
+- Cost and monetization signals: a Skill reportedly cut Fable token use 60% [20]; rileybrown predicts ads even at power-user tier in exchange for top 'Mythos level' models [16]; Mythos stays gated to trusted orgs while Fable 5 is the public tier [51].
+- Distribution friction: godofprompt flags Microsoft restricting a Claude-powered product over data retention despite a multi-billion Anthropic investment [36].
 
 ## What happened
-The watchlist this week converges on one event — adoption of a new high-capability Anthropic model referred to as "Claude Fable 5" — and a parallel push into agentic orchestration. Multiple independent builders posted demos: browser game ports with multiplayer [8][9][36][20][55], a connected 3D city in Three.js [21], a PDF-to-branded-report clone [15], a one-doc-to-promo-video MCP+Fable pipeline [27], and an analytics-API game [3][39]. rileybrown reiterates he has "still never written a line of code" [11]. steipete's threads center on a self-directing Codex loop with an orchestrator skill [2], a Codex app that spawns threads [37], and a PR done by Codex [4].
+Across the 15 watched accounts, two threads converge this week. First, a new Anthropic model, 'Claude Fable 5', drives most posts: claims include an in-browser walkable 3D Kyoto grid in Three.js [26], a spec to convert a complex web app into native iOS and Android apps [49], a design-faithful clone of a McKinsey PDF report [13], a one-doc-to-promo-video pipeline via MCP [34], and a Skill that cut token use ~60% [20]. A more powerful 'Mythos' tier is described as locked to trusted orgs, with Fable 5 as the public release [51], and rileybrown argues ads at the power-user level are inevitable [16]. Second, agentic coding loops are the dominant practice: steipete shares '/goal refactor until happy' plus auto-test/auto-review/commit prompts [2][14][27], reports a loop that merged and closed a PR [18], and notes the Codex app can now spawn threads [42]; marclou echoes Codex enthusiasm [43].
 
 ## Why it matters (reasoning)
-These are early adopters who tend to lead workflow shifts among indie builders, so a synchronized wave of demos signals where attention is moving: browser-native 3D/game generation, document/design cloning, and "set the agent loose and steer" repo maintenance [2][8][21][15]. The ffmpeg-to-wasm move [7][42] points to client-side media processing replacing server shell-outs, which reduces deployment surface and per-request infra. Second-order: the Mythos-vs-Fable-5 tiering talk [50] and ad-acceptance prediction [19] suggest capability is increasingly a paid/gated lever, with cost shifting from per-token billing toward access tiers and possibly ads — relevant to anyone budgeting AI-heavy features. The honest counter-signal is that almost all evidence here is demos and opinion, not production reports; steipete's "mac apps still hard" [14] and levelsio's "local models always behind cloud" [54] are the load-bearing caveats.
+These accounts are early adopters whose workflows often precede broader devtool adoption, so the shift from chat-style prompting to bounded autonomous loops (define a goal, auto-test, auto-review, auto-commit) [2][18][27] is a concrete signal about where assisted coding is heading — toward supervised agents rather than single completions. The Fable 5 claims, if even partly real, point at cross-output generation (web→native specs [49], PDF→report [13], doc→video [34]) that compresses prototyping, but the items are promotional and engagement-optimized ('99% are using it wrong' [3], 'Game over Rockstar' [22]), so treat capability claims as unproven. The business reflections are the more durable lesson: MengTo built polished products with near-zero sales [24][47] and levelsio cites payment-rail and platform friction [1][50], reinforcing that code generation speed does not solve distribution. Monetization and control signals — ads at the top tier [16], model gating [51], and Microsoft/Anthropic data-retention friction [36] — suggest the cost and access terms of top models are still unsettled.
 
 ## Possibility
-Likely: continued browser-based 3D/game and rapid-prototype output from this model class, because several independent builders shipped working web demos in days [8][9][21][20]. Plausible: agentic maintenance loops (scheduler + orchestrator + thread spawning) become a common indie pattern [2][37][4], though only steipete demonstrates it at depth so far. Plausible but speculative: tiered/gated model access and ad-supported top tiers [50][19] — these are opinions, not announced policy. Unlikely near-term: one-prompt demos translating directly to production-grade, maintainable apps; the same authors flag that hard surfaces (native apps, integration) remain hard [14][22]. No source states numeric probabilities; the one number present is marclou's weak 0.44 revenue/domain-rating correlation [16].
+Likely: bounded autonomous loops (goal → test → review → commit) become a standard pattern these builders refine and publish, given steipete's repeated, reusable prompts and a reported unattended PR merge [2][18][27]. Plausible: Fable 5-style cross-format generation (web→native, doc→media) gets used for fast prototyping by indie teams, but real-world reliability lags the demos because every claim here is unverified and self-promotional [13][26][49]. Plausible: paid models add ads or stricter gating at higher tiers, per rileybrown's prediction and the Mythos/Fable split [16][51]. Unlikely on this evidence: the grander 'replaces studios' framing [22] — no item shows shipped, sold, or load-bearing output, and counter-signals on sales are explicit [24][47]. No source states numeric probabilities, so none are given.
 
 ## Org applicability — NDF DEV
-1) Trial a Fable-class model for browser 3D/game and XR/web preview prototypes to produce fast client-facing demos — low/med effort [8][9][21][20]. 2) Test PDF-to-branded-report regeneration for edutech/e-learning materials and quotations, feeding the existing paperwork pipeline — low effort [15]. 3) Evaluate ffmpeg-compiled-to-wasm for in-browser media conversion in web/mobile apps to cut server load and surface risk — med effort [7][42]. 4) Pilot a scoped agentic maintenance loop (orchestrator skill + scheduled threads) on a low-risk repo, with tight steering, not unattended — med effort [2][37]. 5) Adopt the weighted-score decision prompt for design/architecture choices to make trade-offs explainable — low effort [25]. 6) Consider one-piece-in/many-out content repurposing automation for marketing — low effort [31]. Skip: personal-finance and lifestyle posts [12][35][33], the 0.44 domain-rating correlation as a planning input [16], and the CapCut AI film festival unless pursuing AI film work [43]. Drop any expectation that these demos are production-ready — treat all as prototypes [14][22].
+1) Pilot the bounded-loop workflow on a non-critical refactor: define a goal, require live/e2e tests and auto-review before commit, log progress to a scratch file — effort med [2][27], with human direction first on anything non-trivial as steipete himself advises [14]. 2) Trial Fable 5 (or current top model) for browser 3D prototyping in Three.js for web/XR concepts, treating the Kyoto-grid claim as a test target, not a promise — effort med [26]. 3) Evaluate a token-reduction Skill/config for routine assisted-coding tasks to control spend — effort low [20]. 4) Factor iOS platform friction (developer account, per-change approval, 30% cut) into mobile release planning — effort low, awareness only [50]. 5) For edutech/client work, note the data-retention friction between large vendors when choosing AI tooling for sensitive data [36] — effort low. Skip: the prompt-pack and 'X is dead' threads as low-substance for your stack [22][35][39]; banking/Wise items, not relevant [1][15]; and any purchase decision based on unverified Fable demos until tested in-house.
 
 ## Signals to Watch
-- Model access framing — "Mythos" gated vs Fable 5 public — and ad-monetization talk; watch whether tiering/pricing is confirmed [50][19].
-- Codex app thread-spawning plus the wake-every-5-min orchestrator loop maturing into a repeatable workflow [2][37].
-- ffmpeg-to-wasm pattern spreading for client-side media as a server-replacement move [7][42].
-- The gap between "never wrote a line of code" claims and "native apps still hard" reality [11][14].
+- Agent autonomy maturing: Codex thread-spawning [42] plus a loop that merged and closed a PR [18] — watch whether unattended commits stay safe at scale.
+- Monetization of top models: ads predicted at power-user tier [16] and Mythos gated above public Fable 5 [51] — watch how cost/access terms shift.
+- Vendor distribution friction: Microsoft restricting a Claude-powered product over data retention [36] — watch enterprise/data-policy effects on AI tooling choices.
+- Build-vs-sell gap: MengTo's polished products with near-zero sales [24][47] — watch the recurring lesson that generation speed doesn't fix distribution.
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | steipete | ^5178 c349 | [@_ARahim_ @bcherny only boomers fix typos in prompts. llms perfectly understand ](https://x.com/steipete/status/2064824399061299642) |
-| x | steipete | ^4524 c179 | [Here's a simple loop: Tell codex to maintain your repos, wake up every 5 minutes](https://x.com/steipete/status/2064998499780084154) |
-| x | marclou | ^971 c136 | [I asked Claude Fable 5 to build a game on top of my web analytics API. It made D](https://x.com/marclou/status/2065029898243318093) |
-| x | steipete | ^671 c36 | [Getting Chris to do a PR with Codex!](https://x.com/steipete/status/2065176989359808636) |
-| x | gregisenberg | ^575 c33 | [99% of people are using Claude Fable 5 wrong. People don't know how to work with](https://x.com/gregisenberg/status/2065184897296146724) |
-| x | jackfriks | ^484 c78 | [can't believe this was only 18 months and 8 weeks ago... https://t.co/uvQxrEIShj](https://x.com/jackfriks/status/2065091476028047635) |
-| x | steipete | ^445 c24 | [Part of the OpenClaw hardening work is reducing surface risk; for some media con](https://x.com/steipete/status/2064999763397980286) |
-| x | levelsio | ^265 c17 | [I have revived @javilopen's 28 year old custom map he made and made a web-based ](https://x.com/levelsio/status/2065079822632538126) |
-| x | levelsio | ^217 c23 | [I have to stop boring all of you with my game ports but I ported another game to](https://x.com/levelsio/status/2065139944478093555) |
-| x | rileybrown | ^181 c26 | [No Codex Updates this week?](https://x.com/rileybrown/status/2065185122995909120) |
-| x | rileybrown | ^179 c28 | [I’ve still never written a line of code lol. https://t.co/1y9JueY0ur](https://x.com/rileybrown/status/2065177813162901790) |
-| x | jackfriks | ^166 c61 | [if taxes didn't exist i think i would be a lot less frugal cause i made a lot of](https://x.com/jackfriks/status/2065081366178345456) |
-| x | jackfriks | ^152 c32 | [was going to buy a QR code wedding photo gallary software for my wedding but the](https://x.com/jackfriks/status/2065158280993734833) |
-| x | steipete | ^148 c13 | [writing mac apps is still hard.](https://x.com/steipete/status/2065132980398444945) |
-| x | godofprompt | ^127 c8 | [I uploaded a McKinsey PDF report to Claude Fable 5 and told it to build a new re](https://x.com/godofprompt/status/2065031957139034371) |
-| x | marclou | ^119 c28 | [Moderate correlation (0.44) between a startup's revenue and its website domain r](https://x.com/marclou/status/2065090686245077403) |
-| x | rileybrown | ^51 c5 | [Bro what... 👀](https://x.com/rileybrown/status/2065163458128007327) |
-| x | steipete | ^50 c5 | [@eskoropisov You ask the man with unlimited tokens?](https://x.com/steipete/status/2064999858780688660) |
-| x | rileybrown | ^49 c17 | [Ads seem inevitable even at the power-user level. People will GLADLY accept ads ](https://x.com/rileybrown/status/2065220325340533102) |
-| x | AmirMushich | ^46 c15 | [Arena shooter made with Claude Fable in 1 prompt the prompt + remix link👇 https:](https://x.com/AmirMushich/status/2064814705881780614) |
-| x | godofprompt | ^45 c6 | [I had Claude Fable 5 build a walkable 3D Kyoto neighborhood in Three.js. Runs in](https://x.com/godofprompt/status/2065105437259882845) |
-| x | steipete | ^42 c2 | [@msuiche This is personal oss and not finished/integrated yet. Feedback welcome!](https://x.com/steipete/status/2065163664253227036) |
-| x | 0xROAS | ^42 c0 | [here's how it looks like: https://t.co/lisFcjuz7a](https://x.com/0xROAS/status/2065135547366928715) |
-| x | godofprompt | ^36 c6 | [Game over @RockstarGames https://t.co/9XF4GCGEQA](https://x.com/godofprompt/status/2065162384671437222) |
-| x | godofprompt | ^32 c2 | [A decision you can't explain is a decision you can't defend. That's why you stal](https://x.com/godofprompt/status/2065045645908652375) |
-| x | steipete | ^31 c1 | [@princebansal94 I just did, including skills?](https://x.com/steipete/status/2065007624064729192) |
-| x | AmirMushich | ^29 c5 | [1 doc to Claude promo video No edits One MCP + Fable full process below](https://x.com/AmirMushich/status/2065031141808124401) |
-| x | godofprompt | ^29 c4 | [Here's a TLDR of the situation: Meme by @myhandle https://t.co/rqMpPksdNo](https://x.com/godofprompt/status/2064974391096832303) |
-| x | 0xROAS | ^29 c1 | [https://t.co/OXulLk3wuL](https://x.com/0xROAS/status/2065132329870192848) |
-| x | godofprompt | ^28 c4 | [Microsoft literally has Claude built into Copilot and M365. They invested billio](https://x.com/godofprompt/status/2065147920446619773) |
+| x | levelsio | ^1475 c67 | [I'm pretty excited to move off of Wise Business permanently after realizing I ca](https://x.com/levelsio/status/2065411033594753414) |
+| x | steipete | ^1360 c18 | [@MatthewBerman /goal refactor until you are happy with the architecture. ensure ](https://x.com/steipete/status/2065357277880877413) |
+| x | gregisenberg | ^1053 c66 | [99% of people are using Claude Fable 5 wrong. People don't know how to work with](https://x.com/gregisenberg/status/2065184897296146724) |
+| x | marclou | ^1022 c98 | [https://t.co/Yju8RrWuOV](https://x.com/marclou/status/2065385672991752210) |
+| x | steipete | ^1008 c42 | [Getting Chris to do a PR with Codex!](https://x.com/steipete/status/2065176989359808636) |
+| x | steipete | ^460 c23 | [@unusual_whales huh nobody told me](https://x.com/steipete/status/2065352947215540465) |
+| x | levelsio | ^272 c8 | [Per Aspera Ad Astra 🚀💫](https://x.com/levelsio/status/2065392245524623576) |
+| x | rileybrown | ^267 c43 | [I’ve still never written a line of code lol. https://t.co/1y9JueY0ur](https://x.com/rileybrown/status/2065177813162901790) |
+| x | rileybrown | ^210 c28 | [No Codex Updates this week?](https://x.com/rileybrown/status/2065185122995909120) |
+| x | steipete | ^198 c13 | [writing mac apps is still hard.](https://x.com/steipete/status/2065132980398444945) |
+| x | jackfriks | ^190 c39 | [was going to buy a QR code wedding photo gallary software for my wedding but the](https://x.com/jackfriks/status/2065158280993734833) |
+| x | levelsio | ^159 c10 | [@anulagarwal @marclou Use a simple tech stack and automate everything 100% so it](https://x.com/levelsio/status/2065373943788093688) |
+| x | godofprompt | ^139 c9 | [I uploaded a McKinsey PDF report to Claude Fable 5 and told it to build a new re](https://x.com/godofprompt/status/2065031957139034371) |
+| x | steipete | ^135 c4 | [@MatthewBerman probs makes sense to first discuss direction and steer, but if it](https://x.com/steipete/status/2065357538842026196) |
+| x | levelsio | ^111 c4 | [Okay I guess it's not about interest, more probably it's about this and they hav](https://x.com/levelsio/status/2065416518255440058) |
+| x | rileybrown | ^104 c20 | [Ads seem inevitable even at the power-user level. People will GLADLY accept ads ](https://x.com/rileybrown/status/2065220325340533102) |
+| x | jackfriks | ^91 c28 | [it's not fair at all but... those who are able to win once are much more likely ](https://x.com/jackfriks/status/2065416918740132227) |
+| x | steipete | ^88 c12 | [@codingturk my loop merged and closed the PR.](https://x.com/steipete/status/2065359081750360179) |
+| x | jackfriks | ^73 c46 | [wokeup to an empty customer support inbox AMA](https://x.com/jackfriks/status/2065419193684500768) |
+| x | AmirMushich | ^68 c6 | [I saved 60% of Claude Fable tokens with this Skill. Here: https://t.co/RfHiPwNV5](https://x.com/AmirMushich/status/2065323550370586769) |
+| x | rileybrown | ^63 c5 | [Bro what... 👀](https://x.com/rileybrown/status/2065163458128007327) |
+| x | godofprompt | ^60 c8 | [Game over @RockstarGames https://t.co/9XF4GCGEQA](https://x.com/godofprompt/status/2065162384671437222) |
+| x | AmirMushich | ^60 c9 | [This is my brother He worked w me on Warner’s, Atlantic Records’ &amp; other pro](https://x.com/AmirMushich/status/2065141652977602615) |
+| x | MengTo | ^60 c8 | [I vibe-coded for months. The sales never came. A very personal livestream on me ](https://x.com/MengTo/status/2065374320202035608) |
+| x | steipete | ^60 c0 | [@larryhaonlp It bugged me too! Just too much on my plate, really appreciate the ](https://x.com/steipete/status/2065335761969574254) |
+| x | godofprompt | ^54 c8 | [I had Claude Fable 5 build a walkable 3D Kyoto neighborhood in Three.js. Runs in](https://x.com/godofprompt/status/2065105437259882845) |
+| x | steipete | ^52 c0 | [@MatthewBerman live test should include computer use, browser use and/or keys an](https://x.com/steipete/status/2065358960513929418) |
+| x | jackfriks | ^52 c19 | [for some reason saving $600/month feels more exciting then hitting $50K MRR... t](https://x.com/jackfriks/status/2065427521621971219) |
+| x | steipete | ^51 c2 | [@msuiche This is personal oss and not finished/integrated yet. Feedback welcome!](https://x.com/steipete/status/2065163664253227036) |
+| x | steipete | ^51 c1 | [@thorstenball I smell an amp feature that sends a “ping” at 4:50 once, even if y](https://x.com/steipete/status/2065355792644194605) |
 
 
 ## Top Posts
@@ -92,96 +92,56 @@ Likely: continued browser-based 3D/game and rapid-prototype output from this mod
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@steipete</span>
+    <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 5178 · 💬 349</span>
+    <span class="ndf-engagement">♥ 1475 · 💬 67</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2064824399061299642">View @steipete on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2065411033594753414">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“@_ARahim_ @bcherny only boomers fix typos in prompts. llms perfectly understand you even if you mistype.”</p>
+    <p class="ndf-quote">“I'm pretty excited to move off of Wise Business permanently after realizing I can't just transfer my money out when I need to They keep my money hostage for 10-14 days at least for a big transfer, lik”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@steipete argues in a reply thread that fixing typos in LLM prompts is unnecessary, because modern LLMs handle misspellings without issue.</dd>
+      <dd>levelsio reports Wise Business delays large outbound transfers by 10–14 days and is switching to Stripe Business banking as a result.</dd>
       <dt>Why interesting</dt>
-      <dd>Not relevant.</dd>
+      <dd>Small studios receiving large international client payments via Wise face the same hold when moving funds to a broker or another account.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">No action.</dd>
+      <dd class="ndf-adapt">If the studio uses Wise Business for client receipts, test Stripe Business banking as the primary receive-and-transfer account before the next large transfer.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2064824399061299642" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/levelsio/status/2065411033594753414" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@steipete</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 4524 · 💬 179</span>
+    <span class="ndf-engagement">♥ 1360 · 💬 18</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2064998499780084154">View @steipete on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2065357277880877413">View @steipete on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Here's a simple loop: Tell codex to maintain your repos, wake up every 5 minutes and direct work to threads. That makes it easy to parallelize+steer work as needed. I use a orchestrator skill combined”</p>
+    <p class="ndf-quote">“@MatthewBerman /goal refactor until you are happy with the architecture. ensure you live test after each significant step and autoreview/commit. track progress in /tmp/refactor-{projectname}.md”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@steipete runs Codex on a 5-minute polling loop with an orchestrator+triage+autoreview+computer-use skill stack to maintain repos autonomously across parallel threads.</dd>
+      <dd>steipete shares a Claude Code prompt pattern using /goal to drive autonomous refactoring with mandatory live testing, auto-review/commit after each step, and progress tracked in a /tmp markdown file.</dd>
       <dt>Why interesting</dt>
-      <dd>The pattern — scheduled agent loop + orchestrator skill + parallel threads — is a working template for automating PR triage, code review, and issue routing without constant human attention.</dd>
+      <dd>The pattern encodes checkpoints (test → review → commit) directly into the agent prompt, so the agent self-corrects without manual intervention during long refactor sessions.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can test this on one active repo using Claude Code's /loop + /schedule skills paired with a triage orchestrator to handle PR review and issue routing autonomously.</dd>
+      <dd class="ndf-adapt">Apply this /goal prompt structure in Claude Code sessions for larger refactors across the web or Unity projects to reduce manual check-ins.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2064998499780084154" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@marclou</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 971 · 💬 136</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/marclou/status/2065029898243318093">View @marclou on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“I asked Claude Fable 5 to build a game on top of my web analytics API. It made DataEmpire: Every visitor to your site is a villager. They chop trees 🌳 build houses 🏠 and turn a campfire 🔥🏕️ into an em”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>Marc Lou prompted Claude Fable 5 to build DataEmpire — a city-building browser game where each site visitor becomes a villager, driven by live DataFast analytics API data.</dd>
-      <dt>Why interesting</dt>
-      <dd>Claude Fable 5 produced a functional, API-connected game from a single natural-language prompt, demonstrating its viability for rapid interactive prototyping.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">The studio can prompt Claude Fable 5 to build a gamified or visual demo layer on top of an existing project API in a single session to validate a concept quickly.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/marclou/status/2065029898243318093" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@steipete</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 671 · 💬 36</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2065176989359808636">View @steipete on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Getting Chris to do a PR with Codex!”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>@steipete describes getting a contributor named Chris to submit a pull request by using OpenAI Codex as the agent doing the work.</dd>
-      <dt>Why interesting</dt>
-      <dd>Codex being used to drive the PR flow (not just write code) signals that AI agents are moving into git workflow tasks, not just code generation.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Run a quick test of Codex CLI on a real internal PR to benchmark how far it handles the git/GitHub steps without human intervention.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2065176989359808636" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/steipete/status/2065357277880877413" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@gregisenberg</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 575 · 💬 33</span>
+    <span class="ndf-engagement">♥ 1053 · 💬 66</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/gregisenberg/status/2065184897296146724">View @gregisenberg on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“99% of people are using Claude Fable 5 wrong. People don't know how to work with it yet because nothing this powerful has ever existed. I'll show you 10+ use cases and startup ideas that can only exis”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@gregisenberg promotes a ~34-min video claiming most developers misuse Claude Fable 5, teasing 10+ use cases and startup ideas enabled by the model — with no specifics in the post itself.</dd>
+      <dd>@gregisenberg posted a teaser for a 34-minute video claiming most people misuse Claude Fable 5, promising 10+ use cases and startup ideas — with no specifics in the post itself.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
@@ -192,62 +152,98 @@ Likely: continued browser-based 3D/game and rapid-prototype output from this mod
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@jackfriks</span>
+    <span class="ndf-author">@marclou</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 484 · 💬 78</span>
+    <span class="ndf-engagement">♥ 1022 · 💬 98</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/jackfriks/status/2065091476028047635">View @jackfriks on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/marclou/status/2065385672991752210">View @marclou on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“can't believe this was only 18 months and 8 weeks ago... https://t.co/uvQxrEIShj”</p>
+    <p class="ndf-quote">“https://t.co/Yju8RrWuOV”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@jackfriks posted a vague nostalgic reference to something from ~20 months ago, with no context or description of what the linked content is.</dd>
-      <dt>Why interesting</dt>
-      <dd>Not relevant.</dd>
-      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">No action.</dd>
+      <dd>https://t.co/Yju8RrWuOV</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/jackfriks/status/2065091476028047635" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/marclou/status/2065385672991752210" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@steipete</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 445 · 💬 24</span>
+    <span class="ndf-engagement">♥ 1008 · 💬 42</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2064999763397980286">View @steipete on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2065176989359808636">View @steipete on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Part of the OpenClaw hardening work is reducing surface risk; for some media conversion we had to shell out to ffmpeg. In the next release that can now be done via wasm, with similar performance for o”</p>
+    <p class="ndf-quote">“Getting Chris to do a PR with Codex!”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>OpenClaw replaced subprocess calls to ffmpeg with a ffmpeg.wasm build for media conversion as part of a security hardening effort, achieving similar performance.</dd>
+      <dd>@steipete (Peter Steinberger, PSPDFKit founder) posted a one-liner showing a colleague named Chris submitting a PR using OpenAI Codex, the autonomous coding agent.</dd>
       <dt>Why interesting</dt>
-      <dd>Swapping subprocess ffmpeg for wasm removes shell-injection risk in any server or web pipeline that processes user-supplied media files.</dd>
+      <dd>Real-world evidence that Codex is being used for actual PR submissions by experienced dev teams, not just prototyping.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Any studio project that shells out to ffmpeg for video or audio work should evaluate ffmpeg.wasm as a safer in-process alternative.</dd>
+      <dd class="ndf-adapt">The studio can trial OpenAI Codex CLI on a low-risk internal PR to gauge how well it handles the team's existing code review flow.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/steipete/status/2064999763397980286" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/steipete/status/2065176989359808636" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@steipete</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 460 · 💬 23</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2065352947215540465">View @steipete on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“@unusual_whales huh nobody told me”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>@steipete posted a two-word reaction ('huh nobody told me') replying to @unusual_whales — no technical content, tool, or announcement present.</dd>
+      <dt>Why interesting</dt>
+      <dd>Not relevant.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">No action.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/steipete/status/2065352947215540465" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 265 · 💬 17</span>
+    <span class="ndf-engagement">♥ 272 · 💬 8</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2065079822632538126">View @levelsio on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2065392245524623576">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“I have revived @javilopen's 28 year old custom map he made and made a web-based Quake 2 with Fable on fast mode 🤓 You can now play it here: 👉 https://t.co/vkEhgC2jkg 👈 It took a bit of hacking because”</p>
+    <p class="ndf-quote">“Per Aspera Ad Astra 🚀💫”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@levelsio used Claude Fable to revive a 28-year-old custom Quake 2 map — repacking PAK files to fix broken texture loading — and deployed it as a playable web game.</dd>
+      <dd>@levelsio posted the Latin phrase 'Per Aspera Ad Astra' (through hardship to the stars) with rocket emojis — no technical content.</dd>
       <dt>Why interesting</dt>
-      <dd>Demonstrates AI parsing and repairing legacy binary game formats (PAK files) with no dedicated tooling — directly applicable when the studio digs up old project archives.</dd>
+      <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">When old Unity or game projects surface with corrupt or unreadable assets, run them through Claude Fable to diagnose and patch the format before attempting manual re-export.</dd>
+      <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/levelsio/status/2065079822632538126" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/levelsio/status/2065392245524623576" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@rileybrown</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 267 · 💬 43</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/rileybrown/status/2065177813162901790">View @rileybrown on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“I’ve still never written a line of code lol. https://t.co/1y9JueY0ur”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>@rileybrown posts a one-liner claiming they have never written code, linking to an unspecified project or tool — no technical detail provided.</dd>
+      <dt>Why interesting</dt>
+      <dd>Not relevant.</dd>
+      <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
+      <dd class="ndf-adapt">No action.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/rileybrown/status/2065177813162901790" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

@@ -4,88 +4,80 @@ date: '2026-06-12'
 topic: audio-ai
 lang: th
 pair: audio-ai.en.md
-generated_at: '2026-06-12T03:47:18+00:00'
+generated_at: '2026-06-12T15:52:29+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
 - x
 regions:
 - global
-post_count: 78
-salience: 0.55
+post_count: 22
+salience: 0.5
 sentiment: mixed
-confidence: 0.5
+confidence: 0.55
 tags:
-- tts
+- audio-ai
+- suno
 - voice-cloning
 - music-licensing
-- inworld
-- elevenlabs
-- thai-gap
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2064580842459119616/img/pAn1TqXRAIvfg9xb.jpg
+- game-audio
+- tts
+thumbnail: https://pbs.twimg.com/ext_tw_video_thumb/2064953867532718080/pu/img/aSBMdfJujPpIOj4D.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # Audio AI — 2026-06-12
 
 ## TL;DR
-- Inworld AI ลดราคา API สำหรับ TTS/STT/LLM ราว 50% พร้อมให้ double credits สำหรับการสมัครในเดือนมิถุนายน โดยเจาะตลาด real-time voice สำหรับแอปผู้บริโภคและเกม พร้อมอ้างว่าแอปของลูกค้าลดต้นทุน AI ได้ 40–95% [2][27][30][36]
-- ViiTor TTS เปิดตัวฟีเจอร์แก้ไขเสียงระดับคำ — เปลี่ยนคำเฉพาะจุดโดยไม่ต้องสร้าง voiceover ใหม่ทั้งหมด พร้อมคงความสม่ำเสมอของเสียง เจาะกลุ่มงานแก้ไข narration [8][37][38][43]
-- NMPA ทำข้อตกลงลิขสิทธิ์เพลง AI กับ Udio และ Klay ถูกอธิบายว่าเป็นสัญญาระดับอุตสาหกรรม — เป็นสัญญาณเชิงพาณิชย์ที่ชัดเจนที่สุดสำหรับ AI music ที่ปรากฏใน feed นี้ [59]
-- GitHub directory ของโมเดล voice-cloning ฟรีอ้างว่าโคลนเสียงจากตัวอย่างราว 3 วินาที [54] ยังไม่มีการตรวจสอบเงื่อนไขลิขสิทธิ์และความยินยอม
-- ไม่มีรายการใดกล่าวถึงคุณภาพ TTS ภาษาไทย ตัวเลข latency หรือ multilingual benchmarks — ความต้องการด้าน Thai/EN ของทีมยังไม่ได้รับการรองรับจากสัญญาณวันนี้
+- สัญญาณ Audio AI วันนี้ถูกครอบงำโดย Suno music generation และดราม่าตรวจจับ K-pop 'nugu' ที่ใช้ AI; ผู้ฟังระบุเสียงร้อง AI ได้จาก cadence ผิดจังหวะ, artifacting, และ stem ที่เบลอรวมกัน [2][3][4][14]
+- Suno รองรับ voice input, lyrics แบบกำหนดเองหรือสร้างอัตโนมัติ, การเลียนแบบเพลง, และ stem export เข้า DAW [13][14] — ใช้ได้จริงสำหรับ temp track ไม่ใช่ระดับ finished master
+- โพสต์ 'BREAKING' ที่ยังไม่ยืนยันอ้างว่า NMPA ทำข้อตกลง AI licensing กับ Udio และ Klay [10] บ่งชี้ความเคลื่อนไหวด้าน training/use licensing
+- แรงต้านในวงการ game audio เกิดขึ้นแล้ว: composer รายหนึ่งกระตุ้นให้สตูดิโอปกป้องสิทธิ์จาก 'AI cover slop' ของ Suno/Udio ซึ่งเป็นประเด็นที่ถกเถียงมากที่สุดด้วย 52 comments [12]
+- directory voice-cloning บน GitHub ฟรีอ้างว่า clone เสียงจากตัวอย่าง 3 วินาที [9]; ไม่ระบุความชัดเจนด้าน commercial license ไม่มีข้อมูล benchmark ภาษาไทย/EN แบบ multilingual หรือข้อมูล latency ในรายการใดเลย
 
 ## What happened
-สัญญาณ Audio AI วันนี้จัดกลุ่มได้เป็นสี่เส้นเรื่อง Inworld AI ประกาศลดราคา API ราว 50% ทั้ง TTS, STT และ LLM พร้อม double first-month credits สำหรับการสมัครในเดือนมิถุนายน โดยชูต้นทุนโมเดลเป็นอุปสรรคหลักของการนำ consumer/game voice มาใช้จริง และยกตัวอย่างแอป (Wishroll, Biblechat, Talkpal, Luvu) ที่ลดต้นทุนได้ 40–95% [2][27][30][36][42] ViiTor TTS โปรโมตการแก้ไขเสียงแบบ partial/word-level — สร้างใหม่เฉพาะคำที่เปลี่ยนโดยคงเสียงเดิม [8][37][38][43][50] ด้านลิขสิทธิ์ NMPA รายงานการลงนามข้อตกลง AI music กับ Udio และ Klay ซึ่งถูกอธิบายว่าเป็นสัญญา 'landmark' ระดับอุตสาหกรรม [59] การกล่าวถึง production stack ปรากฏซ้ำ: ElevenLabs และ Minimax สำหรับ voiceover, HeyGen สำหรับ lip-sync [21][47][53] และ directory โมเดล voice-cloning ฟรีบน GitHub ที่ sampling จาก 3 วินาที [54]
+รายการส่วนใหญ่เป็น social chatter เกี่ยวกับเพลงที่ Suno สร้าง หลายรายการอธิบายวิธีที่แฟนเพลงระบุเสียงร้อง AI — cadence ผิดธรรมชาติ, การออกเสียง, artifacting ที่ได้ยิน, และ stem ที่เบลอรวมกัน [2][3][4][14] — ในบริบทของ K-pop release ที่สงสัยว่าใช้ AI [3][5] โพสต์ยังอธิบาย feature set ปัจจุบันของ Suno: ใช้เสียงตัวเอง, ป้อน lyrics, เลียนแบบเพลงเป้าหมาย, และ export stem เข้า DAW [13][14] รวมถึง singing ad campaigns บน Meta/TikTok ที่สร้างด้วย Suno [6] ด้านสิทธิ์และ licensing มีโพสต์อ้างถึงข้อตกลง licensing ของ NMPA กับ Udio และ Klay [10] ขณะที่ game composer เรียกร้องให้สตูดิโอและ composer ปกป้องผลงานจาก AI covers [12] นอกจากนี้ vendor ด้าน voice infrastructure โพสต์: directory voice-cloning model ฟรีบน GitHub [9], shout-out จากลูกค้า AssemblyAI voice-agent และ STT [16][18][21][22], และ Deepgram Batch Diarization V2 สำหรับ speaker labeling ในไฟล์เสียงที่บันทึกไว้ล่วงหน้า [17] รวมถึงการ deploy voice ในร้านอาหาร enterprise [19][20] ที่เหลือเป็น listicle AI tool ทั่วไป [8][15]
 
 ## Why it matters (reasoning)
-การลดต้นทุนและฟีเจอร์แก้ไขเสียงต่างลดภาระในการนำ voice มาใช้ในเกมและ e-learning: API ที่ถูกลงราว 50% ทำให้ต้นทุน prototype สำหรับ real-time NPC dialogue และ edutech narration ลดลง [2][27] และการแก้ไขระดับคำตัดปัญหาการ re-record ทั้งหมดเมื่อ script เปลี่ยน [8][37] ข้อตกลง NMPA/Udio/Klay มีความสำคัญเพราะความชัดเจนด้านสิทธิ์การใช้งานเชิงพาณิชย์คือเงื่อนไขที่ทีมระบุไว้สำหรับการนำ music ไปใช้ใน cinematics และ soundscapes — สัญญาเหล่านี้เริ่มลดความไม่แน่นอนทางกฎหมาย แม้ขอบเขตและการครอบคลุมเครื่องมืออื่นเช่น Suno ยังไม่ได้ระบุ [59] ในทางตรงข้าม feed เองก็ชี้ว่าความสามารถในการตรวจจับ AI music และ artifacts เป็นความเสี่ยงด้านคุณภาพสำหรับงานลูกค้า [9][15][31] และยังไม่มีข้อมูลด้านคุณภาพภาษาไทยหรือ latency ดังนั้นจึงไม่สามารถสันนิษฐานว่าข้ออ้างเหล่านี้ใช้ได้กับ Thai narration โดยไม่ผ่านการทดสอบ
+สำหรับ use case ของ NDF DEV — narration งาน edutech, in-game voice, セリフตัวละคร, เพลงประกอบ cinematic และ e-learning — มีสองเรื่องที่โดดเด่น ประการแรก คุณภาพยังตรวจจับได้: ผู้ฟังหลายรายอิสระระบุ output ของ Suno ได้จาก cadence และ stem artifacts [2][3][4][14] ดังนั้น AI music เหมาะสำหรับ draft, prototype, และ background soundscape แต่เสี่ยงหากนำไปเป็น centerpiece หลักให้กลุ่มผู้ฟังที่มีหูดี การ export stem เข้า DAW [13] บรรเทาปัญหานี้ได้บางส่วนโดยให้ human composer ขัดเกลาหรือ rebuild ประการที่สอง กรอบกฎหมายยังไม่ชัดเจน: ข้อตกลง licensing กำลังก่อตัวด้านหนึ่ง [10] และแรงต้านจาก creator อีกด้านหนึ่ง [12] หมายความว่าความชัดเจนด้าน commercial use ยังผันผวน การใช้ AI music หรือ cloned voice ในเกมหรือ course ที่วางจำหน่ายมีความเสี่ยงทั้งด้านชื่อเสียงและ IP ที่ความสะดวกของ generated track ไม่คุ้มค่าพอ directory voice-cloning [9] ลดอุปสรรคด้านเทคนิคแต่ไม่พูดถึง consent หรือ commercial terms ซึ่งคือส่วนที่ยากที่สุดสำหรับการ ship character lines รายการ Deepgram/AssemblyAI เกี่ยวกับ speech-to-text และ diarization [16][17][19] ซึ่งใกล้เคียงกับ voice feature แต่ไม่ใช่ TTS/music generation ที่ brief นี้มุ่งเน้น
 
 ## Possibility
-มีแนวโน้มสูง: การแข่งขันด้านราคา API สำหรับ voice จะดำเนินต่อ เนื่องจาก Inworld วางตำแหน่งตัวเองบนเรื่องต้นทุนอย่างชัดเจนและยกชื่อลูกค้าอ้างอิง [2][27][36] — คาดว่าคู่แข่ง (เช่น ElevenLabs ที่กำลังขยายและรับสมัครงาน [19][53]) จะตอบโต้ เป็นไปได้: การแก้ไขเสียงแบบ word-level/partial จะกลายเป็นฟีเจอร์มาตรฐานของ TTS เนื่องจากหลายฝ่ายต่างสะท้อน workflow value เดียวกัน [37][43] เป็นไปได้: ข้อตกลงลิขสิทธิ์ AI music เพิ่มเติมจะตามแบบ NMPA/Udio/Klay [59] ไม่น่าจะเกิดในระยะใกล้จากสัญญาณนี้: แนวทางการใช้งานภาษาไทยที่ชัดเจนและมี benchmark รองรับ — ไม่มีรายการใดแตะเรื่องภาษาไทย ดังนั้นยังคงเป็นช่องว่างที่ทีมต้องปิดด้วยตัวเอง
+**Likely:** AI-generated music ยังระบุได้ง่ายในระยะใกล้ ดูจากที่ผู้ฟังระบุได้สม่ำเสมอจาก cadence และ stem artifacts [2][3][4][14] — ดังนั้น human cleanup pass ยังจำเป็นสำหรับ production **Plausible:** ความชัดเจนด้าน commercial licensing ดีขึ้นเมื่อข้อตกลงกับ publisher อย่างที่อ้างถึง NMPA/Udio/Klay ขยายตัว [10] ซึ่งจะลดความเสี่ยงทางกฎหมายสำหรับสตูดิโอที่รอเอกสารชัดเจน **Plausible:** voice cloning ยิ่งกลายเป็นสินค้าโภคภัณฑ์ที่ต้องการตัวอย่างเพียงไม่กี่วินาทีและ model ฟรี [9] ยกระดับทั้ง capability และความกังวลด้าน consent/IP ไปพร้อมกัน **Unlikely ตามหลักฐานวันนี้:** เรื่องราว Thai-language หรือ low-latency สำหรับ production ที่ชัดเจนจะปรากฏ — ไม่มีรายการใดแตะเรื่อง multilingual quality หรือ latency ดังนั้นถือว่า gap นี้ยังไม่ได้รับการแก้ไข
 
 ## Org applicability — NDF DEV
-1) ประเมิน Inworld AI สำหรับ in-game NPC voice และ edutech narration prototype ที่ราคาใหม่ — ตรวจสอบ Thai support, latency และ commercial license ก่อน production จริง (effort: low to pilot) [2][27][36] 2) ทดลอง word-level TTS editing แบบ ViiTor สำหรับ e-learning narration ที่ script เปลี่ยนบ่อย เพื่อหลีกเลี่ยงการ re-record เต็มรูปแบบ (effort: low) [8][37][38] 3) กำหนดมาตรฐานการทดสอบ voiceover/lip-sync stack ระหว่าง ElevenLabs กับ Minimax และ HeyGen สำหรับ character lines และ video โดยเปรียบเทียบคุณภาพ Thai/EN (effort: med) [21][47][53] 4) ติดตามเงื่อนไขลิขสิทธิ์ NMPA/Udio/Klay ก่อนนำ AI-generated music ไปใช้ใน client-facing cinematics หรือ soundscapes [59] 5) ใช้ free GitHub voice-cloning directory เป็นการทดลองภายในเท่านั้น — ความเสี่ยงด้านความยินยอม/ลิขสิทธิ์ทำให้ไม่เหมาะกับ client character lines จนกว่าเงื่อนไขจะชัดเจน (effort: low to test) [54] ข้ามไป: โพสต์ TimeSoul/Web3 wellness, เส้นเรื่อง AI-influencer monetization และ generic tool-list tweets — ไม่มีความเกี่ยวข้องกับ production
+**Do (low effort):** ทดลอง Suno สำหรับ soundscape งาน e-learning และ temp/scratch cinematic track เท่านั้น โดยถือ output เป็น draft เพราะ artifacts ที่ได้ยิน [3][4]; ส่งงานที่เก็บไว้ผ่าน DAW stem-export path เพื่อให้ human finish [13] **Do (med effort):** ก่อน ship AI music ใด ๆ ในเกมหรือ course แบบ paid ให้ยืนยันและบันทึก commercial-use license ของ tool นั้น ๆ — landscape กำลังเปลี่ยนแปลงอยู่ [10][12]; อย่าถือว่า generated track clearable **Do (med effort, adjacent):** หากสร้าง app feature ที่ขับเคลื่อนด้วยเสียง ประเมิน Deepgram diarization [17] หรือ AssemblyAI [16] สำหรับฝั่ง STT แต่รู้ว่าสิ่งเหล่านี้ไม่ใช่ TTS/voice-cloning สำหรับ narration **Skip:** clone เสียงของคนจริงสำหรับ character line โดยไม่มี consent ชัดเจนและ license เป็นลายลักษณ์อักษร — ความเสี่ยงทางกฎหมายและชื่อเสียงโดยไม่มีความชัดเจนด้าน license ในแหล่งข้อมูล [9][12]; skip วิธี 'singing ads ใน 15 นาที' [6] และ listicle tool ทั่วไป [8][15] **Note the gap:** ไม่มีสิ่งใดในนี้ validate คุณภาพ Thai-language TTS หรือ latency ดังนั้นแผน Thai narration ใด ๆ ยังต้องผ่านการทดสอบ vendor แยกต่างหาก — ไม่มีรายการใดรองรับการแนะนำ
 
 ## Signals to Watch
-- Inworld เผยแพร่ Thai-language support และเงื่อนไข commercial license ที่ชัดเจนพร้อมกับการลดราคาหรือไม่ [2][27]
-- ความพร้อมใช้งานทั่วไป, ราคา และการรองรับการแก้ไขระดับคำสำหรับภาษาไทยของ ViiTor TTS [8][37]
-- ขอบเขตของข้อตกลง NMPA/Udio/Klay — การใช้งานเชิงพาณิชย์ที่อนุญาตจริงๆ และว่ามี generator รายอื่นเข้าร่วมหรือไม่ [59]
-- การขยายตัวสู่ London และการรับสมัคร enterprise ของ ElevenLabs ในฐานะสัญญาณทิศทาง voice tooling และราคาต่อไป [19][53]
+- ข้อตกลง licensing NMPA/Udio/Klay เป็นจริงหรือไม่ และกำหนด commercial terms อย่างไร [10]
+- การเคลื่อนไหวของ game composer ที่เพิ่มขึ้นในการยืนยันสิทธิ์ต่อต้าน AI covers — เป็น sentiment trend และอาจกลายเป็น legal trend สำหรับสตูดิโอ [12]
+- Voice-cloning model ฟรีที่ต้องการตัวอย่างเพียงไม่กี่วินาทีที่กำลังพัฒนาบน GitHub และ license terms (ที่ขาดหาย) [9]
+- Workflow ของ Suno ด้าน stem-export และ custom-voice ในฐานะสะพานเชื่อมระหว่าง AI draft กับ DAW-finished audio [13][14]
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | XFreeze | ^990 c71 | [Brad Smith is Neuralink's 3rd human recipient overall, the first with ALS, and t](https://x.com/XFreeze/status/2064583164232966219) |
-| x | inworld_ai | ^682 c135 | [We want to make AI accessible for everyone, so we're reducing our API prices by ](https://x.com/inworld_ai/status/2064744070627696824) |
-| x | louismosley | ^359 c6 | [Couldn't agree more with this. I'd love to see a generation of world-leading Bri](https://x.com/louismosley/status/2064663280929423382) |
-| x | 32rCMULAwm56603 | ^267 c0 | [𝖄𝖔𝖚𝕿𝖚𝖇𝖊 original AI art Visual Music suno AIMV 和風 🎧 AI-generated original rock b](https://x.com/32rCMULAwm56603/status/2064954214535909470) |
-| x | higgsfield | ^254 c27 | [Claude Fable 5 + Higgsfield MCP made a full documentary on Voyager from a single](https://x.com/higgsfield/status/2064858973216580002) |
-| x | kellyeld | ^244 c20 | ["Art In Motion". This song is about looking inward to protect the raw center of ](https://x.com/kellyeld/status/2064708573603742141) |
-| x | dtelecom | ^240 c54 | [Phase 2 is coming to an end. Together, we helped grow dTelecom to 143M+ particip](https://x.com/dtelecom/status/2064738371000316099) |
-| x | ViiTorAI_ | ^216 c55 | [🎙️ Edit only what matters. Why regenerate an entire voiceover when you only need](https://x.com/ViiTorAI_/status/2065064005493006791) |
-| x | digitalestrogn | ^214 c3 | [@Roach_Ge0rge Writing is obviously ai, vocals and cadence and flow and inflectio](https://x.com/digitalestrogn/status/2065027930133070290) |
-| x | nguyenthambt | ^185 c95 | [In a space where most apps compete for more screen time, @timesoulcom is taking ](https://x.com/nguyenthambt/status/2064921042234245435) |
-| x | dang_duytan | ^177 c81 | [Most wellness apps stop at tracking habits. @timesoulcom is taking a different a](https://x.com/dang_duytan/status/2064919782798045248) |
-| x | kokondukwe | ^170 c119 | [Interesting to see projects exploring the connection between Web3 and mental wel](https://x.com/kokondukwe/status/2065053001291567466) |
-| x | SultanNasir51 | ^155 c159 | [Web3 HealthTech just got real. @timesoulcom isn't just another meditation app. I](https://x.com/SultanNasir51/status/2065021193284202921) |
-| x | eplus | ^154 c25 | [Full list of everything https://t.co/oeVhuVQL9l has achieved, pulled from the @t](https://x.com/eplus/status/2064893580305698830) |
-| x | chaeyebin | ^152 c2 | [@gyurisgff the mv used ai, the arranger is a dj who is obsessed with ai, no prod](https://x.com/chaeyebin/status/2065097501489938820) |
-| x | ButchersBrain | ^148 c26 | [In a town where color was outlawed three generations ago, an aging inspector fin](https://x.com/ButchersBrain/status/2064624385076433059) |
-| x | GpaAndy | ^141 c143 | [crypto apps want your attention 24/7. @timesoulcom feels different because it tu](https://x.com/GpaAndy/status/2064980453484814545) |
-| x | tbros6868 | ^124 c119 | [Been feeling pretty drained these past couple of weeks, so I've been trying to f](https://x.com/tbros6868/status/2065021829576810875) |
-| x | SebJohnsonUK | ^119 c8 | [Tech in London is reaching an inflection point. This week alone @Lovable, @curso](https://x.com/SebJohnsonUK/status/2064970940111311120) |
-| x | MadMagicSOL | ^116 c142 | [TimeSoul is a crypto-powered mindfulness and well-being ecosystem built around t](https://x.com/MadMagicSOL/status/2064946608396251278) |
-| x | Joshoyunusa | ^104 c8 | [Start this Niche on YouTube Today and Thank me in 30-60 days time... Character L](https://x.com/Joshoyunusa/status/2065072777028153471) |
-| x | codewithhajra | ^103 c33 | [🚨 12 AI SKILLS TO MASTER IN 2026 Upgrade your skills. Stay ahead. Lead the futur](https://x.com/codewithhajra/status/2064679703751885035) |
-| x | Hey_karl | ^103 c100 | [Good night 🌙 Before logging off, I spent a little time looking into @timesoulcom](https://x.com/Hey_karl/status/2065102591244312722) |
-| x | NKLinhzk | ^102 c105 | [mindfulness in crypto? @timesoulcom is building an app to support daily activiti](https://x.com/NKLinhzk/status/2065001465874452556) |
-| x | gumcats | ^102 c0 | [since whenever someone says they use chatgpt for lyrics they get a lot of backla](https://x.com/gumcats/status/2064625845247852674) |
-| x | GuruVerseX | ^99 c102 | [The Web3 grind operates 24/7, and burnout is the silent portfolio killer we rare](https://x.com/GuruVerseX/status/2064967367411785934) |
-| x | AiwithYasir | ^97 c12 | [Inworld AI has cut its API prices by nearly 50% for TTS, STT, and LLMs, dramatic](https://x.com/AiwithYasir/status/2064764169279410495) |
-| x | TosinOlugbenga | ^94 c3 | [London is becoming one of the most important places in the world to build techno](https://x.com/TosinOlugbenga/status/2065064367620493444) |
-| x | ChrisGwinnLA | ^94 c6 | [Castle Witch: In 1969, a carefree weekend getaway turns deadly when four young f](https://x.com/ChrisGwinnLA/status/2064580411196666190) |
-| x | oliverkaneAI | ^92 c16 | [Inworld AI just cut API prices by nearly 50 percent on text-to-speech, speech-to](https://x.com/oliverkaneAI/status/2064772075655668054) |
+| x | 32rCMULAwm56603 | ^329 c0 | [𝖄𝖔𝖚𝕿𝖚𝖇𝖊 original AI art Visual Music suno AIMV 和風 🎧 AI-generated original rock b](https://x.com/32rCMULAwm56603/status/2064954214535909470) |
+| x | digitalestrogn | ^234 c3 | [@Roach_Ge0rge Writing is obviously ai, vocals and cadence and flow and inflectio](https://x.com/digitalestrogn/status/2065027930133070290) |
+| x | chaeyebin | ^177 c3 | [@gyurisgff the mv used ai, the arranger is a dj who is obsessed with ai, no prod](https://x.com/chaeyebin/status/2065097501489938820) |
+| x | c89 | ^87 c0 | [@digitalestrogn clearly suno, the cadence is off, the rhyming is not natural onl](https://x.com/c89/status/2064966746465869934) |
+| x | chaeyebin | ^78 c3 | [someone take suno ai from nugus omg https://t.co/rnVDWO4udh](https://x.com/chaeyebin/status/2065085209872326904) |
+| x | Camicees | ^71 c9 | [Singing ads are taking over Meta and TikTok right now. Brands are turning their ](https://x.com/Camicees/status/2065151675136917967) |
+| x | DougTenNapel | ^71 c14 | [When I say Ai helps "creatives" I mean it can help everyone because everyone is ](https://x.com/DougTenNapel/status/2065434005730672901) |
+| x | wisdomdaily75 | ^68 c31 | [🤖 AI Chatbots ChatGPT Claude Gemini Perplexity Grok NotebookLM DeepSeek Characte](https://x.com/wisdomdaily75/status/2065065585546035694) |
+| x | JafarNajafov | ^52 c6 | [This feels genuinely too powerful. Someone quietly built the most complete voice](https://x.com/JafarNajafov/status/2065019424269308143) |
+| x | MikeyRukus | ^48 c3 | [BREAKING: MUSIC PUBLISHERS STRIKE AI LICENSING DEALS WITH UDIO AND KLAY AS NMPA ](https://x.com/MikeyRukus/status/2065133064162795592) |
+| x | grantisatwit | ^48 c2 | [Wrote a World Cup song last night while my daughter was at her swimming lesson. ](https://x.com/grantisatwit/status/2065048825069207834) |
+| x | SebastianWolff | ^40 c52 | [I really hope more game companies and composers will choose to protect their rig](https://x.com/SebastianWolff/status/2065241217705631992) |
+| x | JonnyEnglsh | ^39 c1 | [@XXL Sadly it's AI. You can now use your own voice in SUNO, enter your own lyric](https://x.com/JonnyEnglsh/status/2064776962363847134) |
+| x | Exceptile | ^38 c1 | [@digitalestrogn SUNO AI - Using his voice as the singing AI - it's literally par](https://x.com/Exceptile/status/2065098982028677419) |
+| x | Damn_coder | ^33 c11 | [Stop wasting hours on work AI can already do for you. These 14 AI tools can save](https://x.com/Damn_coder/status/2065028157082857499) |
+| x | AssemblyAI | ^7 c5 | [You can call a phone number and ask an AI to find you the perfect vinyl based on](https://x.com/AssemblyAI/status/2064755479876915622) |
+| x | DeepgramAI | ^4 c1 | [Introducing Batch Diarization V2, a major upgrade to speaker labeling for pre-re](https://x.com/DeepgramAI/status/2064743195624227313) |
+| x | AssemblyAI | ^3 c0 | [@mark_oyk nice!! thanks for building with us! 🚀](https://x.com/AssemblyAI/status/2065289290427580906) |
+| x | DeepgramAI | ^0 c0 | [A chicken combo and a box of donuts don't sound complicated. For voice AI, they ](https://x.com/DeepgramAI/status/2065178922359120322) |
+| x | DeepgramAI | ^0 c1 | [Which restaurant order is hardest for AI?](https://x.com/DeepgramAI/status/2065178767937458283) |
+| x | AssemblyAI | ^0 c0 | [@MasteraSnackin @metaview nice!! Thanks for building with us @MasteraSnackin! 🚀🎙](https://x.com/AssemblyAI/status/2065289441468653956) |
+| x | AssemblyAI | ^0 c0 | [@pattiatx @metaview thanks for building with us @pattiatx!! 🎙️💙](https://x.com/AssemblyAI/status/2065277017587925297) |
 
 
 ## โพสต์เด่น
@@ -93,76 +85,16 @@ translated_by: claude-sonnet-4-6
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@XFreeze</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 990 · 💬 71</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/XFreeze/status/2064583164232966219">View @XFreeze on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Brad Smith is Neuralink’s 3rd human recipient overall, the first with ALS, and the first non-verbal patient He received the N1 brain implant on November 8, 2024. ALS had left him fully paralyzed and u”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Brad Smith ผู้ป่วย ALS และผู้รับ Neuralink N1 รายแรกที่พูดไม่ได้ ใช้ implant ร่วมกับ AI voice clone จากเสียงก่อนป่วย สื่อสารด้วยเสียงจริงผ่านความคิดเพียงอย่างเดียว</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>AI voice cloning จากไฟล์เสียงเก่าพิสูจน์แล้วว่าใช้ได้จริงใน accessibility ระดับ production — คืนเสียงจริงของผู้ใช้ ไม่ใช่แค่ TTS สังเคราะห์</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">งาน e-learning หรือ accessibility ลอง evaluate voice cloning API เช่น ElevenLabs หรือ Resemble AI สำหรับสร้างเสียง narrator หรือผู้เรียนจากไฟล์เสียงที่มีอยู่</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/XFreeze/status/2064583164232966219" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@inworld_ai</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 682 · 💬 135</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/inworld_ai/status/2064744070627696824">View @inworld_ai on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“We want to make AI accessible for everyone, so we're reducing our API prices by ~50%. Consumer AI growth is still blocked by model costs. 97% of consumer AI users will never pay. But every session sti”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Inworld AI ลด API (TTS, STT, LLM) ลง ~50% เพราะ pricing แบบ enterprise ไม่เหมาะกับ consumer app ที่ 97% ของ user ไม่จ่ายเงิน — ทีมที่ใช้รายงานต้นทุนลด 40–95%</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Studio ที่ทำ game หรือ e-learning ที่ใช้เสียงเจอปัญหานี้ตรงๆ — TTS/STT ถูกลงทำให้ feature เสียงแบบ always-on คุ้มค่าขึ้นโดยไม่ขาดทุนต่อ session</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">เปรียบ rate TTS/STT ใหม่ของ Inworld AI กับ provider ปัจจุบันใน project Unity, XR หรือ e-learning ที่ติดเรื่องต้นทุนเสียง</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/inworld_ai/status/2064744070627696824" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@louismosley</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 359 · 💬 6</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/louismosley/status/2064663280929423382">View @louismosley on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Couldn’t agree more with this. I’d love to see a generation of world-leading British tech firms. Palantir is actually doing something about it. ~20% of our people are in the UK. We draw some of the be”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ผู้บริหาร Palantir UK ชู ElevenLabs (audio AI platform) เป็นตัวอย่าง startup ที่โตมาจาก alumni network ของ Palantir UK</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/louismosley/status/2064663280929423382" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@32rCMULAwm56603</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 267 · 💬 0</span>
+    <span class="ndf-engagement">♥ 329 · 💬 0</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/32rCMULAwm56603/status/2064954214535909470">View @32rCMULAwm56603 on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“𝖄𝖔𝖚𝕿𝖚𝖇𝖊 original AI art Visual Music suno AIMV 和風 🎧 AI-generated original rock band AI-generated music videos that cannot be edited with a single touch https://t.co/wrCq4FTVPj”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Creator โพสต์ music video สไตล์ rock ญี่ปุ่นที่สร้างด้วย Suno และ AI visual tools โดยนำเสนอว่าเป็น output แบบ single-take ไม่ตัดต่อ</dd>
+      <dd>Creator โพสต์ music video สไตล์ญี่ปุ่นที่สร้างด้วย Suno AI แบบ render ครั้งเดียวโดยไม่แก้ไข</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -173,82 +105,142 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@higgsfield</span>
+    <span class="ndf-author">@digitalestrogn</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 254 · 💬 27</span>
+    <span class="ndf-engagement">♥ 234 · 💬 3</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/higgsfield/status/2064858973216580002">View @higgsfield on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/digitalestrogn/status/2065027930133070290">View @digitalestrogn on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Claude Fable 5 + Higgsfield MCP made a full documentary on Voyager from a single prompt. 1. Independently sourced public domain NASA/JPL footage from the web and clipped it into 16:9 segments via Higg”</p>
+    <p class="ndf-quote">“@Roach_Ge0rge Writing is obviously ai, vocals and cadence and flow and inflections and oh my god the artifacting it’s all ai. The producer he worked with has been making ai music for a minute, many up”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Claude Fable 5 ใช้ Higgsfield MCP สร้าง documentary ทั้งเรื่องจาก prompt เดียว — ดึง footage สาธารณะ, วาง 8 visual beats, เติม AI-generated shots, เขียน narration + TTS แล้ว export MP4</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>agentic loop เดียวแทน workflow ตัดต่อวิดีโอทั้งหมดได้ — ตรงกับงาน e-learning และ XR onboarding ที่ studio ทำโดยไม่มีทีม video production</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ลอง proof-of-concept: ป้อน e-learning brief เข้า Claude Fable 5 ผ่าน Higgsfield MCP แล้วดูว่า pipeline narration + ตัดต่อ ทำได้เองแค่ไหนโดยไม่ต้องแทรก manual</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/higgsfield/status/2064858973216580002" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@kellyeld</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 244 · 💬 20</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/kellyeld/status/2064708573603742141">View @kellyeld on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">““Art In Motion”. This song is about looking inward to protect the raw center of your identity, and making peace with how the scene turned out compared to what you originally meant to create. Images #M”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Creator คนหนึ่งปล่อย music video ที่สร้างด้วย AI ครบวงจร — Suno ทำเพลง, Midjourney ทำภาพ, VEO3 ทำ animation</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>pipeline Suno + Midjourney + VEO3 ใช้ได้จริงโดยไม่ต้องมี budget — ตรงกับงาน e-learning หรือ XR prototype ของทีม</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ลอง pipeline นี้สำหรับทำ concept trailer หรือ intro e-learning ต้นทุนต่ำ</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/kellyeld/status/2064708573603742141" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@dtelecom</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 240 · 💬 54</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/dtelecom/status/2064738371000316099">View @dtelecom on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Phase 2 is coming to an end. Together, we helped grow dTelecom to 143M+ participation minutes, 1.3M+ meetings, 57K+ users, 4.2M Voice AI (STT/TTS) minutes, and integrations across major ecosystems. No”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>dTelecom ปิด Phase 2 รายงาน 4.2M นาที Voice AI (STT/TTS) และ 1.3M+ meetings พร้อมประกาศเดินหน้าเต็มที่กับ dMeetApp ก่อน TGE</dd>
+      <dd>ผู้ใช้ Twitter กล่าวหาศิลปินรายหนึ่งว่าใช้ AI สร้างเนื้อเพลง เสียงร้อง และโปรดักชัน โดยอ้าง artifact เฉพาะของ Suno และประวัติของโปรดิวเซอร์ที่อัปโหลด AI music มาก่อน</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/dtelecom/status/2064738371000316099" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/digitalestrogn/status/2065027930133070290" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@ViiTorAI_</span>
+    <span class="ndf-author">@chaeyebin</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 216 · 💬 55</span>
+    <span class="ndf-engagement">♥ 177 · 💬 3</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ViiTorAI_/status/2065064005493006791">View @ViiTorAI_ on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/chaeyebin/status/2065097501489938820">View @chaeyebin on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“🎙️ Edit only what matters. Why regenerate an entire voiceover when you only need to change a few words? With ViiTor TTS, you can edit specific parts of your audio while maintaining seamless voice cons”</p>
+    <p class="ndf-quote">“@gyurisgff the mv used ai, the arranger is a dj who is obsessed with ai, no producer credited, the stems sound muffled and melt into each other at parts and this is the type of sound what suno ai usua”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ViiTor TTS เป็น open-source TTS tool ที่เพิ่งปล่อยตัว — แก้ไขเฉพาะส่วนที่ต้องการในไฟล์เสียงได้ โดยไม่ต้อง regenerate ทั้งหมด และคง voice identity ไว้ตลอด</dd>
+      <dd>โพสต์แฟนเพลงกล่าวหาว่า MV K-pop ใช้ Suno AI ทำดนตรี โดยอ้างว่าไม่มีเครดิต producer และ stem เสียงฟังดู muffled แบบที่ AI generate มักเป็น</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>งาน e-learning และ game voiceover แก้สคริปต์แล้วไม่ต้องอัดใหม่ทั้งไฟล์ — ลด iteration time ลงได้จริง</dd>
+      <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทดสอบ ViiTor TTS กับไฟล์เสียง e-learning หรือ game ที่มีอยู่ ดูว่า partial edit คง voice consistency ได้ระดับ production ก่อนนำไปใช้จริง</dd>
+      <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/ViiTorAI_/status/2065064005493006791" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/chaeyebin/status/2065097501489938820" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@c89</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 87 · 💬 0</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/c89/status/2064966746465869934">View @c89 on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“@digitalestrogn clearly suno, the cadence is off, the rhyming is not natural only AI would enunciate &quot;money&quot; the way it does here, insanely obvious”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>User ชี้ว่า audio clip มาจาก Suno โดยอ้างว่า cadence ผิดจังหวะ, rhyme ไม่เป็นธรรมชาติ, และการออกเสียงคำว่า 'money' แบบที่ AI ทำเท่านั้น</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/c89/status/2064966746465869934" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@chaeyebin</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 78 · 💬 3</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/chaeyebin/status/2065085209872326904">View @chaeyebin on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“someone take suno ai from nugus omg https://t.co/rnVDWO4udh”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ผู้ใช้โพสต์ระบายความหงุดหน่ยเรื่องคนทั่วไปใช้ Suno AI ไม่มีเนื้อหาเชิงเทคนิคหรือข่าวอะไรเลย</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/chaeyebin/status/2065085209872326904" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Camicees</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 71 · 💬 9</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Camicees/status/2065151675136917967">View @Camicees on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Singing ads are taking over Meta and TikTok right now. Brands are turning their ad copy into actual songs, and the engagement is insane. Here's how to make one in 15 minutes using AI (The SUNO Method)”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>แบรนด์เปลี่ยน ad copy เป็นเพลงด้วย Suno แล้วยิงโฆษณาบน Meta และ TikTok ได้ engagement สูงกว่า video ad ปกติ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>song ad จาก Suno ต้นทุนแทบศูนย์ ทีมเล็กทำ marketing ให้ app หรือ game ได้เองโดยไม่ต้องจ้าง composer หรือนักร้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ทำ song ad 30 วิด้วย Suno สำหรับ app หรือ game ตัวถัดไป แล้ว A/B test กับ video ad ปกติบน Meta</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/Camicees/status/2065151675136917967" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@DougTenNapel</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 71 · 💬 14</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/DougTenNapel/status/2065434005730672901">View @DougTenNapel on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“When I say Ai helps “creatives” I mean it can help everyone because everyone is a creative. I use @grok and Suno and it should not replace the enjoyment of making analogue anything. But it adds tools ”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Doug TenNapel นักวาดการ์ตูน แชร์ความเห็นส่วนตัวว่า AI tools อย่าง Grok และ Suno ช่วยเสริมความคิดสร้างสรรค์โดยไม่แทนที่ความสุขจากการสร้างงานแบบ analog</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/DougTenNapel/status/2065434005730672901" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@wisdomdaily75</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 68 · 💬 31</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/wisdomdaily75/status/2065065585546035694">View @wisdomdaily75 on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“🤖 AI Chatbots ChatGPT Claude Gemini Perplexity Grok NotebookLM DeepSeek Character AI Poe Kimi 💻 Coding Tools Cursor GitHub Copilot Replit v0 Tabnine Windsurf Amazon Q Lovable https://t.co/ONJDlgVc9O C”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>บัญชี Twitter รวม AI tool ยอดนิยมราว 40 รายการแบ่งตามหมวด โดยไม่มีข้อมูลใหม่หรือบริบทเพิ่มเติม</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/wisdomdaily75/status/2065065585546035694" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

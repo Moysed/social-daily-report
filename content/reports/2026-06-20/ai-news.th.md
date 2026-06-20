@@ -4,7 +4,7 @@ date: '2026-06-20'
 topic: ai-news
 lang: th
 pair: ai-news.en.md
-generated_at: '2026-06-20T03:10:14+00:00'
+generated_at: '2026-06-20T15:09:52+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,97 +14,97 @@ platforms:
 - x
 regions:
 - global
-post_count: 234
-salience: 0.45
+post_count: 243
+salience: 0.35
 sentiment: mixed
 confidence: 0.5
 tags:
-- ai-news
+- ai-tooling
+- open-models
+- glm
+- anthropic-pricing
 - claude-code
-- devtools
-- agents
-- anthropic
-- talent-moves
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2068048584067432448/img/8t3rTJcvfET74VJA.jpg
+- codegen
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2068306560569458688/img/SR1ke0qx6mBBzQ7Y.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # AI News & New Skills — 2026-06-20
 
 ## TL;DR
-- บุคลากรระดับสูงกำลังย้ายค่าย: John Jumper เจ้าของรางวัล Nobel (AlphaFold) กำลังออกจาก Google DeepMind มาร่วม Anthropic [2][6][17] สัปดาห์เดียวกับที่ Noam Shazeer (transformer/MoE) ย้ายไป OpenAI [3][17]; การ recruit ล่าสุดของ Anthropic ยังรวมถึง Mike Krieger, Peter Bailis และ Bryan McCann [47]
-- artifact ที่ใช้งานได้จริงวันนี้มีน้อย — ที่โดดเด่นคือ Claude Code 'loops' (ผู้สร้างบอกว่า 30% ของโค้ดตัวเองเขียนด้วย loops แล้ว) [58], OpenAI รวม ChatGPT Library เข้า Codex [28] และ Claude Design อัปเดตใหม่ [57]
-- Claude Code ถูกนำไปทดลองถอดรหัส Linear A อักษรโบราณของ Crete อายุ ~3,500 ปี [7] — ผู้เขียนระบุชัดว่ายังรอ peer review ไม่ใช่ผลิตภัณฑ์ที่ ship แล้ว
-- Trump ถอยจากท่าทีที่เคยจัด Anthropic/Dario Amodei ว่าเป็นภัยความมั่นคงแห่งชาติ หันมาบอกว่าพวกเขา 'ประพฤติตัวอย่างรับผิดชอบมาก' [8][13][42]; Andrew Ng ชี้ว่าทั้งรัฐบาลสหรัฐฯ และ Anthropic ต่างดำเนินการจำกัดการเข้าถึง frontier model [25]
-- ข่าว 'SpaceX ซื้อ Cursor ราคา $60B' กำลังแพร่ [9][16] แต่มาจากแหล่งที่น่าเชื่อถือต่ำและยังไม่ยืนยัน — อย่าถือเป็นข้อเท็จจริง
+- feed ส่วนใหญ่วันนี้เกิดจาก keyword collision: 'Gemini' ที่นี่หมายถึง solo stage ของ Vernon จาก SEVENTEEN [1][3][6] และ fanmeet ของนักแสดงไทย Gemini ในเวียดนาม [4][11][14] — ไม่ใช่ model ของ Google — signal จริงเรื่อง AI tooling มีน้อย
+- GLM-5.2 (open weights ใบอนุญาต MIT) มีรายงานว่าเทียบ Codex ได้บน coding task จริงผ่าน OpenCode จากการใช้งาน 3 วัน [22] และอ้างว่า hallucinate น้อยกว่า GPT-5.5 ถึง ~3 เท่า [60]
+- การเปลี่ยนระบบ billing แบบ usage-based ของ Anthropic ทำให้บิล AI ของบริษัทหนึ่ง (Workato) พุ่ง 700% ภายในวันเดียว จากเดิมที่จ่ายเป็น flat fee รายเดือน [32]
+- Fable จะออกจาก Claude Code subscriptions ใน ~3 วัน ตาม Theo [9]
+- GPT-5.6 Pro ถูกอ้างว่า one-shot เกมแนว Sims เป็นไฟล์ .html ไฟล์เดียวใน 48 นาทีโดยไม่ใช้ coding harness [49] — เป็น demo เดี่ยว ยังไม่ได้รับการยืนยัน
 
 ## What happened
-รายการที่ได้รับ engagement สูงวันนี้ถูกครอบงำด้วยเรื่องคนและการเมือง ไม่ใช่ artifact John Jumper รายงานว่าออกจาก DeepMind มา Anthropic [2][3][6][11][17] ต่อจาก Noam Shazeer ที่ย้ายไป OpenAI [3][17] ทำให้เกิด narrative เรื่อง DeepMind สูญเสียคนระดับนำ [11] และ Anthropic กำลังเสริมทีม [47] ขณะเดียวกัน Trump ลดน้ำเสียงจากที่เคยใช้คำว่า 'ภัยความมั่นคงแห่งชาติ' กับ Anthropic โดยบอกว่าจะไม่ปิด และพวกเขาตอบสนองอย่างรับผิดชอบ [8][13][35][40][42] ซึ่ง Andrew Ng ตีความว่าทั้งรัฐบาลและ lab กำลังจำกัดการเข้าถึง frontier model พร้อมกัน [25]
+Feed ถูกครอบงำด้วยเนื้อหาที่ไม่เกี่ยวกับ AI ซึ่ง match คำว่า 'Gemini' (stage Caratland ของ SEVENTEEN [1][3][6][19][28][35] และ fanmeet GeminiFourth [4][11][12][14][24][25]) และคำว่า 'Claude' (การเสียชีวิตของผู้ร่วมก่อตั้ง Ubisoft Claude Guillemot [20][26][38][46]) เมื่อกรองออกแล้ว เหลือ signal ด้าน AI tooling ที่ชัดเจนอยู่ไม่กี่ชิ้น นักพัฒนารายหนึ่งรายงานว่าใช้ GLM-5.2 กับ OpenCode แทน Codex 3 วันโดยไม่พบ regression ในการแก้ bug หรือ feature work [22] และมีโพสต์แยกที่อ้างว่า GPT-5.5 hallucinate มากกว่า GLM-5.2 (MIT-licensed) ถึง ~3 เท่า [60] ด้านต้นทุน มีรายงานว่าการเปลี่ยน billing ของ Anthropic ทำให้บิล Workato พุ่ง 700% ในวันเดียวหลังจากเคยจ่าย flat fee [32] และ Theo แจ้งว่า Fable จะออกจาก Claude Code subscriptions ใน ~3 วัน [9]
 
 ## Why it matters (reasoning)
-สำหรับ studio สัญญาณที่ใช้งานได้จริงมีน้อย: 'loops' ในฐานะก้าวถัดจาก agent [58], Codex รวม ChatGPT Library [28] และ Claude Design ปรับปรุง [57] เป็นการรวม devtool แบบค่อยเป็นค่อยไป ไม่ใช่ capability ใหม่ที่ต้องรีบนำมาใช้ตอนนี้ การย้ายคนระดับสูง [2][17][47] มีผลทางอ้อมเท่านั้น — อาจเปลี่ยน roadmap ของ model ในช่วงหลายเดือน แต่ไม่กระทบ toolchain วันนี้ การเมืองที่ไปมา [8][13][25][42] เตือนว่าการเข้าถึง model ระดับสูงสุดอาจเผชิญข้อจำกัดด้านนโยบาย ซึ่งเป็น supply risk สำหรับคนที่ผูกแน่นกับ provider เจ้าเดียว การทดลอง Linear A [7] น่าสนใจในฐานะหลักฐานของ long-context structured reasoning แต่ยังไม่ verified และไม่ใช่ product
+สองประเด็นที่มีผลต่อ AI workflow ของ studio ได้แก่ ประการแรก open-weight models: ถ้า GLM-5.2 เทียบ Codex ได้จริงบน coding task [22] และ hallucinate น้อยกว่า model GPT-5.5/5.6-class [60] ต้นทุนและ lock-in ของ agentic coding จะลดลง — ใบอนุญาต MIT ยังตัดความเสี่ยงเรื่อง per-seat metering ออกด้วย ประการที่สอง ความผันผวนด้านต้นทุน: การเปลี่ยน billing ของ Anthropic กับบิลที่พุ่ง 700% [32] บวกกับการถอด Fable จาก Claude Code [9] แสดงให้เห็นว่าราคาและความพร้อมของ model สามารถเปลี่ยนได้โดยแทบไม่มีการแจ้งล่วงหน้า ซึ่งเป็นความเสี่ยงด้านงบประมาณและ continuity สำหรับทีมที่ build tooling บน vendor เดียว signal ด้าน edutech จากนอร์เวย์ที่เกือบห้ามใช้ AI ในโรงเรียนประถม [36] เป็นสัญญาณเชิงกฎหมายที่เกี่ยวข้องกับผลิตภัณฑ์ e-learning แม้จะเน้นเรื่องการ deploy ในชั้นเรียน ไม่ใช่ tooling ก็ตาม ข้อควรระวัง: claims ที่แรงที่สุดในที่นี้ ([22][49][60]) มาจากโพสต์ social เดี่ยวหรือ demo ครั้งเดียว ไม่ใช่ benchmark หรือ artifact ที่ reproduce ได้
 
 ## Possibility
-น่าจะเกิด: devtool รวมกันต่อเนื่อง — feature saved-prompt/library ย้ายเข้า coding agent อย่าง Codex [28] — เพราะเป็น retention play ต้นทุนต่ำ น่าจะเกิดได้: pattern 'loops' [58] กลายเป็น abstraction ที่มีชื่อและนำกลับมาใช้ใหม่ได้ใน agent tooling แต่วันนี้มีหลักฐานแค่ anecdote จาก practitioner คนเดียว ควรให้น้ำหนักเบาๆ น่าจะเกิดได้: DeepMind สูญเสียคนระดับ senior เพิ่มขึ้น เพราะมีสองรายในสัปดาห์เดียว [3][11][17] ไม่น่าจะเกิดตามที่อ้าง: การซื้อกิจการ SpaceX/Cursor $60B [9][16] — แหล่งที่มาอ่อนและขัดแย้งกันเอง รอการยืนยันจาก primary source ก่อนตัดสิน ไม่มีแหล่งไหนให้ตัวเลขความน่าจะเป็น จึงไม่ระบุไว้
+Likely: open models อย่าง GLM ยังคงตามประชิด proprietary coding models ทำให้ dual-stack (proprietary + open ผ่าน harness แบบ OpenCode) เป็นตัวเลือก hedge ที่ใช้งานได้จริง [22][60] Plausible: ทีมอื่นจะเจอ cost spike แบบไม่คาดคิดมากขึ้นเมื่อ vendor ย้ายจาก flat เป็น usage-based pricing ส่งผลให้ต้องทำ usage audit และตั้ง cap [32] Plausible: ข้อจำกัดการใช้ AI ในชั้นเรียนจะขยายออกไปนอกนอร์เวย์ ซึ่งจะส่งผลต่อการวางตำแหน่งผลิตภัณฑ์ edutech [36] Unlikely บนหลักฐานปัจจุบัน: GPT-5.6 Pro สามารถ one-shot เกมเต็มรูปแบบใน production ได้อย่างน่าเชื่อถือ — [49] เป็นเพียง demo .html เดี่ยวที่ยังไม่ได้ reproduce
 
 ## Org applicability — NDF DEV
-1) ทำ spike เล็กกับ Claude Code 'loops' สำหรับงานซ้ำๆ ที่จำกัดขอบเขต เช่น asset/config generation หรือ test scaffolding แล้ววัดว่าดีกว่า agent setup ปัจจุบันไหม [58] — effort: low/med 2) ถ้าทีมใช้ Codex อยู่ ดู Library/saved-prompt consolidation ใหม่ เพื่อ standardize reusable prompt สำหรับงาน web/mobile [28] — effort: low 3) ประเมิน Claude Design updates ในฐานะ design-to-code path สำหรับ prototype UI web/mobile [57] — effort: low 4) จดไว้ว่าการถอดรหัส Linear A เป็น reference สำหรับ long-context structured analysis หากสร้าง feature วิเคราะห์เนื้อหา edutech [7] — effort: low (investigation เท่านั้น) ข้ามได้: รายการ talent-move และการเมือง Trump/Anthropic ทั้งหมด [1][2][3][8][13][17][42][47] (ไม่มี action), ข่าวลือ SpaceX/Cursor [9][16] (ยังไม่ verified) และ speculation อย่าง 'recursive self-improvement' [4] และการเข้าถึง 'Claude Mythos' [55] (ไม่มีหลักฐาน)
+1) ทดสอบ GLM-5.2 ผ่าน OpenCode เทียบกับ Claude/Codex setup ปัจจุบันบน task จริงของ NDF ก่อนตัดสินใจใดๆ (effort: med) [22][60] 2) Audit การใช้งาน Claude Code / Anthropic และตั้ง spend alert ตอนนี้เลย เนื่องจากการเปลี่ยน billing และรายงานบิลพุ่ง 700% (effort: low) [32] 3) ถ้ามี workflow ที่ depend on Fable ใน Claude Code ให้วางแผนเอาออกภายใน ~3 วัน (effort: low) [9] 4) สำหรับสาย edutech/e-learning ให้บันทึกกรณีนอร์เวย์เป็น compliance signal และทำ AI features ให้เป็น optional/configurable สำหรับ school deployment (effort: low) [36] 5) ให้ถือว่า GPT-5.6 Pro one-shot codegen เป็นแค่ prototyping experiment ที่ยังพิสูจน์ไม่ได้ ไม่ใช่ pipeline (effort: low) [49] Skip: item ทั้งหมดเรื่อง Gemini ไอดอล การรายงานการเสียชีวิตของ Ubisoft และ crypto snapshot — ไม่มีความเกี่ยวข้องกับ workflow
 
 ## Signals to Watch
-- จับตาว่า 'loops' จะได้ workflow ที่ documented และทำซ้ำได้จริงหรือยังอยู่แค่ anecdote เดียว [58]
-- จับตา Codex Library rollout ว่าเป็นสัญญาณของการรวม prompt reuse เข้า coding agent อย่างไร [28]
-- จับตานโยบายการเข้าถึง frontier model (US + นอร์เวย์ที่เกือบแบน AI ในโรงเรียนประถม) สำหรับผลด้าน supply และ compliance ต่อ edutech [25][36]
-- จับตาการยืนยันหรือหักล้างจาก primary source ของดีล SpaceX/Cursor ก่อนตัดสินใจ [9][16]
+- การใช้งาน GLM-5.2 ผ่าน OpenCode เป็นตัวแทน Codex — ติดตาม benchmark ที่ reproduce ได้ ไม่ใช่แค่ anecdote เดี่ยว [22][60]
+- ผลกระทบจาก usage-based billing ของ Anthropic — ติดตามรายงานบิลพุ่งแบบกะทันหันเพิ่มเติม [32]
+- การถอด Fable จาก Claude Code subscriptions ตาม timeline ~3 วัน [9]
+- กฎหมาย AI ในโรงเรียนที่อาจขยายออกนอกนอร์เวย์ ซึ่งเกี่ยวข้องกับการวางตำแหน่ง edutech [36]
 
 ## Repos & Tools to Try
 | repo | source | url |
 |---|---|---|
-| **DeusData/codebase-memory-mcp** — MCP server ด้าน code intelligence ประสิทธิภาพสูง Index codebase ลง knowledge graph แบบถาวร | rss | <https://github.com/DeusData/codebase-memory-mcp> |
-| **google-research/timesfm** — TimesFM (Time Series Foundation Model) คือ pretrained foundation model สำหรับ time-series พัฒนาโดย Google | rss | <https://github.com/google-research/timesfm> |
-| **palmier-io/palmier-pro** — video editor บน macOS ที่สร้างมาสำหรับ AI Palmier Pro ต้องใช้ macOS 26 (Tahoe) | rss | <https://github.com/palmier-io/palmier-pro> |
-| **koala73/worldmonitor** — dashboard intelligence โลกแบบ real-time รวม AI-powered news aggregation และ geopolitical monitoring | rss | <https://github.com/koala73/worldmonitor> |
-| **aishwaryanr/awesome-generative-ai-guide** — repo รวม generative AI research updates, interview resources, notebooks และอื่นๆ ครบที่เดียว | rss | <https://github.com/aishwaryanr/awesome-generative-ai-guide> |
-| **BuilderIO/agent-native** — framework สำหรับสร้าง agent-native application แบบ open-source | rss | <https://github.com/BuilderIO/agent-native> |
-| **chopratejas/headroom** — บีบ tool output, log, file และ RAG chunk ก่อนส่งเข้า LLM ลด token 60-95% | rss | <https://github.com/chopratejas/headroom> |
-| **calesthio/OpenMontage** — ระบบ agentic video production แบบ open-source ระบบแรกของโลก 12 pipeline, 52 tool, 500+ agent skill | rss | <https://github.com/calesthio/OpenMontage> |
-| **zai-org/GLM-5** — GLM-5: From Vibe Coding to Agentic Engineering รวม GLM-5.2, GLM-5.1 และ GLM-5 | rss | <https://github.com/zai-org/GLM-5> |
-| **withastro/flue** — sandbox agent framework — Flue ไม่ใช่แค่ SDK อีกตัว แต่เป็น harness สำหรับ build autonomous agent | rss | <https://github.com/withastro/flue> |
-| **n0-computer/iroh** — IP address พัง? dial ด้วย key แทน Modular networking stack ใน Rust | rss | <https://github.com/n0-computer/iroh> |
-| **obra/superpowers** — agentic skills framework และ methodology การพัฒนาซอฟต์แวร์ที่ใช้งานได้จริง | rss | <https://github.com/obra/superpowers> |
+| **DeusData/codebase-memory-mcp** — MCP server ด้าน code intelligence ประสิทธิภาพสูง จัดทำ index codebase ลงใน persistent knowledge graph | rss | <https://github.com/DeusData/codebase-memory-mcp> |
+| **google-research/timesfm** — TimesFM (Time Series Foundation Model) คือ pretrained foundation model สำหรับ time-series ที่พัฒนาโดย Google | rss | <https://github.com/google-research/timesfm> |
+| **palmier-io/palmier-pro** — video editor สำหรับ macOS ที่ build มาเพื่อ AI โดยเฉพาะ ต้องการ macOS 26 (Tahoe) | rss | <https://github.com/palmier-io/palmier-pro> |
+| **koala73/worldmonitor** — dashboard intelligence แบบ real-time ระดับโลก รวม AI-powered news aggregation, geopolitical monitoring และการวิเคราะห์ | rss | <https://github.com/koala73/worldmonitor> |
+| **aishwaryanr/awesome-generative-ai-guide** — repository รวม research update ด้าน generative AI, interview resources, notebooks และอื่นๆ | rss | <https://github.com/aishwaryanr/awesome-generative-ai-guide> |
+| **BuilderIO/agent-native** — framework สำหรับ build applications แบบ agent-native แบบ open-source | rss | <https://github.com/BuilderIO/agent-native> |
+| **chopratejas/headroom** — compress tool output, log, file และ RAG chunk ก่อนส่งถึง LLM ลด token ได้ 60-95% | rss | <https://github.com/chopratejas/headroom> |
+| **calesthio/OpenMontage** — ระบบ agentic video production แบบ open-source ระบบแรกของโลก มี 12 pipeline, 52 tool, 500+ agent skill | rss | <https://github.com/calesthio/OpenMontage> |
+| **zai-org/GLM-5** — GLM-5: จาก Vibe Coding สู่ Agentic Engineering รวม GLM-5.2, GLM-5.1 และ GLM-5 | rss | <https://github.com/zai-org/GLM-5> |
+| **withastro/flue** — sandbox agent framework — Flue คือ Agent Harness Framework ที่ไม่ใช่แค่ SDK อีกตัว | rss | <https://github.com/withastro/flue> |
+| **n0-computer/iroh** — เมื่อ IP address ไม่เสถียร ให้ dial ด้วย key แทน — modular networking stack ที่เขียนด้วย Rust | rss | <https://github.com/n0-computer/iroh> |
+| **obra/superpowers** — agentic skills framework และ software development methodology ที่ใช้งานได้จริง | rss | <https://github.com/obra/superpowers> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | ns123abc | ^4593 c174 | [🚨BREAKING: TRUMP ON ANTHROPIC REPORTER: Do you view Anthropic and to a degree it](https://x.com/ns123abc/status/2068051762708099449) |
-| x | ns123abc | ^2198 c50 | ["Sir… John Jumper… the director of DeepMind… the co-creator of AlphaFold… the ma](https://x.com/ns123abc/status/2068023211904602418) |
-| x | scaling01 | ^1838 c74 | [Google is in free fall This is the second VP of Engineering that left Google Dee](https://x.com/scaling01/status/2068033319418134965) |
-| x | arpitrage | ^1798 c133 | [My best guess is that Anthropic has cracked recursive self improvement, which is](https://x.com/arpitrage/status/2068087090328248474) |
-| x | itsgemfourth | ^1562 c6 | [do you guys see what i see. the way fourth ate only half of the cake that's on t](https://x.com/itsgemfourth/status/2068014686436749562) |
-| x | Polymarket | ^1191 c88 | [NEW: Nobel Prize-winning AI researcher John Jumper is leaving Google DeepMind fo](https://x.com/Polymarket/status/2068044513931657721) |
-| x | bcherny | ^1173 c107 | [Cool way to use Claude Code: deciphering Linear A, a 3500 year old written langu](https://x.com/bcherny/status/2068064304503660962) |
-| x | Polymarket | ^1149 c78 | [NEW: Trump says Anthropic was seen as a possible national security threat a week](https://x.com/Polymarket/status/2068054811304476745) |
-| x | WallStreetApes | ^1021 c52 | [Elon Musk just made one if the biggest moves in taking over the programming indu](https://x.com/WallStreetApes/status/2068132984004472876) |
-| x | DoseofTarot | ^897 c3 | [Mutable Signs Gemini , Pisces , Sagittarius , Virgo Release your ex New doors ar](https://x.com/DoseofTarot/status/2068031747527266592) |
-| x | theo | ^821 c80 | [Is DeepMind dying? I've seen multiple high profile departures this week](https://x.com/theo/status/2068077260612276497) |
-| x | beffjezos | ^812 c26 | [How it would to feel to be running small local LLMs in a secret container in you](https://x.com/beffjezos/status/2068068034234011694) |
-| x | AndrewCurran_ | ^812 c53 | [President Trump on the Axios show this morning 'You know we have a situation wit](https://x.com/AndrewCurran_/status/2068041439481901157) |
-| x | levelsio | ^810 c72 | [Any SF startup office we can work from today? SF cafes are absolutely unworkable](https://x.com/levelsio/status/2068033500792717454) |
-| x | BoringBiz_ | ^792 c20 | [Asset management associate accidentally sent a Claude prompt that automates his ](https://x.com/BoringBiz_/status/2068044524937425405) |
-| x | theallinpod | ^787 c62 | [POD UP! 🚨 Besties are back to discuss: -- SpaceX's record IPO, Cursor deal, and ](https://x.com/theallinpod/status/2068097328154624172) |
-| x | mreflow | ^776 c65 | [Google Deepmind losing Noam Shazeer and John Jumper just days apart feels like a](https://x.com/mreflow/status/2068019606435070439) |
-| x | levelsio | ^728 c27 | [I respect his game but he's proving that the biggest part of beauty (especially ](https://x.com/levelsio/status/2068069963126943909) |
-| x | GreenIrisTarot | ^707 c3 | [❤️‍🔥❤️‍🔥 THIS IS FOR YOU IF… — wearing/using a green object (bag, notebook, clot](https://x.com/GreenIrisTarot/status/2068033261964525866) |
-| x | _mohansolo | ^700 c62 | [We've root caused and mitigated the high rates of output text looping in Gemini ](https://x.com/_mohansolo/status/2068054113104069058) |
-| radar | ck2 | ^676 c315 | [Hyundai buys Boston Dynamics](https://startupfortune.com/hyundai-takes-full-control-of-boston-dynamics-as-softbank-exits-for-325-million/) |
-| x | astroinrealtime | ^646 c11 | [gemini, someone new may surprise you soon. don't close the door too fast.](https://x.com/astroinrealtime/status/2068038858751520848) |
-| x | willdepue | ^636 c52 | [there is no question, none at all, that china has full access to all of openai &](https://x.com/willdepue/status/2068118253633737077) |
-| x | Katarhein | ^627 c0 | [Night Duty - Claude 🐺 Artist + ai🎛 https://t.co/XPn98fkCNx](https://x.com/Katarhein/status/2068059986060595389) |
-| x | AndrewYNg | ^591 c89 | [Over the last two weeks, both the U.S. Government and Anthropic took significant](https://x.com/AndrewYNg/status/2068039709126017356) |
-| x | hourIyhoroscope | ^545 c21 | [gemini, you can keep distracting yourself, but the connection between you and le](https://x.com/hourIyhoroscope/status/2068053955377344849) |
-| radar | philonoist | ^542 c336 | [Project Valhalla, Explained: How a Decade of Work Arrives in JDK 28](https://www.jvm-weekly.com/p/project-valhalla-explained-how-a) |
-| x | testingcatalog | ^533 c29 | [OpenAI is preparing to add Library from ChatGPT into Codex as well. The next pha](https://x.com/testingcatalog/status/2068036927199097272) |
-| x | esssdabest | ^512 c1 | [Virgo • Gemini • Sagittarius • Pisces Ooo, love this weekend may take you for a ](https://x.com/esssdabest/status/2068037412622606802) |
-| x | alessio_joseph | ^493 c23 | [i miss the old openai, the research lab openai, the area17 design openai https:/](https://x.com/alessio_joseph/status/2068014077453209860) |
+| x | vernonsource | ^5594 c0 | [[full] gemini (jun solo) by vernon at caratland 2026 d-1 https://t.co/wpz2iEjq80](https://x.com/vernonsource/status/2068307702271602696) |
+| x | kwansources | ^4560 c0 | [THE TRANSITION OF SEUNGKWAN TRIGGER TO VERNON GEMINI https://t.co/ZejCbBXYX9](https://x.com/kwansources/status/2068302911936045494) |
+| x | vernonsource | ^3604 c0 | [VERNON DOING GEMINI FOR CARATLAND WHAT THE HELL https://t.co/jMBvTkvQG0](https://x.com/vernonsource/status/2068302530170511465) |
+| x | geminiscity | ^3106 c4 | [👥: Fourth suay mak! 4️⃣: Fourth suay? ♊️: 😎👍🏻 4️⃣: Fourth suay mak~ ♊️: [nods] G](https://x.com/geminiscity/status/2068255930610024765) |
+| x | don_rickardo | ^2984 c29 | [Closing gemini season out w these https://t.co/TJ3StCo9tq](https://x.com/don_rickardo/status/2068257515138355609) |
+| x | coupslovre | ^2957 c0 | [caratland 2026 solo stage switch! #세븐틴 scoups — Happy Virus joshua — Jungle jun ](https://x.com/coupslovre/status/2068307759716815147) |
+| x | flamehanie | ^2766 c1 | [VERNON - GEMINI (JUN'S SOLO) 😭😭 HIS VOCALSSS https://t.co/Uegmlw3OJ6](https://x.com/flamehanie/status/2068303116353855708) |
+| x | minghaocheoI_ | ^2693 c1 | [VERNON DOING JUN'S GEMINI STAGE OH MY GODDDDDD OH MY GOD THIS IS SO SHOCKINGJDMG](https://x.com/minghaocheoI_/status/2068303019675148559) |
+| x | theo | ^2519 c130 | [3 days left of using Fable in your Claude Code sub! Better maximize that token u](https://x.com/theo/status/2068273183212638384) |
+| x | KyeomsBaekery | ^2217 c0 | [THE TRANSITION FROM SEUNGKWAN'S TRIGGER TO VERNON'S GEMINI OH GOD?!!! Insane…. h](https://x.com/KyeomsBaekery/status/2068302428504727637) |
+| x | hopyjoy | ^2106 c2 | [Gemini wears his bag with sunflower 🌻 #GeminiFourthFMinVietnam #geminifourth #ge](https://x.com/hopyjoy/status/2068293071922749612) |
+| x | prettiest_to_GF | ^2055 c11 | [#GeminiFourthFMinVietnam BIRTHDAY CAKE FOR GEMINI AND CONGRATS CAKE FOR FOT ❤️🙇‍](https://x.com/prettiest_to_GF/status/2068245875462427114) |
+| x | AmandaAskell | ^2026 c85 | [I had chronic pain for most of my life until a doctor did an MRI of the pain sou](https://x.com/AmandaAskell/status/2068218515723866477) |
+| x | Geminint_family | ^2011 c2 | [Happy 22nd Birthday Gemini 🎂👦🏻❤️ GEMINIFOURTH VN FANMEET #GeminiFourthFMinVietna](https://x.com/Geminint_family/status/2068240510373044507) |
+| x | YasmeenOne | ^1913 c0 | [VERNON AND JUNS HIGHNOTES IN GEMINI!!!! 🥹🪽🐻‍❄️🐱 OUR VERJUN https://t.co/XkhdpuAy](https://x.com/YasmeenOne/status/2068305007745605988) |
+| x | aydellch | ^1857 c3 | [: From now on I hope you'll take a better care of him ♊️: Is Father a shipper? ♊](https://x.com/aydellch/status/2068297239353811345) |
+| x | vernonsource | ^1625 c0 | [the transition from seungkwan trigger to vernon gemini 😯 https://t.co/Rmki3IjWk1](https://x.com/vernonsource/status/2068304999487258662) |
+| x | itsgemfourth | ^1538 c0 | [gemini always watching fotfot performing from the backstage... look at him :((( ](https://x.com/itsgemfourth/status/2068248014389756017) |
+| x | minghaocheoI_ | ^1406 c2 | [FULL SOLO REVERSE STAGES FOR CARATLAND OH MY GOD ❤️‍🔥 seungkwan - trigger vernon](https://x.com/minghaocheoI_/status/2068338131447996534) |
+| x | Pirat_Nation | ^1398 c64 | [Claude Guillemot, one of the co-founders of Ubisoft, has died in a plane crash n](https://x.com/Pirat_Nation/status/2068291114977681664) |
+| x | nongsiii | ^1144 c1 | [Gemini doing the love wins all🫣 GEMINIFOURTH VN FANMEET #GeminiFourthFMinVietnam](https://x.com/nongsiii/status/2068237621927768470) |
+| x | burkov | ^1035 c86 | [For the last three days, I've been using GLM 5.2 with OpenCode instead of Codex ](https://x.com/burkov/status/2068258575315542352) |
+| x | gemfourtty | ^1005 c0 | [gemini really just stays still and lets his baby say whatever he wants, even whe](https://x.com/gemfourtty/status/2068245150401212630) |
+| x | itsgemfourth | ^993 c0 | [GEMINIFOURTH VN FANMEET #GeminiFourthFMinVietnam 4️⃣ fourth loves gemini a lot! ](https://x.com/itsgemfourth/status/2068246938261344736) |
+| x | GeminiFourthsup | ^958 c0 | [So sweet with each other 🫠🫠 https://t.co/P4sawP8ML2 https://t.co/66cuZS4qYC GEMI](https://x.com/GeminiFourthsup/status/2068238348599033900) |
+| x | Dexerto | ^930 c62 | [Claude Guillemot, one of Ubisoft's five co-founding brothers, has died in a priv](https://x.com/Dexerto/status/2068321361710211225) |
+| x | g4loversclub | ^913 c0 | [fourth singing the lyrics to all in while gemini does the choreo instead theyre ](https://x.com/g4loversclub/status/2068252518648312063) |
+| x | lovrehani | ^903 c0 | [SEUNGKWAN — TRIGGER VERNON — GEMINI DINO — FORTUNATE CHANGE MINGYU — SHINING STA](https://x.com/lovrehani/status/2068306816212353168) |
+| radar | ck2 | ^889 c375 | [Hyundai buys Boston Dynamics](https://startupfortune.com/hyundai-takes-full-control-of-boston-dynamics-as-softbank-exits-for-325-million/) |
+| x | minghaocheoI_ | ^860 c0 | [THIS TRANSITION FROM SEUNGKWAN'S TRIGGER TO VERNON'S GEMINI STAGE?/!/?/? https:/](https://x.com/minghaocheoI_/status/2068301904552362342) |
 
 
 ## โพสต์เด่น
@@ -112,162 +112,162 @@ translated_by: claude-sonnet-4-6
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@ns123abc</span>
+    <span class="ndf-author">@vernonsource</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 4593 · 💬 174</span>
+    <span class="ndf-engagement">♥ 5594 · 💬 0</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ns123abc/status/2068051762708099449">View @ns123abc on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vernonsource/status/2068307702271602696">View @vernonsource on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“🚨BREAKING: TRUMP ON ANTHROPIC REPORTER: Do you view Anthropic and to a degree its CEO, Dario Amodei, as a threat to national security? TRUMP: &quot;Well, not now, but a week ago, maybe. I was with him yest”</p>
+    <p class="ndf-quote">“[full] gemini (jun solo) by vernon at caratland 2026 d-1 https://t.co/wpz2iEjq80”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Trump ระบุว่าไม่มองว่า Anthropic หรือ CEO Dario Amodei เป็นภัยต่อความมั่นคงแล้ว หลังจากพบกัน โดยระบุว่ามีคู่แข่งที่เป็นผู้ถือหุ้นบางส่วนเป็นคนรายงาน Anthropic ก่อนหน้า</dd>
+      <dd>วิดีโอแฟนถ่าย Vernon (SEVENTEEN) เพอร์ฟอร์ม solo 'Gemini' ในงานคอนเสิร์ต Caratland 2026 — ไม่เกี่ยวกับ Google Gemini</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/ns123abc/status/2068051762708099449" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/vernonsource/status/2068307702271602696" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@ns123abc</span>
+    <span class="ndf-author">@kwansources</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2198 · 💬 50</span>
+    <span class="ndf-engagement">♥ 4560 · 💬 0</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ns123abc/status/2068023211904602418">View @ns123abc on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/kwansources/status/2068302911936045494">View @kwansources on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">““Sir… John Jumper… the director of DeepMind… the co-creator of AlphaFold… the man who won the Nobel Prize with you… sir… he just announced he’s leaving Google DeepMind and joining Anthropic…” https://”</p>
+    <p class="ndf-quote">“THE TRANSITION OF SEUNGKWAN TRIGGER TO VERNON GEMINI https://t.co/ZejCbBXYX9”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>John Jumper นักวิทยาศาสตร์ที่ได้รับ Nobel Prize สาขาเคมีปี 2024 และผู้ร่วมสร้าง AlphaFold ประกาศลาออกจาก Google DeepMind เพื่อย้ายไปร่วมงานกับ Anthropic</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Anthropic ดึงนักวิจัยระดับ Nobel จาก DeepMind แสดงถึงทิศทาง deep research ที่ชัดเจนขึ้น — มีนัยต่อ Claude ที่ studio ใช้อยู่</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/ns123abc/status/2068023211904602418" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@scaling01</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1838 · 💬 74</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/scaling01/status/2068033319418134965">View @scaling01 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Google is in free fall This is the second VP of Engineering that left Google DeepMind this week First, Noam Shazeer, Transformer and MoE pioneer Today, nobel laureate John Jumper who basically built A”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Noam Shazeer (ผู้บุกเบิก Transformer/MoE) และ John Jumper (ผู้สร้าง AlphaFold, รางวัล Nobel) ลาออกจากตำแหน่ง VP ที่ Google DeepMind ในสัปดาห์เดียวกัน</dd>
+      <dd>แอคเคาท์แฟน K-pop โพสต์เรื่อง Seungkwan และ Vernon จาก SEVENTEEN ในบริบท persona chatbot — ไม่มีเนื้อหาเชิงเทคนิค</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/scaling01/status/2068033319418134965" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/kwansources/status/2068302911936045494" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@arpitrage</span>
+    <span class="ndf-author">@vernonsource</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1798 · 💬 133</span>
+    <span class="ndf-engagement">♥ 3604 · 💬 0</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/arpitrage/status/2068087090328248474">View @arpitrage on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/vernonsource/status/2068302530170511465">View @vernonsource on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“My best guess is that Anthropic has cracked recursive self improvement, which is why the top talent wants to be there”</p>
+    <p class="ndf-quote">“VERNON DOING GEMINI FOR CARATLAND WHAT THE HELL https://t.co/jMBvTkvQG0”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้ Twitter คาดเดาว่า Anthropic ทำ recursive self-improvement ได้แล้ว อ้างเป็นเหตุผลที่ talent ย้ายมา — ไม่มีหลักฐานรองรับ</dd>
+      <dd>โพสต์แฟนคลับ reaction การแสดงของ Vernon ในงาน CaratLand — 'Gemini' หมายถึงเพลง/ธีมการแสดง ไม่ใช่ Google Gemini</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/arpitrage/status/2068087090328248474" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/vernonsource/status/2068302530170511465" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@itsgemfourth</span>
+    <span class="ndf-author">@geminiscity</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1562 · 💬 6</span>
+    <span class="ndf-engagement">♥ 3106 · 💬 4</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/itsgemfourth/status/2068014686436749562">View @itsgemfourth on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/geminiscity/status/2068255930610024765">View @geminiscity on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“do you guys see what i see. the way fourth ate only half of the cake that's on the spoon and gemini put the rest in his mouth and ate it. oh my god i cant I CAN FEEL MY INSANITY KICKING IN. #GeminiFou”</p>
+    <p class="ndf-quote">“👥: Fourth suay mak! 4️⃣: Fourth suay? ♊️: 😎👍🏻 4️⃣: Fourth suay mak~ ♊️: [nods] Gemini agrees that Fourth is pretty 🙂‍↔️🙂‍↔️🙂‍↔️ GEMINIFOURTH VN FANMEET #GeminiFourthFMinVietnam https://t.co/ZIBfjR6LXR”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>แฟนคลับโพสต์เรื่องคู่จิ้น GeminiFourth กินเค้กด้วยกันในคลิป ได้ 1,562 likes จากแฟนๆ</dd>
+      <dd>แอคเคาท์แฟนคลับโพสต์เกี่ยวกับ fanmeet ของนักแสดง 'Fourth' ในเวียดนาม ไม่เกี่ยวกับ Google Gemini AI</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/itsgemfourth/status/2068014686436749562" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/geminiscity/status/2068255930610024765" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Polymarket</span>
+    <span class="ndf-author">@don_rickardo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1191 · 💬 88</span>
+    <span class="ndf-engagement">♥ 2984 · 💬 29</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Polymarket/status/2068044513931657721">View @Polymarket on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/don_rickardo/status/2068257515138355609">View @don_rickardo on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“NEW: Nobel Prize-winning AI researcher John Jumper is leaving Google DeepMind for Anthropic.”</p>
+    <p class="ndf-quote">“Closing gemini season out w these https://t.co/TJ3StCo9tq”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>John Jumper นักวิจัยผู้รับ Nobel เคมี 2024 และผู้นำทีม AlphaFold ที่ Google DeepMind ย้ายมาร่วมงาน Anthropic</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>Anthropic ดึง talent ระดับ Nobel จาก DeepMind — สัญญาณว่าจะขยายเกิน LLM ไปสู่ scientific AI จริงจัง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">จับตา research ที่ Anthropic จะออกใน 12 เดือนนี้ — ถ้าเน้น scientific AI อาจมี API/model ใหม่ที่เอาไปใช้ใน project ได้</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/Polymarket/status/2068044513931657721" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@bcherny</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1173 · 💬 107</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/bcherny/status/2068064304503660962">View @bcherny on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Cool way to use Claude Code: deciphering Linear A, a 3500 year old written language from Crete https://t.co/Aqd4ZG7Cum Hope this holds up in peer review! 🤞”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>นักวิจัยใช้ Claude Code วิเคราะห์รูปแบบใน Linear A อักษรมิโนอันอายุ 3,500 ปีที่ยังไม่ถูกถอดรหัส ผลลัพธ์อยู่ระหว่าง peer review</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ยืนยันว่า Claude Code ทำ pattern analysis บน unstructured data ที่ไม่ใช่ code ได้จริง — ตรงกับงาน e-learning content pipeline หรือ XR asset classification</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ลอง Claude Code กับ e-learning content ดิบ เพื่อทดสอบการดึงโครงสร้างหรือหา pattern โดยไม่ต้องสร้าง NLP pipeline เอง</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/bcherny/status/2068064304503660962" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Polymarket</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1149 · 💬 78</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Polymarket/status/2068054811304476745">View @Polymarket on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“NEW: Trump says Anthropic was seen as a possible national security threat a week ago, but has since responded “very responsibly.””</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Trump ระบุว่า Anthropic เคยถูกพิจารณาว่าอาจเป็นภัยต่อความมั่นคงแห่งชาติเมื่อสัปดาห์ก่อน แต่ได้รับการยกเว้นหลังตอบสนองอย่างรับผิดชอบ</dd>
+      <dd>โพสต์กำกวมบอกว่า 'ปิด Gemini season' พร้อมลิงก์สั้นที่ไม่มีบริบทใด ๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/Polymarket/status/2068054811304476745" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/don_rickardo/status/2068257515138355609" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@coupslovre</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 2957 · 💬 0</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/coupslovre/status/2068307759716815147">View @coupslovre on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“caratland 2026 solo stage switch! #세븐틴 scoups — Happy Virus joshua — Jungle jun — Shake It Off minghao — Raindrops mingyu — Shining Star dk — Skyfall seungkwan — Trigger vernon — Gemini dino — Fortuna”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>โพสต์แฟนคลับแจ้งรายชื่อเพลง solo stage ของสมาชิก Seventeen ในคอนเสิร์ต Caratland 2026</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/coupslovre/status/2068307759716815147" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@flamehanie</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 2766 · 💬 1</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/flamehanie/status/2068303116353855708">View @flamehanie on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“VERNON - GEMINI (JUN’S SOLO) 😭😭 HIS VOCALSSS https://t.co/Uegmlw3OJ6”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>โพสต์แฟนคลับรีแอคต่อ VERNON และ JUN จาก SEVENTEEN พร้อมคลิปเพลง ไม่มีเนื้อหาเชิงเทคนิคใดๆ</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/flamehanie/status/2068303116353855708" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@minghaocheoI_</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 2693 · 💬 1</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/minghaocheoI_/status/2068303019675148559">View @minghaocheoI_ on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“VERNON DOING JUN'S GEMINI STAGE OH MY GODDDDDD OH MY GOD THIS IS SO SHOCKINGJDMGM WOAHHHH https://t.co/gpghwJqnW9”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>แฟนคลับ react สดต่อ Vernon จาก SEVENTEEN ที่ขึ้น stage แสดงเพลง Gemini แทน Jun</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/minghaocheoI_/status/2068303019675148559" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

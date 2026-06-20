@@ -4,7 +4,7 @@ date: '2026-06-20'
 topic: web-frontend
 lang: en
 pair: web-frontend.th.md
-generated_at: '2026-06-20T03:22:39+00:00'
+generated_at: '2026-06-20T15:22:10+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -13,79 +13,77 @@ platforms:
 - x
 regions:
 - global
-post_count: 222
-salience: 0.15
+post_count: 218
+salience: 0.2
 sentiment: neutral
-confidence: 0.78
+confidence: 0.6
 tags:
 - web
 - frontend
-- low-signal
-- build-tooling
+- fastapi
+- css
 - atproto
-- noise
-thumbnail: https://pbs.twimg.com/media/HLMyybWXcAA1yCN.jpg
+- devtools
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2068225413760098304/img/MfHFqopXJTWq_9Q3.jpg
 ---
 
 # Web & Frontend — 2026-06-20
 
 ## TL;DR
-- Almost no real web/frontend signal today: the feed is dominated by keyword collisions — 'react' = emotional reactions, 'astro' = K-pop band ASTRO, Astro Bot game [17], and astrology [12][54]; 'tailwind' = a horse-racing card [10].
-- One practitioner thread on frontend architecture for scaling web apps [8] (score 1571) is the main on-topic item.
-- Dan Abramov's overreacted.io post 'There are no instances in ATProto' [35] explains the AT Protocol's account/data model — a web-platform/decentralization read, not a framework release.
-- Parcel's file watcher is reported as underpinning VSCode, Tailwind, Nx, and Nuxt [56] — a reminder of shared low-level tooling dependencies.
-- Adjacent platform news: Java Project Valhalla lands value types in JDK 28 [25]; Norway near-bans AI in elementary school [28] (edutech relevance, not frontend).
+- Quiet day for web/frontend: no major framework release. Most high-engagement items are keyword collisions — 'react' as a verb, the K-pop band ASTRO [16][19][30][57], astrology [45][47], and the PlayStation game Astro Bot [11][13][43], not the Astro web framework.
+- FastAPI 0.138.0 added serving of frontend apps with client-side routing — React + TanStack Router, Astro static builds, and Vite-based apps [9].
+- Dan Abramov (overreacted.io) published 'There are no instances in ATProto', explaining the protocol's architecture; 261 HN comments [21].
+- Browser/CSS curiosities surfaced: a website stored inside a favicon [44], CSSQuake [46], and a piece on display color gamut limits [34]. shadcn recounted the origin of shadcn/ui [33].
 
 ## What happened
-The item set for this topic is mostly off-topic keyword matches. The high-engagement entries are reaction videos, K-pop (ASTRO band) posts [5][32][41][50][53], the Astro Bot game [17][22][23], and astrology [12][54] — none relate to the Astro or React frameworks. The genuinely on-topic items are: a notes thread on architecting the frontend of a large web app [8]; Dan Abramov's post on the AT Protocol's data model [35]; and a note that Parcel's file watcher powers VSCode, Tailwind, Nx, and Nuxt [56]. Adjacent platform/devtools items include Project Valhalla arriving in JDK 28 [25] and Norway restricting AI in elementary schools [28].
+The feed for this topic is dominated by noise from term overlap: 'react' used as a verb [2][4][7][14][18], the K-pop group ASTRO [16][19][30][31][32][57], astrology placements [45][47], and the platformer Astro Bot [11][13][43] — none relating to React, Astro, Svelte, or Vue as web tooling. The genuinely relevant items are minor. FastAPI 0.138.0 now serves frontend applications with client-side routing support, explicitly naming React with TanStack Router, Astro static builds, and Vite-based apps [9]. Dan Abramov posted an explainer on ATProto's architecture [21]. shadcn shared how shadcn/ui originated from building components for side projects [33]. CSS/browser demos and write-ups appeared — a site encoded in a favicon [44], CSSQuake [46], and a display-gamut article [34].
 
 ## Why it matters (reasoning)
-Low signal is itself the finding: today's feed carries no framework releases, browser-API changes, or performance/build-tooling shifts that affect shipping decisions. The few real items are evergreen rather than time-sensitive — [8] is generic architecture advice, [35] is conceptual background on a protocol the studio is not using. The one second-order point worth holding is [56]: widely-used dev tools (editor, CSS engine, monorepo, meta-framework) share a single low-level dependency (Parcel's watcher), so a bug or regression there can ripple across unrelated parts of a stack — a supply-chain/dependency concentration risk, not a feature.
+There is no framework or browser-API release to act on today, so salience is low. The single concrete devtools change is [9]: in-process frontend serving means teams on Python backends can ship an SPA or static build from the same service, removing a separate static host or reverse-proxy step for small full-stack apps. Its scope is narrow — it does not replace a CDN for production-scale static delivery. The ATProto explainer [21] only matters if decentralized identity/social is on a roadmap; it has no near-term effect on a Unity/XR/edutech shop. shadcn/ui commentary [33] and the CSS/favicon/color demos [34][44][46] are educational, not production signals.
 
 ## Possibility
-Likely the quiet is just a sampling artifact of an engagement-sorted social feed that surfaces entertainment over engineering on a given day [1]–[7][9]–[14]; real frontend news will reappear in a normal cycle. Plausible that AT Protocol / decentralized-identity material like [35] keeps recurring as that ecosystem matures, but no release or adoption number is cited, so treat it as background. Unlikely that anything here demands action this week — no source states a deadline, version cutover, or breaking change.
+Likely the quiet persists near-term — the feed shows no pending release or breaking-change signal for the major frameworks. Plausible that FastAPI's frontend-serving path [9] sees adoption for small Python+SPA projects where a single deploy target is preferred. Unlikely that ATProto architecture [21] influences NDF DEV's stack on any short horizon. No source quotes numeric probabilities, so none are given.
 
 ## Org applicability — NDF DEV
-Low effort: skim the frontend-architecture thread [8] and extract any concrete checklist items for the team's web/mobile app work; treat it as a discussion prompt, not authority, since it is a single opinion. Low effort: note Parcel-watcher as a shared dependency [56] and confirm whether current build setups pin or monitor it. Skip everything else — the K-pop, sports, anime, astrology, and reaction-video items [1]–[7][9]–[14][16][18]–[24][27][30]–[34][36]–[43][45][46][49][50][52]–[57][59][60] are keyword noise with no web/frontend relevance. Defer [35] (ATProto) and [25] (JDK Valhalla) — interesting reading but no current project ties to them; revisit only if a decentralized-social or JVM feature is scoped.
+Low effort: evaluate FastAPI 0.138.0 frontend serving for edutech/e-learning web apps that already use a Python backend — it can collapse SPA/static + API into one service for internal tools or prototypes [9]; keep a CDN for public static delivery. Low effort: nothing new to do on shadcn/ui — continue current usage [33]. Skip for now: ATProto [21], and the favicon [44], CSSQuake [46], and color-gamut [34] pieces — interesting but with no tie to current Unity, XR, or web/mobile projects. Drop everything tagged 'astro' that refers to the band, the game, or astrology [11][13][16][43][45].
 
 ## Signals to Watch
-- Recurring AT Protocol / decentralized-identity write-ups from core React figures [35] — watch if the studio ever scopes social features.
-- Dependency concentration in build tooling: Parcel's watcher under VSCode/Tailwind/Nx/Nuxt [56] — watch for any regression advisories.
-- Project Valhalla in JDK 28 [25] — relevant only if backend/JVM work enters the picture.
+- FastAPI extending into frontend-serving territory — watch whether single-deploy patterns gain traction for Python full-stack apps [9].
+- ATProto / decentralized social architecture discussion continuing in dev circles [21].
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | hawka_cs | ^6144 c5 | [Imagine how cold it must feel to have donk react like this to your play](https://x.com/hawka_cs/status/2068040177637818545) |
-| x | danielhowell | ^5405 c602 | [we were not supposed to see this - Dan and Phil React to Phan Twitter 10 https:/](https://x.com/danielhowell/status/2068053193339125865) |
-| x | OnlyAfroGames | ^4314 c22 | [New tech to fuck with socially awkward people. Make this a discord emote and whe](https://x.com/OnlyAfroGames/status/2068054035987415413) |
-| x | OhioTate | ^2480 c108 | [Per Mintzy’s request, I found the 5 meanest replies to him from this week and ha](https://x.com/OhioTate/status/2068043491792294179) |
-| x | statsglobe | ^2477 c122 | [Top 10 Most Handsome K-Pop Idols: 1. 🇰🇷 V (BTS) 2. 🇰🇷 Cha Eun-woo (ASTRO) 3. 🇰🇷 ](https://x.com/statsglobe/status/2067745360299041019) |
-| x | Srirachachau | ^1720 c23 | [One thing I love about Widow's Bay is that while it's definitely a comedy, it do](https://x.com/Srirachachau/status/2068070408142868544) |
-| x | phrogcult | ^1604 c25 | [I'm too impatient for phantwt react so I drew them making out https://t.co/wRx1Q](https://x.com/phrogcult/status/2068015399032217854) |
-| x | FardeemM | ^1571 c64 | [If you're on your way to building a billion dollar company that involves a web a](https://x.com/FardeemM/status/2067802731960520909) |
-| x | kuntimora | ^1128 c7 | [“Why didn’t they react to Caine coming back” they were all in shock you probably](https://x.com/kuntimora/status/2068104169156673657) |
-| x | umamusume_eng | ^1094 c5 | [New Support Cards! SSR [Tailwind to My Goals] Air Groove (Voice: Ruriko Aoki) SR](https://x.com/umamusume_eng/status/2067782791618875593) |
-| x | filmphorias | ^1033 c7 | [hudson’s name makes people see red and they genuinely think it’s normal that the](https://x.com/filmphorias/status/2068060276440654228) |
-| x | ST0NEHENGE | ^933 c9 | [Last night's crescent moon and Venus shining brightly over Stonehenge 🌙🪐✨ Photo ](https://x.com/ST0NEHENGE/status/2068014416730169630) |
-| x | Perthfect4Santa | ^784 c1 | [What I love most about the Jasper members is how they react whenever 𝑷𝒆𝒓𝒕𝒉𝑺𝒂𝒏𝒕𝒂 ](https://x.com/Perthfect4Santa/status/2068045156524368086) |
-| x | HamskyHbb | ^733 c29 | [Family Mocks Poor Family In Mall. How would you react if you were to witnessed t](https://x.com/HamskyHbb/status/2068022082894483575) |
-| hackernews | ck2 | ^690 c318 | [Hyundai buys Boston Dynamics](https://startupfortune.com/hyundai-takes-full-control-of-boston-dynamics-as-softbank-exits-for-325-million/) |
-| x | DeonnaPurrazzo | ^677 c34 | [I never called this man a stalker. He was catfished, which is incredibly sad. Ho](https://x.com/DeonnaPurrazzo/status/2068068428804493633) |
-| x | superhys | ^667 c50 | [Astro Bot has sold 4.3M copies, generating around $250M for PlayStation (@alinea](https://x.com/superhys/status/2067945878418067877) |
-| x | dokibird | ^656 c8 | [Will be live on twitch at 5pm pst to finally react to all the gaming showcases t](https://x.com/dokibird/status/2068064687087051157) |
-| x | pumafootball | ^651 c3 | [I could watch that goal on repeat &amp; still react as if it’s the first time 🇲🇦](https://x.com/pumafootball/status/2068092969433846170) |
-| x | eyojoel77 | ^630 c8 | [I take full responsibility when I am wrong. But I will not apologize for how I r](https://x.com/eyojoel77/status/2068050744415261150) |
-| x | AngelMD1103 | ^594 c19 | [Sometimes, the hardest part of meeting someone is simply starting the conversati](https://x.com/AngelMD1103/status/2068038799276257412) |
-| x | Spiralart22 | ^570 c4 | [public release an exclusive art of Sony new mascot toy~ Astro girl, each sold se](https://x.com/Spiralart22/status/2068035994276757617) |
-| x | NextGenPlayer | ^569 c64 | [Sony should invest in more family/kids games IMO to engage this audience I playe](https://x.com/NextGenPlayer/status/2068005193044693402) |
-| x | skiplup | ^554 c1 | [How i 10000% unironically react to tsukasa angstslop events https://t.co/tt16vQQ](https://x.com/skiplup/status/2068081963995476034) |
-| hackernews | philonoist | ^546 c337 | [Project Valhalla, Explained: How a Decade of Work Arrives in JDK 28](https://www.jvm-weekly.com/p/project-valhalla-explained-how-a) |
-| x | aravind | ^543 c20 | [I hope concerned authorities are noticing and taking notes. The current push bac](https://x.com/aravind/status/2068168037904400531) |
-| x | Ludicrous_24k | ^485 c1 | [SPOILERS!!!! Ok since the finale has officially released today I wanted to talk ](https://x.com/Ludicrous_24k/status/2068095304650694840) |
-| hackernews | ilreb | ^484 c335 | [Norway imposes near ban on AI in elementary school](https://www.reuters.com/technology/norway-imposes-near-ban-ai-elementary-school-2026-06-19/) |
-| x | gbhall | ^482 c56 | [I am completely blown away!!! It’s midnight and I’ve just wrapped up my first ev](https://x.com/gbhall/status/2068026357007966579) |
-| x | Forerixal | ^456 c8 | [Random CE fun fact I didn't know until today, Blammite crystals react when you s](https://x.com/Forerixal/status/2068034557140414550) |
+| x | aravind | ^8790 c124 | [I hope concerned authorities are noticing and taking notes. The current push bac](https://x.com/aravind/status/2068168037904400531) |
+| x | mrchyle | ^1962 c19 | [“I am surprised Wizkid was not on the original project because I would have take](https://x.com/mrchyle/status/2068225613111152947) |
+| x | damnmikha | ^1513 c2 | [mekaya crumbs so quick, no one could react 😭 BINI SIGNALS MOA KICKOFF #BINI_SIGN](https://x.com/damnmikha/status/2068330735094878519) |
+| x | lyratums | ^1336 c4 | [i don’t even know what to say… how do you even react to this event… usually ther](https://x.com/lyratums/status/2068268466482843672) |
+| x | ST0NEHENGE | ^1180 c10 | [Last night's crescent moon and Venus shining brightly over Stonehenge 🌙🪐✨ Photo ](https://x.com/ST0NEHENGE/status/2068014416730169630) |
+| x | pkfnafsfm | ^949 c4 | [The 8 Mains (Remake) #DandysWorld #Roblox #SFM #Undertale #7Souls #Finale #Astro](https://x.com/pkfnafsfm/status/2067997080602493139) |
+| x | BovrilG | ^906 c8 | [From about 3-6 months, the amygdalas of babies of all races react differently to](https://x.com/BovrilG/status/2068214480547295315) |
+| hackernews | ck2 | ^895 c379 | [Hyundai buys Boston Dynamics](https://startupfortune.com/hyundai-takes-full-control-of-boston-dynamics-as-softbank-exits-for-325-million/) |
+| x | FastAPI | ^794 c19 | [FastAPI can now serve your frontend app ✨ With support for client-side routing 😎](https://x.com/FastAPI/status/2068141463506935843) |
+| x | arjunkhemani | ^734 c23 | [.@friedberg explains what the Politburo is: “The Politburo is the leaders who el](https://x.com/arjunkhemani/status/2068184275606974713) |
+| x | superhys | ^733 c62 | [Astro Bot has sold 4.3M copies, generating around $250M for PlayStation (@alinea](https://x.com/superhys/status/2067945878418067877) |
+| x | Spiralart22 | ^725 c4 | [public release an exclusive art of Sony new mascot toy~ Astro girl, each sold se](https://x.com/Spiralart22/status/2068035994276757617) |
+| x | NextGenPlayer | ^662 c70 | [Sony should invest in more family/kids games IMO to engage this audience I playe](https://x.com/NextGenPlayer/status/2068005193044693402) |
+| x | studlov3r | ^661 c3 | [My worry is the fans are too intense this season and we’re gonna get the first l](https://x.com/studlov3r/status/2068279288311243020) |
+| hackernews | philonoist | ^626 c388 | [Project Valhalla, Explained: How a Decade of Work Arrives in JDK 28](https://www.jvm-weekly.com/p/project-valhalla-explained-how-a) |
+| x | Sameer_king11 | ^569 c74 | [Top 10 MOST Handsome K-Pop Idols: 1. 🇰🇷 V (BTS) 2. 🇰🇷 Cha Eun-woo (ASTRO) 3. 🇰🇷 ](https://x.com/Sameer_king11/status/2068257425296081261) |
+| x | VimjGumberbearr | ^567 c0 | [🧸: For me..love doesn’t need words “I love You” ( Lena ambiguous react🫣🤭) 🧸: I’m](https://x.com/VimjGumberbearr/status/2068227166186385463) |
+| x | RyliverUpdates | ^566 c1 | [NEW 🎥 “How Buck and Eddie would react to finding out people wrote fanfic about t](https://x.com/RyliverUpdates/status/2068263720078184677) |
+| x | mzylvs_2 | ^564 c0 | [behind the scenes of Sanha and ITZY Lia's "IDK ME" and "Motto" challenge! #YOONS](https://x.com/mzylvs_2/status/2067957271166951504) |
+| x | ascendingstarJ | ^533 c10 | [Kaiser was mad as hell and Sae was disappointed with the victory. Makes me wonde](https://x.com/ascendingstarJ/status/2068241222531997887) |
+| hackernews | danabramov | ^484 c261 | [There are no instances in ATProto](https://overreacted.io/there-are-no-instances-in-atproto/) |
+| x | CHlTTAPHRRR | ^474 c1 | [“too much stress” from scene nr 4 but i feel like here est was already stressing](https://x.com/CHlTTAPHRRR/status/2068188703202201771) |
+| x | genzcorporation | ^468 c0 | [ASTRO BUKA LOKER MT (20 Juni 2026) REGISTRATION IS NOW OPEN! 🚀 Ready to accelera](https://x.com/genzcorporation/status/2068221905971364296) |
+| hackernews | abnry | ^437 c524 | [How many of the 170k English words do you know?](https://vocabowl-870366514258.us-west1.run.app/) |
+| x | Namya_Hudville | ^436 c2 | [I'm not even gonna react to anything, I'll just say it's really interesting how ](https://x.com/Namya_Hudville/status/2068271651712631159) |
+| x | nan_artwork | ^372 c1 | [(1/2) Lately I've been craving something a little lighter, but still very in cha](https://x.com/nan_artwork/status/2068317087471448114) |
+| x | akeiomi | ^358 c0 | [One last doodle of lil astro before bed https://t.co/gcLOWV0Ymf](https://x.com/akeiomi/status/2067867171561058578) |
+| hackernews | oshrimpton | ^356 c159 | [GPT-5.5 hallucinates 3x more than MIT-licensed GLM-5.2](https://arrowtsx.dev/bigger-models/) |
+| x | DefiWimar | ^352 c57 | [🚨 SOMETHING EXTREMELY BAD IS COMING THIS MONDAY!! Markets are getting hit from E](https://x.com/DefiWimar/status/2068253114747015486) |
+| x | mzylvs_2 | ^326 c2 | [Sua's IG post with Sanha! #MOONSUA #문수아 #빌리 #Billlie #YOONSANHA #윤산하 #아스트로 #ASTR](https://x.com/mzylvs_2/status/2067944218341888386) |
 
 
 ## Top Posts
@@ -93,162 +91,162 @@ Low effort: skim the frontend-architecture thread [8] and extract any concrete c
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@hawka_cs</span>
+    <span class="ndf-author">@aravind</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 6144 · 💬 5</span>
+    <span class="ndf-engagement">♥ 8790 · 💬 124</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/hawka_cs/status/2068040177637818545">View @hawka_cs on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/aravind/status/2068168037904400531">View @aravind on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Imagine how cold it must feel to have donk react like this to your play”</p>
+    <p class="ndf-quote">“I hope concerned authorities are noticing and taking notes. The current push back against China's psyops by a handful of accounts has made them react in haste. And this is revealing a lot of SM handle”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A social post reacts to CS2 pro player donk's in-game reaction to an opponent's play — pure esports spectator content.</dd>
+      <dd>A user claims that counter-messaging against Chinese influence operations on Indian social media is causing CCP-linked accounts and media handles to expose themselves by reacting hastily.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/hawka_cs/status/2068040177637818545" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/aravind/status/2068168037904400531" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@danielhowell</span>
+    <span class="ndf-author">@mrchyle</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 5405 · 💬 602</span>
+    <span class="ndf-engagement">♥ 1962 · 💬 19</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/danielhowell/status/2068053193339125865">View @danielhowell on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/mrchyle/status/2068225613111152947">View @mrchyle on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“we were not supposed to see this - Dan and Phil React to Phan Twitter 10 https://t.co/m4qI2NWISq https://t.co/J8azgAg3uZ”</p>
+    <p class="ndf-quote">““I am surprised Wizkid was not on the original project because I would have taken wizkid on the original over NBA young boy” ~DELI REACT https://t.co/pRebpz2HeV https://t.co/ePh0b4PXIv”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A YouTube creator post about Dan and Phil reacting to fan-shipping content — unrelated to development or technology.</dd>
+      <dd>A user quotes a music opinion about Wizkid vs NBA YoungBoy on a project — no tech content.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/danielhowell/status/2068053193339125865" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/mrchyle/status/2068225613111152947" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@OnlyAfroGames</span>
+    <span class="ndf-author">@damnmikha</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 4314 · 💬 22</span>
+    <span class="ndf-engagement">♥ 1513 · 💬 2</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/OnlyAfroGames/status/2068054035987415413">View @OnlyAfroGames on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/damnmikha/status/2068330735094878519">View @damnmikha on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“New tech to fuck with socially awkward people. Make this a discord emote and when they say something stupid just react their message with this and refuse to elaborate and make their mind go crazy. htt”</p>
+    <p class="ndf-quote">“mekaya crumbs so quick, no one could react 😭 BINI SIGNALS MOA KICKOFF #BINI_SIGNALS_MANILAD1 #BINI_SIGNALS_WORLDTOUR_2026 https://t.co/V6QlTxrSa8”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A viral joke post suggesting a reaction emote be used on Discord to deliberately confuse socially awkward users, with no technical content.</dd>
+      <dd>A fan post celebrating a BINI (Filipino pop group) concert event called 'Signals' with no technical content.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/OnlyAfroGames/status/2068054035987415413" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/damnmikha/status/2068330735094878519" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@OhioTate</span>
+    <span class="ndf-author">@lyratums</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2480 · 💬 108</span>
+    <span class="ndf-engagement">♥ 1336 · 💬 4</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/OhioTate/status/2068043491792294179">View @OhioTate on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/lyratums/status/2068268466482843672">View @lyratums on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Per Mintzy’s request, I found the 5 meanest replies to him from this week and had him read them off and react The only problem is that I had my buttons mixed up and accidentally recorded everything he”</p>
+    <p class="ndf-quote">“i don’t even know what to say… how do you even react to this event… usually there is a moment in every wxs focus where i smile at how stupid tsukasa but i didnt laugh once… https://t.co/laJ1QaVKKX”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A content creator accidentally recorded off-camera footage while filming a reaction video to negative comments — entertainment blooper, no tech content.</dd>
+      <dd>A fan post expressing emotional distress over an anime/rhythm-game story event involving the character Tsukasa (Project SEKAI), with no technical content.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/OhioTate/status/2068043491792294179" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/lyratums/status/2068268466482843672" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@statsglobe</span>
+    <span class="ndf-author">@ST0NEHENGE</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2477 · 💬 122</span>
+    <span class="ndf-engagement">♥ 1180 · 💬 10</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/statsglobe/status/2067745360299041019">View @statsglobe on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ST0NEHENGE/status/2068014416730169630">View @ST0NEHENGE on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Top 10 Most Handsome K-Pop Idols: 1. 🇰🇷 V (BTS) 2. 🇰🇷 Cha Eun-woo (ASTRO) 3. 🇰🇷 Jungkook (BTS) 4. 🇰🇷 Wonbin (RIIZE) 5. 🇰🇷 Hyunjin (Stray Kids) 6. 🇯🇵 Ni-ki (ENHYPEN) 7. 🇰🇷 Jin (BTS) 8. 🇰🇷 Mingyu (SEVEN”</p>
+    <p class="ndf-quote">“Last night's crescent moon and Venus shining brightly over Stonehenge 🌙🪐✨ Photo credit Nick Bull 🙏 #Venus #moon #crescentmoon #solstice #stonehenge #astro #astrophotography #StarsEverywhere #starsever”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A KpopBeen 2026 poll ranks the top 10 most handsome K-Pop idols, led by V (BTS), Cha Eun-woo, and Jungkook.</dd>
+      <dd>A night-sky photo of the crescent moon and Venus over Stonehenge, taken by photographer Nick Bull around the June solstice.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/statsglobe/status/2067745360299041019" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/ST0NEHENGE/status/2068014416730169630" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Srirachachau</span>
+    <span class="ndf-author">@pkfnafsfm</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1720 · 💬 23</span>
+    <span class="ndf-engagement">♥ 949 · 💬 4</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Srirachachau/status/2068070408142868544">View @Srirachachau on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/pkfnafsfm/status/2067997080602493139">View @pkfnafsfm on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“One thing I love about Widow's Bay is that while it's definitely a comedy, it doesn't seem ashamed at all about also being a horror show, it doesn't undercut that. People just realistically react to t”</p>
+    <p class="ndf-quote">“The 8 Mains (Remake) #DandysWorld #Roblox #SFM #Undertale #7Souls #Finale #Astro #TwistedAstro #Vee #TwistedVee #Sprout #TwistedSprout #Shelly #TwistedShelly #Pebble #TwistedPebble #Bobette #TwistedBo”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A viewer praises Widow's Bay for blending horror and comedy without undercutting either genre, noting that realistic reactions to horror create the humor.</dd>
+      <dd>A fan-made SFM animation post featuring character remakes from the Roblox game Dandys World, tagged with game character names and fanart hashtags.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/Srirachachau/status/2068070408142868544" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/pkfnafsfm/status/2067997080602493139" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@phrogcult</span>
+    <span class="ndf-author">@BovrilG</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1604 · 💬 25</span>
+    <span class="ndf-engagement">♥ 906 · 💬 8</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/phrogcult/status/2068015399032217854">View @phrogcult on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/BovrilG/status/2068214480547295315">View @BovrilG on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“I'm too impatient for phantwt react so I drew them making out https://t.co/wRx1QVjX6V”</p>
+    <p class="ndf-quote">“From about 3-6 months, the amygdalas of babies of all races react differently to being shown pictures of faces of people from their own race to faces of people from other races.”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A fan posted hand-drawn romantic art of fictional characters because they were impatient for official content.</dd>
+      <dd>A post claims that babies aged 3–6 months show different amygdala responses to own-race versus other-race faces.</dd>
       <dt>Why interesting</dt>
       <dd>Not relevant.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
       <dd class="ndf-adapt">No action.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/phrogcult/status/2068015399032217854" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/BovrilG/status/2068214480547295315" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@FardeemM</span>
+    <span class="ndf-author">@FastAPI</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1571 · 💬 64</span>
+    <span class="ndf-engagement">♥ 794 · 💬 19</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/FardeemM/status/2067802731960520909">View @FardeemM on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/FastAPI/status/2068141463506935843">View @FastAPI on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“If you're on your way to building a billion dollar company that involves a web app, here are some of my notes on architecting the frontend. if you don't do this, it's probably fine but one day you'll ”</p>
+    <p class="ndf-quote">“FastAPI can now serve your frontend app ✨ With support for client-side routing 😎 Great for React with TanStack Router, Astro static builds, Vite-based apps, etc. 🎉 FastAPI version 0.138.0 🔖 https://t.”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>A developer shares four day-one frontend decisions: auto-generate client types from OpenAPI specs, use TanStack Query for data fetching, design sync/offline mode upfront, and adopt TanStack Router with route data loaders.</dd>
+      <dd>FastAPI 0.138.0 adds built-in support for serving frontend static apps (React/TanStack Router, Astro, Vite) with correct client-side routing — no separate static server needed.</dd>
       <dt>Why interesting</dt>
-      <dd>Generating client types from an OpenAPI spec eliminates backend-frontend type drift — a bug source that compounds as the team and API surface grow.</dd>
+      <dd>Full-stack FastAPI projects can drop the nginx/proxy layer for SPA routing — one process serves both API and frontend, which simplifies deployment and local dev setup.</dd>
       <dt class="ndf-adapt-label">How NDF DEV adapts</dt>
-      <dd class="ndf-adapt">Add OpenAPI spec export to the backend build and wire a codegen tool like openapi-typescript into CI so client types never require manual updates.</dd>
+      <dd class="ndf-adapt">Any studio project using FastAPI + Vite or Astro can upgrade to 0.138.0 and remove the separate static-serving layer from its deployment config.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/FardeemM/status/2067802731960520909" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/FastAPI/status/2068141463506935843" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

@@ -4,7 +4,7 @@ date: '2026-06-20'
 topic: ai-devtools
 lang: th
 pair: ai-devtools.en.md
-generated_at: '2026-06-20T03:05:34+00:00'
+generated_at: '2026-06-20T15:05:42+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -16,17 +16,17 @@ platforms:
 - x
 regions:
 - global
-post_count: 294
-salience: 0.78
+post_count: 289
+salience: 0.8
 sentiment: mixed
-confidence: 0.57
+confidence: 0.6
 tags:
 - ai-devtools
 - coding-agents
-- mcp
-- open-models
+- glm-5.2
 - codex
-- llm-landscape
+- anthropic-pricing
+- open-models
 thumbnail: https://pbs.twimg.com/media/HLHhZjiXUAAYyOw.jpg
 translated_by: claude-sonnet-4-6
 ---
@@ -34,79 +34,79 @@ translated_by: claude-sonnet-4-6
 # AI Devtools — 2026-06-20
 
 ## TL;DR
-- OpenAI Codex เพิ่ม local↔remote thread handoff — เริ่มงานบนแล็ปท็อป ส่งต่อไป remote box แล้วกลับมาทำต่อได้ — พร้อมดึง ChatGPT Library เข้ามารวม และรองรับการ orchestrate sub-agents [7][27][34][39]
-- โมเดล open-weight ดัน cost ลง: GLM 5.2 อ้างว่าถูกกว่า Opus 4.8 ราว 15 เท่าบน dashboard task ($0.06 vs $0.90) [41] และ Magnitude CLI อ้าง cost ต่ำกว่า Claude Code 60% บน open models [52]; GLM-5 วางตัวเป็นโมเดลสำหรับ 'vibe coding ถึง agentic engineering' [36]
-- MCP ขยายเข้าสู่เครื่องมือ creative/engine: Unreal Engine 5.8 ออก MCP server support แบบ experimental สำหรับ AI agents [8], HeyGen เปิด MCP server ใน Cursor [56] และ MCP servers ตัวใหม่มุ่งเป้า token compression [1] กับ codebase memory/knowledge graphs [17]
-- ความเชื่อมั่นต่อ model landscape สั่นคลอน: รายงานการลาออกจาก DeepMind หลายรายในสัปดาห์นี้ พร้อมคำถามเรื่องคุณภาพของ Gemini 3.5 Pro [24][35] และมีการเปรียบเทียบกับจุดอ่อนของ Llama ในต้นปี 2025 [19]
-- ปัญหา reliability ของ Codex โผล่ชัด (ร้องเรื่อง refund/reset, วิจารณ์ loop '/goal', outage 'Fable' นานหนึ่งสัปดาห์) [4][9][11]; ข่าวลือ 'SpaceX ซื้อ Cursor $60B' กำลังแพร่กระจาย ยังไม่มีการยืนยัน ให้ถือเป็น rumor [20]
+- GLM 5.2 (open-source, MIT-licensed, ฟรีในตอนนี้) ถูกรายงานจากนักพัฒนาหลายรายว่าเทียบเท่า Claude Opus 4.8 และ Codex ในงาน coding จริง ถูกกว่าราว 15 เท่าในงาน dashboard task ($0.06 เทียบ $0.90+) และ hallucinate น้อยกว่า GPT-5.5 ถึง 3 เท่า [24][32][41][54]
+- Codex (GPT-5.5/5.6) ดึงผู้ใช้จาก Claude Code ด้วยจุดแข็งด้าน fast mode, limits ที่ใจกว้าง, steering และ remote/local + phone handoff control แบบใหม่ [14][15][36]; demo หนึ่งอ้างว่า GPT-5.6 Pro one-shot เกม Sims-like ลงไฟล์ HTML เดียวใน 48 นาที [44]
+- การเปลี่ยนแปลง pricing/packaging ของ Anthropic สร้างแรงกดดัน: ลูกค้า (Workato) รายหนึ่งรายงานว่าบิลพุ่ง ~700% ในวันเดียว [33] และโมเดล 'Fable' กำลังถูกถอดออกจาก Claude Code subscriptions ภายใน ~3 วัน [7][10][11]
+- เครื่องมือลด token กำลังมาแรง: headroom บีบอัด output ของ tool/log/RAG ให้น้อยลง 60-95% [1] และ codebase-memory-mcp index repo ลงใน persistent knowledge graph รองรับ 158 ภาษา [19]
+- ข่าวลือด้านการเงินสองเรื่องที่แหล่งที่มาน่าเชื่อถือต่ำ — 'SpaceX ซื้อ Cursor $60B' [4][20] และ 'Anthropic IPO ที่ $2T' [60] — ควรถือว่าเป็นเสียงรบกวนที่ยังไม่ยืนยัน
 
 ## สิ่งที่เกิดขึ้น
-การรวมตัวของ coding agent หมุนรอบ OpenAI Codex: เพิ่ม local-to-remote thread handoff [7][27], ผู้ใช้พบว่าการต่อท้ายด้วย 'Use sub agents as needed' กระตุ้น parallelism ได้ [39] และมีรายงานว่า ChatGPT Library จะถูกรวมเข้า Codex [34] พร้อมตัวอย่างการใช้งานหนักรายวัน [43] ในขณะเดียวกัน ปัญหาเรื่อง billing/reset ของ Codex, loop '/goal' ที่ห่วย และ outage 'Fable' หลายวันก็ปรากฏขึ้น [4][9][11] ด้านเครื่องมือ open-weight ก้าวหน้าทั้งราคาและคุณภาพ: GLM 5.2 อ้างว่าเหนือกว่า Opus 4.8 บนงาน dashboard design ในราคาถูกกว่า ~15 เท่า [41], GLM-5 เปิดตัวในฐานะโมเดลสำหรับ agentic engineering [36], Magnitude เปิดตัวเป็น open-model coding CLI ราคาถูกกว่า Claude Code ~60% [52] และมีความต้องการ host GLM 5.2 บน fast-inference providers อย่าง Groq/Cerebras [18]
+กระแสหลักคือโมเดล open-weight สำหรับ coding เริ่มตามทันโมเดล closed ชั้นนำ นักพัฒนาหลายรายนำ GLM 5.2 ไปรันใน OpenCode และ harness อื่น เปรียบเทียบกับ Claude Opus และ Codex แล้วรายงานว่าผลต่างในงาน bug fix และ feature work แทบไม่มี [24][32] 'taste' ใน dashboard ดีกว่าในราคาถูกกว่า ~15 เท่า [41] และ benchmark ของบุคคลที่สามพบว่า GPT-5.5 hallucinate มากกว่า GLM-5.2 ถึง 3 เท่า [54] แพลตฟอร์ม model-agnostic อย่าง Devin และ OpenCode โฆษณาว่าเข้าถึง GLM 5.2, Kimi K2.7 และโมเดลอื่นได้ทันทีในช่วงที่ยังฟรี [55] พร้อมกันนั้นก็มีความต้องการรัน GLM 5.2 บน custom-silicon inference ที่รวดเร็ว (Groq, Cerebras) [21] ขณะเดียวกัน momentum ของ Codex เห็นได้ชัด: ผู้ใช้ Claude Code รายเก่ารายงานการย้ายด้วยเหตุผลด้านความเร็ว limits และ steering รวมถึง remote/local และ phone-based control แบบใหม่ [14][15][36] โดยมีการโปรโมต workflow แบบ phone-driven 'goals/loops' [39]
 
-## ทำไมเรื่องนี้จึงสำคัญ
-การเปลี่ยนแปลงด้านต้นทุนสองจุดที่กระทบ studio โดยตรง: (1) Codex กำลังลบ boundary ด้าน infra (local/remote handoff, sub-agents, unified Library) [7][27][34][39] ซึ่งลด barrier ในการรัน agent ข้ามเครื่อง แต่ก็เพิ่ม lock-in กับ vendor เดียวที่กำลังถูกตั้งคำถามเรื่อง reliability [4][9][11] (2) Open-weight coding models กำลังปิดช่องว่างด้านคุณภาพ ขณะที่ตัดราคาหลายเท่าในบางงาน [41][52][36] ซึ่งทำให้ mixed-model strategy (proprietary สำหรับงานยาก, open สำหรับงาน routine/bulk) มีความสมเหตุสมผลทางการเงินจริง ไม่ใช่แค่ความฝัน การขยายตัวของ MCP [8][56][1][17] หมายความว่า agent เริ่มทำงานภายใน domain tools ได้โดยตรง รวมถึง game engine [8] ดังนั้น integration surface ไม่ใช่แค่ chat box คือสนามที่วัดผลผลิตภาพที่แท้จริง ความสั่นคลอนของ DeepMind/Gemini [24][35][19] เพิ่ม concentration risk: ถ้า lab ใหญ่สะดุด ทีมที่พึ่งพามากเกินไปก็รับ roadmap uncertainty ไปด้วย นโยบายห้าม AI ในโรงเรียนประถมของนอร์เวย์ [37] ส่งสัญญาณว่าผู้ซื้อ edutech ในกลุ่มที่มีกฎระเบียบหรือกลุ่มเยาวชนจะเผชิญแรงกดดันด้านนโยบาย ซึ่งกระทบการวาง positioning ของ AI features
+## ทำไมถึงสำคัญ (การวิเคราะห์)
+แรงกดดันด้านต้นทุนสองด้านกำลังบรรจบกัน การเปลี่ยน pricing/packaging ของ Anthropic [33] และการถอด Fable ออกจาก subscriptions [7][10][11] เพิ่มแรงจูงใจในการย้ายในจังหวะเดียวกับที่โมเดลฟรี MIT-licensed อย่าง GLM 5.2 ถูกผู้ใช้มือแรงตัดสินว่า 'ดีพอ' สำหรับงาน coding ประจำวัน [24][32] เนื่องจาก model-agnostic harness ทำให้การสลับโมเดลแทบไม่มีแรงเสียดทาน [55] จุดแข่งขันจึงเลื่อนไปที่ราคา latency และ tooling มากกว่าความสามารถดิบ — นั่นจึงเป็นเหตุที่ inference-silicon access [21] และเครื่องมือลด token [1][19] มีความสำคัญเทียบเท่าตัวโมเดลเอง ผลทางอ้อม: agent กำลังผลักทีมไปสู่ repo-native conventions — markdown 'skills', evals เป็น test, CLI, open API [13][17][26] — ซึ่งหมายความว่า portable agent setup ไม่ใช่การผูกติดกับ vendor คือสินทรัพย์ที่แท้จริง ความเสี่ยงด้าน hype ก็มีจริง: บัญชีที่ความน่าเชื่อถือต่ำกำลังผลักดันข้อกล่าวอ้าง acquisition/IPO [4][60] ที่ไม่ผ่านการตรวจสอบ
 
 ## ความเป็นไปได้
-**น่าจะเกิด:** open-weight coding agents (GLM 5.2/GLM-5, Magnitude) ได้รับ adoption เพิ่มในงานที่ cost-sensitive ต่อเนื่อง เมื่อดูจากช่องว่างด้านราคาที่ระบุไว้ [41][52] และความต้องการ fast hosting ที่ชัดเจน [18] **เป็นไปได้:** MCP กลายเป็นวิธีมาตรฐานที่ agent เชื่อมต่อกับ engine และ creative tools ตามแนวทางของ UE 5.8 experimental server และ HeyGen/Cursor integration [8][56] แม้สถานะ 'experimental' หมายถึงยังมีความไม่เสถียรระยะสั้น [8] **เป็นไปได้:** 'loops' (agent รันซ้ำมุ่งเป้าหมาย) จะได้รับความสนใจด้าน product มากขึ้น หลัง framing ของผู้สร้าง Claude Code และการวิจารณ์ '/goal' [51][9] แต่ implementation ยังหยาบอยู่ [9] **ไม่น่าเป็นไปได้ตามที่ระบุ:** ข่าว 'SpaceX ซื้อ Cursor $60B' เป็นเรื่องจริง — ต้นทางมาจากบัญชีที่ความน่าเชื่อถือต่ำ [20] อย่าใช้เป็นฐานตัดสินใจ **ไม่แน่นอน:** ทิศทางของ Gemini รอดูผลกระทบจากการลาออกของ DeepMind และคุณภาพ 3.5 Pro [24][35] — ยังไม่มีแหล่งใดให้ตัวเลขชัด ถือเป็นข้อมูลเชิงทิศทางเท่านั้น
+**น่าจะเกิด:** GLM 5.2 และโมเดลเพื่อนบ้านจะกัดเซาะส่วนต่างต้นทุนของงาน coding ประจำต่อไป และ model-agnostic harness จะกลายเป็นแนวทางมาตรฐานที่ทีมใช้ป้องกันตัวเองจากการเปลี่ยนแปลงด้านราคา [24][32][55] **เป็นไปได้:** แรงเสียดทานด้าน pricing ของ Anthropic ต่อเนื่อง [33] เร่งให้เกิด mixed fleet (โมเดล premium สำหรับงานยาก, โมเดลถูก/open สำหรับงานปริมาณมาก) และ setup แบบ 'skills as markdown' จะกลายเป็น standard ข้ามเครื่องมือ [13][17][26] **เป็นไปได้แต่ยังพิสูจน์ไม่ได้:** demo one-shot full-app [44] ยืนหยัดได้เกินกว่า output ไฟล์เดียวที่คัดมา — demo เดียวไม่ใช่หลักฐานของความน่าเชื่อถือ **ไม่น่าเกิด / ยังไม่ยืนยัน:** ข้ออ้าง 'SpaceX ซื้อ Cursor $60B' [4] และ 'Anthropic IPO ที่ $2T' [60]; ไม่มีแหล่งใดให้รายละเอียดที่ตรวจสอบได้ และกรอบ SpaceX-Cursor อ่านดูเหมือน satire/ความน่าเชื่อถือต่ำ ไม่มีแหล่งใดระบุความน่าจะเป็นเป็นตัวเลข
 
-## การนำไปใช้ใน NDF DEV
-1) ทดลอง open-weight coding agents (GLM 5.2 ผ่าน fast host หรือ Magnitude CLI) กับงาน web/mobile ที่ไม่ sensitive เพื่อวัดต้นทุน/คุณภาพจริงเทียบกับ agent ปัจจุบัน — ความพยายามต่ำ [41][52][18] 2) ฝั่ง Unity/XR ให้ติดตาม engine-level MCP: MCP server experimental ของ UE 5.8 คือ pattern ที่ต้องจับตา และ UnityMCP server มีอยู่ใน session stack นี้แล้ว — prototype งาน agent-driven editor บน throwaway scene — ความพยายามปานกลาง [8] 3) ส่ง large logs/RAG chunks ผ่าน token-compression layer อย่าง headroom ก่อน LLM call ถ้าชนปัญหา context/cost limit — ความพยายามต่ำ, A/B ง่าย [1] 4) สำหรับ edutech content ingestion (PDFs → lesson markdown) ให้ประเมิน LlamaIndex PDF→markdown parser แบบ model-free เพื่อลดต้นทุน extraction — ความพยายามต่ำ [13] 5) เพิ่ม codebase-memory MCP เพื่อให้ agent มี repo context ต่อเนื่องข้ามโปรเจกต์ — ความพยายามต่ำ-ปานกลาง, ตรวจ query accuracy ก่อน [17] 6) มอง Codex เป็นหนึ่งในตัวเลือก ไม่ใช่ตัวเดียว เมื่อดูจากปัญหา reliability ที่รายงาน อย่าพึ่งพา single vendor สำหรับ deadline ลูกค้า — ความพยายามต่ำ (policy) [4][11] ข้าม: ข่าวลือ SpaceX/Cursor [20], เรื่อง trading-bot [29] และ noise ที่ไม่เกี่ยวกับ devtools ทั้งหมด [2][3][5][49]
+## การนำไปใช้สำหรับ NDF DEV
+1) ทำ bake-off 1-2 วันของ GLM 5.2 ใน harness ที่มีอยู่ (OpenCode หรือแพลตฟอร์ม model-agnostic) บน ticket Unity/C#, web และ mobile จริง; วัด pass rate และต้นทุนเทียบกับโมเดลปัจจุบัน — effort ต่ำ/กลาง, ประหยัดได้มาก [24][32][41][55] 2) ทดลอง token-reduction ใน agent pipeline: ใส่ headroom สำหรับ output ของ tool/log/RAG และทดสอบ codebase-memory-mcp สำหรับ repo indexing — effort ต่ำ/กลาง ลด API spend ได้โดยตรง [1][19] 3) ตรวจสอบ Anthropic billing exposure ตอนนี้เลย และยืนยันว่าพึ่งพาโมเดลใด (เช่น Fable) ที่กำลังถูกยกเลิกหรือไม่; วางงบประมาณรับมือการเปลี่ยนแปลงราคาก่อนที่จะสร้างความประหลาดใจ — effort ต่ำ [33][7][10][11] 4) Standardize agent setup เป็น in-repo markdown 'skills' + evals เพื่อให้สลับโมเดลได้โดยไม่ต้องทำใหม่ — effort ต่ำ [13][17][26] 5) สำหรับ edutech ให้สังเกต near-ban ของ Norway ต่อ AI ในโรงเรียนประถม [35] ในฐานะ signal ด้าน compliance/positioning สำหรับ feature e-learning ที่เผชิญกับห้องเรียน — effort ต่ำ **ข้ามไปก่อน:** ข่าวลือ SpaceX/Cursor และ Anthropic-IPO [4][20][60]; agent layer 3D on-chain ของ three.ws [43][58] (ยังช่วง early, ผูกกับ crypto, ยังไม่เหมาะกับ studio วันนี้); และโพสต์การเมือง/นอกหัวข้อทั้งหมด [2][3][16][29][40]
 
-## สัญญาณที่ต้องจับตา
-- GLM 5.2/GLM-5 จะ land บน fast inference อย่าง Groq/Cerebras หรือไม่ — ถ้าใช่ จะทำให้ open-model coding agent ใช้งานได้จริงในเชิงความเร็ว [18][36]
-- การลาออกจาก DeepMind และรายงานคุณภาพ Gemini 3.5 Pro — ถ้าสะดุดจริง จะเขย่า model-vendor landscape [24][35][19]
-- MCP servers ที่ขึ้น production ใน creative/engine tools (UE 5.8, HeyGen, video editors) — integration surface ของ agent กำลังเคลื่อนเข้าสู่ DCC/engine workflows [8][56][28]
-- นโยบาย AI ด้านการศึกษา: การห้ามเกือบสมบูรณ์ของนอร์เวย์ในโรงเรียนประถมอาจเป็น template ที่หน่วยงานกำกับดูแลอื่นลอกตาม — กระทบ positioning ของ e-learning [37]
+## Signals to Watch
+- ว่า provider inference เร็ว (Groq/Cerebras) จะเปิดตัว GLM 5.2 หรือไม่ ซึ่งจะทำให้ path โมเดล open ราคาถูกกลายเป็น path latency ต่ำด้วย [21]
+- ความต่อเนื่องของ Anthropic pricing: รายงาน bill-shock จากลูกค้ารายอื่นหรือการชี้แจงหลังกรณี Workato [33]
+- remote/local + phone handoff ของ Codex ที่พัฒนาเป็น unattended workflow ที่เชื่อถือได้จริงหรือแค่ demo [15][39]
+- DeepMind รายงานการลาออกของคนระดับสูง — ติดตามผลกระทบต่อ competitive position ของ Gemini [18][12]
 
-## Repos & Tools แนะนำให้ลอง
+## Repos & Tools to Try
 | repo | source | url |
 |---|---|---|
-| **chopratejas/headroom** — บีบอัด tool outputs, logs, files และ RAG chunks ก่อนส่งถึง LLM ลด token 60-95% | radar | <https://github.com/chopratejas/headroom> |
-| **google-research/timesfm** — TimesFM (Time Series Foundation Model) โมเดล foundation สำหรับ time-series ที่ pretrain แล้ว พัฒนาโดย Google | radar | <https://github.com/google-research/timesfm> |
-| **obra/superpowers** — framework สำหรับ agentic skills และ methodology การพัฒนา software ที่ใช้งานได้จริง | radar | <https://github.com/obra/superpowers> |
-| **DeusData/codebase-memory-mcp** — MCP server สำหรับ code intelligence ประสิทธิภาพสูง index codebase เป็น persistent knowledge graph | radar | <https://github.com/DeusData/codebase-memory-mcp> |
-| **palmier-io/palmier-pro** — video editor บน macOS ออกแบบมาสำหรับ AI | radar | <https://github.com/palmier-io/palmier-pro> |
-| **zai-org/GLM-5** — GLM-5: จาก Vibe Coding สู่ Agentic Engineering | radar | <https://github.com/zai-org/GLM-5> |
-| **withastro/flue** — framework สำหรับ sandbox agent | radar | <https://github.com/withastro/flue> |
-| **n0-computer/iroh** — IP address เปลี่ยนได้ ต่อผ่าน key แทน networking stack แบบ modular เขียนด้วย Rust | radar | <https://github.com/n0-computer/iroh> |
-| **Kong/insomnia** — API client open-source ข้ามแพลตฟอร์ม รองรับ GraphQL, REST, WebSockets, SSE และ gRPC พร้อม Cloud | radar | <https://github.com/Kong/insomnia> |
-| **Lightricks/LTX-2** — แพ็กเกจ Python inference และ LoRA trainer สำหรับโมเดล generative audio–video LTX-2 | radar | <https://github.com/Lightricks/LTX-2> |
-| **calesthio/OpenMontage** — ระบบ agentic video production open-source แรกของโลก 12 pipelines, 52 tools, 500+ agent skills | radar | <https://github.com/calesthio/OpenMontage> |
-| **koala73/worldmonitor** — dashboard ข่าวกรองโลกแบบ real-time รวม AI-powered news aggregation และ geopolitical monitoring | radar | <https://github.com/koala73/worldmonitor> |
+| **chopratejas/headroom** — บีบอัด tool output, log, file และ RAG chunk ก่อนส่งให้ LLM ลดได้ 60-95% token | radar | <https://github.com/chopratejas/headroom> |
+| **tw93/Pake** — 🤱🏻 เปลี่ยนหน้าเว็บใดก็ได้เป็น desktop app ด้วยคำสั่งเดียว | radar | <https://github.com/tw93/Pake> |
+| **mattpocock/skills** — Skills สำหรับ engineer จริง ตรงจาก .claude directory ของเขา | radar | <https://github.com/mattpocock/skills> |
+| **DeusData/codebase-memory-mcp** — MCP server ด้าน code intelligence ประสิทธิภาพสูง index codebase ลง persistent knowledge graph | radar | <https://github.com/DeusData/codebase-memory-mcp> |
+| **Kilo-Org/kilocode** — Kilo คือแพลตฟอร์ม agentic engineering แบบ all-in-one build, ship และ iterate ได้เร็วขึ้น | radar | <https://github.com/Kilo-Org/kilocode> |
+| **palmier-io/palmier-pro** — video editor บน macOS ที่สร้างมาเพื่อ AI | radar | <https://github.com/palmier-io/palmier-pro> |
+| **tursodatabase/turso** — Turso คือ in-process SQL database เข้ากันได้กับ SQLite | radar | <https://github.com/tursodatabase/turso> |
+| **calesthio/OpenMontage** — ระบบ agentic video production open-source แห่งแรกของโลก 12 pipeline, 52 tool, 500+ agent skill | radar | <https://github.com/calesthio/OpenMontage> |
+| **google-research/timesfm** — TimesFM (Time Series Foundation Model) คือโมเดล foundation สำหรับ time-series ที่ pretrain แล้วจาก Google | radar | <https://github.com/google-research/timesfm> |
+| **penpot/penpot** — Penpot: เครื่องมือออกแบบ open-source สำหรับการทำงานร่วมกันระหว่าง design และ code | radar | <https://github.com/penpot/penpot> |
+| **Kong/insomnia** — API client แบบ open-source ข้ามแพลตฟอร์มรองรับ GraphQL, REST, WebSockets, SSE และ gRPC พร้อม Cloud | radar | <https://github.com/Kong/insomnia> |
+| **withastro/flue** — sandbox agent framework | radar | <https://github.com/withastro/flue> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| radar | chopratejas_headroom | ^4005 c0 | [chopratejas/headroom Compress tool outputs, logs, files, and RAG chunks before t](https://github.com/chopratejas/headroom) |
-| x | amasad | ^3548 c35 | [@jaketapper You're also an anti-Arab racist zealot. He's just honest about it.](https://x.com/amasad/status/2067977189052580146) |
-| x | amasad | ^3522 c31 | [@itamarbengvir @JDVance Have you said thank you once? https://t.co/QPrXGJAhHR](https://x.com/amasad/status/2067681537424855100) |
-| x | theo | ^3149 c118 | [If this happened with Codex they would have refunded affected users and given ev](https://x.com/theo/status/2067814240711475367) |
-| x | BuzzPatterson | ^2701 c110 | [Freddy needs a jet. I'll fly him. I do need a copilot though.✈️😎](https://x.com/BuzzPatterson/status/2068088713939480618) |
-| x | PaulTassi | ^2008 c171 | [I may be in a bubble here, but I don't think this idea that genAI will start bei](https://x.com/PaulTassi/status/2067987816672309386) |
-| x | guinnesschen | ^1801 c133 | [Codex can now hand off threads between local and remote hosts. Start work on you](https://x.com/guinnesschen/status/2068062280345162047) |
-| x | Polymarket | ^1682 c95 | [NEW: Unreal Engine 5.8 is launching with experimental MCP server support, allowi](https://x.com/Polymarket/status/2067509115186717133) |
-| x | theo | ^1526 c202 | [I think "/goal" might be one of the worst loop implementations](https://x.com/theo/status/2067814095349510569) |
-| radar | google-research_timesfm | ^1510 c0 | [google-research/timesfm TimesFM (Time Series Foundation Model) is a pretrained t](https://github.com/google-research/timesfm) |
-| x | theo | ^1429 c111 | [I won't lie, really thought we'd have Fable back by now. Didn't think we'd go ov](https://x.com/theo/status/2068100598256599361) |
-| x | amasad | ^1356 c45 | [White House: "why?" Anthropic: "have you heard of Pliny the Liberator?"](https://x.com/amasad/status/2067824855198630311) |
-| x | jerryjliu0 | ^1224 c45 | [We built the fastest PDF -> markdown parser in the world 🚀⚡️ AND it's more accur](https://x.com/jerryjliu0/status/2067679507126124858) |
-| x | bcherny | ^1165 c107 | [Cool way to use Claude Code: deciphering Linear A, a 3500 year old written langu](https://x.com/bcherny/status/2068064304503660962) |
-| x | rauchg | ^1137 c80 | [Agents are motivating so many healthy software habits. Open APIs, documentation ](https://x.com/rauchg/status/2067936390285807940) |
-| radar | obra_superpowers | ^1110 c0 | [obra/superpowers An agentic skills framework & software development methodology ](https://github.com/obra/superpowers) |
-| radar | DeusData_codebase-memory-mcp | ^1058 c0 | [DeusData/codebase-memory-mcp High-performance code intelligence MCP server. Inde](https://github.com/DeusData/codebase-memory-mcp) |
-| x | simonw | ^991 c71 | [Really looking forward to one of the super-fast custom silicon inference provide](https://x.com/simonw/status/2067834436172071342) |
-| x | theo | ^988 c76 | [Gemini's current position reminds me of Llama's position early last year](https://x.com/theo/status/2068078193349910581) |
-| x | WallStreetApes | ^977 c52 | [Elon Musk just made one if the biggest moves in taking over the programming indu](https://x.com/WallStreetApes/status/2068132984004472876) |
-| x | theo | ^965 c69 | [I feel partially responsible for this https://t.co/jzvYy3qUbJ](https://x.com/theo/status/2068126054582206899) |
-| x | amasad | ^895 c19 | [tfw put america 1st and f the haters https://t.co/M0iENG2feE](https://x.com/amasad/status/2067824338900791773) |
-| x | Voxyz_ai | ^836 c24 | [stop telling Claude Code/Codex "the colors look off". stop telling Claude Code/C](https://x.com/Voxyz_ai/status/2068011987200786733) |
-| x | theo | ^816 c79 | [Is DeepMind dying? I've seen multiple high profile departures this week](https://x.com/theo/status/2068077260612276497) |
-| x | BuzzPatterson | ^813 c31 | [@FreddyLA7 @PhysEngicist Freddy needs a jet. I'll fly him. I do need a copilot t](https://x.com/BuzzPatterson/status/2068085933472350273) |
-| x | theallinpod | ^784 c62 | [POD UP! 🚨 Besties are back to discuss: -- SpaceX's record IPO, Cursor deal, and ](https://x.com/theallinpod/status/2068097328154624172) |
-| x | thsottiaux | ^781 c82 | [Remote / local handoff in Codex! Removing boundaries one at a time. When you let](https://x.com/thsottiaux/status/2068120572673077274) |
-| radar | palmier-io_palmier-pro | ^756 c0 | [palmier-io/palmier-pro macOS video editor built for AI](https://github.com/palmier-io/palmier-pro) |
-| x | xmayeth | ^742 c72 | [I put in $300. A bot ran it up to $14k. And I didn't even write the bot. Grabbed](https://x.com/xmayeth/status/2067996591147888829) |
-| hackernews | ck2 | ^683 c316 | [Hyundai buys Boston Dynamics](https://startupfortune.com/hyundai-takes-full-control-of-boston-dynamics-as-softbank-exits-for-325-million/) |
+| radar | chopratejas_headroom | ^3786 c0 | [chopratejas/headroom Compress tool outputs, logs, files, and RAG chunks before t](https://github.com/chopratejas/headroom) |
+| x | amasad | ^3782 c36 | [@jaketapper You're also an anti-Arab racist zealot. He's just honest about it.](https://x.com/amasad/status/2067977189052580146) |
+| x | amasad | ^3562 c31 | [@itamarbengvir @JDVance Have you said thank you once? https://t.co/QPrXGJAhHR](https://x.com/amasad/status/2067681537424855100) |
+| x | WallStreetApes | ^3199 c116 | [Elon Musk just made one if the biggest moves in taking over the programming indu](https://x.com/WallStreetApes/status/2068132984004472876) |
+| x | BuzzPatterson | ^2859 c113 | [Freddy needs a jet. I'll fly him. I do need a copilot though.✈️😎](https://x.com/BuzzPatterson/status/2068088713939480618) |
+| x | theo | ^2637 c159 | [I won't lie, really thought we'd have Fable back by now. Didn't think we'd go ov](https://x.com/theo/status/2068100598256599361) |
+| x | theo | ^2491 c129 | [3 days left of using Fable in your Claude Code sub! Better maximize that token u](https://x.com/theo/status/2068273183212638384) |
+| radar | tw93_Pake | ^2398 c0 | [tw93/Pake 🤱🏻 Turn any webpage into a desktop app with one command.](https://github.com/tw93/Pake) |
+| x | PaulTassi | ^2371 c182 | [I may be in a bubble here, but I don't think this idea that genAI will start bei](https://x.com/PaulTassi/status/2067987816672309386) |
+| x | theo | ^2134 c108 | [I feel partially responsible for this https://t.co/jzvYy3qUbJ](https://x.com/theo/status/2068126054582206899) |
+| x | theo | ^1808 c140 | [Set up my new trmnl to show my monthly token usage. Not sure if this is good for](https://x.com/theo/status/2068130475525468610) |
+| x | theo | ^1713 c108 | [Gemini's current position reminds me of Llama's position early last year](https://x.com/theo/status/2068078193349910581) |
+| radar | mattpocock_skills | ^1520 c0 | [mattpocock/skills Skills for Real Engineers. Straight from my .claude directory.](https://github.com/mattpocock/skills) |
+| x | thsottiaux | ^1478 c79 | [Late to this one, but follow @danshipper for S-tier codex tips. These days I spe](https://x.com/thsottiaux/status/2068144722460475527) |
+| x | thsottiaux | ^1468 c112 | [Remote / local handoff in Codex! Removing boundaries one at a time. When you let](https://x.com/thsottiaux/status/2068120572673077274) |
+| x | amasad | ^1465 c50 | [White House: "why?" Anthropic: "have you heard of Pliny the Liberator?"](https://x.com/amasad/status/2067824855198630311) |
+| x | rauchg | ^1317 c91 | [Agents are motivating so many healthy software habits. Open APIs, documentation ](https://x.com/rauchg/status/2067936390285807940) |
+| x | theo | ^1288 c96 | [Is DeepMind dying? I've seen multiple high profile departures this week](https://x.com/theo/status/2068077260612276497) |
+| radar | DeusData_codebase-memory-mcp | ^1267 c0 | [DeusData/codebase-memory-mcp High-performance code intelligence MCP server. Inde](https://github.com/DeusData/codebase-memory-mcp) |
+| x | theallinpod | ^1136 c114 | [POD UP! 🚨 Besties are back to discuss: -- SpaceX's record IPO, Cursor deal, and ](https://x.com/theallinpod/status/2068097328154624172) |
+| x | simonw | ^1076 c76 | [Really looking forward to one of the super-fast custom silicon inference provide](https://x.com/simonw/status/2067834436172071342) |
+| x | theo | ^1037 c42 | [Everything is different now. It's time to think bigger. https://t.co/P7E1JXZ0p4](https://x.com/theo/status/2068176117186617471) |
+| radar | Kilo-Org_kilocode | ^1035 c0 | [Kilo-Org/kilocode Kilo is the all-in-one agentic engineering platform. Build, sh](https://github.com/Kilo-Org/kilocode) |
+| x | burkov | ^1018 c83 | [For the last three days, I've been using GLM 5.2 with OpenCode instead of Codex ](https://x.com/burkov/status/2068258575315542352) |
+| x | DaftLimmy | ^996 c22 | [A lot of people complain about the environmental impact of AI (Copilot, for exam](https://x.com/DaftLimmy/status/2068296871978614905) |
+| x | rauchg | ^994 c114 | [The next hot programming language is… markdown. A minimal eve agent: 📂 𝚊𝚐𝚎𝚗𝚝/ 📄 ](https://x.com/rauchg/status/2068165988005380478) |
+| x | theo | ^974 c195 | [MacOS is quickly becoming my biggest bottleneck](https://x.com/theo/status/2068260907558559861) |
+| x | BuzzPatterson | ^948 c32 | [@FreddyLA7 @PhysEngicist Freddy needs a jet. I'll fly him. I do need a copilot t](https://x.com/BuzzPatterson/status/2068085933472350273) |
+| x | amasad | ^909 c19 | [tfw put america 1st and f the haters https://t.co/M0iENG2feE](https://x.com/amasad/status/2067824338900791773) |
+| radar | palmier-io_palmier-pro | ^904 c0 | [palmier-io/palmier-pro macOS video editor built for AI](https://github.com/palmier-io/palmier-pro) |
 
 
 ## โพสต์เด่น
@@ -116,14 +116,14 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@amasad</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3548 · 💬 35</span>
+    <span class="ndf-engagement">♥ 3782 · 💬 36</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/amasad/status/2067977189052580146">View @amasad on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“@jaketapper You’re also an anti-Arab racist zealot. He’s just honest about it.”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@amasad โพสต์โจมตีส่วนตัวทางการเมือง ไม่เกี่ยวกับ tech หรือ devtools ใดๆ</dd>
+      <dd>@amasad โพสต์โจมตีส่วนตัว เรียก Jake Tapper ว่าเป็น racist — ไม่เกี่ยวกับเทคโนโลยีใดๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -136,14 +136,14 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@amasad</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3522 · 💬 31</span>
+    <span class="ndf-engagement">♥ 3562 · 💬 31</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/amasad/status/2067681537424855100">View @amasad on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“@itamarbengvir @JDVance Have you said thank you once? https://t.co/QPrXGJAhHR”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@amasad โพสต์ความเห็นทางการเมืองถึง @itamarbengvir และ @JDVance ไม่มีเนื้อหาทางเทคนิคใดๆ</dd>
+      <dd>@amasad โพสต์ความเห็นการเมือง ถาม @itamarbengvir กับ @JDVance ว่าเคยขอบคุณบ้างไหม — ไม่มีเนื้อหาเทคโนโลยี</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -154,36 +154,36 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@theo</span>
+    <span class="ndf-author">@WallStreetApes</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3149 · 💬 118</span>
+    <span class="ndf-engagement">♥ 3199 · 💬 116</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2067814240711475367">View @theo on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/WallStreetApes/status/2068132984004472876">View @WallStreetApes on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“If this happened with Codex they would have refunded affected users and given everyone at least 2 resets”</p>
+    <p class="ndf-quote">“Elon Musk just made one if the biggest moves in taking over the programming industry “SpaceX just bought Cursor for $60 billion. Do you realize how big this is? SpaceX went public — the biggest IPO in”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@theo โพสต์เปรียบเทียบว่า AI devtool บางตัวจัดการ incident ได้แย่กว่า Codex ของ OpenAI ที่น่าจะคืนเงินและให้ reset ผู้ใช้ — แต่ไม่ระบุว่า incident คืออะไรหรือเกิดกับ tool ไหน</dd>
+      <dd>บัญชีการเงินเชิง hype อ้างว่า SpaceX ซื้อ Cursor ในราคา $60B หลัง IPO โดยชี้ว่า Elon ควบคุม compute, model และ dev tool ครบ — ไม่มีการยืนยัน</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/theo/status/2067814240711475367" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/WallStreetApes/status/2068132984004472876" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@BuzzPatterson</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2701 · 💬 110</span>
+    <span class="ndf-engagement">♥ 2859 · 💬 113</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/BuzzPatterson/status/2068088713939480618">View @BuzzPatterson on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Freddy needs a jet. I’ll fly him. I do need a copilot though.✈️😎”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์บน X เล่าเรื่องส่วนตัวเรื่องการบินพาคนชื่อ Freddy ไม่มีเนื้อหาด้านเทคโนโลยีใดๆ</dd>
+      <dd>โพสต์ส่วนตัวของ @BuzzPatterson เกี่ยวกับการบินพาคนชื่อ Freddy และอยากได้ copilot — ไม่มีเนื้อหาเทคโนโลยีใดๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -194,82 +194,82 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@PaulTassi</span>
+    <span class="ndf-author">@theo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2008 · 💬 171</span>
+    <span class="ndf-engagement">♥ 2637 · 💬 159</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/PaulTassi/status/2067987816672309386">View @PaulTassi on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2068100598256599361">View @theo on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“I may be in a bubble here, but I don't think this idea that genAI will start being more broadly accepted in creative projects has panned out, even as the tech has gotten technically better. There's ju”</p>
+    <p class="ndf-quote">“I won't lie, really thought we'd have Fable back by now. Didn't think we'd go over a week.”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Paul Tassi นักข่าวด้านเกมและบันเทิงชี้ว่า ความต้านทานของสาธารณชนต่อ creative content ที่ generate ด้วย AI ยังไม่ลดลง แม้เทคโนโลยีจะดีขึ้น — มีแค่ AI ในฐานะ dev tool เท่านั้นที่ได้รับการยอมรับ</dd>
+      <dd>@theo ระบุว่า Fable ซึ่งเป็น model tier ของ Anthropic ยัง offline มากกว่าหนึ่งสัปดาห์แล้วโดยไม่มีกำหนดการกลับมา</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>สัญญาณชัด: AI ใน dev pipeline โอเค แต่ AI-authored assets ใน game หรืองาน creative ที่ ship ออกไปยังมีความเสี่ยงด้านภาพลักษณ์กับ audience อยู่</dd>
+      <dd>pipeline หรือ agent workflow ที่ใช้ Fable อยู่ใช้ไม่ได้ในตอนนี้ — ควรรู้ก่อนวางแผนงานใหม่ที่ต้องพึ่ง model นี้</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ใช้ AI ภายในทีม — pipeline, tooling, prototype — อย่าเปิดเผยว่า art หรือ narrative ใน game ที่ release ใช้ AI สร้าง จนกว่า sentiment ของ audience จะเปลี่ยนจริงๆ</dd>
+      <dd class="ndf-adapt">ตรวจ integration ที่เรียก Fable แล้วเปลี่ยนไปใช้ Claude tier ที่ available อยู่ เช่น Sonnet หรือ Haiku ไปก่อน</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/PaulTassi/status/2067987816672309386" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@guinnesschen</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1801 · 💬 133</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/guinnesschen/status/2068062280345162047">View @guinnesschen on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“Codex can now hand off threads between local and remote hosts. Start work on your laptop, send it to a remote box before you close the lid, bring it back later. And yes, Codex can orchestrate the hand”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>OpenAI Codex รองรับการส่งต่อ thread ระหว่าง local กับ remote host แล้ว — หยุดงานบนเครื่องหนึ่งแล้วไปต่อบนอีกเครื่องได้ โดย Codex จัดการ handoff ให้อัตโนมัติ</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ทีมที่ทำงานข้าม local และ cloud server ส่งต่อ Codex session ที่กำลังรันอยู่ได้โดยไม่ต้องบันทึก state หรืออธิบาย context ใหม่</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทดสอบ Codex thread handoff กับโปรเจกต์ที่ทีมเริ่มงาน local แล้วต่อบน remote build box — ทั้ง Unity และ web pipeline ใช้ได้</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/guinnesschen/status/2068062280345162047" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Polymarket</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1682 · 💬 95</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Polymarket/status/2067509115186717133">View @Polymarket on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“NEW: Unreal Engine 5.8 is launching with experimental MCP server support, allowing AI agents to work directly on game development.”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Unreal Engine 5.8 เปิดตัว MCP server support แบบ experimental ให้ AI agents ทำงานภายใน engine ได้โดยตรงระหว่าง game development</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>MCP ใน engine เป็น pattern AI tooling แบบใหม่สำหรับ game dev — Unity เป็น engine ถัดไปที่ studio ต้องจับตาว่าจะตามมาเมื่อไหร่</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทดสอบ MCP server ของ UE5.8 ใน sandbox project เพื่อเข้าใจ integration model ก่อนที่ Unity จะออก feature เทียบเท่า</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/Polymarket/status/2067509115186717133" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/theo/status/2068100598256599361" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@theo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1526 · 💬 202</span>
+    <span class="ndf-engagement">♥ 2491 · 💬 129</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2067814095349510569">View @theo on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2068273183212638384">View @theo on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“I think &quot;/goal&quot; might be one of the worst loop implementations”</p>
+    <p class="ndf-quote">“3 days left of using Fable in your Claude Code sub! Better maximize that token usage https://t.co/2F0GjTwgRG”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@theo โพสต์แค่ว่า '/goal' เป็น loop implementation ที่แย่มาก โดยไม่ได้อธิบายเพิ่มเติมว่าทำไมหรือเป็น tool ไหน</dd>
+      <dd>สิทธิ์ใช้ Fable model ผ่าน Claude Code subscription เหลือ 3 วัน — @theo แนะให้ใช้ token ให้คุ้มก่อนหมดเขต</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ทีมที่ใช้ Claude Code subscription มีเวลาน้อยลงทุกทีในการรัน workload หนักบน Fable โดยไม่มีค่าใช้จ่ายเพิ่ม</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">เอางาน heavy เช่น refactor ใหญ่, architecture draft, bulk code generation ใส่คิวใน Claude Code ตอนนี้ก่อนสิทธิ์ Fable หมด</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/theo/status/2068273183212638384" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@PaulTassi</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 2371 · 💬 182</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/PaulTassi/status/2067987816672309386">View @PaulTassi on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“I may be in a bubble here, but I don't think this idea that genAI will start being more broadly accepted in creative projects has panned out, even as the tech has gotten technically better. There's ju”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Paul Tassi (นักเขียน Forbes ด้านเกมและบันเทิง) ชี้ว่าความเกลียดชังของสาธารณชนต่อ AI-generated creative content ไม่ได้ลดลงแม้เทคโนโลยีจะดีขึ้น ในขณะที่ AI ในฐานะ developer tool ไม่เจอแรงต้านแบบเดียวกัน</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>สาธารณชนแบ่งชัดระหว่าง AI ที่ใช้เป็น dev tool กับ AI ที่เป็น creative output — ใช้ภายในได้เงียบๆ แต่ถ้าปล่อยออกมาเป็น content จะโดน reputation damage</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">จำกัด AI ไว้ที่ชั้น tooling (code gen, asset pipeline, QA) อย่าปล่อย AI-generated art หรือ narrative ที่ผู้เล่นสัมผัสตรงๆ ใน game/XR projects</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/PaulTassi/status/2067987816672309386" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@theo</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 2134 · 💬 108</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2068126054582206899">View @theo on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“I feel partially responsible for this https://t.co/jzvYy3qUbJ”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>@theo โพสต์ tweet คลุมเครือว่ารู้สึก 'รับผิดชอบบางส่วน' กับบางอย่าง พร้อมลิงก์ที่ไม่สามารถระบุเนื้อหาได้ ไม่มี context ใดในตัวโพสต์เลย</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/theo/status/2067814095349510569" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/theo/status/2068126054582206899" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

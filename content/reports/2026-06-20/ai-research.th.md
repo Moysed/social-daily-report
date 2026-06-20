@@ -4,7 +4,7 @@ date: '2026-06-20'
 topic: ai-research
 lang: th
 pair: ai-research.en.md
-generated_at: '2026-06-20T03:30:35+00:00'
+generated_at: '2026-06-20T15:30:22+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -13,17 +13,17 @@ platforms:
 - x
 regions:
 - global
-post_count: 192
-salience: 0.42
+post_count: 189
+salience: 0.55
 sentiment: mixed
-confidence: 0.45
+confidence: 0.4
 tags:
 - ai-research
-- glm
-- agent-memory
+- open-weights
+- glm-5.2
+- benchmarks
+- llm-agents
 - evaluation
-- interpretability
-- model-adoption
 thumbnail: https://pbs.twimg.com/media/HLKJpL2bAAA4NKm.jpg
 translated_by: claude-sonnet-4-6
 ---
@@ -31,63 +31,63 @@ translated_by: claude-sonnet-4-6
 # AI Research — 2026-06-20
 
 ## TL;DR
-- ผู้ใช้งานจริงหลายรายรายงานว่า GLM 5.2 (โมเดลจีน) ทำงานใกล้เคียง Opus ในงาน agentic coding ระยะยาว โดยอ้างว่าไม่ได้ใช้งบพันล้าน [4][25][28] — ทั้งหมดเป็นหลักฐานเชิงประสบการณ์ ไม่มี benchmark สาธารณะ
-- Anthropic Frontier Red Team ระบุว่า Opus 4.7 โปรแกรม robodog คนเดียวได้เร็วกว่าทีม human ที่ดีที่สุดปีก่อน (ซึ่งใช้ Opus 4.1) ถึง ~20x — ตัวเลขมาจาก blog ของบริษัทเอง [2]
-- งานวิจัย AtomMem เสนอหน่วยความจำอะตอมขนาดเล็กพร้อม 'Fact Executor' เพื่อแก้ปัญหา summary drift และ corruption ใน long-term LLM agent [19]
-- สัญญาณด้าน eval methodology: Chain-of-Thought monitoring (เทคนิคด้าน safety/observability) อาจใช้ไม่ได้กับ diffusion model; DiffusionGemma รายงานว่าสามารถดึงประโยชน์ส่วนใหญ่กลับมาได้ [24]
-- ด้านบุคลากร: John Jumper (AlphaFold) รายงานว่าเข้าร่วม Anthropic [43]; มีกระทู้กว้างขึ้นเรื่อง internal/continuous 'latent' reasoning ที่ไม่ผ่าน text CoT [17]
+- GLM 5.2 ที่อ้างว่าเป็น MIT-licensed และเปิดให้ใช้งานได้อย่างเสรี กำลังถูกนำเสนอว่าเป็นการลดช่องว่างระหว่าง open-vs-closed ที่ใหญ่ที่สุดเท่าที่เคยมีมา พร้อม claim รองว่า hallucination น้อยกว่า GPT-5.5 ราว 3 เท่า [6] และคุณภาพสูงกว่า Opus 4.8 ด้วย token น้อยกว่าและต้นทุนต่ำกว่า [17][7] — ทั้งหมดมาจาก blog/X commentary ยังไม่ผ่านการ verify อิสระ
+- Anthropic's Frontier Red Team (Project Fetch Phase 2) รายงานว่า Opus 4.7 โปรแกรม robodog ได้เร็วกว่า human team ที่ดีที่สุดปีที่แล้วซึ่งใช้ Opus 4.1 ช่วยอยู่ถึงราว 20 เท่า [2]
+- ARC-AGI-2 reality check: โมเดลจีนที่ทำคะแนนสูงสุดในบันทึกคือ Kimi K2.5 ที่ 11.8% (release 2026-01-27); ตัวเลข ~50% ของ GLM 5.2 เป็นเพียงความคาดหวังของ commentator คนหนึ่ง ไม่ใช่คะแนนจริง [57]
+- paper ด้าน agent method หลายชิ้นปรากฏขึ้น: AtomMem (atomic-unit long-term memory พร้อม Fact Executor) [13], FAPO automated prompt optimization สำหรับ agentic workflows [20], continuous internal/latent reasoning เทียบกับ text CoT [16] และ PixelRAG visual retrieval ที่ข้าม HTML parsing [5]
+- เส้นด้าย mech-interp และ safety: CoT monitoring อาจเสื่อมประสิทธิภาพกับ diffusion models แต่ส่วนใหญ่กู้คืนได้สำหรับ DiffusionGemma [11][56]; แยกออกมา การถกเถียงเรื่อง release-gating/licensing รอบ Anthropic Mythos/Fable 5 ยังดำเนินต่อ [15][23][50][55]
 
-## สิ่งที่เกิดขึ้น
-สัญญาณวิจัย AI จริงๆ ในชุดข้อมูลวันนี้มีน้อยและส่วนใหญ่เป็นเชิงประสบการณ์ กลุ่มใหญ่ที่สุดคือ GLM 5.2: ผู้ใช้หลายราย ([4][25][28][16][51]) รายงานว่ารองรับงาน agentic coding หลายชั่วโมงและใกล้เคียงคุณภาพ Opus โดยรายหนึ่งระบุว่าอาจแทน daily driver ได้; platform noumena เพิ่ม support และให้ใช้ฟรีประมาณหนึ่งสัปดาห์ [51] ไม่มีใครอ้างตัวเลข benchmark และผู้โพสต์บางรายมีความเกี่ยวข้องกับ platform ที่กำลังโปรโมต Anthropic Frontier Red Team โพสต์ Phase 2 ของ Project Fetch อ้างว่า Opus 4.7 คนเดียวเร็วกว่าทีม human ที่ดีที่สุดก่อนหน้า (ซึ่งใช้ Opus 4.1) ~20x ในการโปรแกรม robodog [2] รายการด้านเอกสาร/paper ได้แก่ AtomMem สำหรับ atomic agent memory [19], การอ้าง multi-agent FinRobot ด้าน quant finance [32], บันทึก agentic-RL เรื่อง action masking และ RL+world-modeling [27], และกระทู้ continuous/internal reasoning [17]
+## What happened
+สัญญาณวิจัย AI ของวันนี้ศูนย์กลางอยู่ที่การแข่งขัน open-weight X post หลายรายการและ blog หนึ่งอ้างว่า GLM 5.2 ลดช่องว่างไปยัง closed SoTA ได้อย่างชัดเจน โดยอิง benchmark consistency [7] hallucination ต่ำกว่า GPT-5.5 [6] และคุณภาพดีกว่า Opus 4.8 ที่ token cost ต่ำกว่า [17] ส่วน counterpoint ชี้ว่าคะแนนจีนที่ log ไว้บน ARC-AGI-2 ที่ดีที่สุดคือ Kimi K2.5 ที่ 11.8% ส่วน ~50% ของ GLM 5.2 เป็นการ speculate ไม่ใช่ผลวัดจริง [57] Anthropic's Frontier Red Team เผยแพร่ Project Fetch Phase 2 รายงานว่า Opus 4.7 แซง human+Opus 4.1 robotics team ที่ดีที่สุดปีที่แล้วด้วยอัตรา ~20 เท่า [2]
 
-## ทำไมจึงสำคัญ
-หาก agentic-coding quality ของ GLM 5.2 พิสูจน์ได้จริง สตูดิโอจะมีตัวเลือกต้นทุนต่ำกว่าสำหรับงาน coding/agent ระยะยาวควบคู่กับโมเดล frontier ของ US [4][28] — แต่หลักฐานวันนี้ยังเป็นเพียง Twitter testimony ไม่ใช่ eval ที่ reproduce ได้ ยังไม่สามารถนำไปตัดสินใจ production ได้ รูปแบบ AtomMem สำคัญเพราะ long-running agent (เช่น tutoring หรือ in-game NPC agent) มักล้มเหลวเรื่อง memory drift และ corruption; การออกแบบ atomic-unit คือ architecture ที่เป็นรูปธรรมพร้อมให้ประเมิน [19] ข้อค้นพบ CoT-monitoring/diffusion [24] คือความเสี่ยงชั้นที่สอง: ทีมที่ใช้ diffusion-style text model เพื่อความเร็วอาจสูญเสียเทคนิค observability/safety ที่พึ่งพาโดยปริยาย การแสดงท่าทีด้าน safety/licensing ของ Anthropic [50][52][20] และการจ้าง Jumper [43] บ่งชี้ทิศทางที่ frontier capability และการ gatekeeping กำลังมุ่งไป ซึ่งกระทบการเข้าถึงโมเดลและเงื่อนไขในอนาคต
+## Why it matters (reasoning)
+ถ้า claim ของ GLM 5.2 ผ่านการทดสอบอิสระ studio จะได้โมเดลที่ถูกกว่าและอาจ self-host ได้สำหรับงาน coding และ assistant [7][17][6] — แต่หลักฐานที่มีเกือบทั้งหมดเป็น secondary commentary และ blog ที่ credibility ต่ำ [6] และ contradiction บน ARC-AGI-2 [57] เป็นสัญญาณเตือนตรงๆ ว่าอย่าเชื่อตัวเลขพาดหัว สัญญาณที่คงทนกว่าคือ method papers: AtomMem [13] และ FAPO [20] แก้ failure modes จริงอย่าง memory drift และการ tune prompt แบบ manual ซึ่งสำคัญสำหรับ agent ที่รันระยะยาวในงาน tutoring หรือ app workflows ความตึงเครียดระหว่าง CoT-monitoring กับ latent-reasoning [11][16] เป็น second-order concern: การเอา reasoning ออกจาก text [16] เพิ่ม efficiency แต่ลด inspectability ที่ safety tooling ปัจจุบันพึ่งพา [11] ซึ่งส่งผลต่อ auditability ของ agent product ใดก็ตาม
 
-## ความเป็นไปได้
-มีแนวโน้มสูง: GLM 5.2 ยังคงเป็นตัวเลือก agentic-coding ที่น่าเชื่อถือในราคาต่ำกว่า และจะมีการ benchmark อิสระในเร็วๆ นี้ จากปริมาณรายงาน hands-on [4][25][28] เป็นไปได้แต่ยังไม่ยืนยัน: ตรงกับ Opus จริงบน workload จริง — การอ้างสิทธิ์ขาดข้อมูล eval สาธารณะและแหล่งข้อมูลบางส่วนเป็นเชิงโปรโมต [16][51] เป็นไปได้: CoT-based monitoring กลายเป็น checklist มาตรฐานเมื่อ agentic feature ออก ship โดย diffusion model ต้องการการจัดการพิเศษ [24] ไม่น่าจะเกิด (ระยะสั้น): ผลลัพธ์ 'multi-agent beats single LLM' ของ FinRobot ขยายผลเกิน quant finance ไปยังงานของสตูดิโอ — เป็นการ tweet อ้างเพียงครั้งเดียว [32] ไม่มีแหล่งข้อมูลใดให้ตัวเลขความน่าจะเป็น จึงไม่ระบุที่นี่
+## Possibility
+Plausible: GLM 5.2 (หรือ open model ในอนาคตใกล้) ดีพอด้าน cost-per-quality จนคุ้มค่ากับ pilot แบบควบคุม โดยอิง third-party benchmark talk ที่สม่ำเสมอ [7][17] — มีเงื่อนไขว่าต้องได้รับการยืนยันอิสระ Unlikely: ตัวเลข ~50% ARC-AGI-2 ของ GLM 5.2 จะเป็นจริง เพราะโมเดลจีนที่วัดได้ดีที่สุดอยู่ที่ 11.8% [57] Plausible: latent/continuous reasoning methods แพร่หลายเพราะ compute argument [16] สร้างแรงเสียดทานต่อเนื่องกับ CoT-based monitoring [11] ไม่มี source ใดระบุความน่าจะเป็นเป็นตัวเลข จึงไม่ assert ค่าใดๆ
 
-## การนำไปใช้กับองค์กร — NDF DEV
-1) ทดลอง GLM 5.2 เป็น coding/agent assistant ใน sandbox คู่กับ tool ปัจจุบันในช่วงที่เปิดฟรี — effort ต่ำ [28][51]; อย่าใช้กับงาน production จนกว่าจะมี benchmark อิสระ [4] 2) สำหรับ long-running agent ใน edutech/XR product ให้ประเมิน atomic-memory pattern ของ AtomMem เทียบกับ summary-based memory ที่ใช้อยู่ — effort ปานกลาง [19] 3) ถ้ากำลัง ship agentic feature ให้เพิ่ม Chain-of-Thought monitoring ใน observability/safety checklist และบันทึกว่าอาจไม่ transfer ไปยัง diffusion-style model — effort ปานกลาง [24] ข้าม: เสียงรบกวน red-team meme/politics [10][42][48][49], การอ้าง FinRobot quant (นอก domain) [32], และการถกเถียงเรื่อง biological-capability/licensing [18][50] — เชิงข้อมูลเท่านั้น ไม่มี action
+## Org applicability — NDF DEV
+1) รัน in-house eval เองก่อนเชื่อ claim ใดๆ เรื่อง GLM 5.2 vs GPT-5.5/Opus — ใช้ coding/edutech prompts ของตัวเองแทน blog หรือตัวเลขจาก X [6][7][17] (effort med) 2) อ่าน AtomMem paper สำหรับ e-learning/tutoring agents ระยะยาวที่ memory drift เป็นความเสี่ยงจริง [13] (effort med) 3) ทดลอง FAPO-style automated prompt optimization บน agentic workflow หนึ่งตัวเพื่อลด manual tuning [20] (effort low-med) 4) ถ้าทดสอบ non-proprietary models ให้ใช้ model-agnostic harness อย่าง dcode แทน Claude Code/Codex ซึ่ง tune สำหรับโมเดลตัวเองโดยเฉพาะ [19] (effort low) 5) จดบันทึก PixelRAG ไว้เป็นตัวเลือกสำหรับ screenshot/asset retrieval แต่แค่ spike อย่า adopt [5] (effort low) ข้าม: ผลลัพธ์ robodog/robotics [2], mech-interp papers [11][47][56] และ noise ทั้งหมดเรื่องการเมือง/crypto/cybersecurity — ไม่เกี่ยวกับ adoption decisions ปัจจุบัน
 
-## สัญญาณที่ต้องติดตาม
-- GLM 5.2 — รอ benchmark/eval suite อิสระเพื่อยืนยันหรือหักล้างการอ้าง near-Opus agentic [4][28]
-- AtomMem และ atomic agent-memory paper ที่คล้ายกันในฐานะ pattern สำหรับ long-running tutoring/game agent [19]
-- CoT-monitoring breakage บน diffusion model (DiffusionGemma recovery) ก่อน adopt diffusion text model [24]
-- ทิศทาง talent/safety ของ Anthropic — การจ้าง John Jumper และ licensing rhetoric ที่กำหนดการเข้าถึงโมเดลในอนาคต [43][50]
+## Signals to Watch
+- Independent benchmarks สำหรับ GLM 5.2 โดยเฉพาะตัวเลข ARC-AGI-2 จริงเพื่อยืนยันหรือปฏิเสธ claim ~50% [57][7]
+- ผลลัพธ์ release-gating และ licensing ของ Anthropic Mythos/Fable 5 — เป็น precedent ที่อาจกระทบ model availability และกฎระเบียบในอนาคต [15][23][55]
+- การแพร่กระจาย continuous/latent reasoning methods และวิธีที่ทีมรักษา auditability เมื่อ CoT ไม่อยู่ใน text channel อีกต่อไป [16][11]
+- AtomMem-style atomic memory และ FAPO prompt optimization จะปรากฏใน reproducible, runnable repos หรือยังคงอยู่แค่ paper threads [13][20]
 
-## แหล่งข้อมูลดิบ
+## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | juhoontwt | ^5287 c5 | [face card and model card too insane yeah juhoon's a natural… just so effortless ](https://x.com/juhoontwt/status/2067866531254632851) |
-| x | AnthropicAI | ^2032 c275 | [New Frontier Red Team blog: Phase 2 of Project Fetch, where we test how well Cla](https://x.com/AnthropicAI/status/2067651699486200091) |
-| radar | ck2 | ^691 c318 | [Hyundai buys Boston Dynamics](https://startupfortune.com/hyundai-takes-full-control-of-boston-dynamics-as-softbank-exits-for-325-million/) |
-| x | teortaxesTex | ^562 c41 | [GLM blows a big hole in my thesis that the Chinese have a catastrophic disadvant](https://x.com/teortaxesTex/status/2068118863233843292) |
-| radar | philonoist | ^546 c337 | [Project Valhalla, Explained: How a Decade of Work Arrives in JDK 28](https://www.jvm-weekly.com/p/project-valhalla-explained-how-a) |
-| radar | ilreb | ^485 c336 | [Norway imposes near ban on AI in elementary school](https://www.reuters.com/technology/norway-imposes-near-ban-ai-elementary-school-2026-06-19/) |
-| x | aryaman2020 | ^454 c27 | [since Noam Shazeer is in the news for (probably deservedly) making 1e9 more doll](https://x.com/aryaman2020/status/2067452025793831289) |
-| radar | danabramov | ^361 c199 | [There are no instances in ATProto](https://overreacted.io/there-are-no-instances-in-atproto/) |
-| x | _xjdr | ^317 c10 | [current state of AI models in 2026: - center a div -&gt; 4 hours of slop - make ](https://x.com/_xjdr/status/2067988474586955793) |
-| x | McSolsy | ^300 c9 | [Yo where the red team fans at https://t.co/duC1oJWTuO](https://x.com/McSolsy/status/2067913197705650306) |
-| x | slowdownisha | ^292 c0 | ["There are hundreds of LLM papers each month proposing new techniques and approa](https://x.com/slowdownisha/status/2067685385619345747) |
-| radar | hn_acker | ^269 c55 | [Court Records Should Be Free](https://www.eff.org/deeplinks/2026/06/court-records-should-be-free) |
-| radar | abnry | ^248 c364 | [How many of the 170k English words do you know?](https://vocabowl-870366514258.us-west1.run.app/) |
-| x | mrowley1987 | ^242 c38 | [The easiest way to show your support for Alberta and for independence is to fly ](https://x.com/mrowley1987/status/2067620748760650054) |
-| radar | pgrote | ^238 c28 | [Bobby Prince, composer for Doom, Wolfenstein 3D, and Duke Nukem 3D, has died](https://www.legacy.com/legacy/robert-bobby-prince-lll) |
-| x | _xjdr | ^233 c4 | [ok thats it, im deploying glm5.2 on the noumena platform](https://x.com/_xjdr/status/2067995393586286904) |
-| x | che_shr_cat | ^187 c5 | [1/ Chain-of-Thought works, but forcing LLMs to write out every step in text is a](https://x.com/che_shr_cat/status/2067758332266291231) |
-| x | teortaxesTex | ^185 c12 | [Dario wants biological capabilities so bad](https://x.com/teortaxesTex/status/2068076348719894659) |
-| x | dair_ai | ^167 c12 | [Great paper on long-term memory for LLM agents. (bookmark it) Coarse summaries d](https://x.com/dair_ai/status/2067984002376749525) |
-| x | rohanpaul_ai | ^165 c22 | [The White House and Anthropic may have found the first serious path to restore M](https://x.com/rohanpaul_ai/status/2067947789578125391) |
-| x | Arnauya | ^161 c6 | [Can neurons speak? 🧠 New preprint: NEURRATOR. We take #MechInterp out of the LMs](https://x.com/Arnauya/status/2067476793762947422) |
-| x | _xjdr | ^153 c7 | [also wild, i needed something that grafana didn't do and i genuinely thought, wi](https://x.com/_xjdr/status/2067993820034384347) |
-| radar | Bender | ^137 c78 | [Think of the children: How to force real ID for all internet traffic (2023)](https://nochan.net/b/Internet-Crap/20230829-Think-Of-The-Children/) |
-| x | NeelNanda5 | ^136 c1 | [Chain of thought monitoring is one of our best safety techniques, and diffusion ](https://x.com/NeelNanda5/status/2068042997363769663) |
-| x | teortaxesTex | ^129 c8 | [GLM is the first time I see a Chinese agent capable of actually doing the /goal ](https://x.com/teortaxesTex/status/2068135448451452956) |
-| x | WKahneman | ^125 c1 | [It's highly encouraging to see this in public! 10 steps of XRPL testing: 1. Inte](https://x.com/WKahneman/status/2067675856500351240) |
-| x | cwolferesearch | ^123 c2 | [I've been reading a ton of agentic RL papers recently. Out of all the work, one ](https://x.com/cwolferesearch/status/2067996499024150884) |
-| x | _xjdr | ^121 c8 | [after spending a ton of time with GLM5.2 today in order to add it to noumena, i ](https://x.com/_xjdr/status/2068138331192602730) |
-| radar | Bender | ^121 c72 | [Big Banana Car](https://bigbananacar.com/) |
-| x | _xjdr | ^115 c9 | [just saw the term "loop engineering" on my TL https://t.co/Nh101Pl7Tz](https://x.com/_xjdr/status/2068032974747263170) |
+| x | juhoontwt | ^5567 c5 | [face card and model card too insane yeah juhoon's a natural… just so effortless ](https://x.com/juhoontwt/status/2067866531254632851) |
+| x | AnthropicAI | ^2093 c283 | [New Frontier Red Team blog: Phase 2 of Project Fetch, where we test how well Cla](https://x.com/AnthropicAI/status/2067651699486200091) |
+| radar | ck2 | ^895 c379 | [Hyundai buys Boston Dynamics](https://startupfortune.com/hyundai-takes-full-control-of-boston-dynamics-as-softbank-exits-for-325-million/) |
+| x | teortaxesTex | ^559 c28 | [If Demis goes, the whole DeepMind does Sundar must prevent this at any cost. I d](https://x.com/teortaxesTex/status/2068192014001229958) |
+| x | akshay_pachaar | ^406 c21 | [Web scraping will never be the same. (100% open-source visual search at scale) P](https://x.com/akshay_pachaar/status/2068317780064276917) |
+| radar | oshrimpton | ^357 c160 | [GPT-5.5 hallucinates 3x more than MIT-licensed GLM-5.2](https://arrowtsx.dev/bigger-models/) |
+| x | teortaxesTex | ^335 c9 | [GLM 5.2 is one *of the* greatest gap reductions ever, but I think it is *the* gr](https://x.com/teortaxesTex/status/2068252024320192620) |
+| x | slowdownisha | ^321 c0 | ["There are hundreds of LLM papers each month proposing new techniques and approa](https://x.com/slowdownisha/status/2067685385619345747) |
+| x | McSolsy | ^317 c10 | [Yo where the red team fans at https://t.co/duC1oJWTuO](https://x.com/McSolsy/status/2067913197705650306) |
+| radar | moultano | ^299 c65 | [Where to Find the Colors Your Screen Can't Show You](https://moultano.wordpress.com/2026/06/19/where-to-find-the-colors-your-screen-cant-show-you/) |
+| x | NeelNanda5 | ^240 c2 | [Chain of thought monitoring is one of our best safety techniques, and diffusion ](https://x.com/NeelNanda5/status/2068042997363769663) |
+| radar | theanonymousone | ^233 c80 | [I Stored a Website in a Favicon](https://www.timwehrle.de/blog/i-stored-a-website-in-a-favicon/) |
+| x | dair_ai | ^229 c14 | [Great paper on long-term memory for LLM agents. (bookmark it) Coarse summaries d](https://x.com/dair_ai/status/2067984002376749525) |
+| radar | msalsas | ^226 c45 | [CSSQuake](https://cssquake.com/) |
+| x | rohanpaul_ai | ^215 c26 | [The White House and Anthropic may have found the first serious path to restore M](https://x.com/rohanpaul_ai/status/2067947789578125391) |
+| x | che_shr_cat | ^207 c5 | [1/ Chain-of-Thought works, but forcing LLMs to write out every step in text is a](https://x.com/che_shr_cat/status/2067758332266291231) |
+| x | teortaxesTex | ^160 c3 | [&gt; to a higher quality than Opus 4.8 &gt; with fewer tokens &gt; cheaper https](https://x.com/teortaxesTex/status/2068275749715419319) |
+| x | selinaai_ | ^155 c25 | [🚨 BREAKING: Claude has a feature called Red Team Mode. You can use it to attack ](https://x.com/selinaai_/status/2068151348118552674) |
+| x | hwchase17 | ^147 c22 | [it is indeed quite good! don't try it in claude code/codex - those harnesses are](https://x.com/hwchase17/status/2068075256993169619) |
+| x | fdtn_ai | ^139 c3 | [Introducing FAPO: Fully Automated Prompt Optimization. As LLM systems become inc](https://x.com/fdtn_ai/status/2067999152848695328) |
+| radar | KraftyOne | ^135 c31 | [Surprising economics of load-balanced systems](https://brooker.co.za/blog/2020/08/06/erlang.html) |
+| x | WKahneman | ^130 c2 | [It's highly encouraging to see this in public! 10 steps of XRPL testing: 1. Inte](https://x.com/WKahneman/status/2067675856500351240) |
+| x | MilkRoadAI | ^126 c14 | [Anthropic's CEO just went on record saying the people who tested their most powe](https://x.com/MilkRoadAI/status/2067955866771620330) |
+| x | SemperVeritasX | ^119 c10 | [I understand that many Canadians have tuned out politics entirely. For those sti](https://x.com/SemperVeritasX/status/2068045834235855158) |
+| x | teortaxesTex | ^115 c5 | [Well, they had roughly 3 days checks out! https://t.co/nRrOVYWbXE](https://x.com/teortaxesTex/status/2068232096280121507) |
+| x | RitOnchain | ^110 c11 | [A new arXiv paper just proved multi-agent loops beat single LLMs for quant finan](https://x.com/RitOnchain/status/2067873184825901346) |
+| x | teortaxesTex | ^109 c4 | [there's a more pessimistic way to read this "departures before Gemini 3.5 Pro"](https://x.com/teortaxesTex/status/2068232782195601674) |
+| x | teortaxesTex | ^109 c5 | [Dario is winning, even at some personal cost](https://x.com/teortaxesTex/status/2068192735677366434) |
+| x | gnukeith | ^105 c41 | [Is there a model that doesn't REFUSE to do literally anything red-team related? ](https://x.com/gnukeith/status/2067996185319624965) |
+| x | teortaxesTex | ^102 c7 | [I envy people who feel so little cringe they can post this https://t.co/0gRhhHOG](https://x.com/teortaxesTex/status/2068299780556505361) |
 
 
 ## โพสต์เด่น
@@ -97,14 +97,14 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@juhoontwt</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 5287 · 💬 5</span>
+    <span class="ndf-engagement">♥ 5567 · 💬 5</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/juhoontwt/status/2067866531254632851">View @juhoontwt on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“face card and model card too insane yeah juhoon’s a natural… just so effortless in front of the camera https://t.co/qHMswZNpM0”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์แฟนคลับชม Juhoon เรื่องหน้าตาและความ photogenic — คำว่า 'model card' ในที่นี้หมายถึงบัตรนางแบบ ไม่ใช่ AI model card</dd>
+      <dd>โพสต์ชมคนชื่อ Juhoon เรื่องหน้าตาและความเป็นธรรมชาติหน้ากล้อง ไม่มีเนื้อหาเทคนิคใดๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -117,18 +117,18 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@AnthropicAI</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2032 · 💬 275</span>
+    <span class="ndf-engagement">♥ 2093 · 💬 283</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/AnthropicAI/status/2067651699486200091">View @AnthropicAI on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“New Frontier Red Team blog: Phase 2 of Project Fetch, where we test how well Claude can program a robodog. Opus 4.7, on its own, was ~20x faster than last year's best human team aided by Opus 4.1. (Th”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Anthropic ทดสอบ Claude Opus 4.7 ใน Project Fetch Phase 2 พบว่าเขียนโปรแกรมควบคุม robodog ได้เร็วกว่าทีมมนุษย์ที่ดีที่สุด (ซึ่งใช้ Opus 4.1) ราว 20 เท่า แม้ robodog ยังไม่สำเร็จภารกิจเอาบอล</dd>
+      <dd>Project Fetch Phase 2 ของ Anthropic: Claude Opus 4.7 เขียนโปรแกรมควบคุม robodog ได้เร็วกว่าทีมมนุษย์ที่เก่งที่สุดเมื่อปีที่แล้ว (ซึ่งใช้ Opus 4.1) ถึง ~20x แต่ robodog ยังคง fetch ลูกบอลไม่สำเร็จ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ช่องว่าง 20 เท่าระหว่าง Opus 4.1 กับ 4.7 ใน robotics coding task คือ benchmark ที่จับต้องได้ — agentic coding กระโดดชัดเจนภายใน model generation เดียว</dd>
+      <dd>ตัวเลข 20x บน agentic coding task จริงแสดงว่า Opus 4.7 ย่อเวลา programming หลายขั้นตอนได้จริง ไม่ใช่แค่ text generation</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ลอง timed agentic coding task กับ Opus 4.7 เทียบ 4.1 บน task จริงของทีม (XR prototype หรือ simulation script) เพื่อยืนยันว่า speed gain ใช้ได้จริง</dd>
+      <dd class="ndf-adapt">ทดสอบ Opus 4.7 เทียบ Opus 4.1 บน task จริงในทีม เช่น Unity systems stub หรือ prototype algorithm เพื่อดูว่า speed gain ตรงกับ workflow จริงแค่ไหน</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/AnthropicAI/status/2067651699486200091" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
@@ -137,74 +137,94 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@teortaxesTex</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 562 · 💬 41</span>
+    <span class="ndf-engagement">♥ 559 · 💬 28</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/teortaxesTex/status/2068118863233843292">View @teortaxesTex on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/teortaxesTex/status/2068192014001229958">View @teortaxesTex on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“GLM blows a big hole in my thesis that the Chinese have a catastrophic disadvantage in high-quality data. It's too close to Opus. They did this without spending billions. I don't know how. Maybe disti”</p>
+    <p class="ndf-quote">“If Demis goes, the whole DeepMind does Sundar must prevent this at any cost. I do mean any. Drop AI overview, Gemini plans, terminate the contract with Anthropic, butcher GCP, give every TPU to GDM. g”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>GLM ของ Zhipu AI ทำได้ใกล้เคียง Claude Opus โดยไม่ใช้งบหลายพันล้าน — นักวิจัยชี้ว่า distillation น่าจะเป็นตัวแปรหลัก</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>model จีนระดับใกล้เคียง Opus ในราคาถูกกว่า = ตัวเลือก API เพิ่ม และยืนยันว่า distillation ใช้ได้จริงในการสร้าง model คุณภาพสูง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทดลอง GLM API เป็น alternative ราคาถูกกว่า เมื่อต้องการ reasoning ระดับ Opus สำหรับ internal tools หรือ AI features</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/teortaxesTex/status/2068118863233843292" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@aryaman2020</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 454 · 💬 27</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/aryaman2020/status/2067452025793831289">View @aryaman2020 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“since Noam Shazeer is in the news for (probably deservedly) making 1e9 more dollars, i have to say this is my least favourite quote in his work. in my view, the goal of interpretability should be to p”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>นักวิจัยวิจารณ์ quote หนึ่งในงานของ Noam Shazeer โดยบอกว่า interpretability research ควรมีเป้าหมายป้องกันการอ้างที่พิสูจน์ไม่ได้เกี่ยวกับ model</dd>
+      <dd>นักวิจารณ์ระบุว่า Google ควรเสียสละทุกอย่างเพื่อรั้ง Demis Hassabis ไว้ มิฉะนั้น Google DeepMind จะสูญเสียความสำคัญ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/aryaman2020/status/2067452025793831289" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/teortaxesTex/status/2068192014001229958" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@_xjdr</span>
+    <span class="ndf-author">@akshay_pachaar</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 317 · 💬 10</span>
+    <span class="ndf-engagement">♥ 406 · 💬 21</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/_xjdr/status/2067988474586955793">View @_xjdr on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/akshay_pachaar/status/2068317780064276917">View @akshay_pachaar on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“current state of AI models in 2026: - center a div -&amp;gt; 4 hours of slop - make a production grade telemetry stack, make no mistakes or i beat grandma with a puppy -&amp;gt; perfect principal sre level wo”</p>
+    <p class="ndf-quote">“Web scraping will never be the same. (100% open-source visual search at scale) PixelRAG is a retrieval system that skips HTML parsing completely. Instead of scraping a page into text and embedding chu”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>นักพัฒนาสังเกตว่า AI models ปี 2026 ทำ CSS ง่ายๆ ได้ slop แต่งาน production telemetry stack ที่ซับซ้อนกลับออกมาระดับ principal SRE</dd>
+      <dd>PixelRAG คือ open-source retrieval system ที่ใช้ screenshot หน้าเว็บแทนการ parse HTML สร้าง visual index จาก Wikipedia กว่า 30 ล้านหน้า และชนะ text RAG baseline 18.1% บน QA benchmark</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>คุณภาพ output ของ AI สัมพันธ์กับความซับซ้อนและความชัดของ prompt — task ง่ายคลุมเครือได้ slop, task ยากที่ scope ชัดได้ผลดี</dd>
+      <dd>HTML parser ทิ้งข้อมูลกว่า 40% ต่อหน้าโดยที่ไม่รู้ตัว — PixelRAG มี Claude Code plugin ให้ Claude อ่านหน้าเว็บ/PDF จาก screenshot โดยตรงด้วย setup script เดียว</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ส่งงาน backend/infra ที่ scope ชัด (logging, telemetry, CI) ให้ AI ก่อน แล้ว review ถี่ขึ้นเวลา AI แตะงาน front-end styling</dd>
+      <dd class="ndf-adapt">ติดตั้ง PixelRAG Claude Code plugin ให้ Claude ของทีม screenshot และอ่านหน้าเว็บ/PDF แทน DOM scraping — ใช้ได้ทันทีใน workflow ปัจจุบัน</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/_xjdr/status/2067988474586955793" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/akshay_pachaar/status/2068317780064276917" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@teortaxesTex</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 335 · 💬 9</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/teortaxesTex/status/2068252024320192620">View @teortaxesTex on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“GLM 5.2 is one *of the* greatest gap reductions ever, but I think it is *the* greatest show of benchmark solidity from an open model claiming SoTA ever. Normally, you have some variety of the bad old ”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>GLM 5.2 โมเดล open-weight จาก Zhiyu AI ทำ benchmark ได้ระดับ Claude Opus 4.5–4.7 สม่ำเสมอทุกประเภท ไม่มี progressive decay แบบโมเดลจีนตัวอื่น รวมถึง DeepSeek</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>Open-weight โมเดลที่ consistent ระดับ Opus 4 หมายถึง self-hosted inference ได้โดยไม่ต้องกังวล quality drop บน OOD task</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ทดสอบ GLM 5.2 กับ LLM evaluation tasks ที่ใช้อยู่ ยืนยัน consistency ก่อนพิจารณาเข้า production pipeline</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/teortaxesTex/status/2068252024320192620" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@slowdownisha</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 321 · 💬 0</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/slowdownisha/status/2067685385619345747">View @slowdownisha on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“&quot;There are hundreds of LLM papers each month proposing new techniques and approaches. However, one of the best ways to see what actually works well in practice is to look at the pre-training and post-”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Sebastian Raschka ชี้ว่าการศึกษา pipeline จริงของโมเดล top-tier (เช่น Llama, Gemma, Qwen) ให้ข้อมูลที่ใช้ได้จริงมากกว่าการตามอ่านงานวิจัย LLM ทีละ paper</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>สำหรับทีมที่ประเมินว่าจะเอา technique ไหนมาใช้ technical report ของโมเดลดังกรองสัญญาณได้ดีกว่าการอ่าน paper ทั่วไป</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">จัดเวลาอ่าน technical report ของโมเดลหลัก (Llama 4, Gemma 3, Qwen 3) ก่อนตัดสินใจเลือก fine-tuning หรือ post-training technique สำหรับ AI tools ของ studio</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/slowdownisha/status/2067685385619345747" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@McSolsy</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 300 · 💬 9</span>
+    <span class="ndf-engagement">♥ 317 · 💬 10</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/McSolsy/status/2067913197705650306">View @McSolsy on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Yo where the red team fans at https://t.co/duC1oJWTuO”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์ X แบบ casual ถามหาแฟน red team พร้อมลิงก์ — ไม่มี technical content ที่อ่านได้</dd>
+      <dd>โพสต์บน X เขียนว่า 'Yo where the red team fans at' พร้อมลิงก์ — ไม่มีเนื้อหาทางเทคนิคหรือข้อมูลใดที่เป็นประโยชน์</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -215,42 +235,22 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@slowdownisha</span>
+    <span class="ndf-author">@NeelNanda5</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 292 · 💬 0</span>
+    <span class="ndf-engagement">♥ 240 · 💬 2</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/slowdownisha/status/2067685385619345747">View @slowdownisha on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/NeelNanda5/status/2068042997363769663">View @NeelNanda5 on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“&quot;There are hundreds of LLM papers each month proposing new techniques and approaches. However, one of the best ways to see what actually works well in practice is to look at the pre-training and post-”</p>
+    <p class="ndf-quote">“Chain of thought monitoring is one of our best safety techniques, and diffusion models might break it. But at least for DiffusionGemma, it turns out that we can recover most of the benefits! I would l”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Sebastian Raschka แนะนำว่าการศึกษา pre-training และ post-training pipeline ของ LLM ระดับ SOTA ให้ประโยชน์จริงมากกว่าการตามอ่าน paper รายเดือนที่ออกมาเป็นร้อยๆ ฉบับ</dd>
+      <dd>Neel Nanda (Google DeepMind) พบว่า chain-of-thought safety monitoring ยังใช้ได้ส่วนใหญ่กับ DiffusionGemma แต่เตือนว่า latent reasoning architecture ทั่วไปยังต้องการ transparency audit เฉพาะ</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ทีมเล็กที่ใช้ AI ใน product จะได้ประโยชน์จากการรู้ว่า top model ใช้ technique อะไรจริงๆ (RLHF, DPO, data curation) มากกว่าตามอ่าน paper ที่ยังไม่ได้ validate</dd>
+      <dd>Studio ที่ ship feature AI-assisted ควรรู้ว่า diffusion LM ไม่ได้รับ CoT auditability อัตโนมัติ — ต้อง verify ทีละ architecture</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ใช้ model pipeline breakdown ของ Raschka เป็น filter สำหรับ AI reading list ของทีม — เน้น technical report ของ model ที่ release แล้วมากกว่า preprint aggregator</dd>
+      <dd class="ndf-adapt">เพิ่ม CoT/auditability check เข้า criteria ประเมิน model ของ studio เมื่อทดสอบ diffusion หรือ latent-reasoning LM ก่อน integrate</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/slowdownisha/status/2067685385619345747" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@mrowley1987</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 242 · 💬 38</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/mrowley1987/status/2067620748760650054">View @mrowley1987 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“The easiest way to show your support for Alberta and for independence is to fly our beautiful flag. It has become a symbol of evil to those who want to stop Albertans from expressing their will. So fl”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ผู้ใช้ X โพสต์เชิญชวนชาว Alberta โบกธงประจำมณฑลเพื่อแสดงจุดยืนสนับสนุนการแยกตัวเป็นอิสระจากแคนาดา</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/mrowley1987/status/2067620748760650054" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/NeelNanda5/status/2068042997363769663" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

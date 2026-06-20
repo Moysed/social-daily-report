@@ -4,7 +4,7 @@ date: '2026-06-20'
 topic: thai-tech
 lang: th
 pair: thai-tech.en.md
-generated_at: '2026-06-20T03:52:14+00:00'
+generated_at: '2026-06-20T15:52:28+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -12,77 +12,78 @@ platforms:
 - x
 regions:
 - global
-post_count: 27
-salience: 0.2
+post_count: 28
+salience: 0.22
 sentiment: neutral
 confidence: 0.6
 tags:
 - thai-tech
 - nstda
-- kbtg
-- ai-roi
-- scb10x
 - sovereign-llm
-thumbnail: https://pbs.twimg.com/media/HLLfpHebYAEDxad.jpg
+- edtech
+- ai-policy
+- scb10x
+thumbnail: https://pbs.twimg.com/media/HLLZd7GbgAAadbw.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # Thai Tech — 2026-06-20
 
 ## TL;DR
-- วันนี้ไม่มีสัญญาณตรงเกี่ยวกับ sovereign Thai LLMs (Typhoon, Pathumma, THaLLE, OpenThaiGPT), Thai TTS หรือ Thai NLP — พื้นที่ focus ทั้งหมดเงียบตลอด 27 รายการ [1-27]
-- แผนปี 2026 ของ KBTG เพิ่มงบลงทุนเทคโนโลยีต่อเนื่อง และประกาศชัดว่า AI ผ่านพ้นช่วง 'ทดลอง' แล้ว หันมาเน้น ROI [9]
-- SCB10X — venture arm ของ SCB และทีมที่อยู่เบื้องหลัง Typhoon Thai LLM — โปรโมต AI agents สำหรับการให้คำแนะนำการลงทุนผ่านพาร์ทเนอร์ arta_finance [8]
-- งานวิจัยภาครัฐไทยครองพื้นที่: NSTDA แต่งตั้งคณะกรรมการ S&T แห่งชาติชุดใหม่ [6], ลงนาม MoU วิจัยโฟโตนิกส์กับ VUB เบลเยียม [2] และ spin-off ของ VISTEC (CleanTech & Beyond) นำเสนอในโตเกียว [27]
-- บริบทมหภาค: ไทยขยับขึ้นมาอยู่อันดับ 26 ใน IMD World Competitiveness Ranking 2026 [25] และ S&P ยืนยันเครดิต BBB+ แนวโน้ม Stable [24]
+- วันนี้ไม่มี coverage ตรงของ sovereign Thai LLM (Typhoon, Pathumma, THaLLE, OpenThaiGPT) หรือ Thai TTS; รายการอันดับต้นเป็น institutional PR ของ NSTDA [1][2][7][8][9]
+- SCB10X (ผู้พัฒนา Typhoon) โพสต์เรื่อง partner arta_finance ที่ใช้ AI agents สำหรับที่ปรึกษาการลงทุน [11] — เกี่ยวเนื่องกับงาน LLM แต่ไม่มี model news
+- KBTG ระบุกลยุทธ์ปี 2026 ว่าจะเพิ่มการลงทุนด้านเทคโนโลยี และ AI พ้น phase 'ทดลอง' แล้ว หันมาชั่งน้ำหนัก ROI [16]
+- NSTDA ผลักดันแนวคิด 'Human-Centric AI' ในเวที SDNC2026 โยง AI กับการพัฒนากำลังคนและเศรษฐกิจมูลค่าสูง [9]
+- รายการ engagement สูงหลายรายการ [3][5][6] เป็น spam ต่างประเทศที่ match token 'thalle' — ตัดทิ้งทั้งหมด
 
-## สิ่งที่เกิดขึ้น
-รายการวันนี้ส่วนใหญ่เป็นข่าวงานวิจัยภาครัฐและเทคโนโลยีองค์กร ไม่ใช่ Thai-language AI โดยตรง NSTDA ปรากฏหนาแน่น: แต่งตั้งคณะกรรมการพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติชุดใหม่ [6], ลงนาม MoU วิจัยโฟโตนิกส์ไทย–เบลเยียมกับ VUB เพื่อผลักดันงานวิจัยสู่ภาคอุตสาหกรรม [2] และผู้บริหาร NSTDA โพสต์ข้อความเชิงสถาบัน [1][4] ด้าน AI นั้น KBTG วางกลยุทธ์ปี 2026 ด้วยการเพิ่มงบเทคโนโลยีปีต่อปี พร้อมประกาศว่าหมดยุคทดลองแล้ว และเน้นผลตอบแทนจากการลงทุน [9] ส่วน SCB10X — กลุ่มที่พัฒนา Typhoon LLM — โปรโมต AI agents สำหรับ portfolio insights และประสิทธิภาพ advisor ผ่าน arta_finance โดยโพสต์นั้นไม่ได้ระบุชื่อ Thai-language model ใด [8] VISTEC spin-off นำเสนอในงานสัมมนาโตเกียว–ไทย [27] และ SCG จับมือธรรมศาสตร์ในโครงการพัฒนาเยาวชน [20]
+## What happened
+NSTDA (สวทช.) ครอง feed ด้วยกิจกรรมเชิงสถาบัน: MOU วิจัย photonics ร่วมกับ VUB เบลเยียม เพื่อเชื่อมงานวิจัยกับอุตสาหกรรม [1], ชุดตรวจคัดกรองไตด้วย AL-Strip สำหรับเภสัชกรอ่านผลใน 5 นาที [7], งาน Net Zero ด้านการผลิตและ Open Innovation วันที่ 2 กรกฎาคม [8], และข้อความ 'Human-Centric AI' ในเวที SDNC2026 [9] SCB10X โปรโมต arta_finance partner ที่ใช้ AI agents สำหรับ portfolio insight และ productivity ของที่ปรึกษา [11] KBTG วางแผนปี 2026 ว่าจะเพิ่มการลงทุนด้านเทคโนโลยี ในกรอบ 'หมดเวลาทดลองแล้ว' [16] รายการ global/education เป็น context เพิ่มเติม: นอร์เวย์เตรียมห้ามใช้ generative AI กับนักเรียนประถม [12] และมหาวิทยาลัยจีนยุบกว่า 12,000 สาขา 'ล้าสมัย' เพื่อปรับโครงสร้างสู่ยุค AI [22]
 
-## ทำไมถึงสำคัญ (เหตุผล)
-สำหรับ focus หลัก — Thai NLP, sovereign Thai LLMs, Thai TTS และ edtech ตลาดไทย — วันนี้มีน้อยมากที่จะ action ได้ จึงสรุปสั้นโดยตั้งใจ [1-27] สัญญาณที่แตะ AI มีสองชิ้น ล้วนเกี่ยวกับวินัยและการ deploy ไม่ใช่ความสามารถ model ใหม่: จุดยืน 'หมดเวลาทดลอง ต้องวัด ROI' ของ KBTG [9] บ่งชี้ว่าผู้ซื้อรายใหญ่ในไทยจะยิ่งลงทุนกับ AI features ที่ผูกกับผลลัพธ์วัดได้ ไม่ใช่ pilot — ซึ่งยกบาร์สำหรับ vendor ที่ขาย AI ให้องค์กรไทย SCB10X ที่นำ AI agents มาใช้ใน finance workflow [8] ยืนยันว่าวงสนทนา AI ในประเทศกำลังเคลื่อนสู่ applied agents เป็นรายแนวดิ่ง กระแส NSTDA/VISTEC วิจัยสู่อุตสาหกรรม [2][6][27] สะท้อนการลงทุน deep tech ที่รัฐหนุนอย่างต่อเนื่อง แต่เป็นโฟโตนิกส์และ cleantech ไม่ใช่ language AI การยืนยันมหภาค [24][25] เป็นเพียงเสถียรภาพพื้นหลัง ไม่ใช่ตัวเร่ง
+## Why it matters (reasoning)
+ในช่วงนี้ narrative ของ Thai sovereign LLM เงียบในชุดข้อมูลนี้ สิ่งที่มองเห็นคือ policy และกรอบสถาบัน ไม่ใช่ข่าว capability การที่ไม่มีรายการ Typhoon/Pathumma/THaLLE/OpenThaiGPT หรือ Thai TTS เลย หมายความว่าไม่มีฐานข้อมูลพอจะอ้างว่า Thai NLP ก้าวหน้าหรือหยุดชะงักในวันนี้ signals ที่มีอยู่มีนัยสำคัญทางอ้อม: ท่าทีของ KBTG ที่ว่า 'ROI เหนือการทดลอง' [16] สะท้อนแรงกดดันจากองค์กร Thai enterprise ที่ต้องการเห็นผลตอบแทนที่วัดได้จาก AI และการที่ SCB10X โฟกัสที่ applied agents [11] บ่งชี้ว่า ecosystem ของ Thai LLM เชิงพาณิชย์กำลังเคลื่อนสู่ productized agents มากกว่าการ launch model รายการ edu-AI restriction [12][22] เป็น forward context สำหรับผลิตภัณฑ์ e-learning ที่ฝัง generative AI ให้กลุ่มผู้เรียนอายุน้อย
 
-## ความเป็นไปได้
-**น่าจะเกิด:** การซื้อ AI ขององค์กรไทยจะยิ่งเข้มงวดด้านROI ตลอดปี 2026 จากกรอบ 'ไม่ทดลองอีกแล้ว' ที่ KBTG ประกาศชัด ในฐานะกลุ่ม bank-tech ที่เป็น bellwether [9] **เป็นไปได้:** SCB10X จะผลักดัน agentic AI ในการเงินต่อเนื่อง และอาจผูกกับ Typhoon ในประกาศถัดไป เพราะเป็นเจ้าของ model นั้นและกำลัง market AI agents อยู่แล้ว [8] **เป็นไปได้:** ผลงานวิจัย NSTDA/VISTEC จะไหลสู่เชิงพาณิชย์ต่อเนื่อง (โฟโตนิกส์, cleantech) พร้อม spin-off เป็นระยะ [2][27] **ไม่น่าจะเกิดจากหลักฐานวันนี้:** การปล่อย sovereign Thai LLM หรือ Thai TTS ในระยะใกล้ — model ที่ระบุชื่อไม่ปรากฏในรายการใดเลย [1-27] ไม่มีแหล่งไหนระบุความน่าจะเป็นเป็นตัวเลข
+## Possibility
+น่าจะเป็นไปได้ที่ Typhoon/Pathumma updates ยังคงไหลผ่าน channel เฉพาะ (SCB10X, NECTEC/NSTDA) มากกว่า feed รวมแบบนี้ ดังนั้น การที่วันนี้ไม่มีข้อมูลอ่านว่าเป็นการ sampling ไม่ใช่การหยุด [11] เป็นไปได้ที่ข้อจำกัด generative AI สำหรับผู้เรียนอายุน้อยจะแพร่หลายขึ้น ตามหลัง นอร์เวย์ [12] และการปรับหลักสูตรของจีน [22] ซึ่งจะกำหนดทิศทางว่า Thai edtech จะ gate ฟีเจอร์ AI ตามอายุอย่างไร ไม่น่าจะสรุปจากรายการเหล่านี้ได้ว่า Thai TTS หรือคุณภาพ NLP เปลี่ยนแปลงอย่างไร เพราะไม่มีรายการไหนแตะเรื่องนั้นโดยตรง
 
-## การนำไปใช้ — NDF DEV
-1) ยืม ROI framing ของ KBTG: เมื่อเสนอ AI features ให้ลูกค้าไทย (edtech, e-learning, apps) ให้ผูก outcome ที่วัดได้ไว้ด้วย เพราะ mood ผู้ซื้อในประเทศกำลังเปลี่ยน [9] — effort: ต่ำ 2) จับตา SCB10X ในฐานะ Thai-AI vendor ที่น่าติดตามด้าน agent patterns; ถ้าลูกค้าต้องการ Thai-language AI ให้ประเมิน Typhoon/SCB10X ก่อนไปที่ English-only models [8] — effort: ต่ำ 3) สำรวจช่องทาง grant และ partnership ของ NSTDA/VISTEC [2][6][27] ในฐานะแหล่งทุนหรือความร่วมมือวิจัยสำหรับ XR/edtech R&D ที่ไม่ dilute หุ้น — effort: กลาง (ต้องเขียน proposal) และเหมาะเฉพาะถ้า NDF DEV ตามหา grant funding **ข้าม:** spam/noise ที่ไม่ใช่ Thai-language [3][5][7], ข่าว consumer tech โลกที่ไม่มีมุม Thai-AI [10][11][12][13][14][15][16][19], อสังหาริมทรัพย์/wellness [18], น้ำท่วม [22] และไลฟ์สไตล์ [23] ส่วนรายการมหภาค [24][25] ใช้เป็น context เท่านั้น ไม่ต้อง action
+## Org applicability — NDF DEV
+Low effort: ตอนเสนองาน edtech/web clients ให้อ้างกรอบ 'experimentation is over' ของ KBTG [16] และวาง AI features ให้อยู่บนฐาน measurable outcomes ไม่ใช่ novelty Low effort: ติดตาม channel SCB10X ต่อเพื่อดู applied Thai-LLM agent patterns ที่นำไปใช้ใน app features ได้ [11] Med effort: ทบทวนว่า e-learning product ใดใช้ generative AI กับนักเรียนอายุน้อยบ้าง เทียบกับ policy ที่เข้มขึ้น [12][22] — ออกแบบ age gating และ guardrails ตั้งแต่ต้น Skip: รายการ photonics, AL-Strip, และ Net Zero ของ NSTDA [1][7][8] — ไม่เกี่ยวกับ stack Unity/XR/edutech/web Skip spam 'thalle' [3][5][6] อย่าสร้าง internal brief วันนี้โดยอิงข่าว Thai-LLM model — ไม่มีข้อมูลนั้นในชุดนี้
 
-## สัญญาณที่ต้องติดตาม
-- ติดตามว่า SCB10X จะเชื่อม AI-agent push กับ Typhoon LLM ในประกาศถัดไปหรือไม่ — ถ้าใช่จะยืนยัน Thai-language agent play [8]
-- ติดตามงบปี 2026 ของ KBTG หา AI products หรือ vendor selections ที่เป็นรูปธรรม เพื่อถอดรหัสว่า 'ROI-stage' Thai AI หน้าตาเป็นอย่างไรในทางปฏิบัติ [9]
-- ติดตามคณะกรรมการชุดใหม่ของ NSTDA และ VUB photonics MoU ว่ามีการ pivot สู่ language-AI หรือ data infrastructure funding หรือไม่ [2][6]
-- ติดตาม spin-off activity ของ VISTEC เป็น proxy ความเร็วของการ commercialize deep tech ไทย [27]
+## Signals to Watch
+- SCB10X เคลื่อนสู่ applied AI agents (arta_finance) เป็น proxy ทิศทาง productization ของ Typhoon [11]
+- ท่าทีการลงทุน 'ROI-not-experimentation' ปี 2026 ของ KBTG เป็นตัวอ่าน demand AI ของ Thai enterprise [16]
+- ข้อจำกัด generative AI สำหรับผู้เรียนอายุน้อย (นอร์เวย์, จีน) เป็น early indicator สำหรับ compliance ของ Thai edtech [12][22]
+- กรอบ 'Human-Centric AI' ด้านกำลังคนของ NSTDA ในเวที SDNC2026 เป็น policy lens สำหรับการจัดสรรทุน AI ของไทย [9]
 
-## แหล่งข้อมูลดิบ
+## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | shanergy2810 | ^74 c1 | [''เมื่อโจทย์ชัดเจน ทีมงานพร้อม และพลังใจเต็มร้อย ไม่ว่างานจะท้าทายแค่ไหน พวกเราพ](https://x.com/shanergy2810/status/2067961083739209796) |
-| x | nstdathailand | ^73 c1 | [🔬 ไทย–เบลเยียมร่วมมือ "โฟโตนิกส์" รองนายกฯ "ยศชนัน" นำ อว. และ สวทช. ลงนามกับ VU](https://x.com/nstdathailand/status/2067954362211864808) |
-| x | NainTara435502 | ^37 c3 | [Aesa Noor hai tera..... Tu channel nu thalle suttegi 😭🔥 @ashnoorrkaur sizzling b](https://x.com/NainTara435502/status/2067935959426232351) |
-| x | PeterWainman | ^11 c4 | [Great meetings with @nstda to accelerate chemical-free living through real scien](https://x.com/PeterWainman/status/2068062424205251049) |
-| x | playitsami | ^9 c2 | [Na na na na pair na tu rakh thalle ni Mere seene utte rakh teri heel balliye 👉🏻👈](https://x.com/playitsami/status/2068039313397567528) |
-| x | nstdathailand | ^8 c0 | [สวทช. ขอต้อนรับคณะกรรมการพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (กวทช.) ชุดใหม่ด้ว](https://x.com/nstdathailand/status/2067602379122594095) |
-| x | desi_deadmamba | ^3 c0 | [@Swetha_twit Phaaaaaaa! Ennaaaa oru aambalaya irrupan avan. Ippadi sevvaka vechu](https://x.com/desi_deadmamba/status/2067877965237760181) |
+| x | nstdathailand | ^119 c1 | [🔬 ไทย–เบลเยียมร่วมมือ "โฟโตนิกส์" รองนายกฯ "ยศชนัน" นำ อว. และ สวทช. ลงนามกับ VU](https://x.com/nstdathailand/status/2067954362211864808) |
+| x | shanergy2810 | ^98 c1 | [''เมื่อโจทย์ชัดเจน ทีมงานพร้อม และพลังใจเต็มร้อย ไม่ว่างานจะท้าทายแค่ไหน พวกเราพ](https://x.com/shanergy2810/status/2067961083739209796) |
+| x | NainTara435502 | ^38 c3 | [Aesa Noor hai tera..... Tu channel nu thalle suttegi 😭🔥 @ashnoorrkaur sizzling b](https://x.com/NainTara435502/status/2067935959426232351) |
+| x | PeterWainman | ^17 c10 | [Great meetings with @nstda to accelerate chemical-free living through real scien](https://x.com/PeterWainman/status/2068062424205251049) |
+| x | playitsami | ^13 c2 | [Na na na na pair na tu rakh thalle ni Mere seene utte rakh teri heel balliye 👉🏻👈](https://x.com/playitsami/status/2068039313397567528) |
+| x | desi_deadmamba | ^4 c0 | [@Swetha_twit Phaaaaaaa! Ennaaaa oru aambalaya irrupan avan. Ippadi sevvaka vechu](https://x.com/desi_deadmamba/status/2067877965237760181) |
+| x | nstdathailand | ^4 c1 | [🩺 สวทช. x สภาเภสัชกรรม ยกระดับศักยภาพเภสัชกร พร้อมผลักดัน AL-Strip ชุดตรวจคัดกรอ](https://x.com/nstdathailand/status/2068283635313353004) |
+| x | nstdathailand | ^3 c0 | [📢 ร่วมงาน Open Innovation: The Future of Manufacturing อัปเดตเทคโนโลยีการผลิต Ne](https://x.com/nstdathailand/status/2068293075009728550) |
+| x | nstdathailand | ^3 c1 | [AI ต้องพัฒนาควบคู่กับ "คน" สวทช. ร่วมเวที #SDNC2026 ถ่ายทอดแนวคิด #HumanCentricA](https://x.com/nstdathailand/status/2067985455325601981) |
+| x | PeterWainman | ^2 c1 | [@grok @Pipperstandard @nstda @CurtisSChin @Equatornature @MIT_alumni Great stuff](https://x.com/PeterWainman/status/2068165149542830347) |
 | x | SCB10X_OFFICIAL | ^1 c0 | [Discover how @arta_finance leverages AI agents to enhance investment advisory, g](https://x.com/SCB10X_OFFICIAL/status/2067894625189462232) |
+| rss | arjin | ^0 c0 | [นอร์เวย์เตรียมออกคำสั่ง ห้ามนักเรียนระดับประถมใช้ Generative AI เพื่อให้การเรียน](https://www.blognone.com/node/150948) |
+| rss | arjin | ^0 c0 | [Nothing บอกเอง ปีนี้จะไม่มี CMF Phone รุ่นใหม่ เพราะชิปหน่วยความจำแพงจนทำราคาไม่](https://www.blognone.com/node/150947) |
+| rss | arjin | ^0 c0 | [John Jumper นักวิจัยรางวัลโนเบลของ DeepMind ลาออกไปทำงานที่ Anthropic John Jumpe](https://www.blognone.com/node/150946) |
+| rss | lew | ^0 c0 | [Arch Linux ต้องปิดรับผู้ดูแลแพ็กเกจใหม่ หลังพบคนร้ายพยายามเข้าแก้ไขโครงการที่ไม่](https://www.blognone.com/node/150945) |
 | rss | sponsored | ^0 c0 | [AI vs. ROI: ส่องกลยุทธ์ KBTG ปี 2026 ลงทุนเทคโนโลยีเพิ่มขึ้นทุกปี แม้โลก AI ก้าว](https://www.blognone.com/node/150944) |
 | rss | mk | ^0 c0 | [Google Home Speaker เวอร์ชันใหม่ รองรับ Gemini for Home เริ่มวางขายแล้ว Google H](https://www.blognone.com/node/150943) |
 | rss | arjin | ^0 c0 | [Apple ปรับการใช้งาน iOS ในบราซิล ไซด์โหลดแอปจากสโตร์อื่นได้, เลือกจ่ายเงินผ่าน 3](https://www.blognone.com/node/150942) |
 | rss | arjin | ^0 c0 | [Waymo เรียกรถแท็กซี่อัตโนมัติ 3,900 คัน มาแก้ไขซอฟต์แวร์ หลังเกิดเหตุรถวิ่งเข้าพ](https://www.blognone.com/node/150941) |
-| rss | arjin | ^0 c0 | [Intel แต่งตั้งอดีตซีอีโอ SK hynix มาดูแลธุรกิจรับผลิตชิป Intel Foundry Intel แต่](https://www.blognone.com/node/150939) |
-| rss | mk | ^0 c0 | [GTA 6 ประกาศวันพรีออเดอร์ 25 มิถุนายน 2026 GTA 6 ประกาศวันพรีออเดอร์ 25 มิถุนายน](https://www.blognone.com/node/150940) |
-| rss | mk | ^0 c0 | [ต้นทุนพี่แพง MSI เปิดราคาเครื่องเกมพกพา Claw 8 EX AI+ เกือบ 6 หมื่นบาท ต้นทุนพี่](https://www.blognone.com/node/150938) |
-| rss | mk | ^0 c0 | [Wear OS 7 ออกรุ่นเสถียร ควบคุมอุปกรณ์อื่นได้จากนาฬิกา, รองรับ Live Updates Wear ](https://www.blognone.com/node/150937) |
+| rss | Jarukit Teerataphong | ^0 c0 | ['ชัยวัฒน์ สถาวรวิจิตร' มองกรุงเทพฯ ยังสามารถดีกว่านี้ได้อีก พร้อมรื้อ-แก้ เส้นเล](https://thaipublica.org/2026/06/chaiwat-sathawornwichit-bangkok-can-still-be-better-than-this/) |
+| rss | Boonlarp Poosuwan | ^0 c0 | [เรียนรู้เรื่อง Power Literacy จากหนังสือสามเล่ม เรียนรู้เรื่อง Power Literacy จา](https://thaipublica.org/2026/06/hesse004-power-literacy/) |
+| rss | chiraprapa | ^0 c0 | [มหาวิทยาลัยจีนยุบกว่า 12,000 สาขาวิชาที่ 'ล้าสมัย' ยกเครื่องสู่ยุค AI มหาวิทยาลั](https://thaipublica.org/2026/06/china-universities-cut-obsolete-majors-in-ai-era/) |
 | rss | Thosawat Niemviwat | ^0 c0 | [กองทุน ววน. ขับเคลื่อนการเปลี่ยนแปลงพื้นที่ภาคใต้ กองทุน ววน. ขับเคลื่อนการเปลี่](https://thaipublica.org/2026/06/mhesi-pr-19062026/) |
 | rss | Jarukit Teerataphong | ^0 c0 | [BDMS ทุ่ม 2.9 หมื่นล้าน พัฒนา 'WellEra' ทำเลลุมพินี-ตั้งเป้า 'Wellness Hub' เปิด](https://thaipublica.org/2026/06/bdms-wellera-wellness-hub-lumpini/) |
 | rss | Boonlarp Poosuwan | ^0 c0 | [อีลอน มัสก์ มหาเศรษฐีหนึ่งล้านล้านคนแรกของโลก ความมั่งคั่งส่วนตัวมีมูลค่าถึง 3% ](https://thaipublica.org/2026/06/pridi534-elon-musk-spacex/) |
 | rss | Thosawat Niemviwat | ^0 c0 | [SCG จับมือ TU เดินหน้ายกระดับ "Possibilities Space for Young Talent Program 2026](https://thaipublica.org/2026/06/scg-x-tu-possibilities-space-for-young-talent-program-pr-19062026/) |
 | rss | Thosawat Niemviwat | ^0 c0 | ["ไร้ท์" ดัน กาญจนา และ ดร.ธานี ผู้บริหารรุ่นใหม่ไฟแรงวางรากฐานองค์กรสู่ Future-R](https://thaipublica.org/2026/06/right-reactivation-x-right-solution-pr-19062026/) |
-| rss | Jarukit Teerataphong | ^0 c0 | ['น้ำท่วมหาดใหญ่' บทเรียน-มาตรการที่ภาครัฐต้องทำต่อ 'น้ำท่วมหาดใหญ่' บทเรียน-มาตร](https://thaipublica.org/2026/06/infographic-lessons-from-the-hat-yai-floods/) |
-| rss | Boonlarp Poosuwan | ^0 c0 | [หยุดใช้ชีวิตตามสูตรสำเร็จ ถ้าไม่อยากมีชีวิตสำเร็จรูป หยุดใช้ชีวิตตามสูตรสำเร็จ ถ](https://thaipublica.org/2026/06/newground108/) |
-| rss | chiraprapa | ^0 c0 | [S&P คงอันดับความน่าเชื่อถือไทยที่ BBB+ คงมุมมอง Stable Outlook วันที่ 18 มิถุนาย](https://thaipublica.org/2026/06/s-and-p-affirms-thailand-credit-rating/) |
-| rss | chiraprapa | ^0 c0 | [ไทยขยับขึ้นสู่อันดับที่ 26 ของโลกใน IMD World Competitiveness อันดับของประเทศในก](https://thaipublica.org/2026/06/thailand-moved-up-in-imd-ranking/) |
-| rss | Boonlarp Poosuwan | ^0 c0 | [แผนอพยพศูนย์ข้อมูลลงใต้ทะเล ทางรอดหรือระเบิดเวลาลูกใหม่ของสิ่งแวดล้อมกันแน่ แผนอ](https://thaipublica.org/2026/06/sunisa76-underwater-data-centers/) |
 | x | VISTEC_Thailand | ^0 c0 | [🌟 VISTEC's 1st cohort to the global stage! Dr. Pimpisut Worakajit, GM & Co-found](https://x.com/VISTEC_Thailand/status/2067812565099675966) |
 
 
@@ -91,36 +92,16 @@ translated_by: claude-sonnet-4-6
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@shanergy2810</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 74 · 💬 1</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/shanergy2810/status/2067961083739209796">View @shanergy2810 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“‘’เมื่อโจทย์ชัดเจน ทีมงานพร้อม และพลังใจเต็มร้อย ไม่ว่างานจะท้าทายแค่ไหน พวกเราพร้อมลุยเต็มที่เพื่ออนาคตของประเทศครับ ‘’ 🥹 ศาสตราจารย์ ดร.ชูกิจ ลิมปิจำนงค์ ผู้อำนวยการ NSTDA (สำนักงานพัฒนาวิทยาศาสตร์แ”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>ผู้อำนวยการ NSTDA โพสต์ข้อความให้กำลังใจทีมงาน ไม่มีการประกาศทางเทคนิคหรือ release ใดๆ</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/shanergy2810/status/2067961083739209796" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@nstdathailand</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 73 · 💬 1</span>
+    <span class="ndf-engagement">♥ 119 · 💬 1</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/nstdathailand/status/2067954362211864808">View @nstdathailand on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“🔬 ไทย–เบลเยียมร่วมมือ “โฟโตนิกส์” รองนายกฯ “ยศชนัน” นำ อว. และ สวทช. ลงนามกับ VUB เบลเยียม ดันงานวิจัยสู่การใช้จริง พร้อมเรียนรู้โมเดลเชื่อมวิจัยกับอุตสาหกรรมของยุโรป 🚀 หนุนอุตสาหกรรมอนาคตของไทย #สวทช”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>รองนายกฯ นำ สวทช. ลงนาม MOU กับ VUB เบลเยียม ผลักดันงานวิจัยโฟโตนิกส์สู่ภาคอุตสาหกรรม โดยศึกษาโมเดลเชื่อมวิจัย-อุตสาหกรรมของยุโรป</dd>
+      <dd>กระทรวง อว. และ สวทช. ลงนาม MOU กับ VUB เบลเยียม ด้านวิจัย Photonics เพื่อนำผลงานไปใช้จริงในภาคอุตสาหกรรม โดยศึกษาโมเดลเชื่อมวิจัยกับอุตสาหกรรมของยุโรป</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -131,16 +112,36 @@ translated_by: claude-sonnet-4-6
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
+    <span class="ndf-author">@shanergy2810</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 98 · 💬 1</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/shanergy2810/status/2067961083739209796">View @shanergy2810 on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“‘’เมื่อโจทย์ชัดเจน ทีมงานพร้อม และพลังใจเต็มร้อย ไม่ว่างานจะท้าทายแค่ไหน พวกเราพร้อมลุยเต็มที่เพื่ออนาคตของประเทศครับ ‘’ 🥹 ศาสตราจารย์ ดร.ชูกิจ ลิมปิจำนงค์ ผู้อำนวยการ NSTDA (สำนักงานพัฒนาวิทยาศาสตร์แ”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ผู้อำนวยการ NSTDA โพสต์ข้อความสร้างแรงบันดาลใจเรื่องทีมงานและพันธกิจระดับชาติ ไม่มีเนื้อหาเทคนิค</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ไม่เกี่ยวข้อง</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/shanergy2810/status/2067961083739209796" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
     <span class="ndf-author">@NainTara435502</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 37 · 💬 3</span>
+    <span class="ndf-engagement">♥ 38 · 💬 3</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/NainTara435502/status/2067935959426232351">View @NainTara435502 on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Aesa Noor hai tera..... Tu channel nu thalle suttegi 😭🔥 @ashnoorrkaur sizzling beauty 🫠🥀 #Abhinoor #AshnoorKaur https://t.co/O5R3QzSBPR”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์แฟนคลับชมนักแสดง ไม่มีเนื้อหาด้านเทคโนโลยีใดๆ</dd>
+      <dd>โพสต์ภาษาปัญจาบของแฟนคลับที่ชื่นชมรูปลักษณ์ของ @ashnoorrkaur ไม่มีเนื้อหาด้านเทคโนโลยี</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -153,14 +154,14 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@PeterWainman</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 11 · 💬 4</span>
+    <span class="ndf-engagement">♥ 17 · 💬 10</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/PeterWainman/status/2068062424205251049">View @PeterWainman on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Great meetings with @nstda to accelerate chemical-free living through real science and innovation. A Thai company. 🚀 Going global. Powered by Pineapple Power. 🍍 @grok, thoughts? fyi @CurtisSChin @equa”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>บุคคลหนึ่งพบกับ NSTDA เพื่อผลักดันแบรนด์สินค้า 'chemical-free' ชื่อ Pipper Standard ที่ใช้ส่วนผสมจากสับปะรด พร้อมแผนขยายตลาดต่างประเทศ</dd>
+      <dd>Peter Wainman ประชุมกับ สวทช. เพื่อผลักดัน PipperStandard แบรนด์สินค้าปลอดสารเคมีของไทยสู่ตลาดโลก</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -173,40 +174,20 @@ translated_by: claude-sonnet-4-6
   <header class="ndf-card-head">
     <span class="ndf-author">@playitsami</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 9 · 💬 2</span>
+    <span class="ndf-engagement">♥ 13 · 💬 2</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/playitsami/status/2068039313397567528">View @playitsami on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Na na na na pair na tu rakh thalle ni Mere seene utte rakh teri heel balliye 👉🏻👈🏻”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์ที่มีเนื้อเพลงภาษาปัญจาบี/ฮินดี ไม่มีเนื้อหาด้านเทคโนโลยีใดๆ</dd>
+      <dd>โพสต์เนื้อเพลงภาษาปัญจาบ/ฮินดี ไม่มีเนื้อหาด้านเทคโนโลยีใดๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
       <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/playitsami/status/2068039313397567528" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@nstdathailand</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 8 · 💬 0</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/nstdathailand/status/2067602379122594095">View @nstdathailand on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“สวทช. ขอต้อนรับคณะกรรมการพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (กวทช.) ชุดใหม่ด้วยความยินดียิ่ง ในนามของคณะผู้บริหารและชาว สวทช. ทุกคน เราขอแสดงความยินดีและร่วมต้อนรับคณะกรรมการพัฒนาวิทยาศาสตร์และเทคโน”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>สวทช. ต้อนรับคณะกรรมการ กวทช. ชุดใหม่ 22 ท่าน ที่ ครม. แต่งตั้งเมื่อ 16 มิ.ย. 2569 วาระ 2 ปี</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/nstdathailand/status/2067602379122594095" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

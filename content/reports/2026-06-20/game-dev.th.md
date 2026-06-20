@@ -4,7 +4,7 @@ date: '2026-06-20'
 topic: game-dev
 lang: th
 pair: game-dev.en.md
-generated_at: '2026-06-20T03:14:16+00:00'
+generated_at: '2026-06-20T15:14:26+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -13,80 +13,80 @@ platforms:
 regions:
 - global
 post_count: 164
-salience: 0.8
+salience: 0.62
 sentiment: mixed
-confidence: 0.68
+confidence: 0.6
 tags:
-- game-dev
 - unreal-engine
-- godot
+- ue6
 - ai-pipeline
-- engines
-- tooling
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2067855865223446528/img/fEErwtfRL4mXjWin.jpg
+- unity
+- godot
+- engine-strategy
+thumbnail: https://pbs.twimg.com/media/HLOsAYdaIAAWohf.jpg
 translated_by: claude-sonnet-4-6
 ---
 
 # Game Dev — 2026-06-20
 
 ## TL;DR
-- Epic ประกาศ Unreal Engine 6 Early Access เป้าหมายปลายปี 2027; Blueprints ยังรองรับใน EA และ release แรกของ UE6 แต่จะถูก deprecate ในที่สุด — กระแสต้านหนัก (546 comments) [5][52][60]
-- Godot 4.7 ออกแล้ว พร้อม Asset Store ใหม่, HDR output, node แสง rectangular, และ Godot Android Build Environment ที่ stable [6][17]
-- Unreal Engine 5.8 release พร้อม Microsoft GDK plug-ins สาธารณะ (build/package/ship ไป Xbox จาก PC) และ MegaLights; Gears of War E-Day รัน 60 FPS พร้อม ray tracing บน Series X [8][9][14]
-- ผู้กำกับ FFVII Revelation ออกมาปกป้องการเลือก UE4 เหนือ UE5 โดยระบุว่า engine เป็นเครื่องมือ ไม่ใช่เป้าหมาย [2][12]
-- AI ใน pipeline: Cascadeur inbetweening/posing แบบ local (ไม่ใช้ cloud) [16], ทดสอบ Claude Code + UE5.8 MCP plugin [37][44], และ workflow ตัวละคร modular จาก 3D-AI + MetaHuman [32]
+- Epic ยืนยัน Unreal Engine 6 ตั้งเป้า Early Access ปลายปี 2027; Blueprints ยังรองรับใน EA และ release แรก แต่กำหนดยกเลิกในภายหลัง — ชุมชนตอบรับเชิงลบ [2][52]
+- ผู้กำกับ FF7 Revelation นาโอกิ ฮามากูชิ ยืนยันเกมยังอยู่บน Unreal Engine 4 (ไม่ใช่ UE5) เพื่อส่งงานได้เร็วขึ้น มองว่าเป็นการตัดสินใจด้านธุรกิจและตาราง — 'เทคโนโลยีคือวิธีการ ไม่ใช่เป้าหมาย' [1][3][7]
+- UE 5.8 เปิด Microsoft GDK plug-ins สู่สาธารณะ ทีมงานสามารถ build, package และ ship เกม Xbox จาก PC ได้โดยไม่ต้องเปลี่ยน workflow [5]
+- ภาพจริงของ AI ในสาย pipeline: dev ที่ recreate demo 'build a city' ของ Unreal ชี้ว่า AI ที่ ship จริงไม่ตรงกับ demo และ 'ยุ่งเหยิง' — งานทำมือเร็วกว่า [36] ขณะที่อีกคนใช้ AI-agent loop ค่อยๆ สร้างแผนที่สไตล์ GTA ใน 10 วัน [8]
+- เครื่องมือ Unity/Godot ที่น่าสนใจ — GPU wireframe shader แบบ topology จริง [49], TUI renderer บน ratatui สำหรับ Unity [29] และการทดสอบ Claude Code กับ UE 5.8 MCP plugin สำหรับ Blueprint generation [23]
 
-## เหตุการณ์ที่เกิดขึ้น
-Epic Games ระบุเป้าหมาย Unreal Engine 6 Early Access ปลายปี 2027 โดย Blueprints ยังรองรับใน Early Access และ release แรก แต่จะถูก deprecate ในภายหลัง — โพสต์ดึง 546 comments และเห็นความกังวลชัดเจนจากนักพัฒนาเรื่อง migration path ที่ยังไม่ชัดเจน แต่ประกาศล่วงหน้าหลายปี [5][52] บางเสียงเรียกร้องให้ใจเย็น โดยชี้ว่า UE6 ยังอีก ~3 ปี และ Blueprint fade-out ~5 ปี [60] ด้าน Godot 4.7 launch พร้อม Asset Store ใหม่, HDR output, node แสง rectangular, และ Godot Android Build Environment ที่ stable [6][17] พร้อมกระแสชื่นชมจาก community ในเรื่อง cadence แบบ open-source [58][59]
+## What happened
+กลยุทธ์ engine ครองพื้นที่วันนี้ Epic ระบุ UE6 ตั้งเป้า Early Access ปลายปี 2027 โดย Blueprints ยังรองรับใน EA และ release แรก แต่จะยกเลิกในภายหลัง [2] กระแสตอบรับเป็นลบอย่างกว้างขวาง โดยมีโพสต์หนึ่งที่แชร์กันมากชี้ให้เห็นว่า timeline 3 ปีนับจากนี้ และการเลิกใช้ Blueprint ราวๆ 5 ปี ยังไม่ต้องตื่นตระหนก [52] ฝั่ง FF7 Revelation ผู้กำกับ Naoki Hamaguchi อธิบายว่าเกมอยู่บน UE4 ต่อไป ไม่ย้ายไป UE5 เพราะเหตุผลด้านตารางเวลา ธุรกิจ และความต่อเนื่องจาก Remake/Rebirth [1][3][7][53] Epic ยืนยันด้วยว่า Launcher V2 ไม่ได้สร้างบน Unreal Engine [6][60] และ Unreal Fest Chicago / State of Unreal ปิดฉากพร้อม highlights [27][32] ด้าน tooling UE 5.8 เปิด Microsoft GDK plug-ins สาธารณะสำหรับ Xbox build จาก PC [5]
 
-## ทำไมถึงสำคัญ
-มีสองกระแสที่ขัดกันอยู่ Epic ส่งสัญญาณการเปลี่ยนโครงสร้างระยะยาว (UE6, deprecate Blueprint ในที่สุด) ซึ่งสร้างความไม่แน่นอนในการวางแผนโดยยังไม่มี workflow ทดแทนที่ชัดเจน จึงกระตุ้นทั้งกระแสต้านและความสนใจในทางเลือกอื่น [5][52][21][26] ขณะที่ Godot ทยอยปิด feature gap — mobile (Android build stable), Asset Store, HDR — ลด friction สำหรับทีมเล็ก [6][17][58] GDK plug-ins สาธารณะของ UE5.8 ลด barrier การ ship ไป Xbox โดยไม่เปลี่ยน workflow [9] และการตัดสินใจ UE4 ของ FFVII เตือนว่าทีมที่กำลัง ship จะเลือก stability เหนือ version ใหม่เสมอ [2][12] ส่วน AI pipeline ชี้ให้เห็น second-order effect: local tools ที่ไม่เสียเครดิต (Cascadeur) และ LLM agent ฝั่ง engine (UE MCP plugins) กำลังเคลื่อนจาก demo สู่การใช้งานใกล้ production แม้หลักฐานส่วนใหญ่ยังเป็น showcase ของ creator ไม่ใช่ผลลัพธ์ที่ verified [16][37][44][24]
+## Why it matters (reasoning)
+สัญญาณยกเลิก Blueprint ใน UE6 [2] คือประเด็นที่มีผลกระทบมากสุด: visual scripting คือเครื่องมือหลักที่ทีมเล็กและกลุ่ม non-programmer ใช้สร้างงานใน Unreal ดังนั้น deprecation path หลายปีสร้างความเสี่ยงในการวางแผน และผลักบางทีมไปหา Godot (สังเกตกระแส 'reimplement visual scripting เพื่อต่อต้าน Epic' [46]) การตัดสินใจของ FF7 [1][3] เป็นบทเรียนสวนกระแสสำหรับสตูดิโอที่ถูกกดดันให้ไล่ตาม engine ใหม่ล่าสุด — สตูดิโอใหญ่เลือก schedule และความคุ้นเคยเหนือ version ล่าสุดอย่างชัดเจน ประเด็น AI pipeline อยู่ทั้งสองด้าน — demo ของ vendor สำหรับ AI level/asset generation วิ่งนำหน้าความเป็นจริงที่ ship ได้ [36][8] ขณะที่ AI tooling ที่ขอบเขตชัดและแคบกว่า (MetaHuman modular characters [17], bulk asset import [38], MCP-driven scripting [23]) แสดงให้เห็นว่า AI ช่วยงาน production ได้จริงในจุดใด GDK plug-in ของ Xbox [5] ลด friction การ ship console ซึ่งเกี่ยวข้องกับทีมที่มองตลาด console port
 
-## ความเป็นไปได้
-**น่าจะเกิด:** ผลกระทบ UE6 ระยะสั้นต่อทีมที่กำลัง ship ต่ำ — Early Access ~ปลายปี 2027, Blueprint deprecation ยังอีกหลายปีและยังไม่มี forced migration [5][60] **เป็นไปได้:** messaging เรื่อง deprecation เร่งให้ studio เล็กประเมิน Godot และ engine ทางเลือก จากปริมาณ sentiment เชิงลบที่สูง [21][26][52] **เป็นไปได้:** local AI animation/asset tools (Cascadeur, MetaHuman + 3D-AI) เริ่มถูกนำไปใช้จริงในทีม indie เพราะหลีกเลี่ยงค่า cloud per-use [16][32] **ไม่น่าเกิด (ระยะใกล้):** workflow LLM-driven แบบ "สร้าง city/blueprint จาก description" แทนการ author ด้วยมือในระดับ production — ปัจจุบันยังเป็น demo และ self-reported hype ไม่ใช่ pipeline ที่ validated [37][44][24] ไม่มี source ใดให้ตัวเลขความน่าจะเป็น
+## Possibility
+**Likely:** การยกเลิก Blueprint ใน UE6 ผลักดันความสนใจ Godot และทางเลือก visual-scripting ใน 1-2 ปีข้างหน้า จากกระแสต่อต้านและ timeline ที่ชัด [2][46][52] **Plausible:** สตูดิโออื่นจะออกมาพูดถึงการอยู่กับ engine เวอร์ชันเก่าเพื่อรักษา ship date เช่นเดียวกับที่ FF7 ทำ [1][3] **Plausible:** ฟีเจอร์ AI 'auto-generate a level/city' ยังคง over-promise ใน demo และ under-deliver ใน shipped build ระยะใกล้ ขณะที่ AI tool แบบแคบ (character parts, asset import, scripting assist) จะ mature เร็วกว่า [36][8][17][38][23] **Unlikely (ไม่มี source รองรับ):** การบังคับ migrate ออกจาก Blueprints ในระยะใกล้ — Epic ระบุชัดว่า deprecation จะเกิดหลัง EA ปี 2027 [2][52]
 
-## ความเกี่ยวข้องกับ NDF DEV
-แนวทางสำหรับ NDF DEV: (1) ประเมิน Godot 4.7 stable Android Build Environment และ Asset Store สำหรับ 2D/edutech และ mobile project ที่ Unity overhead ไม่คุ้ม — ทดลองได้ง่าย [6][17] (2) Pilot Cascadeur local AI inbetweening/posing งาน animation ใน XR/VR และ game; ไม่มี cloud/credits เหมาะกับ cost control — effort ต่ำ/กลาง [16] (3) ถ้างาน Unreal แตะ XR ให้จับตา UE6/Blueprint deprecation ไว้ อย่าเพิ่ง action — ยังไม่ต้องเริ่ม migration planning (horizon 5 ปี, ยังไม่มี path เผยแพร่) — effort ต่ำ [5][52][60] (4) ทดสอบ Claude Code + UE5.8 MCP plugins แบบจำกัดขอบเขตและตั้งข้อสงสัยก่อนนำเข้า pipeline จริง — ข้อมูลปัจจุบันยังเป็น demo — effort กลาง [37][44] ข้าม: discourse engine war [1][21][26], hot takes Roblox-vs-Unreal [30], NSFW/VN promo [3], และ spam การเมืองที่ไม่เกี่ยวกับ game dev [11][35]
+## Org applicability — NDF DEV
+1) ปฏิบัติต่อ AI level/asset auto-generation แบบ experimental ไม่ใช่ production: ช่องว่าง demo-vs-reality [36][8] บอกว่าไม่ควรพึ่งพาใน Unity/XR pipeline ตอนนี้ (low effort — กำหนดความคาดหวัง, ข้ามสำหรับงาน ship จริง) 2) ทดลอง MCP-driven engine scripting: การทดสอบ Claude Code + UE 5.8 MCP [23] ตรงกับ UnityMCP ของ NDF — รัน trial แคบๆ บน Unity editor automation ก่อนพึ่งพาจริง (med effort) 3) นำบทเรียน engine-version จาก FF7 [1][3] มาใช้: สำหรับโปรเจกต์ Unity edutech/XR ให้ยึด stable LTS และหลีกเลี่ยง major upgrade กลางโปรเจกต์เพราะความอยากได้ใหม่ (low effort — policy note) 4) ประเมิน Unity asset ราคาถูกที่ออกวันนี้: GPU wireframe shader [49], free VFX texture pack [42] และ ratatui-unity TUI renderer สำหรับ in-game terminal UI [29] (low effort) ข้าม: ความกังวล UE6 timeline [2][52] และ internals ของ Epic Launcher [6] — ไม่เกี่ยวกับสตูดิโอที่ใช้ Unity เป็นหลัก
 
-## Signals ที่ควรจับตา
-- จับตา milestone UE6 Early Access และ Blueprint migration guidance ที่จะเผยแพร่ — ความเงียบตรงนี้คือปัญหาหลักที่นักพัฒนาร้องเรียน [5][52]
-- ติดตามรายงาน stability จริงของ Godot 4.7 mobile/Android ในโปรเจกต์จริง — เกี่ยวกับงาน edutech และ mobile [17]
-- จับตาว่า UE MCP / Claude Code engine-automation จะก้าวข้าม demo footage ไปสู่ผลลัพธ์ที่ทำซ้ำได้หรือไม่ [37][44]
-- ติดตาม adoption ของ local-only AI tooling (Cascadeur) ในฐานะ cost-control pattern สำหรับทีมเล็ก [16]
+## Signals to Watch
+- Epic จะเผยแพร่ Blueprint migration/replacement path ที่ชัดเจนก่อน UE6 EA หรือไม่ — ส่งผลต่อทุกทีมที่พึ่ง visual scripting [2][52]
+- ความ mature ของ MCP plugin สำหรับ engine (Unity/Unreal) ในการช่วย scripting ด้วย AI — เกี่ยวโดยตรงกับ UnityMCP ของ NDF [23]
+- ผลลัพธ์จริงที่ ship ได้จาก AI level/asset generation เทียบกับ marketing demo [36][8][38]
+- Varsapura ของ miHoYo ในฐานะ UE5 title ใหญ่ตัวแรก — สัญญาณการ adopt engine ของสตูดิโอ AAA [54]
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | LookAtMyMeat1 | ^2677 c20 | [In-house engine vs Unreal slop](https://x.com/LookAtMyMeat1/status/2067797372801786158) |
-| x | nhamaguc | ^2434 c67 | [I spoke about why we chose Unreal Engine 4 over 5. Technology is a means, not th](https://x.com/nhamaguc/status/2068127708543078789) |
-| x | ihokaii | ^2372 c0 | [One cup of coffee, one unforgettable look, and a lot more waiting to unfold. Com](https://x.com/ihokaii/status/2067855921586528483) |
-| x | Designatedkitty | ^1944 c1 | [@johnnyoutlaw98 That was Cliff Bleszinski. He also made unreal tournament. Sween](https://x.com/Designatedkitty/status/2067822035603001502) |
-| x | UnrealEngine | ^1709 c546 | [Hey Everyone. Our aim is to ship Early Access for UE6 by the end of 2027 and Blu](https://x.com/UnrealEngine/status/2067661808903577646) |
-| x | godotengine | ^1301 c39 | [#GodotEngine 4.7 is here! 🎉 Like a cult classic movie, Godot 4 has only gotten b](https://x.com/godotengine/status/2067613808235810867) |
-| x | EyesOfTheGhost | ^793 c1 | [this but with godot in the thumbnail and instead of adding flavour shots its lik](https://x.com/EyesOfTheGhost/status/2067990637253722136) |
-| x | Stefan_3D_AI | ^783 c18 | [Just watched the Unreal Engine 5.8 presentation and downloaded it right after — ](https://x.com/Stefan_3D_AI/status/2067853397471142283) |
-| x | XBOXGameDev | ^700 c12 | [Unreal Engine 5.8 just made building for Xbox even easier. Microsoft GDK plug-in](https://x.com/XBOXGameDev/status/2068058675689001089) |
-| x | BackersGamesF | ^618 c20 | [EPIC CONFIRMED THAT THE LAUNCHER V2 IS NOT BUILD ON UNREAL ENGINE 👀 Someone aske](https://x.com/BackersGamesF/status/2068022135155491316) |
-| x | TonemanLives | ^419 c92 | [Democrats have no ideas, no agenda, offer no hope to the American people and def](https://x.com/TonemanLives/status/2067918494306291966) |
-| x | NinEverything | ^410 c8 | [Final Fantasy 7 Revelation director explains why the game is sticking with Unrea](https://x.com/NinEverything/status/2068095743471362215) |
-| x | FaustianNarcan | ^353 c6 | [@Prawcin So what it can run and look like shit on the unreal engine?](https://x.com/FaustianNarcan/status/2067833567900496216) |
-| x | NikoMueller | ^350 c11 | [Gears of War E-Day is a technical masterpiece! 🔥 It runs on an Xbox Series X wit](https://x.com/NikoMueller/status/2067818793485656399) |
-| x | Adam_Lenglen | ^324 c4 | [More of my free 8x8 asset pack ! -- Itchio in bio -- #pixelart #gamedev #indiede](https://x.com/Adam_Lenglen/status/2067950775746412949) |
-| x | 3DxDEV7 | ^316 c7 | [Cascadeur just broke animation. AI inbetweening, smart posing, physics tools – a](https://x.com/3DxDEV7/status/2067892786926428654) |
-| x | 80Level | ^313 c2 | [Godot 4.7 is out, bringing the new Asset Store, HDR output support, a rectangula](https://x.com/80Level/status/2067911527420575775) |
-| x | IRONY_the_game | ^303 c5 | [If you're not good at aiming to cut their limbs, Then use Bigfukingmachinegun™ #](https://x.com/IRONY_the_game/status/2067895038479393142) |
-| x | Mr_Rebs_ | ^283 c15 | [Just a reminder: I reported Campaign Evolved is an unreal engine training exerci](https://x.com/Mr_Rebs_/status/2068078291660013782) |
-| x | gedonia293436 | ^266 c13 | [Testing out movement on Dragonkin form for shapeshifting skill tree #indiedev #i](https://x.com/gedonia293436/status/2067786558841799020) |
-| x | Rec_A_Dork | ^234 c5 | [Literally throwing out what made Unreal Engine approachable in favor of slop. I'](https://x.com/Rec_A_Dork/status/2067786818842497061) |
-| x | thepixelform | ^176 c7 | [Stress-testing brand new class editor: #pixelart #indiedev https://t.co/ycuCSRYA](https://x.com/thepixelform/status/2067771078714269759) |
-| x | Kahzun_ | ^175 c3 | ["𝑶𝒏𝒘𝒂𝒓𝒅 𝑲𝒆𝒍𝒑𝒊𝒆. 𝑾𝒆'𝒗𝒆 𝒘𝒐𝒓𝒌 𝒕𝒐 𝒅𝒐." Ciri - The Witcher IV (UE5 tech demo trailer)](https://x.com/Kahzun_/status/2067849686728270246) |
-| x | ziwenxu_ | ^162 c26 | [10 days ago this was an empty map. A loop of AI agents has been building GTA 6 o](https://x.com/ziwenxu_/status/2068090138232586327) |
-| x | lonve69686 | ^160 c3 | [Gentleman's Violence - John Wick-inspired Gun-fu FPS #indiedev #gamedev #indiega](https://x.com/lonve69686/status/2068001554276504031) |
-| x | wariocolosseum | ^148 c0 | [i think gaming would be a lot better without unreal engine](https://x.com/wariocolosseum/status/2067823184649633815) |
-| x | BorgesDev | ^141 c0 | [I found something curious while exploring the world of Voxium and suddenly... Vo](https://x.com/BorgesDev/status/2067835045797101587) |
-| x | UnrealEngine | ^137 c6 | [Thank you to everyone for coming along to Unreal Fest Chicago and to those who j](https://x.com/UnrealEngine/status/2067971700986372465) |
-| x | JustHoj | ^135 c1 | [Simple animations can bring life to our materials. In Unreal Engine materials, t](https://x.com/JustHoj/status/2067854130245186009) |
-| x | ThorgrimStlfist | ^134 c3 | [@Prawcin The Roblox engine runs better than unreal, It's a better engine](https://x.com/ThorgrimStlfist/status/2067800713217106062) |
+| x | nhamaguc | ^6935 c141 | [I spoke about why we chose Unreal Engine 4 over 5. Technology is a means, not th](https://x.com/nhamaguc/status/2068127708543078789) |
+| x | UnrealEngine | ^1800 c571 | [Hey Everyone. Our aim is to ship Early Access for UE6 by the end of 2027 and Blu](https://x.com/UnrealEngine/status/2067661808903577646) |
+| x | Genki_JPN | ^1261 c41 | [Naoki Hamaguchi says they stuck with Unreal Engine 4 instead of switching to UE5](https://x.com/Genki_JPN/status/2068185785254453474) |
+| x | EyesOfTheGhost | ^1038 c2 | [this but with godot in the thumbnail and instead of adding flavour shots its lik](https://x.com/EyesOfTheGhost/status/2067990637253722136) |
+| x | XBOXGameDev | ^865 c15 | [Unreal Engine 5.8 just made building for Xbox even easier. Microsoft GDK plug-in](https://x.com/XBOXGameDev/status/2068058675689001089) |
+| x | BackersGamesF | ^698 c25 | [EPIC CONFIRMED THAT THE LAUNCHER V2 IS NOT BUILD ON UNREAL ENGINE 👀 Someone aske](https://x.com/BackersGamesF/status/2068022135155491316) |
+| x | NinEverything | ^570 c12 | [Final Fantasy 7 Revelation director explains why the game is sticking with Unrea](https://x.com/NinEverything/status/2068095743471362215) |
+| x | ziwenxu_ | ^443 c68 | [10 days ago this was an empty map. A loop of AI agents has been building GTA 6 o](https://x.com/ziwenxu_/status/2068090138232586327) |
+| x | TonemanLives | ^429 c98 | [Democrats have no ideas, no agenda, offer no hope to the American people and def](https://x.com/TonemanLives/status/2067918494306291966) |
+| x | AdamNapper2 | ^397 c6 | [Silent Hill 2 inspired Alpha Clipping Vertex Painting :) #Unity #Gamedev https:/](https://x.com/AdamNapper2/status/2068253644693361109) |
+| x | Mr_Rebs_ | ^375 c18 | [Just a reminder: I reported Campaign Evolved is an unreal engine training exerci](https://x.com/Mr_Rebs_/status/2068078291660013782) |
+| x | WOAH_MAAAN_DEV | ^362 c4 | [Punch her belly! #gamedev #indiedev #ScreenshotSaturday https://t.co/4QKUfDg5cf](https://x.com/WOAH_MAAAN_DEV/status/2068328315815969009) |
+| x | ushadersbible | ^349 c0 | [Included in the Godot Shaders Bible as well ➡️ https://t.co/1kYkAqSE2L #GodotEng](https://x.com/ushadersbible/status/2068184144819982688) |
+| x | owensmowen_ | ^303 c12 | [Over here in dev texture land, working on some new firing animations 🤠 #UE5 #ind](https://x.com/owensmowen_/status/2068037844539752577) |
+| x | ProfHall1955 | ^241 c13 | [😂 'top economists' aka neoliberal bankers and a bureaucrat. Western politicians ](https://x.com/ProfHall1955/status/2068060149802029523) |
+| x | skx_doom | ^222 c5 | [Rain Effects test from Sky Creator 2.0 (heavy in development) - all dynamic obje](https://x.com/skx_doom/status/2068250397006090614) |
+| x | assethub_io | ^211 c2 | [New 3D AI + MetaHuman Workflow for a Modular Game Character Running in-game in U](https://x.com/assethub_io/status/2068012076673769711) |
+| x | jettelly | ^202 c1 | [Artificeofbees showed some material tests using iterative parallax mapping on a ](https://x.com/jettelly/status/2068031054724608236) |
+| x | oopsallsolace | ^197 c17 | [Not sure, but is it supposed to do that while i'm aiming? 👀 #LegionofHonorGame #](https://x.com/oopsallsolace/status/2068092103951868214) |
+| x | gruntdotapi | ^196 c6 | [Technically speaking, the game does seem to support some kind of flying camera /](https://x.com/gruntdotapi/status/2068275818942386468) |
+| x | SaveChan_Dev | ^187 c2 | ["Data shows Ret Paladins only get hit on the shoulders. That's why the armor des](https://x.com/SaveChan_Dev/status/2068245511501738232) |
+| x | lonve69686 | ^187 c4 | [Gentleman's Violence - John Wick-inspired Gun-fu FPS #indiedev #gamedev #indiega](https://x.com/lonve69686/status/2068001554276504031) |
+| x | smart_poly | ^182 c9 | [I tested Claude code + Unreal Engine 5.8 MCP plugin. I conducted 5 tests where I](https://x.com/smart_poly/status/2068071720246816855) |
+| x | itchio | ^174 c1 | [When The Snow is Gone: Do you remember the snow? https://t.co/LaqeVzWNVS by @gum](https://x.com/itchio/status/2068015959370289435) |
+| x | aeternathegame | ^166 c15 | [This is #AeternaLucis and we've taken its gameplay to a whole new level. Fast-pa](https://x.com/aeternathegame/status/2068047489597317299) |
+| x | Willibab89 | ^164 c3 | [Early night for me. Here is some WIP on classes. #nes #rpg #wip #gamedev #indied](https://x.com/Willibab89/status/2068083358794407944) |
+| x | UnrealEngine | ^154 c7 | [Thank you to everyone for coming along to Unreal Fest Chicago and to those who j](https://x.com/UnrealEngine/status/2067971700986372465) |
+| x | JamieMoranUK | ^150 c2 | [Gears Of War E-Day looks like it's going to be the Gears game I've wanted for a ](https://x.com/JamieMoranUK/status/2068185017746894908) |
+| x | orhundev | ^148 c2 | [Damn, what... I wasn't expecting to see this today 🤯 🌐 ratatui-unity — Brings th](https://x.com/orhundev/status/2068067713264779423) |
+| x | being_becoming | ^133 c4 | [Corruption hits different in every realm. Don't let the serene beauty weaken you](https://x.com/being_becoming/status/2067974180264427643) |
 
 
 ## โพสต์เด่น
@@ -94,136 +94,76 @@ Epic Games ระบุเป้าหมาย Unreal Engine 6 Early Access ป
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@LookAtMyMeat1</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2677 · 💬 20</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/LookAtMyMeat1/status/2067797372801786158">View @LookAtMyMeat1 on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“In-house engine vs Unreal slop”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>โพสต์ viral บน X ด่า Unreal Engine ว่าเป็น 'slop' และบอกใบ้ว่า in-house engine ดีกว่า โดยไม่มี argument หรือหลักฐานประกอบ</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/LookAtMyMeat1/status/2067797372801786158" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@nhamaguc</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2434 · 💬 67</span>
+    <span class="ndf-engagement">♥ 6935 · 💬 141</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/nhamaguc/status/2068127708543078789">View @nhamaguc on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“I spoke about why we chose Unreal Engine 4 over 5. Technology is a means, not the goal. In an environment where our team can perform at its highest level, we will deliver FFVII Revelation as the best ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>ทีม FFVII Revelation เลือกใช้ Unreal Engine 4 แทน UE5 โดยให้เหตุผลว่า team performance และความเร็วในการ deliver สำคัญกว่าการใช้ engine ใหม่กว่า</dd>
+      <dd>ทีม FFVII Revelation เลือก Unreal Engine 4 แทน UE5 โดยให้เหตุผลว่าทีมถนัด UE4 มากกว่า และต้องการส่งมอบเกมได้เร็วกว่า</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Studio ระดับ AAA ประกาศชัดว่าให้ความสำคัญกับ team familiarity และ shipping speed มากกว่า engine ใหม่ — ยืนยันแนวคิด pragmatic stack choice สำหรับ game team ทุกขนาด</dd>
+      <dd>สตูดิโอใหญ่ยืนยันสาธารณะว่า 'ใช้สิ่งที่ทีมถนัด' สำคัญกว่าการอัปเกรด engine — เป็นการ validate แนวคิดนี้สำหรับทีมเล็กด้วย</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ตอน pitch Unity project ทีมอ้างอิง precedent นี้เพื่อ justify การใช้ Unity version ที่ team ถนัด แทนการ upgrade กลางโปรเจกต์ได้</dd>
+      <dd class="ndf-adapt">ก่อน commit engine version ใหม่ในโปรเจกต์ Unity หรือ UE ควร map skill gap ของทีมก่อนตัดสินใจ</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/nhamaguc/status/2068127708543078789" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@ihokaii</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2372 · 💬 0</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ihokaii/status/2067855921586528483">View @ihokaii on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“One cup of coffee, one unforgettable look, and a lot more waiting to unfold. Coming soon: OLIVIA in the next MallowFall Lust update. #MallowFallLust #Olivia #Ass #MILF #Curvy #VisualNovel #VNDev #NSFW”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>Indie dev @ihokaii ปล่อยทีเซอร์ตัวละครใหม่ชื่อ Olivia ใน MallowFall Lust ซึ่งเป็น adult visual novel ที่สร้างด้วย RenPy</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/ihokaii/status/2067855921586528483" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@Designatedkitty</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1944 · 💬 1</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Designatedkitty/status/2067822035603001502">View @Designatedkitty on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“@johnnyoutlaw98 That was Cliff Bleszinski. He also made unreal tournament. Sweeney made the engine.”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>โพสต์แก้ไขความเข้าใจผิดบน X: Cliff Bleszinski สร้าง Gears of War และ Unreal Tournament ส่วน Tim Sweeney สร้าง Unreal Engine — คนละคนกัน</dd>
-      <dt>ทำไมน่าสนใจ</dt>
-      <dd>ไม่เกี่ยวข้อง</dd>
-      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ไม่มี action</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/Designatedkitty/status/2067822035603001502" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@UnrealEngine</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1709 · 💬 546</span>
+    <span class="ndf-engagement">♥ 1800 · 💬 571</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/UnrealEngine/status/2067661808903577646">View @UnrealEngine on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“Hey Everyone. Our aim is to ship Early Access for UE6 by the end of 2027 and Blueprints will be supported in Early Access and the initial UE6 releases, but deprecated in the future. Deprecation will m”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Unreal Engine ยืนยัน UE6 Early Access เป้าหมายปลายปี 2027 — Blueprints ยังใช้ได้ตอนเปิดตัว แต่อยู่ในเส้นทาง deprecation อย่างเป็นทางการ โดยมี Verse เป็น replacement</dd>
+      <dd>Epic Games วางแผน UE6 Early Access ภายในปลายปี 2027 — Blueprints ยังใช้ได้ตอนเปิดตัว แต่อยู่ในเส้นทาง deprecation อย่างเป็นทางการ โดย Verse จะเป็น scripting system หลักในอนาคต</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ทีมที่มี UE project บน Blueprints ได้รับสัญญาณ deprecation ชัดเจน พร้อม migration target (Verse) ให้วางแผนได้เลยก่อน UE6 ออก</dd>
+      <dd>ทีมที่มีโปรเจกต์ UE Blueprints อยู่ตอนนี้รู้ชัดแล้วว่ามี end-of-life — มีเวลาประมาณ 18 เดือนเรียน Verse และวางแผน migrate ก่อน UE6 ออก</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ถ้าทีมรับงาน Unreal Engine ให้เริ่ม project ใหม่ด้วย Verse แทน Blueprints ตั้งแต่ตอนนี้ เพื่อหลีกเลี่ยง migration debt ตอน UE6 ออก</dd>
+      <dd class="ndf-adapt">มอบหมายคนในทีมหนึ่งคนไปศึกษา Verse fundamentals ตอนนี้ เพื่อให้ studio มีความรู้ภายในก่อนรับโปรเจกต์ UE6 จาก client</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/UnrealEngine/status/2067661808903577646" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@godotengine</span>
+    <span class="ndf-author">@Genki_JPN</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1301 · 💬 39</span>
+    <span class="ndf-engagement">♥ 1261 · 💬 41</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/godotengine/status/2067613808235810867">View @godotengine on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Genki_JPN/status/2068185785254453474">View @Genki_JPN on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“#GodotEngine 4.7 is here! 🎉 Like a cult classic movie, Godot 4 has only gotten better with age; the 4.7 Director's Cut helms a bevy of new features to eliminate any remaining friction between you and ”</p>
+    <p class="ndf-quote">“Naoki Hamaguchi says they stuck with Unreal Engine 4 instead of switching to UE5 for FF7 Revelation so that they could release the game a lot sooner! “But simply, for this series, considering a busine”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Godot Engine 4.7 ออกแล้ว เพิ่ม feature ใหม่หลายตัวที่ทีมบอกว่าช่วยลด friction ในกระบวนการพัฒนาเกม</dd>
+      <dd>Naoki Hamaguchi ผู้กำกับ FF7 Rebirth เลือกอยู่กับ UE4 แทน UE5 เพราะ team สะสม customization ไว้มากแล้ว และการ migrate จะทำให้ release ช้าออกไปมาก — ถึงขั้นสร้าง rendering system ของตัวเองแทน Nanite</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>Godot 4.7 สมบูรณ์มากขึ้นและฟรี เป็นตัวเลือกที่ studio ควรพิจารณาสำหรับโปรเจกต์เล็กหรือ prototype ที่อยากอยู่นอก ecosystem Unity</dd>
+      <dd>Team AAA พิสูจน์ว่า customization ที่สะสมใน engine เก่านั้นมีมูลค่ามากกว่า feature ใหม่ใน engine ถัดไป — การ 'อยู่กับของเดิมและต่อยอด' ทำให้ release ได้เร็วกว่า migrate ใหม่ทั้งหมด</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">อ่าน release notes 4.7 เพื่อดูว่า feature ใหม่ทำให้ Godot เหมาะกับโปรเจกต์เกมขนาดเล็กของ studio หรือยัง</dd>
+      <dd class="ndf-adapt">ก่อนตัดสินใจ upgrade Unity LTS กลาง project ควร audit custom editor tools และ runtime extensions ที่สะสมไว้ก่อน เพื่อชั่งน้ำหนักต้นทุนจริงของการ migrate กับประโยชน์ที่จะได้</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/godotengine/status/2067613808235810867" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/Genki_JPN/status/2068185785254453474" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@EyesOfTheGhost</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 793 · 💬 1</span>
+    <span class="ndf-engagement">♥ 1038 · 💬 2</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/EyesOfTheGhost/status/2067990637253722136">View @EyesOfTheGhost on X</a></blockquote>
   <div class="ndf-card-body">
     <p class="ndf-quote">“this but with godot in the thumbnail and instead of adding flavour shots its like. a splash of milk. maybe 1 sugar”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>โพสต์ล้อเล่นว่า tutorial Godot คือเวอร์ชัน minimal สุดของ format tutorial ที่กำลัง trend — แค่ 'นมนิดหน่อย กับน้ำตาลสักช้อน'</dd>
+      <dd>โพสต์ meme คลุมเครือ เปรียบ Godot กับการสั่งกาแฟแบบ minimal ไม่มีข้อมูลเชิงเทคนิค release หรือบทเรียนใดๆ</dd>
       <dt>ทำไมน่าสนใจ</dt>
       <dd>ไม่เกี่ยวข้อง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
@@ -234,22 +174,82 @@ Epic Games ระบุเป้าหมาย Unreal Engine 6 Early Access ป
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Stefan_3D_AI</span>
+    <span class="ndf-author">@XBOXGameDev</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 783 · 💬 18</span>
+    <span class="ndf-engagement">♥ 865 · 💬 15</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Stefan_3D_AI/status/2067853397471142283">View @Stefan_3D_AI on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/XBOXGameDev/status/2068058675689001089">View @XBOXGameDev on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Just watched the Unreal Engine 5.8 presentation and downloaded it right after — and this update alone gave me so much to cover on the channel. Three things got me. Here's the first 👇 1. Any character ”</p>
+    <p class="ndf-quote">“Unreal Engine 5.8 just made building for Xbox even easier. Microsoft GDK plug-ins are now public—so you can build, package, and ship to Xbox on PC without changing your workflow. 👉 Get started: https:”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>UE 5.8 เพิ่ม pipeline แปลง character ใดก็ได้ — ทั้ง body และ face — ให้เป็น MetaHuman แบบ rigged ครบชุดภายใน Unreal Engine เดียว</dd>
+      <dd>Microsoft เปิด GDK plug-ins สำหรับ Unreal Engine 5.8 เป็น public แล้ว — dev สามารถ build, package, และ ship เกมขึ้น Xbox จาก PC ได้โดยไม่ต้องเปลี่ยน workflow</dd>
       <dt>ทำไมน่าสนใจ</dt>
-      <dd>ทีม XR/VR ได้ประโยชน์ตรงที่ character จาก AI หรือ scan สามารถเข้า rig พร้อม animate ได้เลย ไม่ต้อง retopology หรือ rig เองทีละชิ้น</dd>
+      <dd>การ ship ขึ้น Xbox ง่ายขึ้นมากสำหรับ Unreal Engine studio — สะท้อนทิศทาง Microsoft ที่ดึง dev เข้า console ecosystem ตัวเอง</dd>
       <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
-      <dd class="ndf-adapt">ทีม XR/VR ลอง run AI-generated character 1 ตัวผ่าน UE 5.8 MetaHuman conversion เพื่อดู quality และ pipeline fit ก่อนนำไปใช้จริงใน avatar work</dd>
+      <dd class="ndf-adapt">ไม่มี action</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/Stefan_3D_AI/status/2067853397471142283" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/XBOXGameDev/status/2068058675689001089" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@BackersGamesF</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 698 · 💬 25</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/BackersGamesF/status/2068022135155491316">View @BackersGamesF on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“EPIC CONFIRMED THAT THE LAUNCHER V2 IS NOT BUILD ON UNREAL ENGINE 👀 Someone asked: &quot;..Epic Launcher v2 will not be built using Unreal engine? Is it true?&quot; Epic: &quot;Correct, not built on UE&quot; #EpicGames h”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>Epic Games ยืนยันอย่างเป็นทางการว่า Launcher v2 ไม่ได้สร้างบน Unreal Engine ทลายความเชื่อที่ว่า Epic ใช้ UE กับ internal tool ทุกตัว</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>ยืนยันว่า UE ไม่เหมาะกับ desktop app development แม้แต่ในมือ Epic เอง — standard app framework ชนะในงานประเภทนี้</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ไม่มี action</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/BackersGamesF/status/2068022135155491316" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@NinEverything</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 570 · 💬 12</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/NinEverything/status/2068095743471362215">View @NinEverything on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“Final Fantasy 7 Revelation director explains why the game is sticking with Unreal Engine 4 instead of 5 https://t.co/ESmOlIe555 https://t.co/WJ2hjv1kHf”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>ผู้กำกับ Final Fantasy 7 Revelation อธิบายเหตุผลที่ทีมเลือกใช้ Unreal Engine 4 ต่อ แทนที่จะย้ายไป UE5</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>เหตุผลจาก studio AAA ระดับใหญ่ที่เลือกอยู่กับ UE4 เป็น reference ดีสำหรับทีมที่กำลังตัดสินใจเรื่อง UE upgrade</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">อ่านบทความและบันทึก trade-off ที่ทีมอ้างถึง ไว้ใช้อ้างอิงตอน client ถามเรื่อง UE4 vs UE5</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/NinEverything/status/2068095743471362215" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@ziwenxu_</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 443 · 💬 68</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ziwenxu_/status/2068090138232586327">View @ziwenxu_ on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“10 days ago this was an empty map. A loop of AI agents has been building GTA 6 on it and the community building it together while I sleep. day 10. look at it now. People are walking around. a skyline ”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>นักพัฒนารายหนึ่งใช้ AI agent loop สร้าง open-world สไตล์ GTA ใน Unreal Engine ภายใน 10 วัน — มี skyline, NPC เดินได้, และ community ช่วยกันสร้างด้วย</dd>
+      <dt>ทำไมน่าสนใจ</dt>
+      <dd>AI agent loop ที่รันอัตโนมัติข้ามคืนลด production เวลา open-world map จากหลายเดือนเหลือไม่กี่วัน — เป็น benchmark ความเร็วที่จับต้องได้สำหรับทีมเล็ก</dd>
+      <dt class="ndf-adapt-label">ใช้กับ NDF DEV ยังไง</dt>
+      <dd class="ndf-adapt">ทีม Unity ของ studio ลอง AI agent loop สำหรับ procedural asset placement หรือ level generation ในโปรเจกต์ที่มีอยู่เพื่อดูคุณภาพ output จริง</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/ziwenxu_/status/2068090138232586327" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

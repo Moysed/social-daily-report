@@ -4,7 +4,7 @@ date: '2026-06-28'
 topic: ai-news
 lang: th
 pair: ai-news.en.md
-generated_at: '2026-06-28T03:02:57+00:00'
+generated_at: '2026-06-28T15:02:59+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,7 +14,7 @@ platforms:
 - x
 regions:
 - global
-post_count: 242
+post_count: 241
 salience: 0.5
 sentiment: neutral
 confidence: 0.0
@@ -24,7 +24,7 @@ tags:
 - skills
 - repos
 - papers
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2070877820923027456/img/qQXr7a-qqEazPG6d.jpg
+thumbnail: https://pbs.twimg.com/media/HL4QSlUXsAE9t4k.jpg
 ---
 
 > _การแปลภาษาไทยรอบนี้ล้มเหลว (timeout หรือ error) — แสดงต้นฉบับภาษาอังกฤษแทน._
@@ -32,9 +32,9 @@ thumbnail: https://pbs.twimg.com/amplify_video_thumb/2070877820923027456/img/qQX
 # AI News & New Skills — 2026-06-28
 
 ## TL;DR
-- this just chat GTP and Gemini talking to each other 😭
-- BREAKING: The Trump administration is reportedly moving toward allowing Anthropic to restore Fable 5 as soon as next wee
-- so youre telling me gemini was exposing fourth that slamming him against the wall and putting his hand in his hair wasnt
+- JUST IN: 🇨🇳 China’s Zhipu AI reportedly matches Anthropic’s Claude Mythos in security bug detection performance​​​​​​​​​
+- ✨ I think I've been coding almost solely on my VPS with Claude Code for almost a year now All I can say it's just fantas
+- It’s wild how differently Codex and Claude Code feel. Codex is a Stanford engineer: you give it the shape of an idea and
 
 ## What happened
 Opus reasoning unavailable this run (RuntimeError). Top items by engagement listed in Raw Sources below.
@@ -45,10 +45,11 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 ## Repos & Tools to Try
 | repo | source | url |
 |---|---|---|
-| **deepseek-ai/DeepSpec** — DSpark: Speculative decoding accelerates LLM inference [pdf] | radar | <https://github.com/deepseek-ai/DeepSpec> |
-| **bikini/exploitarium** — Anonymous GitHub account mass-dropping undisclosed 0-days | radar | <https://github.com/bikini/exploitarium> |
-| **kageroumado/adrafinil** — Show HN: Adrafinil – keep a lid-closed Mac awake only while agents work | radar | <https://github.com/kageroumado/adrafinil> |
 | **kyuz0/amd-strix-halo-vllm-toolboxes** — AMD Strix Halo RDMA Cluster Setup Guide | radar | <https://github.com/kyuz0/amd-strix-halo-vllm-toolboxes> |
+| **itsthelore/wayfinder-router** — Wayfinder Router: deterministic routing of queries between local and hosted LLM | radar | <https://github.com/itsthelore/wayfinder-router> |
+| **cfenollosa/bashblog** — Bashblog – a single bash script to create blogs | radar | <https://github.com/cfenollosa/bashblog> |
+| **openai/codex** — A way to exclude sensitive files issue still open for OpenAI Codex | radar | <https://github.com/openai/codex> |
+| **open-energy-transition/open-tyndp** — EU Open Sources Ten-Year Network Development Planning Tools | radar | <https://github.com/open-energy-transition/open-tyndp> |
 | **tsotchke/gpt2-basic** — GPT2-BASIC: Portable Machine Intelligence in BASIC | lobsters | <https://github.com/tsotchke/gpt2-basic> |
 | **simplex-chat/simplex-chat** — SimpleX - the first messaging network operating without user identifiers of any kind - 100% private  | rss | <https://github.com/simplex-chat/simplex-chat> |
 | **xbtlin/ai-berkshire** — AI 时代的伯克希尔：基于 Claude Code 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师方法论 + 多Agent并行研究。/ AI-era Berkshire: a value inv | rss | <https://github.com/xbtlin/ai-berkshire> |
@@ -56,41 +57,40 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 | **IceWhaleTech/CasaOS** — CasaOS - A simple, easy-to-use, elegant open-source Personal Cloud system.CasaOS - Your Personal Clo | rss | <https://github.com/IceWhaleTech/CasaOS> |
 | **ripienaar/free-for-dev** — A list of SaaS, PaaS and IaaS offerings that have free tiers of interest to devops and infradevfree- | rss | <https://github.com/ripienaar/free-for-dev> |
 | **google-labs-code/design.md** — A format specification for describing a visual identity to coding agents. DESIGN.md gives agents a p | rss | <https://github.com/google-labs-code/design.md> |
-| **microsoft/PowerToys** — Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on  | rss | <https://github.com/microsoft/PowerToys> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | ihyomeo | ^11543 c53 | [this just chat GTP and Gemini talking to each other 😭](https://x.com/ihyomeo/status/2070958762660090345) |
-| x | Polymarket | ^4734 c174 | [BREAKING: The Trump administration is reportedly moving toward allowing Anthropi](https://x.com/Polymarket/status/2070920594380746857) |
-| x | gemfotzzn | ^3242 c12 | [so youre telling me gemini was exposing fourth that slamming him against the wal](https://x.com/gemfotzzn/status/2070895012183986186) |
-| x | sairahul1 | ^2583 c92 | [Sam Altman: "We're going to see 10-person billion-dollar companies pretty soon."](https://x.com/sairahul1/status/2070944072337146096) |
-| x | Polymarket | ^2236 c153 | [JUST IN: A new Chinese AI model from Zhipu AI reportedly matches Claude Mythos’ ](https://x.com/Polymarket/status/2071039148484378891) |
-| x | dotkrueger | ^1717 c107 | [Anthropic IPO delayed to 2027. Open AI same.](https://x.com/dotkrueger/status/2070915571697304009) |
-| x | gregisenberg | ^1527 c105 | [A friend asked me how to actually build a company that runs on AI agents. I drew](https://x.com/gregisenberg/status/2070918939526205494) |
-| x | AndrewCurran_ | ^1352 c92 | [I think both Fable 5 and GPT-5.6 get approved for general release next week, and](https://x.com/AndrewCurran_/status/2071001895435481405) |
-| x | MTSlive | ^1326 c39 | [SITUATION UPDATE: The Trump administration is close to allowing Anthropic to res](https://x.com/MTSlive/status/2070902827228991629) |
-| x | KSLibraryGirl | ^1119 c19 | [It’s my world babe you just live in it 💕🌺 #kslibrarygirl #kendrasunderland #gemi](https://x.com/KSLibraryGirl/status/2070983625424904386) |
-| x | Sentdex | ^1113 c108 | [Dario's args: "Opensource you can see the source, here you cannot see inside the](https://x.com/Sentdex/status/2070937150695047237) |
-| x | synthwavedd | ^1083 c96 | [My impressions on GPT-5.6, having asked around: - The 5.5 base (that 5.6 inherit](https://x.com/synthwavedd/status/2070912541643903081) |
-| x | GreenIrisTarot | ^858 c3 | [˗ˏˋ ♡ ˎˊ˗ gemini, virgo, sagittarius, pisces (s, m, r,) — summer predictions 🎀🌊 ](https://x.com/GreenIrisTarot/status/2070934488628998330) |
-| x | nongsiii | ^825 c2 | [Barth calling his home phone even tho he knows no one’s gonna pick up… just to h](https://x.com/nongsiii/status/2070920827516895370) |
-| x | MTSlive | ^820 c13 | [when fable 5 shows back up in claude https://t.co/HbKqPLtLzg](https://x.com/MTSlive/status/2070923140113305945) |
-| radar | aurenvale | ^732 c306 | [DSpark: Speculative decoding accelerates LLM inference [pdf]](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf) |
-| x | aydellch | ^723 c1 | [Bold of you to think I'm okay after knowing Gemini liked THIS POST 😭😭😭😭😭😭😭😭😭😭😭😭 ](https://x.com/aydellch/status/2070920107698909382) |
-| radar | binyu | ^687 c273 | [Anonymous GitHub account mass-dropping undisclosed 0-days](https://github.com/bikini/exploitarium) |
-| x | natolambert | ^650 c40 | [I've been getting a lot more hate than usual as I try to speak my mind about reg](https://x.com/natolambert/status/2070944386754691121) |
-| x | cryptorover | ^628 c94 | [🚨 THE "AI SUPER BUBBLE" MAY BE ENTERING ITS MOST DANGEROUS PHASE. China's top he](https://x.com/cryptorover/status/2070898783886671921) |
-| x | iamg4ed | ^627 c2 | [No one, I repeat, NO ONE does forbidden romance and intimacy, greed, hunger, lus](https://x.com/iamg4ed/status/2070906925135593914) |
-| x | higgsfield | ^615 c58 | [Claude can now generate audio via Higgsfield MCP. Voiceovers, voice cloning, and](https://x.com/higgsfield/status/2070916672106680360) |
-| x | kimmonismus | ^599 c55 | [Anthropic is fully RSI pilled: "My prediction is by the end of 2028, it's more l](https://x.com/kimmonismus/status/2070968241548120168) |
-| x | valuetainment | ^576 c29 | [JUST IN: The U.S. government has officially cleared Anthropic to partially relea](https://x.com/valuetainment/status/2071011664351187179) |
-| x | airandspace | ^555 c13 | [Shades on☀️🕶 It's #NationalSunglassesDay, which means it’s time to share this ic](https://x.com/airandspace/status/2070937954789294396) |
-| x | PolymarketMoney | ^525 c39 | [NEW IN: There’s now an 83% chance Anthropic restores access to its new “Mythos” ](https://x.com/PolymarketMoney/status/2070916821264244998) |
-| x | markgurman | ^517 c22 | [It’s been a huge week of breaking Apple news: - Apple’s Vision Pro and Glasses c](https://x.com/markgurman/status/2070901395683672389) |
-| x | croscrapbook | ^514 c1 | [guys. i think gemini likes yaoi https://t.co/Y75se977oE](https://x.com/croscrapbook/status/2070904372272275572) |
-| x | JoeRoganRecaps | ^508 c22 | [New: Joe Rogan leaves Tim Dillon speechless with the unbelievable story of Gener](https://x.com/JoeRoganRecaps/status/2070933001840779586) |
-| x | kimmonismus | ^503 c33 | [That reads like a solid initial assessment. GPT-5.6 will likely offer a better p](https://x.com/kimmonismus/status/2070930941732950118) |
+| x | WhaleInsider | ^3018 c202 | [JUST IN: 🇨🇳 China’s Zhipu AI reportedly matches Anthropic’s Claude Mythos in sec](https://x.com/WhaleInsider/status/2071110794910089368) |
+| x | levelsio | ^2965 c81 | [✨ I think I've been coding almost solely on my VPS with Claude Code for almost a](https://x.com/levelsio/status/2071162399864889705) |
+| x | futurenomics | ^2279 c80 | [It’s wild how differently Codex and Claude Code feel. Codex is a Stanford engine](https://x.com/futurenomics/status/2071086359276671461) |
+| x | coinbureau | ^1820 c132 | [🚨HUGE: CHINA JUST CRACKED MYTHOS LEVEL OF VULNERABILITY DETECTION China's Zhipu ](https://x.com/coinbureau/status/2071099154882040055) |
+| x | GergelyOrosz | ^1806 c163 | [I talked with a few folks inside Anthropic and I am starting to understand what ](https://x.com/GergelyOrosz/status/2071126385121452190) |
+| x | aleabitoreddit | ^1580 c146 | [Guess we finally found why $META signed massive agreements with Neoclouds like $](https://x.com/aleabitoreddit/status/2071135874100990438) |
+| x | IconicRankings | ^1294 c12 | [Sunday Iconic Rankings: Thailand Top 25 Most Trending Thai Celebrities on Social](https://x.com/IconicRankings/status/2071191380349608132) |
+| x | steipete | ^1273 c78 | ["History teaches us that access blockage rarely stops determined users." https:/](https://x.com/steipete/status/2071063588329193551) |
+| x | kirillk_web3 | ^1113 c10 | [Anthropic CEO realizing one free GitHub skill cut Claude Code token usage 90% wh](https://x.com/kirillk_web3/status/2071143060323680303) |
+| x | theo | ^1030 c71 | [Vs Claude where you have much clearer options of - Fable 5 (low, mid, high, xhig](https://x.com/theo/status/2071174010260578793) |
+| x | nongsiii | ^857 c4 | [no one could play and understand tanrak the way fourth does, and no one could pl](https://x.com/nongsiii/status/2071176021760434646) |
+| x | jukan05 | ^853 c53 | [Google reportedly limited Meta’s use of Gemini due to a shortage of compute reso](https://x.com/jukan05/status/2071126659307385321) |
+| x | levelsio | ^853 c44 | [I made a dynamic chart to illustrate Bitcoin's 4-year cycles It keeps updating f](https://x.com/levelsio/status/2071201776427053327) |
+| x | vxunderground | ^820 c21 | [🍞BAKING🍞 CLAUDE MYTHOS REPORTEDLY TRAINED ON CRAZY EX GF. DURING A DEMONSTRATION](https://x.com/vxunderground/status/2071148132209979750) |
+| x | rubylaren | ^757 c7 | [To be honest, she’s quite correct. We do have a new model called Range Rover SV,](https://x.com/rubylaren/status/2071106637054537948) |
+| x | Polymarket | ^692 c86 | [JUST IN: Austria is urging Europe to host Anthropic after U.S. restrictions on a](https://x.com/Polymarket/status/2071231791801806869) |
+| x | Toxichoonji | ^688 c78 | [Hey @grok Can you do better than both gemini and chatgpt ?? https://t.co/o0xQw77](https://x.com/Toxichoonji/status/2071104742970003775) |
+| x | nongsiii | ^685 c5 | [gemini loves this scene bc its barth fighting his way through their fear, trying](https://x.com/nongsiii/status/2071130278781919238) |
+| x | levelsio | ^669 c15 | [☠️ Degrowth kills ☠️](https://x.com/levelsio/status/2071165906915352625) |
+| x | polydao | ^651 c25 | [KARPATHY WROTE THIS DOCUMENT TO COMPLETELY AUTOMATE OBSIDIAN WITH CLAUDE I was r](https://x.com/polydao/status/2071105441698910415) |
+| x | Belbizaz | ^609 c7 | [@SVVVAYED Popping Vicodin and verbally abusing Claude has given me many insights](https://x.com/Belbizaz/status/2071127177127698925) |
+| x | geminiscity | ^594 c1 | [#TicketToHeavenEP5 👨🏻: And the magic moment that came off-script was when he sud](https://x.com/geminiscity/status/2071123962663465468) |
+| x | aleabitoreddit | ^587 c137 | [Yup, Schaeffler $SHA0 is the ideal example for automotive players. ~ €7.47B MC a](https://x.com/aleabitoreddit/status/2071164721299112316) |
+| x | aydellch | ^586 c4 | [At Q15, we wonder why GeminiFourth took a selca with no space between them and G](https://x.com/aydellch/status/2071093755722207515) |
+| x | SamsungPH | ^577 c34 | [From spontaneous road trips to dream vacations, the #GalaxyA37 5G’s Gemini Integ](https://x.com/SamsungPH/status/2071171751577346366) |
+| x | BullTheoryio | ^576 c80 | [🚨 CHINA JUST MATCHED ANTHROPIC'S TOP MODEL IN CYBERSECURITY. And It's A Big Prob](https://x.com/BullTheoryio/status/2071147414904533400) |
+| x | wooyofot | ^569 c0 | [fourth calling gemini 'oppa' instead of 'hyung' 😭 girlfourth is real 💘💘💘 https:/](https://x.com/wooyofot/status/2071141050954207282) |
+| x | gemnuna | ^568 c2 | [who will thought the climax of this scene was improvised by gemini himself, the ](https://x.com/gemnuna/status/2071136030791782764) |
+| x | daengsyonn | ^554 c3 | [I HAVE MORE OF THIS MOMENT!! My gemini boys!!!🥺💖 https://t.co/SIKWBGxMQN](https://x.com/daengsyonn/status/2071134238154649696) |
+| x | steipete | ^543 c68 | [Got excited about the 52’ Dell, but it requires BetterDisplay hacking to get a u](https://x.com/steipete/status/2071034256051097799) |
 
 
 ## โพสต์เด่น
@@ -98,130 +98,130 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@ihyomeo</span>
+    <span class="ndf-author">@WhaleInsider</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 11543 · 💬 53</span>
+    <span class="ndf-engagement">♥ 3018 · 💬 202</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ihyomeo/status/2070958762660090345">View @ihyomeo on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/WhaleInsider/status/2071110794910089368">View @WhaleInsider on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“this just chat GTP and Gemini talking to each other 😭”</p>
+    <p class="ndf-quote">“JUST IN: 🇨🇳 China’s Zhipu AI reportedly matches Anthropic’s Claude Mythos in security bug detection performance​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​. https://t.co/T8ZDqvGeNI”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>this just chat GTP and Gemini talking to each other 😭</dd>
+      <dd>JUST IN: 🇨🇳 China’s Zhipu AI reportedly matches Anthropic’s Claude Mythos in security bug detection performance​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/ihyomeo/status/2070958762660090345" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/WhaleInsider/status/2071110794910089368" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Polymarket</span>
+    <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 4734 · 💬 174</span>
+    <span class="ndf-engagement">♥ 2965 · 💬 81</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Polymarket/status/2070920594380746857">View @Polymarket on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2071162399864889705">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“BREAKING: The Trump administration is reportedly moving toward allowing Anthropic to restore Fable 5 as soon as next week.”</p>
+    <p class="ndf-quote">“✨ I think I've been coding almost solely on my VPS with Claude Code for almost a year now All I can say it's just fantastic: - no need to keep laptop open ever - no laptop battery drain - can switch t”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>BREAKING: The Trump administration is reportedly moving toward allowing Anthropic to restore Fable 5 as soon as next week.</dd>
+      <dd>✨ I think I've been coding almost solely on my VPS with Claude Code for almost a year now All I can say it's just fantastic: - no need to ke</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/Polymarket/status/2070920594380746857" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/levelsio/status/2071162399864889705" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@gemfotzzn</span>
+    <span class="ndf-author">@futurenomics</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3242 · 💬 12</span>
+    <span class="ndf-engagement">♥ 2279 · 💬 80</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/gemfotzzn/status/2070895012183986186">View @gemfotzzn on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/futurenomics/status/2071086359276671461">View @futurenomics on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“so youre telling me gemini was exposing fourth that slamming him against the wall and putting his hand in his hair wasnt on the scripted while he literally kissed him on the lips here improvised oh ok”</p>
+    <p class="ndf-quote">“It’s wild how differently Codex and Claude Code feel. Codex is a Stanford engineer: you give it the shape of an idea and it comes back in 5 minutes with a working prototype but with code that feels li”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>so youre telling me gemini was exposing fourth that slamming him against the wall and putting his hand in his hair wasnt on the scripted whi</dd>
+      <dd>It’s wild how differently Codex and Claude Code feel. Codex is a Stanford engineer: you give it the shape of an idea and it comes back in 5</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/gemfotzzn/status/2070895012183986186" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/futurenomics/status/2071086359276671461" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@sairahul1</span>
+    <span class="ndf-author">@coinbureau</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2583 · 💬 92</span>
+    <span class="ndf-engagement">♥ 1820 · 💬 132</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/sairahul1/status/2070944072337146096">View @sairahul1 on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/coinbureau/status/2071099154882040055">View @coinbureau on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Sam Altman: &quot;We're going to see 10-person billion-dollar companies pretty soon.&quot; &quot;If I were 22 right now, I'd feel like the luckiest kid in history.&quot; Most people will read this, feel inspired for 3 mi”</p>
+    <p class="ndf-quote">“🚨HUGE: CHINA JUST CRACKED MYTHOS LEVEL OF VULNERABILITY DETECTION China's Zhipu AI has reportedly matched Claude Mythos at discovering software vulnerabilities, marking a major leap in the U.S.–China ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Sam Altman: &quot;We're going to see 10-person billion-dollar companies pretty soon.&quot; &quot;If I were 22 right now, I'd feel like the luckiest kid in</dd>
+      <dd>🚨HUGE: CHINA JUST CRACKED MYTHOS LEVEL OF VULNERABILITY DETECTION China's Zhipu AI has reportedly matched Claude Mythos at discovering softw</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/sairahul1/status/2070944072337146096" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/coinbureau/status/2071099154882040055" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Polymarket</span>
+    <span class="ndf-author">@GergelyOrosz</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2236 · 💬 153</span>
+    <span class="ndf-engagement">♥ 1806 · 💬 163</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Polymarket/status/2071039148484378891">View @Polymarket on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/GergelyOrosz/status/2071126385121452190">View @GergelyOrosz on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“JUST IN: A new Chinese AI model from Zhipu AI reportedly matches Claude Mythos’ performance at finding security bugs.”</p>
+    <p class="ndf-quote">“I talked with a few folks inside Anthropic and I am starting to understand what @karpathy is saying (and what lots of people are misunderstanding) It's not about Slack, but about a cloud AI, hooked up”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>JUST IN: A new Chinese AI model from Zhipu AI reportedly matches Claude Mythos’ performance at finding security bugs.</dd>
+      <dd>I talked with a few folks inside Anthropic and I am starting to understand what @karpathy is saying (and what lots of people are misundersta</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/Polymarket/status/2071039148484378891" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/GergelyOrosz/status/2071126385121452190" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@dotkrueger</span>
+    <span class="ndf-author">@aleabitoreddit</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1717 · 💬 107</span>
+    <span class="ndf-engagement">♥ 1580 · 💬 146</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/dotkrueger/status/2070915571697304009">View @dotkrueger on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/aleabitoreddit/status/2071135874100990438">View @aleabitoreddit on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Anthropic IPO delayed to 2027. Open AI same.”</p>
+    <p class="ndf-quote">“Guess we finally found why $META signed massive agreements with Neoclouds like $NBIS back in March... And why Gemini got super nerfed. $GOOGL reportedly restricted Meta's capacity in March 2026 becaus”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Anthropic IPO delayed to 2027. Open AI same.</dd>
+      <dd>Guess we finally found why $META signed massive agreements with Neoclouds like $NBIS back in March... And why Gemini got super nerfed. $GOOG</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/dotkrueger/status/2070915571697304009" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/aleabitoreddit/status/2071135874100990438" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@gregisenberg</span>
+    <span class="ndf-author">@IconicRankings</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1527 · 💬 105</span>
+    <span class="ndf-engagement">♥ 1294 · 💬 12</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/gregisenberg/status/2070918939526205494">View @gregisenberg on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/IconicRankings/status/2071191380349608132">View @IconicRankings on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“A friend asked me how to actually build a company that runs on AI agents. I drew him 4 simple diagrams and this is what I told him: For this to work, a few things have to be true. - The humans move up”</p>
+    <p class="ndf-quote">“Sunday Iconic Rankings: Thailand Top 25 Most Trending Thai Celebrities on Social Media (Past Week) 1. 🇹🇭 Pond Naravit 2. 🇹🇭 Phuwin Tangsakyuen 3. 🇹🇭 Freen Sarocha 4. 🇹🇭 Becky Armstrong 5. 🇹🇭 Bright Va”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>A friend asked me how to actually build a company that runs on AI agents. I drew him 4 simple diagrams and this is what I told him: For this</dd>
+      <dd>Sunday Iconic Rankings: Thailand Top 25 Most Trending Thai Celebrities on Social Media (Past Week) 1. 🇹🇭 Pond Naravit 2. 🇹🇭 Phuwin Tangsakyu</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/gregisenberg/status/2070918939526205494" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/IconicRankings/status/2071191380349608132" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@AndrewCurran_</span>
+    <span class="ndf-author">@steipete</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1352 · 💬 92</span>
+    <span class="ndf-engagement">♥ 1273 · 💬 78</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/AndrewCurran_/status/2071001895435481405">View @AndrewCurran_ on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/steipete/status/2071063588329193551">View @steipete on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“I think both Fable 5 and GPT-5.6 get approved for general release next week, and for use outside of the United States as well. But people should remember this moment and remember this feeling, because”</p>
+    <p class="ndf-quote">“&quot;History teaches us that access blockage rarely stops determined users.&quot; https://t.co/fsa6yuEjjs”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>I think both Fable 5 and GPT-5.6 get approved for general release next week, and for use outside of the United States as well. But people sh</dd>
+      <dd>&quot;History teaches us that access blockage rarely stops determined users.&quot; https://t.co/fsa6yuEjjs</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/AndrewCurran_/status/2071001895435481405" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/steipete/status/2071063588329193551" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>

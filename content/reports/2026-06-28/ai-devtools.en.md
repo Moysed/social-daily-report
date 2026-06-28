@@ -4,7 +4,7 @@ date: '2026-06-28'
 topic: ai-devtools
 lang: en
 pair: ai-devtools.th.md
-generated_at: '2026-06-28T03:01:44+00:00'
+generated_at: '2026-06-28T15:01:38+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
@@ -14,7 +14,7 @@ platforms:
 - x
 regions:
 - global
-post_count: 284
+post_count: 295
 salience: 0.5
 sentiment: neutral
 confidence: 0.0
@@ -22,15 +22,15 @@ tags:
 - ai
 - devtools
 - agents
-thumbnail: https://pbs.twimg.com/media/HL2gRxYW4AAOobV.jpg
+thumbnail: https://pbs.twimg.com/media/HL3uWO4bEAACJWL.jpg
 ---
 
 # AI Devtools — 2026-06-28
 
 ## TL;DR
-- Since June 12, we’ve been working closely with the US government to restore access to Claude Mythos 5 and Fable 5. Today
-- I'm afraid we've entered a dark era in AI model development and access.
-- this has been driving me insane since 2018, the top of the church literally looks like a cursor pointing to the angel ht
+- Grok 4.5, based on our 1.5T V9 foundation model, with Cursor data added in supplemental training, is now in private beta
+- 🎂 Happy birthday, @elonmusk. Humankind's guardian Angel. >be Elon Musk >richest man alive >could buy anything and sun hi
+- It’s kind of wild that the two best AI models ever made are being restricted by the country they were built in
 
 ## What happened
 Opus reasoning unavailable this run (RuntimeError). Top items by engagement listed in Raw Sources below.
@@ -41,52 +41,52 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 ## Repos & Tools to Try
 | repo | source | url |
 |---|---|---|
-| **google-labs-code/design.md** — A format specification for describing a visual identity to coding agents. DESIGN.md gives agents a p | radar | <https://github.com/google-labs-code/design.md> |
-| **simplex-chat/simplex-chat** — SimpleX - the first messaging network operating without user identifiers of any kind - 100% private  | radar | <https://github.com/simplex-chat/simplex-chat> |
-| **topoteretes/cognee** — Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term me | radar | <https://github.com/topoteretes/cognee> |
-| **JCodesMore/ai-website-cloner-template** — Clone any website with one command using AI coding agents | radar | <https://github.com/JCodesMore/ai-website-cloner-template> |
-| **deepseek-ai/DeepSpec** — DSpark: Speculative decoding accelerates LLM inference [pdf] | hackernews | <https://github.com/deepseek-ai/DeepSpec> |
-| **bikini/exploitarium** — Anonymous GitHub account mass-dropping undisclosed 0-days | hackernews | <https://github.com/bikini/exploitarium> |
+| **DeusData/codebase-memory-mcp** — High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — | radar | <https://github.com/DeusData/codebase-memory-mcp> |
 | **xbtlin/ai-berkshire** — AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师方法论 + 多Agent并行研究。/ AI-era Berkshire: a v | radar | <https://github.com/xbtlin/ai-berkshire> |
-| **garrytan/gstack** — Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manag | radar | <https://github.com/garrytan/gstack> |
-| **hugohe3/ppt-master** — AI generates a real, editable PowerPoint from any document — native shapes & animations, speaker not | radar | <https://github.com/hugohe3/ppt-master> |
-| **IceWhaleTech/CasaOS** — CasaOS - A simple, easy-to-use, elegant open-source Personal Cloud system. | radar | <https://github.com/IceWhaleTech/CasaOS> |
+| **simplex-chat/simplex-chat** — SimpleX - the first messaging network operating without user identifiers of any kind - 100% private  | radar | <https://github.com/simplex-chat/simplex-chat> |
+| **bikini/exploitarium** — Anonymous GitHub account mass-dropping undisclosed 0-days | hackernews | <https://github.com/bikini/exploitarium> |
+| **deepseek-ai/DeepSpec** — DSpark: Speculative decoding accelerates LLM inference [pdf] | hackernews | <https://github.com/deepseek-ai/DeepSpec> |
+| **opendatalab/MinerU** — Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic | radar | <https://github.com/opendatalab/MinerU> |
+| **HKUDS/Vibe-Trading** — "Vibe-Trading: Your Personal Trading Agent" | radar | <https://github.com/HKUDS/Vibe-Trading> |
 | **ripienaar/free-for-dev** — A list of SaaS, PaaS and IaaS offerings that have free tiers of interest to devops and infradev | radar | <https://github.com/ripienaar/free-for-dev> |
-| **NanmiCoder/MediaCrawler** — 小红书笔记 / 评论爬虫、抖音视频 / 评论爬虫、快手视频 / 评论爬虫、B 站视频 ｜ 评论爬虫、微博帖子 ｜ 评论爬虫、百度贴吧帖子 ｜ 百度贴吧评论回复爬虫 / 知乎问答文章｜评论爬虫 | radar | <https://github.com/NanmiCoder/MediaCrawler> |
+| **Robbyant/lingbot-map** — A feed-forward 3D foundation model for reconstructing scenes from streaming data | radar | <https://github.com/Robbyant/lingbot-map> |
+| **commaai/openpilot** — openpilot is an operating system for robotics. Currently, it upgrades the driver assistance system o | radar | <https://github.com/commaai/openpilot> |
+| **altic-dev/FluidVoice** — FluidVoice - Fastest macOS Offline Dictation app - Voice to Text fully Local. One ⭐ takes us a long  | radar | <https://github.com/altic-dev/FluidVoice> |
+| **kyuz0/amd-strix-halo-vllm-toolboxes** — AMD Strix Halo RDMA Cluster Setup Guide | hackernews | <https://github.com/kyuz0/amd-strix-halo-vllm-toolboxes> |
 
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | AnthropicAI | ^28064 c2191 | [Since June 12, we’ve been working closely with the US government to restore acce](https://x.com/AnthropicAI/status/2070665903440871779) |
-| x | theo | ^6610 c369 | [I'm afraid we've entered a dark era in AI model development and access.](https://x.com/theo/status/2070609034659680645) |
-| x | snail_inactive | ^3759 c6 | [this has been driving me insane since 2018, the top of the church literally look](https://x.com/snail_inactive/status/2070987653059674538) |
-| x | theo | ^3728 c255 | [It’s kind of wild that the two best AI models ever made are being restricted by ](https://x.com/theo/status/2070785625868177671) |
-| x | theo | ^2503 c302 | [What if this was a 5d chess play and Dario did this just to force frontier AI de](https://x.com/theo/status/2070612785692877023) |
-| x | OpenAIDevs | ^2405 c130 | [🆕 Codex quality-of-life updates landed this week Starting with long threads: scr](https://x.com/OpenAIDevs/status/2070922791529091376) |
-| x | rauchg | ^2365 c67 | [The UI for AI is here. It's @shadcn](https://x.com/rauchg/status/2070567538040422712) |
-| radar | google-labs-code_design.md | ^1541 c0 | [google-labs-code/design.md A format specification for describing a visual identi](https://github.com/google-labs-code/design.md) |
-| x | rauchg | ^1514 c91 | [Human judgement in engineering is ironically even more crucial now. Deciding wha](https://x.com/rauchg/status/2070923036988248248) |
-| x | thsottiaux | ^1488 c262 | [The night is young and full of Codex](https://x.com/thsottiaux/status/2070985298486374876) |
-| x | sharbel | ^1470 c54 | [The 10 fastest growing GitHub repos this week: 1. OpenMontage (+17.2K stars) Wor](https://x.com/sharbel/status/2070812435653464323) |
-| radar | simplex-chat_simplex-chat | ^1469 c0 | [simplex-chat/simplex-chat SimpleX - the first messaging network operating withou](https://github.com/simplex-chat/simplex-chat) |
-| x | Cartidise | ^1426 c61 | [Siri is the new Copilot https://t.co/JIAdmGZspo](https://x.com/Cartidise/status/2070888121571647735) |
-| x | rasbt | ^1359 c58 | [I put together a new article on setting up local coding agents with open-weight ](https://x.com/rasbt/status/2070871630201463137) |
-| x | akshay_pachaar | ^1169 c26 | [The RL framework behind GLM-5.2 is fully open source. The full post-training of ](https://x.com/akshay_pachaar/status/2070587039679185397) |
-| x | theo | ^1061 c85 | [GPT-5.6 is here. I wish we could use it. https://t.co/KiSl1KgW3Z](https://x.com/theo/status/2070763855169351982) |
-| x | dorukkavcioglu | ^876 c24 | [A big skill upgrade to text-to-lottie Better design taste, better motion, fewer ](https://x.com/dorukkavcioglu/status/2070885963476173245) |
-| x | ryancarson | ^785 c142 | [I'm starting to hit $15-20k per month in token spend for engineering - just for ](https://x.com/ryancarson/status/2070876856317010406) |
-| radar | topoteretes_cognee | ^780 c0 | [topoteretes/cognee Cognee is the open-source AI memory platform for agents. Give](https://github.com/topoteretes/cognee) |
-| x | theo | ^763 c42 | [Update: the Mac Mini is even less fine than before https://t.co/u8VB98BJlF](https://x.com/theo/status/2070674058547798316) |
-| radar | JCodesMore_ai-website-cloner-template | ^750 c0 | [JCodesMore/ai-website-cloner-template Clone any website with one command using A](https://github.com/JCodesMore/ai-website-cloner-template) |
-| hackernews | aurenvale | ^732 c306 | [DSpark: Speculative decoding accelerates LLM inference [pdf]](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf) |
-| hackernews | binyu | ^689 c273 | [Anonymous GitHub account mass-dropping undisclosed 0-days](https://github.com/bikini/exploitarium) |
-| radar | xbtlin_ai-berkshire | ^685 c0 | [xbtlin/ai-berkshire AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师](https://github.com/xbtlin/ai-berkshire) |
-| radar | garrytan_gstack | ^674 c0 | [garrytan/gstack Use Garry Tan's exact Claude Code setup: 23 opinionated tools th](https://github.com/garrytan/gstack) |
-| x | rauchg | ^667 c57 | [Me and my agents https://t.co/z3FIH7doEH](https://x.com/rauchg/status/2070982746080715052) |
-| x | Steve8708 | ^663 c52 | [Introducing the Clips chrome extension - the easiest way to send bug reports to ](https://x.com/Steve8708/status/2070505900352356639) |
-| hackernews | HotGarbage | ^655 c239 | [Zuckerberg's war on whistleblowers](https://pluralistic.net/2026/06/27/zuckerstreisand-2/) |
-| x | richzou | ^605 c13 | [Cursor on recruiting: https://t.co/j5JSb6CxZA](https://x.com/richzou/status/2070965972157202642) |
-| x | 0xDesigner | ^593 c56 | [talk to a friend's codex https://t.co/OIDCOb6bKv](https://x.com/0xDesigner/status/2070957137027871193) |
+| x | elonmusk | ^20160 c3422 | [Grok 4.5, based on our 1.5T V9 foundation model, with Cursor data added in suppl](https://x.com/elonmusk/status/2071184354756477041) |
+| x | tetsuoai | ^8561 c1346 | [🎂 Happy birthday, @elonmusk. Humankind's guardian Angel. >be Elon Musk >richest ](https://x.com/tetsuoai/status/2071078934968705168) |
+| x | theo | ^3959 c273 | [It’s kind of wild that the two best AI models ever made are being restricted by ](https://x.com/theo/status/2070785625868177671) |
+| x | theo | ^3200 c410 | [I’d estimate we’re ~6 months from most devs moving their code agents off of thei](https://x.com/theo/status/2071083700385955906) |
+| x | levelsio | ^2949 c79 | [✨ I think I've been coding almost solely on my VPS with Claude Code for almost a](https://x.com/levelsio/status/2071162399864889705) |
+| x | rauchg | ^2842 c229 | [I now own https://t.co/I2grp6UkeV. Excited to give my children clean email handl](https://x.com/rauchg/status/2071085680017773046) |
+| x | rauchg | ^2506 c72 | [The UI for AI is here. It's @shadcn](https://x.com/rauchg/status/2070567538040422712) |
+| x | sharbel | ^2286 c69 | [The 10 fastest growing GitHub repos this week: 1. OpenMontage (+17.2K stars) Wor](https://x.com/sharbel/status/2070812435653464323) |
+| x | futurenomics | ^2268 c80 | [It’s wild how differently Codex and Claude Code feel. Codex is a Stanford engine](https://x.com/futurenomics/status/2071086359276671461) |
+| x | thsottiaux | ^2255 c233 | [Tons of improvements landed in Codex. - Handles super long threads smoothly. - H](https://x.com/thsottiaux/status/2071071289247244481) |
+| x | rauchg | ^2187 c108 | [Human judgement in engineering is ironically even more crucial now. Deciding wha](https://x.com/rauchg/status/2070923036988248248) |
+| radar | DeusData_codebase-memory-mcp | ^2162 c0 | [DeusData/codebase-memory-mcp High-performance code intelligence MCP server. Inde](https://github.com/DeusData/codebase-memory-mcp) |
+| x | rauchg | ^1827 c76 | [Mythos / Sol cybersecurity capabilities are equally useful in an offensive as we](https://x.com/rauchg/status/2071047674187714830) |
+| radar | xbtlin_ai-berkshire | ^1456 c0 | [xbtlin/ai-berkshire AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师](https://github.com/xbtlin/ai-berkshire) |
+| x | akshay_pachaar | ^1377 c26 | [The RL framework behind GLM-5.2 is fully open source. The full post-training of ](https://x.com/akshay_pachaar/status/2070587039679185397) |
+| x | rauchg | ^1325 c100 | [Me and my agents https://t.co/z3FIH7doEH](https://x.com/rauchg/status/2070982746080715052) |
+| x | NeonWhiteRabbit | ^1209 c10 | [Indian: “I have 20 years experience with Claude Code Saar!”](https://x.com/NeonWhiteRabbit/status/2071028671989592120) |
+| radar | simplex-chat_simplex-chat | ^1183 c0 | [simplex-chat/simplex-chat SimpleX - the first messaging network operating withou](https://github.com/simplex-chat/simplex-chat) |
+| x | theo | ^1126 c91 | [GPT-5.6 is here. I wish we could use it. https://t.co/KiSl1KgW3Z](https://x.com/theo/status/2070763855169351982) |
+| x | kirillk_web3 | ^1089 c10 | [Anthropic CEO realizing one free GitHub skill cut Claude Code token usage 90% wh](https://x.com/kirillk_web3/status/2071143060323680303) |
+| x | cb_doge | ^1044 c144 | [BREAKING: Elon Musk confirms Grok 4.5 is now in private beta at SpaceX and Tesla](https://x.com/cb_doge/status/2071186443184013666) |
+| x | theo | ^1028 c71 | [Vs Claude where you have much clearer options of - Fable 5 (low, mid, high, xhig](https://x.com/theo/status/2071174010260578793) |
+| hackernews | binyu | ^887 c347 | [Anonymous GitHub account mass-dropping undisclosed 0-days](https://github.com/bikini/exploitarium) |
+| x | rohanpaul_ai | ^832 c40 | [A Japanese dev spotted the trick: ask Claude Code to automatically Find Skills. ](https://x.com/rohanpaul_ai/status/2070995419728081401) |
+| x | VaibhavSisinty | ^824 c32 | [This is actually wild. Hermes just let you merge any two AI models into one virt](https://x.com/VaibhavSisinty/status/2070741416649850898) |
+| x | theo | ^788 c28 | [This is a banger but also kind of true](https://x.com/theo/status/2071083306272313524) |
+| hackernews | aurenvale | ^775 c337 | [DSpark: Speculative decoding accelerates LLM inference [pdf]](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf) |
+| radar | opendatalab_MinerU | ^749 c0 | [opendatalab/MinerU Transforms complex documents like PDFs and Office docs into L](https://github.com/opendatalab/MinerU) |
+| x | XFreeze | ^694 c72 | [Elon Musk just gave big Grok update: Grok 4.5 is now in private beta at SpaceX a](https://x.com/XFreeze/status/2071187561276747983) |
+| x | rauchg | ^622 c65 | [Agents are particularly hard-to-debug software. For one, and by design, AI model](https://x.com/rauchg/status/2070676383135834334) |
 
 
 ## Top Posts
@@ -94,57 +94,41 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@AnthropicAI</span>
+    <span class="ndf-author">@elonmusk</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 28064 · 💬 2191</span>
+    <span class="ndf-engagement">♥ 20160 · 💬 3422</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/AnthropicAI/status/2070665903440871779">View @AnthropicAI on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/elonmusk/status/2071184354756477041">View @elonmusk on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Since June 12, we’ve been working closely with the US government to restore access to Claude Mythos 5 and Fable 5. Today, the government notified us that Mythos 5, our strongest cybersecurity model, c”</p>
+    <p class="ndf-quote">“Grok 4.5, based on our 1.5T V9 foundation model, with Cursor data added in supplemental training, is now in private beta at SpaceX &amp; Tesla. Early evals show performance close to, perhaps exceeding Opu”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Since June 12, we’ve been working closely with the US government to restore access to Claude Mythos 5 and Fable 5. Today, the government not</dd>
+      <dd>Grok 4.5, based on our 1.5T V9 foundation model, with Cursor data added in supplemental training, is now in private beta at SpaceX &amp; Tesla.</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/AnthropicAI/status/2070665903440871779" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/elonmusk/status/2071184354756477041" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@tetsuoai</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 8561 · 💬 1346</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/tetsuoai/status/2071078934968705168">View @tetsuoai on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“🎂 Happy birthday, @elonmusk. Humankind's guardian Angel. &gt;be Elon Musk &gt;richest man alive &gt;could buy anything and sun his Balls &gt;decide to spend the whole fortune fighting for the human race instead &gt;”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>🎂 Happy birthday, @elonmusk. Humankind's guardian Angel. &gt;be Elon Musk &gt;richest man alive &gt;could buy anything and sun his Balls &gt;decide to s</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/tetsuoai/status/2071078934968705168" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@theo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 6610 · 💬 369</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2070609034659680645">View @theo on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“I'm afraid we've entered a dark era in AI model development and access.”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>I'm afraid we've entered a dark era in AI model development and access.</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/theo/status/2070609034659680645" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@snail_inactive</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3759 · 💬 6</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/snail_inactive/status/2070987653059674538">View @snail_inactive on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“this has been driving me insane since 2018, the top of the church literally looks like a cursor pointing to the angel https://t.co/ZBsdBiaLX2”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>this has been driving me insane since 2018, the top of the church literally looks like a cursor pointing to the angel https://t.co/ZBsdBiaLX</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/snail_inactive/status/2070987653059674538" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@theo</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 3728 · 💬 255</span>
+    <span class="ndf-engagement">♥ 3959 · 💬 273</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2070785625868177671">View @theo on X</a></blockquote>
   <div class="ndf-card-body">
@@ -160,39 +144,55 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
   <header class="ndf-card-head">
     <span class="ndf-author">@theo</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2503 · 💬 302</span>
+    <span class="ndf-engagement">♥ 3200 · 💬 410</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2070612785692877023">View @theo on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/theo/status/2071083700385955906">View @theo on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“What if this was a 5d chess play and Dario did this just to force frontier AI development to slow down?”</p>
+    <p class="ndf-quote">“I’d estimate we’re ~6 months from most devs moving their code agents off of their laptops”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>What if this was a 5d chess play and Dario did this just to force frontier AI development to slow down?</dd>
+      <dd>I’d estimate we’re ~6 months from most devs moving their code agents off of their laptops</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/theo/status/2070612785692877023" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/theo/status/2071083700385955906" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@OpenAIDevs</span>
+    <span class="ndf-author">@levelsio</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2405 · 💬 130</span>
+    <span class="ndf-engagement">♥ 2949 · 💬 79</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/OpenAIDevs/status/2070922791529091376">View @OpenAIDevs on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/levelsio/status/2071162399864889705">View @levelsio on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“🆕 Codex quality-of-life updates landed this week Starting with long threads: scrolling is smoother now, and your place stays put as you move through the conversation. https://t.co/OkV7Xxnt0T”</p>
+    <p class="ndf-quote">“✨ I think I've been coding almost solely on my VPS with Claude Code for almost a year now All I can say it's just fantastic: - no need to keep laptop open ever - no laptop battery drain - can switch t”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>🆕 Codex quality-of-life updates landed this week Starting with long threads: scrolling is smoother now, and your place stays put as you move</dd>
+      <dd>✨ I think I've been coding almost solely on my VPS with Claude Code for almost a year now All I can say it's just fantastic: - no need to ke</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/OpenAIDevs/status/2070922791529091376" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/levelsio/status/2071162399864889705" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@rauchg</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 2365 · 💬 67</span>
+    <span class="ndf-engagement">♥ 2842 · 💬 229</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/rauchg/status/2071085680017773046">View @rauchg on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“I now own https://t.co/I2grp6UkeV. Excited to give my children clean email handles. Domains are awesome. The internet is awesome.”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>I now own https://t.co/I2grp6UkeV. Excited to give my children clean email handles. Domains are awesome. The internet is awesome.</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/rauchg/status/2071085680017773046" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@rauchg</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 2506 · 💬 72</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/rauchg/status/2070567538040422712">View @rauchg on X</a></blockquote>
   <div class="ndf-card-body">
@@ -206,18 +206,18 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@rauchg</span>
+    <span class="ndf-author">@sharbel</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1514 · 💬 91</span>
+    <span class="ndf-engagement">♥ 2286 · 💬 69</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/rauchg/status/2070923036988248248">View @rauchg on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/sharbel/status/2070812435653464323">View @sharbel on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Human judgement in engineering is ironically even more crucial now. Deciding what to build. Deciding on the right architectures. Deciding whether you regenerate from scratch $$$ or reuse existing lego”</p>
+    <p class="ndf-quote">“The 10 fastest growing GitHub repos this week: 1. OpenMontage (+17.2K stars) World's first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding ”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Human judgement in engineering is ironically even more crucial now. Deciding what to build. Deciding on the right architectures. Deciding wh</dd>
+      <dd>The 10 fastest growing GitHub repos this week: 1. OpenMontage (+17.2K stars) World's first open-source, agentic video production system. 12</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/rauchg/status/2070923036988248248" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/sharbel/status/2070812435653464323" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

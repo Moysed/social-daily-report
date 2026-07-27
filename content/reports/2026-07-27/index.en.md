@@ -28,6 +28,10 @@ topics:
   title: Audio AI
   salience: 0.5
   file: audio-ai.en.md
+- topic: devops-cloud
+  title: DevOps & Cloud
+  salience: 0.5
+  file: devops-cloud.en.md
 - topic: edtech
   title: EdTech
   salience: 0.5
@@ -52,10 +56,6 @@ topics:
   title: XR / VR / AR
   salience: 0.5
   file: xr.en.md
-- topic: devops-cloud
-  title: DevOps & Cloud
-  salience: 0.0
-  file: devops-cloud.en.md
 ---
 
 # Daily Social Report — 2026-07-27
@@ -68,10 +68,10 @@ topics:
 | AI News & New Skills | 0.5 | [ai-news.en.md](ai-news.en.md) |
 | AI Research | 0.5 | [ai-research.en.md](ai-research.en.md) |
 | Audio AI | 0.5 | [audio-ai.en.md](audio-ai.en.md) |
+| DevOps & Cloud | 0.5 | [devops-cloud.en.md](devops-cloud.en.md) |
 | EdTech | 0.5 | [edtech.en.md](edtech.en.md) |
 | Game Dev | 0.5 | [game-dev.en.md](game-dev.en.md) |
 | Multimodal AI | 0.5 | [multimodal-ai.en.md](multimodal-ai.en.md) |
 | Thai Tech | 0.5 | [thai-tech.en.md](thai-tech.en.md) |
 | Web & Frontend | 0.5 | [web-frontend.en.md](web-frontend.en.md) |
 | XR / VR / AR | 0.5 | [xr.en.md](xr.en.md) |
-| DevOps & Cloud | 0.0 | [devops-cloud.en.md](devops-cloud.en.md) |

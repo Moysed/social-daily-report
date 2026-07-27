@@ -4,14 +4,14 @@ date: '2026-07-27'
 topic: edtech
 lang: en
 pair: edtech.th.md
-generated_at: '2026-07-27T03:28:44+00:00'
+generated_at: '2026-07-27T15:09:35+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
 - x
 regions:
 - global
-post_count: 137
+post_count: 136
 salience: 0.5
 sentiment: neutral
 confidence: 0.0
@@ -26,8 +26,8 @@ thumbnail: https://pbs.twimg.com/media/HOMdNJwXYAAt-KS.jpg
 
 ## TL;DR
 - Murayama Yuiri and Okada Nana announce the formation of new unit YUNARIS with new music to be released this November! YU
-- Everyone in Tech Twitter and all the EdTech influencers used to rant about how bad our colleges and students are. "Tier 
-- Alright everyone. Last video. I did this one totally unscripted so I forgot a few important things and then I wrote a re
+- 📚 Free Language Learning Resources! I'm sharing free study materials for: • TOEFL • IELTS • TOEIC • JLPT (Japanese) • Ma
+- @bylerisreal13 And then I found myself taking fic recs from fucking Duolingo https://t.co/vyjy5fNo7a
 
 ## What happened
 Opus reasoning unavailable this run (RuntimeError). Top items by engagement listed in Raw Sources below.
@@ -38,36 +38,36 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | 48RequestHour | ^793 c8 | [Murayama Yuiri and Okada Nana announce the formation of new unit YUNARIS with ne](https://x.com/48RequestHour/status/2081543196581220483) |
-| x | akshaymarch7 | ^551 c32 | [Everyone in Tech Twitter and all the EdTech influencers used to rant about how b](https://x.com/akshaymarch7/status/2080917330440401075) |
-| x | garyseconomics | ^521 c41 | [Alright everyone. Last video. I did this one totally unscripted so I forgot a fe](https://x.com/garyseconomics/status/2081293340964782219) |
-| x | bangtansupppp | ^353 c1 | [Oh this lie...😭whole hate rapline goes through is about visuals and weight, Engl](https://x.com/bangtansupppp/status/2081350709815951621) |
-| x | hoolignyvanill | ^318 c5 | [Draging the pronunciation in 'Dynamite' when it was clear enough to become a glo](https://x.com/hoolignyvanill/status/2081393287316050002) |
-| x | MrsAstronaut | ^310 c18 | [They can get the perfect pronunciation and spelling of the places in France with](https://x.com/MrsAstronaut/status/2081094698261774690) |
-| x | FiredUpCoug | ^288 c10 | [Over the last few days, I’ve gotten to know Antonio, our driver here in Guatemal](https://x.com/FiredUpCoug/status/2081389792953049176) |
-| x | Fintech03 | ^144 c1 | [@tarunsmehta knows how lonely hardware entrepreneurship used to be in India when](https://x.com/Fintech03/status/2080899662526263744) |
-| x | bootroom21 | ^139 c5 | [@indykaila How fast brother ? Is he learning Scouse from duolingo yet ?](https://x.com/bootroom21/status/2081356142320755079) |
-| x | RealSaintbilly | ^138 c3 | [How to Achieve German A1–B2 in 8 Months 🇩🇪 Is it possible? Yes, but only if you’](https://x.com/RealSaintbilly/status/2081353046164897841) |
-| x | shubham_crazy08 | ^123 c10 | [🚨 Google Gemini + NotebookLM can turn any PDF, YouTube video, or notes into a pe](https://x.com/shubham_crazy08/status/2080987993662525448) |
-| x | 0x0SojalSec | ^115 c6 | [Bro brought GPT-Live to the digital human.💀 The interface features a digital hum](https://x.com/0x0SojalSec/status/2081360124061577545) |
-| x | rkivmin | ^109 c0 | [duolingo using pronouncing bts’ names as promotion for their app is sending me 😭](https://x.com/rkivmin/status/2081199661029700059) |
-| x | hoodiejiwoo | ^107 c0 | [🐣 Who am I? 🐬 Bae! 🐣 No, I'm your little chick! Did you miss me? I missed you gu](https://x.com/hoodiejiwoo/status/2081335453278675306) |
-| x | cloudnotes_shb | ^97 c0 | [260726 #SUNGHANBIN ➕💬 Live hanbin said since he sang 'nihao buhao' before, he th](https://x.com/cloudnotes_shb/status/2081212869954458009) |
-| x | methuselaschild | ^93 c3 | [@peterbakernyt @whca The person now at the head of the WHCA did this: gave the q](https://x.com/methuselaschild/status/2081344505580831026) |
-| x | burkov | ^88 c4 | [In this new paper from @GoogleDeepMind and @UCBerkeley, the scientists introduce](https://x.com/burkov/status/2080892955917718002) |
-| x | AramaicWire | ^88 c4 | [Dear @patrickbetdavid, You were blessed to be born Assyrian. You were blessed to](https://x.com/AramaicWire/status/2081460581866029317) |
-| x | yizhiSonder | ^84 c1 | [5 mins of Duolingo Japanese = me ready to flex everywhere🤣🤣🤣 https://t.co/ZRYIR4](https://x.com/yizhiSonder/status/2081380773572325382) |
-| x | lynnsdavenport | ^82 c13 | [Another example of how the world works, especially in Dallas. For the Collins fa](https://x.com/lynnsdavenport/status/2081417926607860175) |
-| x | keyofbelle0320 | ^82 c0 | [25 - Final fix for the revised lyrics - Review choreography formations for verse](https://x.com/keyofbelle0320/status/2081405987962155424) |
-| x | vahidf24 | ^76 c5 | [If your pre-seed list is only VC funds, you’re probably missing the angels who c](https://x.com/vahidf24/status/2081461211510542638) |
-| x | Mohiniuni | ^72 c21 | [🚨 50 FREE websites that feel like cheating. Most people know ChatGPT. Almost nob](https://x.com/Mohiniuni/status/2080933574904283290) |
-| x | gardensinrain | ^67 c1 | [not tom having a better pronunciation than lestat’s italian mother in iwtv3 http](https://x.com/gardensinrain/status/2081148157761626306) |
-| x | earthmixsm | ^66 c0 | [Yuzumumu loves Ouan hehehe i don't know if my pronunciation right or not hahaha ](https://x.com/earthmixsm/status/2081247554268975346) |
-| x | lovefrmingi | ^65 c1 | [one things i’ll never understand is people nitpick about mingi’s english in his ](https://x.com/lovefrmingi/status/2081424588253389176) |
-| x | machinaxflayon | ^63 c1 | [@MACH1NYA whats the name of the song and teach me how to sing this and i'll do i](https://x.com/machinaxflayon/status/2081425375570305155) |
-| x | LianaLeFey | ^56 c3 | [2nd batch of Arlington freebies DONE!💪💜Also made 40 sets of sterling wire earrin](https://x.com/LianaLeFey/status/2081141128057716851) |
-| x | triplem11543909 | ^54 c0 | [#BlossomsOfPower Was looking for videos of the 2ndCP (miss them so much!) and st](https://x.com/triplem11543909/status/2081263554465030639) |
-| x | goblinodds | ^52 c8 | [i have the volume control and speed problems but afaict no detectable autism acc](https://x.com/goblinodds/status/2081369443901288754) |
+| x | 48RequestHour | ^1675 c21 | [Murayama Yuiri and Okada Nana announce the formation of new unit YUNARIS with ne](https://x.com/48RequestHour/status/2081543196581220483) |
+| x | BharukaShraddha | ^1396 c5 | [📚 Free Language Learning Resources! I'm sharing free study materials for: • TOEF](https://x.com/BharukaShraddha/status/2081594427034812417) |
+| x | Oo6904 | ^594 c2 | [@bylerisreal13 And then I found myself taking fic recs from fucking Duolingo htt](https://x.com/Oo6904/status/2081670926261993482) |
+| x | bangtansupppp | ^495 c1 | [Oh this lie...😭whole hate rapline goes through is about visuals and weight, Engl](https://x.com/bangtansupppp/status/2081350709815951621) |
+| x | hoolignyvanill | ^456 c5 | [Draging the pronunciation in 'Dynamite' when it was clear enough to become a glo](https://x.com/hoolignyvanill/status/2081393287316050002) |
+| x | FiredUpCoug | ^326 c10 | [Over the last few days, I’ve gotten to know Antonio, our driver here in Guatemal](https://x.com/FiredUpCoug/status/2081389792953049176) |
+| x | luvriky | ^211 c1 | [ricky was hyping members up the whole live 🐿: my brain's not working rn 🐱: it's ](https://x.com/luvriky/status/2081705261602140220) |
+| x | RealSaintbilly | ^176 c4 | [How to Achieve German A1–B2 in 8 Months 🇩🇪 Is it possible? Yes, but only if you’](https://x.com/RealSaintbilly/status/2081353046164897841) |
+| x | duhshaun_ | ^157 c2 | [@meowingabyss After the pasta pronunciation debacle of the British/American Twit](https://x.com/duhshaun_/status/2081565616654184892) |
+| x | 0x0SojalSec | ^151 c7 | [Bro brought GPT-Live to the digital human.💀 The interface features a digital hum](https://x.com/0x0SojalSec/status/2081360124061577545) |
+| x | bootroom21 | ^142 c5 | [@indykaila How fast brother ? Is he learning Scouse from duolingo yet ?](https://x.com/bootroom21/status/2081356142320755079) |
+| x | leehancokr | ^135 c0 | [leehan said he plays duolingo daily!!🥹 later he’d practice his japanese 😆 https:](https://x.com/leehancokr/status/2081743771423969791) |
+| x | vahidf24 | ^134 c8 | [If your pre-seed list is only VC funds, you’re probably missing the angels who c](https://x.com/vahidf24/status/2081461211510542638) |
+| x | yizhiSonder | ^131 c2 | [5 mins of Duolingo Japanese = me ready to flex everywhere🤣🤣🤣 https://t.co/ZRYIR4](https://x.com/yizhiSonder/status/2081380773572325382) |
+| x | lynnsdavenport | ^126 c14 | [Another example of how the world works, especially in Dallas. For the Collins fa](https://x.com/lynnsdavenport/status/2081417926607860175) |
+| x | AramaicWire | ^111 c6 | [Dear @patrickbetdavid, You were blessed to be born Assyrian. You were blessed to](https://x.com/AramaicWire/status/2081460581866029317) |
+| x | keyofbelle0320 | ^94 c1 | [25 - Final fix for the revised lyrics - Review choreography formations for verse](https://x.com/keyofbelle0320/status/2081405987962155424) |
+| x | machinaxflayon | ^91 c1 | [@MACH1NYA whats the name of the song and teach me how to sing this and i'll do i](https://x.com/machinaxflayon/status/2081425375570305155) |
+| x | lifesfunnyweird | ^86 c0 | [Harry's Parseltongue pronunciation not being the best and Tom making him say ton](https://x.com/lifesfunnyweird/status/2081637822696485034) |
+| x | ekinoks_26 | ^86 c90 | [Headquartered in Cambridge, Massachusetts. Not Singapore, not Dubai, not Miami. ](https://x.com/ekinoks_26/status/2081590400838709396) |
+| x | haollelujah | ^85 c1 | [“and2ble’s cover of lovers” is hot on douyin with over 2.9 million users watchin](https://x.com/haollelujah/status/2081732399835005358) |
+| x | malpani | ^84 c27 | [The paper leak is not the problem https://t.co/WYT98mGWTD](https://x.com/malpani/status/2081628612047122753) |
+| x | lovefrmingi | ^84 c1 | [one things i’ll never understand is people nitpick about mingi’s english in his ](https://x.com/lovefrmingi/status/2081424588253389176) |
+| x | natwexler | ^82 c11 | [Alpha School claims its students learn 2.6x faster than average in only 2 hrs/da](https://x.com/natwexler/status/2081459454835335562) |
+| x | matteo_spada | ^72 c4 | [BitePal made: - 500K installs/mo - $1M revenue/mo with a starving racoon &gt; 37](https://x.com/matteo_spada/status/2081438672445141330) |
+| x | applekhankorea | ^71 c3 | [Strategic Predictive Analysis ::: The Transformative Changes Driven by the Expan](https://x.com/applekhankorea/status/2081651519154426225) |
+| x | 0xSagaLab | ^70 c64 | [GN everyone 💤 💤 A brand I'd love to see on Clasho is @duolingo Not just because ](https://x.com/0xSagaLab/status/2081485752668397756) |
+| x | eonbincho | ^70 c1 | [zhang yuan - 看着我的眼睛说 #유승언 can someone voice actually sound this sweet? his pronu](https://x.com/eonbincho/status/2081389931998720285) |
+| x | CBNNews | ^63 c2 | [What does it take to bring God's Word to people living in some of the most isola](https://x.com/CBNNews/status/2081469683882983619) |
+| x | CrypsterTrades | ^58 c7 | [fud going around that some brazilian artist andre (dinofauro guy) owns the blue ](https://x.com/CrypsterTrades/status/2081495637997076938) |
 
 
 ## Top Posts
@@ -77,7 +77,7 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
   <header class="ndf-card-head">
     <span class="ndf-author">@48RequestHour</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 793 · 💬 8</span>
+    <span class="ndf-engagement">♥ 1675 · 💬 21</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/48RequestHour/status/2081543196581220483">View @48RequestHour on X</a></blockquote>
   <div class="ndf-card-body">
@@ -91,41 +91,41 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@akshaymarch7</span>
+    <span class="ndf-author">@BharukaShraddha</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 551 · 💬 32</span>
+    <span class="ndf-engagement">♥ 1396 · 💬 5</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/akshaymarch7/status/2080917330440401075">View @akshaymarch7 on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/BharukaShraddha/status/2081594427034812417">View @BharukaShraddha on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Everyone in Tech Twitter and all the EdTech influencers used to rant about how bad our colleges and students are. &quot;Tier 3 colleges ke bachche achhe nahi hote.&quot; &quot;Students ki skills bekaar hain.&quot; Ab sab”</p>
+    <p class="ndf-quote">“📚 Free Language Learning Resources! I'm sharing free study materials for: • TOEFL • IELTS • TOEIC • JLPT (Japanese) • Mandarin • German 📂 Download here: https://t.co/TM0DnLQM8I Feel free to share this”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Everyone in Tech Twitter and all the EdTech influencers used to rant about how bad our colleges and students are. &quot;Tier 3 colleges ke bachch</dd>
+      <dd>📚 Free Language Learning Resources! I'm sharing free study materials for: • TOEFL • IELTS • TOEIC • JLPT (Japanese) • Mandarin • German 📂 Do</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/akshaymarch7/status/2080917330440401075" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/BharukaShraddha/status/2081594427034812417" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@garyseconomics</span>
+    <span class="ndf-author">@Oo6904</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 521 · 💬 41</span>
+    <span class="ndf-engagement">♥ 594 · 💬 2</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/garyseconomics/status/2081293340964782219">View @garyseconomics on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Oo6904/status/2081670926261993482">View @Oo6904 on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Alright everyone. Last video. I did this one totally unscripted so I forgot a few important things and then I wrote a really long description to fill that all in and YT told me it was too long 😫 so he”</p>
+    <p class="ndf-quote">“@bylerisreal13 And then I found myself taking fic recs from fucking Duolingo https://t.co/vyjy5fNo7a”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>Alright everyone. Last video. I did this one totally unscripted so I forgot a few important things and then I wrote a really long descriptio</dd>
+      <dd>@bylerisreal13 And then I found myself taking fic recs from fucking Duolingo https://t.co/vyjy5fNo7a</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/garyseconomics/status/2081293340964782219" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/Oo6904/status/2081670926261993482" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@bangtansupppp</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 353 · 💬 1</span>
+    <span class="ndf-engagement">♥ 495 · 💬 1</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/bangtansupppp/status/2081350709815951621">View @bangtansupppp on X</a></blockquote>
   <div class="ndf-card-body">
@@ -141,7 +141,7 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
   <header class="ndf-card-head">
     <span class="ndf-author">@hoolignyvanill</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 318 · 💬 5</span>
+    <span class="ndf-engagement">♥ 456 · 💬 5</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/hoolignyvanill/status/2081393287316050002">View @hoolignyvanill on X</a></blockquote>
   <div class="ndf-card-body">
@@ -155,25 +155,9 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@MrsAstronaut</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 310 · 💬 18</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/MrsAstronaut/status/2081094698261774690">View @MrsAstronaut on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“They can get the perfect pronunciation and spelling of the places in France with wildfires. This is just contempt and ignorance”</p>
-    <dl class="ndf-fields">
-      <dt>What it says</dt>
-      <dd>They can get the perfect pronunciation and spelling of the places in France with wildfires. This is just contempt and ignorance</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/MrsAstronaut/status/2081094698261774690" target="_blank" rel="noopener">View on x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@FiredUpCoug</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 288 · 💬 10</span>
+    <span class="ndf-engagement">♥ 326 · 💬 10</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/FiredUpCoug/status/2081389792953049176">View @FiredUpCoug on X</a></blockquote>
   <div class="ndf-card-body">
@@ -187,18 +171,34 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Fintech03</span>
+    <span class="ndf-author">@luvriky</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 144 · 💬 1</span>
+    <span class="ndf-engagement">♥ 211 · 💬 1</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Fintech03/status/2080899662526263744">View @Fintech03 on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/luvriky/status/2081705261602140220">View @luvriky on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“@tarunsmehta knows how lonely hardware entrepreneurship used to be in India when capital only chased hyperlocal/fintech/edtech apps. Seeing him celebrate this new wave of deeptech founders speaks volu”</p>
+    <p class="ndf-quote">“ricky was hyping members up the whole live 🐿: my brain's not working rn 🐱: it's okay, it's going well 🐱: everyone's chinese pronunciation got better today 🐰: a bit better than yesterday 🐱: yujin's was”</p>
     <dl class="ndf-fields">
       <dt>What it says</dt>
-      <dd>@tarunsmehta knows how lonely hardware entrepreneurship used to be in India when capital only chased hyperlocal/fintech/edtech apps. Seeing</dd>
+      <dd>ricky was hyping members up the whole live 🐿: my brain's not working rn 🐱: it's okay, it's going well 🐱: everyone's chinese pronunciation go</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/Fintech03/status/2080899662526263744" target="_blank" rel="noopener">View on x →</a>
+    <a class="ndf-source" href="https://x.com/luvriky/status/2081705261602140220" target="_blank" rel="noopener">View on x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@RealSaintbilly</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 176 · 💬 4</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/RealSaintbilly/status/2081353046164897841">View @RealSaintbilly on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“How to Achieve German A1–B2 in 8 Months 🇩🇪 Is it possible? Yes, but only if you’re ready to treat learning German like a part-time job. Here’s the roadmap I would recommend. 🧵👇 Month 1: Master A1 Your”</p>
+    <dl class="ndf-fields">
+      <dt>What it says</dt>
+      <dd>How to Achieve German A1–B2 in 8 Months 🇩🇪 Is it possible? Yes, but only if you’re ready to treat learning German like a part-time job. Here</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/RealSaintbilly/status/2081353046164897841" target="_blank" rel="noopener">View on x →</a>
   </div>
 </article>
 </div>

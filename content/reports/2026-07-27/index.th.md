@@ -28,6 +28,10 @@ topics:
   title: Audio AI
   salience: 0.5
   file: audio-ai.th.md
+- topic: devops-cloud
+  title: DevOps & Cloud
+  salience: 0.5
+  file: devops-cloud.th.md
 - topic: edtech
   title: EdTech
   salience: 0.5
@@ -52,10 +56,6 @@ topics:
   title: XR / VR / AR
   salience: 0.5
   file: xr.th.md
-- topic: devops-cloud
-  title: DevOps & Cloud
-  salience: 0.0
-  file: devops-cloud.th.md
 ---
 
 # รายงานโซเชียลรายวัน — 2026-07-27
@@ -68,10 +68,10 @@ topics:
 | AI News & New Skills | 0.5 | [ai-news.th.md](ai-news.th.md) |
 | AI Research | 0.5 | [ai-research.th.md](ai-research.th.md) |
 | Audio AI | 0.5 | [audio-ai.th.md](audio-ai.th.md) |
+| DevOps & Cloud | 0.5 | [devops-cloud.th.md](devops-cloud.th.md) |
 | EdTech | 0.5 | [edtech.th.md](edtech.th.md) |
 | Game Dev | 0.5 | [game-dev.th.md](game-dev.th.md) |
 | Multimodal AI | 0.5 | [multimodal-ai.th.md](multimodal-ai.th.md) |
 | Thai Tech | 0.5 | [thai-tech.th.md](thai-tech.th.md) |
 | Web & Frontend | 0.5 | [web-frontend.th.md](web-frontend.th.md) |
 | XR / VR / AR | 0.5 | [xr.th.md](xr.th.md) |
-| DevOps & Cloud | 0.0 | [devops-cloud.th.md](devops-cloud.th.md) |

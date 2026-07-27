@@ -4,14 +4,14 @@ date: '2026-07-27'
 topic: audio-ai
 lang: th
 pair: audio-ai.en.md
-generated_at: '2026-07-27T03:36:00+00:00'
+generated_at: '2026-07-27T15:16:45+00:00'
 generator: social-daily-report v0.1
 model: claude-opus-4-7
 platforms:
 - x
 regions:
 - global
-post_count: 17
+post_count: 25
 salience: 0.5
 sentiment: neutral
 confidence: 0.0
@@ -20,7 +20,7 @@ tags:
 - tts
 - voice
 - music
-thumbnail: https://pbs.twimg.com/amplify_video_thumb/2081146005354131456/img/jG2g2c3Z__-sNYph.jpg
+thumbnail: https://pbs.twimg.com/amplify_video_thumb/2081387682249461760/img/I4Wc-T5__63HHNp3.jpg
 ---
 
 > _การแปลภาษาไทยรอบนี้ล้มเหลว (timeout หรือ error) — แสดงต้นฉบับภาษาอังกฤษแทน._
@@ -28,9 +28,9 @@ thumbnail: https://pbs.twimg.com/amplify_video_thumb/2081146005354131456/img/jG2
 # Audio AI — 2026-07-27
 
 ## TL;DR
-- 🚨 Someone built a fully local AI girlfriend. 🤯 No internet. No API keys. Everything runs 100% locally. ⚙️ Tech stack 🎙️ 
 - An 8-year-old turned an $8 microcontroller into a fully offline, voice-controlled AI storyteller. No Wi-Fi. No cloud. No
-- 🚨 12 AI SKILLS TO MASTER IN 2026 Upgrade your skills. Stay ahead. Lead the future. 1. Prompt Engineering Learn to write 
+- 🚨 Someone built a fully local AI girlfriend. 🤯 No internet. No API keys. Everything runs 100% locally. ⚙️ Tech stack 🎙️ 
+- Been trying to do movie trailers in Ai going for speed. The first 30 seconds I used InVideo and it took about a week. Th
 
 ## What happened
 Opus reasoning unavailable this run (RuntimeError). Top items by engagement listed in Raw Sources below.
@@ -41,23 +41,31 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 ## Raw Sources
 | platform | author | engagement | url |
 |---|---|---|---|
-| x | QCXINT_ | ^1155 c57 | [🚨 Someone built a fully local AI girlfriend. 🤯 No internet. No API keys. Everyth](https://x.com/QCXINT_/status/2081146083582103627) |
-| x | CaptVenk | ^976 c11 | [An 8-year-old turned an $8 microcontroller into a fully offline, voice-controlle](https://x.com/CaptVenk/status/2081390483218289140) |
-| x | Revix_AI | ^66 c27 | [🚨 12 AI SKILLS TO MASTER IN 2026 Upgrade your skills. Stay ahead. Lead the futur](https://x.com/Revix_AI/status/2081314052291039387) |
-| x | heiga_zen | ^66 c3 | [Today marks my 15th #Googleversary ! It has been an incredible journey across th](https://x.com/heiga_zen/status/2080972014299562139) |
-| x | milessy_bc | ^65 c18 | [The RR numbers, unfiltered > Anthropic's revenue run rate: $30 billion to $47 bi](https://x.com/milessy_bc/status/2080970660604485833) |
-| x | monicaa_AI | ^60 c25 | [120 Mind-Blowing AI Tools; 1. Ideas - Grok - ChatGPT - Claude - Gemini - Perplex](https://x.com/monicaa_AI/status/2081396787357909071) |
-| x | basement_agi | ^60 c1 | [@Mononofu @satyanadella Microsoft bought GitHub, released LLMs, OCR, TTS, AI Pap](https://x.com/basement_agi/status/2081039388679823467) |
-| x | tec_aryan | ^59 c26 | [I tested hundreds of AI tools. These are the 50 AI Tools I still use every week:](https://x.com/tec_aryan/status/2081421448661602577) |
-| x | codewithhajra | ^43 c29 | [The best AI apps & websites dominating 2026 🔥 ✨ General Assistants - Claude - Ch](https://x.com/codewithhajra/status/2081387835282665793) |
+| x | CaptVenk | ^3120 c51 | [An 8-year-old turned an $8 microcontroller into a fully offline, voice-controlle](https://x.com/CaptVenk/status/2081390483218289140) |
+| x | QCXINT_ | ^1233 c66 | [🚨 Someone built a fully local AI girlfriend. 🤯 No internet. No API keys. Everyth](https://x.com/QCXINT_/status/2081146083582103627) |
+| x | DougTenNapel | ^291 c43 | [Been trying to do movie trailers in Ai going for speed. The first 30 seconds I u](https://x.com/DougTenNapel/status/2081572725986869431) |
+| x | monicaa_AI | ^111 c38 | [120 Mind-Blowing AI Tools; 1. Ideas - Grok - ChatGPT - Claude - Gemini - Perplex](https://x.com/monicaa_AI/status/2081396787357909071) |
+| x | PawelHuryn | ^110 c4 | [How to connect Claude to any app (no coding). Four paths. Start at 3 clicks. Her](https://x.com/PawelHuryn/status/2081457567968989234) |
+| x | tec_aryan | ^84 c31 | [I tested hundreds of AI tools. These are the 50 AI Tools I still use every week:](https://x.com/tec_aryan/status/2081421448661602577) |
+| x | ElevenLabs | ^80 c10 | [The ElevenLabs Summit is coming to Bengaluru on October 6. Expect first looks at](https://x.com/ElevenLabs/status/2081658285564858467) |
+| x | Revix_AI | ^73 c28 | [🚨 12 AI SKILLS TO MASTER IN 2026 Upgrade your skills. Stay ahead. Lead the futur](https://x.com/Revix_AI/status/2081314052291039387) |
+| x | alexfmac | ^71 c12 | [1 year ago Chamath said: 'Europe is uninvestable' Since then: ~$80b has been inv](https://x.com/alexfmac/status/2081701737363026159) |
+| x | thegoldeenhand | ^71 c7 | [Every faceless YouTube creator typing "write me a romance story" into Claude is ](https://x.com/thegoldeenhand/status/2081636454845825358) |
+| x | basement_agi | ^62 c1 | [@Mononofu @satyanadella Microsoft bought GitHub, released LLMs, OCR, TTS, AI Pap](https://x.com/basement_agi/status/2081039388679823467) |
+| x | codewithhajra | ^55 c36 | [The best AI apps & websites dominating 2026 🔥 ✨ General Assistants - Claude - Ch](https://x.com/codewithhajra/status/2081387835282665793) |
+| x | lukeknight | ^51 c13 | [etn has raised $ 1.6M. From today, etn will be live 5-days a week out of our new](https://x.com/lukeknight/status/2081689339763822893) |
+| x | SourabhGurwani | ^48 c43 | [If I had 6 months to become an AI Engineer, I'd do this. Stage 1 — Programming F](https://x.com/SourabhGurwani/status/2081721763428483158) |
+| x | levikov | ^46 c21 | [Instagram will ban u for showing a nipple then promote a woman who has never exi](https://x.com/levikov/status/2081341267234247150) |
+| x | _Qt_coo | ^45 c5 | [Jeff Bridges shows Theo Von how he uses AI to write and record songs, playing a ](https://x.com/_Qt_coo/status/2081055417480675787) |
+| x | Nemspy | ^44 c4 | [How long does it take Jinx to wash her hair? "How long D'ya Think?" Yesterday @t](https://x.com/Nemspy/status/2081198474394247648) |
+| x | analogalok | ^43 c8 | [I showed you how to run massive 26B local LLMs on a free Google Colab GPU. Now i](https://x.com/analogalok/status/2081418027095175264) |
+| x | woody_research | ^43 c1 | [A three-hour video about medieval history became part of a $100,000/month sleep-](https://x.com/woody_research/status/2081660347291983874) |
 | x | pequityresearch | ^42 c3 | [UBS: Open-Source Models Momentum AI Demand & Enterprise Adoption > Broadening De](https://x.com/pequityresearch/status/2081182722526167140) |
-| x | Nemspy | ^42 c4 | [How long does it take Jinx to wash her hair? "How long D'ya Think?" Yesterday @t](https://x.com/Nemspy/status/2081198474394247648) |
-| x | levikov | ^38 c1 | [Instagram will ban u for showing a nipple then promote a woman who has never exi](https://x.com/levikov/status/2081341267234247150) |
-| x | PUPPY_GL1TCH | ^34 c5 | [Nobody here cares but I have a new rant layout and also I’m not using text to sp](https://x.com/PUPPY_GL1TCH/status/2081434644407316728) |
+| x | PUPPY_GL1TCH | ^41 c5 | [Nobody here cares but I have a new rant layout and also I’m not using text to sp](https://x.com/PUPPY_GL1TCH/status/2081434644407316728) |
+| x | mati | ^40 c5 | [ElevenLabs Summit India! 🇮🇳 Excited to bring our next Summit to Bengaluru this O](https://x.com/mati/status/2081749014127546445) |
+| x | codeMdSanto | ^38 c20 | [10 AI tools that can save you hours every week: ChatGPT → Writing, coding & brai](https://x.com/codeMdSanto/status/2081689954028290111) |
+| x | He1s_Sammy | ^34 c12 | [THIS DEVELOPER JUST KILLED THE VOICE CLONING INDUSTRY WITH ONE GITHUB REPO. Clau](https://x.com/He1s_Sammy/status/2081671320966680656) |
 | x | MDSUJON85265037 | ^33 c11 | [🚀 Stop Paying for Every AI Tool. You don't always need the most expensive AI sub](https://x.com/MDSUJON85265037/status/2081213150616318130) |
-| x | shushant_l | ^33 c3 | [I'm amazed most people still think becoming an AI influencer is complicated. Her](https://x.com/shushant_l/status/2081030974188724292) |
-| x | QCXINT_ | ^31 c2 | [🚨 Best open-source GitHub repos for Voice & Audio AI. 🎙️ If you're building AI v](https://x.com/QCXINT_/status/2080986079365075387) |
-| x | DougTenNapel | ^30 c3 | [Been trying to do movie trailers in Ai going for speed. The first 30 seconds I u](https://x.com/DougTenNapel/status/2081572725986869431) |
 
 
 ## โพสต์เด่น
@@ -65,25 +73,9 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 <div class="post-stream">
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@QCXINT_</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 1155 · 💬 57</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/QCXINT_/status/2081146083582103627">View @QCXINT_ on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“🚨 Someone built a fully local AI girlfriend. 🤯 No internet. No API keys. Everything runs 100% locally. ⚙️ Tech stack 🎙️ VAD: Silero VAD v5 📝 STT: Whisper 🧠 LLM: llama.cpp 🗣️ TTS: Qwen3-TTS The crazy p”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>🚨 Someone built a fully local AI girlfriend. 🤯 No internet. No API keys. Everything runs 100% locally. ⚙️ Tech stack 🎙️ VAD: Silero VAD v5 📝</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/QCXINT_/status/2081146083582103627" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
     <span class="ndf-author">@CaptVenk</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 976 · 💬 11</span>
+    <span class="ndf-engagement">♥ 3120 · 💬 51</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/CaptVenk/status/2081390483218289140">View @CaptVenk on X</a></blockquote>
   <div class="ndf-card-body">
@@ -97,57 +89,41 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@Revix_AI</span>
+    <span class="ndf-author">@QCXINT_</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 66 · 💬 27</span>
+    <span class="ndf-engagement">♥ 1233 · 💬 66</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Revix_AI/status/2081314052291039387">View @Revix_AI on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/QCXINT_/status/2081146083582103627">View @QCXINT_ on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“🚨 12 AI SKILLS TO MASTER IN 2026 Upgrade your skills. Stay ahead. Lead the future. 1. Prompt Engineering Learn to write clear, task-specific prompts that help Al models like ChatGPT, Claude and Gemini”</p>
+    <p class="ndf-quote">“🚨 Someone built a fully local AI girlfriend. 🤯 No internet. No API keys. Everything runs 100% locally. ⚙️ Tech stack 🎙️ VAD: Silero VAD v5 📝 STT: Whisper 🧠 LLM: llama.cpp 🗣️ TTS: Qwen3-TTS The crazy p”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>🚨 12 AI SKILLS TO MASTER IN 2026 Upgrade your skills. Stay ahead. Lead the future. 1. Prompt Engineering Learn to write clear, task-specific</dd>
+      <dd>🚨 Someone built a fully local AI girlfriend. 🤯 No internet. No API keys. Everything runs 100% locally. ⚙️ Tech stack 🎙️ VAD: Silero VAD v5 📝</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/Revix_AI/status/2081314052291039387" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/QCXINT_/status/2081146083582103627" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@heiga_zen</span>
+    <span class="ndf-author">@DougTenNapel</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 66 · 💬 3</span>
+    <span class="ndf-engagement">♥ 291 · 💬 43</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/heiga_zen/status/2080972014299562139">View @heiga_zen on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/DougTenNapel/status/2081572725986869431">View @DougTenNapel on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“Today marks my 15th #Googleversary ! It has been an incredible journey across three distinct chapters: 7 years with the Speech team in London, 5 years with Google Brain in Tokyo, &amp; the past 3 years le”</p>
+    <p class="ndf-quote">“Been trying to do movie trailers in Ai going for speed. The first 30 seconds I used InVideo and it took about a week. The entire rest of the trailer I did in one day (2 minutes of material!) using jus”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>Today marks my 15th #Googleversary ! It has been an incredible journey across three distinct chapters: 7 years with the Speech team in Londo</dd>
+      <dd>Been trying to do movie trailers in Ai going for speed. The first 30 seconds I used InVideo and it took about a week. The entire rest of the</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/heiga_zen/status/2080972014299562139" target="_blank" rel="noopener">เปิดบน x →</a>
-  </div>
-</article>
-<article class="ndf-card platform-x">
-  <header class="ndf-card-head">
-    <span class="ndf-author">@milessy_bc</span>
-    <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 65 · 💬 18</span>
-  </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/milessy_bc/status/2080970660604485833">View @milessy_bc on X</a></blockquote>
-  <div class="ndf-card-body">
-    <p class="ndf-quote">“The RR numbers, unfiltered &gt; Anthropic's revenue run rate: $30 billion to $47 billion in under two months &gt; Sierra: seven quarters to reach its first $100M ARR, then just two more quarters to add the ”</p>
-    <dl class="ndf-fields">
-      <dt>เนื้อหา</dt>
-      <dd>The RR numbers, unfiltered &gt; Anthropic's revenue run rate: $30 billion to $47 billion in under two months &gt; Sierra: seven quarters to reach</dd>
-    </dl>
-    <a class="ndf-source" href="https://x.com/milessy_bc/status/2080970660604485833" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/DougTenNapel/status/2081572725986869431" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@monicaa_AI</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 60 · 💬 25</span>
+    <span class="ndf-engagement">♥ 111 · 💬 38</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/monicaa_AI/status/2081396787357909071">View @monicaa_AI on X</a></blockquote>
   <div class="ndf-card-body">
@@ -161,25 +137,25 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
-    <span class="ndf-author">@basement_agi</span>
+    <span class="ndf-author">@PawelHuryn</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 60 · 💬 1</span>
+    <span class="ndf-engagement">♥ 110 · 💬 4</span>
   </header>
-  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/basement_agi/status/2081039388679823467">View @basement_agi on X</a></blockquote>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/PawelHuryn/status/2081457567968989234">View @PawelHuryn on X</a></blockquote>
   <div class="ndf-card-body">
-    <p class="ndf-quote">“@Mononofu @satyanadella Microsoft bought GitHub, released LLMs, OCR, TTS, AI Papers, Vscode, Cloud Infrastructure, WSL, ... The list is endless. And Nvidia contributed to open source projects like Pyt”</p>
+    <p class="ndf-quote">“How to connect Claude to any app (no coding). Four paths. Start at 3 clicks. Here's which one when: 1. The connector, when it does the whole job. → Go to claude[.]ai/customize/connectors → Add → pick ”</p>
     <dl class="ndf-fields">
       <dt>เนื้อหา</dt>
-      <dd>@Mononofu @satyanadella Microsoft bought GitHub, released LLMs, OCR, TTS, AI Papers, Vscode, Cloud Infrastructure, WSL, ... The list is endl</dd>
+      <dd>How to connect Claude to any app (no coding). Four paths. Start at 3 clicks. Here's which one when: 1. The connector, when it does the whole</dd>
     </dl>
-    <a class="ndf-source" href="https://x.com/basement_agi/status/2081039388679823467" target="_blank" rel="noopener">เปิดบน x →</a>
+    <a class="ndf-source" href="https://x.com/PawelHuryn/status/2081457567968989234" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 <article class="ndf-card platform-x">
   <header class="ndf-card-head">
     <span class="ndf-author">@tec_aryan</span>
     <span class="ndf-platform">x</span>
-    <span class="ndf-engagement">♥ 59 · 💬 26</span>
+    <span class="ndf-engagement">♥ 84 · 💬 31</span>
   </header>
   <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/tec_aryan/status/2081421448661602577">View @tec_aryan on X</a></blockquote>
   <div class="ndf-card-body">
@@ -189,6 +165,38 @@ Set ANTHROPIC_API_KEY (or LLM_BACKEND=cli) to enable full reasoning.
       <dd>I tested hundreds of AI tools. These are the 50 AI Tools I still use every week:👇 🤖 𝗔𝗜 𝗖𝗵𝗮𝘁 • ChatGPT • Claude • Gemini • Perplexity 💻 𝗖𝗼𝗱𝗶𝗻</dd>
     </dl>
     <a class="ndf-source" href="https://x.com/tec_aryan/status/2081421448661602577" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@ElevenLabs</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 80 · 💬 10</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/ElevenLabs/status/2081658285564858467">View @ElevenLabs on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“The ElevenLabs Summit is coming to Bengaluru on October 6. Expect first looks at new models, insights into where voice and agents are headed, and live demos from the teams building voice-first AI in I”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>The ElevenLabs Summit is coming to Bengaluru on October 6. Expect first looks at new models, insights into where voice and agents are headed</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/ElevenLabs/status/2081658285564858467" target="_blank" rel="noopener">เปิดบน x →</a>
+  </div>
+</article>
+<article class="ndf-card platform-x">
+  <header class="ndf-card-head">
+    <span class="ndf-author">@Revix_AI</span>
+    <span class="ndf-platform">x</span>
+    <span class="ndf-engagement">♥ 73 · 💬 28</span>
+  </header>
+  <blockquote class="twitter-tweet ndf-x-embed" data-dnt="true"><a href="https://x.com/Revix_AI/status/2081314052291039387">View @Revix_AI on X</a></blockquote>
+  <div class="ndf-card-body">
+    <p class="ndf-quote">“🚨 12 AI SKILLS TO MASTER IN 2026 Upgrade your skills. Stay ahead. Lead the future. 1. Prompt Engineering Learn to write clear, task-specific prompts that help Al models like ChatGPT, Claude and Gemini”</p>
+    <dl class="ndf-fields">
+      <dt>เนื้อหา</dt>
+      <dd>🚨 12 AI SKILLS TO MASTER IN 2026 Upgrade your skills. Stay ahead. Lead the future. 1. Prompt Engineering Learn to write clear, task-specific</dd>
+    </dl>
+    <a class="ndf-source" href="https://x.com/Revix_AI/status/2081314052291039387" target="_blank" rel="noopener">เปิดบน x →</a>
   </div>
 </article>
 </div>
